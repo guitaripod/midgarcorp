@@ -1,0 +1,249 @@
+---
+title: 'Pixie: Building a Production-Ready AI Image Generation Platform with Rust and Native Mobile Apps'
+description: 'A deep dive into Pixie, a complete AI image generation platform built with Rust on Cloudflare Workers, featuring native iOS/Android apps and a powerful CLI'
+pubDate: 2025-09-22
+tags: ['rust', 'cloudflare-workers', 'ai', 'openai', 'ios', 'android', 'cli', 'image-generation']
+---
+
+## The Problem
+
+```bash
+# Current AI image generation workflow:
+$ curl -X POST https://api.openai.com/v1/images/generations \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{"prompt": "a sunset", "size": "1024x1024"}'
+
+# Result: JSON with a temporary URL that expires
+# No persistence, no galleries, no mobile access
+# Managing API keys across devices is a security nightmare
+```
+
+## The Solution
+
+```bash
+$ pixie generate "ethereal sunset over mountain peaks" -q high
+✓ Generated 1 image (94 credits used)
+✓ Saved to gallery: https://pixie.app/gallery/abc123
+✓ Downloaded: ./sunset_2024_1024x1024.png
+```
+
+AI image generation shouldn't require managing API keys, parsing JSON responses, or losing your creations when temporary URLs expire. **Pixie** transforms OpenAI's powerful image generation models into a complete platform with persistent storage, native mobile apps, and a delightful CLI experience.
+
+[![Download on the App Store](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/us/app/pixiepocket/id6751730339)
+
+## What Makes Pixie Different
+
+### Complete Ecosystem
+
+Pixie isn't just another API wrapper. It's a full-stack platform:
+
+- **Rust-powered Backend**: High-performance Cloudflare Worker handling millions of requests
+- **Native Mobile Apps**: iOS (UIKit/Swift) and Android (Kotlin/Compose) with full feature parity
+- **Powerful CLI**: Feature-rich command-line tool for developers and power users
+- **Persistent Storage**: Your images stored permanently in Cloudflare R2
+- **Public Galleries**: Share your creations with customizable privacy settings
+
+### Architecture That Scales
+
+Built on modern, serverless infrastructure:
+
+```
+┌─────────────┐     ┌──────────────────────┐     ┌─────────────┐
+│   Clients   │────▶│  Cloudflare Worker   │────▶│  OpenAI API │
+│ iOS/Android │     │   (Rust + WASM)      │     └─────────────┘
+│     CLI     │     ├──────────────────────┤
+└─────────────┘     │  • Auth (OAuth)      │     ┌─────────────┐
+                    │  • Rate Limiting      │────▶│ Cloudflare  │
+                    │  • Credit System      │     │     R2      │
+                    │  • Image Processing   │     └─────────────┘
+                    └──────────────────────┘
+                              │                   ┌─────────────┐
+                              └──────────────────▶│ Cloudflare  │
+                                                  │     D1      │
+                                                  └─────────────┘
+```
+
+## Technical Achievements
+
+### Rust on Cloudflare Workers
+
+Pixie leverages Rust's performance and safety guarantees in a serverless environment:
+
+- **Zero-cost abstractions**: Type-safe API with minimal overhead
+- **WASM compilation**: Near-native performance at the edge
+- **Concurrent request handling**: Efficient resource utilization with tokio-style async
+- **Memory safety**: Eliminate entire classes of vulnerabilities
+
+### OpenAI API Compatibility
+
+Full compatibility with OpenAI's image generation endpoints while adding essential features:
+
+```bash
+# Works with existing OpenAI tools
+POST /v1/images/generations
+POST /v1/images/edits
+POST /v1/images/variations
+
+# Extended with platform features
+GET /v1/images          # Browse galleries
+GET /v1/credits/balance # Check remaining credits
+POST /v1/auth/device    # OAuth device flow
+```
+
+### Smart Credit System
+
+Transparent, usage-based pricing that actually makes sense:
+
+| Quality | Resolution | Credits | Cost |
+|---------|-----------|---------|------|
+| Low | 512x512 | 4-6 | $0.04-0.06 |
+| Medium | 1024x1024 | 16-24 | $0.16-0.24 |
+| High | 2048x2048 | 62-94 | $0.62-0.94 |
+
+No subscriptions, no hidden fees. Pay for what you use.
+
+## CLI Experience
+
+The Pixie CLI brings professional image generation to your terminal:
+
+### Image Generation and Editing
+
+```bash
+# Generate images with quality control
+pixie generate "cyberpunk city" -q medium
+
+# Edit existing images
+pixie edit gallery:abc123 "add neon lights" --fidelity high
+```
+
+### Gallery Management
+
+```bash
+# Browse public galleries
+pixie gallery list --trending
+
+# Manage your creations
+pixie gallery mine --filter "landscape" --sort newest
+
+# Share with custom privacy
+pixie gallery share abc123 --visibility unlisted
+```
+
+## Native Mobile Apps
+
+[![Download on the App Store](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/us/app/pixiepocket/id6751730339)
+
+### iOS: UIKit Excellence
+
+Built with UIKit for maximum performance and platform integration:
+
+- **Programmatic UI**: Clean, maintainable layouts with UIStackViews
+- **Native Feel**: Follows iOS Human Interface Guidelines perfectly
+- **Background Processing**: Efficient task handling for large batches
+- **RevenueCat Integration**: Seamless in-app purchases
+
+### Android: Modern Compose
+
+Kotlin and Jetpack Compose for a delightful Android experience:
+
+- **Material Design 3**: Beautiful, consistent UI following latest guidelines
+- **MVVM Architecture**: Clean separation of concerns
+- **Coroutines**: Smooth async operations without blocking
+- **Retrofit + Moshi**: Type-safe networking
+
+Both apps feature:
+- OAuth authentication (GitHub, Google, Apple)
+- Real-time generation progress
+- Offline mode with smart syncing
+- Gallery browsing and sharing
+- Credit management and purchases
+
+## Self-Hosting Options
+
+Pixie supports two deployment modes:
+
+### Official Mode (Managed Service)
+- Managed credit system
+- No API key required
+- Automatic updates
+- Payment processing included
+
+### Self-Hosted Mode
+- Use your own OpenAI keys
+- Complete control
+- No credit system
+- Direct API passthrough
+
+Deploy in minutes:
+
+```bash
+git clone https://github.com/guitaripod/pixie.git
+cd pixie
+npx wrangler secret put OPENAI_API_KEY
+npx wrangler deploy
+```
+
+## Real-World Performance
+
+Pixie handles production workloads efficiently:
+
+- **< 50ms p95 latency** for API endpoints (excluding OpenAI calls)
+- **Automatic retry logic** with exponential backoff
+- **Rate limiting** per user to ensure fair usage
+- **Global edge deployment** via Cloudflare's 300+ locations
+
+## Privacy-First Design
+
+Your data stays yours:
+
+- **No tracking**: Zero analytics or telemetry
+- **Local-first mobile apps**: Images cached on device
+- **Secure credential storage**: OAuth tokens in OS keychain
+- **Optional anonymity**: Use without creating an account
+
+## The Platform Advantage
+
+Unlike using OpenAI's API directly, Pixie provides:
+
+1. **Persistence**: Images stored permanently, not temporary URLs
+2. **Discovery**: Browse and search public galleries
+3. **Collaboration**: Share galleries with teams
+4. **Cost Control**: Credit system prevents surprise bills
+5. **Multi-platform**: Same experience on CLI, iOS, and Android
+
+## Building on Pixie
+
+The platform is designed for extensibility:
+
+```rust
+// Easy to add new image processors
+impl ImageProcessor for CustomFilter {
+    async fn process(&self, image: Image) -> Result<Image> {
+        // Your custom logic here
+    }
+}
+
+// Plug into the generation pipeline
+pipeline.add_processor(Box::new(CustomFilter::new()));
+```
+
+## Open Source Foundation
+
+Every line of code is open source and auditable:
+
+- **Backend**: GPL-3.0 licensed Rust code
+- **Mobile Apps**: Native implementations following platform best practices
+- **CLI**: Clean Go code with minimal dependencies
+- **Documentation**: Comprehensive guides and API references
+
+## Your Images, Your Platform
+
+Pixie represents what modern AI platforms should be: powerful yet accessible, feature-rich yet simple, open source yet production-ready. Whether you're generating images for a creative project, building AI-powered applications, or exploring artistic possibilities, Pixie provides the infrastructure you need without the complexity you don't.
+
+From a single command in your terminal to native apps on your phone, Pixie brings professional AI image generation to every platform you use. No more juggling API keys, no more lost creations, no more web interface frustrations.
+
+Ready to experience AI image generation done right?
+
+**[Explore the complete platform on GitHub →](https://github.com/guitaripod/pixie)**
+
+The code is open, the platform is ready, and your next creation is just a command away.
