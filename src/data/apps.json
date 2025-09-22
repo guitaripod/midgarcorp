@@ -94,7 +94,7 @@
       "category": "Lifestyle",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/dream-eater/id6661019277?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d9/4c/f9/d94cf94d-64b6-d6f0-cb77-90f2234a3acc/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4e/34/b8/4e34b843-1cb7-3386-661d-3d22bfd9fedd/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#6366F1",
       "features": [
         "Dream pattern analysis",
@@ -128,7 +128,7 @@
       "id": "master-of-flags",
       "name": "Master of Flags",
       "tagline": "Learn World Flags",
-      "description": "This is Master of Flags, the game where you gather experience points (XP) and level up as you become familiar with the world's flags. There are 196 different flags in this game.",
+      "description": "Master the World's Flags – One Challenge at a Time. Think you know your flags.",
       "platforms": [
         "iPhone",
         "iPad"
@@ -136,7 +136,7 @@
       "category": "Education",
       "price": "$9.99",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags/id1484270248?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/bc/3a/86/bc3a86ac-37f6-f6f7-e664-b69123bdf21e/AppIcon-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/31/34/35/313435a8-a596-4f8a-f7bc-59883a86ae37/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/512x512bb.jpg",
       "primaryColor": "#EF4444",
       "features": [
         "All country flags",
@@ -144,6 +144,27 @@
         "Progress tracking"
       ],
       "releaseDate": "2019-10-21T07:00:00Z"
+    },
+    {
+      "id": "pixiepocket",
+      "name": "PixiePocket",
+      "tagline": "AI Image Generator and Editor",
+      "description": "Create Stunning AI Images with Pixie\n\nTransform your ideas into beautiful artwork using advanced AI technology powered by OpenAI's gpt-image-1 model. Pixie brings professional-grade image generation to your mobile device with an intuitive chat-based interface.",
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ],
+      "category": "Photo \u0026 Video",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket/id6751730339?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2c/fc/ac/2cfcac71-bf45-cd36-d010-162ab358153f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#3B82F6",
+      "features": [
+        "Chat-based interface for natural prompting",
+        "Persistent cloud storage with public galleries",
+        "Credit-based pricing with transparent costs"
+      ],
+      "releaseDate": "2025-09-19T07:00:00Z"
     }
   ]
 }
