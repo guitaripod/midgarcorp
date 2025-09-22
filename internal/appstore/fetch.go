@@ -131,6 +131,16 @@ var appEnhancements = map[string]struct {
 			"Progress tracking",
 		},
 	},
+	"PixiePocket": {
+		ID:           "pixiepocket",
+		Tagline:      "AI Image Generator and Editor",
+		PrimaryColor: "#3B82F6",
+		Features: []string{
+			"Chat-based interface for natural prompting",
+			"Persistent cloud storage with public galleries",
+			"Credit-based pricing with transparent costs",
+		},
+	},
 }
 
 func FetchData() error {
@@ -153,6 +163,7 @@ func FetchData() error {
 		"dream-eater",
 		"master-of-inventory",
 		"master-of-flags",
+		"pixiepocket",
 	}
 	
 	sort.Slice(apps, func(i, j int) bool {
