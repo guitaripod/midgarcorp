@@ -146,9 +146,30 @@
       "releaseDate": "2019-10-21T07:00:00Z"
     },
     {
+      "id": "app-of-the-dead-afterlife",
+      "name": "App of the Dead: Afterlife",
+      "tagline": "Learn Afterlife Beliefs",
+      "description": "Discover What Comes After Death Across World Cultures\n\nEver wondered what different religions believe happens after we die. App of the Dead transforms complex theological concepts into an engaging learning adventure that fits in your pocket.",
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ],
+      "category": "Education",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-afterlife/id6746733380?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/01/8b/61/018b616c-c1ae-b449-8e2b-c10e17e01f0d/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#7C3AED",
+      "features": [
+        "Local MLX LLM technology for offline AI",
+        "Gamified learning with XP and achievements",
+        "Interactive quizzes on world religions"
+      ],
+      "releaseDate": "2025-09-23T07:00:00Z"
+    },
+    {
       "id": "pixiepocket",
       "name": "PixiePocket",
-      "tagline": "AI Image Generator and Editor",
+      "tagline": "Create AI Images in Your Pocket",
       "description": "Create Stunning AI Images with Pixie\n\nTransform your ideas into beautiful artwork using advanced AI technology powered by OpenAI's gpt-image-1 model. Pixie brings professional-grade image generation to your mobile device with an intuitive chat-based interface.",
       "platforms": [
         "iPhone",
@@ -158,11 +179,11 @@
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket/id6751730339?uo=4\u0026platform=iphone",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2c/fc/ac/2cfcac71-bf45-cd36-d010-162ab358153f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#3B82F6",
+      "primaryColor": "#EC4899",
       "features": [
+        "Advanced OpenAI gpt-image-1 integration",
         "Chat-based interface for natural prompting",
-        "Persistent cloud storage with public galleries",
-        "Credit-based pricing with transparent costs"
+        "Persistent cloud storage with public galleries"
       ],
       "releaseDate": "2025-09-19T07:00:00Z"
     }
