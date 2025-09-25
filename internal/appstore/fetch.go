@@ -133,12 +133,22 @@ var appEnhancements = map[string]struct {
 	},
 	"PixiePocket": {
 		ID:           "pixiepocket",
-		Tagline:      "AI Image Generator and Editor",
-		PrimaryColor: "#3B82F6",
+		Tagline:      "Create AI Images in Your Pocket",
+		PrimaryColor: "#EC4899",
 		Features: []string{
+			"Advanced OpenAI gpt-image-1 integration",
 			"Chat-based interface for natural prompting",
 			"Persistent cloud storage with public galleries",
-			"Credit-based pricing with transparent costs",
+		},
+	},
+	"App of the Dead: Afterlife": {
+		ID:           "app-of-the-dead-afterlife",
+		Tagline:      "Learn Afterlife Beliefs",
+		PrimaryColor: "#7C3AED",
+		Features: []string{
+			"Local MLX LLM technology for offline AI",
+			"Gamified learning with XP and achievements",
+			"Interactive quizzes on world religions",
 		},
 	},
 }
@@ -163,6 +173,7 @@ func FetchData() error {
 		"dream-eater",
 		"master-of-inventory",
 		"master-of-flags",
+		"app-of-the-dead-afterlife",
 		"pixiepocket",
 	}
 	
