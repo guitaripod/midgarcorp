@@ -6,6 +6,7 @@ import WakaTimeStats from '../components/WakaTimeStats.astro';
 import GitHubStats from '../components/GitHubStats.astro';
 import SteamStatus from '../components/SteamStatus.astro';
 import TraktStatus from '../components/TraktStatus.astro';
+import appsData from '../data/apps.json';
 
 // Define card sizes and priorities
 const links = [
@@ -63,7 +64,7 @@ const links = [
   {
     title: 'App Store',
     url: 'https://apps.apple.com/az/developer/marcus-ziade/id1484270247',
-    description: '8 published apps for iPhone, iPad, Mac, and Apple TV',
+    description: `${appsData.apps.length} published apps for iPhone, iPad, Mac, and Apple TV`,
     icon: '📱',
     iconPath: '/icons/appstore.svg',
     brandColor: '#0D84FF',
