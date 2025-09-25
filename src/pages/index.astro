@@ -22,8 +22,8 @@ const postsWithReadingTime = await Promise.all(
   })
 );
 
-// Get featured apps (Dream Eater and PixiePocket)
-const featuredAppIds = ['dream-eater', 'pixiepocket'];
+// Get featured apps (App of the Dead and PixiePocket)
+const featuredAppIds = ['app-of-the-dead-afterlife', 'pixiepocket'];
 const featuredApps = featuredAppIds
   .map((id) => appsData.apps.find((app) => app.id === id))
   .filter(Boolean);
@@ -90,7 +90,7 @@ const socialLinks = [{ name: 'GitHub', url: 'https://github.com/guitaripod', ico
       <!-- Quick Stats -->
       <div class="flex justify-center gap-8 mb-6 text-sm">
         <div class="flex items-center gap-2">
-          <span class="text-2xl font-bold text-gray-900 dark:text-gray-100">8</span>
+          <span class="text-2xl font-bold text-gray-900 dark:text-gray-100">{totalApps}</span>
           <span class="text-gray-600 dark:text-gray-400">Apps</span>
         </div>
         <div class="flex items-center gap-2">
