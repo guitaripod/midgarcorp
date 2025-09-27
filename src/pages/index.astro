@@ -38,6 +38,22 @@ const allCLITools = openSourceData.projects
     return dateB - dateA;
   });
 
+// Add weavex manually
+const weavex = {
+  id: 'weavex',
+  name: 'Weavex',
+  description:
+    'Autonomous AI research agent powered by local LLMs. Watch as your model searches the web, reasons through queries, and synthesizes intelligent answers with citations.',
+  language: 'Rust',
+  platforms: ['macOS', 'Linux', 'Windows'],
+  stars: 0,
+  githubUrl: 'https://github.com/guitaripod/weavex',
+  category: 'CLI Tools',
+  highlights: ['AI Agent', 'Web Search', 'Local LLMs'],
+  topics: ['cli', 'rust', 'ai', 'ollama', 'agent', 'search'],
+  commitCount: 0,
+};
+
 // Add nasa-rs manually since it's not in the JSON data
 const nasars = {
   id: 'nasa-rs',
@@ -54,16 +70,14 @@ const nasars = {
   commitCount: 0,
 };
 
-// Feature Pomme and nasa-rs
-const pomme = allCLITools.find((tool) => tool.name.toLowerCase() === 'pomme');
-
+// Feature Weavex and nasa-rs
 const featuredCLITools = [];
-if (pomme) featuredCLITools.push(pomme);
+featuredCLITools.push(weavex);
 featuredCLITools.push(nasars);
 
 // If we don't have both, fill with other CLI tools
 if (featuredCLITools.length < 2) {
-  const otherTools = allCLITools.filter((tool) => tool.name.toLowerCase() !== 'pomme');
+  const otherTools = allCLITools.filter((tool) => tool.name.toLowerCase() !== 'weavex');
   featuredCLITools.push(...otherTools.slice(0, 2 - featuredCLITools.length));
 }
 
