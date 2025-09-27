@@ -12,6 +12,26 @@ const cliTools = openSourceData.projects
   .filter((project) => project.category === 'CLI Tools')
   .sort((a, b) => b.stars - a.stars);
 
+// Add weavex if it's not already in the list
+const hasWeavex = cliTools.some((tool) => tool.name.toLowerCase() === 'weavex');
+if (!hasWeavex) {
+  cliTools.unshift({
+    id: 'weavex',
+    name: 'Weavex',
+    description:
+      'Autonomous AI research agent powered by local LLMs. Watch as your model searches the web, reasons through queries, and synthesizes intelligent answers with citations.',
+    language: 'Rust',
+    platforms: ['macOS', 'Linux', 'Windows'],
+    stars: 0,
+    githubUrl: 'https://github.com/guitaripod/weavex',
+    category: 'CLI Tools',
+    highlights: ['AI Agent', 'Web Search', 'Local LLMs'],
+    topics: ['cli', 'rust', 'ai', 'ollama', 'agent', 'search'],
+    commitCount: 0,
+    updatedAt: '2025-09-27T00:00:00Z',
+  });
+}
+
 // Add pomme if it's not already in the list
 const hasPomme = cliTools.some((tool) => tool.name.toLowerCase() === 'pomme');
 if (!hasPomme) {
@@ -22,7 +42,7 @@ if (!hasPomme) {
       'Beautiful App Store Connect CLI for sales reports, analytics, and reviews. Built with Go.',
     language: 'Go',
     platforms: ['macOS', 'Linux', 'Windows'],
-    stars: 0, // Will be fetched from GitHub
+    stars: 0,
     githubUrl: 'https://github.com/guitaripod/Pomme',
     category: 'CLI Tools',
     highlights: ['App Store', 'Analytics', 'Reviews'],
