@@ -34,7 +34,7 @@ const getGitHubPagesUrl = (githubUrl: string) => {
 };
 
 // Projects that don't have GitHub Pages documentation
-const projectsWithoutGitHubPages = ['speedrun-cli', 'apod-cli', 'songlink-cli'];
+const projectsWithoutGitHubPages = ['speedrun-cli', 'apod-cli', 'songlink-cli', 'weavex'];
 
 // Special URL overrides for specific projects
 const projectUrlOverrides: Record<string, string> = {
@@ -140,6 +140,7 @@ const toolIcons = {
   swollamacli: '',
   'lastfm-rs': '',
   'nasa-rs': '',
+  weavex: '',
 };
 
 // Get theme based on language
@@ -163,6 +164,7 @@ const toolTheme = {
 // Terminal-style installation commands
 const getInstallCommand = (name: string, language: string) => {
   const lowerName = name.toLowerCase();
+  if (lowerName === 'weavex') return 'cargo install weavex';
   if (lowerName === 'pomme') return 'brew install pomme';
   if (lowerName === 'nasa-rs') return 'cargo install nasa-rs';
   if (lowerName === 'gh-export') return 'cargo install gh-export';
@@ -176,6 +178,15 @@ const getInstallCommand = (name: string, language: string) => {
 // Get terminal demo based on project
 const getTerminalDemo = (name: string) => {
   const lowerName = name.toLowerCase();
+  if (lowerName === 'weavex') {
+    return [
+      'weavex agent "latest Rust developments 2025"',
+      '🧵 Weaving...',
+      '🔎 Searching web for Rust 2025 updates',
+      '💬 Synthesizing 5 sources with citations',
+      '✨ Opening result in browser',
+    ];
+  }
   if (lowerName === 'pomme') {
     return [
       'pomme sales --month december',
