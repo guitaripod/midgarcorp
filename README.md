@@ -1,4 +1,4 @@
-# Compiled Thoughts - A Fast, Minimal Blog Built with Astro
+# Midgar Corp - A Fast, Minimal Blog Built with Astro
 
 A modern, performant blog built with Astro and optimized for Cloudflare Pages deployment. Features include bionic reading, dark mode, full-text search, and advanced syntax highlighting.
 
@@ -47,8 +47,8 @@ A modern, performant blog built with Astro and optimized for Cloudflare Pages de
 
 ```bash
 # Clone the repository
-git clone https://github.com/guitaripod/compiledthoughts.git
-cd compiledthoughts
+git clone https://github.com/guitaripod/midgarcorp.git
+cd midgarcorp
 
 # Install dependencies
 npm install
@@ -70,7 +70,7 @@ npm run test:ui     # Run tests with UI
 ## Project Structure
 
 ```
-compiledthoughts/
+midgarcorp/
 ├── src/
 │   ├── components/      # Astro components
 │   ├── layouts/         # Page layouts
@@ -230,5 +230,5 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Support
 
 - [Documentation](./DEPLOYMENT.md)
-- [Issue Tracker](https://github.com/yourusername/compiledthoughts/issues)
-- [Discussions](https://github.com/yourusername/compiledthoughts/discussions)
+- [Issue Tracker](https://github.com/guitaripod/midgarcorp/issues)
+- [Discussions](https://github.com/guitaripod/midgarcorp/discussions)

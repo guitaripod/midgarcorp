@@ -223,13 +223,13 @@
       "homepageUrl": "https://guitaripod.github.io/nasa-rs/"
     },
     {
-      "id": "compiledthoughts",
-      "name": "compiledthoughts",
+      "id": "midgarcorp",
+      "name": "midgarcorp",
       "description": "Personal website ",
       "language": "Astro",
       "platforms": [],
       "stars": 0,
-      "githubUrl": "https://github.com/guitaripod/compiledthoughts",
+      "githubUrl": "https://github.com/guitaripod/midgarcorp",
       "category": "Other Projects",
       "highlights": [],
       "updatedAt": "2025-07-11T11:46:54Z",
@@ -237,7 +237,7 @@
       "topics": [],
       "commitCount": 174,
       "releaseCount": 1,
-      "homepageUrl": "https://compiledthoughts.pages.dev"
+      "homepageUrl": "https://midgarcorp.cc"
     },
     {
       "id": "igscraper",

@@ -1,6 +1,6 @@
-# Compiled Thoughts CLI (ct)
+# Midgar Corp CLI (ct)
 
-A Go-based CLI tool for managing build tasks for the Compiled Thoughts website.
+A Go-based CLI tool for managing build tasks for the Midgar Corp website.
 
 ## Installation
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://compiledthoughts.pages.dev/sitemap-index.xml
+Sitemap: https://midgarcorp.cc/sitemap-index.xml

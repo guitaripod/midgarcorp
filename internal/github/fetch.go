@@ -411,7 +411,7 @@ func getReleaseCount(repo GitHubRepo) (int, error) {
 	}
 	
 	// Set headers
-	req.Header.Set("User-Agent", "compiledthoughts-static-site")
+	req.Header.Set("User-Agent", "midgarcorp-static-site")
 	
 	// Add auth if available
 	if token := os.Getenv("GITHUB_TOKEN"); token != "" {

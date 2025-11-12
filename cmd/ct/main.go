@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/guitaripod/compiledthoughts/internal/appstore"
-	"github.com/guitaripod/compiledthoughts/internal/github"
-	"github.com/guitaripod/compiledthoughts/internal/build"
+	"github.com/guitaripod/midgarcorp/internal/appstore"
+	"github.com/guitaripod/midgarcorp/internal/github"
+	"github.com/guitaripod/midgarcorp/internal/build"
 )
 
 func main() {

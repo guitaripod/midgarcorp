@@ -35,7 +35,7 @@ const ogImage = new URL(image, Astro.url);
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="author" content="Compiled Thoughts" />
+<meta name="author" content="Midgar Corp" />
 <meta name="robots" content="index, follow" />
 
 <!-- Open Graph / Facebook -->
@@ -46,8 +46,8 @@ const ogImage = new URL(image, Astro.url);
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content={`${title} - Compiled Thoughts`} />
-<meta property="og:site_name" content="Compiled Thoughts" />
+<meta property="og:image:alt" content={`${title} - Midgar Corp`} />
+<meta property="og:site_name" content="Midgar Corp" />
 <meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
@@ -56,7 +56,7 @@ const ogImage = new URL(image, Astro.url);
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImage} />
-<meta property="twitter:image:alt" content={`${title} - Compiled Thoughts`} />
+<meta property="twitter:image:alt" content={`${title} - Midgar Corp`} />
 <meta property="twitter:creator" content="@compiledthought" />
 <meta property="twitter:site" content="@compiledthought" />
 
@@ -88,7 +88,7 @@ const ogImage = new URL(image, Astro.url);
         datePublished: publishedTime,
         author: {
           '@type': 'Person',
-          name: 'Compiled Thoughts',
+          name: 'Midgar Corp',
         },
         image: ogImage,
         keywords: tags.join(', '),

@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
-  site: 'https://compiledthoughts.pages.dev',
+  site: 'https://midgarcorp.cc',
   server: {
     host: true
   },

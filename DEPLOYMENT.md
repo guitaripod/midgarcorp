@@ -1,4 +1,4 @@
-# Deployment Guide for Compiled Thoughts Blog
+# Deployment Guide for Midgar Corp Blog
 
 This guide covers deploying your Astro blog to Cloudflare Pages with custom domain setup, environment variables, and monitoring.
 
@@ -15,7 +15,7 @@ This guide covers deploying your Astro blog to Cloudflare Pages with custom doma
 
 ```bash
 git clone <your-repo-url>
-cd compiledthoughts
+cd midgarcorp
 npm install
 ```
 
@@ -115,7 +115,7 @@ Cloudflare automatically provisions SSL certificates. Ensure SSL/TLS mode is set
 
 ```toml
 # wrangler.toml (optional, for advanced config)
-name = "compiledthoughts"
+name = "midgarcorp"
 compatibility_date = "2024-01-25"
 
 [site]
@@ -192,7 +192,7 @@ npm run build
 
 # Deploy using Wrangler CLI
 npm install -g wrangler
-wrangler pages deploy dist --project-name=compiledthoughts
+wrangler pages deploy dist --project-name=midgarcorp
 ```
 
 ### Automatic Deployments
@@ -311,4 +311,4 @@ For most blogs, the free tier is sufficient.
 - [Cloudflare Pages Docs](https://developers.cloudflare.com/pages/)
 - [Astro Deployment Guide](https://docs.astro.build/en/guides/deploy/cloudflare/)
 - [Cloudflare Community](https://community.cloudflare.com/)
-- [Project Issues](https://github.com/yourusername/compiledthoughts/issues)
+- [Project Issues](https://github.com/yourusername/midgarcorp/issues)

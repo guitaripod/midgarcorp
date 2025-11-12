@@ -31,7 +31,7 @@
       <text x="0" y="40" font-family="monospace" font-size="16" fill="#94a3b8">[■■■■■■■■■■] 100% Building ideas...</text>
       
       <!-- Result -->
-      <text x="0" y="80" font-family="monospace" font-size="16" fill="#10b981">✓ Successfully compiled thoughts</text>
+      <text x="0" y="80" font-family="monospace" font-size="16" fill="#10b981">✓ Midgar Corp initialized</text>
       
       <!-- Cursor -->
       <rect x="0" y="100" width="10" height="20" fill="#e2e8f0">
@@ -41,6 +41,6 @@
   </g>
   
   <!-- Title -->
-  <text x="600" y="540" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#e2e8f0">Compiled Thoughts</text>
+  <text x="600" y="540" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#e2e8f0">Midgar Corp</text>
   <text x="600" y="580" font-family="system-ui, -apple-system, sans-serif" font-size="24" text-anchor="middle" fill="#94a3b8">A developer's blog about code and ideas</text>
 </svg>

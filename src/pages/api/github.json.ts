@@ -33,7 +33,7 @@ export const GET: APIRoute = async (context) => {
 
   const headers: HeadersInit = {
     Accept: 'application/vnd.github.v3+json',
-    'User-Agent': 'compiledthoughts-website',
+    'User-Agent': 'midgarcorp-website',
   };
 
   if (githubToken) {
