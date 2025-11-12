@@ -100,7 +100,7 @@ jobs:
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        command: pages deploy dist --project-name=compiledthoughts --commit-dirty=true
+        command: pages deploy dist --project-name=midgarcorp --commit-dirty=true
 
   deploy-production:
     needs: [test-and-lint]
@@ -149,4 +149,4 @@ jobs:
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        command: pages deploy dist --project-name=compiledthoughts --branch=master --commit-dirty=true
+        command: pages deploy dist --project-name=midgarcorp --branch=master --commit-dirty=true
