@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_TITLE } from '../consts';
 import LastFmNowPlaying from '../components/LastFmNowPlaying.astro';
-import WakaTimeStats from '../components/WakaTimeStats.astro';
 import GitHubStats from '../components/GitHubStats.astro';
 import SteamStatus from '../components/SteamStatus.astro';
 import TraktStatus from '../components/TraktStatus.astro';
@@ -191,7 +190,6 @@ const sortedLinks = links.sort((a, b) => a.priority - b.priority);
                       {link.widget === 'lastfm' && (
                         <LastFmNowPlaying username="guitaripod" size="large" />
                       )}
-                      {link.widget === 'wakatime' && <WakaTimeStats username="guitaripod" />}
                       {link.widget === 'github' && <GitHubStats username="guitaripod" />}
                       {link.widget === 'steam' && <SteamStatus />}
                       {link.widget === 'trakt' && (
