@@ -1,0 +1,712 @@
+---
+import careerData from '../data/career.json';
+
+interface IndustryStyle {
+  node: string;
+  nodeRing: string;
+  pill: string;
+  accentText: string;
+  border: string;
+  chip: string;
+}
+
+const industryStyles: Record<string, IndustryStyle> = {
+  'ai-health': {
+    node: 'bg-violet-500 dark:bg-violet-400',
+    nodeRing: 'ring-violet-500/30 dark:ring-violet-400/30',
+    pill: 'bg-violet-50 dark:bg-violet-500/10 text-violet-700 dark:text-violet-300 ring-1 ring-inset ring-violet-600/20 dark:ring-violet-400/30',
+    accentText: 'text-violet-700 dark:text-violet-300',
+    border: 'group-hover:border-violet-300 dark:group-hover:border-violet-500/50',
+    chip: 'bg-violet-50 dark:bg-violet-500/10 text-violet-700 dark:text-violet-300',
+  },
+  cybersec: {
+    node: 'bg-indigo-500 dark:bg-indigo-400',
+    nodeRing: 'ring-indigo-500/30 dark:ring-indigo-400/30',
+    pill: 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
+    accentText: 'text-indigo-700 dark:text-indigo-300',
+    border: 'group-hover:border-indigo-300 dark:group-hover:border-indigo-500/50',
+    chip: 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300',
+  },
+  'wearable-health': {
+    node: 'bg-emerald-500 dark:bg-emerald-400',
+    nodeRing: 'ring-emerald-500/30 dark:ring-emerald-400/30',
+    pill: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 ring-1 ring-inset ring-emerald-600/20 dark:ring-emerald-400/30',
+    accentText: 'text-emerald-700 dark:text-emerald-300',
+    border: 'group-hover:border-emerald-300 dark:group-hover:border-emerald-500/50',
+    chip: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300',
+  },
+  consulting: {
+    node: 'bg-amber-500 dark:bg-amber-400',
+    nodeRing: 'ring-amber-500/30 dark:ring-amber-400/30',
+    pill: 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
+    accentText: 'text-amber-700 dark:text-amber-300',
+    border: 'group-hover:border-amber-300 dark:group-hover:border-amber-500/50',
+    chip: 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300',
+  },
+  'creator-economy': {
+    node: 'bg-fuchsia-500 dark:bg-fuchsia-400',
+    nodeRing: 'ring-fuchsia-500/30 dark:ring-fuchsia-400/30',
+    pill: 'bg-fuchsia-50 dark:bg-fuchsia-500/10 text-fuchsia-700 dark:text-fuchsia-300 ring-1 ring-inset ring-fuchsia-600/20 dark:ring-fuchsia-400/30',
+    accentText: 'text-fuchsia-700 dark:text-fuchsia-300',
+    border: 'group-hover:border-fuchsia-300 dark:group-hover:border-fuchsia-500/50',
+    chip: 'bg-fuchsia-50 dark:bg-fuchsia-500/10 text-fuchsia-700 dark:text-fuchsia-300',
+  },
+};
+
+const { summary, entries } = careerData;
+---
+
+<section class="career-timeline" aria-label="Career timeline">
+  <div class="career-stats">
+    <div class="career-stat">
+      <span class="career-stat-value">{summary.yearsActive}</span>
+      <span class="career-stat-label">years shipping</span>
+    </div>
+    <div class="career-stat-divider" aria-hidden="true"></div>
+    <div class="career-stat">
+      <span class="career-stat-value">{summary.totalCommits}</span>
+      <span class="career-stat-label">production commits</span>
+    </div>
+    <div class="career-stat-divider" aria-hidden="true"></div>
+    <div class="career-stat">
+      <span class="career-stat-value">{summary.totalLocLabel}</span>
+      <span class="career-stat-label">lines shipped</span>
+    </div>
+    <div class="career-stat-divider" aria-hidden="true"></div>
+    <div class="career-stat">
+      <span class="career-stat-value">{summary.industries}</span>
+      <span class="career-stat-label">industries</span>
+    </div>
+  </div>
+
+  <ol class="career-list" role="list">
+    {
+      entries.map((entry, index) => {
+        const styles = industryStyles[entry.industry] || industryStyles.consulting;
+        const isFirst = index === 0;
+        const isLast = index === entries.length - 1;
+        return (
+          <li
+            class="career-entry group"
+            data-timeline-entry
+            data-open="false"
+            data-first={isFirst ? 'true' : 'false'}
+            data-last={isLast ? 'true' : 'false'}
+          >
+            <div class="career-gutter" aria-hidden="true">
+              <span class={`career-node ${styles.node} ${styles.nodeRing}`}>
+                {entry.current && <span class={`career-node-pulse ${styles.node}`} />}
+              </span>
+            </div>
+            <div
+              class={`career-card ${styles.border} bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700`}
+            >
+              <button
+                type="button"
+                class="career-trigger"
+                aria-expanded="false"
+                aria-controls={`career-detail-${entry.id}`}
+                data-timeline-toggle
+              >
+                <div class="career-header">
+                  <div class="career-meta">
+                    <span class={`career-pill ${styles.pill}`}>{entry.industryLabel}</span>
+                    {entry.current && (
+                      <span class="career-status">
+                        <span class="career-status-dot" />
+                        Current
+                      </span>
+                    )}
+                    <span class="career-date">{entry.dateRange}</span>
+                  </div>
+                  <svg
+                    class="career-chevron"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 8l4 4 4-4"
+                    />
+                  </svg>
+                </div>
+
+                <h3 class={`career-headline ${styles.accentText}`}>{entry.headline}</h3>
+                <p class="career-role">{entry.role}</p>
+                <p class="career-hook">{entry.hook}</p>
+
+                <div class="career-stack-preview">
+                  {entry.stack.slice(0, 5).map((tech) => (
+                    <span class="career-chip">{tech}</span>
+                  ))}
+                  {entry.stack.length > 5 && (
+                    <span class="career-chip career-chip-more">+{entry.stack.length - 5}</span>
+                  )}
+                </div>
+              </button>
+
+              <div
+                id={`career-detail-${entry.id}`}
+                class="career-detail"
+                role="region"
+                aria-label={`${entry.role} details`}
+              >
+                <div class="career-detail-inner">
+                  <div class="career-detail-divider" aria-hidden="true" />
+
+                  <div class="career-section">
+                    <h4 class="career-section-title">Impact</h4>
+                    <ul class="career-impact-list">
+                      {entry.impact.map((point) => (
+                        <li class="career-impact-item">
+                          <span class={`career-bullet ${styles.node}`} aria-hidden="true" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div class="career-section">
+                    <h4 class="career-section-title">Systems owned</h4>
+                    <div class="career-systems">
+                      {entry.systems.map((system) => (
+                        <span class={`career-system-chip ${styles.chip}`}>{system}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="career-section">
+                    <h4 class="career-section-title">Stack</h4>
+                    <div class="career-stack-full">
+                      {entry.stack.map((tech) => (
+                        <span class="career-chip">{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <p class="career-receipt" aria-label="Engagement totals">
+                    {entry.receipt}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>
+
+<style>
+  .career-timeline {
+    --spine-color: theme('colors.gray.200');
+    --spine-color-dark: theme('colors.gray.700');
+  }
+
+  .career-stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem 1.5rem;
+    padding: 1.25rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid theme('colors.gray.200');
+    background: linear-gradient(to bottom, theme('colors.gray.50'), transparent);
+  }
+  :global(.dark) .career-stats {
+    border-color: theme('colors.gray.800');
+    background: linear-gradient(to bottom, rgb(31 41 55 / 0.5), transparent);
+  }
+
+  .career-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1;
+  }
+  .career-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: theme('colors.gray.900');
+    letter-spacing: -0.02em;
+  }
+  :global(.dark) .career-stat-value {
+    color: theme('colors.gray.50');
+  }
+  .career-stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: theme('colors.gray.500');
+    margin-top: 0.2rem;
+  }
+  :global(.dark) .career-stat-label {
+    color: theme('colors.gray.400');
+  }
+
+  .career-stat-divider {
+    width: 1px;
+    height: 1.75rem;
+    background: theme('colors.gray.300');
+  }
+  :global(.dark) .career-stat-divider {
+    background: theme('colors.gray.700');
+  }
+
+  .career-list {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .career-entry {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.75rem;
+    padding-bottom: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .career-entry {
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+    }
+  }
+  .career-entry[data-last='true'] {
+    padding-bottom: 0;
+  }
+
+  .career-gutter {
+    position: relative;
+    width: 100%;
+  }
+  .career-gutter::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: -1.5rem;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, var(--spine-color), var(--spine-color));
+  }
+  :global(.dark) .career-gutter::before {
+    background: linear-gradient(to bottom, var(--spine-color-dark), var(--spine-color-dark));
+  }
+  @media (min-width: 768px) {
+    .career-gutter::before {
+      bottom: -2rem;
+    }
+  }
+  .career-entry[data-last='true'] .career-gutter::before {
+    bottom: calc(100% - 2.5rem);
+  }
+  .career-entry[data-first='true'] .career-gutter::before {
+    top: 1.4rem;
+  }
+
+  .career-node {
+    position: absolute;
+    left: 50%;
+    top: 1.25rem;
+    width: 0.875rem;
+    height: 0.875rem;
+    transform: translateX(-50%);
+    border-radius: 9999px;
+    box-shadow:
+      0 0 0 4px theme('colors.white'),
+      0 0 0 6px currentColor;
+    --tw-ring-offset-shadow: 0 0 #0000;
+    z-index: 1;
+  }
+  :global(.dark) .career-node {
+    box-shadow:
+      0 0 0 4px theme('colors.gray.900'),
+      0 0 0 6px currentColor;
+  }
+  @media (min-width: 768px) {
+    .career-node {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .career-node-pulse {
+    position: absolute;
+    inset: -0.25rem;
+    border-radius: 9999px;
+    opacity: 0.5;
+    animation: career-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    pointer-events: none;
+  }
+  @keyframes career-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    70% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .career-node-pulse {
+      animation: none;
+    }
+  }
+
+  .career-card {
+    position: relative;
+    border-radius: 0.875rem;
+    border: 1px solid;
+    overflow: hidden;
+    transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+  .career-entry:hover .career-card {
+    box-shadow: 0 12px 30px -12px rgb(0 0 0 / 0.12);
+    transform: translateY(-1px);
+  }
+  :global(.dark) .career-entry:hover .career-card {
+    box-shadow: 0 12px 30px -12px rgb(0 0 0 / 0.5);
+  }
+
+  .career-trigger {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.125rem;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+  }
+  @media (min-width: 768px) {
+    .career-trigger {
+      padding: 1.25rem 1.5rem;
+    }
+  }
+  .career-trigger:focus-visible {
+    outline: 2px solid theme('colors.blue.500');
+    outline-offset: -2px;
+    border-radius: 0.75rem;
+  }
+
+  .career-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .career-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .career-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .career-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: theme('colors.green.50');
+    color: theme('colors.green.700');
+    box-shadow: inset 0 0 0 1px rgb(22 163 74 / 0.2);
+  }
+  :global(.dark) .career-status {
+    background: rgb(34 197 94 / 0.1);
+    color: theme('colors.green.300');
+    box-shadow: inset 0 0 0 1px rgb(74 222 128 / 0.3);
+  }
+  .career-status-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 9999px;
+    background: theme('colors.green.500');
+    animation: career-status-blink 2.4s ease-in-out infinite;
+  }
+  @keyframes career-status-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .career-status-dot {
+      animation: none;
+    }
+  }
+
+  .career-date {
+    font-size: 0.75rem;
+    color: theme('colors.gray.500');
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  :global(.dark) .career-date {
+    color: theme('colors.gray.400');
+  }
+
+  .career-chevron {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: theme('colors.gray.400');
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0.125rem;
+  }
+  :global(.dark) .career-chevron {
+    color: theme('colors.gray.500');
+  }
+  [data-open='true'] .career-chevron {
+    transform: rotate(180deg);
+    color: theme('colors.gray.700');
+  }
+  :global(.dark) [data-open='true'] .career-chevron {
+    color: theme('colors.gray.200');
+  }
+
+  .career-headline {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 0.1rem 0 0.15rem;
+  }
+  @media (min-width: 768px) {
+    .career-headline {
+      font-size: 1.175rem;
+    }
+  }
+
+  .career-role {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: theme('colors.gray.600');
+    margin: 0 0 0.55rem;
+  }
+  :global(.dark) .career-role {
+    color: theme('colors.gray.300');
+  }
+
+  .career-hook {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: theme('colors.gray.700');
+    margin: 0 0 0.875rem;
+  }
+  :global(.dark) .career-hook {
+    color: theme('colors.gray.300');
+  }
+
+  .career-stack-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .career-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.55rem;
+    border-radius: 0.375rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    background: theme('colors.gray.100');
+    color: theme('colors.gray.700');
+    white-space: nowrap;
+  }
+  :global(.dark) .career-chip {
+    background: rgb(55 65 81 / 0.6);
+    color: theme('colors.gray.200');
+  }
+  .career-chip-more {
+    background: transparent;
+    color: theme('colors.gray.500');
+  }
+  :global(.dark) .career-chip-more {
+    color: theme('colors.gray.400');
+  }
+
+  .career-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .career-entry[data-open='true'] .career-detail {
+    grid-template-rows: 1fr;
+  }
+  .career-detail-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  /* Fallback for browsers without grid-row animation support */
+  @supports not (transition: grid-template-rows 0.4s ease) {
+    .career-detail {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .career-entry[data-open='true'] .career-detail {
+      max-height: 3000px;
+    }
+  }
+
+  .career-detail-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, theme('colors.gray.200'), transparent);
+    margin: 0 1.125rem;
+  }
+  :global(.dark) .career-detail-divider {
+    background: linear-gradient(to right, transparent, theme('colors.gray.700'), transparent);
+  }
+  @media (min-width: 768px) {
+    .career-detail-divider {
+      margin: 0 1.5rem;
+    }
+  }
+
+  .career-section {
+    padding: 1rem 1.125rem 0;
+  }
+  @media (min-width: 768px) {
+    .career-section {
+      padding: 1.25rem 1.5rem 0;
+    }
+  }
+
+  .career-section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: theme('colors.gray.500');
+    margin: 0 0 0.65rem;
+  }
+  :global(.dark) .career-section-title {
+    color: theme('colors.gray.400');
+  }
+
+  .career-impact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .career-impact-item {
+    display: grid;
+    grid-template-columns: 0.5rem 1fr;
+    gap: 0.65rem;
+    align-items: start;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: theme('colors.gray.700');
+  }
+  :global(.dark) .career-impact-item {
+    color: theme('colors.gray.300');
+  }
+  .career-bullet {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 9999px;
+    margin-top: 0.55rem;
+  }
+
+  .career-systems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .career-system-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+
+  .career-stack-full {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .career-receipt {
+    font-size: 0.75rem;
+    color: theme('colors.gray.500');
+    padding: 1rem 1.125rem 1.125rem;
+    margin: 0.25rem 0 0;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+  }
+  :global(.dark) .career-receipt {
+    color: theme('colors.gray.400');
+  }
+  @media (min-width: 768px) {
+    .career-receipt {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  function initCareerTimeline() {
+    const entries = document.querySelectorAll<HTMLElement>('[data-timeline-entry]');
+    entries.forEach((entry) => {
+      const trigger = entry.querySelector<HTMLButtonElement>('[data-timeline-toggle]');
+      if (!trigger) return;
+      trigger.addEventListener('click', () => {
+        const isOpen = entry.dataset.open === 'true';
+        const next = !isOpen;
+        entry.dataset.open = String(next);
+        trigger.setAttribute('aria-expanded', String(next));
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCareerTimeline);
+  } else {
+    initCareerTimeline();
+  }
+</script>

@@ -1,0 +1,229 @@
+{
+  "summary": {
+    "yearsActive": 6,
+    "yearsActiveLabel": "6 years shipping",
+    "totalCommits": "6,000+",
+    "totalCommitsLabel": "production commits",
+    "totalLocLabel": "~790k",
+    "totalLocSuffix": "lines shipped",
+    "industries": 5,
+    "industriesLabel": "industries"
+  },
+  "entries": [
+    {
+      "id": "alist",
+      "dateRange": "Oct 2025 — May 2026",
+      "duration": "7 months",
+      "current": false,
+      "industry": "ai-health",
+      "industryLabel": "AI · Health",
+      "role": "System Architect · Senior Full-Stack / AI Engineer",
+      "headline": "AI-native premium health & wellness startup",
+      "hook": "Set the iOS architecture standards across a three-codebase platform — drove codebase-wide migrations, owned cross-cutting infrastructure, and shipped the systems other engineers build on. iOS + Python/FastAPI backend + an autonomous LLM-powered DevOps agent.",
+      "impact": [
+        "Designed and shipped the multi-provider LLM abstraction over six frontier model vendors (OpenAI, Anthropic, Google, Groq, xAI, DeepSeek) — a single typed interface with per-workload model selection (frontier models for analysis, small/fast models for short-form generation).",
+        "Led the codebase-wide migration off ObservableObject to the @Observable framework — 56 singleton classes rolled out in disciplined tiers — and the parallel migration to type-safe feature gates via a generated enum surface.",
+        "Unified nine legacy camera implementations into a single CaptureViewController on UIKit + AVFoundation: hot-add audio sessions, share-flow integration, photo-only mode, and protocol-ID normalization across upload paths.",
+        "Owned the cross-cutting iOS infrastructure: structured logging via os.log, error observability with a typed fingerprint enum (preventing Sentry duplicate-issue sprawl), theme system, notification navigation queue, and the iOS-26 / Liquid Glass forward-compatibility design rules.",
+        "Built an autonomous DevOps agent end-to-end: Discord slash-commands and error-tracker / bug-report webhooks → headless Claude Code in Docker → draft pull requests against the iOS and backend repos. Plus Xcode Cloud build tracking, App Store review monitoring, and continuous feature-gate validation reporting.",
+        "Authored the team's engineering handbook the codebase builds against — singleton policy, SwiftUI body-size discipline, Combine-over-NotificationCenter rule, enum-over-raw-string conventions, and iOS-26 forward-compatibility design constraints."
+      ],
+      "systems": [
+        "Multi-provider LLM abstraction",
+        "@Observable migration (56 classes)",
+        "Type-safe feature-gate enum",
+        "Unified camera (9 → 1)",
+        "Structured logging & Sentry observability",
+        "Theme system",
+        "Notification navigation queue",
+        "7 Live Activities",
+        "Direct Messaging (UIKit)",
+        "Voice & AI persona chat",
+        "Autonomous DevOps agent",
+        "iOS-26 / Liquid Glass design rules"
+      ],
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "UIKit",
+        "Combine",
+        "Observation",
+        "AVFoundation",
+        "HealthKit",
+        "WidgetKit",
+        "ActivityKit",
+        "Alamofire",
+        "Statsig",
+        "Sentry",
+        "Mixpanel",
+        "Python 3.12",
+        "FastAPI",
+        "Supabase",
+        "Redis",
+        "Cloudinary",
+        "GCP Cloud Run",
+        "Docker",
+        "GitHub Actions",
+        "Xcode Cloud",
+        "MCP",
+        "OpenAI",
+        "Anthropic",
+        "Google",
+        "Groq",
+        "xAI",
+        "DeepSeek"
+      ],
+      "receipt": "1,766 commits · ~185k LOC · 3 codebases · 490 Swift files authored"
+    },
+    {
+      "id": "cybersec-global",
+      "dateRange": "Sep 2025 — May 2026",
+      "duration": "9 months",
+      "current": false,
+      "industry": "cybersec",
+      "industryLabel": "Cybersecurity",
+      "role": "Senior Engineer · Contractor",
+      "headline": "NASDAQ-listed global cybersecurity company",
+      "hook": "Led the modularization of the company's entire Swift SDK from a single monolith into a feature-module architecture on a shared Core foundation — a multi-quarter epic that shipped end-to-end during the engagement.",
+      "impact": [
+        "Built the Core foundation module from scratch — five service abstractions (configuration, retry-aware networking, telemetry, dependency discovery, and keychain-backed settings) — then drove a single-source-of-truth migration so every consumer in the SDK reads from Core.",
+        "Established the per-module template pattern: a typed seven-step sequence (data types → errors → conversions → service → entry point → adapter → legacy cleanup) that every subsequent feature module followed. Pioneered the proof-of-concept module; twelve more shipped to the same shape.",
+        "Extracted Core as a standalone Swift Package consumed by the SDK and by externally-released modules. Replaced erased Any returns across the xcframework boundary with type-safe protocol APIs that build cleanly in downstream native targets.",
+        "Built the mock-testing infrastructure that unblocked per-module unit tests — a Core protocol plus a mock implementation that lets each module's tests run without instantiating live dependencies."
+      ],
+      "systems": [
+        "Core foundation module",
+        "Per-module template pattern",
+        "Standalone Swift Package extraction",
+        "Type-safe xcframework boundary",
+        "Mock testing infrastructure",
+        "Universal logging interface"
+      ],
+      "stack": ["Swift", "Swift Package Manager", "xcframework", "Xcode", "GitHub Actions"],
+      "receipt": "488 commits · ~157k LOC changed · 8 repositories · 120+ PRs merged · 13 feature modules shipped"
+    },
+    {
+      "id": "wearable-health",
+      "dateRange": "Jul 2021 — Jul 2024",
+      "duration": "3 years",
+      "current": false,
+      "industry": "wearable-health",
+      "industryLabel": "Wearable health",
+      "role": "Senior Engineer",
+      "headline": "Multi-billion-dollar wearable health platform",
+      "hook": "Feature owner across eight repositories — consumer app, shared iOS frameworks, cross-platform data-model layer with code generation into Swift, Kotlin, TypeScript, and Python, plus shared analytics and test-automation packages.",
+      "impact": [
+        "Earned the company's first US work visa sponsorship in its history — granted in recognition of cross-functional impact across the iOS surface, the shared framework family, and the cross-platform data layer.",
+        "Owned or co-owned consumer-facing features end-to-end: Tap-to-Tag, Tags 2.0, Body Clock & Chronotype, SpO2 variance charts, the Explore tab, App Shortcuts 2.0, the in-app Help redesign, and the Bedtime / Body Clock / scores / heartbeat widgets.",
+        "Led a statistically-driven personalized-insight system built on a Welch's t-test implementation, packaged as a Swift Package and progressively peeled out of the monolith into the shared tools framework.",
+        "Contributed to a cross-platform schema source that codegens GRDB models for iOS, Room/Realm for Android, Pydantic for the backend, and JSONSchema TS for the web — single schema, consistent generated code for every consumer.",
+        "Drove Xcodegen → Tuist build migration and Carthage / CocoaPods retirement in favor of Swift Package Manager."
+      ],
+      "systems": [
+        "Statistical personalized-insight system",
+        "Tag system 2.0",
+        "Body Clock & Chronotype",
+        "SpO2 charts",
+        "Cross-platform data-model layer",
+        "Shared analytics surface",
+        "Test-automation identifier package",
+        "Widgets & Live Activities"
+      ],
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "UIKit",
+        "Combine",
+        "GRDB",
+        "HealthKit",
+        "WidgetKit",
+        "Live Activities",
+        "Swift Package Manager",
+        "Tuist",
+        "TypeScript",
+        "Python",
+        "Kotlin",
+        "GitHub Actions",
+        "Segment Analytics",
+        "Lokalise",
+        "Sentry"
+      ],
+      "receipt": "2,560 commits · ~364k LOC added · 8 repositories"
+    },
+    {
+      "id": "nordic-consultancy",
+      "dateRange": "Sep 2020 — Jun 2021",
+      "duration": "10 months",
+      "current": false,
+      "industry": "consulting",
+      "industryLabel": "Software consulting",
+      "role": "Senior Engineer · Sole Developer",
+      "headline": "Boutique Nordic software consultancy",
+      "hook": "Sole engineer on five production apps across client engagements — every app from File → New → Project to App Store-ready release. Booking flows, project management, GraphQL data layers, Stripe payments, and full bilingual localization.",
+      "impact": [
+        "Shipped two greenfield apps in parallel sprints — a consumer-facing studio booking app with Stripe-powered course reservations, and an internal project-management surface with timeline, members, and deep-linking.",
+        "Owned Apollo iOS / GraphQL integration including the apollo-cli codegen build phase, per-screen typed queries, and a domain-type rename pass to peel screen code off raw Apollo types.",
+        "Built the Stripe SDK integration end-to-end: card-scanning camera entry, environment-aware publishable keys (dev / staging / production isolation), and the full booking → reserve → cart → confirmation flow.",
+        "Set up Fastlane lanes for TestFlight distribution with Slack notifications; managed AppIcon, launch screens, and provisioning across both projects."
+      ],
+      "systems": [
+        "Apollo iOS / GraphQL data layer",
+        "Stripe payments integration",
+        "Booking & reservation flow",
+        "Authentication (Apple, email, social)",
+        "Bilingual localization (EN / FI)",
+        "Deep-link router",
+        "TestFlight CI via Fastlane"
+      ],
+      "stack": [
+        "Swift",
+        "UIKit",
+        "SwiftUI",
+        "Apollo iOS",
+        "GraphQL",
+        "Stripe iOS SDK",
+        "Lottie",
+        "Fastlane",
+        "CocoaPods"
+      ],
+      "receipt": "5 production apps · ~28k LOC · sole engineer end-to-end"
+    },
+    {
+      "id": "creator-economy",
+      "dateRange": "Jan 2020 — Jul 2020",
+      "duration": "7 months",
+      "current": false,
+      "industry": "creator-economy",
+      "industryLabel": "Creator economy",
+      "role": "Lead Engineer",
+      "headline": "Creator-economy mobile startup",
+      "hook": "Primary contributor on a paid iOS app for Instagram creators — analytics, hashtag tooling, caption generation, sponsored-post pricing, and an in-app educational track. Largest single share of commits on a four-to-seven person codebase.",
+      "impact": [
+        "Owned the subscription flow end-to-end: redesigned paywall surface, StoreKit IAP purchase/restore logic, App Store Connect product identifiers across pricing iterations, and a rate-limit-based soft paywall on free-tier tools.",
+        "Led the authentication overhaul to add Apple Sign-In (the Apple-required alternative to social sign-in), retained Facebook and email paths, and removed Instagram OAuth after Instagram restricted third-party access.",
+        "Drove the full dark-mode rollout to iOS 13 parity, the Card-layout refactor across Home and Stats surfaces, and the Audience Sentiment / Follower Growth redesigns.",
+        "Carried the engagement through the brand migration (rename of the source tree, App Store Connect listing, and asset pipeline) into the App Store-ready relaunch build."
+      ],
+      "systems": [
+        "Subscription paywall & IAP",
+        "Authentication (Apple, Facebook, email)",
+        "Hashtag tools (helper, generator, suggested)",
+        "Caption generator",
+        "Sponsored-post price calculator",
+        "Bootcamp (rewarded-ad article unlock)",
+        "Dark-mode rollout"
+      ],
+      "stack": [
+        "Swift",
+        "UIKit",
+        "StoreKit (IAP)",
+        "Apple Sign-In",
+        "Facebook SDK",
+        "Firebase 6",
+        "Google AdMob",
+        "CocoaPods"
+      ],
+      "receipt": "925 commits · ~56k LOC · ~150 PRs merged · 100 internal builds"
+    }
+  ]
+}
