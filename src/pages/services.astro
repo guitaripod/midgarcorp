@@ -1,47 +1,53 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Icon } from 'astro-icon/components';
+import CareerTimeline from '@components/CareerTimeline.astro';
 
-const pageTitle = 'Engineering Services | Marcus Ziadé';
-const pageDescription =
-  'Software engineer and ML integration specialist. Currently engaged with Fortune 500 clients building SDK integrations and on-device ML solutions.';
+const title = 'Engineering Services | Marcus Ziadé';
+const description =
+  'Independent software engineer. Six years shipping production iOS, full-stack, and AI across wearable health, cybersecurity, AI, creator economy, and software consulting. Available for new engagements.';
 ---
 
-<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
-  <!-- Hero Section -->
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
   <section class="relative overflow-hidden">
-    <div class="relative max-w-6xl mx-auto px-4 py-12 sm:py-16">
-      <div class="max-w-4xl mx-auto text-center">
+    <div class="relative max-w-5xl mx-auto px-4 py-14 sm:py-20">
+      <div class="text-center">
         <span
-          class="inline-flex items-center px-3 py-1 text-xs font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 rounded-full mb-4"
+          class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-green-50 dark:bg-green-500/10 text-green-700 dark:text-green-300 rounded-full mb-5 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30"
         >
-          Limited Availability — Engaged Through Q1 2026
+          <span class="relative flex w-1.5 h-1.5">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
+          </span>
+          Available — Open to new engagements
         </span>
 
         <h1
-          class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight"
+          class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-5 leading-[1.05] tracking-tight"
         >
-          Software Engineer &
+          Engineer who
           <span
             class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
-          >
-            ML Specialist</span
-          >
+            >ships systems</span
+          >, not just code.
         </h1>
 
         <p
           class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto"
         >
-          Native apps, ML integration, and scalable systems. Currently building SDK integrations for
-          a Fortune 500 security company.
+          Six years shipping production iOS, full-stack, and AI across wearable health,
+          cybersecurity, AI, creator economy, and software consulting. End-to-end engagements,
+          ground-up architecture, or embedded on your team.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href="#book"
-            class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200"
+            class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
-            Schedule Consultation
+            Schedule a Call
             <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
@@ -51,34 +57,38 @@ const pageDescription =
             </svg>
           </a>
           <a
-            href="#services"
-            class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            href="#engagements"
+            class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
-            View Services
+            See Selected Engagements
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="py-12 bg-gray-50 dark:bg-gray-900/50">
+  <!-- Capabilities -->
+  <section id="capabilities" class="py-14 bg-gray-50 dark:bg-gray-900/50 scroll-mt-20">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-2">What I Do</h2>
-        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          End-to-end engineering across the stack, with deep expertise in native platforms and ML.
+      <div class="max-w-2xl mx-auto text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+          What I do
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300">
+          End-to-end engineering across the stack. Deep expertise on native platforms, AI
+          integration, and production backends.
         </p>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="grid md:grid-cols-3 gap-5">
         <div
-          class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+          class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
         >
           <div
             class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-4"
           >
             <svg
-              class="w-6 h-6 text-blue-600 dark:text-blue-400"
+              class="w-5 h-5 text-blue-600 dark:text-blue-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -91,25 +101,28 @@ const pageDescription =
               ></path>
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-2">Native & SDK Development</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-            iOS (Swift), Android (Kotlin), and cross-platform SDKs for consumer and enterprise.
+          <h3 class="text-base font-bold mb-2 text-gray-900 dark:text-gray-100">
+            Native iOS & SDK
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+            Swift, SwiftUI, UIKit, AVFoundation, HealthKit, Live Activities, Widgets. SDK
+            architecture for consumer and enterprise.
           </p>
           <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1">
-            <li>• SDK architecture & integration</li>
-            <li>• App Store optimization</li>
-            <li>• Performance profiling</li>
+            <li>• Greenfield apps & SDK modularization</li>
+            <li>• System-level architecture & migrations</li>
+            <li>• App Store rollout & release discipline</li>
           </ul>
         </div>
 
         <div
-          class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+          class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
         >
           <div
             class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-4"
           >
             <svg
-              class="w-6 h-6 text-purple-600 dark:text-purple-400"
+              class="w-5 h-5 text-purple-600 dark:text-purple-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -122,25 +135,26 @@ const pageDescription =
               ></path>
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-2">ML & AI Integration</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-            On-device ML, LLM integration, and production AI pipelines.
+          <h3 class="text-base font-bold mb-2 text-gray-900 dark:text-gray-100">AI integration</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+            Multi-provider LLM abstractions, agentic workers, on-device ML, MCP servers, and
+            production AI pipelines.
           </p>
           <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1">
-            <li>• CoreML, MLX, ONNX</li>
-            <li>• LLM API integration</li>
-            <li>• Custom model deployment</li>
+            <li>• 6+ frontier model vendors integrated</li>
+            <li>• Headless Claude Code in Docker</li>
+            <li>• Per-workload model selection</li>
           </ul>
         </div>
 
         <div
-          class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+          class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
         >
           <div
             class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-4"
           >
             <svg
-              class="w-6 h-6 text-green-600 dark:text-green-400"
+              class="w-5 h-5 text-green-600 dark:text-green-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -153,260 +167,71 @@ const pageDescription =
               ></path>
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-2">Backend & Infrastructure</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-            Scalable APIs and cloud infrastructure with Go, Rust, and TypeScript.
+          <h3 class="text-base font-bold mb-2 text-gray-900 dark:text-gray-100">
+            Backend & infrastructure
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+            Python/FastAPI, Go, Rust, TypeScript. Supabase / Postgres, GCP Cloud Run, Docker, GitHub
+            Actions, Xcode Cloud.
           </p>
           <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1">
-            <li>• API design & development</li>
-            <li>• CI/CD optimization</li>
-            <li>• Cloud deployment</li>
+            <li>• API design & realtime systems</li>
+            <li>• Cost-optimization & observability</li>
+            <li>• CI/CD pipelines end-to-end</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Track Record Section -->
-  <section class="py-12 bg-white dark:bg-gray-950">
+  <!-- Selected Engagements -->
+  <section id="engagements" class="py-14 bg-white dark:bg-gray-950 scroll-mt-20">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-2">Track Record</h2>
+      <div class="max-w-2xl mx-auto text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+          Selected engagements
+        </h2>
         <p class="text-gray-600 dark:text-gray-300">
-          Enterprise experience, shipped products, open source contributions.
+          Six years of engineering services shipped to category-leading consumer products. Tap any
+          engagement to expand.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-5">
-        <!-- Oura -->
-        <div
-          class="border border-gray-200 dark:border-gray-800 rounded-lg p-5 hover:shadow-lg transition-shadow"
-        >
-          <div class="flex items-center mb-3">
-            <div
-              class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold mr-3"
-            >
-              O
-            </div>
-            <div>
-              <h3 class="font-bold text-sm">Oura Health</h3>
-              <p class="text-xs text-gray-600 dark:text-gray-400">iOS Engineer</p>
-            </div>
-          </div>
-          <ul class="space-y-1.5 text-xs text-gray-600 dark:text-gray-300">
-            <li class="flex items-start">
-              <svg
-                class="w-3.5 h-3.5 text-green-500 mr-1.5 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-              Shipped features to millions
-            </li>
-            <li class="flex items-start">
-              <svg
-                class="w-3.5 h-3.5 text-green-500 mr-1.5 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-              40% build time reduction
-            </li>
-            <li class="flex items-start">
-              <svg
-                class="w-3.5 h-3.5 text-green-500 mr-1.5 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-              First US VISA in company history
-            </li>
-          </ul>
-        </div>
-
-        <!-- Apps -->
-        <div
-          class="border border-gray-200 dark:border-gray-800 rounded-lg p-5 hover:shadow-lg transition-shadow"
-        >
-          <div class="flex items-center mb-3">
-            <div
-              class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold mr-3"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
-                ></path>
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-sm">Published Apps</h3>
-              <p class="text-xs text-gray-600 dark:text-gray-400">15+ Apps</p>
-            </div>
-          </div>
-          <ul class="space-y-1.5 text-xs text-gray-600 dark:text-gray-300">
-            <li class="flex items-start">
-              <svg
-                class="w-3.5 h-3.5 text-green-500 mr-1.5 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-              Dream Eater: ML dream journal
-            </li>
-            <li class="flex items-start">
-              <svg
-                class="w-3.5 h-3.5 text-green-500 mr-1.5 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-              Solar Beam: Apple TV app
-            </li>
-            <li class="flex items-start">
-              <svg
-                class="w-3.5 h-3.5 text-green-500 mr-1.5 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-              iOS, macOS, tvOS, visionOS
-            </li>
-          </ul>
-        </div>
-
-        <!-- Open Source -->
-        <div
-          class="border border-gray-200 dark:border-gray-800 rounded-lg p-5 hover:shadow-lg transition-shadow"
-        >
-          <div class="flex items-center mb-3">
-            <div
-              class="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center text-white font-bold mr-3"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                ></path>
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-sm">Open Source</h3>
-              <p class="text-xs text-gray-600 dark:text-gray-400">100+ Projects</p>
-            </div>
-          </div>
-          <ul class="space-y-1.5 text-xs text-gray-600 dark:text-gray-300">
-            <li class="flex items-start">
-              <svg
-                class="w-3.5 h-3.5 text-green-500 mr-1.5 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-              Swollama: Ollama Swift SDK
-            </li>
-            <li class="flex items-start">
-              <svg
-                class="w-3.5 h-3.5 text-green-500 mr-1.5 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-              AI/ML integration SDKs
-            </li>
-            <li class="flex items-start">
-              <svg
-                class="w-3.5 h-3.5 text-green-500 mr-1.5 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path>
-              </svg>
-              Developer tools & CLIs
-            </li>
-          </ul>
-        </div>
-      </div>
+      <CareerTimeline />
     </div>
   </section>
 
-  <!-- Pricing Section -->
-  <section id="pricing" class="py-12 bg-white dark:bg-gray-950">
+  <!-- Engagement Options -->
+  <section id="pricing" class="py-14 bg-gray-50 dark:bg-gray-900/50 scroll-mt-20">
     <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-2">Engagement Options</h2>
+      <div class="max-w-2xl mx-auto text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+          Engagement options
+        </h2>
         <p class="text-gray-600 dark:text-gray-300">
-          Two ways to work together. Project-based quotes available on request.
+          Two ways to work together. Project-based quotes on request.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-6">
-        <!-- Hourly -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+        <div
+          class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden"
+        >
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">Consulting & Advisory</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-              Architecture reviews, technical strategy, and expert guidance
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+              Consulting & Advisory
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
+              Architecture reviews, technical strategy, and expert guidance.
             </p>
-            <div class="mb-4">
-              <span class="text-3xl font-bold">€200</span>
-              <span class="text-gray-600 dark:text-gray-300">/hour</span>
+            <div class="mb-5 flex items-baseline gap-1">
+              <span class="text-3xl font-bold text-gray-900 dark:text-gray-100">€200</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">/ hour</span>
             </div>
-            <ul class="space-y-2 mb-6 text-sm">
-              <li class="flex items-start">
+            <ul class="space-y-2.5 mb-6 text-sm text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2">
                 <svg
-                  class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"
+                  class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -417,11 +242,11 @@ const pageDescription =
                     stroke-width="2"
                     d="M5 13l4 4L19 7"></path>
                 </svg>
-                System design & architecture
+                <span>System design & architecture review</span>
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start gap-2">
                 <svg
-                  class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"
+                  class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -432,11 +257,11 @@ const pageDescription =
                     stroke-width="2"
                     d="M5 13l4 4L19 7"></path>
                 </svg>
-                Code review & optimization
+                <span>Code review & optimization</span>
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start gap-2">
                 <svg
-                  class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"
+                  class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -447,21 +272,20 @@ const pageDescription =
                     stroke-width="2"
                     d="M5 13l4 4L19 7"></path>
                 </svg>
-                ML/AI integration strategy
+                <span>AI integration strategy</span>
               </li>
             </ul>
             <a
               href="#book"
-              class="block w-full py-2.5 px-4 text-center text-sm bg-gray-100 dark:bg-gray-700 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              class="block w-full py-2.5 px-4 text-center text-sm bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             >
-              Schedule Call
+              Schedule a call
             </a>
           </div>
         </div>
 
-        <!-- Retainer -->
         <div
-          class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border-2 border-blue-500 relative"
+          class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border-2 border-blue-500 overflow-hidden relative"
         >
           <div
             class="absolute top-0 right-0 bg-blue-500 text-white px-3 py-0.5 text-xs font-semibold rounded-bl-lg"
@@ -469,18 +293,20 @@ const pageDescription =
             Preferred
           </div>
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">Dedicated Engagement</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-              Embedded engineer, full-time on your team
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+              Dedicated Engagement
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
+              Embedded engineer, full-time on your team.
             </p>
-            <div class="mb-4">
-              <span class="text-3xl font-bold">€35,000+</span>
-              <span class="text-gray-600 dark:text-gray-300">/month</span>
+            <div class="mb-5 flex items-baseline gap-1">
+              <span class="text-3xl font-bold text-gray-900 dark:text-gray-100">€35,000+</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">/ month</span>
             </div>
-            <ul class="space-y-2 mb-6 text-sm">
-              <li class="flex items-start">
+            <ul class="space-y-2.5 mb-6 text-sm text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2">
                 <svg
-                  class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"
+                  class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -491,11 +317,11 @@ const pageDescription =
                     stroke-width="2"
                     d="M5 13l4 4L19 7"></path>
                 </svg>
-                Full-time dedication
+                <span>Full-time, sole or shared focus</span>
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start gap-2">
                 <svg
-                  class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"
+                  class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -506,11 +332,11 @@ const pageDescription =
                     stroke-width="2"
                     d="M5 13l4 4L19 7"></path>
                 </svg>
-                Direct Slack/async communication
+                <span>Direct Slack / async communication</span>
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start gap-2">
                 <svg
-                  class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"
+                  class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -521,109 +347,43 @@ const pageDescription =
                     stroke-width="2"
                     d="M5 13l4 4L19 7"></path>
                 </svg>
-                Seamless team integration
+                <span>Seamless team & toolchain integration</span>
               </li>
             </ul>
             <a
               href="#book"
               class="block w-full py-2.5 px-4 text-center text-sm bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
             >
-              Discuss Engagement
+              Discuss engagement
             </a>
           </div>
         </div>
       </div>
 
-      <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+      <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
         Have a specific project? <a
           href="mailto:problemsolvertm@gmail.com"
-          class="text-blue-600 dark:text-blue-400 hover:underline">Get a custom quote</a
+          class="text-blue-600 dark:text-blue-400 hover:underline">Request a custom quote</a
         >
       </p>
     </div>
   </section>
 
-  <!-- Tech Stack Section -->
-  <section class="py-10 bg-gray-50 dark:bg-gray-900/50">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-2">Technology Stack</h2>
-        <p class="text-gray-600 dark:text-gray-300">Modern tools for modern problems.</p>
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-        <span
-          class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 rounded-lg font-medium"
-          >Swift</span
-        >
-        <span
-          class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-lg font-medium"
-          >Kotlin</span
-        >
-        <span
-          class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-lg font-medium"
-          >Go</span
-        >
-        <span
-          class="px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-lg font-medium"
-          >Python</span
-        >
-        <span
-          class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 rounded-lg font-medium"
-          >Rust</span
-        >
-        <span
-          class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-lg font-medium"
-          >TypeScript</span
-        >
-        <span
-          class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-lg font-medium"
-          >React</span
-        >
-        <span
-          class="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-lg font-medium"
-          >Node.js</span
-        >
-        <span
-          class="px-4 py-2 bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-200 rounded-lg font-medium"
-          >Docker</span
-        >
-        <span
-          class="px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-lg font-medium"
-          >Cloudflare</span
-        >
-        <span
-          class="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 rounded-lg font-medium"
-          >MLX</span
-        >
-        <span
-          class="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 rounded-lg font-medium"
-          >PostgreSQL</span
-        >
-        <span
-          class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 rounded-lg font-medium"
-          >CI/CD</span
-        >
-        <span
-          class="px-4 py-2 bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-200 rounded-lg font-medium"
-          >Git</span
-        >
-      </div>
-    </div>
-  </section>
-
-  <!-- Booking Section -->
-  <section id="book" class="py-12 bg-white dark:bg-gray-950">
+  <!-- Booking -->
+  <section id="book" class="py-14 bg-white dark:bg-gray-950 scroll-mt-20">
     <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-2">Let's Build Something Great</h2>
+      <div class="max-w-2xl mx-auto text-center mb-8">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+          Let's talk
+        </h2>
         <p class="text-gray-600 dark:text-gray-300">
-          Schedule a free consultation to discuss your project.
+          Free 20-minute call to discuss your project and whether we're a fit.
         </p>
       </div>
 
-      <!-- Cal.com embed -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+      <div
+        class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden"
+      >
         <div id="cal-embed"></div>
       </div>
 
@@ -671,152 +431,17 @@ const pageDescription =
           layout: 'month_view',
         });
       </script>
-    </div>
-  </section>
 
-  <!-- Process Section -->
-  <section class="py-10">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="text-center mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-2">Working Together</h2>
-        <p class="text-gray-600 dark:text-gray-300">
-          A proven process that ensures we build the right thing.
-        </p>
-      </div>
-
-      <div class="relative">
-        <!-- Desktop timeline -->
-        <div
-          class="hidden md:block absolute left-0 right-0 top-10 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 opacity-20"
-        >
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="relative group">
-            <div
-              class="bg-white dark:bg-gray-800 rounded-lg p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
-            >
-              <div
-                class="absolute -top-3 left-5 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xs"
-              >
-                01
-              </div>
-              <h3 class="text-lg font-bold mb-2 mt-3">Discovery & Planning</h3>
-              <p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed">
-                We start with understanding your business goals, technical requirements, and success
-                metrics. I'll provide a detailed roadmap with clear milestones.
-              </p>
-            </div>
-          </div>
-
-          <div class="relative group">
-            <div
-              class="bg-white dark:bg-gray-800 rounded-lg p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
-            >
-              <div
-                class="absolute -top-3 left-5 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xs"
-              >
-                02
-              </div>
-              <h3 class="text-lg font-bold mb-2 mt-3">Build & Iterate</h3>
-              <p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed">
-                Development happens in focused sprints with regular check-ins. You'll see progress
-                every week and can provide feedback throughout.
-              </p>
-            </div>
-          </div>
-
-          <div class="relative group">
-            <div
-              class="bg-white dark:bg-gray-800 rounded-lg p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
-            >
-              <div
-                class="absolute -top-3 left-5 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xs"
-              >
-                03
-              </div>
-              <h3 class="text-lg font-bold mb-2 mt-3">Launch & Scale</h3>
-              <p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed">
-                I ensure smooth deployment and provide comprehensive documentation. Your team will
-                be fully equipped to maintain and extend the solution.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-12 bg-gradient-to-br from-gray-900 to-black text-white">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <div class="mb-6">
-        <span
-          class="inline-flex items-center px-4 py-2 text-sm font-medium bg-amber-500/20 backdrop-blur text-amber-200 rounded-full mb-6"
-        >
-          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              fill-rule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-              clip-rule="evenodd"></path>
-          </svg>
-          Limited Availability — Q2 2026 Onwards
-        </span>
-      </div>
-
-      <h2 class="text-4xl sm:text-5xl font-bold mb-6">
-        Let's Build Something
-        <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          Together</span
-        >
-      </h2>
-
-      <p class="text-xl mb-10 text-gray-300 max-w-2xl mx-auto">
-        Schedule a consultation to discuss your project. Currently engaged through Q1 2026, but
-        happy to plan ahead.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="#book"
-          class="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl"
-        >
-          Schedule Consultation
-          <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
-        <a
+      <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+        Prefer email? <a
           href="mailto:problemsolvertm@gmail.com"
-          class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+          class="text-blue-600 dark:text-blue-400 hover:underline">problemsolvertm@gmail.com</a
         >
-          <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-            ></path>
-          </svg>
-          problemsolvertm@gmail.com
-        </a>
-      </div>
+      </p>
     </div>
   </section>
 
   <style>
-    details summary::-webkit-details-marker {
-      display: none;
-    }
-
-    details[open] summary svg {
-      transform: rotate(180deg);
-    }
-
     #cal-embed {
       min-height: 600px;
     }
