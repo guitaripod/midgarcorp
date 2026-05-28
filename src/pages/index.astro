@@ -91,82 +91,176 @@ const socialLinks = [{ name: 'GitHub', url: 'https://github.com/guitaripod', ico
 ---
 
 <BaseLayout
-  title="Midgar Corp"
-  description="Engineer who ships across iOS, macOS, tvOS, web, and Linux. Currently building open source tools and apps that solve real problems."
+  title="Midgar Corp — Marcus Ziadé"
+  description="Independent engineer. Six years shipping production iOS, backend, and AI across category-leading consumer products. Plus a stable of native apps, open-source projects, and CLI tools."
 >
-  <!-- Compact Hero Section -->
-  <section class="mb-12 pt-8">
-    <div class="text-center">
-      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6">
-        Engineer who ships across iOS, macOS, tvOS, web, and Linux.
-      </p>
-      
-      <!-- Quick Stats -->
-      <div class="flex justify-center gap-8 mb-6 text-sm">
-        <div class="flex items-center gap-2">
-          <span class="text-2xl font-bold text-gray-900 dark:text-gray-100">{totalApps}</span>
-          <span class="text-gray-600 dark:text-gray-400">Apps</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="text-2xl font-bold text-gray-900 dark:text-gray-100">{openSourceData.projects.length}+</span>
-          <span class="text-gray-600 dark:text-gray-400">Open Source</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="text-2xl font-bold text-gray-900 dark:text-gray-100">{totalPosts}</span>
-          <span class="text-gray-600 dark:text-gray-400">Articles</span>
-        </div>
-      </div>
+  <!-- Hero -->
+  <section class="pt-10 sm:pt-16 pb-10">
+    <div class="text-center max-w-3xl mx-auto">
+      <span
+        class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-green-50 dark:bg-green-500/10 text-green-700 dark:text-green-300 rounded-full mb-6 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30"
+      >
+        <span class="relative flex w-1.5 h-1.5">
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+          ></span>
+          <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
+        </span>
+        Available — Open to new engagements
+      </span>
 
-      <!-- Compact CTAs -->
-      <div class="flex gap-3 justify-center flex-wrap">
+      <h1
+        class="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-[1] tracking-tight"
+      >
+        Engineer who
+        <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+          >ships</span
+        >.
+      </h1>
+
+      <p
+        class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto"
+      >
+        Six years shipping production iOS, backend, and AI to category-leading consumer products.
+        Plus a stable of native apps, {openSourceData.projects.length}+ open-source projects, and
+        CLI tools.
+      </p>
+
+      <div class="flex flex-wrap gap-3 justify-center">
         <a
-          href="/apps"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-all duration-200"
+          href="/services#engagements"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-colors"
         >
+          Selected engagements
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-            ></path>
+              d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
-          View Apps
         </a>
         <a
-          href="/opensource"
-          class="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200"
+          href="/services#book"
+          class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-semibold transition-colors"
         >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path
-              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-            ></path>
-          </svg>
-          Open Source
-        </a>
-        <a
-          href="/archive"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-200"
-        >
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-            ></path>
-          </svg>
-          Blog
-        </a>
-        <a
-          href="/services"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 transition-all duration-200"
-        >
-          <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
-          Services
+          Schedule a call
         </a>
       </div>
     </div>
+  </section>
+
+  <!-- Selected Engagements teaser -->
+  <section class="mb-16">
+    <a href="/services#engagements" class="group block">
+      <div
+        class="relative bg-white dark:bg-gray-800/40 rounded-xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500/60 transition-colors"
+      >
+        <div class="flex items-center justify-between mb-5">
+          <h2
+            class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-[0.18em]"
+          >
+            Selected Engagements
+          </h2>
+          <span
+            class="text-xs text-blue-600 dark:text-blue-400 inline-flex items-center gap-1 font-medium opacity-70 group-hover:opacity-100 transition-opacity"
+          >
+            Full timeline
+            <svg
+              class="w-3.5 h-3.5 transform transition-transform group-hover:translate-x-0.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+          <div>
+            <p
+              class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight"
+            >
+              6
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">
+              years shipping
+            </p>
+          </div>
+          <div>
+            <p
+              class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight"
+            >
+              6,000+
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">
+              commits
+            </p>
+          </div>
+          <div>
+            <p
+              class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight"
+            >
+              ~790k
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">
+              lines shipped
+            </p>
+          </div>
+          <div>
+            <p
+              class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight"
+            >
+              5
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">
+              industries
+            </p>
+          </div>
+        </div>
+
+        <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+          From a multi-billion-dollar wearable health platform to a NASDAQ-listed cybersecurity
+          company to an AI-native health & wellness startup — six years of engineering services
+          shipped to category-leading consumer products.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm">
+          <span
+            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-violet-500"></span> AI · Health
+          </span>
+          <span class="text-gray-300 dark:text-gray-700" aria-hidden="true">·</span>
+          <span
+            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Cybersecurity
+          </span>
+          <span class="text-gray-300 dark:text-gray-700" aria-hidden="true">·</span>
+          <span
+            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Wearable health
+          </span>
+          <span class="text-gray-300 dark:text-gray-700" aria-hidden="true">·</span>
+          <span
+            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Software consulting
+          </span>
+          <span class="text-gray-300 dark:text-gray-700" aria-hidden="true">·</span>
+          <span
+            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-500"></span> Creator economy
+          </span>
+        </div>
+      </div>
+    </a>
   </section>
 
   <!-- Featured Apps Section -->
@@ -329,73 +423,6 @@ const socialLinks = [{ name: 'GitHub', url: 'https://github.com/guitaripod', ico
         </div>
       )
     }
-  </section>
-
-  <!-- About Section -->
-  <section class="mb-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 -mx-4 px-4 py-16">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">About</h2>
-      
-      <div class="prose prose-lg dark:prose-invert mx-auto mb-12">
-        <p class="text-gray-600 dark:text-gray-300 text-center">
-          Currently building open source tools and apps that solve real problems. 
-          Focused on creating developer tools, CLI utilities, and native Apple platform apps.
-        </p>
-      </div>
-
-      <!-- Background Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-        <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700">
-          <h3 class="text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wide mb-3">
-            Previously
-          </h3>
-          <p class="text-gray-700 dark:text-gray-300">
-            Built iOS features and developer tooling at Oura. Shipped health insights to millions of users worldwide.
-          </p>
-        </div>
-        <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700">
-          <h3 class="text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wide mb-3">
-            Currently
-          </h3>
-          <p class="text-gray-700 dark:text-gray-300">
-            Shipping my own apps and contributing to open source. Building developer tools that improve workflows.
-          </p>
-        </div>
-      </div>
-
-      <!-- Services CTA -->
-      <div class="mt-12 mx-auto max-w-xl">
-        <a href="/services" class="group block">
-          <div class="relative bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg hover:border-blue-500 dark:hover:border-blue-400">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                Engineering Services
-              </h3>
-              <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full">
-                <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse"></span>
-                Available
-              </span>
-            </div>
-            
-            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-left">
-              Full-stack developer specializing in native mobile apps, ML integration, and scalable systems. Let's build something great together.
-            </p>
-            
-            <div class="flex items-center justify-between">
-              <div class="flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
-                Learn More
-                <svg class="ml-1.5 w-4 h-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                </svg>
-              </div>
-              <div class="flex gap-3">
-                <span class="text-xs text-gray-500 dark:text-gray-400">100+ projects</span>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
   </section>
 </BaseLayout>
 
