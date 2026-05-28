@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 )
@@ -277,9 +278,9 @@ func transformiTunesApp(app iTunesApp) App {
 	sentences := splitSentences(app.Description)
 	cleanDesc := ""
 	if len(sentences) >= 2 {
-		cleanDesc = strings.Join(sentences[:2], ". ") + "."
+		cleanDesc = strings.Join(sentences[:2], " ")
 	} else if len(sentences) == 1 {
-		cleanDesc = sentences[0] + "."
+		cleanDesc = sentences[0]
 	}
 
 	// Ensure App Store URL uses US location
@@ -400,22 +401,16 @@ func mapDeviceTosPlatform(app iTunesApp) []string {
 	return []string{"iPhone", "iPad"}
 }
 
-// Helper functions
+var sentenceRegex = regexp.MustCompile(`[^.!?]+[.!?]+`)
+
 func splitSentences(text string) []string {
 	var sentences []string
-	
-	// Split by sentence terminators
-	parts := strings.FieldsFunc(text, func(r rune) bool {
-		return r == '.' || r == '!' || r == '?'
-	})
-	
-	for _, part := range parts {
-		trimmed := strings.TrimSpace(part)
+	for _, match := range sentenceRegex.FindAllString(text, -1) {
+		trimmed := strings.TrimSpace(match)
 		if trimmed != "" {
 			sentences = append(sentences, trimmed)
 		}
 	}
-	
 	return sentences
 }
 

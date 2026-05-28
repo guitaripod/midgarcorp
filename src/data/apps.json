@@ -4,14 +4,14 @@
       "id": "solar-beam",
       "name": "Solar Beam",
       "tagline": "Your Window to the Universe",
-      "description": "Solar Beam: Your Window to the Universe\n\nEmbark on an interstellar journey with Solar Beam, the ultimate space exploration app designed exclusively for your Apple TV. Immerse yourself in the wonders of the cosmos from the comfort of your living room.",
+      "description": "Solarbeam\n\nSpace on your TV. No telescope required.",
       "platforms": [
         "Apple TV"
       ],
       "category": "Photo \u0026 Video",
       "price": "$19.99",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497?uo=4",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e5/86/e5/e586e539-d586-09a4-f664-ce1d61fc02e3/App_Icon-marketing.lsr/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/16/8e/28/168e280f-62b1-773d-bc43-ff7ba8d9b8e7/App_Icon-marketing.lsr/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
         "Real-time space data",
@@ -24,7 +24,7 @@
       "id": "sforesight",
       "name": "SForesight",
       "tagline": "ML-Powered SF Symbol Search",
-      "description": "SForesight: The Ultimate SF Symbols Search Companion\n\nAre you tired of endless scrolling through the official SF Symbols app. Say hello to SForesight, the game-changing macOS app that revolutionizes how Swift developers find and use SF Symbols in their projects.",
+      "description": "SForesight: The Ultimate SF Symbols Search Companion\n\nAre you tired of endless scrolling through the official SF Symbols app? Say hello to SForesight, the game-changing macOS app that revolutionizes how Swift developers find and use SF Symbols in their projects.",
       "platforms": [
         "Mac"
       ],
@@ -128,7 +128,7 @@
       "id": "master-of-flags",
       "name": "Master of Flags",
       "tagline": "Learn World Flags",
-      "description": "Master the World's Flags – One Challenge at a Time. Think you know your flags.",
+      "description": "Master the World's Flags – One Challenge at a Time! Think you know your flags?",
       "platforms": [
         "iPhone",
         "iPad"
@@ -149,7 +149,7 @@
       "id": "app-of-the-dead-afterlife",
       "name": "App of the Dead: Afterlife",
       "tagline": "Learn Afterlife Beliefs",
-      "description": "Discover What Comes After Death Across World Cultures\n\nEver wondered what different religions believe happens after we die. App of the Dead transforms complex theological concepts into an engaging learning adventure that fits in your pocket.",
+      "description": "Discover What Comes After Death Across World Cultures\n\nEver wondered what different religions believe happens after we die? App of the Dead transforms complex theological concepts into an engaging learning adventure that fits in your pocket.",
       "platforms": [
         "iPhone",
         "iPad"
@@ -157,7 +157,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-afterlife/id6746733380?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/01/8b/61/018b616c-c1ae-b449-8e2b-c10e17e01f0d/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c4/69/68/c4696839-217f-e15f-9801-a7d5c8032ae6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#7C3AED",
       "features": [
         "Local MLX LLM technology for offline AI",
@@ -178,7 +178,7 @@
       "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket/id6751730339?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2c/fc/ac/2cfcac71-bf45-cd36-d010-162ab358153f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b9/12/80/b912801d-568b-fcb9-0981-aada65e1c856/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EC4899",
       "features": [
         "Advanced OpenAI gpt-image-1 integration",

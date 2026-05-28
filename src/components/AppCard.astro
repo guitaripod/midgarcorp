@@ -1,4 +1,6 @@
 ---
+import { cleanAppStoreDescription } from '@utils/app-description';
+
 export interface Props {
   app: {
     id: string;
@@ -17,6 +19,7 @@ export interface Props {
 }
 
 const { app } = Astro.props;
+const description = cleanAppStoreDescription(app.description);
 
 // Format release date
 const formatReleaseDate = (dateString: string) => {
@@ -76,7 +79,7 @@ const formatReleaseDate = (dateString: string) => {
     <p
       class="mt-3 sm:mt-4 text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed line-clamp-3"
     >
-      {app.description}
+      {description}
     </p>
 
     <div class="mt-3 sm:mt-4">
