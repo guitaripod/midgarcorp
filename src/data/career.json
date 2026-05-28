@@ -17,7 +17,7 @@
       "current": false,
       "industry": "ai-health",
       "industryLabel": "AI · Health",
-      "role": "System Architect · Senior Full-Stack / AI Engineer",
+      "role": "System Architect · Full-Stack / AI Engineer",
       "headline": "AI-native premium health & wellness startup",
       "hook": "Set the iOS architecture standards across a three-codebase platform — drove codebase-wide migrations, owned cross-cutting infrastructure, and shipped the systems other engineers build on. iOS + Python/FastAPI backend + an autonomous LLM-powered DevOps agent.",
       "impact": [
@@ -82,7 +82,7 @@
       "current": false,
       "industry": "cybersec",
       "industryLabel": "Cybersecurity",
-      "role": "Senior Engineer · Contractor",
+      "role": "SDK Architect · Contractor",
       "headline": "NASDAQ-listed global cybersecurity company",
       "hook": "Led the modularization of the company's entire Swift SDK from a single monolith into a feature-module architecture on a shared Core foundation — a multi-quarter epic that shipped end-to-end during the engagement.",
       "impact": [
@@ -109,7 +109,7 @@
       "current": false,
       "industry": "wearable-health",
       "industryLabel": "Wearable health",
-      "role": "Senior Engineer",
+      "role": "Engineer · Feature Owner",
       "headline": "Multi-billion-dollar wearable health platform",
       "hook": "Feature owner across eight repositories — consumer app, shared iOS frameworks, cross-platform data-model layer with code generation into Swift, Kotlin, TypeScript, and Python, plus shared analytics and test-automation packages.",
       "impact": [
@@ -157,7 +157,7 @@
       "current": false,
       "industry": "consulting",
       "industryLabel": "Software consulting",
-      "role": "Senior Engineer · Sole Developer",
+      "role": "Sole Developer",
       "headline": "Boutique Nordic software consultancy",
       "hook": "Sole engineer on five production apps across client engagements — every app from File → New → Project to App Store-ready release. Booking flows, project management, GraphQL data layers, Stripe payments, and full bilingual localization.",
       "impact": [
