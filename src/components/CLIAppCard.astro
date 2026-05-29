@@ -38,15 +38,21 @@ const projectsWithoutGitHubPages = ['speedrun-cli', 'apod-cli', 'songlink-cli', 
 
 // Special URL overrides for specific projects
 const projectUrlOverrides: Record<string, string> = {
-  'gh-export': 'https://crates.io/crates/gh-export'
+  'gh-export': 'https://crates.io/crates/gh-export',
 };
 
 // URL selection: check for overrides first, then prefer GitHub Pages (auto-generated), then docs, then homepage, then github
 // For certain projects, skip GitHub Pages and use GitHub directly
-const githubPagesUrl = project.githubUrl && !projectsWithoutGitHubPages.includes(project.id) 
-  ? getGitHubPagesUrl(project.githubUrl) 
-  : null;
-const targetUrl = projectUrlOverrides[project.id] || githubPagesUrl || project.docsUrl || project.homepageUrl || project.githubUrl;
+const githubPagesUrl =
+  project.githubUrl && !projectsWithoutGitHubPages.includes(project.id)
+    ? getGitHubPagesUrl(project.githubUrl)
+    : null;
+const targetUrl =
+  projectUrlOverrides[project.id] ||
+  githubPagesUrl ||
+  project.docsUrl ||
+  project.homepageUrl ||
+  project.githubUrl;
 
 // Define language-based themes with muted language-specific colors
 const languageThemes = {
