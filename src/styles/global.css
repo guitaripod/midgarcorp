@@ -11,10 +11,13 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+    background-color: theme('colors.white');
   }
 
   html.dark {
     color-scheme: dark;
+    background-color: theme('colors.gray.900');
   }
 
   /* Inter font */

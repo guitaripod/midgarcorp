@@ -72,6 +72,7 @@ const ogImage = new URL(image, Astro.url);
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 <!-- Theme color -->
+<meta name="color-scheme" content="light dark" />
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
 
@@ -100,9 +101,10 @@ const ogImage = new URL(image, Astro.url);
 <!-- Dark mode script -->
 <script is:inline>
   const getThemePreference = () => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
+    try {
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored;
+    } catch (e) {}
     return 'system';
   };
 
@@ -113,21 +115,16 @@ const ogImage = new URL(image, Astro.url);
     return theme === 'dark';
   };
 
-  const theme = getThemePreference();
+  const applyDark = (isDark) => {
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+  };
 
-  if (isDarkMode(theme)) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
+  applyDark(isDarkMode(getThemePreference()));
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (getThemePreference() === 'system') {
-      if (e.matches) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      applyDark(e.matches);
     }
   });
 </script>
