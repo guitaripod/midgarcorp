@@ -132,4 +132,35 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .gradient-text {
+    color: theme('colors.blue.600');
+  }
+  .dark .gradient-text {
+    color: theme('colors.blue.400');
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .gradient-text {
+      background-image: linear-gradient(
+        to right,
+        theme('colors.blue.600'),
+        theme('colors.purple.600')
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+    .dark .gradient-text {
+      background-image: linear-gradient(
+        to right,
+        theme('colors.blue.400'),
+        theme('colors.purple.400')
+      );
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+  }
 }
