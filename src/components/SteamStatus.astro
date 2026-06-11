@@ -3,9 +3,9 @@
 ---
 
 <div id="steam-status" class="space-y-3">
-  <div class="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+  <div class="flex items-center gap-2 text-xs text-paper-muted dark:text-term-muted">
     <div id="steam-online-status" class="flex items-center gap-2">
-      <div class="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+      <div class="w-2 h-2 bg-paper-faint dark:bg-term-faint rounded-full animate-pulse"></div>
       <span>Loading Steam status...</span>
     </div>
   </div>
@@ -20,6 +20,12 @@
 </div>
 
 <script>
+  const esc = (value) =>
+    String(value ?? '').replace(
+      /[&<>"']/g,
+      (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]
+    );
+
   let retryCount = 0;
   const maxRetries = 10;
   let retryTimeoutId = null;
@@ -40,19 +46,12 @@
       const recentGamesElement = document.getElementById('steam-recent-games');
 
       if (!statusElement || !currentGameElement || !recentGamesElement) {
-        console.error('[Steam] DOM elements not found:', {
-          statusElement: !!statusElement,
-          currentGameElement: !!currentGameElement,
-          recentGamesElement: !!recentGamesElement,
-        });
+        console.error('[Steam] DOM elements not found');
         return;
       }
 
       // If response is not ok or has errors, schedule retry instead of showing error
       if (!response.ok) {
-        console.log(
-          `[Steam] API error (${response.status}), retry ${retryCount + 1}/${maxRetries}`
-        );
         scheduleRetry();
         return;
       }
@@ -60,10 +59,6 @@
       const data = await response.json();
 
       if (data.error || data.loading) {
-        console.log(
-          `[Steam] ${data.loading ? 'Loading state' : 'Data error'}, retry ${retryCount + 1}/${maxRetries}`,
-          data.message || ''
-        );
         scheduleRetry();
         return;
       }
@@ -76,8 +71,6 @@
       }
       startPeriodicUpdates();
 
-      console.log('[Steam] Full API response:', data);
-
       // Update online status
       if (data.player && typeof data.player.personastate !== 'undefined') {
         // Ensure personastate is a number
@@ -85,13 +78,6 @@
         const isOnline = personaState > 0;
 
         // Debug logging
-        console.log('Steam API Response:', {
-          personastate: personaState,
-          personastateflags: data.player.personastateflags,
-          gameextrainfo: data.player.gameextrainfo,
-          gameid: data.player.gameid,
-          player: data.player,
-        });
 
         // Map all Steam persona states
         let statusText;
@@ -100,35 +86,35 @@
         switch (personaState) {
           case 0:
             statusText = 'Offline';
-            statusColor = 'bg-gray-400';
+            statusColor = 'bg-paper-faint dark:bg-term-faint';
             break;
           case 1:
             statusText = 'Online';
-            statusColor = 'bg-green-500';
+            statusColor = 'bg-paper-green dark:bg-term-green';
             break;
           case 2:
             statusText = 'Busy';
-            statusColor = 'bg-red-500';
+            statusColor = 'bg-paper-red dark:bg-term-red';
             break;
           case 3:
             statusText = 'Away';
-            statusColor = 'bg-yellow-500';
+            statusColor = 'bg-paper-amber dark:bg-term-amber';
             break;
           case 4:
             statusText = 'Snooze';
-            statusColor = 'bg-yellow-500';
+            statusColor = 'bg-paper-amber dark:bg-term-amber';
             break;
           case 5:
             statusText = 'Looking to trade';
-            statusColor = 'bg-blue-500';
+            statusColor = 'bg-paper-greendim dark:bg-term-greendim';
             break;
           case 6:
             statusText = 'Looking to play';
-            statusColor = 'bg-green-500';
+            statusColor = 'bg-paper-green dark:bg-term-green';
             break;
           default:
             statusText = 'Unknown';
-            statusColor = 'bg-gray-400';
+            statusColor = 'bg-paper-faint dark:bg-term-faint';
         }
 
         statusElement.innerHTML = `
@@ -138,20 +124,19 @@
 
         // Add player name if available
         if (data.player.personaname) {
-          statusElement.innerHTML += ` <span class="text-gray-500">· ${data.player.personaname}</span>`;
+          statusElement.innerHTML += ` <span class="text-paper-faint dark:text-term-faint">· ${esc(data.player.personaname)}</span>`;
         }
 
         // Always show something in the recent games area
-        console.log('[Steam] Checking recent games:', data.recentGames);
 
         // Show current game if playing
         if (data.currentGame) {
           currentGameElement.innerHTML = `
             <div class="flex items-center gap-2 text-xs">
-              <svg class="w-4 h-4 text-green-500 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-paper-green dark:text-term-green animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
               </svg>
-              <span class="text-green-600 dark:text-green-400">Now playing: <strong>${data.currentGame.name}</strong></span>
+              <span class="text-paper-green dark:text-term-green">Now playing: <strong>${esc(data.currentGame.name)}</strong></span>
             </div>
           `;
           currentGameElement.classList.remove('hidden');
@@ -161,18 +146,15 @@
       } else {
         // No player data available
         statusElement.innerHTML = `
-          <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
-          <span class="text-gray-500">Status unavailable</span>
+          <div class="w-2 h-2 bg-paper-faint dark:bg-term-faint rounded-full"></div>
+          <span class="text-paper-faint dark:text-term-faint">Status unavailable</span>
         `;
-        console.error('No player data in response:', data);
+        console.error('[Steam] No player data in response');
       }
 
       // Display recent games with more details
       if (data.recentGames && data.recentGames.length > 0) {
-        console.log('[Steam] Recent games data:', data.recentGames);
-
         const gamesHtml = data.recentGames
-          .reverse()
           .slice(0, 3)
           .map((game) => {
             const hours = Math.floor(game.playtime_2weeks / 60);
@@ -186,15 +168,15 @@
             <div class="flex items-center gap-3 py-1.5">
               <img 
                 src="${gameIconUrl}" 
-                alt="${game.name}" 
-                class="w-8 h-8 rounded flex-shrink-0"
+                alt="${esc(game.name)}" 
+                class="w-8 h-8 rounded-sm flex-shrink-0"
                 onerror="this.style.display='none'"
               />
               <div class="flex-1 min-w-0">
-                <div class="text-xs font-medium text-gray-700 dark:text-gray-300 truncate">
-                  ${game.name}
+                <div class="text-xs font-medium text-paper-text dark:text-term-text truncate">
+                  ${esc(game.name)}
                 </div>
-                <div class="text-xs text-gray-500 dark:text-gray-500">
+                <div class="text-xs text-paper-faint dark:text-term-faint">
                   ${playtime} recently · ${totalHours}h total
                 </div>
               </div>
@@ -204,13 +186,13 @@
           .join('');
 
         recentGamesElement.innerHTML = `
-          <p class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Recent activity:</p>
+          <p class="text-xs font-medium text-paper-text dark:text-term-text mb-2">Recent activity:</p>
           ${gamesHtml}
         `;
       } else {
         // If no recent games, show profile info
         if (data.player) {
-          let profileHtml = '<div class="text-xs text-gray-500 dark:text-gray-500 space-y-1">';
+          let profileHtml = '<div class="text-xs text-paper-faint dark:text-term-faint space-y-1">';
 
           if (data.player.profileurl) {
             profileHtml += `<div>Steam ID: ${data.player.steamid}</div>`;
@@ -225,21 +207,19 @@
           recentGamesElement.innerHTML = profileHtml;
         } else {
           recentGamesElement.innerHTML = `
-            <p class="text-xs text-gray-500 dark:text-gray-500">
+            <p class="text-xs text-paper-faint dark:text-term-faint">
               No recent activity
             </p>
           `;
         }
       }
     } catch (error) {
-      console.log(`[Steam] Fetch error: ${error.message}, retry ${retryCount + 1}/${maxRetries}`);
       scheduleRetry();
     }
   }
 
   function scheduleRetry() {
     if (retryCount >= maxRetries) {
-      console.log('[Steam] Max retries reached, giving up');
       return;
     }
 
@@ -252,14 +232,11 @@
       delay = Math.min(Math.pow(2, retryCount - 5) * 5000, 30000); // 5, 10, 20, 30 seconds
     }
 
-    console.log(`[Steam] Scheduling retry in ${delay}ms`);
-
     if (retryTimeoutId) {
       clearTimeout(retryTimeoutId);
     }
 
     retryTimeoutId = setTimeout(() => {
-      console.log(`[Steam] Attempting retry ${retryCount}/${maxRetries}`);
       fetchSteamStatus();
     }, delay);
   }
@@ -275,7 +252,6 @@
 
     if (!statusElement || !currentGameElement || !recentGamesElement) {
       // Retry after a short delay if elements aren't ready
-      console.log('[Steam] Elements not ready, retrying in 100ms...');
       setTimeout(initializeSteamStatus, 100);
       return;
     }
@@ -287,7 +263,6 @@
   function startPeriodicUpdates() {
     // Only start periodic updates after first successful load
     if (!updateInterval) {
-      console.log('[Steam] Starting periodic updates every 2 minutes');
       updateInterval = setInterval(fetchSteamStatus, 120000); // Update every 2 minutes
     }
   }

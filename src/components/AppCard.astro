@@ -20,55 +20,40 @@ export interface Props {
 
 const { app } = Astro.props;
 const description = cleanAppStoreDescription(app.description);
-
-// Format release date
-const formatReleaseDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    month: 'short',
-    year: 'numeric',
-  });
-};
+const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
 ---
 
-<article
-  class="app-card group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
->
-  <div
-    class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300"
-    style={`background: linear-gradient(135deg, ${app.primaryColor} 0%, transparent 60%)`}
-  >
-  </div>
+<article class="app-card group relative term-frame term-frame-hover overflow-hidden flex flex-col">
+  <span
+    class="absolute inset-y-0 left-0 w-0.5 opacity-60"
+    style={`background-color: ${app.primaryColor}`}
+    aria-hidden="true"></span>
 
-  <div class="relative p-4 sm:p-6">
+  <div class="flex flex-col flex-1 p-4 sm:p-6">
     <div class="flex items-start gap-3 sm:gap-4">
       <img
         src={app.icon}
         alt={`${app.name} icon`}
-        class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl shadow-md flex-shrink-0"
+        class="w-16 h-16 sm:w-20 sm:h-20 rounded-lg border border-paper-border dark:border-term-border flex-shrink-0"
         loading="lazy"
       />
 
       <div class="flex-1 min-w-0">
-        <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-1 truncate">
+        <h3
+          class="text-base sm:text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors mb-1 truncate"
+        >
           {app.name}
         </h3>
-        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2">
+        <p class="text-xs sm:text-sm text-paper-muted dark:text-term-muted mb-2 line-clamp-2">
           {app.tagline}
         </p>
-        <div class="flex flex-wrap items-center gap-2 text-xs">
-          <span
-            class="px-2 py-0.5 sm:py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
-          >
-            {app.category}
-          </span>
-          <span class="font-semibold text-green-600 dark:text-green-400">
-            {app.price}
-          </span>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+          <span class="text-paper-greendim dark:text-term-greendim">[{app.category}]</span>
+          <span class="font-semibold text-paper-amber dark:text-term-amber">{app.price}</span>
           {
-            app.releaseDate && (
-              <span class="text-gray-500 dark:text-gray-400 hidden sm:inline">
-                Released {formatReleaseDate(app.releaseDate)}
+            releaseStamp && (
+              <span class="text-paper-faint dark:text-term-faint hidden sm:inline">
+                released {releaseStamp}
               </span>
             )
           }
@@ -77,34 +62,23 @@ const formatReleaseDate = (dateString: string) => {
     </div>
 
     <p
-      class="mt-3 sm:mt-4 text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed line-clamp-3"
+      class="mt-3 sm:mt-4 text-xs sm:text-sm text-paper-muted dark:text-term-muted leading-relaxed line-clamp-3 font-sans"
     >
       {description}
     </p>
 
     <div class="mt-3 sm:mt-4">
-      <h4
-        class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1.5 sm:mb-2"
-      >
-        Key Features
-      </h4>
+      <h4 class="term-label mb-1.5 sm:mb-2">features</h4>
       <ul class="space-y-0.5 sm:space-y-1">
         {
           app.features.slice(0, 3).map((feature) => (
-            <li class="flex items-start gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
-              <svg
-                class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0 mt-0.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <li class="flex items-start gap-2 text-xs sm:text-sm text-paper-text dark:text-term-text">
+              <span
+                class="text-paper-greendim dark:text-term-greendim flex-shrink-0"
+                aria-hidden="true"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+                ▸
+              </span>
               <span class="line-clamp-1">{feature}</span>
             </li>
           ))
@@ -112,11 +86,13 @@ const formatReleaseDate = (dateString: string) => {
       </ul>
     </div>
 
-    <div class="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+    <div class="mt-auto pt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
       <div class="flex flex-wrap gap-2">
         {
           app.platforms.map((platform) => (
-            <span class="text-xs text-gray-500 dark:text-gray-400">{platform}</span>
+            <span class="px-1.5 py-0.5 text-xs text-paper-faint dark:text-term-faint border border-paper-border dark:border-term-border rounded-sm">
+              {platform}
+            </span>
           ))
         }
       </div>
@@ -125,14 +101,9 @@ const formatReleaseDate = (dateString: string) => {
         href={app.appStoreUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg text-xs sm:text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-200 w-full sm:w-auto"
+        class="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity w-full sm:w-auto"
       >
-        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
-          ></path>
-        </svg>
-        View on App Store
+        open in app store ↗
       </a>
     </div>
   </div>
@@ -145,8 +116,8 @@ const formatReleaseDate = (dateString: string) => {
 
   @container (max-width: 400px) {
     .app-card img {
-      width: 60px;
-      height: 60px;
+      width: 56px;
+      height: 56px;
     }
   }
 </style>

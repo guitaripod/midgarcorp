@@ -29,12 +29,11 @@ const currencyData = {
 };
 
 const data = currencyData[currency];
-const truncatedAddress = `${address.slice(0, 6)}...${address.slice(-4)}`;
 ---
 
 <div class="crypto-wallet relative" data-currency={currency} data-address={address}>
   <button
-    class={`crypto-button flex items-center space-x-2 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-200 min-w-0`}
+    class="crypto-button flex items-center space-x-2 px-3 py-1.5 rounded-sm border border-paper-border dark:border-term-border hover:border-paper-border2 dark:hover:border-term-border2 transition-all duration-200 min-w-0"
     type="button"
     aria-label={`${data.name} wallet address`}
     title={address}
@@ -43,30 +42,28 @@ const truncatedAddress = `${address.slice(0, 6)}...${address.slice(-4)}`;
       class={`crypto-icon w-4 h-4 flex items-center justify-center ${data.color}`}
       set:html={data.icon}
     />
-    <span class="text-xs font-medium text-gray-600 dark:text-gray-400">{data.name}</span>
+    <span class="text-xs font-medium text-paper-muted dark:text-term-muted">{data.name}</span>
   </button>
 
   <div
     class="qr-popup absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 pointer-events-none transition-all duration-200 z-50 hidden"
   >
-    <div
-      class="bg-white dark:bg-gray-900 rounded-lg shadow-xl border border-gray-200 dark:border-gray-800 p-4"
-    >
+    <div class="term-frame p-4">
       <canvas class="qr-code w-40 h-40 bg-white rounded" data-address={address}></canvas>
       <p
-        class="popup-address text-xs text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mt-2 text-center font-mono break-all max-w-[160px] cursor-pointer transition-colors"
+        class="popup-address text-xs text-paper-muted dark:text-term-muted hover:text-paper-text dark:hover:text-term-text mt-2 text-center font-mono break-all max-w-[160px] cursor-pointer transition-colors"
       >
         {address}
       </p>
     </div>
     <div
-      class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white dark:border-t-gray-900"
+      class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-paper-panel dark:border-t-term-panel"
     >
     </div>
   </div>
 
   <div
-    class="copy-feedback fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg opacity-0 pointer-events-none transform translate-y-2 transition-all duration-300"
+    class="copy-feedback fixed top-4 right-4 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg px-4 py-2 rounded-sm opacity-0 pointer-events-none transform translate-y-2 transition-all duration-300"
   >
     <div class="flex items-center space-x-2">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

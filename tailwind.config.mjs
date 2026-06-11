@@ -4,20 +4,93 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        term: {
+          bg: '#0d1117',
+          panel: '#161b22',
+          raised: '#1c2128',
+          border: '#2d333b',
+          border2: '#3d444d',
+          text: '#e6edf3',
+          muted: '#9198a1',
+          faint: '#7d8590',
+          green: '#33ff66',
+          greendim: '#3fb950',
+          amber: '#ffb000',
+          red: '#ff7b72',
+        },
+        paper: {
+          bg: '#fdf6e3',
+          panel: '#f6eed8',
+          raised: '#eee8d5',
+          border: '#dcd3b8',
+          border2: '#c9bf9f',
+          text: '#073642',
+          muted: '#586e75',
+          faint: '#657b83',
+          green: '#005f00',
+          greendim: '#116329',
+          amber: '#7a5d00',
+          red: '#cb4b16',
+        },
+      },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        mono: [
+          'JetBrains Mono',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Consolas',
+          'DejaVu Sans Mono',
+          'monospace',
+        ],
+        sans: [
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'sans-serif',
+        ],
       },
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            maxWidth: '65ch',
-            color: theme('colors.gray.700'),
-            a: {
-              color: theme('colors.blue.600'),
-              '&:hover': {
-                color: theme('colors.blue.800'),
-              },
-            },
+            maxWidth: '68ch',
+            '--tw-prose-body': '#2c4a54',
+            '--tw-prose-headings': theme('colors.paper.text'),
+            '--tw-prose-lead': theme('colors.paper.muted'),
+            '--tw-prose-links': theme('colors.paper.green'),
+            '--tw-prose-bold': theme('colors.paper.text'),
+            '--tw-prose-counters': theme('colors.paper.muted'),
+            '--tw-prose-bullets': theme('colors.paper.muted'),
+            '--tw-prose-hr': theme('colors.paper.border'),
+            '--tw-prose-quotes': theme('colors.paper.muted'),
+            '--tw-prose-quote-borders': theme('colors.paper.border2'),
+            '--tw-prose-captions': theme('colors.paper.faint'),
+            '--tw-prose-code': theme('colors.paper.text'),
+            '--tw-prose-pre-code': theme('colors.term.text'),
+            '--tw-prose-pre-bg': theme('colors.term.panel'),
+            '--tw-prose-th-borders': theme('colors.paper.border2'),
+            '--tw-prose-td-borders': theme('colors.paper.border'),
+            '--tw-prose-invert-body': '#d3dbe3',
+            '--tw-prose-invert-headings': theme('colors.term.text'),
+            '--tw-prose-invert-lead': theme('colors.term.muted'),
+            '--tw-prose-invert-links': theme('colors.term.greendim'),
+            '--tw-prose-invert-bold': theme('colors.term.text'),
+            '--tw-prose-invert-counters': theme('colors.term.muted'),
+            '--tw-prose-invert-bullets': theme('colors.term.muted'),
+            '--tw-prose-invert-hr': theme('colors.term.border'),
+            '--tw-prose-invert-quotes': theme('colors.term.muted'),
+            '--tw-prose-invert-quote-borders': theme('colors.term.border2'),
+            '--tw-prose-invert-captions': theme('colors.term.faint'),
+            '--tw-prose-invert-code': theme('colors.term.text'),
+            '--tw-prose-invert-pre-code': theme('colors.term.text'),
+            '--tw-prose-invert-pre-bg': theme('colors.term.panel'),
+            '--tw-prose-invert-th-borders': theme('colors.term.border2'),
+            '--tw-prose-invert-td-borders': theme('colors.term.border'),
             'code::before': {
               content: '""',
             },
@@ -25,8 +98,8 @@ export default {
               content: '""',
             },
             code: {
-              backgroundColor: theme('colors.gray.100'),
-              borderRadius: theme('borderRadius.DEFAULT'),
+              backgroundColor: theme('colors.paper.raised'),
+              borderRadius: theme('borderRadius.sm'),
               paddingLeft: theme('spacing.1'),
               paddingRight: theme('spacing.1'),
               paddingTop: theme('spacing.0.5'),
@@ -35,83 +108,8 @@ export default {
             },
           },
         },
-        dark: {
-          css: {
-            color: theme('colors.white'),
-            a: {
-              color: theme('colors.blue.400'),
-              '&:hover': {
-                color: theme('colors.blue.300'),
-              },
-            },
-            strong: {
-              color: theme('colors.blue.400'),
-            },
-            'ol > li::before': {
-              color: theme('colors.gray.400'),
-            },
-            'ul > li::before': {
-              backgroundColor: theme('colors.gray.500'),
-            },
-            hr: {
-              borderColor: theme('colors.gray.700'),
-            },
-            blockquote: {
-              color: theme('colors.gray.300'),
-              borderLeftColor: theme('colors.gray.600'),
-            },
-            h1: {
-              color: theme('colors.gray.50'),
-            },
-            h2: {
-              color: theme('colors.gray.50'),
-            },
-            h3: {
-              color: theme('colors.gray.50'),
-            },
-            h4: {
-              color: theme('colors.gray.50'),
-            },
-            'figure figcaption': {
-              color: theme('colors.gray.400'),
-            },
-            code: {
-              color: theme('colors.gray.50'),
-              backgroundColor: theme('colors.gray.700'),
-              borderRadius: theme('borderRadius.md'),
-              paddingLeft: theme('spacing.1.5'),
-              paddingRight: theme('spacing.1.5'),
-              paddingTop: theme('spacing.0.5'),
-              paddingBottom: theme('spacing.0.5'),
-            },
-            'a code': {
-              color: theme('colors.blue.300'),
-            },
-            pre: {
-              backgroundColor: theme('colors.gray.900'),
-              color: theme('colors.gray.100'),
-            },
-            'pre code': {
-              backgroundColor: 'transparent',
-              color: 'inherit',
-              padding: 0,
-            },
-            thead: {
-              color: theme('colors.gray.100'),
-              borderBottomColor: theme('colors.gray.600'),
-            },
-            'tbody tr': {
-              borderBottomColor: theme('colors.gray.700'),
-            },
-            'tbody td': {
-              color: theme('colors.white'),
-            },
-          },
-        },
       }),
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }

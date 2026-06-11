@@ -1,23 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE_TITLE } from '../consts';
 import LastFmNowPlaying from '../components/LastFmNowPlaying.astro';
 import GitHubStats from '../components/GitHubStats.astro';
 import SteamStatus from '../components/SteamStatus.astro';
 import TraktStatus from '../components/TraktStatus.astro';
 import appsData from '../data/apps.json';
+import openSourceData from '../data/opensource.json';
 
-// Define card sizes and priorities
 const links = [
-  // Large cards - all cards with rich widgets
   {
     title: 'GitHub',
     url: 'https://github.com/guitaripod',
-    description: '20+ open source projects across Go, Swift, and more',
-    icon: '🐙',
+    description: `${openSourceData.projects.length} open source projects across Go, Swift, Rust, and more`,
     iconPath: '/icons/github.svg',
     brandColor: '#181717',
-    category: 'development',
     size: 'large',
     widget: 'github',
     priority: 1,
@@ -26,10 +22,8 @@ const links = [
     title: 'Last.fm',
     url: 'https://www.last.fm/user/guitaripod/library/artists',
     description: 'My music listening history',
-    icon: '🎵',
     iconPath: '/icons/lastfm.svg',
     brandColor: '#D51007',
-    category: 'entertainment',
     size: 'large',
     widget: 'lastfm',
     priority: 2,
@@ -38,10 +32,8 @@ const links = [
     title: 'Trakt.tv',
     url: 'https://trakt.tv/users/guitaripod',
     description: "Track what I'm watching",
-    icon: '📺',
     iconPath: '/icons/trakt.svg',
     brandColor: '#ED1C24',
-    category: 'entertainment',
     size: 'large',
     widget: 'trakt',
     priority: 3,
@@ -50,24 +42,18 @@ const links = [
     title: 'Steam',
     url: 'https://steamcommunity.com/id/kratos42069/',
     description: 'Gaming profile',
-    icon: '🎮',
     iconPath: '/icons/steam.svg',
     brandColor: '#00adee',
-    category: 'entertainment',
     size: 'large',
     widget: 'steam',
     priority: 4,
   },
-
-  // Medium cards - standard links
   {
     title: 'App Store',
-    url: 'https://apps.apple.com/az/developer/marcus-ziade/id1484270247',
+    url: 'https://apps.apple.com/developer/marcus-ziade/id1484270247',
     description: `${appsData.apps.length} published apps for iPhone, iPad, Mac, and Apple TV`,
-    icon: '📱',
     iconPath: '/icons/appstore.svg',
     brandColor: '#0D84FF',
-    category: 'development',
     size: 'medium',
     priority: 5,
   },
@@ -75,21 +61,17 @@ const links = [
     title: 'YouTube',
     url: 'https://youtube.com/@guitaripod',
     description: 'Videos about stuff that I would want to watch.',
-    icon: '📹',
     iconPath: '/icons/youtube.svg',
     brandColor: '#FF0000',
-    category: 'social',
     size: 'medium',
     priority: 7,
   },
   {
     title: 'X (Twitter)',
     url: 'https://x.com/guitaripod',
-    description: 'Shitposts. Anything in the universe and beyond.',
-    icon: '🐦',
+    description: 'Builds, launches, and unfiltered takes.',
     iconPath: '/icons/x.svg',
     brandColor: '#000000',
-    category: 'social',
     size: 'medium',
     priority: 8,
   },
@@ -97,112 +79,103 @@ const links = [
     title: 'Twitch',
     url: 'https://twitch.tv/guitaripod',
     description: 'Live coding and gaming streams',
-    icon: '🟣',
     iconPath: '/icons/twitch.svg',
     brandColor: '#9146FF',
-    category: 'social',
     size: 'medium',
     priority: 9,
   },
 ];
 
-// Sort by priority (widgets first, then by category)
 const sortedLinks = links.sort((a, b) => a.priority - b.priority);
 ---
 
-<BaseLayout title="Links" description="Find me across the web">
-  <main>
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="text-center mb-12">
-        <h1
-          class="text-4xl sm:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100 tracking-tight"
-        >
-          Links
-        </h1>
-        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Find me across the web
-        </p>
-      </div>
+<BaseLayout
+  title="Links | Marcus Ziadé"
+  description="Find Marcus Ziadé across the web — live feeds included."
+>
+  <section class="py-12">
+    <div class="mb-10">
+      <p class="prompt-line mb-3">cat ~/.profile</p>
+      <h1
+        class="text-3xl sm:text-5xl font-bold tracking-tight text-paper-text dark:text-term-text mb-3"
+      >
+        Links
+      </h1>
+      <p class="text-sm sm:text-base text-paper-muted dark:text-term-muted max-w-2xl">
+        Every profile that matters, with live status pulled straight from the source — code, music,
+        games, and what's on screen right now.
+      </p>
+    </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {
-          sortedLinks.map((link) => {
-            // Define grid span classes based on size
-            let spanClass = '';
-            if (link.size === 'large') {
-              spanClass = 'md:col-span-1 lg:col-span-2'; // Large cards take half width
-            } else {
-              spanClass = 'md:col-span-1 lg:col-span-1'; // Medium cards take 1/4 width
-            }
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {
+        sortedLinks.map((link) => {
+          const spanClass =
+            link.size === 'large' ? 'md:col-span-1 lg:col-span-2' : 'md:col-span-1 lg:col-span-1';
+          const padding = link.widget ? 'p-6' : 'p-5';
+          const chipBorder =
+            link.brandColor === '#000000' ? 'dark:border dark:border-term-border' : '';
 
-            // Add extra padding for cards with widgets
-            const hasWidget = link.widget ? 'p-6' : 'p-5';
-
-            return (
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={`${spanClass} group relative flex flex-col ${hasWidget} bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 overflow-hidden`}
-              >
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div class="relative flex flex-col h-full">
-                  <div class="flex items-start gap-4 mb-3">
-                    <div
-                      class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg transition-all duration-200 group-hover:scale-110"
-                      style={`background-color: ${link.brandColor}; box-shadow: 0 2px 8px ${link.brandColor}30;`}
-                    >
-                      <img
-                        src={link.iconPath}
-                        alt={`${link.title} icon`}
-                        class="w-6 h-6 transition-all duration-200"
-                        style={`filter: brightness(0) saturate(100%) invert(100%);`}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="flex-1">
-                      <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
-                        {link.title}
-                        <svg
-                          class="w-4 h-4 text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-all duration-200 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                          />
-                        </svg>
-                      </h2>
-                    </div>
+          return (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`${spanClass} group relative flex flex-col ${padding} term-frame term-frame-hover overflow-hidden`}
+            >
+              <div class="relative flex flex-col h-full">
+                <div class="flex items-start gap-4 mb-3">
+                  <div
+                    class={`flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-sm ${chipBorder}`}
+                    style={`background-color: ${link.brandColor};`}
+                  >
+                    <img
+                      src={link.iconPath}
+                      alt={`${link.title} icon`}
+                      class="w-6 h-6"
+                      style="filter: brightness(0) saturate(100%) invert(100%);"
+                      loading="lazy"
+                    />
                   </div>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">{link.description}</p>
-
-                  {/* Widget rendering */}
-                  {link.widget && (
-                    <div
-                      class={`mt-auto ${link.widget !== 'lastfm' ? 'pt-3 border-t border-gray-200 dark:border-gray-700' : ''}`}
-                    >
-                      {link.widget === 'lastfm' && (
-                        <LastFmNowPlaying username="guitaripod" size="large" />
-                      )}
-                      {link.widget === 'github' && <GitHubStats username="guitaripod" />}
-                      {link.widget === 'steam' && <SteamStatus />}
-                      {link.widget === 'trakt' && (
-                        <TraktStatus username="guitaripod" size="large" />
-                      )}
-                    </div>
-                  )}
+                  <div class="flex-1">
+                    <h2 class="text-lg font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors flex items-center gap-2">
+                      {link.title}
+                      <svg
+                        class="w-4 h-4 text-paper-faint dark:text-term-faint group-hover:text-paper-green dark:group-hover:text-term-green transition-all duration-200 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </h2>
+                  </div>
                 </div>
-              </a>
-            );
-          })
-        }
-      </div>
-    </section>
-  </main>
+                <p class="text-sm text-paper-muted dark:text-term-muted mb-3">{link.description}</p>
+
+                {link.widget && (
+                  <div
+                    class={`mt-auto ${link.widget !== 'lastfm' ? 'pt-3 border-t border-paper-border dark:border-term-border' : ''}`}
+                  >
+                    {link.widget === 'lastfm' && (
+                      <LastFmNowPlaying username="guitaripod" size="large" />
+                    )}
+                    {link.widget === 'github' && <GitHubStats username="guitaripod" />}
+                    {link.widget === 'steam' && <SteamStatus />}
+                    {link.widget === 'trakt' && <TraktStatus username="guitaripod" size="large" />}
+                  </div>
+                )}
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+  </section>
 </BaseLayout>

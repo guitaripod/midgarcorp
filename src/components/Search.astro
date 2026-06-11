@@ -5,8 +5,9 @@
 <button
   id="search-button"
   type="button"
-  class="p-2 rounded-lg text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
-  aria-label="Search"
+  class="p-2 rounded-sm text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green hover:bg-paper-panel dark:hover:bg-term-panel transition-colors"
+  aria-label="Search (Cmd+K)"
+  title="Search (⌘K)"
 >
   <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path
@@ -18,11 +19,19 @@
 </button>
 
 <div id="search-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
-  <div class="flex min-h-screen items-center justify-center p-4">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true">
-    </div>
+  <div class="flex min-h-screen items-start justify-center p-4 pt-[12vh]">
+    <div class="fixed inset-0 bg-black bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
-    <div class="relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-lg shadow-xl">
+    <div
+      class="relative w-full max-w-2xl bg-paper-bg dark:bg-term-panel border border-paper-border dark:border-term-border rounded-sm shadow-2xl"
+    >
+      <div
+        class="flex items-center gap-2 px-4 py-2 border-b border-paper-border dark:border-term-border text-xs text-paper-muted dark:text-term-muted"
+      >
+        <span class="text-paper-green dark:text-term-green">$</span>
+        <span>grep -r "..." ~/midgar</span>
+        <span class="ml-auto">esc to close</span>
+      </div>
       <div class="p-4">
         <div id="search"></div>
       </div>
@@ -37,11 +46,25 @@
 
     if (!searchButton || !searchModal) return;
 
-    searchButton.addEventListener('click', () => {
-      searchModal.classList.remove('hidden');
+    let pagefindLoading = false;
+    let lastFocused = null;
 
-      // Load Pagefind UI if not already loaded
-      if (!window.PagefindUI) {
+    const focusSearchInput = (attempt = 0) => {
+      const input = searchModal.querySelector('.pagefind-ui__search-input');
+      if (input) {
+        input.focus();
+      } else if (attempt < 30) {
+        setTimeout(() => focusSearchInput(attempt + 1), 100);
+      }
+    };
+
+    const openModal = () => {
+      lastFocused = document.activeElement;
+      searchModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      if (!window.PagefindUI && !pagefindLoading) {
+        pagefindLoading = true;
         const script = document.createElement('script');
         script.src = '/pagefind/pagefind-ui.js';
         script.onload = () => {
@@ -51,6 +74,7 @@
             showImages: false,
             resetStyles: false,
           });
+          focusSearchInput();
         };
         document.head.appendChild(script);
 
@@ -58,24 +82,38 @@
         link.rel = 'stylesheet';
         link.href = '/pagefind/pagefind-ui.css';
         document.head.appendChild(link);
+      } else {
+        focusSearchInput();
       }
-    });
+    };
 
-    // Close modal on background click or Escape key
+    const closeModal = () => {
+      searchModal.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    };
+
+    searchButton.addEventListener('click', openModal);
+
     searchModal.addEventListener('click', (e) => {
       if (e.target === searchModal || e.target.classList.contains('bg-opacity-75')) {
-        searchModal.classList.add('hidden');
+        closeModal();
       }
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !searchModal.classList.contains('hidden')) {
-        searchModal.classList.add('hidden');
+        closeModal();
       }
-      // Open search with Cmd/Ctrl + K
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
-        searchButton.click();
+        if (searchModal.classList.contains('hidden')) {
+          openModal();
+        } else {
+          closeModal();
+        }
       }
     });
   }

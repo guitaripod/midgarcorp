@@ -5,7 +5,7 @@
 <button
   id="bionic-toggle"
   type="button"
-  class="flex items-center space-x-2 px-3 py-1.5 text-sm rounded-lg text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors"
+  class="flex items-center gap-2 px-3 py-1.5 text-sm rounded-sm border border-paper-border dark:border-term-border text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green hover:border-paper-green dark:hover:border-term-green transition-colors"
   aria-label="Toggle bionic reading"
 >
   <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -36,10 +36,12 @@
     if (bionicEnabled) {
       enableBionicReading();
       toggle.classList.add(
-        'bg-blue-100',
-        'dark:bg-blue-900',
-        'text-blue-700',
-        'dark:text-blue-300'
+        'text-paper-green',
+        'dark:text-term-green',
+        'bg-paper-panel',
+        'dark:bg-term-panel',
+        'border-paper-green',
+        'dark:border-term-green'
       );
     }
 
@@ -49,19 +51,23 @@
       if (isEnabled) {
         disableBionicReading();
         toggle.classList.remove(
-          'bg-blue-100',
-          'dark:bg-blue-900',
-          'text-blue-700',
-          'dark:text-blue-300'
+          'text-paper-green',
+          'dark:text-term-green',
+          'bg-paper-panel',
+          'dark:bg-term-panel',
+          'border-paper-green',
+          'dark:border-term-green'
         );
         localStorage.setItem('bionicReading', 'false');
       } else {
         enableBionicReading();
         toggle.classList.add(
-          'bg-blue-100',
-          'dark:bg-blue-900',
-          'text-blue-700',
-          'dark:text-blue-300'
+          'text-paper-green',
+          'dark:text-term-green',
+          'bg-paper-panel',
+          'dark:bg-term-panel',
+          'border-paper-green',
+          'dark:border-term-green'
         );
         localStorage.setItem('bionicReading', 'true');
       }
@@ -102,6 +108,7 @@
 
             // Skip if inside a code block wrapper or button text
             if (
+              element.classList.contains('bionic-wrapper') ||
               element.classList.contains('code-block') ||
               element.classList.contains('code-wrapper') ||
               element.classList.contains('expand-button') ||
@@ -152,6 +159,7 @@
           .join('');
 
         const span = document.createElement('span');
+        span.className = 'bionic-wrapper';
         span.innerHTML = bionicText;
         textNode.parentNode.replaceChild(span, textNode);
       });
@@ -161,8 +169,8 @@
       articleContent.classList.remove('bionic-reading');
 
       // Remove all bionic spans
-      const bionicSpans = articleContent.querySelectorAll('.bionic-text');
-      bionicSpans.forEach((span) => {
+      const bionicWrappers = articleContent.querySelectorAll('.bionic-wrapper');
+      bionicWrappers.forEach((span) => {
         const parent = span.parentNode;
         const text = span.textContent;
         const textNode = document.createTextNode(text);

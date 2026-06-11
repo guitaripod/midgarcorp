@@ -35,7 +35,7 @@ const ogImage = new URL(image, Astro.url);
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="author" content="Midgar Corp" />
+<meta name="author" content="Marcus Ziadé" />
 <meta name="robots" content="index, follow" />
 
 <!-- Open Graph / Facebook -->
@@ -57,8 +57,8 @@ const ogImage = new URL(image, Astro.url);
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImage} />
 <meta property="twitter:image:alt" content={`${title} - Midgar Corp`} />
-<meta property="twitter:creator" content="@compiledthought" />
-<meta property="twitter:site" content="@compiledthought" />
+<meta property="twitter:creator" content="@guitaripod" />
+<meta property="twitter:site" content="@guitaripod" />
 
 <!-- Article specific -->
 {article && publishedTime && <meta property="article:published_time" content={publishedTime} />}
@@ -68,13 +68,18 @@ const ogImage = new URL(image, Astro.url);
 <link rel="alternate" type="application/rss+xml" title={title} href="/rss.xml" />
 
 <!-- Fonts and styles -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  href="/fonts/jetbrains-mono-var.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
 
 <!-- Theme color -->
 <meta name="color-scheme" content="light dark" />
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#fdf6e3" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
 
 <!-- JSON-LD -->
 {
@@ -89,6 +94,11 @@ const ogImage = new URL(image, Astro.url);
         datePublished: publishedTime,
         author: {
           '@type': 'Person',
+          name: 'Marcus Ziadé',
+          url: 'https://midgarcorp.cc',
+        },
+        publisher: {
+          '@type': 'Organization',
           name: 'Midgar Corp',
         },
         image: ogImage,

@@ -3,218 +3,30 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import CLIAppCard from '@components/CLIAppCard.astro';
 import openSourceData from '../data/opensource.json';
 
-const pageTitle = 'CLI Tools | Marcus Ziadé';
-const pageDescription =
-  'Command-line tools and utilities for nerds. Built with Go, Swift, and Rust for productivity, automation, and making terminal life better.';
-
-// Filter to get only CLI Tools, sort by stars
+const extraCLIIds = ['weavex'];
 const cliTools = openSourceData.projects
-  .filter((project) => project.category === 'CLI Tools')
-  .sort((a, b) => b.stars - a.stars);
-
-// Add weavex if it's not already in the list
-const hasWeavex = cliTools.some((tool) => tool.name.toLowerCase() === 'weavex');
-if (!hasWeavex) {
-  cliTools.unshift({
-    id: 'weavex',
-    name: 'Weavex',
-    description:
-      'Autonomous AI research agent powered by local LLMs. Watch as your model searches the web, reasons through queries, and synthesizes intelligent answers with citations.',
-    language: 'Rust',
-    platforms: ['macOS', 'Linux', 'Windows'],
-    stars: 0,
-    githubUrl: 'https://github.com/guitaripod/weavex',
-    category: 'CLI Tools',
-    highlights: ['AI Agent', 'Web Search', 'Local LLMs'],
-    topics: ['cli', 'rust', 'ai', 'ollama', 'agent', 'search'],
-    commitCount: 0,
-    updatedAt: '2025-09-27T00:00:00Z',
+  .filter((project) => project.category === 'CLI Tools' || extraCLIIds.includes(project.id))
+  .sort((a, b) => {
+    if (b.stars !== a.stars) return b.stars - a.stars;
+    const dateA = a.updatedAt ? new Date(a.updatedAt).getTime() : 0;
+    const dateB = b.updatedAt ? new Date(b.updatedAt).getTime() : 0;
+    return dateB - dateA;
   });
-}
 
-// Add pomme if it's not already in the list
-const hasPomme = cliTools.some((tool) => tool.name.toLowerCase() === 'pomme');
-if (!hasPomme) {
-  cliTools.unshift({
-    id: 'pomme',
-    name: 'Pomme',
-    description:
-      'Beautiful App Store Connect CLI for sales reports, analytics, and reviews. Built with Go.',
-    language: 'Go',
-    platforms: ['macOS', 'Linux', 'Windows'],
-    stars: 0,
-    githubUrl: 'https://github.com/guitaripod/Pomme',
-    category: 'CLI Tools',
-    highlights: ['App Store', 'Analytics', 'Reviews'],
-    topics: ['cli', 'go', 'app-store-connect', 'ios', 'analytics'],
-    commitCount: 0,
-    updatedAt: '2025-07-01T00:00:00Z',
-  });
-}
+const languages = [...new Set(cliTools.map((tool) => tool.language))];
+const languageList =
+  languages.length > 1
+    ? `${languages.slice(0, -1).join(', ')} and ${languages[languages.length - 1]}`
+    : languages.join('');
 
-// Add speedrun-cli if not in list
-const hasSpeedrun = cliTools.some((tool) => tool.name.toLowerCase() === 'speedrun-cli');
-if (!hasSpeedrun) {
-  cliTools.push({
-    id: 'speedrun-cli',
-    name: 'speedrun-cli',
-    description:
-      'CLI client for speedrun.com. Browse games, categories, and leaderboards from your terminal.',
-    language: 'Go',
-    platforms: ['macOS', 'Linux', 'Windows'],
-    stars: 0,
-    githubUrl: 'https://github.com/guitaripod/speedrun-cli',
-    category: 'CLI Tools',
-    highlights: [],
-    topics: ['cli', 'go', 'speedrun', 'gaming'],
-    commitCount: 27,
-    updatedAt: '2025-06-15T00:00:00Z',
-  });
-}
+const pageTitle = 'CLI Tools | Marcus Ziadé';
+const pageDescription = `Tools for the command line. Built with ${languageList}. Installable via Homebrew, cargo, and go install.`;
 
-// Add apod-cli if not in list
-const hasApod = cliTools.some((tool) => tool.name.toLowerCase() === 'apod-cli');
-if (!hasApod) {
-  cliTools.push({
-    id: 'apod-cli',
-    name: 'apod-cli',
-    description: 'A command-line tool to browse the NASA Astronomy Picture of the Day archive.',
-    language: 'Go',
-    platforms: ['macOS', 'Linux', 'Windows'],
-    stars: 6,
-    githubUrl: 'https://github.com/guitaripod/apod-cli',
-    category: 'CLI Tools',
-    highlights: ['Homebrew available'],
-    topics: ['cli', 'go', 'nasa', 'astronomy', 'space'],
-    commitCount: 37,
-    updatedAt: '2025-06-01T00:00:00Z',
-  });
-}
+const whichLine = `which ${cliTools
+  .slice(0, 4)
+  .map((tool) => tool.name.toLowerCase())
+  .join(' ')} ...`;
 
-// Add more CLI tools that likely have 25+ commits
-const additionalTools = [
-  {
-    id: 'lastfm-rs',
-    name: 'lastfm-rs',
-    description: 'Blazing-fast Rust Last.fm SDK and CLI.',
-    language: 'Rust',
-    platforms: ['Linux'],
-    stars: 2,
-    githubUrl: 'https://github.com/guitaripod/lastfm-rs',
-    category: 'CLI Tools',
-    highlights: ['Full Auth Support', '31+ Commands', 'Smart Caching'],
-    topics: ['cli', 'rust', 'lastfm', 'music', 'cloudflare-workers'],
-    commitCount: 45,
-  },
-  {
-    id: 'nasa-rs',
-    name: 'nasa-rs',
-    description:
-      'Comprehensive CLI tool for accessing NASA APIs - APOD, Mars rovers, asteroids, and more.',
-    language: 'Rust',
-    platforms: ['macOS', 'Linux', 'Windows'],
-    stars: 1,
-    githubUrl: 'https://github.com/guitaripod/nasa-rs',
-    category: 'CLI Tools',
-    highlights: ['NASA APIs', 'Space data', 'Astronomy'],
-    topics: ['cli', 'rust', 'nasa', 'space', 'astronomy'],
-    commitCount: 0,
-  },
-  {
-    id: 'igscraper',
-    name: 'igscraper',
-    description: 'Instagram scraper CLI tool for downloading posts, stories, and user data.',
-    language: 'Go',
-    platforms: ['macOS', 'Linux', 'Windows'],
-    stars: 1,
-    githubUrl: 'https://github.com/guitaripod/igscraper',
-    category: 'CLI Tools',
-    highlights: [],
-    topics: ['cli', 'go', 'instagram', 'scraper'],
-    commitCount: 25,
-  },
-  {
-    id: 'geminicli',
-    name: 'GeminiCLI',
-    description:
-      'Command-line interface for Google Gemini AI. Chat with Gemini from your terminal.',
-    language: 'Swift',
-    platforms: ['macOS', 'Linux'],
-    stars: 6,
-    githubUrl: 'https://github.com/guitaripod/GeminiKit',
-    category: 'CLI Tools',
-    highlights: [],
-    topics: ['cli', 'swift', 'ai', 'gemini', 'llm'],
-    commitCount: 30,
-  },
-  {
-    id: 'swollamacli',
-    name: 'SwollamaCLI',
-    description:
-      'Swift CLI for Ollama. Run local LLMs from your terminal with a native Swift interface.',
-    language: 'Swift',
-    platforms: ['macOS', 'Linux'],
-    stars: 12,
-    githubUrl: 'https://github.com/guitaripod/Swollama',
-    category: 'CLI Tools',
-    highlights: [],
-    topics: ['cli', 'swift', 'ai', 'ollama', 'llm'],
-    commitCount: 45,
-  },
-];
-
-// Add additional tools if they're not already in the list
-additionalTools.forEach((tool) => {
-  if (!cliTools.some((t) => t.name.toLowerCase() === tool.name.toLowerCase())) {
-    cliTools.push(tool);
-  }
-});
-
-// Sort by latest commit date (updatedAt) first
-cliTools.sort((a, b) => {
-  const dateA = a.updatedAt ? new Date(a.updatedAt).getTime() : 0;
-  const dateB = b.updatedAt ? new Date(b.updatedAt).getTime() : 0;
-  return dateB - dateA;
-});
-
-// Implement language-alternating sort
-function alternateLanguageSort(tools) {
-  // Group tools by language
-  const languageGroups = tools.reduce((acc, tool) => {
-    if (!acc[tool.language]) {
-      acc[tool.language] = [];
-    }
-    acc[tool.language].push(tool);
-    return acc;
-  }, {});
-
-  const result = [];
-  const languages = Object.keys(languageGroups);
-
-  // Continue until all tools are placed
-  while (result.length < tools.length) {
-    // Track if we made any progress this round
-    let addedInRound = false;
-
-    // Go through each language and take one tool if available
-    for (const lang of languages) {
-      if (languageGroups[lang].length > 0) {
-        result.push(languageGroups[lang].shift());
-        addedInRound = true;
-      }
-    }
-
-    // Safety check to avoid infinite loop
-    if (!addedInRound) break;
-  }
-
-  return result;
-}
-
-// Apply the alternating language sort
-const sortedCliTools = alternateLanguageSort(cliTools);
-
-// Create structured data for SEO
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -226,7 +38,7 @@ const structuredData = {
     name: 'Marcus Ziadé',
     url: 'https://midgarcorp.cc',
   },
-  hasPart: sortedCliTools.map((tool) => ({
+  hasPart: cliTools.map((tool) => ({
     '@type': 'SoftwareApplication',
     name: tool.name,
     description: tool.description,
@@ -239,21 +51,33 @@ const structuredData = {
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <!-- Page content without extra main wrapper -->
   <div class="py-6 sm:py-8 lg:py-12">
-    <header class="text-center mb-8 sm:mb-12">
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">CLI Tools</h1>
-      <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-4">
-        Tools for the command line. Built with Go, Swift, and Rust.
+    <header class="mb-8 sm:mb-12">
+      <p class="prompt-line mb-4">{whichLine}</p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-paper-text dark:text-term-text"
+      >
+        CLI Tools
+      </h1>
+      <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-2xl mb-6">
+        Tools for the command line. Built with
+        {
+          languages.map((language, index) => (
+            <>
+              <span class="text-paper-text dark:text-term-text font-semibold">{language}</span>
+              {index < languages.length - 2 ? ', ' : index === languages.length - 2 ? ' and ' : ''}
+            </>
+          ))
+        }. Installable via Homebrew, cargo, and go install.
       </p>
-      <div class="flex gap-3 sm:gap-4 justify-center">
+      <div class="flex flex-wrap gap-3">
         <a
           href="https://github.com/guitaripod?tab=repositories&q=cli"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-200 text-sm sm:text-base"
+          class="inline-flex items-center gap-2 px-4 py-2 border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text rounded-sm text-sm font-semibold hover:border-paper-green dark:hover:border-term-green hover:text-paper-green dark:hover:text-term-green transition-colors"
         >
-          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path
               d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
             ></path>
@@ -265,30 +89,32 @@ const structuredData = {
 
     <section>
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {sortedCliTools.map((tool) => <CLIAppCard project={tool} />)}
+        {cliTools.map((tool) => <CLIAppCard project={tool} />)}
       </div>
     </section>
 
-    <section class="mt-12 sm:mt-16 text-center">
-      <a
-        href="https://github.com/guitaripod?tab=repositories&q=cli"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-200 text-sm sm:text-base"
-      >
-        Explore All CLI Projects
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-        </svg>
-      </a>
+    <section class="mt-12 sm:mt-16">
+      <div class="term-frame p-6 sm:p-8">
+        <p class="prompt-line mb-4">git clone --recursive ~/bin</p>
+        <h2 class="text-xl sm:text-2xl font-bold mb-3 text-paper-text dark:text-term-text">
+          Every tool is open source.
+        </h2>
+        <p class="text-sm sm:text-base text-paper-muted dark:text-term-muted mb-6 max-w-2xl">
+          Source, releases, and install instructions for all {cliTools.length} tools — plus the rest
+          of {openSourceData.projects.length} open-source projects — live on GitHub.
+        </p>
+        <a
+          href="https://github.com/guitaripod?tab=repositories&q=cli"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+        >
+          ./explore-all-cli-projects
+        </a>
+      </div>
     </section>
   </div>
 
-  <!-- Structured data for better SEO -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </BaseLayout>
 
@@ -296,7 +122,7 @@ const structuredData = {
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(12px);
     }
     to {
       opacity: 1;
@@ -305,35 +131,52 @@ const structuredData = {
   }
 
   .grid > * {
-    animation: fadeIn 0.6s ease-out forwards;
-    opacity: 0;
+    animation: fadeIn 0.45s ease-out both;
   }
 
   .grid > *:nth-child(1) {
-    animation-delay: 0.1s;
+    animation-delay: 0.05s;
   }
   .grid > *:nth-child(2) {
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
   }
   .grid > *:nth-child(3) {
-    animation-delay: 0.3s;
+    animation-delay: 0.15s;
   }
   .grid > *:nth-child(4) {
-    animation-delay: 0.4s;
+    animation-delay: 0.2s;
   }
   .grid > *:nth-child(5) {
-    animation-delay: 0.5s;
+    animation-delay: 0.25s;
   }
   .grid > *:nth-child(6) {
-    animation-delay: 0.6s;
+    animation-delay: 0.3s;
   }
   .grid > *:nth-child(7) {
-    animation-delay: 0.7s;
+    animation-delay: 0.35s;
   }
   .grid > *:nth-child(8) {
-    animation-delay: 0.8s;
+    animation-delay: 0.4s;
   }
   .grid > *:nth-child(9) {
-    animation-delay: 0.9s;
+    animation-delay: 0.45s;
+  }
+  .grid > *:nth-child(10) {
+    animation-delay: 0.5s;
+  }
+  .grid > *:nth-child(11) {
+    animation-delay: 0.55s;
+  }
+  .grid > *:nth-child(12) {
+    animation-delay: 0.6s;
+  }
+  .grid > *:nth-child(n + 13) {
+    animation-delay: 0.65s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .grid > * {
+      animation: none;
+    }
   }
 </style>

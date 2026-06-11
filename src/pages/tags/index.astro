@@ -4,7 +4,6 @@ import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).filter((post) => !post.data.draft);
 
-// Extract all unique tags
 const tagCounts = posts.reduce(
   (acc, post) => {
     post.data.tags.forEach((tag) => {
@@ -20,29 +19,32 @@ const tags = Object.entries(tagCounts)
   .map(([tag, count]) => ({ tag, count }));
 ---
 
-<BaseLayout title="Tags - Midgar Corp" description="Browse all blog post tags">
+<BaseLayout title="Tags | Marcus Ziadé" description="Browse all blog post tags">
   <div class="py-6 sm:py-8">
-    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6 sm:mb-8">
+    <p class="prompt-line mb-4">grep -c tags ~/blog/*</p>
+    <h1 class="text-3xl sm:text-4xl font-bold text-paper-text dark:text-term-text mb-6 sm:mb-8">
       Tags
     </h1>
 
     {
       tags.length > 0 ? (
-        <div class="flex flex-wrap gap-2 sm:gap-3 lg:gap-4">
+        <div class="flex flex-wrap gap-2 sm:gap-3">
           {tags.map(({ tag, count }) => (
             <a
               href={`/tags/${tag}`}
-              class="group flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm sm:text-base"
+              class="group term-frame term-frame-hover flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base"
             >
-              <span class="font-medium text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+              <span class="font-medium text-paper-greendim dark:text-term-greendim group-hover:text-paper-green dark:group-hover:text-term-green transition-colors">
                 #{tag}
               </span>
-              <span class="text-xs sm:text-sm text-gray-500 dark:text-gray-500">({count})</span>
+              <span class="text-xs sm:text-sm text-paper-muted dark:text-term-muted">
+                ({count})
+              </span>
             </a>
           ))}
         </div>
       ) : (
-        <p class="text-gray-600 dark:text-gray-400">No tags found yet.</p>
+        <p class="text-paper-muted dark:text-term-muted">No tags found yet.</p>
       )
     }
   </div>

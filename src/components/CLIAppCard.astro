@@ -22,458 +22,234 @@ export interface Props {
 
 const { project } = Astro.props;
 
-// Generate GitHub Pages URL from repo name
-const getGitHubPagesUrl = (githubUrl: string) => {
-  // Extract repo name from GitHub URL
-  const match = githubUrl.match(/github\.com\/[^\/]+\/([^\/]+)$/);
-  if (match && match[1]) {
-    const repoName = match[1].replace(/\.git$/, '');
-    return `https://guitaripod.github.io/${repoName}/`;
-  }
-  return null;
-};
-
-// Projects that don't have GitHub Pages documentation
-const projectsWithoutGitHubPages = ['speedrun-cli', 'apod-cli', 'songlink-cli', 'weavex'];
-
-// Special URL overrides for specific projects
-const projectUrlOverrides: Record<string, string> = {
-  'gh-export': 'https://crates.io/crates/gh-export',
-};
-
-// URL selection: check for overrides first, then prefer GitHub Pages (auto-generated), then docs, then homepage, then github
-// For certain projects, skip GitHub Pages and use GitHub directly
-const githubPagesUrl =
-  project.githubUrl && !projectsWithoutGitHubPages.includes(project.id)
-    ? getGitHubPagesUrl(project.githubUrl)
-    : null;
-const targetUrl =
-  projectUrlOverrides[project.id] ||
-  githubPagesUrl ||
-  project.docsUrl ||
-  project.homepageUrl ||
-  project.githubUrl;
-
-// Define language-based themes with muted language-specific colors
-const languageThemes = {
-  Go: {
-    gradient: 'linear-gradient(135deg, #1a6b84 0%, #2090b3 40%, #26a3c9 70%, #4db5d9 100%)',
-    darkGradient: 'linear-gradient(135deg, #134f63 0%, #1a6b84 40%, #2090b3 70%, #26a3c9 100%)',
-    accent: '#00ADD8', // Go's official cyan
-    darkAccent: '#5DC9E2',
-    baseIcon: '',
-  },
-  Swift: {
-    gradient: 'linear-gradient(135deg, #c24e2f 0%, #e0633c 40%, #e57854 70%, #ea8d6b 100%)',
-    darkGradient: 'linear-gradient(135deg, #a33e23 0%, #c24e2f 40%, #e0633c 70%, #e57854 100%)',
-    accent: '#FA7343', // Swift's official orange
-    darkAccent: '#FD9A6C',
-    baseIcon: '',
-  },
-  Rust: {
-    gradient: 'linear-gradient(135deg, #8f1c3a 0%, #b53628 40%, #c15044 70%, #cd6a60 100%)',
-    darkGradient: 'linear-gradient(135deg, #71162e 0%, #8f1c3a 40%, #b53628 70%, #c15044 100%)',
-    accent: '#CE422B', // Rust's official brown/red
-    darkAccent: '#E48670',
-    baseIcon: '',
-  },
-  Python: {
-    gradient: 'linear-gradient(135deg, #2a5a82 0%, #31689a 40%, #4179b0 70%, #5a8dc4 100%)',
-    darkGradient: 'linear-gradient(135deg, #1f4568 0%, #2a5a82 40%, #31689a 70%, #4179b0 100%)',
-    accent: '#3776AB', // Python's official blue
-    darkAccent: '#6FA4E7',
-    baseIcon: '',
-  },
-  JavaScript: {
-    gradient: 'linear-gradient(135deg, #bfaa15 0%, #d4c01b 40%, #ddc939 70%, #e6d257 100%)',
-    darkGradient: 'linear-gradient(135deg, #a2900f 0%, #bfaa15 40%, #d4c01b 70%, #ddc939 100%)',
-    accent: '#F7DF1E', // JavaScript's official yellow
-    darkAccent: '#F9ED64',
-    baseIcon: '',
-  },
-  TypeScript: {
-    gradient: 'linear-gradient(135deg, #20528a 0%, #2968a8 40%, #3a78bb 70%, #4b88ce 100%)',
-    darkGradient: 'linear-gradient(135deg, #173d6d 0%, #20528a 40%, #2968a8 70%, #3a78bb 100%)',
-    accent: '#3178C6', // TypeScript's official blue
-    darkAccent: '#5299E6',
-    baseIcon: '',
-  },
-  Ruby: {
-    gradient: 'linear-gradient(135deg, #8a231e 0%, #ad2b25 40%, #b54745 70%, #bd6365 100%)',
-    darkGradient: 'linear-gradient(135deg, #6e1a17 0%, #8a231e 40%, #ad2b25 70%, #b54745 100%)',
-    accent: '#CC342D', // Ruby's official red
-    darkAccent: '#E07673',
-    baseIcon: '',
-  },
-  'C++': {
-    gradient: 'linear-gradient(135deg, #003966 0%, #004a85 40%, #155c9b 70%, #2a6eb1 100%)',
-    darkGradient: 'linear-gradient(135deg, #002a4d 0%, #003966 40%, #004a85 70%, #155c9b 100%)',
-    accent: '#00599C', // C++'s official blue
-    darkAccent: '#3485CC',
-    baseIcon: '',
-  },
-  C: {
-    gradient: 'linear-gradient(135deg, #758292 0%, #919daa 40%, #a1acb8 70%, #b1bbc6 100%)',
-    darkGradient: 'linear-gradient(135deg, #5d6876 0%, #758292 40%, #919daa 70%, #a1acb8 100%)',
-    accent: '#A8B9CC', // C's traditional blue-gray
-    darkAccent: '#C4D1E0',
-    baseIcon: '',
-  },
-  Java: {
-    gradient: 'linear-gradient(135deg, #004c65 0%, #00627f 40%, #177491 70%, #2e86a3 100%)',
-    darkGradient: 'linear-gradient(135deg, #00384c 0%, #004c65 40%, #00627f 70%, #177491 100%)',
-    accent: '#007396', // Java's official blue
-    darkAccent: '#339FC2',
-    baseIcon: '',
-  },
-  Shell: {
-    gradient: 'linear-gradient(135deg, #5ea135 0%, #74be47 40%, #83c45a 70%, #92ca6d 100%)',
-    darkGradient: 'linear-gradient(135deg, #4d842b 0%, #5ea135 40%, #74be47 70%, #83c45a 100%)',
-    accent: '#89E051', // Shell/Bash green
-    darkAccent: '#ABE883',
-    baseIcon: '',
-  },
-};
-
-// Get specific icons for each tool - removed emojis
-const toolIcons = {
-  'songlink-cli': '',
-  pomme: '',
-  'speedrun-cli': '',
-  'apod-cli': '',
-  igscraper: '',
-  geminicli: '',
-  swollamacli: '',
-  'lastfm-rs': '',
-  'nasa-rs': '',
-  weavex: '',
-};
-
-// Get theme based on language
-const langTheme = languageThemes[project.language] || languageThemes.Go;
-const getPattern = (language: string) => {
-  switch (language) {
-    case 'Swift':
-      return 'swift-pattern';
-    case 'Rust':
-      return 'rust-pattern';
-    default:
-      return 'go-pattern';
+const registryHosts = ['crates.io', 'www.npmjs.com', 'pypi.org', 'pkg.go.dev'];
+const isRegistryUrl = (url: string) => {
+  try {
+    return registryHosts.includes(new URL(url).hostname);
+  } catch {
+    return true;
   }
 };
-const toolTheme = {
-  ...langTheme,
-  icon: toolIcons[project.id] || langTheme.baseIcon,
-  pattern: getPattern(project.language),
+const preferredHomepage =
+  project.homepageUrl && !isRegistryUrl(project.homepageUrl) ? project.homepageUrl : undefined;
+const targetUrl = preferredHomepage || project.docsUrl || project.githubUrl;
+
+const languageAccents: Record<string, string> = {
+  Go: '#00ADD8',
+  Swift: '#FA7343',
+  Rust: '#CE422B',
+  Python: '#3776AB',
+  TypeScript: '#3178C6',
+  JavaScript: '#F7DF1E',
+  Shell: '#89E051',
 };
 
-// Terminal-style installation commands
+const languageAccent = languageAccents[project.language] || '#7d8590';
+
 const getInstallCommand = (name: string, language: string) => {
   const lowerName = name.toLowerCase();
-  if (lowerName === 'weavex') return 'cargo install weavex';
-  if (lowerName === 'pomme') return 'brew install pomme';
-  if (lowerName === 'nasa-rs') return 'cargo install nasa-rs';
-  if (lowerName === 'gh-export') return 'cargo install gh-export';
+  if (lowerName === 'flyr') return 'cargo install flyr-cli';
+  if (lowerName === 'unrager') return 'cargo install unrager';
+  if (lowerName === 'songlink-cli') return 'brew install guitaripod/songlink-cli/songlink-cli';
+  if (lowerName === 'pomme') return 'go install github.com/guitaripod/Pomme@latest';
   if (lowerName === 'apod-cli') return 'brew install guitaripod/tap/apod-cli';
-  if (lowerName === 'lastfm-rs') return 'cargo install --path . --bin lastfm-cli';
+  if (lowerName === 'image-collage') return 'cargo install image-collage';
+  if (lowerName === 'gh-export') return 'cargo install gh-export';
+  if (lowerName === 'songlink-cli-rust')
+    return 'cargo install --git https://github.com/guitaripod/songlink-cli-rust';
+  if (lowerName === 'btop-ios' || lowerName === 'anvil' || lowerName === 'crucible')
+    return `git clone https://github.com/guitaripod/${lowerName}`;
   if (language === 'Go') return `go install github.com/guitaripod/${lowerName}@latest`;
-  if (language === 'Swift') return `swift build -c release`;
-  return `# Check README for installation`;
+  if (language === 'Rust') return `cargo install --git https://github.com/guitaripod/${lowerName}`;
+  if (language === 'Swift') return 'swift build -c release';
+  return `git clone https://github.com/guitaripod/${lowerName}`;
 };
 
-// Get terminal demo based on project
 const getTerminalDemo = (name: string) => {
   const lowerName = name.toLowerCase();
-  if (lowerName === 'weavex') {
+  if (lowerName === 'flyr') {
     return [
-      'weavex agent "latest Rust developments 2025"',
-      '🧵 Weaving...',
-      '🔎 Searching web for Rust 2025 updates',
-      '💬 Synthesizing 5 sources with citations',
-      '✨ Opening result in browser',
+      'flyr MAD NRT --date 2026-07-14',
+      'searching google flights...',
+      '1. IB  MAD→NRT  13h55m  €612',
+      '2. AF  MAD→CDG→NRT  16h20m  €548',
+    ];
+  }
+  if (lowerName === 'unrager') {
+    return [
+      'unrager',
+      'rage filter: local llm [active]',
+      'hidden: 42 posts · shown: 18 calm posts',
+      'timeline ready',
+    ];
+  }
+  if (lowerName === 'songlink-cli') {
+    return [
+      'songlink https://spotify.link/4cOdK2w',
+      'resolving universal link...',
+      'https://song.link/s/4cOdK2wDCqOpJuMs',
+      'copied to clipboard',
     ];
   }
   if (lowerName === 'pomme') {
     return [
-      'pomme sales --month december',
-      'Fetching sales data...',
-      'Revenue: $486,392.45',
-      'Countries: 142 markets',
-      'Growth: +23.4% YoY',
+      'pomme sales',
+      'fetching app store connect...',
+      'units: 1,284 · proceeds: $2,431.07',
+      'top market: US (38%)',
     ];
   }
   if (lowerName === 'apod-cli') {
     return [
       'apod-cli today',
-      "Fetching today's image...",
-      'Title: Pillars of Creation',
-      'Date: 2025-07-05',
-      'Opening in browser...',
-    ];
-  }
-  if (lowerName === 'songlink-cli') {
-    return [
-      'songlink "The Weeknd - Blinding Lights"',
-      'Creating universal link...',
-      'song.link/s/abc123xyz',
-      'Copied to clipboard!',
+      'fetching astronomy picture of the day...',
+      'title: Pillars of Creation',
+      'opening in browser...',
     ];
   }
   if (lowerName === 'speedrun-cli') {
     return [
       'speedrun-cli game "Super Mario 64"',
-      'Loading leaderboards...',
-      '1. cheese05 - 6:41.000',
-      '2. Simply - 6:45.200',
-      '3. Puncayshun - 6:47.450',
+      'loading leaderboards...',
+      '1. cheese  6:41.000',
+      '2. Simply  6:45.200',
     ];
   }
-  if (lowerName === 'igscraper') {
+  if (lowerName === 'image-collage') {
     return [
-      'igscraper user @nasa --limit 10',
-      'Scraping Instagram...',
-      'Posts found: 3,847',
-      'Downloaded: 10/10',
-      'Saved to ./nasa/',
+      'image-collage a.png b.png c.png d.png',
+      'building 2x2 grid...',
+      'wrote collage.png (2048x2048)',
+      'exit 0',
     ];
   }
-  if (lowerName === 'geminicli') {
+  if (lowerName === 'songlink-cli-rust') {
     return [
-      'gemini chat',
-      'Gemini CLI v1.0.0',
-      '> explain quantum entanglement',
-      'Thinking...',
-      'Quantum entanglement is when...',
+      'songlink https://music.apple.com/track/123',
+      'generating song.link...',
+      'copied to clipboard in 84ms',
+      'exit 0',
     ];
   }
-  if (lowerName === 'swollamacli') {
+  if (lowerName === 'reposort') {
     return [
-      'swollama run llama3.2',
-      'Loading model...',
-      '> write a haiku about code',
-      'Functions cascade,',
-      'Logic flows like gentle streams,',
-      'Bugs await their fix.',
+      'reposort ~/Dev',
+      'scanning 57 repositories...',
+      'go: 14 · rust: 12 · swift: 23',
+      'sorted into language dirs',
     ];
   }
-  if (lowerName === 'lastfm-rs') {
+  if (lowerName === 'btop-ios') {
     return [
-      'lastfm-cli user recent-tracks radiohead',
-      'Fetching recent tracks...',
-      '🎵 Paranoid Android (6:23)',
-      '🎵 Karma Police (4:21)',
-      '🎵 Exit Music (4:24)',
-    ];
-  }
-  if (lowerName === 'nasa-rs') {
-    return [
-      'nasa apod today',
-      'Fetching NASA APOD...',
-      'Title: Pillars of Creation',
-      'Date: 2025-07-08',
-      'Downloading HD image...',
+      'git clone github.com/guitaripod/btop-ios',
+      'cloning into btop-ios...',
+      'open btop-ios.xcodeproj && run on device',
     ];
   }
   if (lowerName === 'gh-export') {
     return [
-      'gh-export guitaripod/cli-tools',
-      'Exporting repository...',
-      'Files: 127 exported',
-      'Size: 2.3 MB',
-      'Saved to: cli-tools/',
+      'gh-export guitaripod/flyr',
+      'exporting repository...',
+      'files: 127 · size: 2.3 MB',
+      'saved to flyr/',
     ];
   }
-  return [`${lowerName} --help`, 'Command-line tool', 'Fast and efficient'];
+  if (lowerName === 'anvil' || lowerName === 'crucible') {
+    return [
+      `git clone github.com/guitaripod/${lowerName}`,
+      `cloning into ${lowerName}...`,
+      'open in Xcode && build',
+    ];
+  }
+  return [`${lowerName} --help`, `usage: ${lowerName} [command] [flags]`, 'exit 0'];
 };
 
 const terminalDemo = getTerminalDemo(project.name);
 const installCmd = getInstallCommand(project.name, project.language);
 ---
 
-<article
-  class="cli-card group relative h-full rounded-2xl overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
-  style={`--gradient-light: ${toolTheme.gradient}; --gradient-dark: ${toolTheme.darkGradient}; --accent-light: ${toolTheme.accent}; --accent-dark: ${toolTheme.darkAccent};`}
-  data-pattern={toolTheme.pattern}
-  data-theme={project.id}
->
-  <!-- Background pattern overlay -->
-  <div
-    class="absolute inset-0 opacity-10 dark:opacity-5 pattern-overlay"
-    data-pattern={toolTheme.pattern}
-  >
-  </div>
-
-  <a href={targetUrl} target="_blank" rel="noopener noreferrer" class="relative block h-full">
-    <!-- Card header -->
-    <div class="relative z-10 p-4 pb-3">
-      <div class="flex items-start justify-between mb-3">
-        <div class="flex items-center gap-3">
-          <div>
-            <h3 class="text-lg font-bold text-gray-100 drop-shadow-sm">
-              {project.name}
-            </h3>
-            <div class="flex items-center gap-2 mt-1">
-              <span
-                class="px-2 py-0.5 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-              >
-                {project.language}
-              </span>
-              {
-                project.stars > 0 && (
-                  <span class="flex items-center gap-1 text-xs text-gray-300 dark:text-gray-400">
-                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    {project.stars}
-                  </span>
-                )
-              }
-            </div>
-          </div>
-        </div>
+<article class="cli-card group h-full term-frame term-frame-hover overflow-hidden">
+  <a href={targetUrl} target="_blank" rel="noopener noreferrer" class="block h-full">
+    <div class="p-4 pb-3">
+      <div class="flex items-start justify-between gap-3 mb-2">
+        <h3
+          class="text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors"
+        >
+          {project.name}
+        </h3>
+        {
+          project.stars > 0 && (
+            <span class="shrink-0 text-xs text-paper-amber dark:text-term-amber whitespace-nowrap">
+              ★ {project.stars}
+            </span>
+          )
+        }
       </div>
 
-      <!-- Description -->
-      <p class="text-gray-200 dark:text-gray-300 text-sm mb-3 line-clamp-2">
+      <div class="flex items-center gap-2 mb-3 text-xs text-paper-faint dark:text-term-faint">
+        <span
+          class="inline-block w-2 h-2 rounded-full"
+          style={`background-color: ${languageAccent}`}
+          aria-hidden="true"></span>
+        <span>{project.language}</span>
+      </div>
+
+      <p class="text-sm text-paper-muted dark:text-term-muted mb-1 line-clamp-2">
         {project.description}
       </p>
     </div>
 
-    <!-- Terminal section -->
-    <div
-      class="relative z-10 bg-gray-900/90 dark:bg-gray-900/95 rounded-xl mx-4 mb-3 overflow-hidden border border-gray-700 dark:border-gray-600"
-    >
-      <!-- Terminal header -->
-      <div
-        class="flex items-center gap-2 px-3 py-1.5 bg-gray-800/50 dark:bg-gray-800/70 border-b border-gray-700 dark:border-gray-600"
-      >
-        <div class="flex gap-1.5">
-          <div class="w-2 h-2 rounded-full bg-red-500"></div>
-          <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
-          <div class="w-2 h-2 rounded-full bg-green-500"></div>
+    <div class="mx-4 mb-3 rounded-sm overflow-hidden border border-term-border bg-term-bg">
+      <div class="flex items-center gap-2 px-3 py-1.5 bg-term-panel border-b border-term-border">
+        <div class="flex gap-1.5" aria-hidden="true">
+          <span class="w-2 h-2 rounded-full bg-term-red opacity-80"></span>
+          <span class="w-2 h-2 rounded-full bg-term-amber opacity-80"></span>
+          <span class="w-2 h-2 rounded-full bg-term-green opacity-80"></span>
         </div>
-        <span class="text-xs text-gray-400 dark:text-gray-500 ml-2 font-mono">terminal</span>
+        <span class="text-xs text-term-faint ml-1">{project.name} — tty</span>
       </div>
 
-      <!-- Terminal content -->
-      <div class="p-3 font-mono text-xs space-y-2">
-        <!-- Installation -->
+      <div class="p-3 text-xs space-y-2">
         <div>
-          <p class="text-gray-500 dark:text-gray-400 text-xs"># Install</p>
-          <p class="text-gray-100 dark:text-gray-200">
-            <span class="terminal-prompt">$</span>
+          <p class="text-term-faint">┌─ install</p>
+          <p class="text-term-text break-all">
+            <span class="text-term-green">$</span>
             {installCmd}
           </p>
         </div>
 
-        <!-- Demo -->
         <div>
-          <p class="text-gray-500 dark:text-gray-400 text-xs"># Demo</p>
-          <p class="text-gray-100 dark:text-gray-200">
-            <span class="terminal-prompt">$</span>
+          <p class="text-term-faint">└─ run</p>
+          <p class="text-term-text break-all">
+            <span class="text-term-green">$</span>
             {terminalDemo[0]}
           </p>
-          {
-            terminalDemo
-              .slice(1, 3)
-              .map((line) => <p class="text-gray-400 dark:text-gray-500 ml-2 text-xs">{line}</p>)
-          }
+          {terminalDemo.slice(1, 3).map((line) => <p class="text-term-muted ml-3">{line}</p>)}
         </div>
       </div>
     </div>
 
-    <!-- Platforms footer -->
-    <div class="relative z-10 px-4 py-2">
-      <div class="flex items-center gap-2 text-xs text-gray-300 dark:text-gray-400">
-        <span>Runs on:</span>
-        <div class="flex items-center gap-1.5">
-          {
-            project.platforms.map((platform, index) => (
-              <>
-                <span class="text-gray-200 dark:text-gray-300">{platform}</span>
-                {index < project.platforms.length - 1 && <span class="text-gray-500">•</span>}
-              </>
-            ))
-          }
-        </div>
+    <div class="px-4 pb-3">
+      <div
+        class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-paper-faint dark:text-term-faint"
+      >
+        <span>runs on:</span>
+        {
+          project.platforms.map((platform, index) => (
+            <>
+              <span class="text-paper-muted dark:text-term-muted">{platform}</span>
+              {index < project.platforms.length - 1 && (
+                <span class="text-paper-faint dark:text-term-faint">·</span>
+              )}
+            </>
+          ))
+        }
       </div>
     </div>
   </a>
 </article>
 
 <style>
-  .cli-card {
-    background: var(--gradient-light);
-  }
-
-  :global(.dark) .cli-card {
-    background: var(--gradient-dark);
-  }
-
-  .terminal-prompt {
-    color: var(--accent-light);
-  }
-
-  :global(.dark) .terminal-prompt {
-    color: var(--accent-dark);
-  }
-
-  /* Pattern overlays for languages with language-specific colors */
-  .pattern-overlay[data-pattern='go-pattern'] {
-    background-image:
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 20px,
-        rgba(0, 173, 216, 0.1) 20px,
-        rgba(0, 173, 216, 0.1) 22px
-      ),
-      repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 20px,
-        rgba(0, 173, 216, 0.05) 20px,
-        rgba(0, 173, 216, 0.05) 22px
-      );
-  }
-
-  .pattern-overlay[data-pattern='swift-pattern'] {
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 30px,
-        rgba(250, 115, 67, 0.1) 30px,
-        rgba(250, 115, 67, 0.1) 31px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 30px,
-        rgba(250, 115, 67, 0.05) 30px,
-        rgba(250, 115, 67, 0.05) 31px
-      );
-  }
-
-  .pattern-overlay[data-pattern='rust-pattern'] {
-    background-image:
-      repeating-linear-gradient(
-        60deg,
-        transparent,
-        transparent 25px,
-        rgba(206, 66, 43, 0.1) 25px,
-        rgba(206, 66, 43, 0.1) 27px
-      ),
-      repeating-linear-gradient(
-        -60deg,
-        transparent,
-        transparent 25px,
-        rgba(206, 66, 43, 0.05) 25px,
-        rgba(206, 66, 43, 0.05) 27px
-      );
-  }
-
-  /* Ensure consistent card heights */
   article {
     display: flex;
     flex-direction: column;
@@ -491,7 +267,6 @@ const installCmd = getInstallCommand(project.name, project.language);
     flex-direction: column;
   }
 
-  /* Line clamp utility */
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;

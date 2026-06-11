@@ -5,151 +5,106 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Create canvas
+const readJSON = (rel) => JSON.parse(fs.readFileSync(path.join(__dirname, '..', rel), 'utf8'));
+const apps = readJSON('src/data/apps.json').apps;
+const projects = readJSON('src/data/opensource.json').projects;
+const career = readJSON('src/data/career.json');
+const statsLine = `${career.summary.yearsActive} yrs shipping · ${apps.length} apps live · ${projects.length} OSS projects`;
+
 const width = 1200;
 const height = 630;
 const canvas = createCanvas(width, height);
 const ctx = canvas.getContext('2d');
 
-// Modern gradient background
-const bgGradient = ctx.createLinearGradient(0, 0, width, height);
-bgGradient.addColorStop(0, '#1e293b');
-bgGradient.addColorStop(0.5, '#0f172a');
-bgGradient.addColorStop(1, '#1e1b4b');
-ctx.fillStyle = bgGradient;
+const BG = '#0d1117';
+const PANEL = '#161b22';
+const TITLEBAR = '#1c2128';
+const BORDER = '#2d333b';
+const TEXT = '#e6edf3';
+const MUTED = '#9198a1';
+const GREEN = '#33ff66';
+const AMBER = '#ffb000';
+const RED = '#ff7b72';
+const MONO = 'Menlo, Monaco, "Courier New", monospace';
+
+ctx.fillStyle = BG;
 ctx.fillRect(0, 0, width, height);
 
-// Add subtle noise/texture overlay
-for (let i = 0; i < 3000; i++) {
-  const x = Math.random() * width;
-  const y = Math.random() * height;
-  ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.02})`;
-  ctx.fillRect(x, y, 1, 1);
+for (let y = 0; y < height; y += 4) {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
+  ctx.fillRect(0, y, width, 1);
 }
 
-// Abstract website layout representation
-// Header bar
-ctx.fillStyle = 'rgba(147, 51, 234, 0.15)';
-ctx.fillRect(80, 80, 1040, 70);
-ctx.strokeStyle = 'rgba(147, 51, 234, 0.3)';
-ctx.lineWidth = 2;
-ctx.strokeRect(80, 80, 1040, 70);
+const termX = 80;
+const termY = 90;
+const termW = width - 160;
+const termH = height - 180;
 
-// Navigation dots
-const navColors = ['#f59e0b', '#10b981', '#3b82f6'];
-for (let i = 0; i < 3; i++) {
-  ctx.fillStyle = navColors[i];
+ctx.fillStyle = PANEL;
+ctx.fillRect(termX, termY, termW, termH);
+ctx.strokeStyle = BORDER;
+ctx.lineWidth = 2;
+ctx.strokeRect(termX, termY, termW, termH);
+
+ctx.fillStyle = TITLEBAR;
+ctx.fillRect(termX, termY, termW, 44);
+ctx.strokeStyle = BORDER;
+ctx.strokeRect(termX, termY, termW, 44);
+
+[RED, AMBER, GREEN].forEach((color, i) => {
+  ctx.fillStyle = color;
   ctx.beginPath();
-  ctx.arc(950 + i * 40, 115, 8, 0, Math.PI * 2);
+  ctx.arc(termX + 26 + i * 26, termY + 22, 7, 0, Math.PI * 2);
   ctx.fill();
-}
-
-// Logo placeholder
-ctx.fillStyle = 'rgba(59, 130, 246, 0.2)';
-ctx.fillRect(110, 95, 40, 40);
-ctx.strokeStyle = 'rgba(59, 130, 246, 0.4)';
-ctx.lineWidth = 2;
-ctx.strokeRect(110, 95, 40, 40);
-
-// Main content area
-// Hero section
-ctx.fillStyle = 'rgba(59, 130, 246, 0.1)';
-ctx.fillRect(80, 180, 500, 200);
-
-// Text lines (abstract representation)
-const textLines = [
-  { x: 110, y: 220, width: 300, height: 20, color: 'rgba(248, 250, 252, 0.3)' },
-  { x: 110, y: 250, width: 400, height: 16, color: 'rgba(248, 250, 252, 0.2)' },
-  { x: 110, y: 275, width: 350, height: 16, color: 'rgba(248, 250, 252, 0.2)' },
-  { x: 110, y: 300, width: 380, height: 16, color: 'rgba(248, 250, 252, 0.2)' },
-];
-
-textLines.forEach((line) => {
-  ctx.fillStyle = line.color;
-  ctx.fillRect(line.x, line.y, line.width, line.height);
 });
 
-// CTA button
-ctx.fillStyle = 'rgba(147, 51, 234, 0.3)';
-ctx.fillRect(110, 340, 140, 35);
-ctx.strokeStyle = 'rgba(147, 51, 234, 0.5)';
-ctx.lineWidth = 2;
-ctx.strokeRect(110, 340, 140, 35);
+ctx.fillStyle = MUTED;
+ctx.font = `16px ${MONO}`;
+ctx.textAlign = 'center';
+ctx.fillText('marcus@midgar: ~', termX + termW / 2, termY + 28);
+ctx.textAlign = 'left';
 
-// Sidebar widgets
-// Widget 1 - Stats/Chart
-ctx.fillStyle = 'rgba(16, 185, 129, 0.1)';
-ctx.fillRect(620, 180, 240, 140);
+let lineY = termY + 100;
+const lineX = termX + 40;
 
-// Chart bars
-const barHeights = [60, 90, 45, 100, 75];
-barHeights.forEach((height, i) => {
-  ctx.fillStyle = 'rgba(16, 185, 129, 0.3)';
-  ctx.fillRect(640 + i * 40, 300 - height, 30, height);
-});
+ctx.font = `24px ${MONO}`;
+ctx.fillStyle = GREEN;
+ctx.fillText('$', lineX, lineY);
+ctx.fillStyle = MUTED;
+ctx.fillText('whoami', lineX + 34, lineY);
 
-// Widget 2 - Cards
-ctx.fillStyle = 'rgba(245, 158, 11, 0.1)';
-ctx.fillRect(880, 180, 240, 140);
+lineY += 82;
+ctx.font = `bold 66px ${MONO}`;
+ctx.fillStyle = TEXT;
+ctx.fillText('Engineer who', lineX, lineY);
 
-// Mini cards inside
-for (let i = 0; i < 2; i++) {
-  for (let j = 0; j < 2; j++) {
-    ctx.fillStyle = 'rgba(245, 158, 11, 0.2)';
-    ctx.fillRect(900 + j * 110, 200 + i * 60, 90, 45);
-  }
-}
+lineY += 80;
+ctx.shadowColor = GREEN;
+ctx.shadowBlur = 24;
+ctx.fillStyle = GREEN;
+ctx.fillText('ships.', lineX, lineY);
+ctx.shadowBlur = 0;
+const shipsWidth = ctx.measureText('ships.').width;
+ctx.fillRect(lineX + shipsWidth + 18, lineY - 52, 28, 60);
 
-// Bottom section - Blog/Article cards
-const cardColors = ['rgba(239, 68, 68, 0.1)', 'rgba(59, 130, 246, 0.1)', 'rgba(168, 85, 247, 0.1)'];
+lineY += 66;
+ctx.font = `22px ${MONO}`;
+ctx.fillStyle = MUTED;
+ctx.fillText('Marcus Ziadé — iOS · backend · AI · open source', lineX, lineY);
 
-for (let i = 0; i < 3; i++) {
-  ctx.fillStyle = cardColors[i];
-  ctx.fillRect(80 + i * 380, 410, 360, 140);
+lineY += 42;
+ctx.fillStyle = AMBER;
+ctx.fillText(statsLine, lineX, lineY);
 
-  // Card content lines
-  ctx.fillStyle = 'rgba(248, 250, 252, 0.2)';
-  ctx.fillRect(100 + i * 380, 430, 280, 16);
+ctx.font = `18px ${MONO}`;
+ctx.fillStyle = MUTED;
+ctx.fillText('midgarcorp.cc', termX + 40, termY + termH - 26);
+ctx.fillStyle = GREEN;
+ctx.textAlign = 'right';
+ctx.fillText('exit 0', termX + termW - 40, termY + termH - 26);
+ctx.textAlign = 'left';
 
-  ctx.fillStyle = 'rgba(248, 250, 252, 0.15)';
-  ctx.fillRect(100 + i * 380, 455, 320, 12);
-  ctx.fillRect(100 + i * 380, 475, 300, 12);
-}
-
-// Decorative elements
-// Floating shapes
-ctx.globalAlpha = 0.1;
-// Circle
-ctx.fillStyle = '#3b82f6';
-ctx.beginPath();
-ctx.arc(1050, 250, 60, 0, Math.PI * 2);
-ctx.fill();
-
-// Triangle
-ctx.fillStyle = '#10b981';
-ctx.beginPath();
-ctx.moveTo(150, 480);
-ctx.lineTo(190, 540);
-ctx.lineTo(110, 540);
-ctx.closePath();
-ctx.fill();
-
-// Square
-ctx.fillStyle = '#f59e0b';
-ctx.fillRect(950, 450, 80, 80);
-
-ctx.globalAlpha = 1;
-
-// Add subtle glow effects
-const glowGradient = ctx.createRadialGradient(600, 315, 0, 600, 315, 400);
-glowGradient.addColorStop(0, 'rgba(147, 51, 234, 0.1)');
-glowGradient.addColorStop(1, 'rgba(147, 51, 234, 0)');
-ctx.fillStyle = glowGradient;
-ctx.fillRect(0, 0, width, height);
-
-// Save the image
-const outputPath = path.join(__dirname, '..', 'public', 'og-image.png');
 const buffer = canvas.toBuffer('image/png');
+const outputPath = path.join(__dirname, '..', 'public', 'og-image.png');
 fs.writeFileSync(outputPath, buffer);
-
 console.log('✓ Generated og-image.png');

@@ -1,63 +1,19 @@
 ---
 import careerData from '../data/career.json';
 
-interface IndustryStyle {
-  node: string;
-  nodeRing: string;
-  pill: string;
-  accentText: string;
-  border: string;
-  chip: string;
-}
-
-const industryStyles: Record<string, IndustryStyle> = {
-  'ai-health': {
-    node: 'bg-violet-500 dark:bg-violet-400',
-    nodeRing: 'ring-violet-500/30 dark:ring-violet-400/30',
-    pill: 'bg-violet-50 dark:bg-violet-500/10 text-violet-700 dark:text-violet-300 ring-1 ring-inset ring-violet-600/20 dark:ring-violet-400/30',
-    accentText: 'text-violet-700 dark:text-violet-300',
-    border: 'group-hover:border-violet-300 dark:group-hover:border-violet-500/50',
-    chip: 'bg-violet-50 dark:bg-violet-500/10 text-violet-700 dark:text-violet-300',
-  },
-  cybersec: {
-    node: 'bg-indigo-500 dark:bg-indigo-400',
-    nodeRing: 'ring-indigo-500/30 dark:ring-indigo-400/30',
-    pill: 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 ring-1 ring-inset ring-indigo-600/20 dark:ring-indigo-400/30',
-    accentText: 'text-indigo-700 dark:text-indigo-300',
-    border: 'group-hover:border-indigo-300 dark:group-hover:border-indigo-500/50',
-    chip: 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300',
-  },
-  'wearable-health': {
-    node: 'bg-emerald-500 dark:bg-emerald-400',
-    nodeRing: 'ring-emerald-500/30 dark:ring-emerald-400/30',
-    pill: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 ring-1 ring-inset ring-emerald-600/20 dark:ring-emerald-400/30',
-    accentText: 'text-emerald-700 dark:text-emerald-300',
-    border: 'group-hover:border-emerald-300 dark:group-hover:border-emerald-500/50',
-    chip: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300',
-  },
-  consulting: {
-    node: 'bg-amber-500 dark:bg-amber-400',
-    nodeRing: 'ring-amber-500/30 dark:ring-amber-400/30',
-    pill: 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 ring-1 ring-inset ring-amber-600/20 dark:ring-amber-400/30',
-    accentText: 'text-amber-700 dark:text-amber-300',
-    border: 'group-hover:border-amber-300 dark:group-hover:border-amber-500/50',
-    chip: 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300',
-  },
-  'creator-economy': {
-    node: 'bg-fuchsia-500 dark:bg-fuchsia-400',
-    nodeRing: 'ring-fuchsia-500/30 dark:ring-fuchsia-400/30',
-    pill: 'bg-fuchsia-50 dark:bg-fuchsia-500/10 text-fuchsia-700 dark:text-fuchsia-300 ring-1 ring-inset ring-fuchsia-600/20 dark:ring-fuchsia-400/30',
-    accentText: 'text-fuchsia-700 dark:text-fuchsia-300',
-    border: 'group-hover:border-fuchsia-300 dark:group-hover:border-fuchsia-500/50',
-    chip: 'bg-fuchsia-50 dark:bg-fuchsia-500/10 text-fuchsia-700 dark:text-fuchsia-300',
-  },
+const industryAccents: Record<string, string> = {
+  'ai-health': 'text-paper-green dark:text-term-green',
+  cybersec: 'text-paper-red dark:text-term-red',
+  'wearable-health': 'text-paper-greendim dark:text-term-greendim',
+  consulting: 'text-paper-amber dark:text-term-amber',
+  'creator-economy': 'text-paper-muted dark:text-term-muted',
 };
 
 const { summary, entries } = careerData;
 ---
 
 <section class="career-timeline" aria-label="Career timeline">
-  <div class="career-stats">
+  <div class="career-stats term-frame">
     <div class="career-stat">
       <span class="career-stat-value">{summary.yearsActive}</span>
       <span class="career-stat-label">years shipping</span>
@@ -82,7 +38,7 @@ const { summary, entries } = careerData;
   <ol class="career-list" role="list">
     {
       entries.map((entry, index) => {
-        const styles = industryStyles[entry.industry] || industryStyles.consulting;
+        const accent = industryAccents[entry.industry] || industryAccents.consulting;
         const isFirst = index === 0;
         const isLast = index === entries.length - 1;
         return (
@@ -94,13 +50,9 @@ const { summary, entries } = careerData;
             data-last={isLast ? 'true' : 'false'}
           >
             <div class="career-gutter" aria-hidden="true">
-              <span class={`career-node ${styles.node} ${styles.nodeRing}`}>
-                {entry.current && <span class={`career-node-pulse ${styles.node}`} />}
-              </span>
+              <span class="career-node">{entry.current && <span class="career-node-pulse" />}</span>
             </div>
-            <div
-              class={`career-card ${styles.border} bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700`}
-            >
+            <div class="career-card term-frame term-frame-hover">
               <button
                 type="button"
                 class="career-trigger"
@@ -110,7 +62,7 @@ const { summary, entries } = careerData;
               >
                 <div class="career-header">
                   <div class="career-meta">
-                    <span class={`career-pill ${styles.pill}`}>{entry.industryLabel}</span>
+                    <span class={`career-pill ${accent}`}>{entry.industryLabel}</span>
                     {entry.current && (
                       <span class="career-status">
                         <span class="career-status-dot" />
@@ -135,7 +87,7 @@ const { summary, entries } = careerData;
                   </svg>
                 </div>
 
-                <h3 class={`career-headline ${styles.accentText}`}>{entry.headline}</h3>
+                <h3 class="career-headline">{entry.headline}</h3>
                 <p class="career-role">{entry.role}</p>
                 <p class="career-hook">{entry.hook}</p>
 
@@ -159,11 +111,13 @@ const { summary, entries } = careerData;
                   <div class="career-detail-divider" aria-hidden="true" />
 
                   <div class="career-section">
-                    <h4 class="career-section-title">Impact</h4>
+                    <h4 class="career-section-title">impact</h4>
                     <ul class="career-impact-list">
                       {entry.impact.map((point) => (
                         <li class="career-impact-item">
-                          <span class={`career-bullet ${styles.node}`} aria-hidden="true" />
+                          <span class="career-bullet" aria-hidden="true">
+                            ▸
+                          </span>
                           <span>{point}</span>
                         </li>
                       ))}
@@ -171,16 +125,16 @@ const { summary, entries } = careerData;
                   </div>
 
                   <div class="career-section">
-                    <h4 class="career-section-title">Systems owned</h4>
+                    <h4 class="career-section-title">systems owned</h4>
                     <div class="career-systems">
                       {entry.systems.map((system) => (
-                        <span class={`career-system-chip ${styles.chip}`}>{system}</span>
+                        <span class="career-system-chip">{system}</span>
                       ))}
                     </div>
                   </div>
 
                   <div class="career-section">
-                    <h4 class="career-section-title">Stack</h4>
+                    <h4 class="career-section-title">stack</h4>
                     <div class="career-stack-full">
                       {entry.stack.map((tech) => (
                         <span class="career-chip">{tech}</span>
@@ -202,11 +156,6 @@ const { summary, entries } = careerData;
 </section>
 
 <style>
-  .career-timeline {
-    --spine-color: theme('colors.gray.200');
-    --spine-color-dark: theme('colors.gray.700');
-  }
-
   .career-stats {
     display: flex;
     flex-wrap: wrap;
@@ -215,13 +164,6 @@ const { summary, entries } = careerData;
     gap: 0.75rem 1.5rem;
     padding: 1.25rem 1rem;
     margin-bottom: 2rem;
-    border-radius: 0.75rem;
-    border: 1px solid theme('colors.gray.200');
-    background: linear-gradient(to bottom, theme('colors.gray.50'), transparent);
-  }
-  :global(.dark) .career-stats {
-    border-color: theme('colors.gray.800');
-    background: linear-gradient(to bottom, rgb(31 41 55 / 0.5), transparent);
   }
 
   .career-stat {
@@ -233,30 +175,30 @@ const { summary, entries } = careerData;
   .career-stat-value {
     font-size: 1.5rem;
     font-weight: 700;
-    color: theme('colors.gray.900');
+    color: theme('colors.paper.text');
     letter-spacing: -0.02em;
   }
   :global(.dark) .career-stat-value {
-    color: theme('colors.gray.50');
+    color: theme('colors.term.text');
   }
   .career-stat-label {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: theme('colors.gray.500');
+    color: theme('colors.paper.muted');
     margin-top: 0.2rem;
   }
   :global(.dark) .career-stat-label {
-    color: theme('colors.gray.400');
+    color: theme('colors.term.muted');
   }
 
   .career-stat-divider {
     width: 1px;
     height: 1.75rem;
-    background: theme('colors.gray.300');
+    background: theme('colors.paper.border');
   }
   :global(.dark) .career-stat-divider {
-    background: theme('colors.gray.700');
+    background: theme('colors.term.border');
   }
 
   .career-list {
@@ -296,10 +238,10 @@ const { summary, entries } = careerData;
     bottom: -1.5rem;
     width: 2px;
     transform: translateX(-50%);
-    background: linear-gradient(to bottom, var(--spine-color), var(--spine-color));
+    background: theme('colors.paper.border');
   }
   :global(.dark) .career-gutter::before {
-    background: linear-gradient(to bottom, var(--spine-color-dark), var(--spine-color-dark));
+    background: theme('colors.term.border');
   }
   @media (min-width: 768px) {
     .career-gutter::before {
@@ -321,16 +263,13 @@ const { summary, entries } = careerData;
     height: 0.875rem;
     transform: translateX(-50%);
     border-radius: 9999px;
-    box-shadow:
-      0 0 0 4px theme('colors.white'),
-      0 0 0 6px currentColor;
-    --tw-ring-offset-shadow: 0 0 #0000;
+    background: theme('colors.paper.green');
+    box-shadow: 0 0 0 3px theme('colors.paper.bg');
     z-index: 1;
   }
   :global(.dark) .career-node {
-    box-shadow:
-      0 0 0 4px theme('colors.gray.900'),
-      0 0 0 6px currentColor;
+    background: theme('colors.term.green');
+    box-shadow: 0 0 0 3px theme('colors.term.bg');
   }
   @media (min-width: 768px) {
     .career-node {
@@ -343,9 +282,13 @@ const { summary, entries } = careerData;
     position: absolute;
     inset: -0.25rem;
     border-radius: 9999px;
+    background: theme('colors.paper.green');
     opacity: 0.5;
     animation: career-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     pointer-events: none;
+  }
+  :global(.dark) .career-node-pulse {
+    background: theme('colors.term.green');
   }
   @keyframes career-pulse {
     0% {
@@ -369,20 +312,7 @@ const { summary, entries } = careerData;
 
   .career-card {
     position: relative;
-    border-radius: 0.875rem;
-    border: 1px solid;
     overflow: hidden;
-    transition:
-      border-color 0.25s ease,
-      box-shadow 0.25s ease,
-      transform 0.25s ease;
-  }
-  .career-entry:hover .career-card {
-    box-shadow: 0 12px 30px -12px rgb(0 0 0 / 0.12);
-    transform: translateY(-1px);
-  }
-  :global(.dark) .career-entry:hover .career-card {
-    box-shadow: 0 12px 30px -12px rgb(0 0 0 / 0.5);
   }
 
   .career-trigger {
@@ -402,9 +332,12 @@ const { summary, entries } = careerData;
     }
   }
   .career-trigger:focus-visible {
-    outline: 2px solid theme('colors.blue.500');
+    outline: 2px solid theme('colors.paper.green');
     outline-offset: -2px;
-    border-radius: 0.75rem;
+    border-radius: 0.125rem;
+  }
+  :global(.dark) .career-trigger:focus-visible {
+    outline-color: theme('colors.term.green');
   }
 
   .career-header {
@@ -427,11 +360,15 @@ const { summary, entries } = careerData;
     display: inline-flex;
     align-items: center;
     padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
+    border-radius: 0.125rem;
+    border: 1px solid theme('colors.paper.border2');
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.02em;
     white-space: nowrap;
+  }
+  :global(.dark) .career-pill {
+    border-color: theme('colors.term.border2');
   }
 
   .career-status {
@@ -439,24 +376,25 @@ const { summary, entries } = careerData;
     align-items: center;
     gap: 0.35rem;
     padding: 0.2rem 0.55rem;
-    border-radius: 9999px;
+    border-radius: 0.125rem;
     font-size: 0.7rem;
     font-weight: 600;
-    background: theme('colors.green.50');
-    color: theme('colors.green.700');
-    box-shadow: inset 0 0 0 1px rgb(22 163 74 / 0.2);
+    color: theme('colors.paper.greendim');
+    box-shadow: inset 0 0 0 1px theme('colors.paper.greendim');
   }
   :global(.dark) .career-status {
-    background: rgb(34 197 94 / 0.1);
-    color: theme('colors.green.300');
-    box-shadow: inset 0 0 0 1px rgb(74 222 128 / 0.3);
+    color: theme('colors.term.green');
+    box-shadow: inset 0 0 0 1px theme('colors.term.green');
   }
   .career-status-dot {
     width: 0.4rem;
     height: 0.4rem;
     border-radius: 9999px;
-    background: theme('colors.green.500');
+    background: theme('colors.paper.green');
     animation: career-status-blink 2.4s ease-in-out infinite;
+  }
+  :global(.dark) .career-status-dot {
+    background: theme('colors.term.green');
   }
   @keyframes career-status-blink {
     0%,
@@ -475,31 +413,31 @@ const { summary, entries } = careerData;
 
   .career-date {
     font-size: 0.75rem;
-    color: theme('colors.gray.500');
+    color: theme('colors.paper.amber');
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
   :global(.dark) .career-date {
-    color: theme('colors.gray.400');
+    color: theme('colors.term.amber');
   }
 
   .career-chevron {
     flex-shrink: 0;
     width: 1.25rem;
     height: 1.25rem;
-    color: theme('colors.gray.400');
+    color: theme('colors.paper.faint');
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     margin-top: 0.125rem;
   }
   :global(.dark) .career-chevron {
-    color: theme('colors.gray.500');
+    color: theme('colors.term.faint');
   }
   [data-open='true'] .career-chevron {
     transform: rotate(180deg);
-    color: theme('colors.gray.700');
+    color: theme('colors.paper.text');
   }
   :global(.dark) [data-open='true'] .career-chevron {
-    color: theme('colors.gray.200');
+    color: theme('colors.term.text');
   }
 
   .career-headline {
@@ -508,6 +446,10 @@ const { summary, entries } = careerData;
     line-height: 1.3;
     letter-spacing: -0.01em;
     margin: 0.1rem 0 0.15rem;
+    color: theme('colors.paper.text');
+  }
+  :global(.dark) .career-headline {
+    color: theme('colors.term.text');
   }
   @media (min-width: 768px) {
     .career-headline {
@@ -518,21 +460,21 @@ const { summary, entries } = careerData;
   .career-role {
     font-size: 0.8125rem;
     font-weight: 500;
-    color: theme('colors.gray.600');
+    color: theme('colors.paper.muted');
     margin: 0 0 0.55rem;
   }
   :global(.dark) .career-role {
-    color: theme('colors.gray.300');
+    color: theme('colors.term.muted');
   }
 
   .career-hook {
     font-size: 0.875rem;
     line-height: 1.55;
-    color: theme('colors.gray.700');
+    color: theme('colors.paper.muted');
     margin: 0 0 0.875rem;
   }
   :global(.dark) .career-hook {
-    color: theme('colors.gray.300');
+    color: theme('colors.term.muted');
   }
 
   .career-stack-preview {
@@ -545,23 +487,24 @@ const { summary, entries } = careerData;
     display: inline-flex;
     align-items: center;
     padding: 0.15rem 0.55rem;
-    border-radius: 0.375rem;
+    border-radius: 0.125rem;
     font-size: 0.7rem;
     font-weight: 500;
-    background: theme('colors.gray.100');
-    color: theme('colors.gray.700');
+    background: theme('colors.paper.raised');
+    color: theme('colors.paper.muted');
     white-space: nowrap;
   }
   :global(.dark) .career-chip {
-    background: rgb(55 65 81 / 0.6);
-    color: theme('colors.gray.200');
+    background: theme('colors.term.raised');
+    color: theme('colors.term.muted');
   }
   .career-chip-more {
     background: transparent;
-    color: theme('colors.gray.500');
+    color: theme('colors.paper.faint');
   }
   :global(.dark) .career-chip-more {
-    color: theme('colors.gray.400');
+    background: transparent;
+    color: theme('colors.term.faint');
   }
 
   .career-detail {
@@ -591,11 +534,11 @@ const { summary, entries } = careerData;
 
   .career-detail-divider {
     height: 1px;
-    background: linear-gradient(to right, transparent, theme('colors.gray.200'), transparent);
+    background: theme('colors.paper.border');
     margin: 0 1.125rem;
   }
   :global(.dark) .career-detail-divider {
-    background: linear-gradient(to right, transparent, theme('colors.gray.700'), transparent);
+    background: theme('colors.term.border');
   }
   @media (min-width: 768px) {
     .career-detail-divider {
@@ -617,11 +560,18 @@ const { summary, entries } = careerData;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: theme('colors.gray.500');
+    color: theme('colors.paper.muted');
     margin: 0 0 0.65rem;
   }
   :global(.dark) .career-section-title {
-    color: theme('colors.gray.400');
+    color: theme('colors.term.muted');
+  }
+  .career-section-title::before {
+    content: '── ';
+    color: theme('colors.paper.border2');
+  }
+  :global(.dark) .career-section-title::before {
+    color: theme('colors.term.border2');
   }
 
   .career-impact-list {
@@ -634,21 +584,23 @@ const { summary, entries } = careerData;
   }
   .career-impact-item {
     display: grid;
-    grid-template-columns: 0.5rem 1fr;
+    grid-template-columns: 0.75rem 1fr;
     gap: 0.65rem;
     align-items: start;
     font-size: 0.875rem;
     line-height: 1.55;
-    color: theme('colors.gray.700');
+    color: theme('colors.paper.text');
   }
   :global(.dark) .career-impact-item {
-    color: theme('colors.gray.300');
+    color: theme('colors.term.text');
   }
   .career-bullet {
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 9999px;
-    margin-top: 0.55rem;
+    color: theme('colors.paper.greendim');
+    font-size: 0.75rem;
+    line-height: 1.8;
+  }
+  :global(.dark) .career-bullet {
+    color: theme('colors.term.greendim');
   }
 
   .career-systems {
@@ -660,9 +612,15 @@ const { summary, entries } = careerData;
     display: inline-flex;
     align-items: center;
     padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
+    border-radius: 0.125rem;
+    border: 1px solid theme('colors.paper.border');
     font-size: 0.72rem;
     font-weight: 500;
+    color: theme('colors.paper.greendim');
+  }
+  :global(.dark) .career-system-chip {
+    border-color: theme('colors.term.border');
+    color: theme('colors.term.greendim');
   }
 
   .career-stack-full {
@@ -673,14 +631,14 @@ const { summary, entries } = careerData;
 
   .career-receipt {
     font-size: 0.75rem;
-    color: theme('colors.gray.500');
+    color: theme('colors.paper.amber');
     padding: 1rem 1.125rem 1.125rem;
     margin: 0.25rem 0 0;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.01em;
   }
   :global(.dark) .career-receipt {
-    color: theme('colors.gray.400');
+    color: theme('colors.term.amber');
   }
   @media (min-width: 768px) {
     .career-receipt {

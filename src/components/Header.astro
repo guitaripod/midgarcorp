@@ -1,48 +1,58 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import Search from './Search.astro';
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/apps', label: 'Apps' },
-  { href: '/cli-tools', label: 'CLI Tools' },
-  { href: '/opensource', label: 'Open Source' },
-  { href: '/archive', label: 'Blog' },
-  { href: '/tags', label: 'Tags' },
-  { href: '/links', label: 'Links' },
+  { href: '/services', label: 'services' },
+  { href: '/apps', label: 'apps' },
+  { href: '/cli-tools', label: 'cli' },
+  { href: '/opensource', label: 'oss' },
+  { href: '/archive', label: 'blog' },
+  { href: '/tags', label: 'tags' },
+  { href: '/links', label: 'links' },
 ];
+
+const isItemActive = (href: string) => href !== '/' && currentPath.startsWith(href.slice(1));
 ---
 
 <header
-  class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/75 dark:bg-gray-900/75 border-b border-gray-200 dark:border-gray-800"
+  class="sticky top-0 z-40 w-full backdrop-blur-md bg-paper-bg/85 dark:bg-term-bg/85 border-b border-paper-border dark:border-term-border"
 >
-  <nav class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
-      <div class="flex items-center">
-        <a href="/" class="text-xl font-bold text-gray-900 dark:text-white"> Midgar Corp </a>
-      </div>
+  <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-14 items-center justify-between gap-3">
+      <a
+        href="/"
+        class="flex items-baseline gap-0 text-sm sm:text-base font-semibold whitespace-nowrap text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
+      >
+        <span class="text-paper-green dark:text-term-green">marcus@midgar</span><span
+          class="text-paper-muted dark:text-term-muted">:</span
+        ><span class="text-paper-amber dark:text-term-amber">~</span><span
+          class="text-paper-muted dark:text-term-muted">$</span
+        >
+      </a>
 
-      <div class="flex items-center space-x-4">
-        <ul class="hidden md:flex items-center space-x-6">
+      <div class="flex items-center gap-1 sm:gap-2">
+        <ul class="hidden md:flex items-center gap-4 lg:gap-5">
           {
             navItems.map((item) => {
-              const isActive =
-                (item.href === '/' && currentPath === '') ||
-                (item.href !== '/' && currentPath.startsWith(item.href.slice(1)));
+              const isActive = isItemActive(item.href);
               return (
                 <li>
                   <a
                     href={item.href}
-                    class={`text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${
+                    class={`text-sm transition-colors hover:text-paper-green dark:hover:text-term-green ${
                       isActive
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : 'text-gray-700 dark:text-gray-300'
+                        ? 'text-paper-green dark:text-term-green'
+                        : 'text-paper-muted dark:text-term-muted'
                     }`}
                     aria-current={isActive ? 'page' : undefined}
                   >
+                    <span aria-hidden="true" class={isActive ? '' : 'opacity-0'}>
+                      ▸
+                    </span>
                     {item.label}
                   </a>
                 </li>
@@ -51,54 +61,54 @@ const navItems = [
           }
         </ul>
 
-        <div class="flex items-center space-x-2">
-          <ThemeToggle />
+        <Search />
+        <ThemeToggle />
+
+        <div class="md:hidden">
+          <input type="checkbox" id="mobile-menu-toggle" class="hidden" />
+          <label
+            for="mobile-menu-toggle"
+            class="cursor-pointer p-2 block text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green"
+            aria-label="Toggle menu"
+          >
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </label>
+
+          <div
+            class="mobile-menu hidden absolute left-0 right-0 top-14 border-b border-paper-border dark:border-term-border bg-paper-bg dark:bg-term-bg"
+          >
+            <ul class="px-4 py-3 space-y-1">
+              {
+                navItems.map((item) => {
+                  const isActive = isItemActive(item.href);
+                  return (
+                    <li>
+                      <a
+                        href={item.href}
+                        class={`block px-3 py-2 text-sm rounded-sm ${
+                          isActive
+                            ? 'text-paper-green dark:text-term-green bg-paper-panel dark:bg-term-panel'
+                            : 'text-paper-muted dark:text-term-muted hover:bg-paper-panel dark:hover:bg-term-panel'
+                        }`}
+                      >
+                        <span class="text-paper-green dark:text-term-green">
+                          {isActive ? '▸ ' : '  '}
+                        </span>
+                        ./{item.label}
+                      </a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="md:hidden">
-      <input type="checkbox" id="mobile-menu-toggle" class="hidden" />
-      <label for="mobile-menu-toggle" class="cursor-pointer p-2">
-        <svg
-          class="h-6 w-6 text-gray-700 dark:text-gray-300"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </label>
-
-      <div class="mobile-menu hidden pb-3">
-        <ul class="space-y-1">
-          {
-            navItems.map((item) => {
-              const isActive =
-                (item.href === '/' && currentPath === '') ||
-                (item.href !== '/' && currentPath.startsWith(item.href.slice(1)));
-              return (
-                <li>
-                  <a
-                    href={item.href}
-                    class={`block px-3 py-2 text-base font-medium rounded-md ${
-                      isActive
-                        ? 'text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-gray-800'
-                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              );
-            })
-          }
-        </ul>
       </div>
     </div>
   </nav>

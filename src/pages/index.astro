@@ -3,276 +3,177 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import AppCard from '@components/AppCard.astro';
 import OpenSourceCard from '@components/OpenSourceCard.astro';
 import CLIAppCard from '@components/CLIAppCard.astro';
+import MatrixRain from '@components/MatrixRain.astro';
 import { getCollection } from 'astro:content';
 import { calculateReadingTime } from '@utils/reading-time';
 import appsData from '../data/apps.json';
 import openSourceData from '../data/opensource.json';
+import careerData from '../data/career.json';
 
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 4);
 
-// Add reading time to posts
-const postsWithReadingTime = await Promise.all(
-  posts.map(async (post) => {
-    const { Content } = await post.render();
-    const readingTime = calculateReadingTime(post.body);
-    return { ...post, readingTime };
-  })
-);
+const postsWithReadingTime = posts.map((post) => ({
+  ...post,
+  readingTime: calculateReadingTime(post.body),
+}));
 
-// Get featured apps (App of the Dead and PixiePocket)
-const featuredAppIds = ['app-of-the-dead-afterlife', 'pixiepocket'];
-const featuredApps = featuredAppIds
-  .map((id) => appsData.apps.find((app) => app.id === id))
-  .filter(Boolean);
+const featuredApps = [...appsData.apps]
+  .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
+  .slice(0, 2);
 
-// Get all CLI tools
-const allCLITools = openSourceData.projects
+const cliTools = openSourceData.projects
   .filter((project) => project.category === 'CLI Tools')
-  .sort((a, b) => {
-    // Sort by updatedAt date first (most recent first)
-    const dateA = a.updatedAt ? new Date(a.updatedAt).getTime() : 0;
-    const dateB = b.updatedAt ? new Date(b.updatedAt).getTime() : 0;
-    return dateB - dateA;
-  });
+  .sort((a, b) => b.stars - a.stars);
+const featuredCLIPicks = ['flyr', 'unrager'];
+const featuredCLITools = [
+  ...featuredCLIPicks.map((id) => cliTools.find((tool) => tool.id === id)).filter(Boolean),
+  ...cliTools.filter((tool) => !featuredCLIPicks.includes(tool.id)),
+].slice(0, 2);
 
-// Add weavex manually
-const weavex = {
-  id: 'weavex',
-  name: 'Weavex',
-  description:
-    'Autonomous AI research agent powered by local LLMs. Watch as your model searches the web, reasons through queries, and synthesizes intelligent answers with citations.',
-  language: 'Rust',
-  platforms: ['macOS', 'Linux', 'Windows'],
-  stars: 0,
-  githubUrl: 'https://github.com/guitaripod/weavex',
-  category: 'CLI Tools',
-  highlights: ['AI Agent', 'Web Search', 'Local LLMs'],
-  topics: ['cli', 'rust', 'ai', 'ollama', 'agent', 'search'],
-  commitCount: 0,
-};
+const featuredCLIIds = new Set(featuredCLITools.map((tool) => tool.id));
+const featuredOpenSource = openSourceData.projects
+  .filter((project) => !featuredCLIIds.has(project.id))
+  .slice(0, 6);
 
-// Add nasa-rs manually since it's not in the JSON data
-const nasars = {
-  id: 'nasa-rs',
-  name: 'nasa-rs',
-  description:
-    'Comprehensive CLI tool for accessing NASA APIs - APOD, Mars rovers, asteroids, and more.',
-  language: 'Rust',
-  platforms: ['macOS', 'Linux', 'Windows'],
-  stars: 0,
-  githubUrl: 'https://github.com/guitaripod/nasa-rs',
-  category: 'CLI Tools',
-  highlights: ['NASA APIs', 'Space data', 'Astronomy'],
-  topics: ['cli', 'rust', 'nasa', 'space', 'astronomy'],
-  commitCount: 0,
-};
+const totalStars = openSourceData.projects.reduce((sum, project) => sum + project.stars, 0);
+const stats = [
+  { key: 'years_shipping', value: String(careerData.summary.yearsActive) },
+  { key: 'production_commits', value: careerData.summary.totalCommits },
+  { key: 'lines_shipped', value: careerData.summary.totalLocLabel },
+  { key: 'apps_live', value: String(appsData.apps.length) },
+  { key: 'oss_projects', value: String(openSourceData.projects.length) },
+  { key: 'github_stars', value: String(totalStars) },
+];
 
-// Feature Weavex and nasa-rs
-const featuredCLITools = [];
-featuredCLITools.push(weavex);
-featuredCLITools.push(nasars);
-
-// If we don't have both, fill with other CLI tools
-if (featuredCLITools.length < 2) {
-  const otherTools = allCLITools.filter((tool) => tool.name.toLowerCase() !== 'weavex');
-  featuredCLITools.push(...otherTools.slice(0, 2 - featuredCLITools.length));
-}
-
-// Calculate stats
-const totalPosts = (await getCollection('blog')).filter((post) => !post.data.draft).length;
-const totalApps = appsData.apps.length;
-const technologies = ['Swift', 'SwiftUI', 'UIKit', 'Go', 'TypeScript', 'Docker'];
-
-// Social links
-const socialLinks = [{ name: 'GitHub', url: 'https://github.com/guitaripod', icon: 'github' }];
+const engagements = careerData.entries.slice(0, 3);
 ---
 
 <BaseLayout
   title="Midgar Corp — Marcus Ziadé"
-  description="Independent engineer. Six years shipping production iOS, backend, and AI across category-leading consumer products. Plus a stable of native apps, open-source projects, and CLI tools."
+  description={`Independent engineer. Six years shipping production iOS, backend, and AI for category-leading consumer products. ${appsData.apps.length} apps live on the App Store, ${openSourceData.projects.length} open-source projects.`}
 >
   <!-- Hero -->
-  <section class="pt-10 sm:pt-16 pb-10">
-    <div class="text-center max-w-3xl mx-auto">
-      <span
-        class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-green-50 dark:bg-green-500/10 text-green-700 dark:text-green-300 rounded-full mb-6 ring-1 ring-inset ring-green-600/20 dark:ring-green-400/30"
-      >
-        <span class="relative flex w-1.5 h-1.5">
-          <span
-            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
-          ></span>
-          <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
-        </span>
-        Available — Open to new engagements
-      </span>
+  <section class="relative pt-12 sm:pt-20 pb-12 overflow-hidden">
+    <MatrixRain />
+    <div class="relative max-w-3xl">
+      <p class="prompt-line mb-4">whoami</p>
 
       <h1
-        class="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-[1] tracking-tight"
+        class="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 leading-[1.05] tracking-tight text-paper-text dark:text-term-text"
       >
-        Engineer who
-        <span class="gradient-text">ships</span>.
+        Engineer who<br />
+        <span class="phosphor cursor-blink">ships.</span>
       </h1>
 
       <p
-        class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto"
+        class="text-base sm:text-lg text-paper-muted dark:text-term-muted mb-4 leading-relaxed max-w-2xl"
       >
-        Six years shipping production iOS, backend, and AI to category-leading consumer products.
-        Plus a stable of native apps, {openSourceData.projects.length}+ open-source projects, and
-        CLI tools.
+        <span class="text-paper-text dark:text-term-text font-semibold">Marcus Ziadé</span> — six years
+        shipping production iOS, backend, and AI for category-leading consumer products. Now building
+        my own: {appsData.apps.length} apps live on the App Store, {openSourceData.projects.length} open-source
+        projects.
       </p>
 
-      <div class="flex flex-wrap gap-3 justify-center">
+      <p
+        class="inline-flex items-center gap-2 text-xs text-paper-greendim dark:text-term-greendim mb-8"
+      >
+        <span class="relative flex w-1.5 h-1.5">
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-paper-green dark:bg-term-green opacity-75"
+          ></span>
+          <span
+            class="relative inline-flex rounded-full h-1.5 w-1.5 bg-paper-green dark:bg-term-green"
+          ></span>
+        </span>
+        STATUS: available — open to new engagements
+      </p>
+
+      <div class="flex flex-wrap gap-3">
         <a
-          href="/services#engagements"
-          class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-colors"
+          href="/services"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
         >
-          Selected engagements
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
+          ./work-with-me
         </a>
         <a
-          href="/services#book"
-          class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-semibold transition-colors"
+          href="/apps"
+          class="inline-flex items-center gap-2 px-5 py-2.5 border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text rounded-sm text-sm font-semibold hover:border-paper-green dark:hover:border-term-green hover:text-paper-green dark:hover:text-term-green transition-colors"
         >
-          Schedule a call
+          ./see-the-work
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Selected Engagements teaser -->
+  <!-- Stats -->
   <section class="mb-16">
-    <a href="/services#engagements" class="group block">
-      <div
-        class="relative bg-white dark:bg-gray-800/40 rounded-xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500/60 transition-colors"
-      >
-        <div class="flex items-center justify-between mb-5">
-          <h2
-            class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-[0.18em]"
-          >
-            Selected Engagements
-          </h2>
-          <span
-            class="text-xs text-blue-600 dark:text-blue-400 inline-flex items-center gap-1 font-medium opacity-70 group-hover:opacity-100 transition-opacity"
-          >
-            Full timeline
-            <svg
-              class="w-3.5 h-3.5 transform transition-transform group-hover:translate-x-0.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
-              ></path>
-            </svg>
-          </span>
-        </div>
+    <div class="term-frame p-5 sm:p-6">
+      <p class="prompt-line mb-4">midgar --stats</p>
+      <dl class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-4">
+        {
+          stats.map((stat) => (
+            <div>
+              <dd class="text-2xl sm:text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
+                {stat.value}
+              </dd>
+              <dt class="text-xs text-paper-muted dark:text-term-muted mt-1">{stat.key}</dt>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-          <div>
-            <p
-              class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight"
-            >
-              6
-            </p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">
-              years shipping
-            </p>
-          </div>
-          <div>
-            <p
-              class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight"
-            >
-              6,000+
-            </p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">
-              commits
-            </p>
-          </div>
-          <div>
-            <p
-              class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight"
-            >
-              ~790k
-            </p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">
-              lines shipped
-            </p>
-          </div>
-          <div>
-            <p
-              class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight"
-            >
-              5
-            </p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">
-              industries
-            </p>
-          </div>
-        </div>
-
-        <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
-          From a multi-billion-dollar wearable health platform to a NASDAQ-listed cybersecurity
-          company to an AI-native health & wellness startup — six years of engineering services
-          shipped to category-leading consumer products.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm">
-          <span
-            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
-          >
-            <span class="w-1.5 h-1.5 rounded-full bg-violet-500"></span> AI · Health
-          </span>
-          <span class="text-gray-300 dark:text-gray-700" aria-hidden="true">·</span>
-          <span
-            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
-          >
-            <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Cybersecurity
-          </span>
-          <span class="text-gray-300 dark:text-gray-700" aria-hidden="true">·</span>
-          <span
-            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
-          >
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Wearable health
-          </span>
-          <span class="text-gray-300 dark:text-gray-700" aria-hidden="true">·</span>
-          <span
-            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
-          >
-            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Software consulting
-          </span>
-          <span class="text-gray-300 dark:text-gray-700" aria-hidden="true">·</span>
-          <span
-            class="inline-flex items-center gap-1.5 text-gray-700 dark:text-gray-300 font-medium"
-          >
-            <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-500"></span> Creator economy
-          </span>
-        </div>
+  <!-- Selected Engagements -->
+  <section class="mb-16">
+    <a href="/services#engagements" class="group block term-frame term-frame-hover p-5 sm:p-6">
+      <div class="flex items-center justify-between mb-5">
+        <p class="prompt-line">git log --employers --oneline</p>
+        <span
+          class="text-xs text-paper-greendim dark:text-term-greendim opacity-70 group-hover:opacity-100 transition-opacity"
+        >
+          full timeline →
+        </span>
       </div>
+
+      <ul class="space-y-3">
+        {
+          engagements.map((entry) => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 text-sm">
+              <span class="text-paper-amber dark:text-term-amber whitespace-nowrap sm:w-44 shrink-0">
+                {entry.dateRange.replace(' — ', '→')}
+              </span>
+              <span class="text-paper-text dark:text-term-text font-semibold">
+                {entry.headline}
+              </span>
+              <span class="text-paper-muted dark:text-term-muted">{entry.role}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="mt-5 text-sm text-paper-muted dark:text-term-muted leading-relaxed">
+        From a multi-billion-dollar wearable health platform to a NASDAQ-listed cybersecurity
+        company to an AI-native health startup — engineering services shipped to category-leading
+        consumer products.
+      </p>
     </a>
   </section>
 
-  <!-- Featured Apps Section -->
+  <!-- Featured Apps -->
   <section class="mb-16">
-    <div class="flex items-center justify-between mb-8">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Featured Apps</h2>
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
+        <span class="text-paper-green dark:text-term-green">~/apps</span> · latest releases
+      </h2>
       <a
         href="/apps"
-        class="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
       >
-        View all apps
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
-          ></path>
-        </svg>
+        ls apps/ →
       </a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -280,19 +181,17 @@ const socialLinks = [{ name: 'GitHub', url: 'https://github.com/guitaripod', ico
     </div>
   </section>
 
-  <!-- CLI Tools Section -->
+  <!-- CLI Tools -->
   <section class="mb-16">
-    <div class="flex items-center justify-between mb-8">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">CLI Tools</h2>
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
+        <span class="text-paper-green dark:text-term-green">~/cli</span> · tools for the terminal
+      </h2>
       <a
         href="/cli-tools"
-        class="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
       >
-        View more CLI tools
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
-          ></path>
-        </svg>
+        ls cli/ →
       </a>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -300,89 +199,61 @@ const socialLinks = [{ name: 'GitHub', url: 'https://github.com/guitaripod', ico
     </div>
   </section>
 
-  <!-- Open Source Section -->
+  <!-- Open Source -->
   <section class="mb-16">
-    <div class="flex items-center justify-between mb-8">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Open Source</h2>
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
+        <span class="text-paper-green dark:text-term-green">~/oss</span> · open source
+      </h2>
       <a
         href="/opensource"
-        class="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
       >
-        View all projects
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"
-          ></path>
-        </svg>
+        ls oss/ →
       </a>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        openSourceData.projects
-          .filter((project) => project.stars >= 4)
-          .slice(0, 6)
-          .map((project) => <OpenSourceCard project={project} />)
-      }
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      {featuredOpenSource.map((project) => <OpenSourceCard project={project} />)}
     </div>
   </section>
 
-  <!-- Recent Posts Section with Enhancements -->
+  <!-- Recent Posts -->
   <section class="mb-16">
-    <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">Recent Posts</h2>
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
+        <span class="text-paper-green dark:text-term-green">~/blog</span> · recent writing
+      </h2>
+      <a
+        href="/archive"
+        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+      >
+        ls blog/ →
+      </a>
+    </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
       {
         postsWithReadingTime.map((post) => {
-          const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          });
+          const formattedDate = post.data.pubDate.toISOString().slice(0, 10);
 
           return (
-            <article class="group bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 hover:shadow-lg">
+            <article class="group term-frame term-frame-hover p-4 sm:p-5">
               <a href={`/blog/${post.slug}`} class="block">
-                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                  <div class="flex-1 min-w-0">
-                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
-                      {post.data.title}
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-3 line-clamp-2">
-                      {post.data.description}
-                    </p>
-                    <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500 dark:text-gray-500">
-                      <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
-                      <span class="flex items-center gap-1">
-                        <svg
-                          class="w-3.5 h-3.5 sm:w-4 sm:h-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                        {post.readingTime} min read
-                      </span>
-                      {post.data.tags.length > 0 && (
-                        <div class="flex flex-wrap gap-1 sm:gap-2">
-                          {post.data.tags.slice(0, 3).map((tag) => (
-                            <span class="text-blue-600 dark:text-blue-400">#{tag}</span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  {post.data.image && (
-                    <img
-                      src={post.data.image}
-                      alt=""
-                      class="w-full sm:w-20 h-48 sm:h-20 rounded-lg object-cover flex-shrink-0"
-                      loading="lazy"
-                    />
+                <h3 class="text-base sm:text-lg font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors mb-2">
+                  {post.data.title}
+                </h3>
+                <p class="text-sm text-paper-muted dark:text-term-muted mb-3 line-clamp-2 font-sans">
+                  {post.data.description}
+                </p>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-paper-faint dark:text-term-faint">
+                  <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+                  <span>{post.readingTime} min</span>
+                  {post.data.tags.length > 0 && (
+                    <span class="flex flex-wrap gap-2">
+                      {post.data.tags.slice(0, 3).map((tag) => (
+                        <span class="text-paper-greendim dark:text-term-greendim">#{tag}</span>
+                      ))}
+                    </span>
                   )}
                 </div>
               </a>
@@ -391,54 +262,10 @@ const socialLinks = [{ name: 'GitHub', url: 'https://github.com/guitaripod', ico
         })
       }
     </div>
-
-    {
-      postsWithReadingTime.length === 0 && (
-        <p class="text-gray-600 dark:text-gray-400 text-center py-8">
-          No posts yet. Check back soon!
-        </p>
-      )
-    }
-
-    {
-      postsWithReadingTime.length === 4 && (
-        <div class="mt-12 text-center">
-          <a
-            href="/archive"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-          >
-            View all posts
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </a>
-        </div>
-      )
-    }
   </section>
 </BaseLayout>
 
 <style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out;
-  }
-
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;

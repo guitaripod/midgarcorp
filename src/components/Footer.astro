@@ -2,56 +2,97 @@
 import CryptoWallet from './CryptoWallet.astro';
 
 const currentYear = new Date().getFullYear();
+const buildDate = new Date().toISOString().slice(0, 10);
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+
+const windows = [
+  { href: '/', label: 'home' },
+  { href: '/services', label: 'services' },
+  { href: '/apps', label: 'apps' },
+  { href: '/cli-tools', label: 'cli' },
+  { href: '/opensource', label: 'oss' },
+  { href: '/archive', label: 'blog' },
+];
+
+const isWindowActive = (href: string) =>
+  href === '/' ? currentPath === '' : currentPath.startsWith(href.slice(1));
+
+const tipJarPrefixes = ['blog', 'archive', 'links', 'tags'];
+const showTipJar = tipJarPrefixes.some((prefix) => currentPath.startsWith(prefix));
 ---
 
-<footer class="mt-16 border-t border-gray-200 dark:border-gray-800">
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
-    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-      <div class="text-center sm:text-left">
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          © {currentYear} Midgar Corp. All rights reserved.
-        </p>
-      </div>
-
-      <div class="flex items-center space-x-4">
-        <a
-          href="/rss.xml"
-          class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
-          aria-label="RSS Feed"
-        >
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M3.929 5.929a8 8 0 1112.142 0M3.929 5.929L12 14m0 0l4.071-4.071M12 14v-6"
-            ></path>
-            <circle cx="5" cy="15" r="1"></circle>
-            <path d="M5 11a4 4 0 014 4"></path>
-            <path d="M5 7a8 8 0 018 8"></path>
-          </svg>
-        </a>
-
-        <a
-          href="https://github.com/guitaripod/midgarcorp"
-          class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
-          aria-label="GitHub"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-            <path
-              fill-rule="evenodd"
-              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-              clip-rule="evenodd"></path>
-          </svg>
-        </a>
+<footer class="mt-20">
+  <nav
+    aria-label="Footer"
+    class="border-t border-paper-border dark:border-term-border bg-paper-panel dark:bg-term-panel"
+  >
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-2">
+      <div
+        class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-xs text-paper-muted dark:text-term-muted"
+      >
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 min-w-0">
+          <span
+            class="px-1.5 py-0.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg font-semibold"
+            title="tmux session: midgar">midgar</span
+          >
+          {
+            windows.map((window, index) => {
+              const isActive = isWindowActive(window.href);
+              return (
+                <a
+                  href={window.href}
+                  class={`transition-colors hover:text-paper-green dark:hover:text-term-green ${
+                    isActive ? 'text-paper-green dark:text-term-green font-semibold' : ''
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {`${index}:${window.label}${isActive ? '*' : ''}`}
+                </a>
+              );
+            })
+          }
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href="/rss.xml"
+            class="hover:text-paper-green dark:hover:text-term-green transition-colors"
+            aria-label="RSS Feed">rss</a
+          >
+          <a
+            href="https://github.com/guitaripod"
+            class="hover:text-paper-green dark:hover:text-term-green transition-colors"
+            aria-label="GitHub"
+            rel="noopener noreferrer"
+            target="_blank">github</a
+          >
+          <a
+            href="/services#book"
+            class="hover:text-paper-green dark:hover:text-term-green transition-colors">contact</a
+          >
+          <span class="hidden sm:inline" title="last deploy">{buildDate}</span>
+        </div>
       </div>
     </div>
+  </nav>
 
-    <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
-      <div class="flex flex-wrap items-center justify-center gap-3">
-        <span class="text-xs text-gray-500 dark:text-gray-500 mr-2">Support:</span>
-        <CryptoWallet currency="ETH" address="0x9035F5D947Ef36478679f89Fe44a9041d3837e98" />
-        <CryptoWallet currency="BTC" address="bc1qsjzwcmyn9jk4fc32dr406hgc008mv30c9u4z6n" />
-        <CryptoWallet currency="DOGE" address="DH2r7M3pNwX5JG65v6p1PndkAQpCBMyGx2" />
-      </div>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <p class="text-xs text-paper-faint dark:text-term-faint">
+        © {currentYear} Midgar Corp · exit 0
+      </p>
+
+      {
+        showTipJar && (
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <span class="text-xs text-paper-faint dark:text-term-faint mr-1">support:</span>
+            <CryptoWallet currency="ETH" address="0x9035F5D947Ef36478679f89Fe44a9041d3837e98" />
+            <CryptoWallet currency="BTC" address="bc1qsjzwcmyn9jk4fc32dr406hgc008mv30c9u4z6n" />
+            <CryptoWallet currency="DOGE" address="DH2r7M3pNwX5JG65v6p1PndkAQpCBMyGx2" />
+          </div>
+        )
+      }
     </div>
   </div>
 </footer>

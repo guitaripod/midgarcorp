@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — command not found | Marcus Ziadé" description="This page does not exist.">
+  <section class="pt-16 sm:pt-24 pb-16 max-w-2xl">
+    <p class="prompt-line mb-4">cat {'{requested_page}'}</p>
+    <h1
+      class="text-4xl sm:text-6xl font-bold mb-6 tracking-tight text-paper-text dark:text-term-text"
+    >
+      404<span class="text-paper-red dark:text-term-red">:</span> command not found
+    </h1>
+    <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted mb-8 leading-relaxed">
+      No such file or directory. The page moved, never existed, or got refactored away.
+    </p>
+    <div class="term-frame p-5 mb-8 text-sm space-y-2">
+      <p class="text-paper-muted dark:text-term-muted">Did you mean:</p>
+      <p>
+        <a
+          href="/"
+          class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+          >cd ~</a
+        >
+        <span class="text-paper-faint dark:text-term-faint"># home</span>
+      </p>
+      <p>
+        <a
+          href="/apps"
+          class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+          >ls ~/apps</a
+        >
+        <span class="text-paper-faint dark:text-term-faint"># App Store apps</span>
+      </p>
+      <p>
+        <a
+          href="/archive"
+          class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+          >ls ~/blog</a
+        >
+        <span class="text-paper-faint dark:text-term-faint"># writing</span>
+      </p>
+      <p>
+        <a
+          href="/services"
+          class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+          >man marcus</a
+        >
+        <span class="text-paper-faint dark:text-term-faint"># work with me</span>
+      </p>
+    </div>
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+    >
+      cd ~ && exit 0
+    </a>
+  </section>
+</BaseLayout>

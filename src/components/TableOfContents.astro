@@ -9,7 +9,9 @@ const { items } = Astro.props;
 ---
 
 <nav class="toc" aria-label="Table of contents">
-  <h2 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4">On this page</h2>
+  <h2 class="term-label mb-4">
+    <span class="text-paper-green dark:text-term-green">##</span> on this page
+  </h2>
   <ul class="space-y-2 text-sm">
     {
       items.map((item) => (
@@ -36,7 +38,7 @@ const { items } = Astro.props;
       (entries) => {
         entries.forEach((entry) => {
           const id = entry.target.getAttribute('id');
-          const tocLink = document.querySelector(`[href="#${id}"]`);
+          const tocLink = document.querySelector(`[data-toc-link][href="#${id}"]`);
 
           if (entry.isIntersecting) {
             // Remove active class from all links
@@ -63,13 +65,14 @@ const { items } = Astro.props;
         const targetElement = document.getElementById(targetId);
 
         if (targetElement) {
-          const offset = 80; // Header height
+          const offset = 80;
           const targetPosition = targetElement.offsetTop - offset;
 
           window.scrollTo({
             top: targetPosition,
             behavior: 'smooth',
           });
+          history.replaceState(null, '', `#${targetId}`);
         }
       });
     });

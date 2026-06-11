@@ -4,30 +4,18 @@ import AppCard from '@components/AppCard.astro';
 import appsData from '../data/apps.json';
 
 const pageTitle = 'Apple Platform Apps | Marcus Ziadé';
-const pageDescription =
-  'Explore my portfolio of applications for Apple platforms - iPhone, iPad, Mac, and Apple TV. Featuring machine learning, productivity tools, and innovative experiences.';
 
-// Sort apps by release date (newest first)
 const sortedApps = [...appsData.apps].sort((a, b) => {
   return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
 });
 
-// Create a more engaging OG description
-const ogDescription = `🚀 ${sortedApps.length} apps on the App Store • 🤖 ML-powered experiences • 📱 iPhone, iPad, Mac & Apple TV • ⭐ From productivity tools to space exploration`;
+const ogDescription = `${sortedApps.length} apps live on the App Store — iPhone, iPad, Mac, and Apple TV. ML-powered consumer products, developer tools, and education apps, designed and shipped solo.`;
 
-// Get featured apps for the OG preview
-const featuredApps = sortedApps
-  .slice(0, 3)
-  .map((app) => app.name)
-  .join(', ');
-const moreAppsCount = Math.max(0, sortedApps.length - 3);
-
-// Create structured data for the apps collection
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: pageTitle,
-  description: pageDescription,
+  description: ogDescription,
   url: 'https://midgarcorp.cc/apps/',
   author: {
     '@type': 'Person',
@@ -52,56 +40,54 @@ const structuredData = {
 ---
 
 <BaseLayout title={pageTitle} description={ogDescription} image="/og-apps-grid.png">
-  <main>
-    <div class="container mx-auto px-4 py-6 sm:py-8 lg:py-12">
-      <header class="text-center mb-8 sm:mb-12">
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">Apple Platform Apps</h1>
-        <p
-          class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-3 sm:mb-4 px-2"
-        >
-          {sortedApps.length} apps on the App Store spanning iPhone, iPad, Mac, and Apple TV. Each one
-          solves a real problem—from ML-powered health insights to space exploration.
-        </p>
-        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2">
-          Building my own products after years of shipping at scale. Open source where it makes
-          sense. Always learning, always shipping.
-        </p>
-      </header>
+  <header class="pt-12 sm:pt-16 mb-10 sm:mb-12">
+    <p class="prompt-line mb-4">ls ~/apps --sort=released</p>
+    <h1
+      class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-paper-text dark:text-term-text"
+    >
+      Apple Platform <span class="phosphor">Apps</span>
+    </h1>
+    <p
+      class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-3xl mb-3 leading-relaxed"
+    >
+      {sortedApps.length} apps live on the App Store spanning iPhone, iPad, Mac, and Apple TV. Each one
+      solves a real problem — from on-device LLM tutoring to AI image generation to a 4K window on the
+      cosmos.
+    </p>
+    <p class="text-sm sm:text-base text-paper-faint dark:text-term-faint max-w-2xl">
+      Designed, built, and shipped solo after six years of engineering at scale. Open source where
+      it makes sense. Always shipping.
+    </p>
+  </header>
 
-      <section>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-          {sortedApps.map((app) => <AppCard app={app} />)}
-        </div>
-      </section>
-
-      <section class="mt-12 sm:mt-16 text-center">
-        <div
-          class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl p-6 sm:p-8"
-        >
-          <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Building Something?</h3>
-          <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 px-2">
-            Open to collaborating on projects that matter. Especially interested in health tech,
-            developer tools, and anything that pushes boundaries.
-          </p>
-          <a
-            href="/links"
-            class="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-200 text-sm sm:text-base"
-          >
-            Get in Touch
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-        </div>
-      </section>
+  <section>
+    <div class="apps-grid grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+      {sortedApps.map((app) => <AppCard app={app} />)}
     </div>
-  </main>
+  </section>
 
-  <!-- Structured data for better SEO -->
+  <section class="mt-12 sm:mt-16 mb-12">
+    <div class="term-frame p-6 sm:p-8">
+      <p class="prompt-line mb-4">make app CLIENT=you</p>
+      <h2 class="text-xl sm:text-2xl font-bold mb-3 text-paper-text dark:text-term-text">
+        Need an app built?
+      </h2>
+      <p
+        class="text-sm sm:text-base text-paper-muted dark:text-term-muted mb-6 max-w-2xl leading-relaxed"
+      >
+        I take Apple-platform products from idea to App Store — Swift across iPhone, iPad, Mac, and
+        TV, with the backend and AI integration to match. {sortedApps.length} live apps prove the pipeline
+        works.
+      </p>
+      <a
+        href="/services#book"
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+      >
+        Get in touch →
+      </a>
+    </div>
+  </section>
+
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </BaseLayout>
 
@@ -109,7 +95,7 @@ const structuredData = {
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(16px);
     }
     to {
       opacity: 1;
@@ -117,21 +103,50 @@ const structuredData = {
     }
   }
 
-  .grid > * {
-    animation: fadeIn 0.6s ease-out forwards;
-    opacity: 0;
-  }
+  @media (prefers-reduced-motion: no-preference) {
+    .apps-grid > :global(*) {
+      animation: fadeIn 0.5s ease-out forwards;
+      opacity: 0;
+    }
 
-  .grid > *:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-  .grid > *:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-  .grid > *:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-  .grid > *:nth-child(4) {
-    animation-delay: 0.4s;
+    .apps-grid > :global(*:nth-child(1)) {
+      animation-delay: 0.05s;
+    }
+    .apps-grid > :global(*:nth-child(2)) {
+      animation-delay: 0.1s;
+    }
+    .apps-grid > :global(*:nth-child(3)) {
+      animation-delay: 0.15s;
+    }
+    .apps-grid > :global(*:nth-child(4)) {
+      animation-delay: 0.2s;
+    }
+    .apps-grid > :global(*:nth-child(5)) {
+      animation-delay: 0.25s;
+    }
+    .apps-grid > :global(*:nth-child(6)) {
+      animation-delay: 0.3s;
+    }
+    .apps-grid > :global(*:nth-child(7)) {
+      animation-delay: 0.35s;
+    }
+    .apps-grid > :global(*:nth-child(8)) {
+      animation-delay: 0.4s;
+    }
+    .apps-grid > :global(*:nth-child(9)) {
+      animation-delay: 0.45s;
+    }
+    .apps-grid > :global(*:nth-child(10)) {
+      animation-delay: 0.5s;
+    }
+    .apps-grid > :global(*:nth-child(11)) {
+      animation-delay: 0.55s;
+    }
+    .apps-grid > :global(*:nth-child(12)) {
+      animation-delay: 0.6s;
+    }
+    .apps-grid > :global(*:nth-child(n + 13)) {
+      animation-delay: 0.65s;
+    }
   }
 </style>
