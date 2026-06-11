@@ -5,96 +5,107 @@ on:
     branches: [master, dev]
   pull_request:
     branches: [master]
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+permissions:
+  contents: read
 
 jobs:
   test-and-lint:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 15
+
     strategy:
       matrix:
         node-version: [20.x]
-    
+
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    
+
     - name: Set up Go
       uses: actions/setup-go@v5
       with:
-        go-version: '1.21'
-        cache: true
-    
+        go-version-file: 'go.mod'
+        cache: false
+
     - name: Build ct CLI
       run: make build
-    
+
     - name: Install dependencies
       run: npm ci
-    
+
     - name: Run linting and tests in parallel
       run: |
-        npx tsc --noEmit &
-        npx prettier --check "src/**/*.{js,ts,astro,css}" &
-        npm test &
-        wait
-    
+        npx tsc --noEmit & tsc_pid=$!
+        npx prettier --check "src/**/*.{js,ts,astro,css}" & prettier_pid=$!
+        npm run test:run & test_pid=$!
+        status=0
+        unformatted=$(gofmt -l .)
+        if [ -n "$unformatted" ]; then
+          echo "gofmt violations:"
+          echo "$unformatted"
+          status=1
+        fi
+        wait "$tsc_pid" || status=1
+        wait "$prettier_pid" || status=1
+        wait "$test_pid" || status=1
+        exit "$status"
+
     - name: Build project
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: npm run build
-    
-    - name: Upload coverage reports
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
 
   deploy-preview:
     needs: [test-and-lint]
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     if: github.event_name == 'pull_request'
-    
+
     permissions:
       contents: read
       pull-requests: write
       deployments: write
-    
+
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Use Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20.x'
         cache: 'npm'
-    
+
     - name: Set up Go
       uses: actions/setup-go@v5
       with:
-        go-version: '1.21'
-        cache: true
-    
-    - name: Install dependencies and build in parallel
+        go-version-file: 'go.mod'
+        cache: false
+
+    - name: Install dependencies and build ct CLI in parallel
       run: |
-        npm ci &
-        make build &
-        wait
-    
-    - name: Update App Store data and generate OG image
-      run: |
-        echo "Fetching latest app data from App Store..."
-        ./ct fetch-appstore || echo "Failed to update app data, using existing data"
-        echo "Generating OG image grid from app icons..."
-        node scripts/generate-apps-og-grid.js || echo "Failed to generate OG grid, using existing image"
-    
+        npm ci & npm_pid=$!
+        make build & make_pid=$!
+        wait "$npm_pid"
+        wait "$make_pid"
+
     - name: Build project
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: npm run build
-    
+
     - name: Deploy to Cloudflare Pages Preview
       uses: cloudflare/wrangler-action@v3
       with:
@@ -105,45 +116,40 @@ jobs:
   deploy-production:
     needs: [test-and-lint]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-    
+    timeout-minutes: 15
+    if: success() && github.ref == 'refs/heads/master' && contains(fromJSON('["push", "schedule", "workflow_dispatch"]'), github.event_name)
+
     permissions:
       contents: read
       deployments: write
-    
+
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Use Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20.x'
         cache: 'npm'
-    
+
     - name: Set up Go
       uses: actions/setup-go@v5
       with:
-        go-version: '1.21'
-        cache: true
-    
-    - name: Install dependencies and build in parallel
+        go-version-file: 'go.mod'
+        cache: false
+
+    - name: Install dependencies and build ct CLI in parallel
       run: |
-        npm ci &
-        make build &
-        wait
-    
-    - name: Update App Store data and generate OG image
-      run: |
-        echo "Fetching latest app data from App Store..."
-        ./ct fetch-appstore || echo "Failed to update app data, using existing data"
-        echo "Generating OG image grid from app icons..."
-        node scripts/generate-apps-og-grid.js || echo "Failed to generate OG grid, using existing image"
-    
+        npm ci & npm_pid=$!
+        make build & make_pid=$!
+        wait "$npm_pid"
+        wait "$make_pid"
+
     - name: Build project
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: npm run build
-    
+
     - name: Deploy to Cloudflare Pages Production
       uses: cloudflare/wrangler-action@v3
       with:
