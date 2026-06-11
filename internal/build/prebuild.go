@@ -23,17 +23,21 @@ func PreBuild() error {
 		// Don't fail the build if GitHub fetch fails
 	}
 
-	// Generate OG image (still using Node.js script for now)
-	fmt.Println("Generating OG image...")
-	cmd := exec.Command("node", "scripts/generate-main-og-image.js")
-	cmd.Stdout = nil // Hide output since it's handled by the script
-	cmd.Stderr = nil
-	if err := cmd.Run(); err != nil {
-		fmt.Printf("Failed to generate OG image: %v\n", err.Error())
-		// Don't fail the build if OG image generation fails
-	} else {
-		fmt.Println("✓ Generated og-image.png")
-		fmt.Println("✓ OG image generated successfully")
+	// Generate OG images (still using Node.js scripts for now)
+	fmt.Println("Generating OG images...")
+	for _, script := range []string{
+		"scripts/generate-main-og-image.js",
+		"scripts/generate-apps-og-grid.js",
+	} {
+		cmd := exec.Command("node", script)
+		cmd.Stdout = nil // Hide output since it's handled by the script
+		cmd.Stderr = nil
+		if err := cmd.Run(); err != nil {
+			fmt.Printf("Failed to run %s: %v\n", script, err.Error())
+			// Don't fail the build if OG image generation fails
+		} else {
+			fmt.Printf("✓ %s completed\n", script)
+		}
 	}
 
 	fmt.Println("✓ Pre-build tasks complete")

@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-07-11T15:13:52+03:00",
-  "totalRepos": 100,
+  "lastUpdated": "2026-06-11T23:05:49+02:00",
+  "totalRepos": 134,
   "projects": [
     {
       "id": "omnichat",
@@ -8,14 +8,26 @@
       "description": "3rd place T3 Cloneathon Champion",
       "language": "TypeScript",
       "platforms": [],
-      "stars": 32,
+      "stars": 56,
       "githubUrl": "https://github.com/guitaripod/omnichat",
-      "category": "Other Projects",
-      "highlights": ["Ai", "Clerk"],
-      "updatedAt": "2025-07-11T11:15:04Z",
+      "category": "AI \u0026 Agents",
+      "highlights": [
+        "AI",
+        "Clerk",
+        "Go"
+      ],
+      "updatedAt": "2025-08-24T00:19:58Z",
       "createdAt": "2025-06-08T08:09:24Z",
-      "topics": ["ai", "clerk", "go", "nextjs", "ollama", "stripe", "typescript"],
-      "commitCount": 351,
+      "topics": [
+        "ai",
+        "clerk",
+        "go",
+        "nextjs",
+        "ollama",
+        "stripe",
+        "typescript"
+      ],
+      "commitCount": 369,
       "releaseCount": 1,
       "homepageUrl": "https://omnichat-7pu.pages.dev/"
     },
@@ -24,203 +36,987 @@
       "name": "Swollama",
       "description": "A comprehensive Swift SDK for Ollama",
       "language": "Swift",
-      "platforms": ["macOS"],
-      "stars": 12,
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 17,
       "githubUrl": "https://github.com/guitaripod/Swollama",
-      "category": "Swift Projects",
-      "highlights": ["Chat", "Cli"],
-      "updatedAt": "2025-07-11T08:15:36Z",
+      "category": "Swift Packages",
+      "highlights": [
+        "Local LLMs",
+        "Chat",
+        "CLI"
+      ],
+      "updatedAt": "2025-10-01T21:34:50Z",
       "createdAt": "2024-10-25T06:26:58Z",
-      "topics": ["chat", "cli", "concurrency", "ollama", "package", "swift"],
-      "commitCount": 86,
-      "releaseCount": 4,
+      "topics": [
+        "chat",
+        "cli",
+        "concurrency",
+        "ollama",
+        "package",
+        "swift"
+      ],
+      "commitCount": 131,
+      "releaseCount": 7,
       "homepageUrl": "https://guitaripod.github.io/Swollama/"
     },
     {
-      "id": "openaikit",
-      "name": "OpenAIKit",
-      "description": "A comprehensive Swift SDK for the OpenAI API.",
+      "id": "live-preview-demo",
+      "name": "live-preview-demo",
+      "description": "A demo project for Xcode's Live Preview",
       "language": "Swift",
-      "platforms": ["macOS"],
-      "stars": 9,
-      "githubUrl": "https://github.com/guitaripod/OpenAIKit",
-      "category": "Swift Packages",
-      "highlights": ["AI-powered", "Ai", "Openai"],
-      "updatedAt": "2025-07-02T13:25:23Z",
-      "createdAt": "2025-06-25T20:08:29Z",
-      "topics": ["ai", "openai", "sdk", "swift"],
-      "commitCount": 68,
-      "releaseCount": 7,
-      "homepageUrl": "https://guitaripod.github.io/OpenAIKit/"
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 13,
+      "githubUrl": "https://github.com/guitaripod/live-preview-demo",
+      "category": "Swift Projects",
+      "highlights": [],
+      "updatedAt": "2025-07-13T07:57:51Z",
+      "createdAt": "2021-05-11T16:00:57Z",
+      "topics": [],
+      "commitCount": 12,
+      "releaseCount": 0
     },
     {
       "id": "geminikit",
       "name": "GeminiKit",
       "description": "A comprehensive Swift SDK for the Google Gemini API",
       "language": "Swift",
-      "platforms": ["macOS"],
-      "stars": 6,
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 12,
       "githubUrl": "https://github.com/guitaripod/GeminiKit",
       "category": "Swift Packages",
       "highlights": [],
-      "updatedAt": "2025-07-03T03:45:13Z",
+      "updatedAt": "2025-07-18T20:32:29Z",
       "createdAt": "2025-06-30T12:54:20Z",
       "topics": [],
-      "commitCount": 61,
+      "commitCount": 63,
       "releaseCount": 1,
       "homepageUrl": "https://guitaripod.github.io/GeminiKit/"
     },
     {
+      "id": "openaikit",
+      "name": "OpenAIKit",
+      "description": "A comprehensive Swift SDK for the OpenAI API.",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 12,
+      "githubUrl": "https://github.com/guitaripod/OpenAIKit",
+      "category": "Swift Packages",
+      "highlights": [
+        "AI",
+        "OpenAI",
+        "SDK"
+      ],
+      "updatedAt": "2025-07-12T12:41:31Z",
+      "createdAt": "2025-06-25T20:08:29Z",
+      "topics": [
+        "ai",
+        "openai",
+        "sdk",
+        "swift"
+      ],
+      "commitCount": 70,
+      "releaseCount": 9,
+      "homepageUrl": "https://guitaripod.github.io/OpenAIKit/"
+    },
+    {
+      "id": "flyr",
+      "name": "flyr",
+      "description": "Search Google Flights from the terminal",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 9,
+      "githubUrl": "https://github.com/guitaripod/flyr",
+      "category": "CLI Tools",
+      "highlights": [],
+      "updatedAt": "2026-03-31T12:48:10Z",
+      "createdAt": "2026-02-16T17:36:16Z",
+      "topics": [],
+      "commitCount": 42,
+      "releaseCount": 10,
+      "homepageUrl": "https://crates.io/crates/flyr-cli"
+    },
+    {
+      "id": "weavex",
+      "name": "Weavex",
+      "description": "Autonomous research agent powered by local LLMs",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 9,
+      "githubUrl": "https://github.com/guitaripod/Weavex",
+      "category": "AI \u0026 Agents",
+      "highlights": [
+        "AI-powered",
+        "LLM",
+        "Ollama"
+      ],
+      "updatedAt": "2025-09-27T09:08:57Z",
+      "createdAt": "2025-09-26T09:30:05Z",
+      "topics": [
+        "llm",
+        "ollama",
+        "rust",
+        "search",
+        "web"
+      ],
+      "commitCount": 49,
+      "releaseCount": 8
+    },
+    {
       "id": "songlink-cli",
       "name": "songlink-cli",
-      "description": "A Song.Link CLI app written in Go",
+      "description": "Convert music URLs \u0026 download tracks",
       "language": "Go",
-      "platforms": ["macOS", "Linux", "Windows"],
-      "stars": 5,
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 7,
       "githubUrl": "https://github.com/guitaripod/songlink-cli",
       "category": "CLI Tools",
-      "highlights": ["Cli", "Go"],
-      "updatedAt": "2025-04-18T10:04:26Z",
+      "highlights": [
+        "CLI",
+        "Go",
+        "macOS"
+      ],
+      "updatedAt": "2026-06-09T14:00:07Z",
       "createdAt": "2022-09-01T17:50:57Z",
-      "topics": ["cli", "go", "linux", "macos", "music", "windows"],
-      "commitCount": 39,
-      "releaseCount": 9
+      "topics": [
+        "cli",
+        "go",
+        "macos",
+        "linux",
+        "music",
+        "windows"
+      ],
+      "commitCount": 63,
+      "releaseCount": 13
     },
     {
-      "id": "pomme",
-      "name": "Pomme",
-      "description": "App Store Connect CLI tool built with Go.",
+      "id": "goscrapequotes",
+      "name": "goscrapequotes",
+      "description": "Backend service that provides quotes",
       "language": "Go",
-      "platforms": ["macOS", "Linux", "Windows"],
-      "stars": 3,
-      "githubUrl": "https://github.com/guitaripod/Pomme",
-      "category": "CLI Tools",
-      "highlights": ["Appstore", "Appstoreconnect"],
-      "updatedAt": "2025-07-08T18:11:21Z",
-      "createdAt": "2025-04-01T15:48:09Z",
-      "topics": ["appstore", "appstoreconnect", "cli", "go"],
-      "commitCount": 55,
-      "releaseCount": 3,
-      "homepageUrl": "https://guitaripod.github.io/Pomme/"
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 6,
+      "githubUrl": "https://github.com/guitaripod/goscrapequotes",
+      "category": "Go Projects",
+      "highlights": [],
+      "updatedAt": "2025-07-13T07:56:51Z",
+      "createdAt": "2023-08-19T16:45:51Z",
+      "topics": [],
+      "commitCount": 7,
+      "releaseCount": 0
     },
     {
-      "id": "gh-export",
-      "name": "gh-export",
-      "description": "A fast and reliable GitHub repository exporter written in Rust",
-      "language": "Rust",
-      "platforms": ["macOS", "Linux", "Windows"],
-      "stars": 0,
-      "githubUrl": "https://github.com/guitaripod/gh-export",
+      "id": "openaiimageskit",
+      "name": "OpenAIImagesKit",
+      "description": "Swift package for OpenAI's Images API",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 6,
+      "githubUrl": "https://github.com/guitaripod/OpenAIImagesKit",
+      "category": "Swift Packages",
+      "highlights": [],
+      "updatedAt": "2025-07-12T12:41:28Z",
+      "createdAt": "2025-04-23T18:41:04Z",
+      "topics": [],
+      "commitCount": 15,
+      "releaseCount": 1
+    },
+    {
+      "id": "apod-cli",
+      "name": "apod-cli",
+      "description": "A command-line tool to browse the NASA Astronomy Picture of the Day archive.",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 6,
+      "githubUrl": "https://github.com/guitaripod/apod-cli",
       "category": "CLI Tools",
-      "highlights": ["Cli", "Github", "Backup"],
-      "updatedAt": "2025-07-18T00:00:00Z",
-      "createdAt": "2025-07-18T00:00:00Z",
-      "topics": ["cli", "github", "backup", "rust", "export"],
-      "commitCount": 0,
-      "releaseCount": 0,
-      "homepageUrl": "https://guitaripod.github.io/gh-export/"
+      "highlights": [],
+      "updatedAt": "2025-07-12T12:41:24Z",
+      "createdAt": "2023-02-12T09:17:00Z",
+      "topics": [],
+      "commitCount": 39,
+      "releaseCount": 2
     },
     {
       "id": "xaikit",
       "name": "xAIKit",
       "description": "A comprehensive Swift SDK for the xAI API",
       "language": "Swift",
-      "platforms": ["macOS"],
-      "stars": 2,
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 5,
       "githubUrl": "https://github.com/guitaripod/xAIKit",
       "category": "Swift Packages",
-      "highlights": ["AI-powered", "Sdk", "Swift"],
-      "updatedAt": "2025-07-10T05:50:47Z",
+      "highlights": [
+        "SDK",
+        "Swift",
+        "xAI"
+      ],
+      "updatedAt": "2025-07-12T12:41:36Z",
       "createdAt": "2025-06-29T12:35:09Z",
-      "topics": ["sdk", "swift", "xai"],
-      "commitCount": 53,
-      "releaseCount": 4,
+      "topics": [
+        "sdk",
+        "swift",
+        "xai"
+      ],
+      "commitCount": 54,
+      "releaseCount": 10,
       "homepageUrl": "https://guitaripod.github.io/xAIKit/"
     },
     {
-      "id": "lastfm-rs",
-      "name": "lastfm-rs",
-      "description": "A blazing-fast Rust SDK for last.fm",
+      "id": "unrager",
+      "name": "unrager",
+      "description": "A calm Twitter/X TUI with a local-LLM rage filter",
       "language": "Rust",
-      "platforms": [],
-      "stars": 2,
-      "githubUrl": "https://github.com/guitaripod/lastfm-rs",
-      "category": "Other Projects",
-      "highlights": ["Cloudflare", "Lastfm"],
-      "updatedAt": "2025-07-09T20:21:00Z",
-      "createdAt": "2025-07-07T08:08:04Z",
-      "topics": ["cloudflare", "lastfm", "rust", "sdk", "wasm"],
-      "commitCount": 52,
-      "releaseCount": 2,
-      "homepageUrl": "https://guitaripod.github.io/lastfm-rs/"
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 4,
+      "githubUrl": "https://github.com/guitaripod/unrager",
+      "category": "CLI Tools",
+      "highlights": [
+        "Local LLMs",
+        "TUI"
+      ],
+      "updatedAt": "2026-05-29T06:58:26Z",
+      "createdAt": "2026-04-12T07:37:15Z",
+      "topics": [],
+      "commitCount": 396,
+      "releaseCount": 48,
+      "homepageUrl": "https://unrager.com"
     },
     {
       "id": "deepseekkit",
       "name": "DeepSeekKit",
       "description": "A comprehensive Swift SDK for the DeepSeek API",
       "language": "Swift",
-      "platforms": ["macOS"],
-      "stars": 2,
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 4,
       "githubUrl": "https://github.com/guitaripod/DeepSeekKit",
       "category": "Swift Packages",
-      "highlights": ["Deepseek", "Sdk"],
-      "updatedAt": "2025-06-30T07:21:45Z",
+      "highlights": [
+        "Deepseek",
+        "SDK",
+        "Swift"
+      ],
+      "updatedAt": "2025-07-12T12:41:32Z",
       "createdAt": "2025-06-28T12:36:25Z",
-      "topics": ["deepseek", "sdk", "swift"],
-      "commitCount": 38,
+      "topics": [
+        "deepseek",
+        "sdk",
+        "swift"
+      ],
+      "commitCount": 39,
       "releaseCount": 2,
       "homepageUrl": "https://guitaripod.github.io/DeepSeekKit/"
+    },
+    {
+      "id": "lastfm-rs",
+      "name": "lastfm-rs",
+      "description": "A blazing-fast Rust SDK for last.fm",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 3,
+      "githubUrl": "https://github.com/guitaripod/lastfm-rs",
+      "category": "SDKs \u0026 Libraries",
+      "highlights": [
+        "Cloudflare Workers",
+        "WASM",
+        "Cloudflare"
+      ],
+      "updatedAt": "2026-05-30T08:40:38Z",
+      "createdAt": "2025-07-07T08:08:04Z",
+      "topics": [
+        "cloudflare",
+        "lastfm",
+        "rust",
+        "sdk",
+        "wasm"
+      ],
+      "commitCount": 57,
+      "releaseCount": 6,
+      "homepageUrl": "https://guitaripod.github.io/lastfm-rs/"
     },
     {
       "id": "anthropickit",
       "name": "AnthropicKit",
       "description": "A comprehensive Swift SDK for the Anthropic API",
       "language": "Swift",
-      "platforms": ["macOS"],
-      "stars": 2,
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 3,
       "githubUrl": "https://github.com/guitaripod/AnthropicKit",
       "category": "Swift Packages",
-      "highlights": ["Anthropic", "Sdk"],
-      "updatedAt": "2025-06-30T19:47:05Z",
+      "highlights": [
+        "Anthropic",
+        "SDK",
+        "Swift"
+      ],
+      "updatedAt": "2025-07-12T12:41:34Z",
       "createdAt": "2025-06-29T06:50:33Z",
-      "topics": ["anthropic", "sdk", "swift"],
-      "commitCount": 34,
-      "releaseCount": 2,
+      "topics": [
+        "anthropic",
+        "sdk",
+        "swift"
+      ],
+      "commitCount": 35,
+      "releaseCount": 4,
       "homepageUrl": "https://guitaripod.github.io/AnthropicKit/"
     },
     {
-      "id": "starcraftkit",
-      "name": "StarCraftKit",
-      "description": "Swift SDK for StarCraft 2 Pro scene data",
-      "language": "Swift",
-      "platforms": ["macOS"],
-      "stars": 1,
-      "githubUrl": "https://github.com/guitaripod/StarCraftKit",
-      "category": "Swift Packages",
+      "id": "pomme",
+      "name": "Pomme",
+      "description": "App Store Connect CLI tool built with Go.",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 3,
+      "githubUrl": "https://github.com/guitaripod/Pomme",
+      "category": "CLI Tools",
+      "highlights": [
+        "Appstore",
+        "Appstoreconnect",
+        "CLI"
+      ],
+      "updatedAt": "2025-07-12T12:41:18Z",
+      "createdAt": "2025-04-01T15:48:09Z",
+      "topics": [
+        "appstore",
+        "appstoreconnect",
+        "cli",
+        "go"
+      ],
+      "commitCount": 56,
+      "releaseCount": 3,
+      "homepageUrl": "https://guitaripod.github.io/Pomme/"
+    },
+    {
+      "id": "songlink-cli-rust",
+      "name": "songlink-cli-rust",
+      "description": "A Song.link CLI app written in Rust. Paste a music service URL, the app generates a Song.link URL blazingly fast and copies it to your clipboard even more blazingly fast.",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 3,
+      "githubUrl": "https://github.com/guitaripod/songlink-cli-rust",
+      "category": "CLI Tools",
       "highlights": [],
-      "updatedAt": "2025-07-09T20:42:04Z",
-      "createdAt": "2024-02-25T16:47:08Z",
+      "updatedAt": "2022-09-09T21:18:37Z",
+      "createdAt": "2022-09-04T11:40:47Z",
       "topics": [],
-      "commitCount": 123,
-      "releaseCount": 2,
-      "homepageUrl": "https://guitaripod.github.io/StarCraftKit/"
+      "commitCount": 4,
+      "releaseCount": 2
+    },
+    {
+      "id": "pixie",
+      "name": "pixie",
+      "description": "Image Generation Platform",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/pixie",
+      "category": "Apps",
+      "highlights": [
+        "Cloudflare Workers",
+        "Android",
+        "Backend"
+      ],
+      "updatedAt": "2026-06-11T14:26:02Z",
+      "createdAt": "2025-07-20T16:30:01Z",
+      "topics": [
+        "android",
+        "backend",
+        "cli",
+        "cloudflare",
+        "ios",
+        "kotlin",
+        "oauth",
+        "openapi",
+        "rust",
+        "swift"
+      ],
+      "commitCount": 594,
+      "releaseCount": 3
     },
     {
       "id": "nasa-rs",
       "name": "nasa-rs",
       "description": "Rust SDK for the NASA API",
       "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/nasa-rs",
+      "category": "SDKs \u0026 Libraries",
+      "highlights": [
+        "NASA",
+        "Rust",
+        "SDK"
+      ],
+      "updatedAt": "2026-05-30T11:42:23Z",
+      "createdAt": "2025-07-08T13:17:55Z",
+      "topics": [
+        "nasa",
+        "rust",
+        "sdk"
+      ],
+      "commitCount": 62,
+      "releaseCount": 5,
+      "homepageUrl": "https://guitaripod.github.io/nasa-rs/"
+    },
+    {
+      "id": "scribe",
+      "name": "scribe",
+      "description": "Local AI-powered grammar checking browser extension",
+      "language": "TypeScript",
+      "platforms": [],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/scribe",
+      "category": "Other Projects",
+      "highlights": [
+        "AI-powered"
+      ],
+      "updatedAt": "2026-01-01T20:01:09Z",
+      "createdAt": "2026-01-01T18:29:26Z",
+      "topics": [],
+      "commitCount": 19,
+      "releaseCount": 1
+    },
+    {
+      "id": "emobanana",
+      "name": "emobanana",
+      "description": "nano banana hackathon submission",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/emobanana",
+      "category": "Rust Projects",
+      "highlights": [
+        "Cloudflare Workers",
+        "AI",
+        "Banana"
+      ],
+      "updatedAt": "2025-09-13T18:51:25Z",
+      "createdAt": "2025-09-06T18:20:43Z",
+      "topics": [
+        "ai",
+        "banana",
+        "cloudflare",
+        "editor",
+        "emoji",
+        "image",
+        "nano",
+        "rust",
+        "web"
+      ],
+      "commitCount": 86,
+      "releaseCount": 2,
+      "homepageUrl": "https://emobanana.guitaripod.workers.dev"
+    },
+    {
+      "id": "gh-export",
+      "name": "gh-export",
+      "description": "Export all GitHub repositories from a user account",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/gh-export",
+      "category": "CLI Tools",
+      "highlights": [
+        "Exporter",
+        "Github",
+        "Rust"
+      ],
+      "updatedAt": "2025-07-18T09:41:54Z",
+      "createdAt": "2025-07-18T08:37:19Z",
+      "topics": [
+        "exporter",
+        "github",
+        "rust"
+      ],
+      "commitCount": 24,
+      "releaseCount": 1
+    },
+    {
+      "id": "master-of-haptics",
+      "name": "master-of-haptics",
+      "description": "Haptics demo, mainly meant to improve collaboration between devs and designers. Example usecase: Use this as a Testflight only showroom",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/master-of-haptics",
+      "category": "Swift Projects",
+      "highlights": [],
+      "updatedAt": "2025-07-13T07:57:55Z",
+      "createdAt": "2021-10-23T09:53:43Z",
+      "topics": [],
+      "commitCount": 15,
+      "releaseCount": 0
+    },
+    {
+      "id": "contributions",
+      "name": "contributions",
+      "description": "visualize your all time github stats",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/contributions",
+      "category": "Go Projects",
+      "highlights": [],
+      "updatedAt": "2025-07-13T07:56:45Z",
+      "createdAt": "2024-05-18T22:15:55Z",
+      "topics": [],
+      "commitCount": 9,
+      "releaseCount": 0
+    },
+    {
+      "id": "moodlint",
+      "name": "MoodLint",
+      "description": "Tired of messy PR titles? Want to enforce a consistent style across your team? MoodLint is here to rescue your git workflow",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/MoodLint",
+      "category": "Go Projects",
+      "highlights": [
+        "Github-actions",
+        "Go",
+        "Linting"
+      ],
+      "updatedAt": "2025-07-13T07:56:41Z",
+      "createdAt": "2023-09-03T10:52:04Z",
+      "topics": [
+        "github-actions",
+        "go",
+        "linting",
+        "tidy"
+      ],
+      "commitCount": 16,
+      "releaseCount": 5
+    },
+    {
+      "id": "swiftpokekit",
+      "name": "SwiftPokeKit",
+      "description": "Swift APIs to interface with the PokéAPI",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/SwiftPokeKit",
+      "category": "Swift Packages",
+      "highlights": [],
+      "updatedAt": "2025-07-13T07:56:16Z",
+      "createdAt": "2023-04-13T16:43:30Z",
+      "topics": [],
+      "commitCount": 12,
+      "releaseCount": 0
+    },
+    {
+      "id": "omnichatkit",
+      "name": "OmniChatKit",
+      "description": "Work in progress",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/OmniChatKit",
+      "category": "Swift Packages",
+      "highlights": [],
+      "updatedAt": "2025-07-12T12:41:29Z",
+      "createdAt": "2025-06-24T21:09:34Z",
+      "topics": [],
+      "commitCount": 22,
+      "releaseCount": 0
+    },
+    {
+      "id": "wwdc-sessions",
+      "name": "wwdc-sessions",
+      "description": "Agent-native knowledge base of Apple WWDC sessions (2014-2026, Tech Talks, Meet with Apple): clean transcripts, structured metadata, code, and sosumi.ai/DocC doc links. Generated from Apple's public feeds.",
+      "language": "Python",
       "platforms": [],
       "stars": 1,
-      "githubUrl": "https://github.com/guitaripod/nasa-rs",
+      "githubUrl": "https://github.com/guitaripod/wwdc-sessions",
+      "category": "AI \u0026 Agents",
+      "highlights": [
+        "AI-powered",
+        "Agent-native",
+        "Ai-agents"
+      ],
+      "updatedAt": "2026-06-11T19:54:39Z",
+      "createdAt": "2026-06-09T08:14:49Z",
+      "topics": [
+        "agent-native",
+        "ai-agents",
+        "apple",
+        "llms-txt",
+        "mcp",
+        "swift",
+        "transcripts",
+        "wwdc"
+      ],
+      "commitCount": 8,
+      "releaseCount": 0
+    },
+    {
+      "id": "psybeam",
+      "name": "psybeam",
+      "description": "Real-time voice-to-voice travel interpreter for iOS",
+      "language": "Swift",
+      "platforms": [
+        "iOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/psybeam",
+      "category": "Apps",
+      "highlights": [],
+      "updatedAt": "2026-06-10T18:46:38Z",
+      "createdAt": "2026-06-07T14:20:48Z",
+      "topics": [],
+      "commitCount": 24,
+      "releaseCount": 1
+    },
+    {
+      "id": "flaccy",
+      "name": "flaccy",
+      "description": "A FLAC music player for iOS with AI-powered library management",
+      "language": "Swift",
+      "platforms": [
+        "iOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/flaccy",
+      "category": "Apps",
+      "highlights": [
+        "AI-powered"
+      ],
+      "updatedAt": "2026-05-23T12:45:27Z",
+      "createdAt": "2026-04-01T16:40:33Z",
+      "topics": [],
+      "commitCount": 39,
+      "releaseCount": 1
+    },
+    {
+      "id": "anvil",
+      "name": "anvil",
+      "description": "iOS qBittorrent client. UIKit, cross-compiled from Linux to iOS",
+      "language": "Swift",
+      "platforms": [
+        "iOS",
+        "Linux"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/anvil",
+      "category": "Apps",
+      "highlights": [
+        "Cross-platform"
+      ],
+      "updatedAt": "2026-05-16T20:11:29Z",
+      "createdAt": "2026-05-16T20:07:38Z",
+      "topics": [],
+      "commitCount": 9,
+      "releaseCount": 1
+    },
+    {
+      "id": "crucible",
+      "name": "Crucible",
+      "description": "A personal Plex client for iOS, built entirely on Arch Linux.",
+      "language": "Swift",
+      "platforms": [
+        "iOS",
+        "Linux"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/Crucible",
+      "category": "Apps",
+      "highlights": [
+        "Swift",
+        "Uikit",
+        "Xtool"
+      ],
+      "updatedAt": "2026-03-21T19:58:43Z",
+      "createdAt": "2026-03-07T11:40:17Z",
+      "topics": [
+        "swift",
+        "uikit",
+        "xtool",
+        "linux"
+      ],
+      "commitCount": 31,
+      "releaseCount": 1
+    },
+    {
+      "id": "sora-engine",
+      "name": "sora-engine",
+      "description": "AI-powered video generation platform powered by OpenAI's Sora API",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/sora-engine",
+      "category": "Apps",
+      "highlights": [
+        "AI-powered",
+        "Cloudflare Workers",
+        "AI"
+      ],
+      "updatedAt": "2025-10-07T22:46:00Z",
+      "createdAt": "2025-10-07T22:15:45Z",
+      "topics": [
+        "ai",
+        "cloudflare",
+        "generation",
+        "ios",
+        "rust",
+        "swift",
+        "uikit",
+        "video",
+        "worker"
+      ],
+      "commitCount": 43,
+      "releaseCount": 0
+    },
+    {
+      "id": "silphscope",
+      "name": "silphscope",
+      "description": "native iOS client for ollama",
+      "language": "Swift",
+      "platforms": [
+        "iOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/silphscope",
+      "category": "Apps",
+      "highlights": [
+        "Local LLMs"
+      ],
+      "updatedAt": "2025-10-04T19:47:43Z",
+      "createdAt": "2025-10-01T21:26:06Z",
+      "topics": [],
+      "commitCount": 23,
+      "releaseCount": 0
+    },
+    {
+      "id": "minibanana",
+      "name": "minibanana",
+      "description": "Flash Image 2.5 Preview wrapper web app",
+      "language": "TypeScript",
+      "platforms": [],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/minibanana",
       "category": "Other Projects",
-      "highlights": ["Nasa", "Rust"],
-      "updatedAt": "2025-07-09T20:26:08Z",
-      "createdAt": "2025-07-08T13:17:55Z",
-      "topics": ["nasa", "rust", "sdk"],
-      "commitCount": 58,
-      "releaseCount": 2,
-      "homepageUrl": "https://guitaripod.github.io/nasa-rs/"
+      "highlights": [
+        "Flash",
+        "Gemini",
+        "Image"
+      ],
+      "updatedAt": "2025-09-05T15:42:03Z",
+      "createdAt": "2025-08-28T20:39:11Z",
+      "topics": [
+        "flash",
+        "gemini",
+        "image",
+        "web"
+      ],
+      "commitCount": 46,
+      "releaseCount": 5,
+      "homepageUrl": "https://guitaripod.github.io/minibanana/"
+    },
+    {
+      "id": "image-collage",
+      "name": "image-collage",
+      "description": "Create 2x2 image collages in the terminal",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/image-collage",
+      "category": "CLI Tools",
+      "highlights": [
+        "CLI",
+        "Collage",
+        "Image"
+      ],
+      "updatedAt": "2025-08-17T12:38:26Z",
+      "createdAt": "2025-08-17T11:46:40Z",
+      "topics": [
+        "cli",
+        "collage",
+        "image",
+        "rust",
+        "tui"
+      ],
+      "commitCount": 18,
+      "releaseCount": 3,
+      "homepageUrl": "https://crates.io/crates/image-collage"
+    },
+    {
+      "id": "starcraftkit",
+      "name": "StarCraftKit",
+      "description": "Swift SDK for StarCraft 2 Pro scene data",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/StarCraftKit",
+      "category": "Swift Packages",
+      "highlights": [],
+      "updatedAt": "2025-07-12T12:44:37Z",
+      "createdAt": "2024-02-25T16:47:08Z",
+      "topics": [],
+      "commitCount": 124,
+      "releaseCount": 11,
+      "homepageUrl": "https://guitaripod.github.io/StarCraftKit/"
+    },
+    {
+      "id": "speedrun-cli",
+      "name": "speedrun-cli",
+      "description": "CLI client for speedrun.com",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/speedrun-cli",
+      "category": "CLI Tools",
+      "highlights": [],
+      "updatedAt": "2025-07-12T12:42:29Z",
+      "createdAt": "2025-05-22T19:07:26Z",
+      "topics": [],
+      "commitCount": 28,
+      "releaseCount": 8
+    },
+    {
+      "id": "speedrunkit",
+      "name": "SpeedrunKit",
+      "description": "A Swift SDK for the speedrun.com API",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/SpeedrunKit",
+      "category": "Swift Packages",
+      "highlights": [],
+      "updatedAt": "2025-07-12T12:41:43Z",
+      "createdAt": "2025-07-08T13:15:03Z",
+      "topics": [],
+      "commitCount": 50,
+      "releaseCount": 3,
+      "homepageUrl": "https://guitaripod.github.io/SpeedrunKit/"
+    },
+    {
+      "id": "vimterminalkit",
+      "name": "VimTerminalKit",
+      "description": "A Swift package that brings Vim-style navigation to your command-line applications.",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/VimTerminalKit",
+      "category": "Swift Packages",
+      "highlights": [],
+      "updatedAt": "2024-11-01T01:44:21Z",
+      "createdAt": "2024-10-31T11:32:27Z",
+      "topics": [],
+      "commitCount": 13,
+      "releaseCount": 3,
+      "homepageUrl": "https://guitaripod.github.io/VimTerminalKit/"
+    },
+    {
+      "id": "appofthedead",
+      "name": "appofthedead",
+      "description": "Learn afterlife beliefs from around the world",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/appofthedead",
+      "category": "Apps",
+      "highlights": [],
+      "updatedAt": "2026-06-11T15:13:52Z",
+      "createdAt": "2025-06-02T20:56:21Z",
+      "topics": [],
+      "commitCount": 192,
+      "releaseCount": 2
     },
     {
       "id": "midgarcorp",
@@ -232,46 +1028,12 @@
       "githubUrl": "https://github.com/guitaripod/midgarcorp",
       "category": "Other Projects",
       "highlights": [],
-      "updatedAt": "2025-07-11T11:46:54Z",
+      "updatedAt": "2026-05-29T12:34:34Z",
       "createdAt": "2025-06-05T17:16:02Z",
       "topics": [],
-      "commitCount": 174,
+      "commitCount": 221,
       "releaseCount": 1,
       "homepageUrl": "https://midgarcorp.cc"
-    },
-    {
-      "id": "igscraper",
-      "name": "igscraper",
-      "description": "ig photo scraper",
-      "language": "Go",
-      "platforms": ["macOS", "Linux", "Windows"],
-      "stars": 1,
-      "githubUrl": "https://github.com/guitaripod/igscraper",
-      "category": "Go Projects",
-      "highlights": [],
-      "updatedAt": "2025-07-04T07:40:55Z",
-      "createdAt": "2024-12-30T20:45:07Z",
-      "topics": [],
-      "commitCount": 63,
-      "releaseCount": 2,
-      "homepageUrl": "https://guitaripod.github.io/igscraper/"
-    },
-    {
-      "id": "speedrunkit",
-      "name": "SpeedrunKit",
-      "description": "A Swift SDK for the speedrun.com API",
-      "language": "Swift",
-      "platforms": ["macOS"],
-      "stars": 0,
-      "githubUrl": "https://github.com/guitaripod/SpeedrunKit",
-      "category": "Swift Packages",
-      "highlights": [],
-      "updatedAt": "2025-07-09T19:56:21Z",
-      "createdAt": "2025-07-08T13:15:03Z",
-      "topics": [],
-      "commitCount": 49,
-      "releaseCount": 1,
-      "homepageUrl": "https://guitaripod.github.io/SpeedrunKit/"
     },
     {
       "id": "rawdog.ml.nvim",
@@ -282,45 +1044,314 @@
       "stars": 0,
       "githubUrl": "https://github.com/guitaripod/rawdog.ml.nvim",
       "category": "Other Projects",
-      "highlights": ["Cross-platform", "Vim controls"],
-      "updatedAt": "2025-07-01T15:32:03Z",
+      "highlights": [],
+      "updatedAt": "2026-05-22T07:22:24Z",
       "createdAt": "2024-11-16T13:16:19Z",
       "topics": [],
-      "commitCount": 36,
+      "commitCount": 46,
       "releaseCount": 1
+    },
+    {
+      "id": "themeswitch",
+      "name": "ThemeSwitch",
+      "description": "Cross-platform system tray application for toggling dark/light mode",
+      "language": "C++",
+      "platforms": [],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/ThemeSwitch",
+      "category": "Other Projects",
+      "highlights": [
+        "Cross-platform"
+      ],
+      "updatedAt": "2026-05-22T05:32:17Z",
+      "createdAt": "2025-08-04T22:09:07Z",
+      "topics": [],
+      "commitCount": 22,
+      "releaseCount": 2
+    },
+    {
+      "id": "emusync",
+      "name": "emusync",
+      "description": "Cross-machine emulation save, mod, and shader cache sync over SSH",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/emusync",
+      "category": "CLI Tools",
+      "highlights": [],
+      "updatedAt": "2026-04-04T07:54:56Z",
+      "createdAt": "2026-03-21T09:32:56Z",
+      "topics": [],
+      "commitCount": 13,
+      "releaseCount": 3
+    },
+    {
+      "id": "circadia",
+      "name": "circadia",
+      "description": "Melanopic-aware color temperature daemon for KDE Plasma Wayland",
+      "language": "Rust",
+      "platforms": [
+        "Linux"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/circadia",
+      "category": "Rust Projects",
+      "highlights": [],
+      "updatedAt": "2026-03-09T20:14:04Z",
+      "createdAt": "2026-03-09T20:12:27Z",
+      "topics": [],
+      "commitCount": 10,
+      "releaseCount": 1
+    },
+    {
+      "id": "mediaforge",
+      "name": "mediaforge",
+      "description": "Personal media server with HLS streaming, transcoding, and TMDB metadata",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/mediaforge",
+      "category": "Rust Projects",
+      "highlights": [],
+      "updatedAt": "2026-03-07T19:14:43Z",
+      "createdAt": "2026-03-05T09:05:39Z",
+      "topics": [],
+      "commitCount": 73,
+      "releaseCount": 0
+    },
+    {
+      "id": "btop-ios",
+      "name": "btop-ios",
+      "description": "Terminal-aesthetic system monitor for iOS.",
+      "language": "Swift",
+      "platforms": [
+        "iOS"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/btop-ios",
+      "category": "Apps",
+      "highlights": [],
+      "updatedAt": "2026-02-28T20:42:37Z",
+      "createdAt": "2026-02-28T18:48:46Z",
+      "topics": [],
+      "commitCount": 19,
+      "releaseCount": 1
+    },
+    {
+      "id": "musickitkat",
+      "name": "MusicKitKat",
+      "description": "Go SDK for Apple Music (WIP)",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/MusicKitKat",
+      "category": "SDKs \u0026 Libraries",
+      "highlights": [],
+      "updatedAt": "2026-01-27T15:59:19Z",
+      "createdAt": "2025-03-16T21:26:29Z",
+      "topics": [],
+      "commitCount": 8,
+      "releaseCount": 2
+    },
+    {
+      "id": "ffrelay",
+      "name": "ffrelay",
+      "description": "Web app for Final Fantasy Relay events",
+      "language": "TypeScript",
+      "platforms": [],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/ffrelay",
+      "category": "Other Projects",
+      "highlights": [
+        "Astro",
+        "Finalfantasy",
+        "Relay"
+      ],
+      "updatedAt": "2025-08-05T07:10:33Z",
+      "createdAt": "2025-07-31T20:23:02Z",
+      "topics": [
+        "astro",
+        "finalfantasy",
+        "relay"
+      ],
+      "commitCount": 43,
+      "releaseCount": 1,
+      "homepageUrl": "https://guitaripod.github.io/ffrelay/"
+    },
+    {
+      "id": "reposort",
+      "name": "reposort",
+      "description": "RepoSort is a command-line tool written in Go that organizes repositories into language-specific directories. It is designed to help developers maintain a clean workspace by automatically sorting repositories based on the programming language they are primarily written in.",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/reposort",
+      "category": "CLI Tools",
+      "highlights": [],
+      "updatedAt": "2025-07-13T07:58:51Z",
+      "createdAt": "2024-03-09T15:25:27Z",
+      "topics": [],
+      "commitCount": 7,
+      "releaseCount": 2
+    },
+    {
+      "id": "initialize",
+      "name": "Initialize",
+      "description": "GitHub API Go backend",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/Initialize",
+      "category": "Go Projects",
+      "highlights": [
+        "API",
+        "Backend",
+        "Github"
+      ],
+      "updatedAt": "2025-07-13T07:57:11Z",
+      "createdAt": "2023-09-01T01:07:31Z",
+      "topics": [
+        "api",
+        "backend",
+        "github",
+        "go",
+        "golang"
+      ],
+      "commitCount": 41,
+      "releaseCount": 0
+    },
+    {
+      "id": "cachedasyncimage",
+      "name": "CachedAsyncImage",
+      "description": "SwiftUI's simple to use AsyncImage with cache",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/CachedAsyncImage",
+      "category": "Swift Projects",
+      "highlights": [],
+      "updatedAt": "2025-07-13T07:55:21Z",
+      "createdAt": "2024-01-07T22:33:36Z",
+      "topics": [],
+      "commitCount": 11,
+      "releaseCount": 4
     },
     {
       "id": "lastfmkit",
       "name": "LastFMKit",
       "description": "A comprehensive Swift SDK for last.fm",
       "language": "Swift",
-      "platforms": ["macOS"],
+      "platforms": [
+        "macOS"
+      ],
       "stars": 0,
       "githubUrl": "https://github.com/guitaripod/LastFMKit",
       "category": "Swift Packages",
-      "highlights": ["Lastfm", "Sdk"],
-      "updatedAt": "2025-07-07T20:22:44Z",
+      "highlights": [
+        "Lastfm",
+        "SDK",
+        "Swift"
+      ],
+      "updatedAt": "2025-07-12T12:41:42Z",
       "createdAt": "2025-07-07T18:48:55Z",
-      "topics": ["lastfm", "sdk", "swift"],
-      "commitCount": 30,
+      "topics": [
+        "lastfm",
+        "sdk",
+        "swift"
+      ],
+      "commitCount": 31,
       "releaseCount": 1,
       "homepageUrl": "https://guitaripod.github.io/LastFMKit/"
     },
     {
-      "id": "speedrun-cli",
-      "name": "speedrun-cli",
-      "description": "CLI client for speedrun.com",
+      "id": "fluxxxer",
+      "name": "fluxxxer",
+      "description": "a native gtk4 Linux image generator built with Go",
       "language": "Go",
-      "platforms": ["macOS", "Linux", "Windows"],
-      "stars": 1,
-      "githubUrl": "https://github.com/guitaripod/speedrun-cli",
-      "category": "CLI Tools",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/fluxxxer",
+      "category": "Go Projects",
       "highlights": [],
-      "updatedAt": "2025-06-17T07:54:21Z",
-      "createdAt": "2025-05-22T19:07:26Z",
+      "updatedAt": "2025-07-12T12:41:10Z",
+      "createdAt": "2024-11-24T05:39:07Z",
       "topics": [],
-      "commitCount": 27,
-      "releaseCount": 7
+      "commitCount": 19,
+      "releaseCount": 3
+    },
+    {
+      "id": "chatgpt-gtk4",
+      "name": "chatgpt-gtk4",
+      "description": "Native GTK4 ChatGPT client using the official Go SDK",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/chatgpt-gtk4",
+      "category": "Other Projects",
+      "highlights": [],
+      "updatedAt": "2024-12-18T17:12:52Z",
+      "createdAt": "2024-12-18T16:32:28Z",
+      "topics": [],
+      "commitCount": 11,
+      "releaseCount": 1
+    },
+    {
+      "id": "legendstracker",
+      "name": "legendstracker",
+      "description": "Apex Legends Tracker iOS app",
+      "language": "Swift",
+      "platforms": [
+        "iOS"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/legendstracker",
+      "category": "Apps",
+      "highlights": [
+        "Apex",
+        "iOS",
+        "Legends"
+      ],
+      "updatedAt": "2024-05-28T03:37:57Z",
+      "createdAt": "2022-09-28T18:20:48Z",
+      "topics": [
+        "apex",
+        "ios",
+        "legends",
+        "swift",
+        "tracker"
+      ],
+      "commitCount": 52,
+      "releaseCount": 0
     }
   ]
 }

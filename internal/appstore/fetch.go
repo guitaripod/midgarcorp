@@ -10,6 +10,7 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"time"
 )
 
 const (
@@ -22,19 +23,19 @@ type iTunesResponse struct {
 }
 
 type iTunesApp struct {
-	TrackID           int      `json:"trackId"`
-	TrackName         string   `json:"trackName"`
-	TrackViewURL      string   `json:"trackViewUrl"`
-	Price             float64  `json:"price"`
-	Description       string   `json:"description"`
-	PrimaryGenreName  string   `json:"primaryGenreName"`
-	ArtworkURL512     string   `json:"artworkUrl512"`
-	ArtworkURL100     string   `json:"artworkUrl100"`
-	Kind              string   `json:"kind"`
-	ReleaseDate       string   `json:"releaseDate"`
-	SupportedDevices  []string `json:"supportedDevices"`
+	TrackID            int      `json:"trackId"`
+	TrackName          string   `json:"trackName"`
+	TrackViewURL       string   `json:"trackViewUrl"`
+	Price              float64  `json:"price"`
+	Description        string   `json:"description"`
+	PrimaryGenreName   string   `json:"primaryGenreName"`
+	ArtworkURL512      string   `json:"artworkUrl512"`
+	ArtworkURL100      string   `json:"artworkUrl100"`
+	Kind               string   `json:"kind"`
+	ReleaseDate        string   `json:"releaseDate"`
+	SupportedDevices   []string `json:"supportedDevices"`
 	IPadScreenshotURLs []string `json:"ipadScreenshotUrls"`
-	ScreenshotURLs    []string `json:"screenshotUrls"`
+	ScreenshotURLs     []string `json:"screenshotUrls"`
 }
 
 type App struct {
@@ -56,13 +57,13 @@ type AppsData struct {
 	Apps []App `json:"apps"`
 }
 
-var appEnhancements = map[string]struct {
+var appEnhancements = map[int]struct {
 	ID           string
 	Tagline      string
 	PrimaryColor string
 	Features     []string
 }{
-	"Solar Beam": {
+	6705124497: {
 		ID:           "solar-beam",
 		Tagline:      "Your Window to the Universe",
 		PrimaryColor: "#F59E0B",
@@ -72,7 +73,7 @@ var appEnhancements = map[string]struct {
 			"Educational astronomy content",
 		},
 	},
-	"SForesight": {
+	6736438070: {
 		ID:           "sforesight",
 		Tagline:      "ML-Powered SF Symbol Search",
 		PrimaryColor: "#3B82F6",
@@ -82,7 +83,7 @@ var appEnhancements = map[string]struct {
 			"Export in multiple formats",
 		},
 	},
-	"Double Kick": {
+	6736581403: {
 		ID:           "double-kick",
 		Tagline:      "Understand Any Menu, Anywhere",
 		PrimaryColor: "#DC2626",
@@ -92,7 +93,7 @@ var appEnhancements = map[string]struct {
 			"Cuisine insights",
 		},
 	},
-	"Psywave": {
+	6727000827: {
 		ID:           "psywave",
 		Tagline:      "AI-Powered Playlist Generation",
 		PrimaryColor: "#8B5CF6",
@@ -102,7 +103,7 @@ var appEnhancements = map[string]struct {
 			"Apple Music integration",
 		},
 	},
-	"Dream Eater": {
+	6661019277: {
 		ID:           "dream-eater",
 		Tagline:      "ML-Powered Dream Journaling",
 		PrimaryColor: "#6366F1",
@@ -112,7 +113,7 @@ var appEnhancements = map[string]struct {
 			"Private & secure journaling",
 		},
 	},
-	"Master of Inventory": {
+	1523538855: {
 		ID:           "master-of-inventory",
 		Tagline:      "Professional Inventory Management",
 		PrimaryColor: "#10B981",
@@ -122,7 +123,7 @@ var appEnhancements = map[string]struct {
 			"Detailed analytics",
 		},
 	},
-	"Master of Flags": {
+	1484270248: {
 		ID:           "master-of-flags",
 		Tagline:      "Learn World Flags",
 		PrimaryColor: "#EF4444",
@@ -132,7 +133,7 @@ var appEnhancements = map[string]struct {
 			"Progress tracking",
 		},
 	},
-	"PixiePocket": {
+	6751730339: {
 		ID:           "pixiepocket",
 		Tagline:      "Create AI Images in Your Pocket",
 		PrimaryColor: "#EC4899",
@@ -142,7 +143,7 @@ var appEnhancements = map[string]struct {
 			"Persistent cloud storage with public galleries",
 		},
 	},
-	"App of the Dead: Afterlife": {
+	6746733380: {
 		ID:           "app-of-the-dead-afterlife",
 		Tagline:      "Learn Afterlife Beliefs",
 		PrimaryColor: "#7C3AED",
@@ -163,6 +164,12 @@ func FetchData() error {
 		return fmt.Errorf("failed to fetch app store data: %w", err)
 	}
 
+	if len(apps) < len(appEnhancements) {
+		fmt.Printf("⚠️  iTunes returned only %d apps (expected ≥%d) — keeping existing apps.json untouched.\n",
+			len(apps), len(appEnhancements))
+		return nil
+	}
+
 	fmt.Printf("Found %d apps\n", len(apps))
 
 	// Sort apps by predefined order
@@ -177,7 +184,7 @@ func FetchData() error {
 		"app-of-the-dead-afterlife",
 		"pixiepocket",
 	}
-	
+
 	sort.Slice(apps, func(i, j int) bool {
 		iIndex := indexOf(sortOrder, apps[i].ID)
 		jIndex := indexOf(sortOrder, apps[j].ID)
@@ -196,7 +203,7 @@ func FetchData() error {
 	// Write data
 	appsData := AppsData{Apps: apps}
 	dataPath := filepath.Join("src", "data", "apps.json")
-	
+
 	// Ensure directory exists
 	if err := os.MkdirAll(filepath.Dir(dataPath), 0755); err != nil {
 		return fmt.Errorf("failed to create directory: %w", err)
@@ -224,15 +231,7 @@ func FetchData() error {
 }
 
 func fetchAppStoreData() ([]App, error) {
-	url := fmt.Sprintf(apiURL, developerID)
-	
-	resp, err := http.Get(url)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
+	body, err := getWithRetry(fmt.Sprintf(apiURL, developerID))
 	if err != nil {
 		return nil, err
 	}
@@ -248,7 +247,7 @@ func fetchAppStoreData() ([]App, error) {
 
 	// First result is developer info, rest are apps
 	iTunesApps := iTunesResp.Results[1:]
-	
+
 	apps := make([]App, 0, len(iTunesApps))
 	for _, iTunesApp := range iTunesApps {
 		app := transformiTunesApp(iTunesApp)
@@ -259,8 +258,8 @@ func fetchAppStoreData() ([]App, error) {
 }
 
 func transformiTunesApp(app iTunesApp) App {
-	enhancement, hasEnhancement := appEnhancements[app.TrackName]
-	
+	enhancement, hasEnhancement := appEnhancements[app.TrackID]
+
 	// Generate URL slug
 	urlSlug := enhancement.ID
 	if urlSlug == "" {
@@ -292,7 +291,7 @@ func transformiTunesApp(app iTunesApp) App {
 
 	// Map platforms
 	platforms := mapDeviceTosPlatform(app)
-	
+
 	// Add platform parameter for iOS apps
 	if contains(platforms, "iPhone") || contains(platforms, "iPad") {
 		if !strings.Contains(appStoreURL, "?") {
@@ -363,7 +362,7 @@ func mapDeviceTosPlatform(app iTunesApp) []string {
 		var platforms []string
 		hasIPhone := false
 		hasIPad := false
-		
+
 		for _, device := range app.SupportedDevices {
 			if strings.Contains(device, "iPhone") {
 				hasIPhone = true
@@ -372,14 +371,14 @@ func mapDeviceTosPlatform(app iTunesApp) []string {
 				hasIPad = true
 			}
 		}
-		
+
 		if hasIPhone {
 			platforms = append(platforms, "iPhone")
 		}
 		if hasIPad {
 			platforms = append(platforms, "iPad")
 		}
-		
+
 		if len(platforms) > 0 {
 			return platforms
 		}
@@ -397,8 +396,46 @@ func mapDeviceTosPlatform(app iTunesApp) []string {
 	if len(platforms) > 0 {
 		return platforms
 	}
-	
+
 	return []string{"iPhone", "iPad"}
+}
+
+// / getWithRetry retries transient failures from the iTunes lookup API, which
+// / intermittently returns 5xx or truncated result sets.
+func getWithRetry(url string) ([]byte, error) {
+	client := &http.Client{Timeout: 30 * time.Second}
+	var lastErr error
+
+	for attempt := 1; attempt <= 3; attempt++ {
+		if attempt > 1 {
+			backoff := time.Duration(attempt*attempt) * time.Second
+			fmt.Printf("  ⏳ Retry %d/3 in %v...\n", attempt, backoff)
+			time.Sleep(backoff)
+		}
+
+		resp, err := client.Get(url)
+		if err != nil {
+			lastErr = err
+			continue
+		}
+
+		body, err := io.ReadAll(resp.Body)
+		resp.Body.Close()
+		if err != nil {
+			lastErr = err
+			continue
+		}
+
+		if resp.StatusCode == http.StatusOK {
+			return body, nil
+		}
+		lastErr = fmt.Errorf("iTunes API responded with %d", resp.StatusCode)
+		if resp.StatusCode < 500 {
+			return nil, lastErr
+		}
+	}
+
+	return nil, lastErr
 }
 
 var sentenceRegex = regexp.MustCompile(`[^.!?]+[.!?]+`)

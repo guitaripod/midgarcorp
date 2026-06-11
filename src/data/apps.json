@@ -4,14 +4,14 @@
       "id": "solar-beam",
       "name": "Solar Beam",
       "tagline": "Your Window to the Universe",
-      "description": "Solarbeam\n\nSpace on your TV. No telescope required.",
+      "description": "Turn your Apple TV into a window onto the cosmos. Solar Beam brings the universe to your living room in stunning 4K — a new NASA masterpiece every day, the deepest images ever captured by the James Webb Space Telescope, and a live look at the asteroids passing by Earth.",
       "platforms": [
         "Apple TV"
       ],
       "category": "Photo \u0026 Video",
       "price": "$19.99",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497?uo=4",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/16/8e/28/168e280f-62b1-773d-bc43-ff7ba8d9b8e7/App_Icon-marketing.lsr/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8b/5f/23/8b5f239a-c398-78f4-d6c1-28c1ad283959/App_Icon-marketing.lsr/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
         "Real-time space data",
@@ -42,17 +42,17 @@
     },
     {
       "id": "double-kick",
-      "name": "Double Kick",
+      "name": "Double Kick: Menu Translator",
       "tagline": "Understand Any Menu, Anywhere",
-      "description": "Double Kick - Your Global Menu Companion\n\nOne-time purchase, no subscriptions, no ads - your passport to understanding any menu worldwide. Transform any restaurant menu into an interactive guide, no matter where you are in the world.",
+      "description": "Standing in front of a menu you can't read? Point your camera and know exactly what to order.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Food \u0026 Drink",
       "price": "$24.99",
-      "appStoreUrl": "https://apps.apple.com/us/app/double-kick/id6736581403?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/33/4a/37/334a37a3-d519-3cef-56d9-82179341b851/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/us/app/double-kick-menu-translator/id6736581403?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4f/95/2d/4f952d1c-d845-812f-8d5e-a6e7525d8fc4/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#DC2626",
       "features": [
         "Instant menu translation",
@@ -63,17 +63,17 @@
     },
     {
       "id": "psywave",
-      "name": "Psywave",
+      "name": "Psywave: Mood Playlist AI",
       "tagline": "AI-Powered Playlist Generation",
-      "description": "Psywave: Your Musical Mind Reader\n\nUnleash the power of machine learning to craft your perfect playlist with Psywave. No more endless scrolling or manual curation – describe your mood and watch as Psywave conjures up a tailor-made soundtrack for your moment.",
+      "description": "Describe a mood in one line. Get an Apple Music playlist in seconds.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Music",
       "price": "$14.99",
-      "appStoreUrl": "https://apps.apple.com/us/app/psywave/id6727000827?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/90/d6/e2/90d6e2c0-3351-8f49-2672-b8d0cd14be1b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/us/app/psywave-mood-playlist-ai/id6727000827?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/31/c3/4c/31c34c26-057e-4bc7-892f-c560c9b08fee/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#8B5CF6",
       "features": [
         "ML-powered music analysis",
@@ -84,17 +84,17 @@
     },
     {
       "id": "dream-eater",
-      "name": "Dream Eater",
+      "name": "Dream Eater: AI Dream Decoder",
       "tagline": "ML-Powered Dream Journaling",
-      "description": "Dream Eater: AI-Powered Dream Journal \u0026 Interpreter\n\nDiscover the hidden meanings in your dreams with Dream Eater – the ultimate dream journal powered by advanced AI and lunar wisdom. Whether you're seeking self-discovery, tracking patterns, or exploring your subconscious, Dream Eater transforms your nightly adventures into profound insights.",
+      "description": "What did that dream actually mean? Capture it the second you wake, and get a clear AI reading of its symbols and patterns in seconds.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Lifestyle",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/dream-eater/id6661019277?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4e/34/b8/4e34b843-1cb7-3386-661d-3d22bfd9fedd/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-ai-dream-decoder/id6661019277?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7e/8a/00/7e8a00de-f33c-e08b-3d01-00f2ce057439/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#6366F1",
       "features": [
         "Dream pattern analysis",
@@ -105,17 +105,17 @@
     },
     {
       "id": "master-of-inventory",
-      "name": "Master of Inventory",
+      "name": "Master of Inventory: Warranty",
       "tagline": "Professional Inventory Management",
-      "description": "Take control of your belongings with Inventory, the comprehensive personal inventory management app that helps you track, organize, and protect your valuable items. WHAT MAKES INVENTORY SPECIAL\n• Smart Receipt Scanning: Use your camera to capture and store receipts with our built-in document scanner.",
+      "description": "Disaster doesn't wait for you to find the receipt. Photograph, value, and receipt-back everything you own now — so an insurance claim, a warranty, or a return is one tap away, not a frantic search.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Utilities",
-      "price": "$9.99",
-      "appStoreUrl": "https://apps.apple.com/us/app/master-of-inventory/id1523538855?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/aa/6f/f5/aa6ff532-3a9f-7926-1ee9-a1b0ce8220e2/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/512x512bb.jpg",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/master-of-inventory-warranty/id1523538855?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/af/35/08/af350831-9cab-37c6-dcc3-28dc5aa1cfcb/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/512x512bb.jpg",
       "primaryColor": "#10B981",
       "features": [
         "Barcode scanning",
@@ -126,17 +126,17 @@
     },
     {
       "id": "master-of-flags",
-      "name": "Master of Flags",
+      "name": "Master of Flags: Flag Quiz",
       "tagline": "Learn World Flags",
-      "description": "Master the World's Flags – One Challenge at a Time! Think you know your flags?",
+      "description": "Finally memorize all 196 country flags — and actually remember them. Master of Flags turns world geography into focused, ad-free practice: quick region drills that build real recall, a full study Encyclopedia to browse every flag, and progress tracking that shows you're getting better.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Education",
-      "price": "$9.99",
-      "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags/id1484270248?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/31/34/35/313435a8-a596-4f8a-f7bc-59883a86ae37/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/512x512bb.jpg",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-flag-quiz/id1484270248?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/35/ea/94/35ea946f-3230-911e-29d2-8c05672b333f/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/512x512bb.jpg",
       "primaryColor": "#EF4444",
       "features": [
         "All country flags",
@@ -147,17 +147,17 @@
     },
     {
       "id": "app-of-the-dead-afterlife",
-      "name": "App of the Dead: Afterlife",
+      "name": "App of the Dead: Religions",
       "tagline": "Learn Afterlife Beliefs",
-      "description": "Discover What Comes After Death Across World Cultures\n\nEver wondered what different religions believe happens after we die? App of the Dead transforms complex theological concepts into an engaging learning adventure that fits in your pocket.",
+      "description": "What happens after we die? Find out what 20+ world religions, ancient civilizations, and spiritual traditions actually believe — one 5-minute lesson at a time.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Education",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-afterlife/id6746733380?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c4/69/68/c4696839-217f-e15f-9801-a7d5c8032ae6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/27/22/00/272200d9-2119-8fa2-c2bf-3cb7861c0f33/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#7C3AED",
       "features": [
         "Local MLX LLM technology for offline AI",
@@ -168,17 +168,17 @@
     },
     {
       "id": "pixiepocket",
-      "name": "PixiePocket",
+      "name": "PixiePocket: AI Image Maker",
       "tagline": "Create AI Images in Your Pocket",
-      "description": "Create Stunning AI Images with Pixie\n\nTransform your ideas into beautiful artwork using advanced AI technology powered by OpenAI's gpt-image-1 model. Pixie brings professional-grade image generation to your mobile device with an intuitive chat-based interface.",
+      "description": "Pro-grade AI images, created by chat. Pay only for what you make - no subscription, ever.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Photo \u0026 Video",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket/id6751730339?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b9/12/80/b912801d-568b-fcb9-0981-aada65e1c856/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/dd/b5/ef/ddb5efdf-ab0b-072c-175f-d58267e74a56/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EC4899",
       "features": [
         "Advanced OpenAI gpt-image-1 integration",

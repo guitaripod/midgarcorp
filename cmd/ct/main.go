@@ -5,8 +5,8 @@ import (
 	"os"
 
 	"github.com/guitaripod/midgarcorp/internal/appstore"
-	"github.com/guitaripod/midgarcorp/internal/github"
 	"github.com/guitaripod/midgarcorp/internal/build"
+	"github.com/guitaripod/midgarcorp/internal/github"
 )
 
 func main() {
