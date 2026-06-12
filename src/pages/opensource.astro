@@ -6,7 +6,7 @@ import openSourceData from '../data/opensource.json';
 const projects = openSourceData.projects;
 const totalStars = projects.reduce((sum, project) => sum + project.stars, 0);
 
-const pageTitle = 'Open Source | Marcus Ziadé';
+const pageTitle = 'Open Source | guitaripod';
 const pageDescription = `${projects.length} shipped open-source projects — AI agents, CLI tools, Swift packages, SDKs, and apps in Swift, Rust, Go, and TypeScript.`;
 
 const byStars = (a: (typeof projects)[number], b: (typeof projects)[number]) => b.stars - a.stars;
@@ -53,7 +53,7 @@ const sections = [
       <p class="prompt-line mb-4">git log --author=guitaripod --since=1.year --oneline</p>
       <img
         src="https://ghchart.rshah.org/00cc44/guitaripod"
-        alt="Marcus Ziadé's GitHub contribution graph"
+        alt="guitaripod's GitHub contribution graph"
         class="w-full"
         loading="lazy"
         onerror="this.closest('section').style.display='none'"

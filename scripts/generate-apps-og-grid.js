@@ -113,7 +113,7 @@ async function generateOGGrid(sharp) {
       <style>
         .stats { fill: #ffb000; font-size: 22px; font-family: ${mono}; }
       </style>
-      <text x="${ogWidth / 2}" y="50" text-anchor="middle" class="stats">${apps.length} apps · iPhone · iPad · Mac · Apple TV · by Marcus Ziadé</text>
+      <text x="${ogWidth / 2}" y="50" text-anchor="middle" class="stats">${apps.length} apps · iPhone · iPad · Mac · Apple TV · by guitaripod</text>
     </svg>`
   );
 

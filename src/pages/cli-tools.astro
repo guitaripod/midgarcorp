@@ -19,7 +19,7 @@ const languageList =
     ? `${languages.slice(0, -1).join(', ')} and ${languages[languages.length - 1]}`
     : languages.join('');
 
-const pageTitle = 'CLI Tools | Marcus Ziadé';
+const pageTitle = 'CLI Tools | guitaripod';
 const pageDescription = `Tools for the command line. Built with ${languageList}. Installable via Homebrew, cargo, and go install.`;
 
 const whichLine = `which ${cliTools
@@ -35,7 +35,7 @@ const structuredData = {
   url: 'https://midgarcorp.cc/cli-tools/',
   author: {
     '@type': 'Person',
-    name: 'Marcus Ziadé',
+    name: 'guitaripod',
     url: 'https://midgarcorp.cc',
   },
   hasPart: cliTools.map((tool) => ({

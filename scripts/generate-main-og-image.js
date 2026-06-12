@@ -61,7 +61,7 @@ ctx.strokeRect(termX, termY, termW, 44);
 ctx.fillStyle = MUTED;
 ctx.font = `16px ${MONO}`;
 ctx.textAlign = 'center';
-ctx.fillText('marcus@midgar: ~', termX + termW / 2, termY + 28);
+ctx.fillText('guitaripod@midgar: ~', termX + termW / 2, termY + 28);
 ctx.textAlign = 'left';
 
 let lineY = termY + 100;
@@ -90,7 +90,7 @@ ctx.fillRect(lineX + shipsWidth + 18, lineY - 52, 28, 60);
 lineY += 66;
 ctx.font = `22px ${MONO}`;
 ctx.fillStyle = MUTED;
-ctx.fillText('Marcus Ziadé — iOS · backend · AI · open source', lineX, lineY);
+ctx.fillText('guitaripod — iOS · backend · AI · open source', lineX, lineY);
 
 lineY += 42;
 ctx.fillStyle = AMBER;

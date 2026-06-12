@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import AppCard from '@components/AppCard.astro';
 import appsData from '../data/apps.json';
 
-const pageTitle = 'Apple Platform Apps | Marcus Ziadé';
+const pageTitle = 'Apple Platform Apps | guitaripod';
 
 const sortedApps = [...appsData.apps].sort((a, b) => {
   return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
@@ -19,7 +19,7 @@ const structuredData = {
   url: 'https://midgarcorp.cc/apps/',
   author: {
     '@type': 'Person',
-    name: 'Marcus Ziadé',
+    name: 'guitaripod',
     url: 'https://midgarcorp.cc',
   },
   hasPart: sortedApps.map((app) => ({
