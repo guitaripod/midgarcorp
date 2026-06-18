@@ -1,0 +1,121 @@
+{
+  "seoTitle": "Master of Flags — Free Flag Quiz App, No Ads",
+  "metaDescription": "Learn every country flag with a no-ads, no-subscription quiz. Daily Challenge, streaks, and a 250-flag encyclopedia with capitals. Free forever — start today.",
+  "accentColor": "#EF4444",
+  "keywords": [
+    "flag quiz app",
+    "learn country flags",
+    "world geography quiz",
+    "flag game no ads",
+    "country flag trivia game",
+    "daily flag challenge",
+    "flag encyclopedia with capitals",
+    "memorize country flags",
+    "geography study app for students",
+    "flag quiz no subscription"
+  ],
+  "heroHeadline": "Learn every flag on Earth",
+  "heroSubhead": "A geography quiz that respects you: no ads, no subscription, no account. Play free forever, and if you want more, Pro is one purchase you own for life.",
+  "highlights": [
+    "No ads. No subscription. No account.",
+    "250 flags and territories to study",
+    "Free forever, Pro is a one-time purchase"
+  ],
+  "features": [
+    {
+      "title": "Quiz the whole world",
+      "body": "Test yourself across Europe, Asia, Africa, the Americas and the world. Every region stays free.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Daily Challenge",
+      "body": "Ten flags, once a day, with shareable results. Come back tomorrow for a new set.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Streaks that forgive",
+      "body": "Build a daily streak. Streak freezes mean one busy day won't erase your run.",
+      "glyph": "✦"
+    },
+    {
+      "title": "Flag Encyclopedia",
+      "body": "Browse roughly 250 flags and territories with capitals and country facts. Free to read, anytime.",
+      "glyph": "⬡"
+    },
+    {
+      "title": "Hard Mode and Review",
+      "body": "Pro adds eight-flag rounds and a Review Mistakes drill that targets the exact flags you missed.",
+      "glyph": "▲"
+    },
+    {
+      "title": "Progress you can see",
+      "body": "XP, levels, per-region stats, plus Game Center leaderboards and achievements.",
+      "glyph": "⊹"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Pick a region",
+      "body": "Choose a continent or the whole world and start guessing flags right away."
+    },
+    {
+      "step": "Play daily",
+      "body": "Take the ten-flag Daily Challenge, keep your streak alive, and share your score."
+    },
+    {
+      "step": "Master it",
+      "body": "Track progress in the encyclopedia and, if you want, unlock Pro for harder rounds and review."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Master of Flags really free?",
+      "a": "Yes. The quiz, Daily Challenge, streaks, leaderboards and the full encyclopedia are free, with no ads and no account. You can play forever without paying."
+    },
+    {
+      "q": "What does Pro unlock and how much is it?",
+      "a": "Pro is a single $4.99 one-time purchase. It adds Hard Mode (eight-flag rounds), Review Mistakes, a full Statistics dashboard, and five streak freezes a month instead of one. No subscription, ever."
+    },
+    {
+      "q": "Are there any ads or subscriptions?",
+      "a": "No. There are no banner ads, no video ads, and no recurring charges. The only optional payment is the one-time Pro unlock."
+    },
+    {
+      "q": "Does Master of Flags work offline?",
+      "a": "Yes. The quiz and encyclopedia run on your device. You only need a connection for Game Center leaderboards and achievements."
+    },
+    {
+      "q": "What happens to my data?",
+      "a": "Your data stays on your device. Nothing is collected and nothing is tracked."
+    },
+    {
+      "q": "I bought the app years ago when it was paid. Do I have to pay again?",
+      "a": "No. Early buyers are grandfathered into Pro automatically, free, forever. Tap Restore Purchases to bring it back on any new device."
+    },
+    {
+      "q": "Which devices are supported?",
+      "a": "iPhone and iPad running iOS or iPadOS 17.4 or later."
+    },
+    {
+      "q": "How many flags can I learn?",
+      "a": "Roughly 250 flags and territories, each with its capital and country details in the encyclopedia."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "Guess the flag, pick a region",
+      "The ten-flag Daily Challenge",
+      "Share your daily streak result",
+      "Browse the 250-flag encyclopedia",
+      "Country details and capitals",
+      "Pro: Hard Mode and stats"
+    ],
+    "ipad": [
+      "Flag quiz on the bigger screen",
+      "Daily Challenge and streaks",
+      "Encyclopedia and country facts"
+    ]
+  },
+  "ctaLine": "Start learning the world's flags, free.",
+  "pricingNote": "Free to play with no ads or subscription. An optional one-time $4.99 Pro purchase unlocks Hard Mode, Review Mistakes, Statistics and extra streak freezes."
+}

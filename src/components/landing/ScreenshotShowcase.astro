@@ -1,0 +1,121 @@
+---
+import DeviceFrame from './DeviceFrame.astro';
+import { DEVICE_LABELS, deviceKeys, type LandingApp } from '@data/landing';
+
+export interface Props {
+  app: LandingApp;
+}
+
+const { app } = Astro.props;
+const devices = deviceKeys(app);
+const multi = devices.length > 1;
+const name = `gallery-${app.slug}`;
+
+const heightClass: Record<string, string> = {
+  iphone: 'h-[440px] sm:h-[540px]',
+  ipad: 'h-[400px] sm:h-[500px]',
+  mac: 'h-[260px] sm:h-[340px]',
+  tv: 'h-[240px] sm:h-[320px]',
+};
+
+const captionFor = (device: string, i: number) =>
+  app.content.screenshotCaptions?.[device]?.[i] ?? app.screenshots[device][i].label;
+---
+
+<section aria-label={`${app.shortName} screenshots`} class="screenshot-showcase">
+  {
+    multi && (
+      <div class="mb-6 flex flex-wrap gap-2" role="tablist" aria-label="Choose a device">
+        {devices.map((d, i) => (
+          <>
+            <input
+              type="radio"
+              name={name}
+              id={`${name}-${d}`}
+              class="peer/tab sr-only"
+              checked={i === 0}
+            />
+            <label
+              for={`${name}-${d}`}
+              data-device={d}
+              class="device-tab cursor-pointer select-none rounded-sm border border-paper-border px-3 py-1.5 text-xs font-medium text-paper-muted transition-colors hover:border-paper-border2 dark:border-term-border dark:text-term-muted dark:hover:border-term-border2"
+            >
+              {DEVICE_LABELS[d] ?? d}
+            </label>
+          </>
+        ))}
+      </div>
+    )
+  }
+
+  <div class="device-panels">
+    {
+      devices.map((device, di) => (
+        <div data-panel={device} class:list={['device-panel', { hidden: di !== 0 }]}>
+          <ul
+            class={`no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 ${heightClass[device] ?? 'h-[440px]'}`}
+          >
+            {app.screenshots[device].map((shot, i) => (
+              <li class="flex h-full shrink-0 snap-start flex-col items-center gap-3">
+                <div class="h-[calc(100%-2rem)]" style={`--accent:${app.content.accentColor}`}>
+                  <div class="device-glow h-full">
+                    <DeviceFrame
+                      device={device}
+                      src={shot.src}
+                      w={shot.w}
+                      h={shot.h}
+                      alt={`${app.shortName} — ${captionFor(device, i)}`}
+                      eager={di === 0 && i === 0}
+                    />
+                  </div>
+                </div>
+                <p class="max-w-[16rem] text-center text-xs text-paper-muted dark:text-term-muted">
+                  {captionFor(device, i)}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="mt-1 text-center text-xs text-paper-faint dark:text-term-faint sm:hidden">
+    swipe to see more →
+  </p>
+</section>
+
+<style>
+  .device-glow {
+    filter: drop-shadow(0 24px 48px color-mix(in srgb, var(--accent) 22%, transparent));
+  }
+
+  /* CSS-only device tabs: each checked radio reveals its panel and lights its label. */
+  .screenshot-showcase:has(#gallery-tab-checkhelper) {
+    /* placeholder to keep selector list tidy */
+  }
+</style>
+
+<script is:inline define:vars={{ name, devices }}>
+  (function () {
+    const root = document.currentScript.closest('.screenshot-showcase');
+    if (!root) return;
+    const radios = devices.map((d) => root.querySelector('#' + name + '-' + d));
+    const panels = devices.map((d) => root.querySelector('[data-panel="' + d + '"]'));
+    const labels = devices.map((d) => root.querySelector('label[data-device="' + d + '"]'));
+    function sync() {
+      radios.forEach((r, i) => {
+        const on = r && r.checked;
+        if (panels[i]) panels[i].classList.toggle('hidden', !on);
+        if (labels[i]) {
+          labels[i].classList.toggle('border-paper-green', on);
+          labels[i].classList.toggle('text-paper-green', on);
+          labels[i].classList.toggle('dark:border-term-green', on);
+          labels[i].classList.toggle('dark:text-term-green', on);
+        }
+      });
+    }
+    radios.forEach((r) => r && r.addEventListener('change', sync));
+    sync();
+  })();
+</script>

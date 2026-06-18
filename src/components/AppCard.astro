@@ -16,9 +16,10 @@ export interface Props {
     features: string[];
     releaseDate?: string;
   };
+  landingHref?: string;
 }
 
-const { app } = Astro.props;
+const { app, landingHref } = Astro.props;
 const description = cleanAppStoreDescription(app.description);
 const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
 ---
@@ -42,7 +43,15 @@ const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
         <h3
           class="text-base sm:text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors mb-1 truncate"
         >
-          {app.name}
+          {
+            landingHref ? (
+              <a href={landingHref} class="after:absolute after:inset-0 after:content-['']">
+                {app.name}
+              </a>
+            ) : (
+              app.name
+            )
+          }
         </h3>
         <p class="text-xs sm:text-sm text-paper-muted dark:text-term-muted mb-2 line-clamp-2">
           {app.tagline}
@@ -101,7 +110,7 @@ const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
         href={app.appStoreUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity w-full sm:w-auto"
+        class="relative z-10 inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity w-full sm:w-auto"
       >
         open in app store ↗
       </a>

@@ -1,0 +1,32 @@
+---
+export interface Props {
+  device: 'iphone' | 'ipad' | 'mac' | 'tv' | string;
+  src: string;
+  w: number;
+  h: number;
+  alt: string;
+  eager?: boolean;
+}
+
+const { device, src, w, h, alt, eager = false } = Astro.props;
+const loading = eager ? 'eager' : 'lazy';
+const portrait = device === 'iphone' || device === 'ipad';
+const radius = portrait ? 'rounded-[1.5rem]' : 'rounded-xl';
+---
+
+<div
+  class:list={[
+    'relative inline-flex h-full overflow-hidden border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5',
+    radius,
+  ]}
+>
+  <img
+    src={src}
+    alt={alt}
+    width={w}
+    height={h}
+    loading={loading}
+    decoding="async"
+    class="block h-full w-auto"
+  />
+</div>

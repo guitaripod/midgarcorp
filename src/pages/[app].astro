@@ -1,0 +1,491 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AppStoreBadge from '@components/landing/AppStoreBadge.astro';
+import StarRating from '@components/landing/StarRating.astro';
+import ScreenshotShowcase from '@components/landing/ScreenshotShowcase.astro';
+import FeatureGrid from '@components/landing/FeatureGrid.astro';
+import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import DeviceFrame from '@components/landing/DeviceFrame.astro';
+import { landingApps, primaryDevice, type LandingApp } from '@data/landing';
+
+export function getStaticPaths() {
+  return landingApps.map((app) => ({ params: { app: app.slug }, props: { app } }));
+}
+
+const { app } = Astro.props as { app: LandingApp };
+const c = app.content;
+const accent = c.accentColor || app.primaryColor;
+const isReview = app.status === 'review';
+
+const site = 'https://midgarcorp.cc';
+const canonical = `${site}/${app.slug}`;
+const ogImage = `/og/${app.slug}.png`;
+
+const subtitle = app.name.includes(':')
+  ? app.name.split(':').slice(1).join(':').trim()
+  : (app.category ?? '');
+
+const platformForBadge =
+  app.platforms.includes('Mac') && !app.platforms.includes('iPhone') ? 'mac' : 'ios';
+
+const osMap: Record<string, string> = {
+  iPhone: 'iOS',
+  iPad: 'iOS',
+  Mac: 'macOS',
+  'Apple TV': 'tvOS',
+};
+const operatingSystem = [...new Set(app.platforms.map((p) => osMap[p] ?? p))].join(', ');
+
+const heroDevice = primaryDevice(app);
+const heroShot = app.screenshots[heroDevice]?.[0];
+const heroHeightClass =
+  heroDevice === 'iphone'
+    ? 'h-[420px] sm:h-[500px]'
+    : heroDevice === 'ipad'
+      ? 'h-[400px] sm:h-[470px]'
+      : 'h-[230px] sm:h-[300px]';
+
+const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
+
+const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : undefined);
+
+const privacyTenants: Record<string, string> = {
+  dreameater: 'dreameater',
+  pixiepocket: 'pixiepocket',
+  psywave: 'psywave',
+  doublekick: 'doublekick',
+  psybeam: 'psybeam',
+  appofthedead: 'appofthedead',
+  payday: 'payday',
+};
+const privacyUrl = privacyTenants[app.slug]
+  ? `https://mako.midgarcorp.cc/privacy/${privacyTenants[app.slug]}`
+  : undefined;
+const supportUrl = app.supportUrl ?? undefined;
+
+const allShots = Object.values(app.screenshots)
+  .flat()
+  .map((s) => abs(s.src));
+
+const softwareApp: Record<string, unknown> = {
+  '@type': 'SoftwareApplication',
+  name: app.name,
+  operatingSystem,
+  applicationCategory: app.category,
+  description: c.metaDescription,
+  url: canonical,
+  installUrl: app.appStoreUrl,
+  image: abs(app.iconLocal),
+  screenshot: allShots,
+  offers: {
+    '@type': 'Offer',
+    price: priceNumeric,
+    priceCurrency: 'USD',
+  },
+  author: { '@type': 'Organization', name: 'Midgar Oy', url: site },
+  publisher: { '@type': 'Organization', name: 'Midgar Oy', url: site },
+  ...(app.version ? { softwareVersion: app.version } : {}),
+  ...(app.releaseDate ? { datePublished: app.releaseDate } : {}),
+  ...(app.ratingCount > 0
+    ? {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: app.rating,
+          ratingCount: app.ratingCount,
+          bestRating: 5,
+          worstRating: 1,
+        },
+      }
+    : {}),
+};
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site },
+    { '@type': 'ListItem', position: 2, name: 'Apps', item: `${site}/apps` },
+    { '@type': 'ListItem', position: 3, name: app.shortName, item: canonical },
+  ],
+};
+
+const faqPage = {
+  '@type': 'FAQPage',
+  mainEntity: c.faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, breadcrumb, faqPage] };
+
+// Structure the App Store description: ALL-CAPS short lines become subheadings.
+const descBlocks = app.description
+  .split(/\n+/)
+  .map((l) => l.trim())
+  .filter(Boolean)
+  .map((line) => {
+    const isHeading =
+      line.length <= 42 &&
+      /[A-Z]/.test(line) &&
+      line === line.toUpperCase() &&
+      !/[.!?]$/.test(line);
+    return { line, isHeading };
+  });
+
+// A few sibling apps for internal linking.
+const siblings = landingApps.filter((a) => a.slug !== app.slug).slice(0, 6);
+
+const sectionPrompt = (cmd: string) => cmd;
+---
+
+<BaseLayout title={c.seoTitle} description={c.metaDescription} image={ogImage}>
+  <div style={`--accent:${accent}`}>
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/apps" class="hover:text-paper-green dark:hover:text-term-green">apps</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">{app.slug}</li>
+      </ol>
+    </nav>
+
+    <!-- Hero -->
+    <header
+      class="grid grid-cols-1 items-center gap-10 py-10 sm:py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12"
+    >
+      <div>
+        <p class="prompt-line mb-5">open /Applications/{app.shortName.replace(/ /g, '\\ ')}.app</p>
+
+        <div class="mb-5 flex items-center gap-4">
+          {
+            app.iconLocal && (
+              <img
+                src={app.iconLocal}
+                alt={`${app.name} app icon`}
+                width="72"
+                height="72"
+                class="hero-icon h-16 w-16 rounded-[1.1rem] border border-paper-border dark:border-term-border sm:h-[72px] sm:w-[72px]"
+              />
+            )
+          }
+          <div class="min-w-0">
+            <h1
+              class="text-2xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-3xl"
+            >
+              {app.shortName}
+            </h1>
+            {subtitle && <p class="text-sm text-paper-muted dark:text-term-muted">{subtitle}</p>}
+          </div>
+        </div>
+
+        <p
+          class="mb-4 text-2xl font-bold leading-tight tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+        >
+          {c.heroHeadline}
+        </p>
+        <p
+          class="mb-6 max-w-xl text-base leading-relaxed text-paper-muted dark:text-term-muted sm:text-lg"
+        >
+          {c.heroSubhead}
+        </p>
+
+        <!-- meta chips -->
+        <div class="mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+          {
+            isReview ? (
+              <span class="inline-flex items-center gap-1.5 rounded-sm border border-paper-amber/40 px-2 py-0.5 text-xs font-semibold text-paper-amber dark:border-term-amber/40 dark:text-term-amber">
+                <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-paper-amber dark:bg-term-amber" />
+                In App Store review
+              </span>
+            ) : (
+              <StarRating rating={app.rating} count={app.ratingCount} />
+            )
+          }
+          <span class="font-semibold text-paper-amber dark:text-term-amber">{app.price}</span>
+          <span class="text-paper-faint dark:text-term-faint">{app.category}</span>
+          <span class="flex flex-wrap gap-1.5">
+            {
+              app.platforms.map((p) => (
+                <span class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint">
+                  {p}
+                </span>
+              ))
+            }
+          </span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap items-center gap-3">
+          <AppStoreBadge href={app.appStoreUrl} platform={platformForBadge} comingSoon={isReview} />
+          <a
+            href="#screenshots"
+            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
+          >
+            See it in action ↓
+          </a>
+        </div>
+
+        <!-- highlights -->
+        <ul class="mt-7 grid gap-2 sm:grid-cols-1">
+          {
+            c.highlights.map((h) => (
+              <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                  ▸
+                </span>
+                <span>{h}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- hero screenshot -->
+      {
+        heroShot && (
+          <div class="flex justify-center lg:justify-end">
+            <div class={`device-glow ${heroHeightClass}`} style={`--accent:${accent}`}>
+              <DeviceFrame
+                device={heroDevice}
+                src={heroShot.src}
+                w={heroShot.w}
+                h={heroShot.h}
+                alt={`${app.shortName} on ${heroDevice === 'mac' ? 'Mac' : heroDevice === 'tv' ? 'Apple TV' : heroDevice === 'ipad' ? 'iPad' : 'iPhone'}`}
+                eager={true}
+              />
+            </div>
+          </div>
+        )
+      }
+    </header>
+
+    <!-- Screenshots -->
+    <section
+      id="screenshots"
+      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --screenshots`)}</p>
+      <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        {app.shortName}
+        <span class="accent-text">in action</span>
+      </h2>
+      <ScreenshotShowcase app={app} />
+    </section>
+
+    <!-- Features -->
+    <section
+      id="features"
+      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-3">{sectionPrompt(`cat ${app.slug}/FEATURES.md`)}</p>
+      <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        What <span class="accent-text">{app.shortName}</span> does
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">{c.heroSubhead}</p>
+      <FeatureGrid features={c.features} accent={accent} />
+    </section>
+
+    <!-- How it works -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-3">{sectionPrompt(`man ${app.slug}`)}</p>
+      <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        How <span class="accent-text">{app.shortName}</span> works
+      </h2>
+      <ol class="grid gap-5 sm:grid-cols-3">
+        {
+          c.howItWorks.map((step, i) => (
+            <li class="term-frame relative flex flex-col gap-2 p-5">
+              <span
+                class="accent-text font-mono text-sm font-bold"
+                aria-hidden="true"
+              >{`0${i + 1}`}</span>
+              <h3 class="text-base font-bold text-paper-text dark:text-term-text">{step.step}</h3>
+              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                {step.body}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <!-- About (full store description) -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-3">{sectionPrompt(`less ${app.slug}/README`)}</p>
+      <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        About {app.shortName}
+      </h2>
+      <div class="max-w-2xl space-y-3 font-sans">
+        {
+          descBlocks.map(({ line, isHeading }) =>
+            isHeading ? (
+              <h3 class="accent-text pt-3 text-xs font-bold uppercase tracking-[0.16em]">{line}</h3>
+            ) : (
+              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{line}</p>
+            )
+          )
+        }
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section
+      id="faq"
+      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --faq`)}</p>
+      <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        Frequently asked <span class="accent-text">questions</span>
+      </h2>
+      <div class="max-w-3xl">
+        <FaqAccordion faq={c.faq} accent={accent} />
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <div class="term-frame relative overflow-hidden p-6 sm:p-10" style={`--accent:${accent}`}>
+        <span class="cta-spine absolute inset-y-0 left-0 w-1" aria-hidden="true"></span>
+        <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-4">
+            {
+              app.iconLocal && (
+                <img
+                  src={app.iconLocal}
+                  alt=""
+                  width="64"
+                  height="64"
+                  class="h-14 w-14 rounded-[0.9rem] border border-paper-border dark:border-term-border"
+                />
+              )
+            }
+            <div>
+              <h2 class="text-lg font-bold text-paper-text dark:text-term-text sm:text-xl">
+                {c.ctaLine}
+              </h2>
+              <p class="mt-1 text-sm text-paper-muted dark:text-term-muted">{c.pricingNote}</p>
+            </div>
+          </div>
+          <div class="shrink-0">
+            <AppStoreBadge
+              href={app.appStoreUrl}
+              platform={platformForBadge}
+              comingSoon={isReview}
+            />
+          </div>
+        </div>
+
+        <div
+          class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-paper-border pt-5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint"
+        >
+          {
+            app.version && (
+              <span>
+                v{app.version}
+                {app.minimumOsVersion
+                  ? ` · requires ${operatingSystem} ${app.minimumOsVersion}+`
+                  : ''}
+              </span>
+            )
+          }
+          <a
+            href={app.appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-paper-green dark:hover:text-term-green">App Store ↗</a
+          >
+          {
+            supportUrl && (
+              <a
+                href={supportUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-paper-green dark:hover:text-term-green"
+              >
+                Support ↗
+              </a>
+            )
+          }
+          {
+            privacyUrl && (
+              <a
+                href={privacyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-paper-green dark:hover:text-term-green"
+              >
+                Privacy ↗
+              </a>
+            )
+          }
+          <span>by {app.sellerName ?? 'Midgar Oy'}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- More apps -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border">
+      <p class="prompt-line mb-5">ls ~/apps</p>
+      <div class="flex flex-wrap gap-3">
+        {
+          siblings.map((s) => (
+            <a
+              href={`/${s.slug}`}
+              class="group inline-flex items-center gap-2.5 rounded-sm border border-paper-border px-3 py-2 text-sm transition-colors hover:border-paper-border2 dark:border-term-border dark:hover:border-term-border2"
+            >
+              {s.iconLocal && (
+                <img src={s.iconLocal} alt="" width="24" height="24" class="h-6 w-6 rounded-md" />
+              )}
+              <span class="font-medium text-paper-muted group-hover:text-paper-green dark:text-term-muted dark:group-hover:text-term-green">
+                {s.shortName}
+              </span>
+            </a>
+          ))
+        }
+        <a
+          href="/apps"
+          class="inline-flex items-center gap-2 rounded-sm border border-paper-border px-3 py-2 text-sm font-medium text-paper-muted transition-colors hover:border-paper-border2 hover:text-paper-green dark:border-term-border dark:text-term-muted dark:hover:border-term-border2 dark:hover:text-term-green"
+        >
+          all apps →
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: var(--accent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .hero-icon {
+    box-shadow: 0 14px 40px -12px color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  .device-glow {
+    filter: drop-shadow(0 28px 56px color-mix(in srgb, var(--accent) 24%, transparent));
+  }
+  .accent-btn {
+    color: color-mix(in srgb, var(--accent), #000 34%);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  :global(.dark) .accent-btn {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .accent-btn:hover {
+    background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+  }
+  .cta-spine {
+    background-color: var(--accent);
+    opacity: 0.7;
+  }
+</style>

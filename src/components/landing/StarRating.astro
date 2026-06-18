@@ -1,0 +1,75 @@
+---
+export interface Props {
+  rating: number;
+  count: number;
+  class?: string;
+}
+
+const { rating, count, class: className = '' } = Astro.props;
+const rounded = Math.round(rating * 2) / 2;
+const stars = Array.from({ length: 5 }, (_, i) => {
+  const v = i + 1;
+  if (rounded >= v) return 'full';
+  if (rounded >= v - 0.5) return 'half';
+  return 'empty';
+});
+const label =
+  count > 0 ? `Rated ${rating.toFixed(1)} out of 5 from ${count} ratings` : 'New on the App Store';
+---
+
+{
+  count > 0 ? (
+    <span class:list={['inline-flex items-center gap-1.5 text-sm', className]} aria-label={label}>
+      <span
+        class="flex items-center gap-0.5 text-paper-amber dark:text-term-amber"
+        aria-hidden="true"
+      >
+        {stars.map((s, i) => (
+          <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none">
+            {s === 'half' && (
+              <defs>
+                <clipPath id={`star-${rating}-${i}`}>
+                  <rect x="0" y="0" width="10" height="20" />
+                </clipPath>
+              </defs>
+            )}
+            {s !== 'full' && (
+              <path
+                d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.6l-4.95 2.6.95-5.5-4-3.9 5.53-.8z"
+                fill="currentColor"
+                fill-opacity="0.28"
+              />
+            )}
+            {s === 'full' && (
+              <path
+                d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.6l-4.95 2.6.95-5.5-4-3.9 5.53-.8z"
+                fill="currentColor"
+              />
+            )}
+            {s === 'half' && (
+              <path
+                d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.6l-4.95 2.6.95-5.5-4-3.9 5.53-.8z"
+                fill="currentColor"
+                clip-path={`url(#star-${rating}-${i})`}
+              />
+            )}
+          </svg>
+        ))}
+      </span>
+      <span class="font-semibold text-paper-text dark:text-term-text">{rating.toFixed(1)}</span>
+      <span class="text-paper-faint dark:text-term-faint">({count.toLocaleString()})</span>
+    </span>
+  ) : (
+    <span
+      class:list={[
+        'inline-flex items-center gap-1.5 text-sm text-paper-muted dark:text-term-muted',
+        className,
+      ]}
+    >
+      <span class="text-paper-greendim dark:text-term-greendim" aria-hidden="true">
+        ◆
+      </span>
+      New on the App Store
+    </span>
+  )
+}

@@ -1,0 +1,42 @@
+---
+import type { Feature } from '@data/landing';
+
+export interface Props {
+  features: Feature[];
+  accent: string;
+}
+
+const { features, accent } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-paper-border bg-paper-border dark:border-term-border dark:bg-term-border sm:grid-cols-2 lg:grid-cols-3"
+  style={`--accent:${accent}`}
+>
+  {
+    features.map((f) => (
+      <article class="group flex flex-col gap-3 bg-paper-panel p-5 transition-colors hover:bg-paper-raised dark:bg-term-panel dark:hover:bg-term-raised sm:p-6">
+        <span
+          class="feature-glyph inline-flex h-9 w-9 items-center justify-center rounded-sm text-lg"
+          aria-hidden="true"
+        >
+          {f.glyph}
+        </span>
+        <h3 class="text-base font-bold text-paper-text dark:text-term-text">{f.title}</h3>
+        <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{f.body}</p>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .feature-glyph {
+    color: color-mix(in srgb, var(--accent), #000 36%);
+    background-color: color-mix(in srgb, var(--accent) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  }
+  :global(.dark) .feature-glyph {
+    color: var(--accent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+</style>

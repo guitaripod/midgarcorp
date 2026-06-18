@@ -1,0 +1,121 @@
+import factsData from './landing-facts.json';
+
+export interface Screenshot {
+  src: string;
+  w: number;
+  h: number;
+  label: string;
+}
+
+export interface LandingFacts {
+  slug: string;
+  trackId: number;
+  shortName: string;
+  status: 'live' | 'review';
+  primaryColor: string;
+  name: string;
+  appStoreUrl: string;
+  description: string;
+  releaseNotes?: string;
+  promotionalText?: string;
+  category?: string;
+  genres?: string[];
+  price: string;
+  rating: number;
+  ratingCount: number;
+  version?: string;
+  releaseDate?: string;
+  currentVersionReleaseDate?: string;
+  minimumOsVersion?: string;
+  contentRating?: string;
+  languages?: string[];
+  bundleId?: string;
+  sellerName?: string;
+  icon?: string | null;
+  iconLocal?: string;
+  marketingUrl?: string | null;
+  supportUrl?: string | null;
+  keywords?: string;
+  platforms: string[];
+  screenshots: Record<string, Screenshot[]>;
+}
+
+export interface Feature {
+  title: string;
+  body: string;
+  glyph: string;
+}
+
+export interface Step {
+  step: string;
+  body: string;
+}
+
+export interface Faq {
+  q: string;
+  a: string;
+}
+
+export interface LandingContent {
+  seoTitle: string;
+  metaDescription: string;
+  keywords: string[];
+  heroHeadline: string;
+  heroSubhead: string;
+  accentColor: string;
+  highlights: string[];
+  features: Feature[];
+  howItWorks: Step[];
+  faq: Faq[];
+  screenshotCaptions: Record<string, string[]>;
+  ctaLine: string;
+  pricingNote: string;
+}
+
+export type LandingApp = LandingFacts & { content: LandingContent };
+
+const contentModules = import.meta.glob<{ default: LandingContent }>('./landing/*.json', {
+  eager: true,
+});
+
+const contentBySlug: Record<string, LandingContent> = {};
+for (const [path, mod] of Object.entries(contentModules)) {
+  const slug = path.split('/').pop()!.replace('.json', '');
+  contentBySlug[slug] = ((mod as { default?: LandingContent }).default ??
+    (mod as unknown as LandingContent)) as LandingContent;
+}
+
+const facts = (factsData as { apps: LandingFacts[] }).apps;
+
+export const landingApps: LandingApp[] = facts
+  .filter((f) => contentBySlug[f.slug])
+  .map((f) => ({ ...f, content: contentBySlug[f.slug] }));
+
+export const landingSlugs = landingApps.map((a) => a.slug);
+
+export function getLandingApp(slug: string): LandingApp | undefined {
+  return landingApps.find((a) => a.slug === slug);
+}
+
+export const DEVICE_LABELS: Record<string, string> = {
+  iphone: 'iPhone',
+  ipad: 'iPad',
+  mac: 'Mac',
+  tv: 'Apple TV',
+};
+
+const DEVICE_ORDER = ['iphone', 'tv', 'mac', 'ipad'];
+
+/// Returns the device bucket whose screenshots best represent the app in the hero.
+export function primaryDevice(app: LandingApp): string {
+  const keys = Object.keys(app.screenshots);
+  return DEVICE_ORDER.find((d) => app.screenshots[d]?.length) ?? keys[0];
+}
+
+/// Device buckets present for an app, ordered for display.
+export function deviceKeys(app: LandingApp): string[] {
+  const keys = Object.keys(app.screenshots);
+  return DEVICE_ORDER.filter((d) => keys.includes(d)).concat(
+    keys.filter((k) => !DEVICE_ORDER.includes(k))
+  );
+}

@@ -1,0 +1,116 @@
+{
+  "seoTitle": "Pay Day — Peppol & Factur-X Invoices on iPhone",
+  "metaDescription": "Send EN 16931 e-invoices over Peppol from your iPhone. Free unlimited invoicing with a real VAT engine, plus Factur-X compliance when you need it. Try it free.",
+  "keywords": [
+    "peppol invoicing app",
+    "factur-x e-invoice iphone",
+    "en 16931 invoice app",
+    "eu e-invoicing mandate 2026",
+    "zugferd invoice generator",
+    "vat invoice app for freelancers",
+    "xrechnung mobile app",
+    "recurring invoice app ios",
+    "vies vat id validation",
+    "estimate and invoice app"
+  ],
+  "heroHeadline": "Invoices your tax authority can actually read",
+  "heroSubhead": "The EU is making electronic invoicing mandatory. A pretty PDF is no longer enough. Pay Day creates EN 16931 e-invoices and delivers them over Peppol, straight from your iPhone.",
+  "accentColor": "#22C55E",
+  "highlights": [
+    "Unlimited invoices and estimates, free",
+    "Factur-X / ZUGFeRD hybrid e-invoices",
+    "Peppol delivery into your client's system",
+    "Works fully offline, no account to start"
+  ],
+  "features": [
+    {
+      "title": "Real VAT Engine",
+      "body": "An EN 16931 VAT engine handles standard rates, intra-community reverse charge, zero-rated and exempt lines, with a correctly rounded breakdown on every document.",
+      "glyph": "⊹"
+    },
+    {
+      "title": "Factur-X E-Invoices",
+      "body": "One hybrid file looks like a clean invoice to your client and carries embedded EN 16931 data a tax system reads automatically. Validated as a PDF/A-3 with valid XML.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Peppol Delivery",
+      "body": "Send invoices straight into your client's accounting software over the EU's official network. No email attachment, no portal login.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Live VAT Validation",
+      "body": "Check every client's VAT ID against the EU VIES service before you issue. Validation is advisory, so it never blocks a send.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Recurring & Branded",
+      "body": "Set a recurring invoice once and get paid every month. Add your logo, accent colour, and templates that match your business.",
+      "glyph": "▰"
+    },
+    {
+      "title": "AI Helpers, Optional",
+      "body": "Snap a receipt into line items, draft an invoice from a description, or write a payment reminder. A few credits each, never required.",
+      "glyph": "✶"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Build",
+      "body": "Add a client, drop in line items, and Pay Day computes the VAT breakdown and totals as you go."
+    },
+    {
+      "step": "Compose",
+      "body": "Export a branded PDF for free, or generate a compliant Factur-X e-invoice with embedded EN 16931 data."
+    },
+    {
+      "step": "Send",
+      "body": "Email the PDF, or deliver it over Peppol directly into your client's accounting system."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Pay Day really free?",
+      "a": "Yes. The free tier gives you unlimited invoices and estimates, unlimited clients, your logo, multi-currency, and the full VAT engine, with no watermark and no per-document limit. It is a complete invoicing tool, not a trial."
+    },
+    {
+      "q": "What does Pay Day Pro cost?",
+      "a": "Pro is an auto-renewing subscription, monthly or annual, with a 7-day free trial. It unlocks Factur-X e-invoices, Peppol delivery, recurring invoices, branding, and VAT validation. You can cancel anytime in your Apple ID settings."
+    },
+    {
+      "q": "What are credit packs for?",
+      "a": "Credit packs are one-time purchases that cover each Peppol network send at its real per-send cost, instead of padding the subscription. The same credits power optional AI helpers. Local PDF export never needs credits."
+    },
+    {
+      "q": "Does Pay Day work offline?",
+      "a": "Yes. You can build and export invoices fully offline from a job site, a train, or anywhere. Only Peppol sends, VAT validation, and AI actions need a connection."
+    },
+    {
+      "q": "Where is my business and client data stored?",
+      "a": "On your device. Your business and client data stays on the phone; the server only ever sees what you explicitly send, such as a VAT ID to validate or an invoice to transmit over Peppol."
+    },
+    {
+      "q": "What is EN 16931 and why does it matter?",
+      "a": "EN 16931 is the EU's structured e-invoice standard. Mandates are rolling out across the EU, starting with Belgium in 2026, so a normal PDF will no longer satisfy many tax authorities. Pay Day produces compliant Factur-X and Peppol BIS 3.0 invoices built to that standard."
+    },
+    {
+      "q": "Which platforms does Pay Day support?",
+      "a": "Pay Day runs on iPhone. No desktop software and no separate bookkeeping suite required."
+    },
+    {
+      "q": "How do I cancel or get a refund?",
+      "a": "Manage or cancel your subscription anytime in your Apple ID settings; it renews automatically unless cancelled at least 24 hours before the period ends. Refunds are handled by Apple through your purchase history."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "A finished, branded invoice",
+      "Building line items and VAT",
+      "Track invoice and payment status",
+      "Compliant e-invoice ready to send",
+      "Pro and Peppol credit packs"
+    ]
+  },
+  "ctaLine": "Be ready for the EU e-invoicing mandates. Start invoicing free today.",
+  "pricingNote": "Free unlimited invoicing; Pro is a monthly or annual subscription with a 7-day trial, and Peppol sends plus optional AI run on one-time credit packs."
+}

@@ -1,0 +1,120 @@
+{
+  "seoTitle": "PixiePocket — AI Image Generator, Pay Per Image",
+  "metaDescription": "Generate AI images by chat with Nano Banana and GPT image. Pay per image, no subscription, credits never expire. Start free with 25 credits on iPhone and iPad.",
+  "keywords": [
+    "ai image generator app",
+    "pay per image ai no subscription",
+    "nano banana image generator iphone",
+    "gpt image generator ios",
+    "chat to image ai app",
+    "edit photo with ai by text",
+    "transparent background ai image maker",
+    "ai image generator for ipad",
+    "batch ai image generation",
+    "ai avatar and wallpaper generator",
+    "ai sticker maker app",
+    "credits based ai image app"
+  ],
+  "heroHeadline": "Make AI images by chat",
+  "heroSubhead": "Describe what you want, refine it message by message, and watch the image take shape. Pay only for what you make. No subscription, ever.",
+  "accentColor": "#EC4899",
+  "highlights": [
+    "25 free credits to start, no sign-up",
+    "Two engines: Nano Banana and GPT image",
+    "Pay per image, credits never expire"
+  ],
+  "features": [
+    {
+      "title": "Create by chat",
+      "body": "Describe what you want and refine it one message at a time. Attach a photo and edit by talking: change hair, swap backgrounds, restyle anything.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Two engines, one chat",
+      "body": "Generate with Google's Nano Banana (Gemini) and OpenAI's GPT image models. Switch between them without leaving the conversation.",
+      "glyph": "⊹"
+    },
+    {
+      "title": "Control the output",
+      "body": "Batch up to 10 images per request, pick Low to High quality, set custom sizes, and export PNG, JPEG, or WebP with transparent backgrounds.",
+      "glyph": "⌗"
+    },
+    {
+      "title": "See the cost up front",
+      "body": "The credit cost shows before you create, and your balance stays in the toolbar. No weekly trap, no renewals, no surprise charges.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Synced across devices",
+      "body": "Start anonymously, then sign in with Apple, Google, or GitHub to keep your gallery in sync across iPhone and iPad.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Community gallery",
+      "body": "Share your work to the public gallery or keep it private. Any image can be reported in one tap and is reviewed.",
+      "glyph": "✦"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Describe",
+      "body": "Type what you want in plain words, or attach a photo to edit, and send it like a chat message."
+    },
+    {
+      "step": "Refine",
+      "body": "Reply to nudge the result: change the style, fix a detail, or adjust quality and size until it lands."
+    },
+    {
+      "step": "Export",
+      "body": "Save as PNG, JPEG, or WebP, share to the community gallery, or keep it to yourself."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Does PixiePocket require a subscription?",
+      "a": "No. There are no subscriptions and no renewals. You buy credit packs once and spend them as you create, and credits never expire."
+    },
+    {
+      "q": "How much does PixiePocket cost?",
+      "a": "The app is free to download and includes 25 free credits to start. After that you buy credit packs, with bigger packs carrying up to 68% bonus credits. The credit cost is shown before each creation."
+    },
+    {
+      "q": "Which AI models does it use?",
+      "a": "PixiePocket generates with Google's Nano Banana (Gemini) and OpenAI's GPT image models. You can use both from the same chat."
+    },
+    {
+      "q": "What happens to my prompts and photos?",
+      "a": "Your prompts and attached photos are sent to Google Gemini and OpenAI to generate the images. You approve this in-app before your first creation and can withdraw consent anytime in Settings."
+    },
+    {
+      "q": "Do I need an account to use it?",
+      "a": "No. You can start anonymously. To sync your gallery across devices, sign in with Apple, Google, or GitHub."
+    },
+    {
+      "q": "Can I edit my own photos with AI?",
+      "a": "Yes. Attach a photo and edit it by chatting: change hair, swap backgrounds, or restyle the whole image."
+    },
+    {
+      "q": "What devices does PixiePocket support?",
+      "a": "PixiePocket runs on iPhone and iPad with iOS 16.6 or later."
+    },
+    {
+      "q": "What are the limits on each image?",
+      "a": "You can batch up to 10 images per request, choose Low, Medium, High, or Auto quality, set custom sizes from square to widescreen, and export with transparent backgrounds. Some prompts may be filtered by content moderation."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "Create an image by chat",
+      "Edit a photo by talking",
+      "Browse your synced gallery"
+    ],
+    "ipad": [
+      "Create an image by chat",
+      "Edit a photo by talking",
+      "Browse your synced gallery"
+    ]
+  },
+  "ctaLine": "Start with 25 free credits and make your first image in seconds.",
+  "pricingNote": "Free to download with 25 starter credits. You buy credit packs once, bigger packs carry up to 68% bonus credits, and credits never expire — no subscription."
+}

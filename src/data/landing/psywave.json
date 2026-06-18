@@ -1,0 +1,120 @@
+{
+  "seoTitle": "Psywave — AI Apple Music Playlist Maker",
+  "metaDescription": "Describe a mood or pick a photo and get a real Apple Music playlist of 25 songs in seconds. Save, remix, and export every mix. Start with 3 free playlists.",
+  "keywords": [
+    "ai playlist maker",
+    "mood playlist generator",
+    "apple music playlist creator",
+    "make a playlist from a photo",
+    "workout playlist generator",
+    "focus music playlist",
+    "playlist from text description",
+    "song discovery app",
+    "party playlist maker",
+    "study playlist generator"
+  ],
+  "heroHeadline": "Describe a mood. Get a real playlist.",
+  "heroSubhead": "Type a vibe or pick a photo, and Psywave builds a 25-song Apple Music playlist of real tracks in seconds. One tap to import. No more endless scrolling.",
+  "accentColor": "#8B5CF6",
+  "highlights": [
+    "25 real songs per playlist, imported to Apple Music in one tap",
+    "Turn a photo into a soundtrack that fits the scene",
+    "Every playlist saved, ready to re-import or remix"
+  ],
+  "features": [
+    {
+      "title": "Words In, Songs Out",
+      "body": "Tell Psywave what you want to hear — \"drum and bass intensity\" or \"focus for deep work\" — and it builds a tracklist around that exact mood.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Photos Become Playlists",
+      "body": "Point Psywave at a sunset, a road trip, or a rainy window. It reads the mood and colors, then scores the moment with real tracks.",
+      "glyph": "◉"
+    },
+    {
+      "title": "See Your Sound",
+      "body": "Every playlist comes with a genre breakdown chart, so you can see what your vibe is made of before you import it.",
+      "glyph": "▰"
+    },
+    {
+      "title": "Remix And Extend",
+      "body": "Remix any playlist into a fresh set, or add 10 more songs with one tap when you want the night to keep going.",
+      "glyph": "✦"
+    },
+    {
+      "title": "Your Library Of Moods",
+      "body": "Every playlist you generate is saved. Re-import any of them to Apple Music whenever the mood comes back around.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Export Anywhere",
+      "body": "Share a playlist, copy the track list, or send a CSV that moves into Spotify, YouTube Music, TIDAL, or Deezer through Soundiiz or TuneMyMusic.",
+      "glyph": "⊹"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Describe",
+      "body": "Type a mood, a scene, or a feeling in one line — or pick a photo from your library."
+    },
+    {
+      "step": "Generate",
+      "body": "Psywave builds a 25-song playlist of real Apple Music tracks and shows you the genre breakdown."
+    },
+    {
+      "step": "Import",
+      "body": "Tap once to drop the playlist into your Apple Music library and press play."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does Psywave cost?",
+      "a": "You start with 3 free playlists. After that, choose Psywave Pro for unlimited playlists, or buy a credit pack and pay only for what you make. Credits never expire."
+    },
+    {
+      "q": "Is there a free trial?",
+      "a": "Yes. The annual Psywave Pro plan includes a 7-day free trial. You can also try the app first with your 3 free playlists before paying anything."
+    },
+    {
+      "q": "Do I need an Apple Music subscription?",
+      "a": "Yes. Psywave imports playlists directly into Apple Music, so an active Apple Music subscription is required to save and play them."
+    },
+    {
+      "q": "What's the difference between Pro and credit packs?",
+      "a": "Pro is a subscription for unlimited playlists plus longer mixes of up to 50 songs. Credit packs are one-time and pay-as-you-go: each playlist costs one credit, and credits never expire."
+    },
+    {
+      "q": "How does the photo feature work?",
+      "a": "Pick any photo and Psywave reads its mood, colors, and feeling, then builds a playlist of real songs that matches the scene."
+    },
+    {
+      "q": "Can I move my playlists to Spotify or YouTube Music?",
+      "a": "Yes. Psywave exports a playlist as a CSV that imports into Spotify, YouTube Music, TIDAL, and Deezer through Soundiiz or TuneMyMusic, and you can also share or copy the track list directly."
+    },
+    {
+      "q": "What devices does Psywave run on?",
+      "a": "Psywave runs on iPhone and iPad and requires iOS 17 or later."
+    },
+    {
+      "q": "How do I cancel a subscription?",
+      "a": "Manage or cancel Psywave Pro anytime in your Apple ID subscription settings. The paywall is always dismissible, and your saved playlists stay available."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "A finished playlist of real songs",
+      "Describe a mood or pick a photo",
+      "Every playlist you've made, saved",
+      "Unlimited playlists or credit packs"
+    ],
+    "ipad": [
+      "A finished playlist of real songs",
+      "Describe a mood or pick a photo",
+      "Every playlist you've made, saved",
+      "Unlimited playlists or credit packs"
+    ]
+  },
+  "ctaLine": "Start with 3 free playlists. Describe your first mood now.",
+  "pricingNote": "Free to start with 3 playlists, then either a Psywave Pro subscription for unlimited mixes (7-day trial on the annual plan) or one-time credit packs that never expire."
+}

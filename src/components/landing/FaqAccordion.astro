@@ -1,0 +1,43 @@
+---
+import type { Faq } from '@data/landing';
+
+export interface Props {
+  faq: Faq[];
+  accent: string;
+}
+
+const { faq, accent } = Astro.props;
+---
+
+<div class="divide-y divide-paper-border dark:divide-term-border" style={`--accent:${accent}`}>
+  {
+    faq.map((item, i) => (
+      <details class="faq-item group" open={i === 0}>
+        <summary class="flex cursor-pointer list-none items-start justify-between gap-4 py-4 text-left">
+          <span class="text-base font-semibold text-paper-text dark:text-term-text">{item.q}</span>
+          <span
+            class="faq-marker mt-0.5 shrink-0 text-lg leading-none transition-transform group-open:rotate-45"
+            aria-hidden="true"
+          >
+            +
+          </span>
+        </summary>
+        <p class="pb-5 pr-8 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+          {item.a}
+        </p>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  .faq-marker {
+    color: color-mix(in srgb, var(--accent), #000 40%);
+  }
+  :global(.dark) .faq-marker {
+    color: var(--accent);
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

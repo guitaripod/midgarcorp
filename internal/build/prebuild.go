@@ -28,6 +28,7 @@ func PreBuild() error {
 	for _, script := range []string{
 		"scripts/generate-main-og-image.js",
 		"scripts/generate-apps-og-grid.js",
+		"scripts/generate-app-og.js",
 	} {
 		cmd := exec.Command("node", script)
 		cmd.Stdout = nil // Hide output since it's handled by the script

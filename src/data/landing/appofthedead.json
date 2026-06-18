@@ -1,0 +1,123 @@
+{
+  "seoTitle": "App of the Dead — Learn World Religions Free",
+  "metaDescription": "Learn what 22 religions believe about the afterlife in 5-minute lessons. Gamified quizzes, daily streaks, and an Oracle that chats on your iPhone. Start free.",
+  "keywords": [
+    "comparative religion app",
+    "world religions for beginners",
+    "what happens after death",
+    "afterlife beliefs by religion",
+    "reincarnation and karma explained",
+    "heaven hell and underworld",
+    "norse and egyptian mythology",
+    "learn religion like a language app",
+    "religious studies app",
+    "egyptian book of the dead",
+    "study world faiths offline",
+    "gamified learning quizzes"
+  ],
+  "heroHeadline": "What happens after we die? Find out, one lesson at a time.",
+  "heroSubhead": "App of the Dead turns comparative religion into a game. Bite-sized lessons, quick quizzes, and daily streaks take you across 22 traditions and the great afterlife myths of history. Neutral, respectful, and made for the curious.",
+  "accentColor": "#A855F7",
+  "highlights": [
+    "The full Judaism path is free for life — no account, no time limit",
+    "22 traditions side by side, from Buddhism and Islam to Norse and Egyptian",
+    "Ask the Oracle: chat with deity guides through a model that runs on your iPhone"
+  ],
+  "features": [
+    {
+      "title": "Every belief, side by side",
+      "body": "Walk a path through Judaism, Christianity, Islam, Buddhism, Hinduism, Norse, Egyptian, Greek and more. See where the world's oldest answers agree and where they diverge.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Learn through play",
+      "body": "Multiple-choice, matching, and true/false quizzes make Olam Ha-Ba, Valhalla, reincarnation, and the Duat stick. No dry textbook reading.",
+      "glyph": "◈"
+    },
+    {
+      "title": "The Oracle",
+      "body": "Chat with Anubis, Odin, Kali and other guides. After a one-time model download, the AI runs on your iPhone and your questions are answered on-device.",
+      "glyph": "⊹"
+    },
+    {
+      "title": "Built to keep you learning",
+      "body": "Daily streaks turn five minutes into a habit. XP and levels track your progress, and badges mark each path you finish.",
+      "glyph": "✦"
+    },
+    {
+      "title": "The Scroll of Ascension",
+      "body": "Your profile becomes a living Book of the Dead: a golden XP ring, a Halls of the Dead trophy room for all 22 realms, and your full Hall of Honors.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Respectful by design",
+      "body": "Every tradition is presented neutrally, with equal weight and no proselytizing. This is education, not conversion.",
+      "glyph": "◊"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Start free",
+      "body": "Open the Judaism path and learn Jewish afterlife beliefs and Olam Ha-Ba end to end, no account required."
+    },
+    {
+      "step": "Build a streak",
+      "body": "Take a five-minute lesson a day, answer the quizzes, and watch your XP, levels, and badges climb."
+    },
+    {
+      "step": "Go deeper",
+      "body": "Unlock the other 21 paths and unlimited Oracle conversations, or add single traditions whenever curiosity strikes."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does App of the Dead cost?",
+      "a": "The full Judaism path is free forever, with no account and no time limit. Premium unlocks all 21 other paths and unlimited Oracle chat: $39.99/year (7-day free trial) or $9.99/month in the US."
+    },
+    {
+      "q": "Is there a one-time purchase instead of a subscription?",
+      "a": "Yes. Ultimate Enlightenment is a one-time lifetime unlock if you would rather own everything outright. You can also buy individual belief systems one at a time."
+    },
+    {
+      "q": "Does the app work offline?",
+      "a": "Lessons and quizzes work offline once downloaded. The Oracle uses an on-device model, which is downloaded once over the internet; after that, your questions are answered on your iPhone."
+    },
+    {
+      "q": "Is my data private?",
+      "a": "Yes. After the model is downloaded, Oracle conversations are processed on-device, so your spiritual questions are answered on your phone rather than on a chat server."
+    },
+    {
+      "q": "Is this trying to convert me to a religion?",
+      "a": "No. App of the Dead presents all 22 traditions neutrally and with equal respect. It is built for education and comparison, not conversion, and is not affiliated with any religious organization."
+    },
+    {
+      "q": "Which devices does it support?",
+      "a": "App of the Dead runs on iPhone and iPad with iOS 18.2 or later, in both light and dark mode."
+    },
+    {
+      "q": "Is there a free trial for Premium?",
+      "a": "Yes. The annual plan includes a 7-day free trial. Subscriptions renew automatically through your Apple ID and can be cancelled anytime in Settings; any unused trial is forfeited once you purchase."
+    },
+    {
+      "q": "Who is App of the Dead for?",
+      "a": "Religious-studies students, writers and worldbuilders researching afterlife lore, travelers, educators, and anyone curious about what different cultures believe comes next."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "What happens after we die?",
+      "Your path map and daily streak",
+      "A five-minute afterlife lesson",
+      "Halls of the Dead trophy room",
+      "Browse all 22 traditions"
+    ],
+    "ipad": [
+      "Your learning path map",
+      "A lesson in the papyrus style",
+      "All 22 traditions to explore",
+      "The same library in dark mode"
+    ]
+  },
+  "ctaLine": "Start the free Judaism path today and explore humanity's greatest mystery.",
+  "pricingNote": "Free to start (full Judaism path, no account); Premium unlocks all paths and unlimited Oracle chat at $39.99/year with a 7-day trial or $9.99/month, with a one-time lifetime option and single-tradition purchases also available."
+}

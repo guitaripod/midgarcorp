@@ -1,0 +1,118 @@
+{
+  "seoTitle": "Dream Eater — AI Dream Interpretation & Journal",
+  "metaDescription": "Type a dream, get an AI reading of its symbols and emotions plus dream art in seconds. A private 3 a.m. journal for iPhone and iPad. First reading free.",
+  "keywords": [
+    "dream interpretation app",
+    "ai dream analysis",
+    "dream journal app",
+    "what does my dream mean",
+    "dream symbol dictionary",
+    "dream meaning decoder",
+    "record dreams iphone",
+    "dream art generator",
+    "subconscious dream reading",
+    "private dream diary",
+    "moon phase dream journal",
+    "dream pattern tracker"
+  ],
+  "heroHeadline": "Decode the dream you just woke from",
+  "heroSubhead": "Type a dream while it is still vivid and get a reading of its symbols and emotions in seconds, plus a piece of art made from your own words. Your first reading is free.",
+  "accentColor": "#6366F1",
+  "highlights": [
+    "First dream reading free, journaling always free",
+    "Dreams stay on your device and your iCloud",
+    "No account or sign-up to start writing"
+  ],
+  "features": [
+    {
+      "title": "Symbol-Level Readings",
+      "body": "Describe a dream in your own words and get back the key symbols, the emotional undercurrents, and what your subconscious might be working through. A built-in symbol dictionary lets you go deeper on recurring images.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Art From Your Words",
+      "body": "Every analyzed dream comes with an image generated from its own imagery. Save it, share it, or keep it as the cover of that night's entry.",
+      "glyph": "✦"
+    },
+    {
+      "title": "Built For 3 A.M.",
+      "body": "Big type, minimal taps, and no setup between you and the half-remembered. Capture dreams before they fade, and writing in your journal is always free.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Patterns Over Time",
+      "body": "Moods, themes, and recurring symbols surface across weeks of entries, so you can see what your sleeping mind keeps returning to.",
+      "glyph": "▰"
+    },
+    {
+      "title": "Moon Phases",
+      "body": "Each entry records the moon phase from that night, with lunar info on hand if you like tracking your dreams against the sky.",
+      "glyph": "⬡"
+    },
+    {
+      "title": "Private By Default",
+      "body": "No account is required, and your dreams stay on your device and iCloud. Nothing is published or shared unless you choose to share it.",
+      "glyph": "❖"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Type",
+      "body": "Write down the dream in your own words while it is still fresh, no account needed."
+    },
+    {
+      "step": "Decode",
+      "body": "Get an AI reading of the symbols and emotions, with an image generated from your dream."
+    },
+    {
+      "step": "Revisit",
+      "body": "Keep your entries in a private journal and watch recurring themes and symbols emerge over time."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does Dream Eater cost?",
+      "a": "The app is free to download, and your first dream reading plus unlimited journaling are free. After that you can subscribe to Premium for unlimited analyses or buy dream credit packs instead."
+    },
+    {
+      "q": "Is there a free trial?",
+      "a": "Yes. The annual Premium plan starts with a 7-day free trial that analyzes unlimited dreams. Cancel anytime during the trial and you pay nothing."
+    },
+    {
+      "q": "Can I pay without a subscription?",
+      "a": "Yes. If you prefer not to subscribe, you can buy credit packs of 5, 15, 50, or 100 dream analyses. Credits never expire."
+    },
+    {
+      "q": "Are my dreams private?",
+      "a": "No account is required to start, and your dreams stay on your device and your iCloud. An image is shared only if you choose to share it."
+    },
+    {
+      "q": "What devices does it run on?",
+      "a": "Dream Eater runs on iPhone and iPad with iOS 18 or later, and it is available in English, Spanish, and Chinese."
+    },
+    {
+      "q": "Is this a medical or therapy tool?",
+      "a": "No. Dream Eater is for entertainment and self-reflection. It is not a medical, psychological, or therapeutic tool."
+    },
+    {
+      "q": "How do refunds work?",
+      "a": "Purchases and subscriptions are handled by Apple. You can request a refund through Apple and manage or cancel a subscription anytime in your App Store account settings."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "AI reading of your dream",
+      "Home screen with tonight's quote",
+      "Your private dream journal",
+      "Patterns, moods, and symbols"
+    ],
+    "ipad": [
+      "AI reading of your dream",
+      "Home screen with tonight's quote",
+      "Your private dream journal",
+      "Patterns, moods, and symbols"
+    ]
+  },
+  "ctaLine": "Your first reading is free. Type tonight's dream and see what it means.",
+  "pricingNote": "Free to download with your first reading free; unlimited analyses via a Premium subscription (7-day free trial on the annual plan) or one-time credit packs that never expire."
+}

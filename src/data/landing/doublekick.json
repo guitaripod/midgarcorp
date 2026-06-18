@@ -1,0 +1,114 @@
+{
+  "seoTitle": "Double Kick: Menu Translator for Travelers",
+  "metaDescription": "Point your camera at any foreign menu and order with confidence. Translate dishes and drinks, see ingredients and flavor, and convert prices to your currency.",
+  "keywords": [
+    "menu translator app",
+    "translate foreign menu",
+    "menu reader camera",
+    "food menu translator",
+    "cocktail and wine menu reader",
+    "translate menu while traveling",
+    "dining abroad app",
+    "currency conversion for menus",
+    "scan menu to translate",
+    "understand restaurant menus abroad"
+  ],
+  "heroHeadline": "Order exactly what you want, in any language",
+  "heroSubhead": "Point your camera at a menu you can't read. Double Kick gives you the story behind every dish and drink: what's in it, how it's made, how it tastes, and the price in your own currency.",
+  "accentColor": "#F43F5E",
+  "highlights": [
+    "One photo reads the whole menu",
+    "Prices converted to your home currency",
+    "No ads, no tracking, history stays on your device"
+  ],
+  "features": [
+    {
+      "title": "Photo to Full Menu",
+      "body": "Snap one picture of a food or drinks menu and read every item translated, with ingredients, preparation, and flavor in plain language.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Flavor You Can See",
+      "body": "Each dish and drink gets a flavor profile across sweet, sour, bitter, salty, and umami, so you know what's coming before it arrives.",
+      "glyph": "✶"
+    },
+    {
+      "title": "Drinks Decoded",
+      "body": "Understand spirits, cocktails, and wine lists that word-for-word translators skip. From mezcal to Brennivin, you get a real description.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Prices in Your Currency",
+      "body": "Every price is converted to your home currency, so you can weigh what to order and what it actually costs.",
+      "glyph": "‹"
+    },
+    {
+      "title": "Split and Tip",
+      "body": "A built-in calculator splits the bill across the table and works out the tip in the currency you're paying in.",
+      "glyph": "⌷"
+    },
+    {
+      "title": "Your Taste, Remembered",
+      "body": "Set your cuisines, spirits, flavors, and dietary needs like vegan or gluten-free once. Your menu history stays on your device.",
+      "glyph": "❖"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Photograph",
+      "body": "Point your camera at any food or drinks menu and take one photo."
+    },
+    {
+      "step": "Read",
+      "body": "Get every item translated with ingredients, flavor, preparation, dietary flags, and the price in your currency."
+    },
+    {
+      "step": "Order",
+      "body": "Decide with confidence and order exactly what you want, no more guessing."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does Double Kick cost?",
+      "a": "Double Kick is free to download and uses credit packs to scan menus. You buy credits once and spend them as you photograph menus. There is no subscription."
+    },
+    {
+      "q": "Do I need an account to use it?",
+      "a": "No. You can start scanning menus right away with no account. Sign in with Apple is optional and only there to sync your credits across your devices."
+    },
+    {
+      "q": "What happens to my menu history and data?",
+      "a": "Your menu history stays on your device. There are no ads, no tracking, and your data is not sold."
+    },
+    {
+      "q": "What kinds of menus does it handle?",
+      "a": "Both food and drinks menus, from street stalls to fine-dining tasting menus. It reads dishes and decodes spirits, cocktails, and wine lists in any language."
+    },
+    {
+      "q": "Does it convert prices to my currency?",
+      "a": "Yes. Prices on the menu are read and converted to your home currency, so you can decide with the real cost in front of you."
+    },
+    {
+      "q": "Does it work offline?",
+      "a": "Reading a menu needs a network connection to analyze the photo. Your saved menu history and preferences stay on your device and are available without scanning again."
+    },
+    {
+      "q": "Can I set my dietary needs and taste?",
+      "a": "Yes. You can choose preferred cuisines, spirits, flavor intensities, and dietary restrictions such as vegan or gluten-free, and Double Kick keeps those in mind."
+    },
+    {
+      "q": "Which devices are supported?",
+      "a": "Double Kick runs on iPhone with iOS 17 or later."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "Read any menu from one photo",
+      "Dish details with flavor and ingredients",
+      "Drinks decoded with prices converted",
+      "Your taste and history, on device"
+    ]
+  },
+  "ctaLine": "The next time the menu is in a language you don't speak, you won't order blind.",
+  "pricingNote": "Free to download. Buy credit packs once to scan menus, with no subscription and no ads."
+}

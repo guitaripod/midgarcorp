@@ -1,0 +1,117 @@
+{
+  "seoTitle": "SForesight — Find SF Symbols by Meaning",
+  "metaDescription": "Describe an SF Symbol in plain words and get ranked, copy-ready matches in seconds. A native macOS tool for Swift developers. One-time $9.99, no subscription.",
+  "keywords": [
+    "sf symbols search",
+    "find sf symbol by name",
+    "sf symbols mac app",
+    "semantic sf symbol search",
+    "swiftui icon picker",
+    "sf symbols browser",
+    "copy sf symbol name",
+    "macos developer tools",
+    "sf symbol lookup",
+    "sf symbols for xcode",
+    "icon search for swift developers",
+    "uikit symbol finder"
+  ],
+  "heroHeadline": "The symbol you mean, not the one you typed.",
+  "heroSubhead": "Describe an SF Symbol in plain language and SForesight ranks the closest matches in seconds, then hands you the exact name to paste into your code. A native macOS app for Apple-platform developers and designers.",
+  "accentColor": "#38BDF8",
+  "highlights": [
+    "Search by meaning, not exact spelling",
+    "Copy-ready names for SwiftUI and UIKit",
+    "One-time $9.99 purchase, no subscription"
+  ],
+  "features": [
+    {
+      "title": "Search By Meaning",
+      "body": "Type what the symbol should do, like \"a play button for media,\" and get ranked suggestions that fit your intent instead of literal string matches.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Real Names Only",
+      "body": "Every suggestion is checked against the SF Symbols catalog, so the name you copy exists and renders. No guesses, no typos.",
+      "glyph": "⊹"
+    },
+    {
+      "title": "One-Click Copy",
+      "body": "Click any result to copy its exact symbol name to the clipboard. Paste it into a Swift, SwiftUI, or UIKit file with no retyping.",
+      "glyph": "⌗"
+    },
+    {
+      "title": "See It Rendered",
+      "body": "Each match shows the glyph next to its name, so you pick the right one at a glance and keep your interface consistent.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Opens The SF Symbols App",
+      "body": "SForesight detects the SF Symbols app, opens it for deeper configuration, or links you to download it if it is not installed.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Buy Once, Own It",
+      "body": "A single $9.99 purchase. No subscription, no ads, no upsells inside the app.",
+      "glyph": "✦"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Describe",
+      "body": "Type what you need in plain words, such as \"wireless connectivity\" or \"a settings menu icon.\""
+    },
+    {
+      "step": "Rank",
+      "body": "SForesight ranks the closest SF Symbols and shows each glyph beside its real name."
+    },
+    {
+      "step": "Copy",
+      "body": "Click the match you want and paste the exact symbol name into your code."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does SForesight cost?",
+      "a": "It is a one-time purchase of $9.99 on the Mac App Store. There is no subscription and no ads."
+    },
+    {
+      "q": "Is there a subscription or in-app purchase?",
+      "a": "No. You pay once and own the app. There are no recurring charges and nothing locked behind extra purchases."
+    },
+    {
+      "q": "How does the search work?",
+      "a": "You describe the symbol in plain language. SForesight interprets your intent, then validates every suggestion against the SF Symbols catalog so you only see names that exist."
+    },
+    {
+      "q": "Does it need an internet connection?",
+      "a": "Yes. SForesight sends your description to a hosted model to rank suggestions, so you need to be online to search. It detects when you go offline and retries automatically once the connection returns."
+    },
+    {
+      "q": "Which platforms and frameworks does it help with?",
+      "a": "The copied names work anywhere SF Symbols do, including SwiftUI and UIKit across iOS, iPadOS, macOS, watchOS, visionOS, and tvOS projects."
+    },
+    {
+      "q": "What macOS version do I need?",
+      "a": "SForesight runs natively on macOS 14.7 and later."
+    },
+    {
+      "q": "Can I get a refund if it is not for me?",
+      "a": "Refunds are handled by Apple through the App Store. You can request one using Apple's standard \"Report a Problem\" process."
+    },
+    {
+      "q": "Is it affiliated with Apple?",
+      "a": "No. SForesight is an independent app and is not affiliated with or endorsed by Apple. SF Symbols is a trademark of Apple Inc."
+    }
+  ],
+  "screenshotCaptions": {
+    "mac": [
+      "Describe the symbol you need",
+      "Plain-language search field",
+      "Ranked matches with rendered glyphs",
+      "Click any result to copy its name",
+      "Open or download the SF Symbols app"
+    ]
+  },
+  "ctaLine": "Stop scrolling the grid. Describe it, copy it, ship it.",
+  "pricingNote": "One-time $9.99 purchase on the Mac App Store, with no subscription and no ads."
+}

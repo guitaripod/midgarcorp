@@ -1,0 +1,117 @@
+{
+  "seoTitle": "Master of Inventory — Home Inventory for Claims",
+  "metaDescription": "Photograph what you own with prices, receipts, and warranty dates, so an insurance claim or return is one tap away. Private, on-device, iCloud sync.",
+  "keywords": [
+    "home inventory app",
+    "insurance claim documentation",
+    "warranty tracker app",
+    "receipt organizer app",
+    "belongings catalog for insurance",
+    "track purchase dates and prices",
+    "home contents inventory",
+    "moving inventory checklist",
+    "return deadline tracker",
+    "asset record app",
+    "document valuables for insurance"
+  ],
+  "heroHeadline": "Be ready before the claim, not after it",
+  "heroSubhead": "Photograph, value, and receipt-back everything you own. When a fire, theft, or return hits, the proof is already there — one tap away, not a frantic search through drawers.",
+  "accentColor": "#10B981",
+  "highlights": [
+    "Every item with a photo, price, date, and scanned receipt",
+    "Warranty and return deadlines tracked so refunds don't slip away",
+    "Stored on-device with Core Data, optional iCloud sync across your devices"
+  ],
+  "features": [
+    {
+      "title": "Claim-Ready Records",
+      "body": "Each item carries a photo, purchase price, date, and a scanned receipt — a clear record of what you own and what it's worth when an adjuster asks.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Warranty & Return Tracking",
+      "body": "Keep warranty expirations and online-return windows next to each item, so you get ahead of deadlines instead of losing money to the ones you forgot.",
+      "glyph": "⌗"
+    },
+    {
+      "title": "Scan In Seconds",
+      "body": "The built-in document scanner makes clean receipt copies. Snap the item, attach the receipt, and the entry is done in under a minute.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Organized Your Way",
+      "body": "Sort room by room and by your own categories like Electronics or Kitchen. Search and filter your whole catalog instantly.",
+      "glyph": "▰"
+    },
+    {
+      "title": "Private By Design",
+      "body": "Records live on your device with Apple's Core Data. No third-party servers, no data mining — just your records, yours alone.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Insurance PDF & CSV",
+      "body": "Export a PDF report with photos, prices, and dates for your insurer, or a CSV spreadsheet for your own files — ready to hand over when it counts.",
+      "glyph": "⊹"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Capture",
+      "body": "Snap a photo of the item, scan its receipt, and add the price and purchase date."
+    },
+    {
+      "step": "Organize",
+      "body": "File it by room and category, and note the warranty or return deadline you care about."
+    },
+    {
+      "step": "Export",
+      "body": "When you need proof, share an item or pull a full PDF or CSV report in a couple of taps."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does Master of Inventory cost?",
+      "a": "The app is free and documents up to 50 items. Pro unlocks unlimited items plus PDF and CSV export — $2.99 per month, $19.99 per year (with a one-week free trial), or $39.99 once for lifetime access."
+    },
+    {
+      "q": "Is there a free trial?",
+      "a": "Yes. The yearly Pro subscription includes a one-week free trial, and the free tier lets you document up to 50 items at no cost."
+    },
+    {
+      "q": "Where is my data stored? Is it private?",
+      "a": "Your records are stored locally on your device with Apple's Core Data. There are no third-party servers and no data mining. Optional iCloud sync keeps your inventory current across your devices using your own iCloud account."
+    },
+    {
+      "q": "Does it work offline?",
+      "a": "Yes. Capturing items, scanning receipts, and browsing your catalog all work without a connection. iCloud sync catches up the next time you're online."
+    },
+    {
+      "q": "What devices are supported?",
+      "a": "iPhone and iPad running iOS 14 or later. With iCloud sync enabled, your inventory stays in step across the devices signed into your iCloud account."
+    },
+    {
+      "q": "Can I produce a report for my insurance company?",
+      "a": "Yes. Pro exports a PDF report with photos, prices, and dates, plus a CSV spreadsheet — ready to hand to an adjuster or keep for your own records."
+    },
+    {
+      "q": "Does it track warranties and return windows?",
+      "a": "Yes. You can record warranty expirations and online-return windows per item and keep them alongside the item, so deadlines stay in view instead of passing you by."
+    },
+    {
+      "q": "How do refunds work for Pro?",
+      "a": "Purchases and subscriptions are handled by Apple. Refund requests go through Apple's standard process at reportaproblem.apple.com, and you can manage or cancel a subscription anytime in your App Store settings."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "Your belongings, room by room",
+      "Add an item with photo and receipt"
+    ],
+    "ipad": [
+      "Your full catalog on a bigger screen",
+      "Capture item details on iPad"
+    ]
+  },
+  "ctaLine": "Five minutes today can save a claim, a refund, and a lot of stress later.",
+  "pricingNote": "Free for up to 50 items; Pro unlocks unlimited items and PDF/CSV export via subscription ($2.99/mo or $19.99/yr with a one-week free trial) or a one-time $39.99 lifetime purchase."
+}

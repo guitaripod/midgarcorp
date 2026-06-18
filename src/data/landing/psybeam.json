@@ -1,0 +1,113 @@
+{
+  "seoTitle": "Psybeam — Live Voice Translator for Travel",
+  "metaDescription": "Hand your phone to anyone and just talk. Psybeam translates voice to voice in 20+ languages, hold a button and they hear you in theirs. Start with free minutes.",
+  "keywords": [
+    "live voice translator app",
+    "speech to speech translation app",
+    "travel interpreter app",
+    "real time translator for iphone",
+    "translate while talking app",
+    "voice translator for travel",
+    "translator with no subscription",
+    "spanish french voice translation"
+  ],
+  "heroHeadline": "Hand them your phone and just talk",
+  "heroSubhead": "Psybeam is a real-time voice interpreter for travel. Hold your button and speak; it says it out loud in their language. The person across from you never touches the screen.",
+  "accentColor": "#06B6D4",
+  "highlights": [
+    "20+ languages, spoken aloud both ways",
+    "No account and no subscription to start",
+    "Your transcript stays on your device"
+  ],
+  "features": [
+    {
+      "title": "Two thumb buttons",
+      "body": "One button for your language, one for theirs. Hold to speak, release to send. You run both sides of the conversation from a single phone.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Voice to voice",
+      "body": "Natural speech-to-speech that follows the speaker's own voice. No typing, no reading a script, no teaching anyone the app.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Always faces them",
+      "body": "Your words, in their language, rotate to face the person opposite you. Their reply stays upright for you to read.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Local language by GPS",
+      "body": "Cross a border and Psybeam suggests the local language from your location, so you start talking instead of digging through menus.",
+      "glyph": "✦"
+    },
+    {
+      "title": "Pay per minute",
+      "body": "Start with free minutes, then buy a pack only when you need more. No recurring charge and no trial trap.",
+      "glyph": "▰"
+    },
+    {
+      "title": "Private by design",
+      "body": "Audio is streamed to OpenAI only to translate it, never stored and never used to train models. Your transcript stays on your phone.",
+      "glyph": "⬡"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Open",
+      "body": "Launch Psybeam and it goes straight to talking, no account or sign-up required."
+    },
+    {
+      "step": "Hold and speak",
+      "body": "Press your button and talk; Psybeam says it aloud in their language, then they hold their button to reply."
+    },
+    {
+      "step": "Understand",
+      "body": "You hear their answer in your own language, face to face, in seconds."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does Psybeam cost?",
+      "a": "Psybeam is free to download and comes with free minutes to start. After that you buy a pack of minutes when you need more. There is no subscription and no recurring charge."
+    },
+    {
+      "q": "Do I need to create an account?",
+      "a": "No. Psybeam opens straight to talking with no sign-up. You can sign in with Apple later to link your account, but it is never required to use the app."
+    },
+    {
+      "q": "Does the other person need the app?",
+      "a": "No. You hold the phone and run both sides. The person you are talking to just listens, then speaks when it is their turn, with an on-screen prompt inviting them in their own language."
+    },
+    {
+      "q": "How many languages does it support?",
+      "a": "More than 20 languages, spoken aloud in both directions, including Spanish, French, German, Arabic, Thai, Turkish, Greek, Japanese, Korean and Chinese."
+    },
+    {
+      "q": "Is my conversation private?",
+      "a": "Your conversation transcript stays on your device. To translate, the audio is streamed to OpenAI in real time; OpenAI does not store it on our servers and does not use it to train models."
+    },
+    {
+      "q": "Does it work offline?",
+      "a": "No. Live voice translation needs a connection, since the speech is translated in real time by a cloud translator."
+    },
+    {
+      "q": "Which devices does it run on?",
+      "a": "Psybeam runs on iPhone with iOS 18 and later."
+    },
+    {
+      "q": "Can I get a refund on unused minutes?",
+      "a": "Minute packs are handled through the App Store, so refunds follow Apple's standard purchase support process. There is no subscription to cancel."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "Two thumb buttons, one phone",
+      "Hold to speak in your language",
+      "Their reply, in your language",
+      "20+ languages, both ways",
+      "Free minutes, no subscription"
+    ]
+  },
+  "ctaLine": "Download Psybeam and have your first cross-language conversation in seconds.",
+  "pricingNote": "Free to download with free minutes to start, then pay per minute with one-time packs, no subscription and no recurring charge."
+}
