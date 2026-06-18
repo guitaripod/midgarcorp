@@ -6,14 +6,20 @@ import { landingApps } from '@data/landing';
 
 const pageTitle = 'Apple Platform Apps | guitaripod';
 
-const trackIdToSlug = new Map<string, string>();
-for (const a of landingApps) {
-  trackIdToSlug.set(String(a.trackId), a.slug);
-}
+const landingByTrack = new Map(landingApps.map((a) => [String(a.trackId), a]));
+const trackIdFor = (appStoreUrl: string): string | undefined => appStoreUrl.match(/id(\d+)/)?.[1];
 const landingHrefFor = (appStoreUrl: string): string | undefined => {
-  const m = appStoreUrl.match(/id(\d+)/);
-  const slug = m ? trackIdToSlug.get(m[1]) : undefined;
-  return slug ? `/${slug}` : undefined;
+  const id = trackIdFor(appStoreUrl);
+  const la = id ? landingByTrack.get(id) : undefined;
+  return la ? `/${la.slug}` : undefined;
+};
+
+// Prefer the curated landing price (source of truth) over the auto-fetched
+// iTunes price, which lags a few hours behind an App Store Connect price change.
+const cardApp = (app: (typeof appsData.apps)[number]) => {
+  const id = trackIdFor(app.appStoreUrl);
+  const la = id ? landingByTrack.get(id) : undefined;
+  return la ? { ...app, price: la.price } : app;
 };
 
 const sortedApps = [...appsData.apps].sort((a, b) => {
@@ -33,7 +39,7 @@ const structuredData = {
     name: 'guitaripod',
     url: 'https://midgarcorp.cc',
   },
-  hasPart: sortedApps.map((app) => ({
+  hasPart: sortedApps.map(cardApp).map((app) => ({
     '@type': 'SoftwareApplication',
     name: app.name,
     description: app.tagline,
@@ -73,7 +79,11 @@ const structuredData = {
 
   <section>
     <div class="apps-grid grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-      {sortedApps.map((app) => <AppCard app={app} landingHref={landingHrefFor(app.appStoreUrl)} />)}
+      {
+        sortedApps.map((app) => (
+          <AppCard app={cardApp(app)} landingHref={landingHrefFor(app.appStoreUrl)} />
+        ))
+      }
     </div>
   </section>
 
