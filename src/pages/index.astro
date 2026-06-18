@@ -9,6 +9,18 @@ import { calculateReadingTime } from '@utils/reading-time';
 import appsData from '../data/apps.json';
 import openSourceData from '../data/opensource.json';
 import careerData from '../data/career.json';
+import { landingApps } from '@data/landing';
+
+const landingByTrack = new Map(landingApps.map((a) => [String(a.trackId), a]));
+const trackIdFor = (appStoreUrl: string): string | undefined => appStoreUrl.match(/id(\d+)/)?.[1];
+const landingHrefFor = (appStoreUrl: string): string | undefined => {
+  const la = landingByTrack.get(trackIdFor(appStoreUrl) ?? '');
+  return la ? `/${la.slug}` : undefined;
+};
+const cardApp = (app: (typeof appsData.apps)[number]) => {
+  const la = landingByTrack.get(trackIdFor(app.appStoreUrl) ?? '');
+  return la ? { ...app, price: la.price } : app;
+};
 
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -177,7 +189,11 @@ const engagements = careerData.entries.slice(0, 3);
       </a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-      {featuredApps.map((app) => <AppCard app={app} />)}
+      {
+        featuredApps.map((app) => (
+          <AppCard app={cardApp(app)} landingHref={landingHrefFor(app.appStoreUrl)} />
+        ))
+      }
     </div>
   </section>
 
