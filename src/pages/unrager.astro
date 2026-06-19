@@ -394,8 +394,8 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
               {face.code && (
                 <div class="flex flex-col gap-2">
                   {face.code.map((line) => (
-                    <div class="flex items-start justify-between gap-2 rounded-sm border border-paper-border bg-paper-raised px-2.5 py-2 font-mono text-xs dark:border-term-border dark:bg-term-raised">
-                      <code class="min-w-0 flex-1 whitespace-pre-wrap break-all text-paper-text dark:text-term-text">
+                    <div class="flex items-center justify-between gap-2 rounded-sm border border-paper-border bg-paper-raised px-2.5 py-2 font-mono text-xs dark:border-term-border dark:bg-term-raised">
+                      <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text">
                         <span class="accent-text">$</span> {line.prompt}
                       </code>
                       <button
