@@ -3,6 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import DeviceFrame from '@components/landing/DeviceFrame.astro';
 import FeatureGrid from '@components/landing/FeatureGrid.astro';
 import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import UnragerArchitecture from '@components/landing/UnragerArchitecture.astro';
 
 const site = 'https://midgarcorp.cc';
 const canonical = `${site}/unrager`;
@@ -509,39 +510,20 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
       </p>
     </section>
 
-    <!-- How it connects -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-      <p class="prompt-line mb-3">man unrager</p>
-      <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        How <span class="accent-text">unrager</span> connects
+    <!-- How it works -->
+    <section
+      id="how-it-works"
+      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-3">./unrager --how-it-works</p>
+      <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        How <span class="accent-text">unrager</span> works
       </h2>
-      <ol class="grid gap-5 sm:grid-cols-3">
-        {
-          [
-            {
-              step: 'Run the engine',
-              body: 'Start `unrager serve` on a machine you own. It reads X over its own GraphQL endpoints using your browser session, and runs the rage filter through a local Ollama model.',
-            },
-            {
-              step: 'Join the Tailnet',
-              body: 'Put the server and your devices on the same Tailscale network. Your feeds are reachable anywhere, with nothing exposed to the public internet.',
-            },
-            {
-              step: 'Pick a face',
-              body: 'Open the terminal client, the iOS app, or the macOS app. Each is a thin native shell over the same engine, so the filtered feed looks identical everywhere.',
-            },
-          ].map((s, i) => (
-            <li class="term-frame relative flex flex-col gap-2 p-5">
-              <span
-                class="accent-text font-mono text-sm font-bold"
-                aria-hidden="true"
-              >{`0${i + 1}`}</span>
-              <h3 class="text-base font-bold text-paper-text dark:text-term-text">{s.step}</h3>
-              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{s.body}</p>
-            </li>
-          ))
-        }
-      </ol>
+      <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
+        One small Rust server on your Mac stands between you and the firehose. Rage goes in; a calm
+        feed comes out on every screen — and nothing ever leaves your machine.
+      </p>
+      <UnragerArchitecture accent={accent} />
     </section>
 
     <!-- FAQ -->
