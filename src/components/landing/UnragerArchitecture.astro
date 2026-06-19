@@ -11,7 +11,7 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
   <div
     class="term-frame relative overflow-hidden p-5 sm:p-8"
     role="img"
-    aria-label="How unrager works: chaotic, rage-baity tweets are pulled from X using your own browser session, passed through a local rage filter powered by Ollama running on your Mac, and the resulting calm feed is served over a private Tailscale tunnel to the terminal, iOS, and macOS clients."
+    aria-label="How unrager works: chaotic, rage-baity tweets are pulled from X using your own browser session, passed through a local rage filter powered by an Ollama model on a machine you own — a Linux box, a Mac, a home server — and the resulting calm feed is served over a private Tailscale tunnel to the terminal, iOS, and macOS clients."
   >
     <span class="arch-spine" aria-hidden="true"></span>
 
@@ -65,9 +65,9 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
 
       <!-- STAGE 2 — the rage filter / unrager serve (CENTERPIECE) -->
       <div class="arch-stage arch-stage--core" data-stage="core">
-        <p class="arch-kicker arch-kicker--accent">the rage filter · on your Mac</p>
+        <p class="arch-kicker arch-kicker--accent">the rage filter · on your own box</p>
         <div class="arch-node arch-node--core">
-          <span class="arch-mac" aria-hidden="true">⌘ unrager serve</span>
+          <span class="arch-mac" aria-hidden="true">$ unrager serve</span>
           <div class="arch-core-ring">
             <img
               src={iconSrc}
@@ -156,8 +156,8 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
   </div>
 
   <figcaption id="arch-caption" class="arch-caption">
-    Chaotic tweets are pulled from X with your own session, sifted through a local rage filter on
-    your Mac, and the calm feed is served over your private Tailnet to every device.
+    Chaotic tweets are pulled from X with your own session, sifted through a local rage filter on a
+    box you own, and the calm feed is served over your private Tailnet to every device.
   </figcaption>
 </figure>
 

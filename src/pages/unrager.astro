@@ -17,7 +17,6 @@ const metaDescription =
 const installCmd = 'curl -fsSL https://unrager.com/install.sh | bash';
 const githubUrl = 'https://github.com/guitaripod/unrager';
 const releasesUrl = 'https://github.com/guitaripod/unrager/releases';
-const dmgUrl = 'https://github.com/guitaripod/unrager/releases/latest';
 
 const heroHighlights = [
   'Local LLM drops rage-bait before you ever see it',
@@ -61,8 +60,12 @@ const faces: Face[] = [
     blurb:
       'A thin UIKit client built for iOS 26 with Liquid Glass and buttery scrolling. It talks to your own `unrager serve` over Tailscale — the Rust engine does the X work, the app stays a fast native shell.',
     meta: 'Swift / UIKit · iOS 26 · Liquid Glass',
-    cta: [{ label: 'How to install ↓', href: '#install-ios' }],
-    note: 'Not on the App Store — the app uses your own X session. Install over Tailscale via a developer-signed build or an ad-hoc OTA link.',
+    code: [
+      { prompt: 'git clone https://github.com/guitaripod/unrager', copy: 'git clone https://github.com/guitaripod/unrager' },
+      { prompt: 'cd unrager/ios && xcodegen generate', copy: 'cd unrager/ios && xcodegen generate' },
+    ],
+    cta: [{ label: 'Source ↗', href: githubUrl }],
+    note: 'Not on the App Store — it uses your own X session. Open the generated `Unrager.xcodeproj` in Xcode 26, sign with your team, and run on your iPhone. Then set your `unrager serve` address in Settings.',
   },
   {
     id: 'mac',
@@ -71,8 +74,12 @@ const faces: Face[] = [
     blurb:
       'A native AppKit app for macOS 26, sharing the iOS design language and Liquid Glass. Point it at your `unrager serve` instance on the Tailnet and read every feed from a real Mac window.',
     meta: 'Swift / AppKit · macOS 26 · Liquid Glass',
-    cta: [{ label: 'Download .dmg ↗', href: dmgUrl }],
-    note: 'Distributed as a notarized DMG, not on the Mac App Store. Download, drag to Applications, point it at your Tailnet.',
+    code: [
+      { prompt: 'git clone https://github.com/guitaripod/unrager', copy: 'git clone https://github.com/guitaripod/unrager' },
+      { prompt: 'cd unrager/macos && ./scripts/run.sh', copy: 'cd unrager/macos && ./scripts/run.sh' },
+    ],
+    cta: [{ label: 'Source ↗', href: githubUrl }],
+    note: 'Not on the Mac App Store — it uses your own X session. `run.sh` builds and launches it (unsigned is fine on your own Mac; `scripts/release-dmg.sh` makes a notarized DMG if you prefer). Then set your server address in Settings.',
   },
 ];
 
@@ -127,6 +134,15 @@ const iosShots = [
   { src: '/screenshots/unrager/ios-ask.png', label: 'Ask the local LLM' },
 ];
 
+const macosShots = [
+  { src: '/screenshots/unrager/macos-home.png', label: 'The feed in a native Mac window' },
+  { src: '/screenshots/unrager/macos-home-light.png', label: 'Home in light mode' },
+  { src: '/screenshots/unrager/macos-thread.png', label: 'A thread with the reply rail' },
+  { src: '/screenshots/unrager/macos-profile.png', label: 'A profile timeline' },
+  { src: '/screenshots/unrager/macos-ask.png', label: 'Ask the local LLM about a post' },
+  { src: '/screenshots/unrager/macos-settings.png', label: 'Settings, with adjustable text size' },
+];
+
 const tuiShots = [
   {
     src: '/screenshots/unrager/tui-detail.png',
@@ -147,7 +163,7 @@ const tuiShots = [
 const faq = [
   {
     q: 'Why isn’t it on the App Store?',
-    a: 'unrager logs in with your own existing X session and reads from X’s own GraphQL endpoints, which is incompatible with App Store distribution policy. So the native apps are sideloaded: iOS via a developer-signed or ad-hoc OTA build, and macOS as a notarized DMG you download and drag to Applications. The terminal client installs with one curl command or `cargo install`.',
+    a: 'unrager logs in with your own existing X session and reads from X’s own GraphQL endpoints, which is incompatible with App Store distribution policy. So the native apps are built from source: clone the repo, generate the Xcode project, and run them — iOS on your own device from Xcode 26, macOS via `scripts/run.sh` (or a notarized DMG with `scripts/release-dmg.sh`). The terminal client installs with one curl command or `cargo install`.',
   },
   {
     q: 'How do the apps connect to my account?',
@@ -171,7 +187,7 @@ const faq = [
   },
 ];
 
-const allShots = [...iosShots, ...tuiShots].map((s) => site + s.src);
+const allShots = [...iosShots, ...macosShots, ...tuiShots].map((s) => site + s.src);
 
 const softwareApp = {
   '@type': 'SoftwareApplication',
@@ -478,6 +494,35 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         }
       </ul>
 
+      <!-- macOS -->
+      <h3
+        class="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-paper-muted dark:text-term-muted"
+      >
+        On Mac
+      </h3>
+      <ul
+        class="no-scrollbar mb-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4"
+      >
+        {
+          macosShots.map((shot) => (
+            <li class="flex w-[88vw] shrink-0 snap-start flex-col gap-3 sm:w-[720px]">
+              <div class="device-glow" style={`--accent:${accent}`}>
+                <img
+                  src={shot.src}
+                  width={1180}
+                  height={820}
+                  loading="lazy"
+                  decoding="async"
+                  alt={`unrager on macOS — ${shot.label}`}
+                  class="block h-auto w-full rounded-xl"
+                />
+              </div>
+              <p class="text-center text-xs text-paper-muted dark:text-term-muted">{shot.label}</p>
+            </li>
+          ))
+        }
+      </ul>
+
       <!-- Terminal -->
       <h3
         class="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-paper-muted dark:text-term-muted"
@@ -520,8 +565,9 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         How <span class="accent-text">unrager</span> works
       </h2>
       <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
-        One small Rust server on your Mac stands between you and the firehose. Rage goes in; a calm
-        feed comes out on every screen — and nothing ever leaves your machine.
+        One small Rust server on a box you own — a Linux machine, a Mac, a home server — stands
+        between you and the firehose. Rage goes in; a calm feed comes out on every screen, and
+        nothing ever leaves your machine.
       </p>
       <UnragerArchitecture accent={accent} />
     </section>
