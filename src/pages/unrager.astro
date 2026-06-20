@@ -758,7 +758,6 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         const d = await r.json();
         if (typeof d.total !== 'number' || d.total <= 0) return;
         const fmt = (n) => (typeof n === 'number' ? n.toLocaleString('en-US') : '—');
-        document.getElementById('install-count').textContent = fmt(d.total);
         document.getElementById('dl-crates').textContent = fmt(d.sources?.crates_io?.count);
         document.getElementById('dl-gh').textContent = fmt(d.sources?.github_releases?.count);
         const when = document.getElementById('dl-updated');
@@ -774,6 +773,23 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
                   : `${Math.round(t / 86400)} day${Math.round(t / 86400) === 1 ? '' : 's'} ago`;
         }
         stat.hidden = false;
+
+        const countEl = document.getElementById('install-count');
+        const target = d.total;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          countEl.textContent = fmt(target);
+        } else {
+          countEl.textContent = '0';
+          const duration = Math.min(1200, 400 + target * 2);
+          const startT = performance.now();
+          const ease = (t) => 1 - Math.pow(1 - t, 3);
+          const tick = (now) => {
+            const t = Math.min(1, (now - startT) / duration);
+            countEl.textContent = fmt(Math.round(target * ease(t)));
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
       } catch (_) {
         /* noop */
       }
