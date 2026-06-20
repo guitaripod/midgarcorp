@@ -370,65 +370,68 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         at once.
       </p>
 
-      <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
+      <div class="flex flex-col gap-5">
         {
           faces.map((face) => (
             <article
               id={`install-${face.id}`}
-              class="term-frame term-frame-hover scroll-mt-20 flex flex-col gap-4 p-6"
+              class="term-frame term-frame-hover scroll-mt-20 grid gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10"
             >
-              <div class="flex items-center gap-3">
-                <span
-                  class="face-glyph inline-flex h-10 w-10 items-center justify-center rounded-sm text-xl"
-                  aria-hidden="true"
-                >
-                  {face.glyph}
-                </span>
-                <h3 class="text-base font-bold text-paper-text dark:text-term-text">{face.name}</h3>
-              </div>
-              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-                {face.blurb}
-              </p>
-              <p class="text-xs text-paper-faint dark:text-term-faint">{face.meta}</p>
-
-              {face.code && (
-                <div class="flex flex-col gap-2">
-                  {face.code.map((line) => (
-                    <div class="flex items-center justify-between gap-2 rounded-sm border border-paper-border bg-paper-raised px-2.5 py-2 font-mono text-xs dark:border-term-border dark:bg-term-raised">
-                      <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text">
-                        <span class="accent-text">$</span> {line.prompt}
-                      </code>
-                      <button
-                        type="button"
-                        class="copy-cmd shrink-0 text-paper-muted transition-colors hover:text-paper-text dark:text-term-muted dark:hover:text-term-text"
-                        data-copy={line.copy}
-                        aria-label="Copy command"
-                      >
-                        <span class="copy-glyph">⧉</span>
-                      </button>
-                    </div>
+              <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="face-glyph inline-flex h-10 w-10 items-center justify-center rounded-sm text-xl"
+                    aria-hidden="true"
+                  >
+                    {face.glyph}
+                  </span>
+                  <h3 class="text-base font-bold text-paper-text dark:text-term-text">{face.name}</h3>
+                </div>
+                <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                  {face.blurb}
+                </p>
+                <p class="text-xs text-paper-faint dark:text-term-faint">{face.meta}</p>
+                <div class="mt-1 flex flex-wrap gap-3">
+                  {face.cta.map((c) => (
+                    <a
+                      href={c.href}
+                      {...(c.href.startsWith('http')
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                      class="accent-btn inline-flex items-center gap-1.5 rounded-sm border px-3 py-1.5 text-xs font-semibold transition-colors"
+                    >
+                      {c.label}
+                    </a>
                   ))}
                 </div>
-              )}
+              </div>
 
-              {face.note && (
-                <p class="rounded-sm border border-paper-border bg-paper-raised p-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:bg-term-raised dark:text-term-muted">
-                  {face.note}
-                </p>
-              )}
+              <div class="flex flex-col gap-3">
+                {face.code && (
+                  <div class="flex flex-col gap-2">
+                    {face.code.map((line) => (
+                      <div class="flex items-center justify-between gap-3 rounded-md border border-paper-border bg-paper-raised px-3 py-2.5 font-mono text-sm dark:border-term-border dark:bg-term-raised">
+                        <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text">
+                          <span class="accent-text">$</span> {line.prompt}
+                        </code>
+                        <button
+                          type="button"
+                          class="copy-cmd shrink-0 rounded-sm border border-paper-border px-2 py-1 text-xs text-paper-muted transition-colors hover:border-paper-border2 hover:text-paper-text dark:border-term-border dark:text-term-muted dark:hover:border-term-border2 dark:hover:text-term-text"
+                          data-copy={line.copy}
+                          aria-label="Copy command"
+                        >
+                          <span class="copy-glyph">⧉</span>
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
-              <div class="mt-auto flex flex-wrap gap-3 pt-1">
-                {face.cta.map((c) => (
-                  <a
-                    href={c.href}
-                    {...(c.href.startsWith('http')
-                      ? { target: '_blank', rel: 'noopener noreferrer' }
-                      : {})}
-                    class="accent-btn inline-flex items-center gap-1.5 rounded-sm border px-3 py-1.5 text-xs font-semibold transition-colors"
-                  >
-                    {c.label}
-                  </a>
-                ))}
+                {face.note && (
+                  <p class="rounded-sm border border-paper-border bg-paper-raised p-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:bg-term-raised dark:text-term-muted">
+                    {face.note}
+                  </p>
+                )}
               </div>
             </article>
           ))
