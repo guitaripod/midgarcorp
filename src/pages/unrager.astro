@@ -507,14 +507,14 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         class="no-scrollbar mb-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4"
       >
         {
-          macosShots.map((shot) => (
+          macosShots.map((shot, i) => (
             <li class="flex w-[88vw] shrink-0 snap-start flex-col gap-3 sm:w-[720px]">
               <div class="device-glow" style={`--accent:${accent}`}>
                 <img
                   src={shot.src}
                   width={1180}
                   height={820}
-                  loading="lazy"
+                  loading={i === 0 ? 'eager' : 'lazy'}
                   decoding="async"
                   alt={`unrager on macOS — ${shot.label}`}
                   class="block h-auto w-full rounded-xl"
