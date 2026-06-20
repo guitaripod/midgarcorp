@@ -326,6 +326,51 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
           </a>
         </div>
 
+        <!-- downloads counter — reuses unrager.com's CORS-enabled /api/downloads -->
+        <div id="unrager-stat" class="relative mt-5 inline-block text-xs" hidden>
+          <button
+            type="button"
+            id="unrager-stat-trigger"
+            class="inline-flex cursor-help items-center gap-1.5 rounded-md px-2 py-1 text-paper-muted transition-colors hover:bg-paper-raised hover:text-paper-text dark:text-term-muted dark:hover:bg-term-raised dark:hover:text-term-text"
+            aria-expanded="false"
+            aria-controls="unrager-downloads-popover"
+          >
+            <strong id="install-count" class="accent-text font-semibold tabular-nums">—</strong>
+            <span class="border-b border-dotted border-current opacity-90">downloads</span>
+          </button>
+          <div
+            id="unrager-downloads-popover"
+            role="tooltip"
+            class="invisible absolute bottom-[calc(100%+12px)] left-0 z-20 w-max max-w-xs translate-y-1 rounded-lg border border-paper-border bg-paper-raised p-3.5 text-left opacity-0 shadow-2xl transition-all duration-150 dark:border-term-border dark:bg-term-raised"
+          >
+            <p class="accent-text mb-1.5 text-[0.62rem] font-bold uppercase tracking-[0.14em]">
+              what this counts
+            </p>
+            <p class="text-[0.72rem] leading-relaxed text-paper-muted dark:text-term-muted">
+              HTTP requests that fetched the binary, not unique people. Updating with <code
+                class="rounded-sm bg-paper-bg px-1 text-paper-text dark:bg-term-bg dark:text-term-text"
+                >cargo install --force</code
+              > or re-running the install script counts again.
+            </p>
+            <div class="mt-2.5 flex flex-col gap-1 text-[0.72rem] text-paper-muted dark:text-term-muted">
+              <div class="flex items-center justify-between gap-8">
+                <span>crates.io</span>
+                <span id="dl-crates" class="tabular-nums text-paper-text dark:text-term-text">—</span>
+              </div>
+              <div class="flex items-center justify-between gap-8">
+                <span>GitHub releases</span>
+                <span id="dl-gh" class="tabular-nums text-paper-text dark:text-term-text">—</span>
+              </div>
+            </div>
+            <div
+              class="mt-2.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-paper-border pt-2 text-[0.62rem] text-paper-faint dark:border-term-border dark:text-term-faint"
+            >
+              <span>tarballs only · SHA256SUMS excluded</span>
+              <span>updated <span id="dl-updated">just now</span></span>
+            </div>
+          </div>
+        </div>
+
         <!-- highlights -->
         <ul class="mt-7 grid gap-2">
           {
@@ -679,6 +724,60 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         }
       });
     });
+
+    (async () => {
+      const stat = document.getElementById('unrager-stat');
+      const trigger = document.getElementById('unrager-stat-trigger');
+      const pop = document.getElementById('unrager-downloads-popover');
+      if (!stat || !trigger || !pop) return;
+      const show = () => {
+        pop.classList.add('visible', 'opacity-100', 'translate-y-0');
+        pop.classList.remove('invisible', 'opacity-0', 'translate-y-1');
+        trigger.setAttribute('aria-expanded', 'true');
+      };
+      const hide = () => {
+        pop.classList.remove('visible', 'opacity-100', 'translate-y-0');
+        pop.classList.add('invisible', 'opacity-0', 'translate-y-1');
+        trigger.setAttribute('aria-expanded', 'false');
+      };
+      stat.addEventListener('mouseenter', show);
+      stat.addEventListener('mouseleave', hide);
+      trigger.addEventListener('focus', show);
+      trigger.addEventListener('blur', hide);
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        pop.classList.contains('visible') ? hide() : show();
+      });
+      document.addEventListener('click', hide);
+
+      try {
+        const r = await fetch('https://unrager.com/api/downloads', {
+          headers: { Accept: 'application/json' },
+        });
+        if (!r.ok) return;
+        const d = await r.json();
+        if (typeof d.total !== 'number' || d.total <= 0) return;
+        const fmt = (n) => (typeof n === 'number' ? n.toLocaleString('en-US') : '—');
+        document.getElementById('install-count').textContent = fmt(d.total);
+        document.getElementById('dl-crates').textContent = fmt(d.sources?.crates_io?.count);
+        document.getElementById('dl-gh').textContent = fmt(d.sources?.github_releases?.count);
+        const when = document.getElementById('dl-updated');
+        if (when && d.updated_at) {
+          const t = (Date.now() - new Date(d.updated_at).getTime()) / 1000;
+          when.textContent =
+            !isFinite(t) || t < 60
+              ? 'just now'
+              : t < 3600
+                ? `${Math.round(t / 60)} min ago`
+                : t < 86400
+                  ? `${Math.round(t / 3600)} hr ago`
+                  : `${Math.round(t / 86400)} day${Math.round(t / 86400) === 1 ? '' : 's'} ago`;
+        }
+        stat.hidden = false;
+      } catch (_) {
+        /* noop */
+      }
+    })();
   </script>
 </BaseLayout>
 
