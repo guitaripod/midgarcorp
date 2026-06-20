@@ -420,9 +420,9 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
           faces.map((face) => (
             <article
               id={`install-${face.id}`}
-              class="term-frame term-frame-hover scroll-mt-20 grid gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10"
+              class="term-frame term-frame-hover scroll-mt-20 grid grid-cols-1 gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10"
             >
-              <div class="flex flex-col gap-3">
+              <div class="flex flex-col gap-3 min-w-0">
                 <div class="flex items-center gap-3">
                   <span
                     class="face-glyph inline-flex h-10 w-10 items-center justify-center rounded-sm text-xl"
@@ -451,7 +451,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
                 </div>
               </div>
 
-              <div class="flex flex-col gap-3">
+              <div class="flex flex-col gap-3 min-w-0">
                 {face.code && (
                   <div class="flex flex-col gap-2">
                     {face.code.map((line) => (
