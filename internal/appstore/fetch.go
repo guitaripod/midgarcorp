@@ -60,6 +60,7 @@ type AppsData struct {
 var appEnhancements = map[int]struct {
 	ID           string
 	Tagline      string
+	Description  string
 	PrimaryColor string
 	Features     []string
 }{
@@ -151,6 +152,17 @@ var appEnhancements = map[int]struct {
 			"Local MLX LLM technology for offline AI",
 			"Gamified learning with XP and achievements",
 			"Interactive quizzes on world religions",
+		},
+	},
+	6777952645: {
+		ID:           "psybeam",
+		Tagline:      "Hold Up Your Phone and Talk",
+		Description:  "A real-time voice interpreter for travel. Hold your button and speak — it says it out loud in their language. The person across from you never touches the screen.",
+		PrimaryColor: "#06B6D4",
+		Features: []string{
+			"Real-time voice-to-voice in 20+ languages",
+			"Two thumb buttons — run both sides from one phone",
+			"No account or subscription to start",
 		},
 	},
 }
@@ -331,6 +343,9 @@ func transformiTunesApp(app iTunesApp) App {
 		result.Tagline = enhancement.Tagline
 		result.PrimaryColor = enhancement.PrimaryColor
 		result.Features = enhancement.Features
+		if enhancement.Description != "" {
+			result.Description = enhancement.Description
+		}
 	} else {
 		result.Tagline = "Innovative app for Apple platforms"
 		if len(sentences) > 0 && len(sentences[0]) <= 60 {

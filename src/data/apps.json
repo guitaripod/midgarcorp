@@ -157,7 +157,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/fe/68/45/fe684517-a4a9-4a78-317c-83eb464fdbde/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/36/7d/5c/367d5c74-507c-6489-ee4e-3593b90bc817/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#7C3AED",
       "features": [
         "Local MLX LLM technology for offline AI",
@@ -167,12 +167,34 @@
       "releaseDate": "2025-09-23T07:00:00Z"
     },
     {
+      "id": "pixiepocket",
+      "name": "PixiePocket: AI Image Maker",
+      "tagline": "Create AI Images in Your Pocket",
+      "description": "Pro-grade AI images, created by chat. Pay only for what you make — no subscription, ever.",
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ],
+      "category": "Photo \u0026 Video",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2d/07/71/2d0771dc-9d40-5d63-5380-0142e58390be/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#EC4899",
+      "features": [
+        "Advanced OpenAI gpt-image-1 integration",
+        "Chat-based interface for natural prompting",
+        "Persistent cloud storage with public galleries"
+      ],
+      "releaseDate": "2025-09-19T07:00:00Z"
+    },
+    {
       "id": "psybeam",
       "name": "Psybeam: Live Translator",
       "tagline": "Hold Up Your Phone and Talk",
       "description": "A real-time voice interpreter for travel. Hold your button and speak — it says it out loud in their language. The person across from you never touches the screen.",
       "platforms": [
-        "iPhone"
+        "iPhone",
+        "iPad"
       ],
       "category": "Travel",
       "price": "Free",
@@ -184,7 +206,7 @@
         "Two thumb buttons — run both sides from one phone",
         "No account or subscription to start"
       ],
-      "releaseDate": "2026-06-22T10:48:06Z"
+      "releaseDate": "2026-06-22T07:00:00Z"
     }
   ]
 }
