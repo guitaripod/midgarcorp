@@ -45,7 +45,7 @@ APPS = [
     {"slug": "masterofinventory", "trackId": 1523538855, "shortName": "Master of Inventory", "color": "#10B981", "status": "live"},
     {"slug": "sforesight", "trackId": 6736438070, "shortName": "SForesight", "color": "#38BDF8", "status": "live"},
     {"slug": "solarbeam", "trackId": 6705124497, "shortName": "Solar Beam", "color": "#F59E0B", "status": "live"},
-    {"slug": "psybeam", "trackId": 6777952645, "shortName": "Psybeam", "color": "#06B6D4", "status": "review"},
+    {"slug": "psybeam", "trackId": 6777952645, "shortName": "Psybeam", "color": "#06B6D4", "status": "live"},
     {"slug": "payday", "trackId": 6779927672, "shortName": "Pay Day", "color": "#22C55E", "status": "review"},
 ]
 
