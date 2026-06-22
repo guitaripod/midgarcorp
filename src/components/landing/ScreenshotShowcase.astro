@@ -32,6 +32,7 @@ const gallery = Object.fromEntries(
 <section
   aria-label={`${app.shortName} screenshots`}
   class="screenshot-showcase"
+  data-showcase={name}
   style={`--accent:${app.content.accentColor}`}
 >
   {
@@ -348,7 +349,7 @@ const gallery = Object.fromEntries(
 
 <script is:inline define:vars={{ name, devices, gallery }}>
   (function () {
-    const root = document.currentScript.closest('.screenshot-showcase');
+    const root = document.querySelector('[data-showcase="' + name + '"]');
     if (!root) return;
 
     const radios = devices.map((d) => root.querySelector('#' + name + '-' + d));
