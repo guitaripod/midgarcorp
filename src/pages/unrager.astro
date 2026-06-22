@@ -61,8 +61,14 @@ const faces: Face[] = [
       'A thin UIKit client built for iOS 26 with Liquid Glass and buttery scrolling. It talks to your own `unrager serve` over Tailscale — the Rust engine does the X work, the app stays a fast native shell.',
     meta: 'Swift / UIKit · iOS 26 · Liquid Glass',
     code: [
-      { prompt: 'git clone https://github.com/guitaripod/unrager', copy: 'git clone https://github.com/guitaripod/unrager' },
-      { prompt: 'cd unrager/ios && xcodegen generate', copy: 'cd unrager/ios && xcodegen generate' },
+      {
+        prompt: 'git clone https://github.com/guitaripod/unrager',
+        copy: 'git clone https://github.com/guitaripod/unrager',
+      },
+      {
+        prompt: 'cd unrager/ios && xcodegen generate',
+        copy: 'cd unrager/ios && xcodegen generate',
+      },
     ],
     cta: [{ label: 'Source ↗', href: githubUrl }],
     note: 'Not on the App Store — it uses your own X session. Open the generated `Unrager.xcodeproj` in Xcode 26, sign with your team, and run on your iPhone. Then set your `unrager serve` address in Settings.',
@@ -75,8 +81,14 @@ const faces: Face[] = [
       'A native AppKit app for macOS 26, sharing the iOS design language and Liquid Glass. Point it at your `unrager serve` instance on the Tailnet and read every feed from a real Mac window.',
     meta: 'Swift / AppKit · macOS 26 · Liquid Glass',
     code: [
-      { prompt: 'git clone https://github.com/guitaripod/unrager', copy: 'git clone https://github.com/guitaripod/unrager' },
-      { prompt: 'cd unrager/macos && ./scripts/run.sh', copy: 'cd unrager/macos && ./scripts/run.sh' },
+      {
+        prompt: 'git clone https://github.com/guitaripod/unrager',
+        copy: 'git clone https://github.com/guitaripod/unrager',
+      },
+      {
+        prompt: 'cd unrager/macos && ./scripts/run.sh',
+        copy: 'cd unrager/macos && ./scripts/run.sh',
+      },
     ],
     cta: [{ label: 'Source ↗', href: githubUrl }],
     note: 'Not on the Mac App Store — it uses your own X session. `run.sh` builds and launches it (unsigned is fine on your own Mac; `scripts/release-dmg.sh` makes a notarized DMG if you prefer). Then set your server address in Settings.',
@@ -352,10 +364,14 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
                 >cargo install --force</code
               > or re-running the install script counts again.
             </p>
-            <div class="mt-2.5 flex flex-col gap-1 text-[0.72rem] text-paper-muted dark:text-term-muted">
+            <div
+              class="mt-2.5 flex flex-col gap-1 text-[0.72rem] text-paper-muted dark:text-term-muted"
+            >
               <div class="flex items-center justify-between gap-8">
                 <span>crates.io</span>
-                <span id="dl-crates" class="tabular-nums text-paper-text dark:text-term-text">—</span>
+                <span id="dl-crates" class="tabular-nums text-paper-text dark:text-term-text"
+                  >—</span
+                >
               </div>
               <div class="flex items-center justify-between gap-8">
                 <span>GitHub releases</span>
@@ -430,7 +446,9 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
                   >
                     {face.glyph}
                   </span>
-                  <h3 class="text-base font-bold text-paper-text dark:text-term-text">{face.name}</h3>
+                  <h3 class="text-base font-bold text-paper-text dark:text-term-text">
+                    {face.name}
+                  </h3>
                 </div>
                 <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
                   {face.blurb}
@@ -548,9 +566,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
       >
         On Mac
       </h3>
-      <ul
-        class="no-scrollbar mb-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4"
-      >
+      <ul class="no-scrollbar mb-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
         {
           macosShots.map((shot, i) => (
             <li class="flex w-[88vw] shrink-0 snap-start flex-col gap-3 sm:w-[720px]">
