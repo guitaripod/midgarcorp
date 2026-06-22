@@ -275,6 +275,35 @@ const sectionPrompt = (cmd: string) => cmd;
       <ScreenshotShowcase app={app} />
     </section>
 
+    {
+      c.lifestyle && c.lifestyle.length > 0 && (
+        <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+          <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --in-the-wild`)}</p>
+          <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+            Out in <span class="accent-text">the world</span>
+          </h2>
+          <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            {c.lifestyle.map((shot) => (
+              <figure class="overflow-hidden rounded-xl border border-paper-border dark:border-term-border">
+                <img
+                  src={shot.src}
+                  alt={shot.caption}
+                  loading="lazy"
+                  decoding="async"
+                  width="1280"
+                  height="1589"
+                  class="aspect-[4/5] w-full object-cover"
+                />
+                <figcaption class="px-3 py-2 text-xs text-paper-muted dark:text-term-muted">
+                  {shot.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
     <!-- Features -->
     <section
       id="features"

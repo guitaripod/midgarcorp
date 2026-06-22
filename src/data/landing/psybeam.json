@@ -1,6 +1,6 @@
 {
   "seoTitle": "Psybeam — Live Voice Translator for Travel",
-  "metaDescription": "Hand your phone to anyone and just talk. Psybeam translates voice to voice in 20+ languages, hold a button and they hear you in theirs. Start with free minutes.",
+  "metaDescription": "Hold up your phone and just talk. Psybeam translates voice to voice in 20+ languages, hold a button and they hear you in theirs — no app on their end. Start with free minutes.",
   "keywords": [
     "live voice translator app",
     "speech to speech translation app",
@@ -11,7 +11,7 @@
     "translator with no subscription",
     "spanish french voice translation"
   ],
-  "heroHeadline": "Hand them your phone and just talk",
+  "heroHeadline": "Hold up your phone and just talk",
   "heroSubhead": "Psybeam is a real-time voice interpreter for travel. Hold your button and speak; it says it out loud in their language. The person across from you never touches the screen.",
   "accentColor": "#06B6D4",
   "highlights": [
@@ -109,5 +109,12 @@
     ]
   },
   "ctaLine": "Download Psybeam and have your first cross-language conversation in seconds.",
-  "pricingNote": "Free to download with free minutes to start, then pay per minute with one-time packs, no subscription and no recurring charge."
+  "pricingNote": "Free to download with free minutes to start, then pay per minute with one-time packs, no subscription and no recurring charge.",
+  "lifestyle": [
+    { "src": "/lifestyle/psybeam/market.webp", "caption": "At a market — point, ask, buy" },
+    { "src": "/lifestyle/psybeam/cafe.webp", "caption": "Order a coffee, your way" },
+    { "src": "/lifestyle/psybeam/taxi.webp", "caption": "Tell the driver where to go" },
+    { "src": "/lifestyle/psybeam/directions.webp", "caption": "Ask a local for directions" },
+    { "src": "/lifestyle/psybeam/pharmacy.webp", "caption": "Explain what you need" }
+  ]
 }

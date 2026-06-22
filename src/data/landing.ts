@@ -70,6 +70,7 @@ export interface LandingContent {
   screenshotCaptions: Record<string, string[]>;
   ctaLine: string;
   pricingNote: string;
+  lifestyle?: { src: string; caption: string }[];
 }
 
 export type LandingApp = LandingFacts & { content: LandingContent };

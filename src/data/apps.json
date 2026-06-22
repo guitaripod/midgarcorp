@@ -11,7 +11,7 @@
       "category": "Photo \u0026 Video",
       "price": "$19.99",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497?uo=4",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8b/5f/23/8b5f239a-c398-78f4-d6c1-28c1ad283959/App_Icon-marketing.lsr/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/6b/ed/7a/6bed7a18-8f6d-11b9-a5b2-261195be441f/App_Icon-marketing.lsr/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
         "Real-time space data",
@@ -22,16 +22,16 @@
     },
     {
       "id": "sforesight",
-      "name": "SForesight",
+      "name": "SForesight: SF Symbols Search",
       "tagline": "ML-Powered SF Symbol Search",
-      "description": "SForesight: The Ultimate SF Symbols Search Companion\n\nAre you tired of endless scrolling through the official SF Symbols app? Say hello to SForesight, the game-changing macOS app that revolutionizes how Swift developers find and use SF Symbols in their projects.",
+      "description": "The symbol you mean, not the symbol you typed. Describe a concept and on-device machine learning finds the right SF Symbol in seconds.",
       "platforms": [
         "Mac"
       ],
       "category": "Developer Tools",
       "price": "$9.99",
-      "appStoreUrl": "https://apps.apple.com/us/app/sforesight/id6736438070?mt=12\u0026uo=4",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c5/95/19/c5951956-fbab-3e8e-ed31-e3fa45c0c2fc/AppIcon-0-0-85-220-0-4-0-2x.png/512x512bb.png",
+      "appStoreUrl": "https://apps.apple.com/us/app/sforesight-sf-symbols-search/id6736438070?mt=12\u0026uo=4",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0b/fa/bd/0bfabd3a-c80e-ad13-0e02-11b4605e538c/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.png",
       "primaryColor": "#3B82F6",
       "features": [
         "ML-powered semantic search",
@@ -50,9 +50,9 @@
         "iPad"
       ],
       "category": "Food \u0026 Drink",
-      "price": "$24.99",
+      "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/double-kick-menu-translator/id6736581403?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4f/95/2d/4f952d1c-d845-812f-8d5e-a6e7525d8fc4/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/60/6b/e3/606be322-8062-4e60-2b22-7126d440363b/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#DC2626",
       "features": [
         "Instant menu translation",
@@ -63,17 +63,17 @@
     },
     {
       "id": "psywave",
-      "name": "Psywave: Mood Playlist AI",
+      "name": "Psywave: AI Playlist Maker",
       "tagline": "AI-Powered Playlist Generation",
-      "description": "Describe a mood in one line. Get an Apple Music playlist in seconds.",
+      "description": "Describe a mood in one line — or pick a photo — and get a real Apple Music playlist in seconds. Psywave turns plain words and pictures into soundtracks that fit.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Music",
-      "price": "$14.99",
-      "appStoreUrl": "https://apps.apple.com/us/app/psywave-mood-playlist-ai/id6727000827?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/31/c3/4c/31c34c26-057e-4bc7-892f-c560c9b08fee/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/psywave-ai-playlist-maker/id6727000827?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d4/d9/af/d4d9af02-06a2-5892-b158-96145331b0f2/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#8B5CF6",
       "features": [
         "ML-powered music analysis",
@@ -86,7 +86,7 @@
       "id": "dream-eater",
       "name": "Dream Eater: AI Dream Decoder",
       "tagline": "ML-Powered Dream Journaling",
-      "description": "What did that dream actually mean? Capture it the second you wake, and get a clear AI reading of its symbols and patterns in seconds.",
+      "description": "You wake at 3 a. m.",
       "platforms": [
         "iPhone",
         "iPad"
@@ -94,7 +94,7 @@
       "category": "Lifestyle",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-ai-dream-decoder/id6661019277?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7e/8a/00/7e8a00de-f33c-e08b-3d01-00f2ce057439/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/60/57/bb/6057bb97-7606-c4ad-f23c-a707f2c6ddb8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#6366F1",
       "features": [
         "Dream pattern analysis",
@@ -126,17 +126,17 @@
     },
     {
       "id": "master-of-flags",
-      "name": "Master of Flags: Flag Quiz",
+      "name": "Master of Flags: World Quiz",
       "tagline": "Learn World Flags",
-      "description": "Finally memorize all 196 country flags — and actually remember them. Master of Flags turns world geography into focused, ad-free practice: quick region drills that build real recall, a full study Encyclopedia to browse every flag, and progress tracking that shows you're getting better.",
+      "description": "Master of Flags is now FREE. No ads.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Education",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-flag-quiz/id1484270248?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/35/ea/94/35ea946f-3230-911e-29d2-8c05672b333f/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8f/2b/b6/8f2bb607-53aa-946d-8f9e-0129d994d10e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EF4444",
       "features": [
         "All country flags",
@@ -149,7 +149,7 @@
       "id": "app-of-the-dead-afterlife",
       "name": "App of the Dead: Religions",
       "tagline": "Learn Afterlife Beliefs",
-      "description": "What happens after we die? Find out what 20+ world religions, ancient civilizations, and spiritual traditions actually believe — one 5-minute lesson at a time.",
+      "description": "What happens after we die? Twenty-two faiths have answered for thousands of years.",
       "platforms": [
         "iPhone",
         "iPad"
@@ -157,7 +157,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/27/22/00/272200d9-2119-8fa2-c2bf-3cb7861c0f33/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/fe/68/45/fe684517-a4a9-4a78-317c-83eb464fdbde/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#7C3AED",
       "features": [
         "Local MLX LLM technology for offline AI",
@@ -167,25 +167,24 @@
       "releaseDate": "2025-09-23T07:00:00Z"
     },
     {
-      "id": "pixiepocket",
-      "name": "PixiePocket: AI Image Maker",
-      "tagline": "Create AI Images in Your Pocket",
-      "description": "Pro-grade AI images, created by chat. Pay only for what you make - no subscription, ever.",
+      "id": "psybeam",
+      "name": "Psybeam: Live Translator",
+      "tagline": "Hold Up Your Phone and Talk",
+      "description": "A real-time voice interpreter for travel. Hold your button and speak — it says it out loud in their language. The person across from you never touches the screen.",
       "platforms": [
-        "iPhone",
-        "iPad"
+        "iPhone"
       ],
-      "category": "Photo \u0026 Video",
+      "category": "Travel",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339?uo=4\u0026platform=iphone",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/dd/b5/ef/ddb5efdf-ab0b-072c-175f-d58267e74a56/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#EC4899",
+      "appStoreUrl": "https://apps.apple.com/us/app/psybeam-live-translator/id6777952645?uo=4\u0026platform=iphone",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2c/5e/ed/2c5eed1e-b2e3-ef5b-cd53-4fc99cbeee96/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#06B6D4",
       "features": [
-        "Advanced OpenAI gpt-image-1 integration",
-        "Chat-based interface for natural prompting",
-        "Persistent cloud storage with public galleries"
+        "Real-time voice-to-voice in 20+ languages",
+        "Two thumb buttons — run both sides from one phone",
+        "No account or subscription to start"
       ],
-      "releaseDate": "2025-09-19T07:00:00Z"
+      "releaseDate": "2026-06-22T10:48:06Z"
     }
   ]
 }
