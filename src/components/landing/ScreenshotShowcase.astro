@@ -69,9 +69,10 @@ const gallery = Object.fromEntries(
           >
             {app.screenshots[device].map((shot, i) => (
               <li class="flex h-full shrink-0 snap-start flex-col items-center gap-3">
-                <button
-                  type="button"
-                  class="shot-btn group relative block h-[calc(100%-2rem)] cursor-zoom-in appearance-none border-0 bg-transparent p-0"
+                <div
+                  class="shot-btn group relative h-[calc(100%-2rem)] cursor-zoom-in"
+                  role="button"
+                  tabindex="0"
                   data-device={device}
                   data-index={i}
                   aria-label={`View ${captionFor(device, i)} full size`}
@@ -103,7 +104,7 @@ const gallery = Object.fromEntries(
                       <path d="M3 21l7-7" />
                     </svg>
                   </span>
-                </button>
+                </div>
                 <p class="max-w-[16rem] text-center text-xs text-paper-muted dark:text-term-muted">
                   {captionFor(device, i)}
                 </p>
@@ -411,9 +412,14 @@ const gallery = Object.fromEntries(
     }
 
     root.querySelectorAll('.shot-btn').forEach((btn) => {
-      btn.addEventListener('click', () =>
-        open(btn.dataset.device, parseInt(btn.dataset.index, 10))
-      );
+      const fire = () => open(btn.dataset.device, parseInt(btn.dataset.index, 10));
+      btn.addEventListener('click', fire);
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          fire();
+        }
+      });
     });
     prevBtn.addEventListener('click', () => step(-1));
     nextBtn.addEventListener('click', () => step(1));
