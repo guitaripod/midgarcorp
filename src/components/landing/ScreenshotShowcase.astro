@@ -358,7 +358,7 @@ const gallery = Object.fromEntries(
     const labels = devices.map((d) => root.querySelector('label[data-device="' + d + '"]'));
     function sync() {
       radios.forEach((r, i) => {
-        const on = r && r.checked;
+        const on = !r || r.checked;
         if (panels[i]) panels[i].classList.toggle('hidden', !on);
         if (labels[i]) {
           labels[i].classList.toggle('border-paper-green', on);
