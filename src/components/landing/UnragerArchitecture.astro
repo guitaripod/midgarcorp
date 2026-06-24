@@ -11,7 +11,7 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
   <div
     class="term-frame relative overflow-hidden p-5 sm:p-8"
     role="img"
-    aria-label="How unrager works: chaotic, rage-baity tweets are pulled from X using your own browser session, passed through a local rage filter powered by an Ollama model on a machine you own — a Linux box, a Mac, a home server — and the resulting calm feed is served over a private Tailscale tunnel to the terminal, iOS, and macOS clients."
+    aria-label="How unrager works: chaotic, rage-baity tweets are pulled from X using your own browser session, passed through a local rage filter powered by an Ollama model on a machine you own — a Linux box, a Mac, a home server — and the resulting calm feed is served over a private Tailscale tunnel to the terminal, iOS, macOS, and Linux clients."
   >
     <span class="arch-spine" aria-hidden="true"></span>
 
@@ -144,6 +144,16 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
             <span class="arch-client-glyph" aria-hidden="true">▣</span>
             <p class="arch-client-name">Mac</p>
             <p class="arch-client-sub">AppKit</p>
+            <ul class="arch-stream arch-stream--calm" aria-hidden="true">
+              <li class="t t-calm"><span></span><span></span></li>
+              <li class="t t-calm"><span></span></li>
+              <li class="t t-calm"><span></span><span></span></li>
+            </ul>
+          </div>
+          <div class="arch-node arch-node--client">
+            <span class="arch-client-glyph" aria-hidden="true">◆</span>
+            <p class="arch-client-name">Linux</p>
+            <p class="arch-client-sub">GTK4</p>
             <ul class="arch-stream arch-stream--calm" aria-hidden="true">
               <li class="t t-calm"><span></span><span></span></li>
               <li class="t t-calm"><span></span></li>
@@ -570,7 +580,7 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
   /* clients */
   .arch-clients {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.5rem;
   }
   @media (max-width: 479.98px) {

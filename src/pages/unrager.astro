@@ -12,7 +12,7 @@ const accent = '#1D9BF0';
 
 const seoTitle = 'unrager — a calm X on every screen';
 const metaDescription =
-  'A calm Twitter/X client with a local-LLM rage filter. Three faces — a Rust terminal TUI/CLI, a native iOS app, and a native macOS app — all talking to the same engine. Rage-bait is dropped before it reaches your eyes.';
+  'A calm Twitter/X client with a local-LLM rage filter. Four faces — a Rust terminal TUI/CLI and native iOS, macOS and GNOME/Linux apps — all talking to the same engine. Rage-bait is dropped before it reaches your eyes.';
 
 const installCmd = 'curl -fsSL https://unrager.com/install.sh | bash';
 const githubUrl = 'https://github.com/guitaripod/unrager';
@@ -20,7 +20,7 @@ const releasesUrl = 'https://github.com/guitaripod/unrager/releases';
 
 const heroHighlights = [
   'Local LLM drops rage-bait before you ever see it',
-  'Three native faces, one Rust engine',
+  'Four native faces, one Rust engine',
   'No API key, no cloud, no per-feed cost',
   'GPL-3.0 — your X session, your machine',
 ];
@@ -93,6 +93,26 @@ const faces: Face[] = [
     cta: [{ label: 'Source ↗', href: githubUrl }],
     note: 'Not on the Mac App Store — it uses your own X session. `run.sh` builds and launches it (unsigned is fine on your own Mac; `scripts/release-dmg.sh` makes a notarized DMG if you prefer). Then set your server address in Settings.',
   },
+  {
+    id: 'linux',
+    glyph: '◆',
+    name: 'Linux — native app',
+    blurb:
+      'A native GNOME desktop client in GTK4 and libadwaita (via relm4) — the Linux peer of the Apple apps. It auto-spawns or reuses a local `unrager serve`, or you point it at one over Tailscale. Feeds, threads, profiles, notifications, compose and the Ask / Brief / Translate sheet, all in a real Adwaita window with inline media that fills the column.',
+    meta: 'Rust · GTK4 / libadwaita · GNOME',
+    code: [
+      {
+        prompt: 'git clone https://github.com/guitaripod/unrager',
+        copy: 'git clone https://github.com/guitaripod/unrager',
+      },
+      {
+        prompt: 'cd unrager/linux && cargo run -p unrager-gtk',
+        copy: 'cd unrager/linux && cargo run -p unrager-gtk',
+      },
+    ],
+    cta: [{ label: 'Source ↗', href: githubUrl }],
+    note: 'Built from source like the Apple apps. Needs the GTK4 + libadwaita dev packages (`gtk4 libadwaita` on Arch, `libgtk-4-dev libadwaita-1-dev` on Debian/Ubuntu). On first launch it manages `unrager serve` for you; point it at a Tailscale server in Settings to read from anywhere.',
+  },
 ];
 
 const features = [
@@ -127,8 +147,8 @@ const features = [
     glyph: '✶',
   },
   {
-    title: 'Liquid Glass',
-    body: 'The iOS and macOS apps adopt the iOS 26 / macOS 26 Liquid Glass material end to end — translucent chrome, depth and motion that feel native, not like a wrapped web view.',
+    title: 'Native on every desktop',
+    body: 'The iOS and macOS apps adopt the iOS 26 / macOS 26 Liquid Glass material; the Linux app is built in GTK4 / libadwaita and feels right at home in GNOME. Every face is the real platform toolkit — translucent depth and motion on Apple, an Adwaita window on Linux — never a wrapped web view.',
     glyph: '◇',
   },
   {
@@ -155,6 +175,17 @@ const macosShots = [
   { src: '/screenshots/unrager/macos-settings.png', label: 'Settings, with adjustable text size' },
 ];
 
+const linuxShots = [
+  { src: '/screenshots/unrager/linux-home.png', label: 'A calm Home feed in a GNOME window' },
+  { src: '/screenshots/unrager/linux-home-light.png', label: 'Home in light mode' },
+  { src: '/screenshots/unrager/linux-thread.png', label: 'A thread with replies' },
+  { src: '/screenshots/unrager/linux-notifications.png', label: 'Notifications' },
+  {
+    src: '/screenshots/unrager/linux-settings.png',
+    label: 'Settings, with adjustable text & media size',
+  },
+];
+
 const tuiShots = [
   {
     src: '/screenshots/unrager/tui-detail.png',
@@ -175,11 +206,11 @@ const tuiShots = [
 const faq = [
   {
     q: 'Why isn’t it on the App Store?',
-    a: 'unrager logs in with your own existing X session and reads from X’s own GraphQL endpoints, which is incompatible with App Store distribution policy. So the native apps are built from source: clone the repo, generate the Xcode project, and run them — iOS on your own device from Xcode 26, macOS via `scripts/run.sh` (or a notarized DMG with `scripts/release-dmg.sh`). The terminal client installs with one curl command or `cargo install`.',
+    a: 'unrager logs in with your own existing X session and reads from X’s own GraphQL endpoints, which is incompatible with App Store distribution policy. So the native apps are built from source: clone the repo and run them — iOS on your own device from Xcode 26, macOS via `scripts/run.sh` (or a notarized DMG with `scripts/release-dmg.sh`), and the GNOME/Linux app with `cd linux && cargo run -p unrager-gtk`. The terminal client installs with one curl command or `cargo install`.',
   },
   {
     q: 'How do the apps connect to my account?',
-    a: 'You run `unrager serve` on a machine you control — a Mac, a Linux box, a home server. That Rust process does all the X work using your browser session and OAuth tokens. The iOS and macOS apps are thin native clients that reach the server over Tailscale, so your feeds are available anywhere without ever exposing the server to the public internet.',
+    a: 'You run `unrager serve` on a machine you control — a Mac, a Linux box, a home server. That Rust process does all the X work using your browser session and OAuth tokens. The iOS, macOS and Linux apps are thin native clients that reach the server over Tailscale, so your feeds are available anywhere without ever exposing the server to the public internet. (The Linux app can also just spawn and manage a local server for you.)',
   },
   {
     q: 'Is my data private?',
@@ -195,11 +226,11 @@ const faq = [
   },
   {
     q: 'Which platforms are supported?',
-    a: 'The terminal TUI and CLI run on macOS, Linux and Windows. The native apps target iOS 26 and macOS 26. Inline terminal media needs a kitty-graphics terminal such as Ghostty, Kitty or WezTerm; elsewhere it falls back to glyph placeholders.',
+    a: 'The terminal TUI and CLI run on macOS, Linux and Windows. The native GUI apps target iOS 26, macOS 26 and Linux (GTK4 / libadwaita, i.e. GNOME and most modern desktops). Inline terminal media needs a kitty-graphics terminal such as Ghostty, Kitty or WezTerm; elsewhere it falls back to glyph placeholders.',
   },
 ];
 
-const allShots = [...iosShots, ...macosShots, ...tuiShots].map((s) => site + s.src);
+const allShots = [...iosShots, ...macosShots, ...linuxShots, ...tuiShots].map((s) => site + s.src);
 
 const softwareApp = {
   '@type': 'SoftwareApplication',
@@ -269,8 +300,8 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
           class="mb-6 max-w-xl text-base leading-relaxed text-paper-muted dark:text-term-muted sm:text-lg"
         >
           A Twitter/X client with a local-LLM rage filter. Rage-bait is dropped before it ever
-          reaches your eyes. One Rust engine, three native faces — a terminal TUI, an iOS app, and a
-          macOS app.
+          reaches your eyes. One Rust engine, four native faces — a terminal TUI and native iOS,
+          macOS and Linux apps.
         </p>
 
         <!-- platform chips -->
@@ -279,7 +310,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
           <span class="text-paper-faint dark:text-term-faint">free &amp; open source</span>
           <span class="flex flex-wrap gap-1.5">
             {
-              ['Terminal', 'iOS', 'macOS'].map((p) => (
+              ['Terminal', 'iOS', 'macOS', 'Linux'].map((p) => (
                 <span class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint">
                   {p}
                 </span>
@@ -424,11 +455,11 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
     >
       <p class="prompt-line mb-3">ls unrager/faces</p>
       <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        Three faces, <span class="accent-text">one engine</span>
+        Four faces, <span class="accent-text">one engine</span>
       </h2>
       <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
-        Every face talks to the same Rust core. Pick the terminal, the phone, the Mac — or all three
-        at once.
+        Every face talks to the same Rust core. Pick the terminal, the phone, the Mac, the Linux
+        desktop — or all four at once.
       </p>
 
       <div class="flex flex-col gap-5">
@@ -578,6 +609,33 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
                   loading={i === 0 ? 'eager' : 'lazy'}
                   decoding="async"
                   alt={`unrager on macOS — ${shot.label}`}
+                  class="block h-auto w-full rounded-xl"
+                />
+              </div>
+              <p class="text-center text-xs text-paper-muted dark:text-term-muted">{shot.label}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Linux -->
+      <h3
+        class="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-paper-muted dark:text-term-muted"
+      >
+        On Linux
+      </h3>
+      <ul class="no-scrollbar mb-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
+        {
+          linuxShots.map((shot) => (
+            <li class="flex w-[88vw] shrink-0 snap-start flex-col gap-3 sm:w-[720px]">
+              <div class="device-glow" style={`--accent:${accent}`}>
+                <img
+                  src={shot.src}
+                  width={1180}
+                  height={820}
+                  loading="lazy"
+                  decoding="async"
+                  alt={`unrager on Linux — ${shot.label}`}
                   class="block h-auto w-full rounded-xl"
                 />
               </div>
