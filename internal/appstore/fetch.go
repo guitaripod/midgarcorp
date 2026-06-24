@@ -294,24 +294,10 @@ func transformiTunesApp(app iTunesApp) App {
 		cleanDesc = sentences[0]
 	}
 
-	// Ensure App Store URL uses US location
-	appStoreURL := app.TrackViewURL
-	if appStoreURL == "" {
-		appStoreURL = fmt.Sprintf("https://apps.apple.com/us/app/%s/id%d", urlSlug, app.TrackID)
-	}
-	appStoreURL = strings.ReplaceAll(appStoreURL, "https://apps.apple.com/app/", "https://apps.apple.com/us/app/")
+	appStoreURL := canonicalStoreURL(app.TrackViewURL, urlSlug, app.TrackID)
 
 	// Map platforms
 	platforms := mapDeviceTosPlatform(app)
-
-	// Add platform parameter for iOS apps
-	if contains(platforms, "iPhone") || contains(platforms, "iPad") {
-		if !strings.Contains(appStoreURL, "?") {
-			appStoreURL += "?platform=iphone"
-		} else if !strings.Contains(appStoreURL, "platform=") {
-			appStoreURL += "&platform=iphone"
-		}
-	}
 
 	// Determine price
 	price := "Free"
@@ -475,6 +461,18 @@ func indexOf(slice []string, item string) int {
 	return -1
 }
 
-func contains(slice []string, item string) bool {
-	return indexOf(slice, item) != -1
+// / canonicalStoreURL returns the bare US-storefront App Store link
+// / (https://apps.apple.com/us/app/<slug>/id<n>) with every tracking parameter
+// / (uo, mt, platform) stripped, so cards and landing pages link to a clean URL
+// / instead of one Apple silently rewrites or that 404s on some devices.
+func canonicalStoreURL(trackViewURL, slug string, trackID int) string {
+	url := trackViewURL
+	if url == "" {
+		url = fmt.Sprintf("https://apps.apple.com/us/app/%s/id%d", slug, trackID)
+	}
+	url = strings.ReplaceAll(url, "https://apps.apple.com/app/", "https://apps.apple.com/us/app/")
+	if i := strings.IndexByte(url, '?'); i != -1 {
+		url = url[:i]
+	}
+	return url
 }
