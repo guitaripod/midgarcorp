@@ -420,12 +420,18 @@ const sectionPrompt = (cmd: string) => cmd;
               </span>
             )
           }
-          <a
-            href={app.appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover:text-paper-green dark:hover:text-term-green">App Store ↗</a
-          >
+          {
+            !isReview && (
+              <a
+                href={app.appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-paper-green dark:hover:text-term-green"
+              >
+                App Store ↗
+              </a>
+            )
+          }
           {
             supportUrl && (
               <a

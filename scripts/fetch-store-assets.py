@@ -133,6 +133,13 @@ def template_url(image_asset, fmt="png"):
             .replace("{f}", fmt))
 
 
+def canonical_store_url(track_view_url, track_id):
+    """Bare US-storefront App Store link with tracking params (uo/mt/platform) stripped."""
+    url = track_view_url or f"https://apps.apple.com/us/app/id{track_id}"
+    url = url.replace("https://apps.apple.com/app/", "https://apps.apple.com/us/app/")
+    return url.split("?", 1)[0]
+
+
 def label_from_filename(name, idx):
     """dreameater_iphone_1_interpret.png -> 'interpret'."""
     stem = re.sub(r"\.(png|jpe?g)$", "", name or "", flags=re.I)
@@ -257,7 +264,7 @@ def process_app(app):
     if it:
         fact.update({
             "name": it.get("trackName"),
-            "appStoreUrl": it.get("trackViewUrl"),
+            "appStoreUrl": canonical_store_url(it.get("trackViewUrl"), track_id),
             "description": it.get("description", "").strip(),
             "releaseNotes": (it.get("releaseNotes") or "").strip(),
             "category": it.get("primaryGenreName"),
@@ -281,7 +288,7 @@ def process_app(app):
         app_info = asc_get(f"/v1/apps/{track_id}?fields[apps]=name,bundleId")["data"]
         fact.update({
             "name": app_info["attributes"]["name"],
-            "appStoreUrl": f"https://apps.apple.com/app/id{track_id}",
+            "appStoreUrl": f"https://apps.apple.com/us/app/id{track_id}",
             "description": (loc_attrs.get("description") or "").strip(),
             "releaseNotes": (loc_attrs.get("whatsNew") or "").strip(),
             "promotionalText": (loc_attrs.get("promotionalText") or "").strip(),
