@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -23,19 +24,24 @@ type iTunesResponse struct {
 }
 
 type iTunesApp struct {
-	TrackID            int      `json:"trackId"`
-	TrackName          string   `json:"trackName"`
-	TrackViewURL       string   `json:"trackViewUrl"`
-	Price              float64  `json:"price"`
-	Description        string   `json:"description"`
-	PrimaryGenreName   string   `json:"primaryGenreName"`
-	ArtworkURL512      string   `json:"artworkUrl512"`
-	ArtworkURL100      string   `json:"artworkUrl100"`
-	Kind               string   `json:"kind"`
-	ReleaseDate        string   `json:"releaseDate"`
-	SupportedDevices   []string `json:"supportedDevices"`
-	IPadScreenshotURLs []string `json:"ipadScreenshotUrls"`
-	ScreenshotURLs     []string `json:"screenshotUrls"`
+	TrackID                   int      `json:"trackId"`
+	TrackName                 string   `json:"trackName"`
+	TrackViewURL              string   `json:"trackViewUrl"`
+	Price                     float64  `json:"price"`
+	Description               string   `json:"description"`
+	PrimaryGenreName          string   `json:"primaryGenreName"`
+	ArtworkURL512             string   `json:"artworkUrl512"`
+	ArtworkURL100             string   `json:"artworkUrl100"`
+	Kind                      string   `json:"kind"`
+	ReleaseDate               string   `json:"releaseDate"`
+	Version                   string   `json:"version"`
+	CurrentVersionReleaseDate string   `json:"currentVersionReleaseDate"`
+	MinimumOsVersion          string   `json:"minimumOsVersion"`
+	AverageUserRating         float64  `json:"averageUserRating"`
+	UserRatingCount           int      `json:"userRatingCount"`
+	SupportedDevices          []string `json:"supportedDevices"`
+	IPadScreenshotURLs        []string `json:"ipadScreenshotUrls"`
+	ScreenshotURLs            []string `json:"screenshotUrls"`
 }
 
 type App struct {
@@ -63,6 +69,7 @@ var appEnhancements = map[int]struct {
 	Description  string
 	PrimaryColor string
 	Features     []string
+	Platforms    []string
 }{
 	6705124497: {
 		ID:           "solar-beam",
@@ -73,6 +80,7 @@ var appEnhancements = map[int]struct {
 			"Stunning 4K visualizations",
 			"Educational astronomy content",
 		},
+		Platforms: []string{"Mac"},
 	},
 	6736438070: {
 		ID:           "sforesight",
@@ -238,6 +246,12 @@ func FetchData() error {
 		fmt.Printf("  - %s (%s)\n", app.Name, app.Price)
 	}
 
+	if n, err := refreshLiveFacts(); err != nil {
+		fmt.Printf("⚠️  Could not refresh landing-live.json: %v\n", err)
+	} else if n > 0 {
+		fmt.Printf("✓ Refreshed live store facts for %d landing page(s)\n", n)
+	}
+
 	fmt.Println("✓ App Store data updated successfully")
 	return nil
 }
@@ -300,10 +314,7 @@ func transformiTunesApp(app iTunesApp) App {
 	platforms := mapDeviceTosPlatform(app)
 
 	// Determine price
-	price := "Free"
-	if app.Price > 0 {
-		price = fmt.Sprintf("$%.2f", app.Price)
-	}
+	price := priceLabel(app.Price)
 
 	// Choose icon
 	icon := app.ArtworkURL512
@@ -331,6 +342,9 @@ func transformiTunesApp(app iTunesApp) App {
 		result.Features = enhancement.Features
 		if enhancement.Description != "" {
 			result.Description = enhancement.Description
+		}
+		if len(enhancement.Platforms) > 0 {
+			result.Platforms = enhancement.Platforms
 		}
 	} else {
 		result.Tagline = "Innovative app for Apple platforms"
@@ -431,7 +445,7 @@ func getWithRetry(url string) ([]byte, error) {
 			return body, nil
 		}
 		lastErr = fmt.Errorf("iTunes API responded with %d", resp.StatusCode)
-		if resp.StatusCode < 500 {
+		if resp.StatusCode < 500 && resp.StatusCode != http.StatusTooManyRequests {
 			return nil, lastErr
 		}
 	}
@@ -459,6 +473,104 @@ func indexOf(slice []string, item string) int {
 		}
 	}
 	return -1
+}
+
+func priceLabel(price float64) string {
+	if price > 0 {
+		return fmt.Sprintf("$%.2f", price)
+	}
+	return "Free"
+}
+
+// / liveFacts holds the fast-changing store facts a landing page renders. They
+// / live in src/data/landing-live.json (Go-owned, regenerated every build) and
+// / are overlaid on the slow-changing, hand-tuned src/data/landing-facts.json by
+// / src/data/landing.ts, so a new App Store version never needs a manual commit.
+type liveFacts struct {
+	Version                   string  `json:"version"`
+	Price                     string  `json:"price"`
+	Rating                    float64 `json:"rating"`
+	RatingCount               int     `json:"ratingCount"`
+	ReleaseDate               string  `json:"releaseDate,omitempty"`
+	CurrentVersionReleaseDate string  `json:"currentVersionReleaseDate,omitempty"`
+	MinimumOsVersion          string  `json:"minimumOsVersion,omitempty"`
+}
+
+const liveLookupURL = "https://itunes.apple.com/lookup?id=%d&country=us"
+
+// / refreshLiveFacts rewrites src/data/landing-live.json from a per-app iTunes
+// / lookup for every live landing page. The per-app endpoint is used instead of
+// / the developer-wide lookup behind apps.json because the latter is edge-cached
+// / and lags real version bumps by days. Last-good values are preserved for any
+// / app whose lookup fails, so a transient API hiccup never blanks the data.
+func refreshLiveFacts() (int, error) {
+	factsPath := filepath.Join("src", "data", "landing-facts.json")
+	raw, err := os.ReadFile(factsPath)
+	if err != nil {
+		return 0, err
+	}
+	var facts struct {
+		Apps []struct {
+			TrackID int    `json:"trackId"`
+			Status  string `json:"status"`
+		} `json:"apps"`
+	}
+	if err := json.Unmarshal(raw, &facts); err != nil {
+		return 0, err
+	}
+
+	livePath := filepath.Join("src", "data", "landing-live.json")
+	live := map[string]liveFacts{}
+	if existing, err := os.ReadFile(livePath); err == nil {
+		_ = json.Unmarshal(existing, &live)
+	}
+
+	updated := 0
+	for _, a := range facts.Apps {
+		if a.Status != "live" {
+			continue
+		}
+		it, err := lookupApp(a.TrackID)
+		if err != nil {
+			fmt.Printf("  ⚠️  keeping last-good facts for %d: %v\n", a.TrackID, err)
+			continue
+		}
+		live[fmt.Sprintf("%d", a.TrackID)] = liveFacts{
+			Version:                   it.Version,
+			Price:                     priceLabel(it.Price),
+			Rating:                    math.Round(it.AverageUserRating*100) / 100,
+			RatingCount:               it.UserRatingCount,
+			ReleaseDate:               it.ReleaseDate,
+			CurrentVersionReleaseDate: it.CurrentVersionReleaseDate,
+			MinimumOsVersion:          it.MinimumOsVersion,
+		}
+		updated++
+	}
+
+	out, err := json.MarshalIndent(live, "", "  ")
+	if err != nil {
+		return 0, err
+	}
+	if err := os.WriteFile(livePath, append(out, '\n'), 0644); err != nil {
+		return 0, err
+	}
+	return updated, nil
+}
+
+// / lookupApp fetches a single app's current store metadata by track id.
+func lookupApp(trackID int) (*iTunesApp, error) {
+	body, err := getWithRetry(fmt.Sprintf(liveLookupURL, trackID))
+	if err != nil {
+		return nil, err
+	}
+	var resp iTunesResponse
+	if err := json.Unmarshal(body, &resp); err != nil {
+		return nil, err
+	}
+	if len(resp.Results) == 0 {
+		return nil, fmt.Errorf("no result for track id %d", trackID)
+	}
+	return &resp.Results[0], nil
 }
 
 // / canonicalStoreURL returns the bare US-storefront App Store link
