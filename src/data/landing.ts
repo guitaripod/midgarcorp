@@ -87,13 +87,13 @@ for (const [path, mod] of Object.entries(contentModules)) {
     (mod as unknown as LandingContent)) as LandingContent;
 }
 
-const facts = (factsData as { apps: LandingFacts[] }).apps;
+const facts = (factsData as unknown as { apps: LandingFacts[] }).apps;
 
 /// Fast-changing store facts (version, price, rating, dates) regenerated every
 /// build by `ct fetch-appstore` into landing-live.json, keyed by track id. They
 /// override the hand-committed values in landing-facts.json so a new App Store
 /// release never requires a manual edit.
-const liveByTrack = liveData as Record<string, Partial<LandingFacts>>;
+const liveByTrack = liveData as unknown as Record<string, Partial<LandingFacts>>;
 
 export const landingApps: LandingApp[] = facts
   .filter((f) => contentBySlug[f.slug])
