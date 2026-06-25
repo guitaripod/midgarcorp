@@ -1581,46 +1581,6 @@
       "status": "live",
       "primaryColor": "#F59E0B",
       "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/solarbeam/iphone-1.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Apod"
-          },
-          {
-            "src": "/screenshots/solarbeam/iphone-2.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Jwst"
-          },
-          {
-            "src": "/screenshots/solarbeam/iphone-3.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Asteroids"
-          }
-        ],
-        "ipad": [
-          {
-            "src": "/screenshots/solarbeam/ipad-1.webp",
-            "w": 1600,
-            "h": 2133,
-            "label": "Apod"
-          },
-          {
-            "src": "/screenshots/solarbeam/ipad-2.webp",
-            "w": 1600,
-            "h": 2133,
-            "label": "Jwst"
-          },
-          {
-            "src": "/screenshots/solarbeam/ipad-3.webp",
-            "w": 1600,
-            "h": 2133,
-            "label": "Asteroids"
-          }
-        ],
         "mac": [
           {
             "src": "/screenshots/solarbeam/mac-1.webp",
@@ -1640,89 +1600,30 @@
             "h": 1200,
             "label": "Asteroids"
           }
-        ],
-        "tv": [
-          {
-            "src": "/screenshots/solarbeam/tv-1.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Apod Grid"
-          },
-          {
-            "src": "/screenshots/solarbeam/tv-2.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Apod Detail"
-          },
-          {
-            "src": "/screenshots/solarbeam/tv-3.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Neo Threat Tracker"
-          },
-          {
-            "src": "/screenshots/solarbeam/tv-4.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Dangerous Vs Safe"
-          },
-          {
-            "src": "/screenshots/solarbeam/tv-5.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Neo Near Misses"
-          },
-          {
-            "src": "/screenshots/solarbeam/tv-6.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Neo Impact Size"
-          },
-          {
-            "src": "/screenshots/solarbeam/tv-7.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Jwst Grid"
-          },
-          {
-            "src": "/screenshots/solarbeam/tv-8.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Jwst Detail"
-          },
-          {
-            "src": "/screenshots/solarbeam/tv-9.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Settings"
-          }
         ]
       },
       "name": "Solar Beam",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
-      "description": "Turn your Apple TV into a window onto the cosmos.\n\nSolar Beam brings the universe to your living room in stunning 4K — a new NASA masterpiece every day, the deepest images ever captured by the James Webb Space Telescope, and a live look at the asteroids passing by Earth. No telescope required.\n\nASTRONOMY PICTURE OF THE DAY\nEvery day, NASA picks one breathtaking image of our universe. Solar Beam brings it to the big screen, paired with bite-sized, AI-powered facts so you actually understand what you're looking at — from solar flares to galaxies billions of light-years away.\n\nTHE WEBB TELESCOPE\nExplore the sharpest views of deep space humanity has ever produced. Newborn stars, colliding galaxies, glittering nebulae, and worlds we're only beginning to name — all from the most powerful telescope ever built.\n\nNEAR-EARTH ASTEROIDS\nTrack what's hurtling past us in real time. See how close each asteroid comes, how fast it's moving, and the size of the impact it would leave — with a live threat readout that updates as NASA finds new objects every week.\n\nMADE FOR THE BIG SCREEN\n• Gorgeous, gallery-first design built natively for tvOS\n• Immersive full-screen detail views with official NASA descriptions\n• AI-generated facts that make the science click\n• Fast launches with smart offline caching\n• Beautiful enough to leave running as living cosmic wallpaper\n\nPour a coffee, lean back, and travel from our solar system to the edge of the observable universe — one stunning image at a time.\n\nSOLAR BEAM PREMIUM\nGo deeper with an optional subscription or a one-time lifetime unlock:\n• Ambient Mode — turn your TV into a living deep-space gallery\n• The complete Webb telescope library in 4K\n• Years of Pictures of the Day, far beyond the free 30-day window\n• Unlimited AI-generated facts\nA free trial is available on the annual plan, and the daily picture is always free.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\n—\n\nSolar Beam is an independent app and is not affiliated with, endorsed by, or sponsored by NASA or ESA. Imagery and data are provided through NASA's public APIs.",
-      "releaseNotes": "Solar Beam 2.0 — the universal launch.\n\n• One purchase now unlocks Solar Beam everywhere: iPhone, iPad, Mac, Apple TV, and Vision Pro, with Family Sharing included.\n• If you bought Solar Beam when it was a paid app, thank you — you now have lifetime Premium on every platform, automatically.\n• Faster startup and smarter free-tier facts metering.\n• Polish across Ambient Mode, the paywall, and Settings.",
+      "description": "A window onto the cosmos, right on your desktop.\n\nSolar Beam brings the universe to your Mac: NASA's Astronomy Picture of the Day, the deepest images ever captured by the James Webb Space Telescope, and a live look at the asteroids passing by Earth — in a fast, native Mac app.\n\nASTRONOMY PICTURE OF THE DAY\nEvery day, NASA picks one breathtaking image of our universe. Solar Beam pairs it with bite-sized, AI-powered facts so you actually understand what you're looking at.\n\nTHE WEBB TELESCOPE\nExplore the sharpest views of deep space humanity has ever produced — and export any image in full resolution, ready for your desktop.\n\nNEAR-EARTH ASTEROIDS\nTrack what's hurtling past us in real time, with charts of approach distance, speed, and size, and a live threat readout.\n\nMADE FOR THE MAC\n• A true native app — sidebar navigation, keyboard shortcuts, multiple windows\n• Today's picture and a live asteroid ticker in your menu bar, one glance away all day\n• Save any image with the standard Mac save panel\n• Ambient Mode — a slow, beautiful deep-space slideshow in its own window\n\nSOLAR BEAM PREMIUM\nGo deeper with an optional subscription or a one-time lifetime unlock:\n• Ambient Mode — a living deep-space gallery on every screen you own\n• The complete Webb telescope library\n• Years of Pictures of the Day, far beyond the free 30-day window\n• Unlimited AI-generated facts\nOne purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro, with Family Sharing included. A free trial is available on the annual plan, and the daily picture is always free.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\n—\n\nSolar Beam is an independent app and is not affiliated with, endorsed by, or sponsored by NASA or ESA. Imagery and data are provided through NASA's public APIs.",
+      "releaseNotes": "",
       "category": "Photo & Video",
       "genres": [
         "Photo & Video",
         "Education"
       ],
-      "price": "$19.99",
+      "price": "Free",
       "rating": 0,
       "ratingCount": 0,
       "version": "2.0",
       "releaseDate": "2024-09-29T07:00:00Z",
       "currentVersionReleaseDate": "2026-06-13T06:33:59Z",
-      "minimumOsVersion": "18.0",
+      "minimumOsVersion": "15.0",
       "contentRating": "4+",
       "languages": [
         "EN"
       ],
       "supportedDevices": [
-        "AppleTV4-AppleTV4",
-        "AppleTV62-AppleTV5",
-        "AppleTV4KSecondGen-AppleTV4KSecondGen",
-        "AppleTV4KThirdGen-AppleTV4KThirdGen"
+        "MacDesktop-MacDesktop"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.solarbeam",
@@ -1732,9 +1633,6 @@
       "keywords": "apod,james,webb,astronomy,JWST,telescope,asteroid,cosmos,universe,nebula,stars,planets,wallpaper",
       "iconLocal": "/screenshots/solarbeam/icon.webp",
       "platforms": [
-        "iPhone",
-        "iPad",
-        "Apple TV",
         "Mac"
       ]
     },

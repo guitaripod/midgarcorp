@@ -4,14 +4,14 @@
       "id": "solar-beam",
       "name": "Solar Beam",
       "tagline": "Your Window to the Universe",
-      "description": "Turn your Apple TV into a window onto the cosmos. Solar Beam brings the universe to your living room in stunning 4K — a new NASA masterpiece every day, the deepest images ever captured by the James Webb Space Telescope, and a live look at the asteroids passing by Earth.",
+      "description": "A window onto the cosmos, right on your desktop. Solar Beam brings the universe to your Mac: NASA's Astronomy Picture of the Day, the deepest images ever captured by the James Webb Space Telescope, and a live look at the asteroids passing by Earth — in a fast, native Mac app.",
       "platforms": [
-        "Apple TV"
+        "Mac"
       ],
       "category": "Photo \u0026 Video",
-      "price": "$19.99",
+      "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/6b/ed/7a/6bed7a18-8f6d-11b9-a5b2-261195be441f/App_Icon-marketing.lsr/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/75/43/75/7543757c-0b55-c455-01f2-1cb75f9c388c/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
         "Real-time space data",
@@ -136,7 +136,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8f/2b/b6/8f2bb607-53aa-946d-8f9e-0129d994d10e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c7/b1/9c/c7b19c18-19b6-9288-c046-59ac810a1386/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EF4444",
       "features": [
         "All country flags",
