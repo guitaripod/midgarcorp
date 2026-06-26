@@ -356,7 +356,11 @@ def main():
         if not os.environ.get(var):
             sys.exit(f"missing env {var} — source ~/.config/midgar/credentials.env")
     TOKEN = asc_token()
-    only = set(sys.argv[1:])
+    argv = sys.argv[1:]
+    if "--live-only" in argv:
+        only = {a["slug"] for a in APPS if a["status"] == "live"}
+    else:
+        only = set(argv)
     facts = []
     for app in APPS:
         if only and app["slug"] not in only:
