@@ -1,0 +1,97 @@
+name: Refresh store assets
+
+# Weekly (and on-demand) refresh of live App Store screenshots + facts via the
+# App Store Connect API, opened as a reviewable PR so the binary screenshot diff
+# can be eyeballed before it deploys. No-ops until the ASC_* secrets are set.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh-store-assets
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Check for ASC credentials
+      id: gate
+      env:
+        ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      run: |
+        if [ -z "$ASC_KEY_ID" ]; then
+          echo "::warning title=Store asset refresh disabled::Add repo secrets ASC_KEY_ID, ASC_ISSUER_ID, and ASC_PRIVATE_KEY (the .p8 contents) to enable the automated screenshot refresh."
+          echo "configured=false" >> "$GITHUB_OUTPUT"
+        else
+          echo "configured=true" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Set up Python
+      if: steps.gate.outputs.configured == 'true'
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Set up Node.js
+      if: steps.gate.outputs.configured == 'true'
+      uses: actions/setup-node@v6
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install tooling
+      if: steps.gate.outputs.configured == 'true'
+      run: |
+        python -m pip install --quiet pyjwt cryptography
+        sudo apt-get update && sudo apt-get install -y webp
+        npm ci
+
+    - name: Write ASC private key
+      if: steps.gate.outputs.configured == 'true'
+      env:
+        ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+      run: printf '%s' "$ASC_PRIVATE_KEY" > "$RUNNER_TEMP/asc_key.p8"
+
+    - name: Refresh live screenshots + facts
+      if: steps.gate.outputs.configured == 'true'
+      env:
+        ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+        ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        ASC_PRIVATE_KEY_PATH: ${{ runner.temp }}/asc_key.p8
+      run: python3 scripts/fetch-store-assets.py --live-only
+
+    - name: Validate the build with the refreshed data
+      if: steps.gate.outputs.configured == 'true'
+      run: npx astro build
+
+    - name: Open a PR if assets changed
+      if: steps.gate.outputs.configured == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        paths="public/screenshots src/data/landing-facts.json"
+        if [ -z "$(git status --porcelain -- $paths)" ]; then
+          echo "No store asset changes — nothing to open."
+          exit 0
+        fi
+        branch="chore/refresh-store-assets-${{ github.run_id }}"
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git checkout -b "$branch"
+        git add $paths
+        git commit -m "chore(assets): refresh live App Store screenshots + facts"
+        git push -u origin "$branch"
+        gh pr create --base master --head "$branch" \
+          --title "chore(assets): refresh App Store screenshots + facts" \
+          --body "Automated refresh of live App Store screenshots and facts via \`scripts/fetch-store-assets.py --live-only\`. Review the screenshot diff and merge to deploy. The build was validated in CI before this PR was opened."
