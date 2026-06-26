@@ -362,6 +362,19 @@ def find_repo_icon(repo):
     return best[0] if best else None
 
 
+def keep_pinned_description(fact, slug, existing):
+    """Preserve a pinned app's curated description against a stale iTunes cache.
+
+    DEVICE_ALLOW apps are mid platform-transition: the public listing leads (e.g.
+    Solar Beam is already a Mac app) but the iTunes lookup intermittently serves
+    the previous-platform description. For these, keep the committed description
+    so a flaky lookup can't revert the page to wrong-platform copy.
+    """
+    if slug in DEVICE_ALLOW and existing.get(slug, {}).get("description"):
+        fact["description"] = existing[slug]["description"]
+        print(f"  kept curated description for pinned {slug}")
+
+
 def main():
     global TOKEN
     for var in ("ASC_KEY_ID", "ASC_ISSUER_ID", "ASC_PRIVATE_KEY_PATH"):
@@ -373,16 +386,21 @@ def main():
         only = {a["slug"] for a in APPS if a["status"] == "live"}
     else:
         only = set(argv)
+    existing = {}
+    if os.path.exists(FACTS_PATH):
+        existing = {a["slug"]: a for a in json.load(open(FACTS_PATH))["apps"]}
     facts = []
     for app in APPS:
         if only and app["slug"] not in only:
             continue
         try:
-            facts.append(process_app(app))
+            f = process_app(app)
         except Exception as e:
             print(f"  !! {app['slug']} FAILED: {e}")
-    if only and os.path.exists(FACTS_PATH):
-        existing = {a["slug"]: a for a in json.load(open(FACTS_PATH))["apps"]}
+            continue
+        keep_pinned_description(f, app["slug"], existing)
+        facts.append(f)
+    if only and existing:
         for f in facts:
             existing[f["slug"]] = f
         order = [a["slug"] for a in APPS]
