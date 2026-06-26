@@ -70,6 +70,14 @@ DEVICE_PREF = {
     "tv": ["APP_APPLE_TV"],
     "mac": ["APP_DESKTOP"],
 }
+
+# Pin a slug to specific screenshot buckets when ASC retains platform versions the
+# public storefront no longer surfaces. Solar Beam still has READY_FOR_SALE
+# tvOS/visionOS records and an in-review iOS build in ASC, but the live US listing
+# is a free Mac app — the landing page must match what a visitor can actually get.
+DEVICE_ALLOW = {
+    "solarbeam": {"mac"},
+}
 # Cap the stored webp width per device class (display never exceeds this @2x).
 WIDTH_CAP = {"iphone": 1290, "ipad": 1600, "tv": 1920, "mac": 1920}
 
@@ -218,6 +226,10 @@ def process_app(app):
             loc_attrs = attrs
         for bucket, assets in buckets.items():
             merged.setdefault(bucket, assets)
+
+    allow = DEVICE_ALLOW.get(slug)
+    if allow:
+        merged = {b: a for b, a in merged.items() if b in allow}
 
     shots_manifest = {}
     for bucket, assets in merged.items():
