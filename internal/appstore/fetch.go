@@ -366,6 +366,13 @@ func mapDeviceTosPlatform(app iTunesApp) []string {
 
 	// Check supported devices array
 	if len(app.SupportedDevices) > 0 {
+		// Mac apps report a MacDesktop device family even when kind stays "software"
+		for _, device := range app.SupportedDevices {
+			if strings.Contains(device, "Mac") {
+				return []string{"Mac"}
+			}
+		}
+
 		// Check for Apple TV
 		for _, device := range app.SupportedDevices {
 			if strings.Contains(device, "AppleTV") {
