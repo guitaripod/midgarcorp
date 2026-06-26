@@ -63,7 +63,7 @@
       "name": "Dream Eater: AI Dream Decoder",
       "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-ai-dream-decoder/id6661019277",
       "description": "You wake at 3 a.m. with a dream still vivid. Type it into Dream Eater and within seconds you get a thoughtful reading of what it might mean, plus a piece of dream art generated from your own words. Your first reading is free.\n\nDECODE THE MEANING\nDescribe your dream in your own words and receive an AI-powered interpretation: the key symbols, the emotional undercurrents, and what your subconscious might be working through. A built-in symbol dictionary helps you go deeper on recurring images.\n\nDREAM ART YOU CAN SHARE\nEvery analyzed dream comes with a unique image generated from your dream's own imagery. Save it, share it, or keep it as the cover of that night's entry.\n\nA JOURNAL BUILT FOR 3AM\nCapture dreams fast, while they are still fresh. Big type, minimal taps, and no account setup standing between you and the half-remembered. Writing in your journal is always free.\n\nPATTERNS OVER TIME\nMoods, themes, and recurring symbols surface across weeks of entries, so you can see what your sleeping mind keeps returning to.\n\nMOON PHASES\nEach entry records the moon phase from that night, and lunar info is always on hand if you like tracking your dreams against the sky.\n\nTRY PREMIUM FREE FOR 7 DAYS\nStart a 7-day free trial on the annual plan and analyze unlimited dreams. Cancel anytime during the trial and pay nothing.\n\nOR PAY PER DREAM\nPrefer no subscription right now? Buy credit packs of 5, 15, 50, or 100 dream analyses. Credits never expire.\n\nDream Eater is for entertainment and self-reflection. It is not a medical, psychological, or therapeutic tool.\n\nPrivacy: no account required; dreams stay on your device and iCloud.\n\nAvailable in English, Spanish, and Chinese.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://mako.midgarcorp.cc/privacy/dreameater",
-      "releaseNotes": "• Redesigned for iOS 26 with Liquid Glass throughout\n• Premium now starts with a 7-day free trial on the annual plan\n• Refreshed paywall and a clearer credits store\n• Type your dream first, then decide how to unlock the reading\n• Bug fixes and performance improvements",
+      "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
       "category": "Lifestyle",
       "genres": [
         "Lifestyle",
@@ -72,9 +72,9 @@
       "price": "Free",
       "rating": 5,
       "ratingCount": 2,
-      "version": "1.3.0",
+      "version": "1.3.1",
       "releaseDate": "2024-09-18T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-12T10:19:11Z",
+      "currentVersionReleaseDate": "2026-06-18T21:20:52Z",
       "minimumOsVersion": "18.0",
       "contentRating": "17+",
       "languages": [
@@ -213,7 +213,7 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.DreamEater",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/21/0e/92/210e929d-8f88-c66f-3486-374f7ba3e8ec/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/60/57/bb/6057bb97-7606-c4ad-f23c-a707f2c6ddb8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/prblemslver",
       "keywords": "meaning,interpretation,analysis,symbols,dictionary,diary,lucid,sleep,subconscious,moon,art,vision",
@@ -286,7 +286,7 @@
       "name": "Psywave: AI Playlist Maker",
       "appStoreUrl": "https://apps.apple.com/us/app/psywave-ai-playlist-maker/id6727000827",
       "description": "Describe a mood in one line — or pick a photo — and get a real Apple Music playlist in seconds.\n\nPsywave turns plain words and pictures into soundtracks that fit. Type a vibe, a scene, or a feeling — \"drum and bass intensity,\" \"smooth sailing yacht rock,\" \"focus for deep work\" — and a curated playlist of real songs lands in your Apple Music library with one tap. No endless scrolling. No stale stations.\n\nWORDS IN, PLAYLIST OUT\nTell Psywave what you want to hear and it builds a tailored tracklist around your exact mood, then imports it straight into Apple Music.\n\nPHOTOS BECOME PLAYLISTS\nPoint Psywave at a sunset, a road trip, a rainy window — it reads the mood, the colors, the feeling, and scores the moment with real songs.\n\nSEE YOUR SOUND\nEvery playlist comes with a genre breakdown chart, so you can see exactly what your vibe is made of.\n\nBUILT FOR YOUR MOMENT\n• Workout — high-energy sets in seconds\n• Focus & deep work — distraction-free flow\n• Party & hosting — read the room, set the vibe\n• Wind down — the right closer for a slow night\n\nYOUR LIBRARY OF MOODS\nEvery playlist you generate is saved. Re-import any of them to Apple Music whenever the mood comes back.\n\nGO PRO, OR PAY AS YOU GO\nStart with 3 free playlists. Then choose Psywave Pro for unlimited playlists (with a 7-day free trial on the annual plan), or grab a credit pack and only pay for what you make. Credits never expire.\n\nPsywave requires an Apple Music subscription to import playlists.\n\nPrivacy policy: https://openai-image-proxy.guitaripod.workers.dev/privacy/psywave\nTerms of use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
-      "releaseNotes": "What's new in 1.3.0:\n\n- Export your playlists anywhere: share them, copy the track list, or send a CSV that imports into your favorite music services with Soundiiz or TuneMyMusic.\n- Remix any playlist into a fresh set, or add 10 more songs with a single tap.\n- Pro: longer playlists, up to 50 songs.\n- A new playlist view to revisit everything you've made.\n- A bold new dark design with a live, animated generation screen.",
+      "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
       "category": "Music",
       "genres": [
         "Music",
@@ -295,9 +295,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.3.0",
+      "version": "1.3.1",
       "releaseDate": "2024-10-02T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-13T22:24:58Z",
+      "currentVersionReleaseDate": "2026-06-18T21:23:23Z",
       "minimumOsVersion": "17.0",
       "contentRating": "4+",
       "languages": [
@@ -434,7 +434,7 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.psywave",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a0/bd/52/a0bd5254-066e-cec8-a59a-fcbd400e6080/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d4/d9/af/d4d9af02-06a2-5892-b158-96145331b0f2/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "generator,mood,photo,song,dj,mix,curator,discovery,focus,workout,party,gym,study,picture,radio",
@@ -481,7 +481,7 @@
       "name": "Double Kick: Menu Translator",
       "appStoreUrl": "https://apps.apple.com/us/app/double-kick-menu-translator/id6736581403",
       "description": "Standing in front of a menu you can't read? Point your camera and know exactly what to order.\n\nDouble Kick turns any foreign-language menu into a guide you actually understand. Not a word-for-word translation that leaves you guessing, but the real story behind every dish and drink: what's in it, how it's made, what it tastes like, and what it costs in your own currency. Snap one photo and decide with confidence.\n\nKNOW WHAT YOU'RE ORDERING\n- Read and translate menus in any language from a single photo\n- Understand ingredients, preparation, and flavor before you commit\n- See prices converted to your home currency, instantly\n\nA REAL FOOD & DRINK EXPERT\n- Explore regional specialties and global cuisines in plain language\n- Decode spirits, cocktails, and wine lists that simple translators skip\n- Learn the dishes behind the names, not just the words\n\nBUILT FOR TRAVELERS\n- Works on menus from street stalls to fine-dining tasting menus\n- Keeps your menu history on your device for every trip\n- Tracks your taste preferences across cuisines and trips\n\nPRIVATE BY DESIGN\n- No account required, no ads, no tracking\n- We don't sell your data, and your menu history stays on your device\n\nONE PRICE, FOREVER\nNo subscriptions. No ads. Buy it once and own every feature, on every trip.\n\nThe next time the menu is in a language you don't speak, you won't order blind. You'll order exactly what you want.\n\nPhotograph a menu and see for yourself.",
-      "releaseNotes": "New: credit packs to keep scanning menus. No account needed — start instantly, with optional Sign in with Apple to sync across devices. Reliability improvements under the hood.",
+      "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
       "category": "Food & Drink",
       "genres": [
         "Food & Drink",
@@ -490,9 +490,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.1.1",
+      "version": "1.1.2",
       "releaseDate": "2024-12-12T08:00:00Z",
-      "currentVersionReleaseDate": "2026-06-13T07:08:21Z",
+      "currentVersionReleaseDate": "2026-06-18T21:20:53Z",
       "minimumOsVersion": "17.0",
       "contentRating": "4+",
       "languages": [
@@ -629,7 +629,7 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.doublekick",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/92/39/04/923904f0-802a-7227-e10f-b6200fec5e6a/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/60/6b/e3/606be322-8062-4e60-2b22-7126d440363b/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "reader,foreign,cuisine,currency,dining,abroad,order,spirits,cocktail,ingredient,travel,guide",
@@ -689,7 +689,7 @@
       "name": "PixiePocket: AI Image Maker",
       "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339",
       "description": "Pro-grade AI images, created by chat. Pay only for what you make — no subscription, ever.\n\nEvery new creator starts with 25 free credits — enough to try Nano Banana image generation the moment the app opens. No sign-up required.\n\nCHAT YOUR WAY TO THE IMAGE\nDescribe what you want, refine it message by message, and watch your image evolve. Attach a photo and edit it by talking: change hair, swap backgrounds, restyle anything.\n\nPOWERED BY NANO BANANA + GPT IMAGE\nPixiePocket generates with Google's Nano Banana (Gemini) and OpenAI's GPT image models — two engines, one chat.\n\nPAY PER IMAGE, NOT PER MONTH\nCredits never expire. Buy a pack once and create whenever inspiration strikes — bigger packs carry up to 68% bonus credits. No weekly trap, no renewals, no surprise charges.\n\nCONTROL THE OUTPUT LIKE A PRO\n• Batch up to 10 images per request\n• Low / Medium / High / Auto quality tiers\n• Custom sizes, square to widescreen\n• PNG, JPEG or WebP output, transparent backgrounds\n• Live credit cost shown before you create\n\nEVERYWHERE YOU ARE\nStart anonymously, then sign in with Apple, Google, or GitHub to keep your gallery in sync across devices. Share your best work to the public community gallery — or keep it all to yourself.\n\nA NOTE ON PRIVACY & SAFETY\nYour prompts and attached photos are sent to Google Gemini and OpenAI to generate images — you approve this in-app before your first creation and can withdraw consent anytime in Settings. Some prompts may be filtered by content moderation. Images shared to the community gallery can be reported in one tap and are reviewed.\n\nGoogle, Gemini and Nano Banana are trademarks of Google LLC. This app is not endorsed by or affiliated with Google or OpenAI.",
-      "releaseNotes": "The relaunch — PixiePocket is faster, friendlier, and fairer.\n\n• A brand-new welcome flow gets you creating in seconds\n• 25 free credits for every new creator — enough to try Nano Banana right away\n• All-new credit store: bigger packs now carry up to 68% bonus credits\n• Your credit balance now lives in the toolbar, and warns you before you run low\n• Full Liquid Glass redesign for iOS 26, plus a brand-new app icon\n• Report any community-gallery image in one tap\n• More reliable purchases and image generation",
+      "releaseNotes": "You're in control of your creations:\n\n• Delete any of your posts — they're removed from the public gallery right away.\n• New \"Share to Public Gallery\" setting lets you keep new creations private.\n• Hide or re-share individual images whenever you like.\n• Block accounts you'd rather not see in Explore.\n\nPlus reliability improvements. Thanks for using Pixie!",
       "category": "Photo & Video",
       "genres": [
         "Photo & Video",
@@ -698,9 +698,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.3.0",
+      "version": "1.4.0",
       "releaseDate": "2025-09-19T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-12T20:57:33Z",
+      "currentVersionReleaseDate": "2026-06-19T14:03:46Z",
       "minimumOsVersion": "16.6",
       "contentRating": "4+",
       "languages": [
@@ -837,7 +837,7 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.guitaripod.Pixie",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/31/45/09/31450933-1db7-1d24-b451-980c1d29b344/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2d/07/71/2d0771dc-9d40-5d63-5380-0142e58390be/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "generator,gemini,gpt,chatbot,anime,wallpaper,avatar,sticker,transparent,background,batch,credits",
@@ -915,8 +915,8 @@
       },
       "name": "App of the Dead: Religions",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
-      "description": "What happens after we die? Find out what 20+ world religions, ancient civilizations, and spiritual traditions actually believe — one 5-minute lesson at a time. Start free, no course required.\n\nApp of the Dead turns comparative religion into a game. Bite-sized lessons, quick quizzes, daily streaks, and XP take you from curious beginner to confident, well-read explorer — across every major faith and the great afterlife myths of history. Neutral, respectful, and built for the genuinely curious.\n\nLEARN THROUGH PLAY\nGamified lessons inspired by the language-learning apps you already love. Multiple-choice, matching, and true/false quizzes make Olam Ha-Ba, Valhalla, reincarnation, and the Egyptian and Greek underworlds stick — without dry textbook reading.\n\nEVERY BELIEF, SIDE BY SIDE\nA gamified path through them all, not just one. Compare how Judaism, Christianity, Islam, Buddhism, Hinduism, Norse, Egyptian, Greek, and many more traditions answer humanity's oldest question — and see where they agree and diverge.\n\nSTART FREE, FOREVER\nThe full Judaism path is free for life — complete lessons on Jewish afterlife beliefs and Olam Ha-Ba, no time limit, no catch. Explore it end to end before you ever pay a cent.\n\nGO PREMIUM — EVERYTHING, ONE PLAN\nUnlock all 21 paths and unlimited Oracle conversations with Premium: an annual plan with a 7-day free trial ($39.99/year in the US), or monthly at $9.99/month. Prefer to own it forever? Ultimate Enlightenment is a one-time lifetime unlock. Or add individual belief systems one at a time:\n• Major faiths: Christianity, Islam, Buddhism, Hinduism\n• Ancient worlds: Egyptian afterlife, Greek underworld, Norse Valhalla\n• Eastern traditions: Taoism, Shinto, Sikhism\n• Indigenous and modern paths, and many more\n\nBUILT TO KEEP YOU LEARNING\n• Daily streaks that turn 5 minutes into a habit\n• XP and levels that track real progress\n• Achievements and badges for mastering each path\n• Beautiful themed visuals unique to every tradition\n\nMADE FOR\n• Religious-studies and world-religions students\n• Writers and worldbuilders researching authentic afterlife lore\n• Travelers and the endlessly curious\n• Educators and parents who want a respectful, neutral survey of faiths\n\nEvery tradition is presented with equal respect and zero proselytizing — this is education, not conversion.\n\nStart the free Judaism path today and explore humanity's greatest mystery.\n\n—\nFor educational purposes. App of the Dead presents all religious and spiritual traditions neutrally and is not affiliated with or endorsed by any religious organization.\n\nSubscriptions are charged to your Apple ID account at confirmation of purchase and renew automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel anytime in Settings. Any unused portion of a free trial is forfeited when a subscription is purchased.\n\nPrivacy Policy: https://docs.google.com/document/d/1hgyLnTBAPtZC4miv1nEHuvw4_oRhj_gScdCxy7kGePw/\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
-      "releaseNotes": "Your Profile has been reborn as The Scroll of Ascension — your own living Book of the Dead.\n\nREMASTERED PROFILE\n• A golden XP ring traces your rise around your avatar\n• Choose your Seeker name and earn spiritual rank titles as you grow\n• The Eternal Flame — your daily streak and XP multiplier, finally front and center\n• The Scribe's Ledger — your accuracy, study time, realms mastered, and the day your journey began\n• Halls of the Dead — a trophy hall for all 22 realms, crowned as you master each one\n• Hall of Honors — every achievement you've earned, on display\n\nHand-illustrated in our papyrus style, beautiful in both light and dark.\n\nKeep learning, keep ascending. As always — the full Judaism path is free, forever.",
+      "description": "What happens after we die? Twenty-two faiths have answered for thousands of years. Explore every one in 5-minute lessons, then talk to the gods themselves.\n\nApp of the Dead turns comparative religion into a game. Bite-size lessons, instant-feedback quizzes, XP, streaks and achievements carry you across 22 belief systems and how each one imagines death, the soul and the world beyond.\n\nMEET THE ORACLE\nConverse with deities and guides as on-device AI personas, Anubis, Hermes, Kali, Odin, Azrael and more, and ask them anything about life, death and the afterlife. The Oracle now runs Google Gemma 4, a 2026-generation model, for dramatically smarter, more in-character answers. It runs entirely on your iPhone, so your conversations never leave the device, online or off.\n\nLEARN THROUGH PLAY\nEvery lesson is a few minutes. Multiple-choice, matching and true-or-false questions give immediate feedback, so the ideas actually stick. Mastery tests crown each path and your streak keeps you coming back.\n\nEVERY BELIEF, SIDE BY SIDE\nJudaism, Christianity, Islam, Buddhism, Hinduism, Norse, Egyptian, Greek, Zoroastrian and many more, each with its own theme and voice. See where traditions agree, where they diverge, and what they each say lies beyond, all in one place.\n\nSTART FREE\nThe complete Judaism path is free forever, no account required. Learn at your own pace, fully offline, with everything stored on your device.\n\nGO PREMIUM\nUnlock all 21 remaining paths, unlimited Oracle conversations and every future path with Premium. Try it free for 7 days, then keep learning for one annual price, or go monthly. Prefer to own forever? Unlock a single path on its own, or take Ultimate lifetime access.\n\nBUILT TO KEEP YOU LEARNING\nDistinct themes per tradition, full VoiceOver and Dynamic Type support, and a profile that maps your whole journey across all 22 realms.\n\nDeath is the one question every culture has tried to answer. Start exploring how.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://docs.google.com/document/d/1hgyLnTBAPtZC4miv1nEHuvw4_oRhj_gScdCxy7kGePw/edit?usp=sharing",
+      "releaseNotes": "Game Center has arrived. Climb global leaderboards and collect achievements as you journey through the afterlife. Plus polish and fixes.",
       "category": "Education",
       "genres": [
         "Education",
@@ -927,9 +927,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.3.0",
+      "version": "1.4.1",
       "releaseDate": "2025-09-23T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-16T05:38:43Z",
+      "currentVersionReleaseDate": "2026-06-22T14:25:29Z",
       "minimumOsVersion": "18.2",
       "contentRating": "12+",
       "languages": [
@@ -1066,10 +1066,10 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.aotd",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/17/2f/b5/172fb5b5-414f-38f8-9c61-37f0bc0fde12/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/36/7d/5c/367d5c74-507c-6489-ee4e-3593b90bc817/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/prblemslver",
-      "keywords": "comparative,belief,studies,learn,reincarnation,karma,heaven,hell,underworld,mythology,norse,egyptian",
+      "keywords": "comparative,reincarnation,karma,heaven,hell,mythology,norse,egyptian,death,sacred,soul,deity,ritual",
       "iconLocal": "/screenshots/appofthedead/icon.webp",
       "platforms": [
         "iPhone",
@@ -1145,7 +1145,7 @@
       "name": "Master of Flags: World Quiz",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
       "description": "Master of Flags is now FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no \"weekly trial\", no account. Play free forever, and if you want more, Pro is a single one-time purchase. Pay once, own it for life.\n\nPLAY FREE\n• Flag quiz across Europe, Asia, Africa, the Americas and the world\n• Daily Challenge — ten flags, once a day, shareable results\n• Daily streaks with streak freezes so one busy day doesn't erase your run\n• XP, levels and per-region progress\n• Game Center leaderboards and achievements\n• Flag Encyclopedia — browse roughly 250 flags and territories with details about each country, completely free\n\nGO PRO — ONE PURCHASE, YOURS FOREVER\n• Hard Mode: eight flags per round instead of three\n• Review Mistakes: drill exactly the flags you got wrong\n• Statistics: levels, streaks and progress across every region\n• 5 streak freezes per month instead of 1\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nThe quiz rewards consistency, and the Encyclopedia doubles as a study reference for geography, capitals and country facts. Perfect for students, travelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app: you are a founder. Everything Pro unlocks is yours automatically, free, forever. Thank you for seven years.",
-      "releaseNotes": "Master of Flags is now FREE for everyone.\n\nIf you bought the app when it was paid: THANK YOU. You are grandfathered into Pro automatically — Hard Mode, Statistics, Review Mistakes, extra streak freezes — at no cost, forever. You lose nothing and gain everything in this update. Restore Purchases brings it back on any new device.\n\nNew in this version:\n• Daily Challenge with shareable results and streaks (with streak freezes)\n• Game Center leaderboards and achievements\n• Hard Mode: 8-flag rounds (Pro)\n• Review Mistakes and a full Statistics dashboard (Pro)\n• Fixed an issue where the correct answer could be visually hinted\n• Still no ads. Still no subscription. One optional one-time purchase.",
+      "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
       "category": "Education",
       "genres": [
         "Education",
@@ -1156,9 +1156,9 @@
       "price": "Free",
       "rating": 4.6,
       "ratingCount": 5,
-      "version": "2.3.0",
+      "version": "2.3.1",
       "releaseDate": "2019-10-21T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-11T19:30:04Z",
+      "currentVersionReleaseDate": "2026-06-24T11:25:06Z",
       "minimumOsVersion": "17.4",
       "contentRating": "4+",
       "languages": [
@@ -1295,7 +1295,7 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.knowtheflag",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8f/2b/b6/8f2bb607-53aa-946d-8f9e-0129d994d10e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c7/b1/9c/c7b19c18-19b6-9288-c046-59ac810a1386/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://twitter.com/prblemslver",
       "keywords": "country,guess,game,trivia,map,states,europe,flashcard,study,memorize,atlas,national,city,asia,africa",
@@ -1604,8 +1604,8 @@
       },
       "name": "Solar Beam",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
-      "description": "A window onto the cosmos, right on your desktop.\n\nSolar Beam brings the universe to your Mac: NASA's Astronomy Picture of the Day, the deepest images ever captured by the James Webb Space Telescope, and a live look at the asteroids passing by Earth — in a fast, native Mac app.\n\nASTRONOMY PICTURE OF THE DAY\nEvery day, NASA picks one breathtaking image of our universe. Solar Beam pairs it with bite-sized, AI-powered facts so you actually understand what you're looking at.\n\nTHE WEBB TELESCOPE\nExplore the sharpest views of deep space humanity has ever produced — and export any image in full resolution, ready for your desktop.\n\nNEAR-EARTH ASTEROIDS\nTrack what's hurtling past us in real time, with charts of approach distance, speed, and size, and a live threat readout.\n\nMADE FOR THE MAC\n• A true native app — sidebar navigation, keyboard shortcuts, multiple windows\n• Today's picture and a live asteroid ticker in your menu bar, one glance away all day\n• Save any image with the standard Mac save panel\n• Ambient Mode — a slow, beautiful deep-space slideshow in its own window\n\nSOLAR BEAM PREMIUM\nGo deeper with an optional subscription or a one-time lifetime unlock:\n• Ambient Mode — a living deep-space gallery on every screen you own\n• The complete Webb telescope library\n• Years of Pictures of the Day, far beyond the free 30-day window\n• Unlimited AI-generated facts\nOne purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro, with Family Sharing included. A free trial is available on the annual plan, and the daily picture is always free.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\n—\n\nSolar Beam is an independent app and is not affiliated with, endorsed by, or sponsored by NASA or ESA. Imagery and data are provided through NASA's public APIs.",
-      "releaseNotes": "",
+      "description": "Turn your Apple TV into a window onto the cosmos.\n\nSolar Beam brings the universe to your living room in stunning 4K — a new NASA masterpiece every day, the deepest images ever captured by the James Webb Space Telescope, and a live look at the asteroids passing by Earth. No telescope required.\n\nASTRONOMY PICTURE OF THE DAY\nEvery day, NASA picks one breathtaking image of our universe. Solar Beam brings it to the big screen, paired with bite-sized, AI-powered facts so you actually understand what you're looking at — from solar flares to galaxies billions of light-years away.\n\nTHE WEBB TELESCOPE\nExplore the sharpest views of deep space humanity has ever produced. Newborn stars, colliding galaxies, glittering nebulae, and worlds we're only beginning to name — all from the most powerful telescope ever built.\n\nNEAR-EARTH ASTEROIDS\nTrack what's hurtling past us in real time. See how close each asteroid comes, how fast it's moving, and the size of the impact it would leave — with a live threat readout that updates as NASA finds new objects every week.\n\nMADE FOR THE BIG SCREEN\n• Gorgeous, gallery-first design built natively for tvOS\n• Immersive full-screen detail views with official NASA descriptions\n• AI-generated facts that make the science click\n• Fast launches with smart offline caching\n• Beautiful enough to leave running as living cosmic wallpaper\n\nPour a coffee, lean back, and travel from our solar system to the edge of the observable universe — one stunning image at a time.\n\nSOLAR BEAM PREMIUM\nGo deeper with an optional subscription or a one-time lifetime unlock:\n• Ambient Mode — turn your TV into a living deep-space gallery\n• The complete Webb telescope library in 4K\n• Years of Pictures of the Day, far beyond the free 30-day window\n• Unlimited AI-generated facts\nA free trial is available on the annual plan, and the daily picture is always free.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\n—\n\nSolar Beam is an independent app and is not affiliated with, endorsed by, or sponsored by NASA or ESA. Imagery and data are provided through NASA's public APIs.",
+      "releaseNotes": "Webb Telescope, decoded: every image now names its target — the Cosmic Cliffs, Stephan's Quintet, Webb's First Deep Field — with the instrument and wavelength, instead of raw file names.\n\n• Picture of the Day video days now show a real thumbnail, with subtle motion\n• Thumbnails fade in smoothly instead of popping in\n• New: browse more apps from the developer in Settings\n• Polish and bug fixes",
       "category": "Photo & Video",
       "genres": [
         "Photo & Video",
@@ -1614,20 +1614,24 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "2.0",
+      "version": "2.1",
       "releaseDate": "2024-09-29T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-13T06:33:59Z",
-      "minimumOsVersion": "15.0",
+      "currentVersionReleaseDate": "2026-06-26T01:54:08Z",
+      "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
         "EN"
       ],
       "supportedDevices": [
-        "MacDesktop-MacDesktop"
+        "MacDesktop-MacDesktop",
+        "AppleTV4-AppleTV4",
+        "AppleTV62-AppleTV5",
+        "AppleTV4KSecondGen-AppleTV4KSecondGen",
+        "AppleTV4KThirdGen-AppleTV4KThirdGen"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.solarbeam",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/6b/ed/7a/6bed7a18-8f6d-11b9-a5b2-261195be441f/App_Icon-marketing.lsr/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/89/3c/52/893c522b-86b9-abcd-bd8a-75e39670b0cc/App_Icon-marketing.lsr/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "apod,james,webb,astronomy,JWST,telescope,asteroid,cosmos,universe,nebula,stars,planets,wallpaper",
@@ -1648,31 +1652,49 @@
             "src": "/screenshots/psybeam/iphone-1.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Psybeam"
+            "label": "Screen 1"
           },
           {
             "src": "/screenshots/psybeam/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Psybeam"
+            "label": "Screen 2"
           },
           {
             "src": "/screenshots/psybeam/iphone-3.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Psybeam"
+            "label": "Screen 3"
           },
           {
             "src": "/screenshots/psybeam/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Psybeam"
+            "label": "Screen 4"
           },
           {
             "src": "/screenshots/psybeam/iphone-5.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Psybeam"
+            "label": "Screen 5"
+          },
+          {
+            "src": "/screenshots/psybeam/iphone-6.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 6"
+          },
+          {
+            "src": "/screenshots/psybeam/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 7"
+          },
+          {
+            "src": "/screenshots/psybeam/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 8"
           }
         ]
       },
@@ -1688,9 +1710,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.0.0",
-      "releaseDate": "2026-06-22T10:48:06Z",
-      "currentVersionReleaseDate": "2026-06-22T10:48:06Z",
+      "version": "1.0.1",
+      "releaseDate": "2026-06-22T07:00:00Z",
+      "currentVersionReleaseDate": "2026-06-24T19:06:12Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
@@ -1827,7 +1849,7 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.guitaripod.psybeam",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2c/5e/ed/2c5eed1e-b2e3-ef5b-cd53-4fc99cbeee96/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c8/d8/e7/c8d8e777-7a61-ff54-2140-8979ca990e52/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/prblemslver",
       "keywords": "voice,interpreter,language,speech,conversation,trip,abroad,foreign,tourist,phrasebook,spanish,french",
