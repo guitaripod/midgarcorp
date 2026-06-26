@@ -156,3 +156,23 @@ jobs:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         command: pages deploy dist --project-name=midgarcorp --branch=master --commit-dirty=true
+
+  audit-store:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: contains(fromJSON('["schedule", "workflow_dispatch"]'), github.event_name)
+
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Set up Go
+      uses: actions/setup-go@v6
+      with:
+        go-version-file: 'go.mod'
+        cache: false
+
+    - name: Build ct CLI
+      run: make build
+
+    - name: Audit committed store facts against the live App Store
+      run: ./ct audit-store

@@ -26,6 +26,11 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Error fetching GitHub data: %v\n", err)
 			os.Exit(1)
 		}
+	case "audit-store":
+		if err := appstore.AuditStore(); err != nil {
+			fmt.Fprintf(os.Stderr, "Store audit failed: %v\n", err)
+			os.Exit(1)
+		}
 	case "prebuild":
 		if err := build.PreBuild(); err != nil {
 			fmt.Fprintf(os.Stderr, "Pre-build error: %v\n", err)
@@ -51,6 +56,7 @@ func printUsage() {
 	fmt.Println("Commands:")
 	fmt.Println("  fetch-appstore  Fetch latest App Store data")
 	fmt.Println("  fetch-github    Fetch latest GitHub repository data")
+	fmt.Println("  audit-store     Flag committed landing facts that drifted from the live App Store")
 	fmt.Println("  prebuild        Run pre-build tasks")
 	fmt.Println("  postbuild       Run post-build optimizations")
 	fmt.Println("  help            Show this help message")
