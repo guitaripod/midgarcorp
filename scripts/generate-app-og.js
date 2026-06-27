@@ -44,6 +44,29 @@ function roundRectPath(ctx, x, y, w, h, r) {
   ctx.closePath();
 }
 
+function hexA(hex, a) {
+  const m = hex.replace('#', '');
+  const n = m.length === 3 ? m.split('').map((c) => c + c).join('') : m;
+  const r = parseInt(n.slice(0, 2), 16);
+  const g = parseInt(n.slice(2, 4), 16);
+  const b = parseInt(n.slice(4, 6), 16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+// Cheap ordered dither to kill banding on large smooth gradients.
+function dither(ctx, x, y, w, h, amount = 6) {
+  const img = ctx.getImageData(x, y, w, h);
+  const d = img.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const n = (((i / 4) * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff - 0.5;
+    const v = n * amount;
+    d[i] += v;
+    d[i + 1] += v;
+    d[i + 2] += v;
+  }
+  ctx.putImageData(img, x, y);
+}
+
 function wrapText(ctx, text, maxWidth, maxLines) {
   const words = text.split(/\s+/).filter(Boolean);
   const lines = [];
@@ -127,6 +150,23 @@ async function generate(app) {
   ctx.fillText(`guitaripod@midgar: ~/apps/${app.slug}`, W / 2, ty + 27);
   ctx.textAlign = 'left';
 
+  // ambient accent wash inside the panel (behind all content), dithered to avoid banding
+  ctx.save();
+  roundRectPath(ctx, tx + 1, ty + 44, tw - 2, th - 45, 13);
+  ctx.clip();
+  const washL = ctx.createRadialGradient(tx + tw * 0.14, ty + th * 0.34, 0, tx + tw * 0.14, ty + th * 0.34, tw * 0.5);
+  washL.addColorStop(0, hexA(accent, 0.1));
+  washL.addColorStop(1, hexA(accent, 0));
+  ctx.fillStyle = washL;
+  ctx.fillRect(tx, ty, tw, th);
+  const washR = ctx.createRadialGradient(tx + tw * 0.86, ty + th * 0.7, 0, tx + tw * 0.86, ty + th * 0.7, tw * 0.5);
+  washR.addColorStop(0, hexA(accent, 0.08));
+  washR.addColorStop(1, hexA(accent, 0));
+  ctx.fillStyle = washR;
+  ctx.fillRect(tx, ty, tw, th);
+  ctx.restore();
+  dither(ctx, tx + 2, ty + 46, tw - 4, th - 48, 7);
+
   const contentTop = ty + 44;
   const padX = tx + 52;
 
@@ -139,17 +179,28 @@ async function generate(app) {
       const abs = path.join(root, 'public', shot.src.replace(/^\//, ''));
       const img = await loadShotPng(abs);
       const portrait = shot.h >= shot.w;
-      const boxH = portrait ? th - 150 : 300;
+      const boxH = portrait ? th - 150 : 272;
       const scale = boxH / shot.h;
       const drawW = shot.w * scale;
       const drawH = shot.h * scale;
       const dx = tx + tw - 52 - drawW;
       const dy = contentTop + (th - 44 - drawH) / 2 - 6;
+      const rad = portrait ? 28 : 12;
+      // soft accent bloom
       ctx.save();
-      ctx.shadowColor = accent;
-      ctx.shadowBlur = 48;
-      ctx.shadowOffsetY = 18;
-      roundRectPath(ctx, dx, dy, drawW, drawH, portrait ? 28 : 12);
+      ctx.shadowColor = hexA(accent, 0.55);
+      ctx.shadowBlur = 90;
+      ctx.shadowOffsetY = 0;
+      roundRectPath(ctx, dx, dy, drawW, drawH, rad);
+      ctx.fillStyle = '#000';
+      ctx.fill();
+      ctx.restore();
+      // neutral depth shadow
+      ctx.save();
+      ctx.shadowColor = 'rgba(0,0,0,0.55)';
+      ctx.shadowBlur = 38;
+      ctx.shadowOffsetY = 26;
+      roundRectPath(ctx, dx, dy, drawW, drawH, rad);
       ctx.fillStyle = '#000';
       ctx.fill();
       ctx.restore();
