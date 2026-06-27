@@ -1997,26 +1997,26 @@
           {
             "src": "/screenshots/crucible/iphone-1.webp",
             "w": 1290,
-            "h": 2906,
-            "label": "Home — Continue Watching, On Deck, Recently Added"
+            "h": 2796,
+            "label": "Home — Continue Watching, On Deck, and Recently Added"
           },
           {
             "src": "/screenshots/crucible/iphone-2.webp",
             "w": 1290,
-            "h": 2906,
-            "label": "Show detail with season picker"
+            "h": 2796,
+            "label": "Detail with backdrop, cast & crew, and more like this"
           },
           {
             "src": "/screenshots/crucible/iphone-3.webp",
             "w": 1290,
-            "h": 2906,
-            "label": "Browse folders for unindexed content"
+            "h": 2796,
+            "label": "Built-in player with Skip Intro and Picture-in-Picture"
           },
           {
             "src": "/screenshots/crucible/iphone-4.webp",
             "w": 1290,
-            "h": 2906,
-            "label": "Movie library grid"
+            "h": 2796,
+            "label": "Movie library with Continue Watching and a poster grid"
           }
         ]
       },
