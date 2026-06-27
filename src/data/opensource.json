@@ -1038,7 +1038,7 @@
     {
       "id": "rawdog.ml.nvim",
       "name": "rawdog.ml.nvim",
-      "description": "my neovim config, btw. for arch and macOS, btw.",
+      "description": "my neovim config, for Arch and macOS",
       "language": "Lua",
       "platforms": [],
       "stars": 0,
