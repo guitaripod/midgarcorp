@@ -42,12 +42,12 @@
       "genres": [
         "Entertainment"
       ],
-      "price": 0,
+      "price": "Free",
       "rating": 0,
       "ratingCount": 0,
       "version": "1.0.0",
-      "releaseDate": null,
-      "currentVersionReleaseDate": null,
+      "releaseDate": "2026-06-27",
+      "currentVersionReleaseDate": "2026-06-27",
       "minimumOsVersion": "18.0",
       "contentRating": "17+",
       "languages": [
