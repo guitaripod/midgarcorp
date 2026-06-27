@@ -22,7 +22,10 @@ const releaseUrl = app.latestReleaseUrl ?? app.githubUrl;
 
 const site = 'https://midgarcorp.cc';
 const canonical = `${site}/${app.slug}`;
-const ogImage = `/og/${app.slug}.png`;
+// Bump OG_REV when card artwork changes so social scrapers refetch (the image
+// path is otherwise stable and gets cached hard by unfurlers).
+const OG_REV = '2';
+const ogImage = `/og/${app.slug}.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
   ? app.name.split(':').slice(1).join(':').trim()
