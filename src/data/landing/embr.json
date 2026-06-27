@@ -1,0 +1,116 @@
+{
+  "seoTitle": "Embr — The Best Native Twitch Client for iPhone",
+  "metaDescription": "Embr is a fast, native iPhone Twitch client with a premium liquid-glass design. Watch live, VODs, and clips with PiP and background audio, real-time chat with animated 7TV, BTTV and FFZ emotes, and full guest browsing. Free and open source.",
+  "keywords": [
+    "native twitch client for iphone",
+    "best twitch app ios",
+    "twitch picture in picture iphone",
+    "twitch background audio app",
+    "watch twitch with chat ios",
+    "7tv bttv ffz emotes iphone",
+    "twitch vod and clips player",
+    "open source twitch client",
+    "twitch following without ads app",
+    "twitch chat emote autocomplete"
+  ],
+  "heroHeadline": "The Twitch client iPhone always deserved",
+  "heroSubhead": "Embr is a fast, fully native Twitch client built in UIKit for iOS 18. Watch live, VODs, and clips in a real AVPlayer with picture-in-picture and background audio, and read chat in real time with animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ merged into one stream.",
+  "accentColor": "#9147FF",
+  "highlights": [
+    "Native AVPlayer with picture-in-picture and background audio",
+    "Real-time chat with 7TV, BTTV, and FFZ emotes merged in",
+    "Browse everything as a guest — sign in only for Following",
+    "Open source, no tracking, your token stays in the Keychain"
+  ],
+  "features": [
+    {
+      "title": "A real native player",
+      "body": "Live streams, VODs, and clips play in AVPlayer, not a web wrapper. Picture-in-picture, background audio, quality selection, fullscreen, playback speed, latency control, and double-tap to seek — all the controls a native app should have.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Chat that keeps up",
+      "body": "Real-time chat over Twitch EventSub with replies, badges, cheermotes, and emote autocomplete. Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ are merged into a single stream so messages render exactly as your community uses them.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Find something to watch",
+      "body": "Browse live channels and top categories, search across the catalog, and open any stream in a tap. A dedicated Following tab keeps your channels close once you sign in.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Moderation built in",
+      "body": "Report or block in a long-press, and pull up full moderator tools when you run a channel. Chat search and per-message actions keep busy rooms manageable.",
+      "glyph": "⊹"
+    },
+    {
+      "title": "Liquid glass, native feel",
+      "body": "Programmatic UIKit with a premium liquid-glass design, symbol effects on live states, and the snappy, gesture-driven feel of an app built for the platform — not a port.",
+      "glyph": "✦"
+    },
+    {
+      "title": "Yours to inspect",
+      "body": "Embr is open source. Browse a stream as a guest with no account, or sign in with Twitch via OAuth when you want Following and chat. Your token lives in the Keychain only, and there is no tracking.",
+      "glyph": "⬡"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Browse",
+      "body": "Open Embr and explore live channels, top categories, and search straight away — no account needed to watch."
+    },
+    {
+      "step": "Watch",
+      "body": "Tap any stream for native AVPlayer playback with picture-in-picture, background audio, and real-time chat side by side."
+    },
+    {
+      "step": "Sign in",
+      "body": "Connect your Twitch account with OAuth to follow channels, chat with your emotes, and use moderator tools."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Embr affiliated with Twitch?",
+      "a": "No. Embr is an independent, third-party Twitch client. It is not made, endorsed, or affiliated with Twitch or Amazon. Twitch is a trademark of its owner."
+    },
+    {
+      "q": "Do I need a Twitch account to use Embr?",
+      "a": "No. You can browse live channels, categories, search, and watch streams, VODs, and clips entirely as a guest. Sign in with Twitch only when you want a Following tab, to chat, or to use moderator tools."
+    },
+    {
+      "q": "What can the video player do?",
+      "a": "Embr uses a native AVPlayer for live streams, VODs, and clips, with picture-in-picture, background audio, quality selection, fullscreen, playback speed, latency control, and double-tap to seek."
+    },
+    {
+      "q": "Which emotes does chat support?",
+      "a": "Chat runs over Twitch EventSub in real time and merges animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ into one stream, alongside badges, cheermotes, replies, and emote autocomplete."
+    },
+    {
+      "q": "Can I moderate my channel from Embr?",
+      "a": "Yes. Embr includes moderator tools, plus report and block actions on any message, and chat search to keep busy rooms manageable."
+    },
+    {
+      "q": "Is my data private?",
+      "a": "Yes. Embr does not track you. Sign-in uses Twitch's official OAuth, and your access token is stored only in the iOS Keychain on your device."
+    },
+    {
+      "q": "Is Embr open source?",
+      "a": "Yes. The full source is available on GitHub at github.com/guitaripod/embr."
+    },
+    {
+      "q": "Which devices does Embr run on?",
+      "a": "Embr runs on iPhone with iOS 18 and later."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "Native player with picture-in-picture",
+      "Real-time chat with merged emotes",
+      "Browse live channels and categories",
+      "Your Following tab, once you sign in",
+      "Moderator tools and chat search"
+    ]
+  },
+  "ctaLine": "Get the native Twitch client your iPhone deserves.",
+  "pricingNote": "Free and open source. Browse and watch as a guest, or sign in with Twitch for Following, chat, and moderator tools — no tracking, no subscription."
+}

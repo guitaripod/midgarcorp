@@ -49,6 +49,9 @@ const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
 
 const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : undefined);
 
+const privacyOverrides: Record<string, string> = {
+  embr: 'https://embr.guitaripod.workers.dev/legal/privacy',
+};
 const privacyTenants: Record<string, string> = {
   dreameater: 'dreameater',
   pixiepocket: 'pixiepocket',
@@ -58,9 +61,11 @@ const privacyTenants: Record<string, string> = {
   appofthedead: 'appofthedead',
   payday: 'payday',
 };
-const privacyUrl = privacyTenants[app.slug]
-  ? `https://mako.midgarcorp.cc/privacy/${privacyTenants[app.slug]}`
-  : undefined;
+const privacyUrl =
+  privacyOverrides[app.slug] ??
+  (privacyTenants[app.slug]
+    ? `https://mako.midgarcorp.cc/privacy/${privacyTenants[app.slug]}`
+    : undefined);
 const supportUrl = app.supportUrl ?? undefined;
 
 const allShots = Object.values(app.screenshots)

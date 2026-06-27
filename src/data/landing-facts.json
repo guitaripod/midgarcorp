@@ -1,6 +1,73 @@
 {
   "apps": [
     {
+      "slug": "embr",
+      "trackId": 6784940198,
+      "shortName": "Embr",
+      "status": "review",
+      "primaryColor": "#9147FF",
+      "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/embr/iphone-1.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Watch live with chat"
+          },
+          {
+            "src": "/screenshots/embr/iphone-2.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Every live channel"
+          },
+          {
+            "src": "/screenshots/embr/iphone-3.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Native and yours"
+          },
+          {
+            "src": "/screenshots/embr/iphone-4.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "The Midgar family"
+          }
+        ]
+      },
+      "name": "Embr — Live Streams",
+      "appStoreUrl": "https://apps.apple.com/app/id6784940198",
+      "description": "Embr is a fast, native Twitch client built for iPhone — not a wrapped web view. Streams open in a real AVPlayer with picture-in-picture, background audio, and instant quality switching. Chat is rendered natively so it stays smooth even in the busiest channels. No bloat, no clutter, just watch and chat.\n\nBrowse without an account. Sign in with Twitch only when you want to follow channels and join the conversation.\n\nWATCH\n- Native AVPlayer video — live streams, VODs, and clips\n- Picture-in-picture and background audio — keep watching while you use other apps\n- Quality selection, latency display, and landscape fullscreen\n- Double-tap to seek, and adjustable playback speed on VODs\n\nBROWSE & DISCOVER\n- Live channels and top categories at a glance\n- Search channels and categories instantly\n- A Following tab that surfaces who's live (when signed in)\n- Rich channel pages with everything you need to dive in\n\nREAL-TIME CHAT\n- Live chat over Twitch EventSub — fast and reliable\n- Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ, all merged together\n- Badges, cheermotes, mentions, and threaded replies\n- Emote autocomplete and recent-message backfill so you're never lost\n- Search the chat, report or block messages, and hide users you'd rather not see\n- Moderator tools — delete, timeout, and ban — when you're a mod in the channel\n\nMADE FOR iPhone\n- Light and dark themes, with chat readability and text-scale controls\n- Haptics, third-party emote toggles, and a blocked-users list\n- Built natively in UIKit for speed and a small footprint\n- Full guest browsing — an account is optional\n\nEmbr is open source.\n\n———————\n\nEmbr is an independent, third-party app and is not affiliated with, endorsed by, sponsored by, or connected to Twitch Interactive, Inc. \"Twitch\" and all related names, marks, and logos are trademarks of their respective owners and are used here only to describe what the app connects to. You sign in with your own Twitch account through Twitch's official OAuth; Embr never sees your password. Use of Twitch is subject to Twitch's own Terms of Service.",
+      "releaseNotes": "Welcome to Embr 1.0 — a fast, native Twitch client for iPhone.\n- Browse live channels, top categories, and search\n- A Following tab for the channels you care about (sign-in)\n- Native AVPlayer video with picture-in-picture, background audio, quality selection, and fullscreen\n- VODs and clips, with playback speed and double-tap seek\n- Real-time chat over EventSub with 7TV, BTTV, and FFZ emotes merged in\n- Badges, cheermotes, replies, emote autocomplete, and chat search\n- Moderator actions when you're a mod; report and block when you're not\n- Themes, haptics, and chat readability controls",
+      "category": "Entertainment",
+      "genres": [
+        "Entertainment"
+      ],
+      "price": 0,
+      "rating": 0,
+      "ratingCount": 0,
+      "version": "1.0.0",
+      "releaseDate": null,
+      "currentVersionReleaseDate": null,
+      "minimumOsVersion": "18.0",
+      "contentRating": "17+",
+      "languages": [
+        "EN"
+      ],
+      "supportedDevices": [
+        "iPhone"
+      ],
+      "sellerName": "Midgar Oy",
+      "bundleId": "com.guitaripod.embr",
+      "icon": null,
+      "marketingUrl": "https://midgarcorp.cc/embr",
+      "supportUrl": "https://github.com/guitaripod/embr",
+      "keywords": "stream,streaming,livestream,twitch viewer,7tv,bttv,ffz,emotes,vod,clips,pip,irc,esports,gaming,chat",
+      "iconLocal": "/screenshots/embr/icon.webp",
+      "platforms": [
+        "iPhone"
+      ]
+    },
+    {
       "slug": "dreameater",
       "trackId": 6661019277,
       "shortName": "Dream Eater",
