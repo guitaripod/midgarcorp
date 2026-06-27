@@ -45,24 +45,35 @@ function roundRectPath(ctx, x, y, w, h, r) {
 }
 
 function wrapText(ctx, text, maxWidth, maxLines) {
-  const words = text.split(/\s+/);
+  const words = text.split(/\s+/).filter(Boolean);
   const lines = [];
   let line = '';
-  for (const word of words) {
-    const test = line ? `${line} ${word}` : word;
+  let dropped = false;
+  for (let i = 0; i < words.length; i++) {
+    const test = line ? `${line} ${words[i]}` : words[i];
     if (ctx.measureText(test).width > maxWidth && line) {
       lines.push(line);
-      line = word;
-      if (lines.length === maxLines - 1) break;
+      line = words[i];
+      if (lines.length === maxLines) {
+        line = '';
+        dropped = true;
+        break;
+      }
     } else {
       line = test;
     }
   }
-  if (line && lines.length < maxLines) lines.push(line);
-  if (lines.length === maxLines) {
-    let last = lines[maxLines - 1];
-    while (ctx.measureText(`${last}…`).width > maxWidth && last.length) last = last.slice(0, -1);
-    lines[maxLines - 1] = `${last}…`;
+  if (line) {
+    if (lines.length < maxLines) lines.push(line);
+    else dropped = true;
+  }
+  if (lines.length) {
+    let last = lines[lines.length - 1];
+    const overflow = ctx.measureText(last).width > maxWidth;
+    if (overflow || dropped) {
+      while (last.length && ctx.measureText(`${last}…`).width > maxWidth) last = last.slice(0, -1);
+      lines[lines.length - 1] = `${last}…`;
+    }
   }
   return lines;
 }
@@ -225,6 +236,22 @@ async function generate(app) {
 
   // prompt CTA
   const promptY = contentTop + th - 44 - 34;
+
+  // feature highlights — fill the gap above the prompt with what fits
+  if (Array.isArray(content.highlights) && content.highlights.length) {
+    let hy = cursorY + 50;
+    const lineH = 30;
+    for (const h of content.highlights) {
+      if (hy > promptY - 44) break;
+      ctx.fillStyle = accent;
+      ctx.font = `bold 18px ${SANS}`;
+      ctx.fillText('▸', padX, hy);
+      ctx.fillStyle = MUTED;
+      ctx.font = `17px ${SANS}`;
+      ctx.fillText(wrapText(ctx, h, leftMax - 28, 1)[0] || '', padX + 28, hy);
+      hy += lineH;
+    }
+  }
   ctx.font = `bold 21px ${MONO}`;
   ctx.fillStyle = GREEN;
   const verb = app.openSource
