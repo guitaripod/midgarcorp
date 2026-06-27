@@ -39,6 +39,10 @@ export interface LandingFacts {
   keywords?: string;
   platforms: string[];
   screenshots: Record<string, Screenshot[]>;
+  openSource?: boolean;
+  githubUrl?: string;
+  latestReleaseUrl?: string;
+  license?: string;
 }
 
 export interface Feature {

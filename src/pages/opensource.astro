@@ -2,6 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import OpenSourceCard from '@components/OpenSourceCard.astro';
 import openSourceData from '../data/opensource.json';
+import { landingSlugs } from '@data/landing';
 
 const projects = openSourceData.projects;
 const totalStars = projects.reduce((sum, project) => sum + project.stars, 0);
@@ -73,7 +74,10 @@ const sections = [
         <h2 class="sr-only">{section.title}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {section.projects.map((project) => (
-            <OpenSourceCard project={project} />
+            <OpenSourceCard
+              project={project}
+              landingSlug={landingSlugs.includes(project.id) ? project.id : undefined}
+            />
           ))}
         </div>
       </section>

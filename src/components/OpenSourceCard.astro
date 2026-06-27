@@ -14,9 +14,10 @@ export interface Props {
     commitCount?: number;
     homepageUrl?: string;
   };
+  landingSlug?: string;
 }
 
-const { project } = Astro.props;
+const { project, landingSlug } = Astro.props;
 
 const languageColors: Record<string, string> = {
   Go: '#00ADD8',
@@ -84,17 +85,29 @@ const releaseCount = project.releaseCount ?? 0;
         aria-hidden="true"></span>
       {project.language}
     </span>
-    {
-      project.homepageUrl && (
-        <a
-          href={project.homepageUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-        >
-          docs ↗
-        </a>
-      )
-    }
+    <span class="flex items-center gap-3">
+      {
+        landingSlug && (
+          <a
+            href={`/${landingSlug}`}
+            class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+          >
+            landing →
+          </a>
+        )
+      }
+      {
+        project.homepageUrl && (
+          <a
+            href={project.homepageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+          >
+            docs ↗
+          </a>
+        )
+      }
+    </span>
   </div>
 </article>

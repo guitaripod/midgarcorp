@@ -210,8 +210,14 @@ async function generate(app) {
   ctx.fillText(app.price, padX, cursorY);
   let chipX = padX + ctx.measureText(app.price).width + 22;
   ctx.fillStyle = MUTED;
-  const meta = app.status === 'review' ? 'Coming soon' : app.ratingCount > 0 ? `★ ${app.rating.toFixed(1)}` : 'New';
-  ctx.fillStyle = app.status === 'review' ? AMBER : app.ratingCount > 0 ? AMBER : MUTED;
+  const meta = app.openSource
+    ? app.license || 'Open source'
+    : app.status === 'review'
+      ? 'Coming soon'
+      : app.ratingCount > 0
+        ? `★ ${app.rating.toFixed(1)}`
+        : 'New';
+  ctx.fillStyle = app.openSource || app.status === 'review' || app.ratingCount > 0 ? AMBER : MUTED;
   ctx.fillText(meta, chipX, cursorY);
   chipX += ctx.measureText(meta).width + 22;
   ctx.fillStyle = FAINT;
@@ -221,7 +227,11 @@ async function generate(app) {
   const promptY = contentTop + th - 44 - 34;
   ctx.font = `bold 21px ${MONO}`;
   ctx.fillStyle = GREEN;
-  const verb = app.status === 'review' ? 'coming soon to the App Store' : 'download on the App Store';
+  const verb = app.openSource
+    ? 'build it from source on GitHub'
+    : app.status === 'review'
+      ? 'coming soon to the App Store'
+      : 'download on the App Store';
   ctx.fillText('$ ', padX, promptY);
   ctx.fillStyle = TEXT;
   ctx.fillText(verb, padX + ctx.measureText('$ ').width, promptY);
