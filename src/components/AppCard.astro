@@ -17,9 +17,11 @@ export interface Props {
     releaseDate?: string;
   };
   landingHref?: string;
+  openSource?: boolean;
+  githubUrl?: string;
 }
 
-const { app, landingHref } = Astro.props;
+const { app, landingHref, openSource = false, githubUrl } = Astro.props;
 const description = cleanAppStoreDescription(app.description);
 const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
 ---
@@ -59,6 +61,11 @@ const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
         <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
           <span class="text-paper-greendim dark:text-term-greendim">[{app.category}]</span>
           <span class="font-semibold text-paper-amber dark:text-term-amber">{app.price}</span>
+          {
+            openSource && (
+              <span class="text-paper-greendim dark:text-term-greendim">open source</span>
+            )
+          }
           {
             releaseStamp && (
               <span class="text-paper-faint dark:text-term-faint hidden sm:inline">
@@ -107,12 +114,12 @@ const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
       </div>
 
       <a
-        href={app.appStoreUrl}
+        href={openSource && githubUrl ? githubUrl : app.appStoreUrl}
         target="_blank"
         rel="noopener noreferrer"
         class="relative z-10 inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity w-full sm:w-auto"
       >
-        open in app store ↗
+        {openSource && githubUrl ? 'view on github ↗' : 'open in app store ↗'}
       </a>
     </div>
   </div>
