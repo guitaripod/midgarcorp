@@ -1,0 +1,102 @@
+{
+  "seoTitle": "Crucible — a native Plex client for iPhone, built on Linux",
+  "metaDescription": "Crucible is a fast, native Plex client for iPhone with Skip Intro, Picture-in-Picture, lock-screen controls, Cast & Crew, and Handoff — open source, zero dependencies, and built entirely on Arch Linux without Xcode.",
+  "accentColor": "#F97316",
+  "keywords": [
+    "plex client ios",
+    "plex iphone app",
+    "open source plex client",
+    "plex skip intro",
+    "plex picture in picture",
+    "native plex player",
+    "plex client swift uikit",
+    "build ios app on linux",
+    "ios app without xcode",
+    "plex handoff spotlight"
+  ],
+  "heroHeadline": "Your Plex library, done right on iPhone",
+  "heroSubhead": "A fast, native Plex client with Skip Intro, Picture-in-Picture, lock-screen controls, and Handoff — open source, zero dependencies, and built entirely on Arch Linux without ever opening Xcode.",
+  "highlights": [
+    "Skip Intro/Credits, PiP, and background audio",
+    "Direct play with automatic HLS transcoding fallback",
+    "Open source under GPL-3.0 — zero third-party dependencies"
+  ],
+  "features": [
+    {
+      "title": "A player that respects your time",
+      "body": "Skip Intro and Skip Credits from Plex markers, Picture-in-Picture, background audio, and lock-screen controls. Credits roll the next episode automatically.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Plays anything",
+      "body": "Direct play when your device handles the file natively, automatic HLS transcoding through Plex's universal transcoder when it doesn't.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Browse the way you think",
+      "body": "Continue Watching, On Deck, and Recently Added up front. Poster grids with genre filters and sort, plus raw folder browsing for unindexed content.",
+      "glyph": "⬡"
+    },
+    {
+      "title": "Discover more",
+      "body": "Cast and crew, More Like This recommendations, subtitle and audio track selection, and adjustable playback speed on every title.",
+      "glyph": "✦"
+    },
+    {
+      "title": "Continues across devices",
+      "body": "Watch progress syncs to your server, resume picks up where you left off, and Handoff plus Spotlight carry titles between your devices.",
+      "glyph": "⊹"
+    },
+    {
+      "title": "Built different",
+      "body": "Swift 6 and programmatic UIKit with Liquid Glass on iOS 26, cross-compiled on Arch Linux and deployed over USB. No Xcode, no macOS, no dependencies.",
+      "glyph": "▲"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Sign in to Plex",
+      "body": "Authenticate with Plex over OAuth. Crucible discovers your servers and picks the best reachable connection automatically."
+    },
+    {
+      "step": "Browse your libraries",
+      "body": "Jump back into Continue Watching, scan your poster grids, or search across everything you own."
+    },
+    {
+      "step": "Press play",
+      "body": "Direct play or transcode, skip the intro, send it to Picture-in-Picture, and let Up Next roll the next episode."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Crucible on the App Store?",
+      "a": "No. Crucible is a free, open-source personal project — not an App Store release. You build it from source and deploy it to your own iPhone with xtool, or grab a tagged release from GitHub."
+    },
+    {
+      "q": "Do I need a Mac or Xcode to build it?",
+      "a": "No. That's the whole point. Crucible is written in Swift 6 and programmatic UIKit, cross-compiled on Arch Linux with SwiftPM, and deployed to an iPhone over USB via xtool. No Xcode, no storyboards, no macOS anywhere."
+    },
+    {
+      "q": "What does it need to run?",
+      "a": "An iPhone on iOS 17 or later and a Plex Media Server you can reach. Crucible talks directly to your server — it works great over Tailscale for secure remote access."
+    },
+    {
+      "q": "Does it support Skip Intro, PiP, and lock-screen controls?",
+      "a": "Yes. Skip Intro and Skip Credits come from Plex chapter markers, Picture-in-Picture and background audio keep playback going, and the lock screen and Control Center drive play, skip, scrub, and next episode."
+    },
+    {
+      "q": "Is it really open source?",
+      "a": "Yes — GPL-3.0, with zero third-party dependencies (pure Apple frameworks). Read the code, file an issue, or fork it on GitHub."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "Home — Continue Watching, On Deck, and Recently Added",
+      "Show detail with season picker and episode progress",
+      "Browse raw folders for unindexed content",
+      "Movie library grid with posters and quick play"
+    ]
+  },
+  "ctaLine": "Build it, side-load it, watch everything.",
+  "pricingNote": "Free and open source under GPL-3.0. Built on Arch Linux, deployed with xtool."
+}

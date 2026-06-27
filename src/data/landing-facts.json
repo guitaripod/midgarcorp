@@ -1985,6 +1985,63 @@
       "platforms": [
         "iPhone"
       ]
+    },
+    {
+      "slug": "crucible",
+      "trackId": 0,
+      "shortName": "Crucible",
+      "status": "live",
+      "primaryColor": "#F97316",
+      "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/crucible/iphone-1.webp",
+            "w": 1290,
+            "h": 2906,
+            "label": "Home — Continue Watching, On Deck, Recently Added"
+          },
+          {
+            "src": "/screenshots/crucible/iphone-2.webp",
+            "w": 1290,
+            "h": 2906,
+            "label": "Show detail with season picker"
+          },
+          {
+            "src": "/screenshots/crucible/iphone-3.webp",
+            "w": 1290,
+            "h": 2906,
+            "label": "Browse folders for unindexed content"
+          },
+          {
+            "src": "/screenshots/crucible/iphone-4.webp",
+            "w": 1290,
+            "h": 2906,
+            "label": "Movie library grid"
+          }
+        ]
+      },
+      "name": "Crucible: Plex Client",
+      "appStoreUrl": "https://github.com/guitaripod/Crucible/releases/latest",
+      "description": "Crucible is a fast, native Plex client for iPhone — and a love letter to building iOS apps without a Mac. The whole app is Swift 6 and programmatic UIKit, cross-compiled on Arch Linux and deployed straight to an iPhone over USB. No Xcode, no storyboards, no macOS anywhere in the loop.\n\nEVERYTHING IN ITS PLACE\nContinue Watching, On Deck, and Recently Added greet you on the home screen. Browse libraries as poster grids with genre filters and sort options, or dig into raw folders for unindexed content.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits straight from Plex markers, Picture-in-Picture with background audio, lock screen and Control Center controls, and Up Next that rolls the next episode as the credits start. Direct play when your device can handle the file, automatic HLS transcoding when it can't.\n\nGO DEEPER\nCast and crew, More Like This recommendations, subtitle and audio track selection, and adjustable playback speed. Hand a title off between your devices and find what you've watched in Spotlight.\n\nOPEN SOURCE, BUILT ON LINUX\nCrucible is free and open source under the GPL-3.0 license, with zero third-party dependencies — pure Apple frameworks. Read the code, file an issue, or build it yourself.",
+      "category": "Entertainment",
+      "price": "Free",
+      "rating": 0,
+      "ratingCount": 0,
+      "version": "1.2.0",
+      "releaseDate": "2026-03-21T19:58:59Z",
+      "currentVersionReleaseDate": "2026-06-27T11:13:12Z",
+      "minimumOsVersion": "17.0",
+      "sellerName": "guitaripod",
+      "icon": "/screenshots/crucible/icon.webp",
+      "iconLocal": "/screenshots/crucible/icon.webp",
+      "supportUrl": "https://github.com/guitaripod/Crucible/issues",
+      "openSource": true,
+      "githubUrl": "https://github.com/guitaripod/Crucible",
+      "latestReleaseUrl": "https://github.com/guitaripod/Crucible/releases/latest",
+      "license": "GPL-3.0",
+      "platforms": [
+        "iPhone"
+      ]
     }
   ]
 }
