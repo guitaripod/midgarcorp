@@ -1,6 +1,6 @@
 {
   "seoTitle": "Crucible — a native Plex client for iPhone, built on Linux",
-  "metaDescription": "Crucible is a fast, native Plex client for iPhone with Skip Intro, Picture-in-Picture, lock-screen controls, Cast & Crew, and Handoff — open source, zero dependencies, and built entirely on Arch Linux without Xcode.",
+  "metaDescription": "Crucible is a fast, native Plex client for iPhone with offline downloads, Skip Intro, Picture-in-Picture, lock-screen controls, Cast & Crew, and Handoff — open source, zero dependencies, and built entirely on Arch Linux without Xcode.",
   "accentColor": "#F97316",
   "keywords": [
     "plex client ios",
@@ -8,6 +8,10 @@
     "open source plex client",
     "plex skip intro",
     "plex picture in picture",
+    "plex offline download",
+    "plex download ios",
+    "plex live activity",
+    "plex background download",
     "native plex player",
     "plex client swift uikit",
     "build ios app on linux",
@@ -15,8 +19,9 @@
     "plex handoff spotlight"
   ],
   "heroHeadline": "Your Plex library, done right on iPhone",
-  "heroSubhead": "A fast, native Plex client with Skip Intro, Picture-in-Picture, lock-screen controls, and Handoff — open source, zero dependencies, and built entirely on Arch Linux without ever opening Xcode.",
+  "heroSubhead": "A fast, native Plex client with offline downloads, Skip Intro, Picture-in-Picture, lock-screen controls, and Handoff — open source, zero dependencies, and built entirely on Arch Linux without ever opening Xcode.",
   "highlights": [
+    "Offline downloads with a Lock Screen Live Activity and background transfers",
     "Skip Intro/Credits, PiP, and background audio",
     "Direct play with automatic HLS transcoding fallback",
     "Open source under GPL-3.0 — zero third-party dependencies"
@@ -26,6 +31,11 @@
       "title": "A player that respects your time",
       "body": "Skip Intro and Skip Credits from Plex markers, Picture-in-Picture, background audio, and lock-screen controls. Credits roll the next episode automatically.",
       "glyph": "◉"
+    },
+    {
+      "title": "Take it offline",
+      "body": "Download movies, whole seasons, or single episodes at the quality you pick — from Original down to Data Saver. Downloads keep running in the background, interrupt gracefully and auto-resume from where they left off, and stay Wi-Fi-only unless you say otherwise. A Live Activity tracks progress on the Lock Screen and in the Dynamic Island — a WidgetKit extension compiled and signed entirely on Arch Linux via xtool.",
+      "glyph": "⤓"
     },
     {
       "title": "Plays anything",
@@ -83,6 +93,10 @@
     {
       "q": "Does it support Skip Intro, PiP, and lock-screen controls?",
       "a": "Yes. Skip Intro and Skip Credits come from Plex chapter markers, Picture-in-Picture and background audio keep playback going, and the lock screen and Control Center drive play, skip, scrub, and next episode."
+    },
+    {
+      "q": "Can I download movies and shows to watch offline?",
+      "a": "Yes. Download movies, full seasons, or single episodes at the quality you choose — Original, High, Medium, Low, or Data Saver. Downloads run in the background and resume after interruptions, stay Wi-Fi-only unless you allow cellular, and live in a dedicated Downloads tab with progress and storage usage. A Live Activity shows live progress on the Lock Screen and in the Dynamic Island, and a notification fires when a download finishes while you're away. Offline playback uses the same player, so Skip Intro/Credits, resume, PiP, background audio, and lock-screen controls all work with no network."
     },
     {
       "q": "Is it really open source?",
