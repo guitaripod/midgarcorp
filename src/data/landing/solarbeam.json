@@ -1,113 +1,119 @@
 {
-  "seoTitle": "Solar Beam: NASA Space Photos, Free for Mac",
-  "metaDescription": "A free native Mac app for NASA's daily picture, the sharpest James Webb images, and near-Earth asteroids — with a live menu bar ticker. Optional Premium unlocks the full Webb library and archive.",
+  "seoTitle": "Solar Beam: James Webb Gallery + NASA, Free on Every Apple Device",
+  "metaDescription": "The most beautiful way to explore the James Webb Space Telescope — a curated gallery of its greatest images with real captions, a live 'Where Is Webb' dashboard, and 4K wallpapers — plus NASA's daily picture and near-Earth asteroids. Free on iPhone, iPad, Mac, Apple TV, and Vision Pro with one purchase.",
   "keywords": [
-    "nasa apod app for mac",
-    "james webb telescope images",
+    "james webb telescope app",
+    "jwst image gallery",
+    "webb telescope wallpapers 4k",
+    "where is webb tracker",
+    "nasa apod app",
     "astronomy picture of the day app",
     "near-earth asteroid tracker",
-    "mac astronomy app",
-    "menu bar space app",
-    "jwst image gallery",
-    "free space app mac",
-    "daily nasa image",
-    "near earth object tracker"
+    "space app iphone ipad mac apple tv",
+    "deep space nebula galaxy images",
+    "vision pro space app"
   ],
-  "heroHeadline": "The universe, native on your Mac",
-  "heroSubhead": "Solar Beam shows NASA's picture of the day, the sharpest James Webb images ever taken, and the asteroids passing Earth right now — in a fast, native Mac app with a live menu bar ticker. Free to download, no telescope required.",
+  "heroHeadline": "The James Webb Telescope, on every screen you own",
+  "heroSubhead": "Solar Beam is the most beautiful way to explore the James Webb Space Telescope — a curated gallery of its greatest images with real captions, a live \"Where Is Webb\" dashboard, and 4K wallpapers — plus NASA's picture of the day and the asteroids passing Earth right now. One purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro. Free to start.",
   "accentColor": "#F59E0B",
   "highlights": [
-    "Free to download — a new NASA image every day, always free",
-    "A true native Mac app: menu bar ticker, sidebar, multiple windows, and keyboard shortcuts",
-    "Live near-Earth asteroid readouts that update as NASA finds new objects"
+    "Leads with Webb: a curated gallery of the telescope's most iconic images, each with its real caption, credit, distance, and sky coordinates",
+    "A live \"Where Is Webb\" dashboard — mission age, its orbit at Lagrange Point 2, and the sunshield's +50°C to −236°C temperature gap",
+    "One purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro — and a new NASA image every day is always free"
   ],
   "features": [
+    {
+      "title": "Curated Webb Gallery",
+      "body": "Webb's greatest images — the Cosmic Cliffs, the Pillars of Creation, deep fields and more — grouped into collections and shown with their real captions, credits, distances, and sky coordinates. Search for any target.",
+      "glyph": "✦"
+    },
+    {
+      "title": "Where Is Webb",
+      "body": "A live status dashboard for the telescope itself: how long it's been in space, its orbit a million-plus miles away at Lagrange Point 2, and the astonishing gap between its sun-facing side and its supercooled instruments.",
+      "glyph": "◎"
+    },
+    {
+      "title": "4K Wallpapers",
+      "body": "Save any Webb image as a 4K wallpaper for your iPhone, iPad, Mac, or Apple TV — straight from the source, at full resolution. Part of Solar Beam Premium.",
+      "glyph": "▦"
+    },
     {
       "title": "Picture of the Day",
       "body": "NASA picks one image of the cosmos every day. Solar Beam puts it front and center with plain-language, AI-powered facts so you understand what you're looking at.",
       "glyph": "◉"
     },
     {
-      "title": "The Webb Library",
-      "body": "Browse the deepest images humanity has captured — newborn stars, colliding galaxies, and distant nebulae — and export any one at full resolution, ready for your desktop.",
-      "glyph": "✦"
-    },
-    {
       "title": "Asteroid Tracker",
-      "body": "See what's passing Earth in real time: how close each asteroid comes, how fast it moves, and the size of impact it would leave. Charts sort the dangerous from the safe.",
+      "body": "See what's passing Earth in real time: how close each asteroid comes, how fast it moves, and the size of impact it would leave. Charts sort the dangerous from the safe — always free.",
       "glyph": "⬡"
     },
     {
-      "title": "Lives in Your Menu Bar",
-      "body": "Today's picture and a live asteroid ticker sit in your menu bar, one glance away all day. Click through to the full app whenever something catches your eye.",
-      "glyph": "▰"
-    },
-    {
-      "title": "Made for the Mac",
-      "body": "A true native app — sidebar navigation, keyboard shortcuts, multiple windows, and the standard Mac save panel for any image you want to keep.",
+      "title": "Everywhere, one purchase",
+      "body": "A native app on iPhone, iPad, Mac, Apple TV, and Vision Pro — with a menu bar ticker on Mac, Ambient Mode on every screen, and Spatial Scenes on Vision Pro. Buy once, with Family Sharing.",
       "glyph": "⌘"
-    },
-    {
-      "title": "Ambient Mode",
-      "body": "Leave a slow, beautiful deep-space slideshow running in its own window — cosmic wallpaper that changes itself. Part of Solar Beam Premium.",
-      "glyph": "◈"
     }
   ],
   "howItWorks": [
     {
       "step": "Download free",
-      "body": "Get Solar Beam free from the Mac App Store. No account, no purchase — today's NASA picture is always free."
+      "body": "Get Solar Beam free from the App Store on iPhone, iPad, Mac, Apple TV, or Vision Pro. No account, no purchase — today's NASA picture is always free."
     },
     {
-      "step": "Open it",
-      "body": "Today's NASA picture greets you instantly, with the Webb library and live asteroid tracker one click away and a ticker in your menu bar."
+      "step": "Open to the universe",
+      "body": "Land in the curated Webb gallery and the live \"Where Is Webb\" dashboard, with the daily picture and the asteroid tracker a tap away."
     },
     {
       "step": "Go deeper, optionally",
-      "body": "Unlock Solar Beam Premium for Ambient Mode, the complete Webb library, years of past pictures, and unlimited AI facts — by subscription or a one-time lifetime purchase."
+      "body": "Unlock Solar Beam Premium for the complete Webb gallery, 4K wallpapers, Ambient Mode, years of past pictures, and unlimited AI facts — by subscription or a one-time lifetime purchase."
     }
   ],
   "faq": [
     {
-      "q": "How much does Solar Beam cost?",
-      "a": "Solar Beam is free to download on the Mac App Store, and a new NASA picture of the day is always free. Solar Beam Premium is optional — it adds Ambient Mode, the full Webb library, the complete archive of past pictures, and unlimited AI facts."
-    },
-    {
-      "q": "Is there a subscription or in-app purchase?",
-      "a": "Only if you want more. The app is free; Solar Beam Premium is available either as a subscription (with a free trial on the annual plan) or a one-time lifetime unlock. The daily picture stays free either way."
-    },
-    {
-      "q": "What do I get for free versus Premium?",
-      "a": "Free covers today's picture, the live asteroid tracker, and a rolling 30-day window of past pictures. Premium unlocks Ambient Mode, the complete Webb telescope library, years of archived pictures beyond the 30-day window, and unlimited AI-generated facts."
-    },
-    {
-      "q": "Where do the images and data come from?",
-      "a": "From NASA's public APIs: the Astronomy Picture of the Day, James Webb Space Telescope imagery, and near-Earth object data. Solar Beam is an independent app and is not affiliated with or endorsed by NASA or ESA."
-    },
-    {
-      "q": "Does it work without internet?",
-      "a": "Yes, for content you've already viewed. Smart caching keeps recent images available offline and makes launches fast. New daily images and live asteroid updates need a connection."
+      "q": "What makes Solar Beam's James Webb gallery special?",
+      "a": "It's a curated gallery of the telescope's best images — not a raw data dump. Each image comes with its real caption, credit, distance, instruments, and sky coordinates, grouped into collections (nebulae, galaxies, deep fields, the solar system, and more), and you can search for any target. A live \"Where Is Webb\" dashboard shows the telescope's status in real time."
     },
     {
       "q": "Which devices are supported?",
-      "a": "Solar Beam is a native Mac app and requires macOS 15 or later. It's built for the Mac — sidebar, menu bar, keyboard shortcuts, and multiple windows."
+      "a": "Solar Beam is a single universal app for iPhone, iPad, Mac, Apple TV, and Vision Pro. One purchase covers them all, with Family Sharing. It's native on each — a menu bar ticker on Mac, Ambient Mode everywhere, and Spatial Scenes on Vision Pro."
+    },
+    {
+      "q": "How much does Solar Beam cost?",
+      "a": "Solar Beam is free to download, and a new NASA picture of the day is always free. Solar Beam Premium is optional — it adds the complete Webb gallery, 4K wallpapers and full-resolution downloads, Ambient Mode, the complete archive of past pictures, and unlimited AI facts."
+    },
+    {
+      "q": "What do I get for free versus Premium?",
+      "a": "Free covers today's picture, the live asteroid tracker, the \"Where Is Webb\" dashboard, a taste of the curated Webb gallery, and a rolling 30-day window of past pictures. Premium unlocks the full Webb gallery, 4K wallpapers and downloads, Ambient Mode, years of archived pictures, Spatial Scenes on Vision Pro, and unlimited AI-generated facts."
+    },
+    {
+      "q": "Is there a subscription or in-app purchase?",
+      "a": "Only if you want more. The app is free; Solar Beam Premium is available either as a subscription (with a free trial on the annual plan) or a one-time lifetime unlock. The daily picture and asteroid tracker stay free either way."
+    },
+    {
+      "q": "Where do the images and data come from?",
+      "a": "From NASA's public APIs and the ESA/Webb archive: the Astronomy Picture of the Day, James Webb Space Telescope imagery (ESA/Webb, CC BY 4.0), and near-Earth object data. Solar Beam is an independent app and is not affiliated with or endorsed by NASA or ESA."
+    },
+    {
+      "q": "Can I really set Webb images as wallpaper?",
+      "a": "Yes. With Premium, save any Webb image at 4K — desktop and mobile sizes — and set it as your wallpaper on iPhone, iPad, Mac, or Apple TV. Free sharing is at display resolution."
+    },
+    {
+      "q": "Does it work without internet?",
+      "a": "Yes, for content you've already viewed. Smart caching keeps recent images available offline and makes launches fast. New daily images, the live telescope status, and asteroid updates need a connection."
     },
     {
       "q": "Can I get a refund?",
       "a": "Refunds are handled by Apple through your App Store account, under Apple's standard refund policy. Solar Beam doesn't process payments directly."
-    },
-    {
-      "q": "What are the AI-generated facts?",
-      "a": "Short, plain-language explanations paired with each image to help the science click — from solar flares to galaxies billions of light-years away."
     }
   ],
   "screenshotCaptions": {
-    "mac": [
-      "NASA picture of the day on Mac",
-      "Webb deep-space gallery",
-      "Live asteroid threat charts"
-    ]
+    "iphone": [
+      "The curated Webb gallery with live \"Where Is Webb\" status",
+      "NASA Picture of the Day",
+      "Near-Earth asteroid tracker"
+    ],
+    "ipad": ["NASA Picture of the Day on iPad", "Asteroid tracker on iPad"],
+    "mac": ["NASA Picture of the Day on Mac", "Live asteroid threat charts"]
   },
-  "ctaLine": "Free for your Mac. The whole universe, one click from the menu bar.",
-  "pricingNote": "Solar Beam is free to download on the Mac App Store — a new NASA picture every day at no cost. Solar Beam Premium, an optional subscription or one-time lifetime unlock, adds Ambient Mode, the complete Webb library, the full archive, and unlimited AI facts."
+  "ctaLine": "The James Webb Telescope, on every screen you own — free to start.",
+  "pricingNote": "Solar Beam is free on the App Store — a new NASA picture every day, the live asteroid tracker, the \"Where Is Webb\" dashboard, and a taste of the Webb gallery at no cost. Premium (subscription or one-time lifetime) unlocks the full Webb gallery, 4K wallpapers, Ambient Mode, the complete archive, and unlimited AI facts, across all your devices."
 }

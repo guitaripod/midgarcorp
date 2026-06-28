@@ -1648,30 +1648,58 @@
       "status": "live",
       "primaryColor": "#F59E0B",
       "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/solarbeam/iphone-1.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "The curated Webb gallery with live “Where Is Webb” status"
+          },
+          {
+            "src": "/screenshots/solarbeam/iphone-2.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "NASA Picture of the Day"
+          },
+          {
+            "src": "/screenshots/solarbeam/iphone-3.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Near-Earth asteroid tracker"
+          }
+        ],
+        "ipad": [
+          {
+            "src": "/screenshots/solarbeam/ipad-1.webp",
+            "w": 1600,
+            "h": 2134,
+            "label": "NASA Picture of the Day on iPad"
+          },
+          {
+            "src": "/screenshots/solarbeam/ipad-3.webp",
+            "w": 1600,
+            "h": 2134,
+            "label": "Asteroid tracker on iPad"
+          }
+        ],
         "mac": [
           {
             "src": "/screenshots/solarbeam/mac-1.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Apod"
-          },
-          {
-            "src": "/screenshots/solarbeam/mac-2.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Jwst"
+            "label": "NASA Picture of the Day on Mac"
           },
           {
             "src": "/screenshots/solarbeam/mac-3.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Asteroids"
+            "label": "Live asteroid threat charts"
           }
         ]
       },
       "name": "Solar Beam",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
-      "description": "A window onto the cosmos, right on your desktop.\n\nSolar Beam brings the universe to your Mac: NASA's Astronomy Picture of the Day, the deepest images ever captured by the James Webb Space Telescope, and a live look at the asteroids passing by Earth — in a fast, native Mac app.\n\nASTRONOMY PICTURE OF THE DAY\nEvery day, NASA picks one breathtaking image of our universe. Solar Beam pairs it with bite-sized, AI-powered facts so you actually understand what you're looking at.\n\nTHE WEBB TELESCOPE\nExplore the sharpest views of deep space humanity has ever produced — and export any image in full resolution, ready for your desktop.\n\nNEAR-EARTH ASTEROIDS\nTrack what's hurtling past us in real time, with charts of approach distance, speed, and size, and a live threat readout.\n\nMADE FOR THE MAC\n• A true native app — sidebar navigation, keyboard shortcuts, multiple windows\n• Today's picture and a live asteroid ticker in your menu bar, one glance away all day\n• Save any image with the standard Mac save panel\n• Ambient Mode — a slow, beautiful deep-space slideshow in its own window\n\nSOLAR BEAM PREMIUM\nGo deeper with an optional subscription or a one-time lifetime unlock:\n• Ambient Mode — a living deep-space gallery on every screen you own\n• The complete Webb telescope library\n• Years of Pictures of the Day, far beyond the free 30-day window\n• Unlimited AI-generated facts\nOne purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro, with Family Sharing included. A free trial is available on the annual plan, and the daily picture is always free.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\n—\n\nSolar Beam is an independent app and is not affiliated with, endorsed by, or sponsored by NASA or ESA. Imagery and data are provided through NASA's public APIs.",
+      "description": "Solar Beam is the most beautiful way to explore the James Webb Space Telescope on every Apple device — plus NASA's daily space picture and near-Earth asteroids, all with a single purchase.\n\nTHE JAMES WEBB GALLERY\nA curated gallery of Webb's most breathtaking images, each with its real caption, credit, distance, and sky position. Browse by collection or search for any target.\n\nWHERE IS WEBB\nA live dashboard for the telescope: days in space, its orbit at Lagrange Point 2, and the temperature gap between its sun-facing side and its supercooled instruments.\n\n4K WALLPAPERS\nSave any Webb image as a 4K wallpaper for iPhone, iPad, Mac, or Apple TV.\n\nPICTURE OF THE DAY\nNASA's daily image, with AI-generated facts that make the science click.\n\nASTEROIDS\nTrack near-Earth objects and close approaches — always free.\n\nOne purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro, with Family Sharing.\n\nImage credits: NASA, ESA, CSA, STScI. ESA/Webb imagery under CC BY 4.0.",
       "releaseNotes": "",
       "category": "Photo & Video",
       "genres": [
@@ -1701,10 +1729,14 @@
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/89/3c/52/893c522b-86b9-abcd-bd8a-75e39670b0cc/App_Icon-marketing.lsr/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/guitaripod",
-      "keywords": "apod,james,webb,astronomy,JWST,telescope,asteroid,cosmos,universe,nebula,stars,planets,wallpaper",
+      "keywords": "james webb,jwst,webb telescope,nebula,galaxy,deep space,apod,nasa,astronomy,wallpaper,space,asteroids",
       "iconLocal": "/screenshots/solarbeam/icon.webp",
       "platforms": [
-        "Mac"
+        "iPhone",
+        "iPad",
+        "Mac",
+        "Apple TV",
+        "Vision Pro"
       ]
     },
     {
