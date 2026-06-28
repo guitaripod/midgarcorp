@@ -111,8 +111,13 @@
       "NASA Picture of the Day",
       "Near-Earth asteroid tracker"
     ],
-    "ipad": ["NASA Picture of the Day on iPad", "Asteroid tracker on iPad"],
-    "mac": ["NASA Picture of the Day on Mac", "Live asteroid threat charts"]
+    "ipad": [
+      "The curated Webb gallery with live status",
+      "NASA Picture of the Day on iPad",
+      "Near-Earth asteroid tracker on iPad"
+    ],
+    "mac": ["NASA Picture of the Day on Mac", "Live asteroid threat charts"],
+    "vision": ["The Webb gallery, in your space on Vision Pro"]
   },
   "ctaLine": "The James Webb Telescope, on every screen you own — free to start.",
   "pricingNote": "Solar Beam is free on the App Store — a new NASA picture every day, the live asteroid tracker, the \"Where Is Webb\" dashboard, and a taste of the Webb gallery at no cost. Premium (subscription or one-time lifetime) unlocks the full Webb gallery, 4K wallpapers, Ambient Mode, the complete archive, and unlimited AI facts, across all your devices."

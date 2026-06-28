@@ -1671,15 +1671,21 @@
         "ipad": [
           {
             "src": "/screenshots/solarbeam/ipad-1.webp",
-            "w": 1600,
-            "h": 2134,
+            "w": 1668,
+            "h": 2420,
+            "label": "The curated Webb gallery with live status"
+          },
+          {
+            "src": "/screenshots/solarbeam/ipad-2.webp",
+            "w": 1668,
+            "h": 2420,
             "label": "NASA Picture of the Day on iPad"
           },
           {
             "src": "/screenshots/solarbeam/ipad-3.webp",
-            "w": 1600,
-            "h": 2134,
-            "label": "Asteroid tracker on iPad"
+            "w": 1668,
+            "h": 2420,
+            "label": "Near-Earth asteroid tracker on iPad"
           }
         ],
         "mac": [
@@ -1693,7 +1699,15 @@
             "src": "/screenshots/solarbeam/mac-3.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Live asteroid threat charts"
+            "label": "Live asteroid threat charts on Mac"
+          }
+        ],
+        "vision": [
+          {
+            "src": "/screenshots/solarbeam/vision-1.webp",
+            "w": 3840,
+            "h": 2160,
+            "label": "The Webb gallery, in your space on Vision Pro"
           }
         ]
       },
