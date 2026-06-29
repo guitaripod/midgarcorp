@@ -1,73 +1,6 @@
 {
   "apps": [
     {
-      "slug": "embr",
-      "trackId": 6784940198,
-      "shortName": "Embr",
-      "status": "review",
-      "primaryColor": "#9147FF",
-      "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/embr/iphone-1.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Watch live with chat"
-          },
-          {
-            "src": "/screenshots/embr/iphone-2.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Every live channel"
-          },
-          {
-            "src": "/screenshots/embr/iphone-3.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Native and yours"
-          },
-          {
-            "src": "/screenshots/embr/iphone-4.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "The Midgar family"
-          }
-        ]
-      },
-      "name": "Embr — Live Streams",
-      "appStoreUrl": "https://apps.apple.com/app/id6784940198",
-      "description": "Embr is a fast, native Twitch client built for iPhone — not a wrapped web view. Streams open in a real AVPlayer with picture-in-picture, background audio, and instant quality switching. Chat is rendered natively so it stays smooth even in the busiest channels. No bloat, no clutter, just watch and chat.\n\nBrowse without an account. Sign in with Twitch only when you want to follow channels and join the conversation.\n\nWATCH\n- Native AVPlayer video — live streams, VODs, and clips\n- Picture-in-picture and background audio — keep watching while you use other apps\n- Quality selection, latency display, and landscape fullscreen\n- Double-tap to seek, and adjustable playback speed on VODs\n\nBROWSE & DISCOVER\n- Live channels and top categories at a glance\n- Search channels and categories instantly\n- A Following tab that surfaces who's live (when signed in)\n- Rich channel pages with everything you need to dive in\n\nREAL-TIME CHAT\n- Live chat over Twitch EventSub — fast and reliable\n- Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ, all merged together\n- Badges, cheermotes, mentions, and threaded replies\n- Emote autocomplete and recent-message backfill so you're never lost\n- Search the chat, report or block messages, and hide users you'd rather not see\n- Moderator tools — delete, timeout, and ban — when you're a mod in the channel\n\nMADE FOR iPhone\n- Light and dark themes, with chat readability and text-scale controls\n- Haptics, third-party emote toggles, and a blocked-users list\n- Built natively in UIKit for speed and a small footprint\n- Full guest browsing — an account is optional\n\nEmbr is open source.\n\n———————\n\nEmbr is an independent, third-party app and is not affiliated with, endorsed by, sponsored by, or connected to Twitch Interactive, Inc. \"Twitch\" and all related names, marks, and logos are trademarks of their respective owners and are used here only to describe what the app connects to. You sign in with your own Twitch account through Twitch's official OAuth; Embr never sees your password. Use of Twitch is subject to Twitch's own Terms of Service.",
-      "releaseNotes": "Welcome to Embr 1.0 — a fast, native Twitch client for iPhone.\n- Browse live channels, top categories, and search\n- A Following tab for the channels you care about (sign-in)\n- Native AVPlayer video with picture-in-picture, background audio, quality selection, and fullscreen\n- VODs and clips, with playback speed and double-tap seek\n- Real-time chat over EventSub with 7TV, BTTV, and FFZ emotes merged in\n- Badges, cheermotes, replies, emote autocomplete, and chat search\n- Moderator actions when you're a mod; report and block when you're not\n- Themes, haptics, and chat readability controls",
-      "category": "Entertainment",
-      "genres": [
-        "Entertainment"
-      ],
-      "price": "Free",
-      "rating": 0,
-      "ratingCount": 0,
-      "version": "1.0.0",
-      "releaseDate": "2026-06-27",
-      "currentVersionReleaseDate": "2026-06-27",
-      "minimumOsVersion": "18.0",
-      "contentRating": "17+",
-      "languages": [
-        "EN"
-      ],
-      "supportedDevices": [
-        "iPhone"
-      ],
-      "sellerName": "Midgar Oy",
-      "bundleId": "com.guitaripod.embr",
-      "icon": null,
-      "marketingUrl": "https://midgarcorp.cc/embr",
-      "supportUrl": "https://x.com/guitaripod",
-      "keywords": "stream,streaming,livestream,twitch viewer,7tv,bttv,ffz,emotes,vod,clips,pip,irc,esports,gaming,chat",
-      "iconLocal": "/screenshots/embr/icon.webp",
-      "platforms": [
-        "iPhone"
-      ]
-    },
-    {
       "slug": "dreameater",
       "trackId": 6661019277,
       "shortName": "Dream Eater",
@@ -983,7 +916,7 @@
       "name": "App of the Dead: Religions",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
       "description": "What happens after we die? Twenty-two faiths have answered for thousands of years. Explore every one in 5-minute lessons, then talk to the gods themselves.\n\nApp of the Dead turns comparative religion into a game. Bite-size lessons, instant-feedback quizzes, XP, streaks and achievements carry you across 22 belief systems and how each one imagines death, the soul and the world beyond.\n\nMEET THE ORACLE\nConverse with deities and guides as on-device AI personas, Anubis, Hermes, Kali, Odin, Azrael and more, and ask them anything about life, death and the afterlife. The Oracle now runs Google Gemma 4, a 2026-generation model, for dramatically smarter, more in-character answers. It runs entirely on your iPhone, so your conversations never leave the device, online or off.\n\nLEARN THROUGH PLAY\nEvery lesson is a few minutes. Multiple-choice, matching and true-or-false questions give immediate feedback, so the ideas actually stick. Mastery tests crown each path and your streak keeps you coming back.\n\nEVERY BELIEF, SIDE BY SIDE\nJudaism, Christianity, Islam, Buddhism, Hinduism, Norse, Egyptian, Greek, Zoroastrian and many more, each with its own theme and voice. See where traditions agree, where they diverge, and what they each say lies beyond, all in one place.\n\nSTART FREE\nThe complete Judaism path is free forever, no account required. Learn at your own pace, fully offline, with everything stored on your device.\n\nGO PREMIUM\nUnlock all 21 remaining paths, unlimited Oracle conversations and every future path with Premium. Try it free for 7 days, then keep learning for one annual price, or go monthly. Prefer to own forever? Unlock a single path on its own, or take Ultimate lifetime access.\n\nBUILT TO KEEP YOU LEARNING\nDistinct themes per tradition, full VoiceOver and Dynamic Type support, and a profile that maps your whole journey across all 22 realms.\n\nDeath is the one question every culture has tried to answer. Start exploring how.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://docs.google.com/document/d/1hgyLnTBAPtZC4miv1nEHuvw4_oRhj_gScdCxy7kGePw/edit?usp=sharing",
-      "releaseNotes": "Game Center has arrived. Climb global leaderboards and collect achievements as you journey through the afterlife. Plus polish and fixes.",
+      "releaseNotes": "The Oracle now speaks in full. Longer answers are no longer cut off mid-thought, so every consultation reaches its conclusion.\n\nWisdom you've already received now returns instantly: keyword insights and The Eternal's passage readings are remembered, with no need to summon them again.",
       "category": "Education",
       "genres": [
         "Education",
@@ -994,9 +927,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.4.1",
+      "version": "1.4.2",
       "releaseDate": "2025-09-23T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-22T14:25:29Z",
+      "currentVersionReleaseDate": "2026-06-26T21:14:06Z",
       "minimumOsVersion": "18.2",
       "contentRating": "12+",
       "languages": [
@@ -1133,7 +1066,7 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.aotd",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/36/7d/5c/367d5c74-507c-6489-ee4e-3593b90bc817/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/cc/5b/62/cc5b6242-a7d7-cc68-04cc-a0fbdce0165e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/prblemslver",
       "keywords": "comparative,reincarnation,karma,heaven,hell,mythology,norse,egyptian,death,sacred,soul,deity,ritual",
@@ -1648,73 +1581,31 @@
       "status": "live",
       "primaryColor": "#F59E0B",
       "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/solarbeam/iphone-1.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "The curated Webb gallery with live “Where Is Webb” status"
-          },
-          {
-            "src": "/screenshots/solarbeam/iphone-2.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "NASA Picture of the Day"
-          },
-          {
-            "src": "/screenshots/solarbeam/iphone-3.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Near-Earth asteroid tracker"
-          }
-        ],
-        "ipad": [
-          {
-            "src": "/screenshots/solarbeam/ipad-1.webp",
-            "w": 1668,
-            "h": 2420,
-            "label": "The curated Webb gallery with live status"
-          },
-          {
-            "src": "/screenshots/solarbeam/ipad-2.webp",
-            "w": 1668,
-            "h": 2420,
-            "label": "NASA Picture of the Day on iPad"
-          },
-          {
-            "src": "/screenshots/solarbeam/ipad-3.webp",
-            "w": 1668,
-            "h": 2420,
-            "label": "Near-Earth asteroid tracker on iPad"
-          }
-        ],
         "mac": [
           {
             "src": "/screenshots/solarbeam/mac-1.webp",
             "w": 1920,
             "h": 1200,
-            "label": "NASA Picture of the Day on Mac"
+            "label": "Apod"
+          },
+          {
+            "src": "/screenshots/solarbeam/mac-2.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Jwst"
           },
           {
             "src": "/screenshots/solarbeam/mac-3.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Live asteroid threat charts on Mac"
-          }
-        ],
-        "vision": [
-          {
-            "src": "/screenshots/solarbeam/vision-1.webp",
-            "w": 3840,
-            "h": 2160,
-            "label": "The Webb gallery, in your space on Vision Pro"
+            "label": "Asteroids"
           }
         ]
       },
       "name": "Solar Beam",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
       "description": "Solar Beam is the most beautiful way to explore the James Webb Space Telescope on every Apple device — plus NASA's daily space picture and near-Earth asteroids, all with a single purchase.\n\nTHE JAMES WEBB GALLERY\nA curated gallery of Webb's most breathtaking images, each with its real caption, credit, distance, and sky position. Browse by collection or search for any target.\n\nWHERE IS WEBB\nA live dashboard for the telescope: days in space, its orbit at Lagrange Point 2, and the temperature gap between its sun-facing side and its supercooled instruments.\n\n4K WALLPAPERS\nSave any Webb image as a 4K wallpaper for iPhone, iPad, Mac, or Apple TV.\n\nPICTURE OF THE DAY\nNASA's daily image, with AI-generated facts that make the science click.\n\nASTEROIDS\nTrack near-Earth objects and close approaches — always free.\n\nOne purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro, with Family Sharing.\n\nImage credits: NASA, ESA, CSA, STScI. ESA/Webb imagery under CC BY 4.0.",
-      "releaseNotes": "",
+      "releaseNotes": "The James Webb Space Telescope tab is completely reborn — and it's now the heart of Solar Beam.\n\n• A curated gallery of Webb's greatest images — Cosmic Cliffs, the Pillars of Creation, deep fields and more — with the real captions, credits, distances and sky coordinates.\n• Browse by collection: Nebulae, Galaxies, Star Birth, Our Solar System, Deep & Distant, and the monthly showcase.\n• “Where Is Webb” live status: how long Webb has been in space, its orbit, and the staggering temperature gap between its sun-facing side (~+50°C) and its instruments (~−236°C).\n• Search the whole Webb library.\n• Premium: unlock the full gallery and save any image as a 4K wallpaper.\n\nOne purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro.",
       "category": "Photo & Video",
       "genres": [
         "Photo & Video",
@@ -1723,9 +1614,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "2.1",
+      "version": "3.0.0",
       "releaseDate": "2024-09-29T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-26T01:54:08Z",
+      "currentVersionReleaseDate": "2026-06-28T22:50:30Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
@@ -1740,17 +1631,13 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.solarbeam",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/89/3c/52/893c522b-86b9-abcd-bd8a-75e39670b0cc/App_Icon-marketing.lsr/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/0e/d3/15/0ed3151f-3ec1-1eb1-40a3-6410fefe31ee/App_Icon-marketing.lsr/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/guitaripod",
-      "keywords": "james webb,jwst,webb telescope,nebula,galaxy,deep space,apod,nasa,astronomy,wallpaper,space,asteroids",
+      "keywords": "james,webb,jwst,telescope,nebula,galaxy,deep,space,apod,astronomy,wallpaper,asteroid,cosmos",
       "iconLocal": "/screenshots/solarbeam/icon.webp",
       "platforms": [
-        "iPhone",
-        "iPad",
-        "Mac",
-        "Apple TV",
-        "Vision Pro"
+        "Mac"
       ]
     },
     {
@@ -2028,63 +1915,6 @@
       "supportUrl": "https://mako.midgarcorp.cc/support/payday",
       "keywords": "erechnung,xrechnung,zugferd,e-lasku,facturacion,estimate,freelancer,recurring,KSeF,facturae,ubl",
       "iconLocal": "/screenshots/payday/icon.webp",
-      "platforms": [
-        "iPhone"
-      ]
-    },
-    {
-      "slug": "crucible",
-      "trackId": 0,
-      "shortName": "Crucible",
-      "status": "live",
-      "primaryColor": "#F97316",
-      "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/crucible/iphone-1.webp",
-            "w": 1290,
-            "h": 2796,
-            "label": "Home — Continue Watching, On Deck, and Recently Added"
-          },
-          {
-            "src": "/screenshots/crucible/iphone-2.webp",
-            "w": 1290,
-            "h": 2796,
-            "label": "Detail with backdrop, cast & crew, and more like this"
-          },
-          {
-            "src": "/screenshots/crucible/iphone-3.webp",
-            "w": 1290,
-            "h": 2796,
-            "label": "Built-in player with Skip Intro and Picture-in-Picture"
-          },
-          {
-            "src": "/screenshots/crucible/iphone-4.webp",
-            "w": 1290,
-            "h": 2796,
-            "label": "Movie library with Continue Watching and a poster grid"
-          }
-        ]
-      },
-      "name": "Crucible: Plex Client",
-      "appStoreUrl": "https://github.com/guitaripod/Crucible/releases/latest",
-      "description": "Crucible is a fast, native Plex client for iPhone — and a love letter to building iOS apps without a Mac. The whole app is Swift 6 and programmatic UIKit, cross-compiled on Arch Linux and deployed straight to an iPhone over USB. No Xcode, no storyboards, no macOS anywhere in the loop.\n\nEVERYTHING IN ITS PLACE\nContinue Watching, On Deck, and Recently Added greet you on the home screen. Browse libraries as poster grids with genre filters and sort options, or dig into raw folders for unindexed content.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits straight from Plex markers, Picture-in-Picture with background audio, lock screen and Control Center controls, and Up Next that rolls the next episode as the credits start. Direct play when your device can handle the file, automatic HLS transcoding when it can't.\n\nTAKE IT OFFLINE\nDownload movies, whole seasons, or single episodes at the quality you pick — Original, High, Medium, Low, or Data Saver. Background transfers keep going when the app is closed and resume after interruptions, downloads stay Wi-Fi-only unless you allow cellular, and a dedicated Downloads tab shows progress, storage used, and free space. A Live Activity tracks live progress on the Lock Screen and in the Dynamic Island — a WidgetKit extension compiled and signed on Arch Linux via xtool — while downloads run in the background, auto-resume from where they left off, and ping you when they finish. Offline playback runs through the same player — Skip Intro/Credits, resume, Picture-in-Picture, background audio, and lock screen controls all work with no network.\n\nGO DEEPER\nCast and crew, More Like This recommendations, subtitle and audio track selection, and adjustable playback speed. Hand a title off between your devices and find what you've watched in Spotlight.\n\nOPEN SOURCE, BUILT ON LINUX\nCrucible is free and open source under the GPL-3.0 license, with zero third-party dependencies — pure Apple frameworks. Read the code, file an issue, or build it yourself.",
-      "category": "Entertainment",
-      "price": "Free",
-      "rating": 0,
-      "ratingCount": 0,
-      "version": "1.3.0",
-      "releaseDate": "2026-03-21T19:58:59Z",
-      "currentVersionReleaseDate": "2026-06-27T11:13:12Z",
-      "minimumOsVersion": "17.0",
-      "sellerName": "guitaripod",
-      "icon": "/screenshots/crucible/icon.webp",
-      "iconLocal": "/screenshots/crucible/icon.webp",
-      "supportUrl": "https://github.com/guitaripod/Crucible/issues",
-      "openSource": true,
-      "githubUrl": "https://github.com/guitaripod/Crucible",
-      "latestReleaseUrl": "https://github.com/guitaripod/Crucible/releases/latest",
-      "license": "GPL-3.0",
       "platforms": [
         "iPhone"
       ]
