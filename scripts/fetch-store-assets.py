@@ -47,6 +47,7 @@ APPS = [
     {"slug": "solarbeam", "trackId": 6705124497, "shortName": "Solar Beam", "color": "#F59E0B", "status": "live"},
     {"slug": "psybeam", "trackId": 6777952645, "shortName": "Psybeam", "color": "#06B6D4", "status": "live"},
     {"slug": "payday", "trackId": 6779927672, "shortName": "Pay Day", "color": "#22C55E", "status": "review"},
+    {"slug": "helia", "trackId": 6785542220, "shortName": "Helia", "color": "#F5A623", "status": "review"},
 ]
 
 # Per-slug fallbacks for in-review apps iTunes does not serve yet.
@@ -60,6 +61,11 @@ REVIEW_FALLBACK = {
         "category": "Business",
         "price": "Free",
         "repoIcon": os.path.expanduser("~/Dev/ios/PayDay"),
+    },
+    "helia": {
+        "category": "Health & Fitness",
+        "price": "Free",
+        "repoIcon": os.path.expanduser("~/Dev/ios/Helia"),
     },
 }
 
@@ -400,12 +406,12 @@ def main():
             continue
         keep_pinned_description(f, app["slug"], existing)
         facts.append(f)
-    if only and existing:
-        for f in facts:
-            existing[f["slug"]] = f
-        order = [a["slug"] for a in APPS]
-        facts = [existing[s] for s in order if s in existing]
-    facts.sort(key=lambda f: [a["slug"] for a in APPS].index(f["slug"]))
+    merged = dict(existing)
+    for f in facts:
+        merged[f["slug"]] = f
+    known = [a["slug"] for a in APPS]
+    extras = [s for s in merged if s not in known]
+    facts = [merged[s] for s in known + extras if s in merged]
     with open(FACTS_PATH, "w") as fh:
         json.dump({"apps": facts}, fh, indent=2, ensure_ascii=False)
         fh.write("\n")

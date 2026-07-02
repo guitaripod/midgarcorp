@@ -1,73 +1,6 @@
 {
   "apps": [
     {
-      "slug": "embr",
-      "trackId": 6784940198,
-      "shortName": "Embr",
-      "status": "review",
-      "primaryColor": "#9147FF",
-      "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/embr/iphone-1.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Watch live with chat"
-          },
-          {
-            "src": "/screenshots/embr/iphone-2.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Every live channel"
-          },
-          {
-            "src": "/screenshots/embr/iphone-3.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Native and yours"
-          },
-          {
-            "src": "/screenshots/embr/iphone-4.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "The Midgar family"
-          }
-        ]
-      },
-      "name": "Embr — Live Streams",
-      "appStoreUrl": "https://apps.apple.com/app/id6784940198",
-      "description": "Embr is a fast, native Twitch client built for iPhone — not a wrapped web view. Streams open in a real AVPlayer with picture-in-picture, background audio, and instant quality switching. Chat is rendered natively so it stays smooth even in the busiest channels. No bloat, no clutter, just watch and chat.\n\nBrowse without an account. Sign in with Twitch only when you want to follow channels and join the conversation.\n\nWATCH\n- Native AVPlayer video — live streams, VODs, and clips\n- Picture-in-picture and background audio — keep watching while you use other apps\n- Quality selection, latency display, and landscape fullscreen\n- Double-tap to seek, and adjustable playback speed on VODs\n\nBROWSE & DISCOVER\n- Live channels and top categories at a glance\n- Search channels and categories instantly\n- A Following tab that surfaces who's live (when signed in)\n- Rich channel pages with everything you need to dive in\n\nREAL-TIME CHAT\n- Live chat over Twitch EventSub — fast and reliable\n- Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ, all merged together\n- Badges, cheermotes, mentions, and threaded replies\n- Emote autocomplete and recent-message backfill so you're never lost\n- Search the chat, report or block messages, and hide users you'd rather not see\n- Moderator tools — delete, timeout, and ban — when you're a mod in the channel\n\nMADE FOR iPhone\n- Light and dark themes, with chat readability and text-scale controls\n- Haptics, third-party emote toggles, and a blocked-users list\n- Built natively in UIKit for speed and a small footprint\n- Full guest browsing — an account is optional\n\nEmbr is open source.\n\n———————\n\nEmbr is an independent, third-party app and is not affiliated with, endorsed by, sponsored by, or connected to Twitch Interactive, Inc. \"Twitch\" and all related names, marks, and logos are trademarks of their respective owners and are used here only to describe what the app connects to. You sign in with your own Twitch account through Twitch's official OAuth; Embr never sees your password. Use of Twitch is subject to Twitch's own Terms of Service.",
-      "releaseNotes": "Welcome to Embr 1.0 — a fast, native Twitch client for iPhone.\n- Browse live channels, top categories, and search\n- A Following tab for the channels you care about (sign-in)\n- Native AVPlayer video with picture-in-picture, background audio, quality selection, and fullscreen\n- VODs and clips, with playback speed and double-tap seek\n- Real-time chat over EventSub with 7TV, BTTV, and FFZ emotes merged in\n- Badges, cheermotes, replies, emote autocomplete, and chat search\n- Moderator actions when you're a mod; report and block when you're not\n- Themes, haptics, and chat readability controls",
-      "category": "Entertainment",
-      "genres": [
-        "Entertainment"
-      ],
-      "price": "Free",
-      "rating": 0,
-      "ratingCount": 0,
-      "version": "1.0.0",
-      "releaseDate": "2026-06-27",
-      "currentVersionReleaseDate": "2026-06-27",
-      "minimumOsVersion": "18.0",
-      "contentRating": "17+",
-      "languages": [
-        "EN"
-      ],
-      "supportedDevices": [
-        "iPhone"
-      ],
-      "sellerName": "Midgar Oy",
-      "bundleId": "com.guitaripod.embr",
-      "icon": null,
-      "marketingUrl": "https://midgarcorp.cc/embr",
-      "supportUrl": "https://x.com/guitaripod",
-      "keywords": "stream,streaming,livestream,twitch viewer,7tv,bttv,ffz,emotes,vod,clips,pip,irc,esports,gaming,chat",
-      "iconLocal": "/screenshots/embr/icon.webp",
-      "platforms": [
-        "iPhone"
-      ]
-    },
-    {
       "slug": "dreameater",
       "trackId": 6661019277,
       "shortName": "Dream Eater",
@@ -2028,6 +1961,146 @@
       "supportUrl": "https://mako.midgarcorp.cc/support/payday",
       "keywords": "erechnung,xrechnung,zugferd,e-lasku,facturacion,estimate,freelancer,recurring,KSeF,facturae,ubl",
       "iconLocal": "/screenshots/payday/icon.webp",
+      "platforms": [
+        "iPhone"
+      ]
+    },
+    {
+      "slug": "helia",
+      "trackId": 6785542220,
+      "shortName": "Helia",
+      "status": "review",
+      "primaryColor": "#F5A623",
+      "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/helia/iphone-1.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Hero"
+          },
+          {
+            "src": "/screenshots/helia/iphone-2.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Enough"
+          },
+          {
+            "src": "/screenshots/helia/iphone-3.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Trails"
+          },
+          {
+            "src": "/screenshots/helia/iphone-4.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Coach"
+          },
+          {
+            "src": "/screenshots/helia/iphone-5.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Learn"
+          },
+          {
+            "src": "/screenshots/helia/iphone-6.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Patterns"
+          },
+          {
+            "src": "/screenshots/helia/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Pro"
+          }
+        ]
+      },
+      "name": "Helia: UV Index & Sun Safety",
+      "appStoreUrl": "https://apps.apple.com/us/app/id6785542220",
+      "description": "Helia is the honest solar coach. Most sun apps either push you to maximize a tan or just show a raw UV number. Helia does neither. It treats sunlight like what it is — something to enjoy on a budget. The sunburn is the enemy, not the sun.\n\nHelia reads today's UV conditions for your exact location and your skin, then gives you one clear answer: roughly how long you can be in the sun before you should cover up, reapply, or head for shade. That answer — your sunburn budget — is free, forever. We never put safety behind a paywall.\n\nTHE FREE SAFETY CORE — for everyone\n• Your sunburn budget. A personalized estimate of how long today's sun may take before your skin has had enough, based on the live UV index and your skin type.\n• The Answer. One glance tells you whether it's a cover-up day, a quick-session day, or a stay-out day — no decoding color charts.\n• Live UV index + forecast. See the UV climb and fall through the day so you can plan around the harshest hours.\n• Cloud- and rain-aware. Helia corrects the UV for the real sky, so an overcast day reads honestly — not as full sun.\n• Reapply & cover-up nudges. Gentle reminders to top up sunscreen or step into shade before you've used up your budget.\n• Honest by design. Helia rounds toward caution. When in doubt, it tells you to protect.\n\nPRO — the coaching layer (optional)\nPro turns Helia from an instrument into a coach, with guidance grounded in how sunlight affects the body across the day:\n• Morning-light timing. Helia suggests when a little outdoor light may help support your daily rhythm and energy — the circadian side of sunlight.\n• Vitamin D estimate. A running estimate of the vitamin D your sessions may have supported, from sunlight and your own inputs — so you can see the upside as well as the risk.\n• Sun Trails. See the path of every walk you took in the sun, on a map, with the dose you earned.\n• On-device science coach. Ask anything about sun, UV, vitamin D, and your body clock — answered privately on your phone, grounded in cited sources, never the cloud.\n• History & trends. Your sun, your budget used, and your patterns over weeks and seasons.\n• Multiple locations & seasons. Travel-aware, hemisphere-aware estimates, all year.\n\nWHY PEOPLE KEEP HELIA INSTALLED\nHelia isn't trying to get you a deeper tan or sell you fear. It's a quiet, trustworthy instrument you check before you go outside — the kind of app you leave on your home screen because it has earned it.\n\nPRIVATE BY DESIGN\nHelia works for you, not on you. Your sun sessions, skin type, and location stay on your device wherever possible and are used to personalize your estimates — not to profile you. Precise location is used only to read your local sun and UV conditions. The coach runs entirely on your device.\n\nA NOTE ON HEALTH\nHelia provides general wellness estimates and guidance, not medical advice. Sunburn-budget and vitamin-D figures are estimates based on public UV data and the details you provide — they may differ from reality. Helia does not diagnose, treat, or prevent any condition. For anything concerning your skin or health, please consult a qualified clinician.\n\nGet the free sunburn budget today. Upgrade to Pro when you want the coaching.\n\nHelia Pro is available as an annual or monthly subscription, or a one-time lifetime purchase.\n• Annual — $49.99 / year (7-day free trial)\n• Monthly — $9.99 / month\n• Lifetime — $129.99 one-time (never renews)\nPrices may vary by region. Payment is charged to your Apple ID at confirmation of purchase. Subscriptions renew automatically unless turned off at least 24 hours before the period ends. A free trial converts to a paid annual subscription unless cancelled at least 24 hours before it ends; no payment is due during the trial. Manage or cancel anytime in your App Store account settings. Any free portion is forfeited when you buy a subscription.\nPrivacy Policy: https://midgarcorp.cc/helia/privacy · Terms: https://midgarcorp.cc/helia/terms",
+      "releaseNotes": "",
+      "promotionalText": "The honest solar coach. See today's UV, get a personalized sunburn budget, and know the smart window for sunlight — so you can enjoy the sun without overdoing it.",
+      "category": "Health & Fitness",
+      "price": "Free",
+      "rating": 0,
+      "ratingCount": 0,
+      "version": "1.0",
+      "bundleId": "com.guitaripod.helia",
+      "sellerName": "Midgar Oy",
+      "icon": null,
+      "marketingUrl": "https://midgarcorp.cc/helia",
+      "supportUrl": "https://midgarcorp.cc/helia",
+      "keywords": "spf,sunburn,skin,sunlight,circadian,daylight,forecast,sunset,health,exposure,timer,tracker,light",
+      "iconLocal": "/screenshots/helia/icon.webp",
+      "platforms": [
+        "iPhone"
+      ]
+    },
+    {
+      "slug": "embr",
+      "trackId": 6784940198,
+      "shortName": "Embr",
+      "status": "review",
+      "primaryColor": "#9147FF",
+      "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/embr/iphone-1.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Watch live with chat"
+          },
+          {
+            "src": "/screenshots/embr/iphone-2.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Every live channel"
+          },
+          {
+            "src": "/screenshots/embr/iphone-3.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Native and yours"
+          },
+          {
+            "src": "/screenshots/embr/iphone-4.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "The Midgar family"
+          }
+        ]
+      },
+      "name": "Embr — Live Streams",
+      "appStoreUrl": "https://apps.apple.com/app/id6784940198",
+      "description": "Embr is a fast, native Twitch client built for iPhone — not a wrapped web view. Streams open in a real AVPlayer with picture-in-picture, background audio, and instant quality switching. Chat is rendered natively so it stays smooth even in the busiest channels. No bloat, no clutter, just watch and chat.\n\nBrowse without an account. Sign in with Twitch only when you want to follow channels and join the conversation.\n\nWATCH\n- Native AVPlayer video — live streams, VODs, and clips\n- Picture-in-picture and background audio — keep watching while you use other apps\n- Quality selection, latency display, and landscape fullscreen\n- Double-tap to seek, and adjustable playback speed on VODs\n\nBROWSE & DISCOVER\n- Live channels and top categories at a glance\n- Search channels and categories instantly\n- A Following tab that surfaces who's live (when signed in)\n- Rich channel pages with everything you need to dive in\n\nREAL-TIME CHAT\n- Live chat over Twitch EventSub — fast and reliable\n- Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ, all merged together\n- Badges, cheermotes, mentions, and threaded replies\n- Emote autocomplete and recent-message backfill so you're never lost\n- Search the chat, report or block messages, and hide users you'd rather not see\n- Moderator tools — delete, timeout, and ban — when you're a mod in the channel\n\nMADE FOR iPhone\n- Light and dark themes, with chat readability and text-scale controls\n- Haptics, third-party emote toggles, and a blocked-users list\n- Built natively in UIKit for speed and a small footprint\n- Full guest browsing — an account is optional\n\nEmbr is open source.\n\n———————\n\nEmbr is an independent, third-party app and is not affiliated with, endorsed by, sponsored by, or connected to Twitch Interactive, Inc. \"Twitch\" and all related names, marks, and logos are trademarks of their respective owners and are used here only to describe what the app connects to. You sign in with your own Twitch account through Twitch's official OAuth; Embr never sees your password. Use of Twitch is subject to Twitch's own Terms of Service.",
+      "releaseNotes": "Welcome to Embr 1.0 — a fast, native Twitch client for iPhone.\n- Browse live channels, top categories, and search\n- A Following tab for the channels you care about (sign-in)\n- Native AVPlayer video with picture-in-picture, background audio, quality selection, and fullscreen\n- VODs and clips, with playback speed and double-tap seek\n- Real-time chat over EventSub with 7TV, BTTV, and FFZ emotes merged in\n- Badges, cheermotes, replies, emote autocomplete, and chat search\n- Moderator actions when you're a mod; report and block when you're not\n- Themes, haptics, and chat readability controls",
+      "category": "Entertainment",
+      "genres": [
+        "Entertainment"
+      ],
+      "price": "Free",
+      "rating": 0,
+      "ratingCount": 0,
+      "version": "1.0.0",
+      "releaseDate": "2026-06-27",
+      "currentVersionReleaseDate": "2026-06-27",
+      "minimumOsVersion": "18.0",
+      "contentRating": "17+",
+      "languages": [
+        "EN"
+      ],
+      "supportedDevices": [
+        "iPhone"
+      ],
+      "sellerName": "Midgar Oy",
+      "bundleId": "com.guitaripod.embr",
+      "icon": null,
+      "marketingUrl": "https://midgarcorp.cc/embr",
+      "supportUrl": "https://x.com/guitaripod",
+      "keywords": "stream,streaming,livestream,twitch viewer,7tv,bttv,ffz,emotes,vod,clips,pip,irc,esports,gaming,chat",
+      "iconLocal": "/screenshots/embr/icon.webp",
       "platforms": [
         "iPhone"
       ]
