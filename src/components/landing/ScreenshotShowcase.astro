@@ -65,13 +65,11 @@ const gallery = Object.fromEntries(
     {
       devices.map((device, di) => (
         <div data-panel={device} class:list={['device-panel', { hidden: di !== 0 }]}>
-          <ul
-            class={`no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 ${heightClass[device] ?? 'h-[440px]'}`}
-          >
+          <ul class="no-scrollbar flex snap-x snap-mandatory items-start gap-5 overflow-x-auto pb-4">
             {app.screenshots[device].map((shot, i) => (
-              <li class="flex h-full shrink-0 snap-start flex-col items-center gap-3">
+              <li class="flex shrink-0 snap-start flex-col items-center gap-3">
                 <div
-                  class="shot-btn group relative h-[calc(100%-2rem)] cursor-zoom-in"
+                  class={`shot-btn group relative cursor-zoom-in ${heightClass[device] ?? 'h-[440px]'}`}
                   role="button"
                   tabindex="0"
                   data-device={device}
