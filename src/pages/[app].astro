@@ -42,8 +42,9 @@ const osMap: Record<string, string> = {
 };
 const operatingSystem = [...new Set(app.platforms.map((p) => osMap[p] ?? p))].join(', ');
 
+const hasScreenshots = Object.values(app.screenshots).some((shots) => shots.length > 0);
 const heroDevice = primaryDevice(app);
-const heroShot = app.screenshots[heroDevice]?.[0];
+const heroShot = heroDevice ? app.screenshots[heroDevice]?.[0] : undefined;
 const heroHeightClass =
   heroDevice === 'iphone'
     ? 'h-[420px] sm:h-[500px]'
@@ -263,12 +264,16 @@ const sectionPrompt = (cmd: string) => cmd;
               />
             )
           }
-          <a
-            href="#screenshots"
-            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
-          >
-            See it in action ↓
-          </a>
+          {
+            hasScreenshots && (
+              <a
+                href="#screenshots"
+                class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
+              >
+                See it in action ↓
+              </a>
+            )
+          }
         </div>
 
         <!-- highlights -->
@@ -305,18 +310,21 @@ const sectionPrompt = (cmd: string) => cmd;
       }
     </header>
 
-    <!-- Screenshots -->
-    <section
-      id="screenshots"
-      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
-    >
-      <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --screenshots`)}</p>
-      <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        {app.shortName}
-        <span class="accent-text">in action</span>
-      </h2>
-      <ScreenshotShowcase app={app} />
-    </section>
+    {
+      hasScreenshots && (
+        <section
+          id="screenshots"
+          class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+        >
+          <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --screenshots`)}</p>
+          <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+            {app.shortName}
+            <span class="accent-text">in action</span>
+          </h2>
+          <ScreenshotShowcase app={app} />
+        </section>
+      )
+    }
 
     {
       c.lifestyle && c.lifestyle.length > 0 && (

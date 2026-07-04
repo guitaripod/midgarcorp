@@ -2161,6 +2161,33 @@
       "platforms": [
         "iPhone"
       ]
+    },
+    {
+      "slug": "flaccy",
+      "trackId": 6787493695,
+      "shortName": "Flaccy",
+      "status": "review",
+      "primaryColor": "#FF4D6D",
+      "screenshots": {},
+      "name": "Flaccy",
+      "appStoreUrl": "https://apps.apple.com/us/app/id6787493695",
+      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.\n\nYOUR LIBRARY, ORGANIZED\n• Import via USB or the Files app — messy folder names and scene releases are identified and cleaned up automatically\n• Albums, artists, songs, and playlists with search, sorting, and stunning artwork\n• Gapless playback that honors your albums, with queue persistence across launches\n\nMADE FOR LISTENING\n• Synced lyrics with tap-to-seek\n• Dynamic Island and Lock Screen Live Activity\n• AirPlay, sleep timer, and a Now Playing screen with ambient artwork backdrops\n• Apple Watch app for your wrist\n\nSCROBBLE EVERYTHING\n• Sign in with Last.fm and every play is scrobbled — even offline, with automatic retry\n• Loved tracks, listening charts, and artist bios matched to your library\n• Year in Music: shareable story cards and a poster of your listening year\n\nHONEST ABOUT AUDIO\nThe built-in Listening Guide explains what actually reaches your ears — Bluetooth codecs, why lossless can't reach AirPods, when FLAC is worth it, and what blind tests really show. No snake oil.\n\nFlaccy plays FLAC, ALAC, AAC, M4A, MP3, WAV, AIFF, and CAF.",
+      "category": "Music",
+      "price": "Free",
+      "rating": 0,
+      "ratingCount": 0,
+      "version": "1.0",
+      "minimumOsVersion": "18.0",
+      "bundleId": "com.midgarcorp.flaccy",
+      "sellerName": "Midgar Oy",
+      "icon": null,
+      "marketingUrl": "https://midgarcorp.cc/flaccy",
+      "supportUrl": "https://midgarcorp.cc/flaccy",
+      "iconLocal": "/screenshots/flaccy/icon.webp",
+      "platforms": [
+        "iPhone",
+        "Apple Watch"
+      ]
     }
   ]
 }

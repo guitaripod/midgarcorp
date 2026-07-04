@@ -1,0 +1,101 @@
+{
+  "seoTitle": "Flaccy — FLAC Player & Music Library for iPhone",
+  "metaDescription": "A beautiful player for the music you own. Import FLAC, ALAC, AAC, or MP3 and get a fast library with gapless playback, synced lyrics, Last.fm scrobbling, and an Apple Watch app — no streaming subscription, no account.",
+  "keywords": [
+    "flac player iphone",
+    "lossless music player ios",
+    "local music player iphone",
+    "gapless playback app",
+    "last.fm scrobbler iphone",
+    "offline music player no subscription",
+    "alac player ios",
+    "music library app iphone",
+    "synced lyrics music player",
+    "apple watch music player"
+  ],
+  "heroHeadline": "A beautiful home for the music you own",
+  "heroSubhead": "Drop in your FLAC, ALAC, AAC, or MP3 files and Flaccy turns them into a fast, gorgeous library — gapless playback, synced lyrics, Last.fm scrobbling, and an Apple Watch app. No streaming subscription, no upload, no account.",
+  "accentColor": "#FF4D6D",
+  "highlights": [
+    "Import via USB or the Files app — messy folders are identified and cleaned up automatically",
+    "Gapless playback that honors your albums, with a queue that survives relaunches",
+    "Every play scrobbled to Last.fm — even offline, with automatic retry",
+    "An honest Listening Guide: what actually reaches your ears, no snake oil"
+  ],
+  "features": [
+    {
+      "title": "Your Library, Organized",
+      "body": "Albums, artists, songs, and playlists with search, sorting, and stunning artwork. Scene releases and messy folder names are identified and cleaned up automatically on import.",
+      "glyph": "▤"
+    },
+    {
+      "title": "Gapless, As Intended",
+      "body": "Albums play the way they were mastered — no gaps, no hiccups between tracks. Your queue persists across launches, so the music picks up exactly where you left it.",
+      "glyph": "∞"
+    },
+    {
+      "title": "Made for Listening",
+      "body": "Synced lyrics with tap-to-seek, a Now Playing screen with ambient artwork backdrops, AirPlay, a sleep timer, and a Live Activity in the Dynamic Island and on the Lock Screen.",
+      "glyph": "♪"
+    },
+    {
+      "title": "Scrobble Everything",
+      "body": "Sign in with Last.fm and every play is scrobbled — even offline, with automatic retry. Loved tracks, listening charts, and artist bios matched to your library.",
+      "glyph": "↻"
+    },
+    {
+      "title": "Year in Music",
+      "body": "Your listening year as shareable story cards and a poster — top artists, albums, and the numbers behind them, rendered beautifully from your own plays.",
+      "glyph": "✶"
+    },
+    {
+      "title": "Honest About Audio",
+      "body": "The built-in Listening Guide explains what actually reaches your ears — Bluetooth codecs, why lossless can't reach AirPods, and when FLAC is worth it. No snake oil.",
+      "glyph": "◈"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Import",
+      "body": "Copy music over USB or pick files in the Files app. Flaccy identifies and cleans up messy folder names and scene releases automatically."
+    },
+    {
+      "step": "Listen",
+      "body": "Browse albums, artists, songs, and playlists, then play gaplessly with synced lyrics, ambient artwork, AirPlay, and a Live Activity on the Lock Screen."
+    },
+    {
+      "step": "Scrobble",
+      "body": "Sign in with Last.fm once and every play is scrobbled — even offline. Watch your charts grow and unwrap your Year in Music."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What audio formats does Flaccy play?",
+      "a": "FLAC, ALAC, AAC, M4A, MP3, WAV, AIFF, and CAF — with gapless playback across all of them."
+    },
+    {
+      "q": "Do I need a streaming subscription or an account?",
+      "a": "No. Flaccy plays files you already own, stored on your iPhone. There is no upload, no account, and no subscription required. A Last.fm account is optional, only for scrobbling."
+    },
+    {
+      "q": "How do I get my music into Flaccy?",
+      "a": "Two ways: copy files over USB from a computer, or import them through the Files app. Messy folder names and scene releases are identified and cleaned up automatically."
+    },
+    {
+      "q": "Does Flaccy scrobble to Last.fm?",
+      "a": "Yes. Sign in with your Last.fm account and every play is scrobbled — even when you're offline, with automatic retry once you're back online. You also get loved tracks, listening charts, and artist bios matched to your library."
+    },
+    {
+      "q": "Is there an Apple Watch app?",
+      "a": "Yes. Flaccy includes an Apple Watch app so you can control your music from your wrist."
+    },
+    {
+      "q": "Is lossless audio worth it on iPhone?",
+      "a": "It depends on how you listen — and Flaccy is honest about it. The built-in Listening Guide explains Bluetooth codecs, why lossless can't reach AirPods, when FLAC is genuinely worth it, and what blind tests really show."
+    }
+  ],
+  "screenshotCaptions": {},
+  "ctaLine": "Your music deserves a better player.",
+  "pricingNote": "Free on the App Store. No subscription, no account, no upload.",
+  "lifestyle": []
+}
