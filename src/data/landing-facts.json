@@ -2068,7 +2068,58 @@
       "shortName": "Flaccy",
       "status": "review",
       "primaryColor": "#FF4D6D",
-      "screenshots": {},
+      "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/flaccy/iphone-1.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-2.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Now Playing"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-3.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Lyrics"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-4.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Quality"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-5.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Recap"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-6.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Year in Music"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Listening Guide"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Album"
+          }
+        ]
+      },
       "name": "Flaccy",
       "appStoreUrl": "https://apps.apple.com/us/app/id6787493695",
       "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.\n\nYOUR LIBRARY, ORGANIZED\n• Import via USB or the Files app — messy folder names and scene releases are identified and cleaned up automatically\n• Albums, artists, songs, and playlists with search, sorting, and stunning artwork\n• Gapless playback that honors your albums, with queue persistence across launches\n• Codec, bit depth, and sample rate shown on every track — see exactly what you're playing\n\nMADE FOR LISTENING\n• Synced lyrics with tap-to-seek\n• Full playback controls on the Lock Screen and in the Dynamic Island\n• AirPlay, sleep timer, and a Now Playing screen with ambient artwork backdrops\n\nSCROBBLE EVERYTHING\n• Sign in with Last.fm and every play is scrobbled — even offline, with automatic retry\n• Loved tracks, listening charts, and artist bios matched to your library\n• Year in Music: shareable story cards and a poster of your listening year\n\nPHONE-FREE ON APPLE WATCH\n• Sync tracks to your watch and play them offline — no iPhone required\n• A true standalone player: gapless playback, shuffle, repeat, and AirPods controls from your wrist\n• Storage-smart sync that knows what fits on your watch\n\nREDISCOVER YOUR COLLECTION\n• Start a station from any song — Flaccy builds a queue from your own library\n• Suggested playlists and similar-artist trails\n• Share any track as a universal streaming link — friends open it in their app, you keep your FLACs\n\nHONEST ABOUT AUDIO\nThe built-in Listening Guide explains what actually reaches your ears — Bluetooth codecs, why lossless can't reach AirPods, when FLAC is worth it, and what blind tests really show. No snake oil.\n\nFlaccy plays FLAC, ALAC, AAC, M4A, MP3, WAV, AIFF, and CAF.",
