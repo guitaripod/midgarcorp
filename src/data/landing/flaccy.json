@@ -1,6 +1,6 @@
 {
   "seoTitle": "Flaccy — FLAC Player & Music Library for iPhone",
-  "metaDescription": "A beautiful player for the music you own. Import FLAC, ALAC, AAC, or MP3 and get a fast library with gapless playback, synced lyrics, Last.fm scrobbling, and an Apple Watch app — no streaming subscription, no account.",
+  "metaDescription": "A beautiful player for the music you own. Import FLAC, ALAC, AAC, or MP3 and get a fast library with gapless playback, synced lyrics, Last.fm scrobbling, and a standalone Apple Watch app — no streaming subscription, no account.",
   "keywords": [
     "flac player iphone",
     "lossless music player ios",
@@ -14,7 +14,7 @@
     "apple watch music player"
   ],
   "heroHeadline": "A beautiful home for the music you own",
-  "heroSubhead": "Drop in your FLAC, ALAC, AAC, or MP3 files and Flaccy turns them into a fast, gorgeous library — gapless playback, synced lyrics, Last.fm scrobbling, and an Apple Watch app. No streaming subscription, no upload, no account.",
+  "heroSubhead": "Drop in your FLAC, ALAC, AAC, or MP3 files and Flaccy turns them into a fast, gorgeous library — gapless playback, synced lyrics, Last.fm scrobbling, and a standalone Apple Watch app. No streaming subscription, no upload, no account.",
   "accentColor": "#FF4D6D",
   "highlights": [
     "Import via USB or the Files app — messy folders are identified and cleaned up automatically",
@@ -35,7 +35,7 @@
     },
     {
       "title": "Made for Listening",
-      "body": "Synced lyrics with tap-to-seek, a Now Playing screen with ambient artwork backdrops, AirPlay, a sleep timer, and a Live Activity in the Dynamic Island and on the Lock Screen.",
+      "body": "Synced lyrics with tap-to-seek, a Now Playing screen with ambient artwork backdrops, AirPlay, a sleep timer, and full playback controls on the Lock Screen and in the Dynamic Island.",
       "glyph": "♪"
     },
     {
@@ -52,6 +52,16 @@
       "title": "Honest About Audio",
       "body": "The built-in Listening Guide explains what actually reaches your ears — Bluetooth codecs, why lossless can't reach AirPods, and when FLAC is worth it. No snake oil.",
       "glyph": "◈"
+    },
+    {
+      "title": "Phone-free on Apple Watch",
+      "body": "Sync albums to your watch and play them offline — gapless, shuffle, repeat — no iPhone in your pocket.",
+      "glyph": "◔"
+    },
+    {
+      "title": "See what you're playing",
+      "body": "Codec, bit depth, and sample rate on every track — honesty down to the file.",
+      "glyph": "♯"
     }
   ],
   "howItWorks": [
@@ -61,7 +71,7 @@
     },
     {
       "step": "Listen",
-      "body": "Browse albums, artists, songs, and playlists, then play gaplessly with synced lyrics, ambient artwork, AirPlay, and a Live Activity on the Lock Screen."
+      "body": "Browse albums, artists, songs, and playlists, then play gaplessly with synced lyrics, ambient artwork, AirPlay, and full playback controls on the Lock Screen and in the Dynamic Island."
     },
     {
       "step": "Scrobble",
@@ -87,7 +97,7 @@
     },
     {
       "q": "Is there an Apple Watch app?",
-      "a": "Yes. Flaccy includes an Apple Watch app so you can control your music from your wrist."
+      "a": "Yes — a true standalone player. Sync albums from your iPhone, then play them offline from your wrist with gapless playback, shuffle, repeat, and AirPods controls. No iPhone required."
     },
     {
       "q": "Is lossless audio worth it on iPhone?",
