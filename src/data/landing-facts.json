@@ -2048,27 +2048,57 @@
         "iphone": [
           {
             "src": "/screenshots/embr/iphone-1.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Watch"
+            "w": 1320,
+            "h": 2868,
+            "label": "Watch live, with real-time chat"
           },
           {
             "src": "/screenshots/embr/iphone-2.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Browse"
+            "w": 1320,
+            "h": 2868,
+            "label": "Every live channel, at a glance"
           },
           {
             "src": "/screenshots/embr/iphone-3.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Settings"
+            "w": 1320,
+            "h": 2868,
+            "label": "Your channels, one tap away"
           },
           {
             "src": "/screenshots/embr/iphone-4.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "More"
+            "w": 1320,
+            "h": 2868,
+            "label": "Native chat with 7TV, BTTV & FFZ"
+          },
+          {
+            "src": "/screenshots/embr/iphone-5.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Browse by category"
+          },
+          {
+            "src": "/screenshots/embr/iphone-6.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Listen in the background"
+          },
+          {
+            "src": "/screenshots/embr/iphone-7.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Find channels and games instantly"
+          },
+          {
+            "src": "/screenshots/embr/iphone-8.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Make it yours"
+          },
+          {
+            "src": "/screenshots/embr/iphone-9.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "A native Twitch client for iPhone"
           }
         ]
       },
