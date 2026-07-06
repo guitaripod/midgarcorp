@@ -48,6 +48,7 @@ APPS = [
     {"slug": "psybeam", "trackId": 6777952645, "shortName": "Psybeam", "color": "#06B6D4", "status": "live"},
     {"slug": "payday", "trackId": 6779927672, "shortName": "Pay Day", "color": "#22C55E", "status": "review"},
     {"slug": "helia", "trackId": 6785542220, "shortName": "Helia", "color": "#F5A623", "status": "review"},
+    {"slug": "embr", "trackId": 6784940198, "shortName": "Embr", "color": "#9147FF", "status": "live"},
 ]
 
 # Per-slug fallbacks for in-review apps iTunes does not serve yet.
