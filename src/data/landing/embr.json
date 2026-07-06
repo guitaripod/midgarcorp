@@ -14,7 +14,7 @@
     "twitch chat emote autocomplete"
   ],
   "heroHeadline": "The Twitch client iPhone always deserved",
-  "heroSubhead": "Embr is a fast, fully native Twitch client built in UIKit for iOS 18. Watch live, VODs, and clips in a real AVPlayer with picture-in-picture and background audio, and read chat in real time with animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ merged into one stream.",
+  "heroSubhead": "Embr is a fast, fully native Twitch client built in UIKit. Watch live, VODs, and clips in a real AVPlayer with picture-in-picture and background audio, and read chat in real time with animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ merged into one stream.",
   "accentColor": "#9147FF",
   "highlights": [
     "Native AVPlayer with picture-in-picture and background audio",
@@ -99,7 +99,7 @@
     },
     {
       "q": "Which devices does Embr run on?",
-      "a": "Embr runs on iPhone with iOS 18 and later."
+      "a": "Embr runs on iPhone."
     }
   ],
   "screenshotCaptions": {
