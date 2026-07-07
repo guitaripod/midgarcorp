@@ -92,6 +92,16 @@ jobs:
         git add $paths
         git commit -m "chore(assets): refresh live App Store screenshots + facts"
         git push -u origin "$branch"
+
+        # Supersede any prior open refresh PRs so they don't pile up (and can't
+        # revert newer master state if force-merged). Only runs when this run has
+        # its own changes to open, so a valid pending PR is never orphaned.
+        for n in $(gh pr list --state open --json number,headRefName \
+          --jq '.[] | select(.headRefName | startswith("chore/refresh-store-assets-")) | .number'); do
+          gh pr close "$n" --delete-branch \
+            --comment "Superseded by a newer store-asset refresh (run ${{ github.run_id }})." || true
+        done
+
         gh pr create --base master --head "$branch" \
           --title "chore(assets): refresh App Store screenshots + facts" \
           --body "Automated refresh of live App Store screenshots and facts via \`scripts/fetch-store-assets.py --live-only\`. Review the screenshot diff and merge to deploy. The build was validated in CI before this PR was opened."
