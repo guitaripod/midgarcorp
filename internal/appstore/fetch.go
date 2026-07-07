@@ -173,6 +173,16 @@ var appEnhancements = map[int]struct {
 			"No account or subscription to start",
 		},
 	},
+	6784940198: {
+		ID:           "embr",
+		Tagline:      "The Twitch Client Your iPhone Deserves",
+		PrimaryColor: "#9147FF",
+		Features: []string{
+			"Native player with PiP & background audio",
+			"Real-time chat with 7TV, BTTV & FFZ emotes",
+			"Browse as a guest, sign in for Following",
+		},
+	},
 }
 
 func FetchData() error {
@@ -203,6 +213,7 @@ func FetchData() error {
 		"master-of-flags",
 		"app-of-the-dead-afterlife",
 		"pixiepocket",
+		"embr",
 	}
 
 	sort.Slice(apps, func(i, j int) bool {
