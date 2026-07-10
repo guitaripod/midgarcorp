@@ -232,18 +232,22 @@
     {
       "id": "flaccy",
       "name": "Flaccy",
-      "tagline": "Flaccy is a beautiful player for the music you own.",
+      "tagline": "The Player for the Music You Own",
       "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
       "platforms": [
         "iPhone",
-        "iPad"
+        "Apple Watch"
       ],
       "category": "Music",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9e/08/e6/9e08e669-5189-bc1f-75cb-ebc6ccde00af/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#3B82F6",
-      "features": [],
+      "primaryColor": "#FF4D6D",
+      "features": [
+        "Gapless FLAC playback with quality badges",
+        "AI-organized library, no manual tagging",
+        "Last.fm scrobbling, charts \u0026 Year in Music"
+      ],
       "releaseDate": "2026-07-09T07:00:00Z"
     }
   ]

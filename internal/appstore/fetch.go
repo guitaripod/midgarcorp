@@ -183,6 +183,17 @@ var appEnhancements = map[int]struct {
 			"Browse as a guest, sign in for Following",
 		},
 	},
+	6787493695: {
+		ID:           "flaccy",
+		Tagline:      "The Player for the Music You Own",
+		PrimaryColor: "#FF4D6D",
+		Features: []string{
+			"Gapless FLAC playback with quality badges",
+			"AI-organized library, no manual tagging",
+			"Last.fm scrobbling, charts & Year in Music",
+		},
+		Platforms: []string{"iPhone", "Apple Watch"},
+	},
 }
 
 func FetchData() error {
