@@ -24,7 +24,7 @@ const site = 'https://midgarcorp.cc';
 const canonical = `${site}/${app.slug}`;
 // Bump OG_REV when card artwork changes so social scrapers refetch (the image
 // path is otherwise stable and gets cached hard by unfurlers).
-const OG_REV = '4';
+const OG_REV = '5';
 const ogImage = `/og/${app.slug}.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
@@ -40,8 +40,9 @@ const osMap: Record<string, string> = {
   Mac: 'macOS',
   'Apple Watch': 'watchOS',
   'Apple TV': 'tvOS',
+  Linux: 'Linux',
 };
-const operatingSystem = [...new Set(app.platforms.map((p) => osMap[p] ?? p))].join(', ');
+const operatingSystem = [...new Set(app.platforms.map((p) => osMap[p]).filter(Boolean))].join(', ');
 
 const hasScreenshots = Object.values(app.screenshots).some((shots) => shots.length > 0);
 const heroDevice = primaryDevice(app);

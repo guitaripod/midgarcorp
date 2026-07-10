@@ -3,24 +3,20 @@
     {
       "id": "solar-beam",
       "name": "Solar Beam",
-      "tagline": "The James Webb Telescope, on every screen",
-      "description": "Explore the James Webb Space Telescope on every Apple device: a curated gallery of its greatest images with real captions, a live “Where Is Webb” dashboard, and 4K wallpapers — plus NASA's daily picture and the asteroids passing Earth. One purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro.",
+      "tagline": "Your Window to the Universe",
+      "description": "Solar Beam is the best way to explore the James Webb Space Telescope on your iPhone and iPad — plus the daily astronomy picture and near-Earth asteroids, all with a single purchase. THE JAMES WEBB GALLERY\nExplore a curated gallery of Webb's most breathtaking images, straight from the ESA/Webb archive.",
       "platforms": [
-        "iPhone",
-        "iPad",
-        "Mac",
-        "Apple TV",
-        "Vision Pro"
+        "Mac"
       ],
-      "category": "Photo & Video",
+      "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/75/43/75/7543757c-0b55-c455-01f2-1cb75f9c388c/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0b/26/cc/0b26cc4d-91b0-f4af-1497-6a93740514db/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
-        "Curated James Webb gallery",
-        "Live “Where Is Webb” status",
-        "4K Webb wallpapers"
+        "Real-time space data",
+        "Stunning 4K visualizations",
+        "Educational astronomy content"
       ],
       "releaseDate": "2024-09-29T07:00:00Z"
     },
@@ -53,7 +49,7 @@
         "iPhone",
         "iPad"
       ],
-      "category": "Food & Drink",
+      "category": "Food \u0026 Drink",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/double-kick-menu-translator/id6736581403",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/60/6b/e3/606be322-8062-4e60-2b22-7126d440363b/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
@@ -103,7 +99,7 @@
       "features": [
         "Dream pattern analysis",
         "AI-powered insights",
-        "Private & secure journaling"
+        "Private \u0026 secure journaling"
       ],
       "releaseDate": "2024-09-18T07:00:00Z"
     },
@@ -132,7 +128,7 @@
       "id": "master-of-flags",
       "name": "Master of Flags: World Quiz",
       "tagline": "Learn World Flags",
-      "description": "Master of Flags is now FREE. No ads.",
+      "description": "Master of Flags is FREE. No ads.",
       "platforms": [
         "iPhone",
         "iPad"
@@ -140,7 +136,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c7/b1/9c/c7b19c18-19b6-9288-c046-59ac810a1386/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/eb/64/61/eb646103-d18c-75a8-fec7-ff7b5818feb1/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EF4444",
       "features": [
         "All country flags",
@@ -161,7 +157,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/36/7d/5c/367d5c74-507c-6489-ee4e-3593b90bc817/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/cc/5b/62/cc5b6242-a7d7-cc68-04cc-a0fbdce0165e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#7C3AED",
       "features": [
         "Local MLX LLM technology for offline AI",
@@ -179,7 +175,7 @@
         "iPhone",
         "iPad"
       ],
-      "category": "Photo & Video",
+      "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2d/07/71/2d0771dc-9d40-5d63-5380-0142e58390be/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
@@ -190,6 +186,27 @@
         "Persistent cloud storage with public galleries"
       ],
       "releaseDate": "2025-09-19T07:00:00Z"
+    },
+    {
+      "id": "embr",
+      "name": "Embr — Live Streams",
+      "tagline": "The Twitch Client Your iPhone Deserves",
+      "description": "Embr is a fast, native Twitch client built for iPhone — not a wrapped web view. Streams open in a real AVPlayer with picture-in-picture, background audio, and instant quality switching.",
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ],
+      "category": "Entertainment",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/embr-live-streams/id6784940198",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a3/63/36/a3633680-a8b8-5ea9-578c-b233bf5db9b5/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#9147FF",
+      "features": [
+        "Native player with PiP \u0026 background audio",
+        "Real-time chat with 7TV, BTTV \u0026 FFZ emotes",
+        "Browse as a guest, sign in for Following"
+      ],
+      "releaseDate": "2026-07-06T07:00:00Z"
     },
     {
       "id": "psybeam",
@@ -203,7 +220,7 @@
       "category": "Travel",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/psybeam-live-translator/id6777952645",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2c/5e/ed/2c5eed1e-b2e3-ef5b-cd53-4fc99cbeee96/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c8/d8/e7/c8d8e777-7a61-ff54-2140-8979ca990e52/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#06B6D4",
       "features": [
         "Real-time voice-to-voice in 20+ languages",
@@ -211,6 +228,23 @@
         "No account or subscription to start"
       ],
       "releaseDate": "2026-06-22T07:00:00Z"
+    },
+    {
+      "id": "flaccy",
+      "name": "Flaccy",
+      "tagline": "Flaccy is a beautiful player for the music you own.",
+      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ],
+      "category": "Music",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9e/08/e6/9e08e669-5189-bc1f-75cb-ebc6ccde00af/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#3B82F6",
+      "features": [],
+      "releaseDate": "2026-07-09T07:00:00Z"
     }
   ]
 }

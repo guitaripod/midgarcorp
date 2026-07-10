@@ -2326,6 +2326,26 @@
             "h": 1200,
             "label": "Artist"
           }
+        ],
+        "linux": [
+          {
+            "src": "/screenshots/flaccy/linux-1.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-2.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Album"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-3.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Light mode"
+          }
         ]
       },
       "name": "Flaccy",
@@ -2343,7 +2363,7 @@
       "marketingUrl": "https://midgarcorp.cc/flaccy",
       "supportUrl": "https://midgarcorp.cc/flaccy",
       "iconLocal": "/screenshots/flaccy/icon.webp",
-      "platforms": ["iPhone", "Apple Watch", "Mac"]
+      "platforms": ["iPhone", "Apple Watch", "Mac", "Linux"]
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "seoTitle": "Flaccy — FLAC Player & Music Library for iPhone and Mac",
-  "metaDescription": "A beautiful player for the music you own. Import FLAC, ALAC, AAC, or MP3 and get a fast library with gapless playback, synced lyrics, Last.fm scrobbling, a standalone Apple Watch app, and a native Mac app — no streaming subscription, no account.",
+  "metaDescription": "A beautiful player for the music you own. Import FLAC, ALAC, AAC, or MP3 and get a fast library with gapless playback, synced lyrics, Last.fm scrobbling, a standalone Apple Watch app, and native Mac and Linux apps — no streaming subscription, no account.",
   "keywords": [
     "flac player iphone",
     "lossless music player ios",
@@ -17,7 +17,7 @@
     "local music player mac"
   ],
   "heroHeadline": "A beautiful home for the music you own",
-  "heroSubhead": "Drop in your FLAC, ALAC, AAC, or MP3 files and Flaccy turns them into a fast, gorgeous library — gapless playback, synced lyrics, and Last.fm scrobbling on iPhone, Apple Watch, and Mac. No streaming subscription, no upload, no account.",
+  "heroSubhead": "Drop in your FLAC, ALAC, AAC, or MP3 files and Flaccy turns them into a fast, gorgeous library — gapless playback, synced lyrics, and Last.fm scrobbling on iPhone, Apple Watch, Mac, and Linux. No streaming subscription, no upload, no account.",
   "accentColor": "#FF4D6D",
   "highlights": [
     "Import via USB or the Files app — messy folders are identified and cleaned up automatically",
@@ -70,6 +70,11 @@
       "title": "Flaccy for Mac",
       "body": "A native Liquid Glass Mac app, built for the desk. Watch a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, browse keyboard-first, and export full-resolution Year in Music posters. Coming soon to the Mac App Store.",
       "glyph": "⌘"
+    },
+    {
+      "title": "Flaccy for Linux",
+      "body": "A native GTK4 app for the penguin at your desk: gapless GStreamer playback, media keys via MPRIS, Last.fm scrobbling, synced lyrics, and listening stats — following your system light or dark theme. Free and open. Install with one command: curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or grab flaccy-bin from the AUR.",
+      "glyph": "🐧"
     }
   ],
   "howItWorks": [
@@ -114,6 +119,10 @@
     {
       "q": "Is there a Mac app?",
       "a": "Yes — Flaccy for Mac is a native Liquid Glass app for macOS, coming soon to the Mac App Store. Point it at a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, and export full-resolution Year in Music posters. It's a separate one-time purchase from the iOS app."
+    },
+    {
+      "q": "Is there a Linux app?",
+      "a": "Yes — Flaccy for Linux is a native GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, and synced lyrics. It is free and open: install it with a single command (see the Flaccy for Linux section) or from the AUR as flaccy-bin."
     }
   ],
   "screenshotCaptions": {
@@ -126,9 +135,14 @@
       "Year in Music — export full-resolution story cards and posters",
       "Up Next: see your history, what's playing, and the queue ahead",
       "Artist pages with Play All, Shuffle All, and Start Station"
+    ],
+    "linux": [
+      "Your library in a native GTK4 app — gapless playback and quality badges included.",
+      "Album view with palette-tinted backdrops and one-click play.",
+      "Follows your system theme — light or dark, your call."
     ]
   },
   "ctaLine": "Your music deserves a better player.",
-  "pricingNote": "Free to try with a 7-day free trial, then a $9.99 one-time purchase — no subscription, no account, no upload. The iOS app (with Apple Watch) and the Mac app are separate purchases, $9.99 each. Flaccy for Mac is coming soon to the Mac App Store.",
+  "pricingNote": "Free to try with a 7-day free trial, then a $9.99 one-time purchase — no subscription, no account, no upload. The iOS app (with Apple Watch) and the Mac app are separate purchases, $9.99 each. Flaccy for Mac is coming soon to the Mac App Store. Flaccy for Linux is free and open.",
   "lifestyle": []
 }

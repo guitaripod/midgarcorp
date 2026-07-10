@@ -117,11 +117,12 @@ export const DEVICE_LABELS: Record<string, string> = {
   iphone: 'iPhone',
   ipad: 'iPad',
   mac: 'Mac',
+  linux: 'Linux',
   vision: 'Vision Pro',
   tv: 'Apple TV',
 };
 
-const DEVICE_ORDER = ['iphone', 'ipad', 'mac', 'vision', 'tv'];
+const DEVICE_ORDER = ['iphone', 'ipad', 'mac', 'linux', 'vision', 'tv'];
 
 /// Returns the device bucket whose screenshots best represent the app in the hero.
 export function primaryDevice(app: LandingApp): string {
