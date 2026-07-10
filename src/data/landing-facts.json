@@ -2343,19 +2343,61 @@
           {
             "src": "/screenshots/flaccy/linux-1.webp",
             "w": 1920,
-            "h": 1200,
+            "h": 1079,
             "label": "Library"
           },
           {
             "src": "/screenshots/flaccy/linux-2.webp",
             "w": 1920,
-            "h": 1200,
+            "h": 1079,
             "label": "Album"
           },
           {
             "src": "/screenshots/flaccy/linux-3.webp",
             "w": 1920,
-            "h": 1200,
+            "h": 1079,
+            "label": "Songs"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-4.webp",
+            "w": 1920,
+            "h": 1079,
+            "label": "Artist"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-5.webp",
+            "w": 1920,
+            "h": 1079,
+            "label": "Playlists"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-6.webp",
+            "w": 1920,
+            "h": 1079,
+            "label": "Queue"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-7.webp",
+            "w": 1920,
+            "h": 1079,
+            "label": "Lyrics"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-8.webp",
+            "w": 1920,
+            "h": 1079,
+            "label": "Stats"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-9.webp",
+            "w": 1920,
+            "h": 1079,
+            "label": "Wantlist"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-10.webp",
+            "w": 1920,
+            "h": 1079,
             "label": "Light mode"
           }
         ]

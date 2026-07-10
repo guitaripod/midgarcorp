@@ -139,8 +139,15 @@
       "The Listening Guide: what Bluetooth, AAC, and your files really deliver"
     ],
     "linux": [
-      "Your library in a native GTK4 app — gapless playback and quality badges included.",
-      "Album view with palette-tinted backdrops and one-click play.",
+      "Your library with Made For You playlists — gapless playback always running.",
+      "Album pages enriched with year, genre, and quality badges automatically.",
+      "Every song with codec, quality, plays, and a Loved filter.",
+      "Artist pages with bios, genre chips, and similar artists from your library.",
+      "Playlists with collage covers, built from your own files.",
+      "The queue: history, now playing, and a reorderable Up Next.",
+      "Synced lyrics that follow the music — click any line to seek.",
+      "A year of listening: streak heatmap, listening clock, top charts, and your persona.",
+      "The wantlist tracks albums you’re hunting — gaps, upgrades, and discoveries.",
       "Follows your system theme — light or dark, your call."
     ]
   },
