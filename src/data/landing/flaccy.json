@@ -129,12 +129,14 @@
     "mac": [
       "Your albums in a fast, resizable grid — filter by lossless, recently played, or favorites",
       "Album pages with play, shuffle, and every track a click away",
-      "Now Playing with synced lyrics beside full-bleed artwork",
+      "Now Playing: full-bleed artwork over an ambient, palette-tinted backdrop",
+      "Synced lyrics beside the artwork, line by line as the track plays",
+      "Up Next: see your history, what's playing, and the queue ahead",
       "A multi-column song list — sort by codec, quality, plays, or date added",
+      "Playlists that mix your whole library — play or shuffle in a click",
       "Recap: your local listening history, top artists, and streaks",
       "Year in Music — export full-resolution story cards and posters",
-      "Up Next: see your history, what's playing, and the queue ahead",
-      "Artist pages with Play All, Shuffle All, and Start Station"
+      "The Listening Guide: what Bluetooth, AAC, and your files really deliver"
     ],
     "linux": [
       "Your library in a native GTK4 app — gapless playback and quality badges included.",

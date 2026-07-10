@@ -2294,37 +2294,49 @@
             "src": "/screenshots/flaccy/mac-3.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Lyrics"
+            "label": "Now Playing"
           },
           {
             "src": "/screenshots/flaccy/mac-4.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Songs"
+            "label": "Lyrics"
           },
           {
             "src": "/screenshots/flaccy/mac-5.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Recap"
+            "label": "Up Next"
           },
           {
             "src": "/screenshots/flaccy/mac-6.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Year in Music"
+            "label": "Songs"
           },
           {
             "src": "/screenshots/flaccy/mac-7.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Up Next"
+            "label": "Playlists"
           },
           {
             "src": "/screenshots/flaccy/mac-8.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Artist"
+            "label": "Recap"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-9.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Year in Music"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-10.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Listening Guide"
           }
         ],
         "linux": [
