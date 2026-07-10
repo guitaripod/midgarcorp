@@ -1,6 +1,6 @@
 {
-  "seoTitle": "Flaccy — FLAC Player & Music Library for iPhone",
-  "metaDescription": "A beautiful player for the music you own. Import FLAC, ALAC, AAC, or MP3 and get a fast library with gapless playback, synced lyrics, Last.fm scrobbling, and a standalone Apple Watch app — no streaming subscription, no account.",
+  "seoTitle": "Flaccy — FLAC Player & Music Library for iPhone and Mac",
+  "metaDescription": "A beautiful player for the music you own. Import FLAC, ALAC, AAC, or MP3 and get a fast library with gapless playback, synced lyrics, Last.fm scrobbling, a standalone Apple Watch app, and a native Mac app — no streaming subscription, no account.",
   "keywords": [
     "flac player iphone",
     "lossless music player ios",
@@ -11,16 +11,19 @@
     "alac player ios",
     "music library app iphone",
     "synced lyrics music player",
-    "apple watch music player"
+    "apple watch music player",
+    "flac player mac",
+    "lossless music player macos",
+    "local music player mac"
   ],
   "heroHeadline": "A beautiful home for the music you own",
-  "heroSubhead": "Drop in your FLAC, ALAC, AAC, or MP3 files and Flaccy turns them into a fast, gorgeous library — gapless playback, synced lyrics, Last.fm scrobbling, and a standalone Apple Watch app. No streaming subscription, no upload, no account.",
+  "heroSubhead": "Drop in your FLAC, ALAC, AAC, or MP3 files and Flaccy turns them into a fast, gorgeous library — gapless playback, synced lyrics, and Last.fm scrobbling on iPhone, Apple Watch, and Mac. No streaming subscription, no upload, no account.",
   "accentColor": "#FF4D6D",
   "highlights": [
     "Import via USB or the Files app — messy folders are identified and cleaned up automatically",
     "Gapless playback that honors your albums, with a queue that survives relaunches",
     "Every play scrobbled to Last.fm — even offline, with automatic retry",
-    "An honest Listening Guide: what actually reaches your ears, no snake oil"
+    "A native Liquid Glass Mac app — point it at a folder and your files appear instantly"
   ],
   "features": [
     {
@@ -62,6 +65,11 @@
       "title": "See what you're playing",
       "body": "Codec, bit depth, and sample rate on every track — honesty down to the file.",
       "glyph": "♯"
+    },
+    {
+      "title": "Flaccy for Mac",
+      "body": "A native Liquid Glass Mac app, built for the desk. Watch a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, browse keyboard-first, and export full-resolution Year in Music posters. Coming soon to the Mac App Store.",
+      "glyph": "⌘"
     }
   ],
   "howItWorks": [
@@ -102,10 +110,25 @@
     {
       "q": "Is lossless audio worth it on iPhone?",
       "a": "It depends on how you listen — and Flaccy is honest about it. The built-in Listening Guide explains Bluetooth codecs, why lossless can't reach AirPods, when FLAC is genuinely worth it, and what blind tests really show."
+    },
+    {
+      "q": "Is there a Mac app?",
+      "a": "Yes — Flaccy for Mac is a native Liquid Glass app for macOS, coming soon to the Mac App Store. Point it at a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, and export full-resolution Year in Music posters. It's a separate one-time purchase from the iOS app."
     }
   ],
-  "screenshotCaptions": {},
+  "screenshotCaptions": {
+    "mac": [
+      "Your albums in a fast, resizable grid — filter by lossless, recently played, or favorites",
+      "Album pages with play, shuffle, and every track a click away",
+      "Now Playing with synced lyrics beside full-bleed artwork",
+      "A multi-column song list — sort by codec, quality, plays, or date added",
+      "Recap: your local listening history, top artists, and streaks",
+      "Year in Music — export full-resolution story cards and posters",
+      "Up Next: see your history, what's playing, and the queue ahead",
+      "Artist pages with Play All, Shuffle All, and Start Station"
+    ]
+  },
   "ctaLine": "Your music deserves a better player.",
-  "pricingNote": "Free on the App Store. No subscription, no account, no upload.",
+  "pricingNote": "Free to try with a 7-day free trial, then a $9.99 one-time purchase — no subscription, no account, no upload. The iOS app (with Apple Watch) and the Mac app are separate purchases, $9.99 each. Flaccy for Mac is coming soon to the Mac App Store.",
   "lifestyle": []
 }
