@@ -73,7 +73,7 @@
     },
     {
       "title": "Flaccy for Linux",
-      "body": "A native GTK4 app for the penguin at your desk, and one of the best-looking music players on Linux: an adaptive theme engine tints the entire app with the dominant color of whatever's playing — ambient gradient backdrops, glass cards, a glowing now-playing pulse — or lock in one of seven curated palettes. Gapless GStreamer playback, media keys via MPRIS, Last.fm scrobbling, synced lyrics, and listening stats, in light or dark. Free and open. Install with one command: curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or grab flaccy-bin from the AUR.",
+      "body": "A native GTK4 app for the penguin at your desk, and one of the best-looking music players on Linux: an adaptive theme engine tints the entire app with the dominant color of whatever's playing — ambient gradient backdrops, glass cards, a glowing now-playing pulse, and a full-window Now Playing view over a blurred cover — or lock in one of seven curated palettes. Gapless GStreamer playback, media keys via MPRIS, Last.fm scrobbling, synced lyrics, and listening stats, in light or dark. Free and open. Install with one command: curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or grab flaccy-bin from the AUR.",
       "glyph": "🐧"
     }
   ],
@@ -140,6 +140,7 @@
     ],
     "linux": [
       "Your whole library, tinted live by the album that's playing — Made For You shelves and gapless playback.",
+      "Now Playing: a full-window focus player over a blurred, accent-washed cover — art, lyrics, and controls in your color.",
       "Album pages awash in the cover's own color, with year, genre, and quality badges added automatically.",
       "Every song with codec, quality, plays, and a Loved filter.",
       "Artist pages with bios, genre chips, and similar artists pulled from your own library.",
