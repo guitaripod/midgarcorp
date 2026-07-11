@@ -73,7 +73,7 @@
     },
     {
       "title": "Flaccy for Linux",
-      "body": "A native GTK4 app for the penguin at your desk: gapless GStreamer playback, media keys via MPRIS, Last.fm scrobbling, synced lyrics, and listening stats — following your system light or dark theme. Free and open. Install with one command: curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or grab flaccy-bin from the AUR.",
+      "body": "A native GTK4 app for the penguin at your desk, and one of the best-looking music players on Linux: an adaptive theme engine tints the entire app with the dominant color of whatever's playing — ambient gradient backdrops, glass cards, a glowing now-playing pulse — or lock in one of seven curated palettes. Gapless GStreamer playback, media keys via MPRIS, Last.fm scrobbling, synced lyrics, and listening stats, in light or dark. Free and open. Install with one command: curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or grab flaccy-bin from the AUR.",
       "glyph": "🐧"
     }
   ],
@@ -122,7 +122,7 @@
     },
     {
       "q": "Is there a Linux app?",
-      "a": "Yes — Flaccy for Linux is a native GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, and synced lyrics. It is free and open: install it with a single command (see the Flaccy for Linux section) or from the AUR as flaccy-bin."
+      "a": "Yes — Flaccy for Linux is a native GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, and synced lyrics. Its adaptive theme engine retints the whole app with the color of whatever you're playing (or pick from seven curated palettes), with ambient backdrops and glass surfaces in light or dark. It is free and open: install it with a single command (see the Flaccy for Linux section) or from the AUR as flaccy-bin."
     }
   ],
   "screenshotCaptions": {
@@ -139,16 +139,16 @@
       "The Listening Guide: what Bluetooth, AAC, and your files really deliver"
     ],
     "linux": [
-      "Your library with Made For You playlists — gapless playback always running.",
-      "Album pages enriched with year, genre, and quality badges automatically.",
+      "Your whole library, tinted live by the album that's playing — Made For You shelves and gapless playback.",
+      "Album pages awash in the cover's own color, with year, genre, and quality badges added automatically.",
       "Every song with codec, quality, plays, and a Loved filter.",
-      "Artist pages with bios, genre chips, and similar artists from your library.",
-      "Playlists with collage covers, built from your own files.",
-      "The queue: history, now playing, and a reorderable Up Next.",
-      "Synced lyrics that follow the music — click any line to seek.",
-      "A year of listening: streak heatmap, listening clock, top charts, and your persona.",
-      "The wantlist tracks albums you’re hunting — gaps, upgrades, and discoveries.",
-      "Follows your system theme — light or dark, your call."
+      "Artist pages with bios, genre chips, and similar artists pulled from your own library.",
+      "Playlists with collage covers, built entirely from your own files.",
+      "The queue — history, now playing, and a reorderable Up Next — glowing in the current accent.",
+      "Synced lyrics that follow the music, the live line lit in your accent. Click any line to seek.",
+      "A year of listening: streak heatmap, listening clock, and top charts, drawn in your color.",
+      "The wantlist tracks albums you’re hunting — gaps, upgrades, and fresh discoveries.",
+      "Light or dark — plus an accent that adapts to your music, or seven curated themes to choose from."
     ]
   },
   "ctaLine": "Your music deserves a better player.",
