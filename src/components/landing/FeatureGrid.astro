@@ -23,7 +23,9 @@ const { features, accent } = Astro.props;
           {f.glyph}
         </span>
         <h3 class="text-base font-bold text-paper-text dark:text-term-text">{f.title}</h3>
-        <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{f.body}</p>
+        <p class="text-sm leading-relaxed text-paper-muted [overflow-wrap:anywhere] dark:text-term-muted">
+          {f.body}
+        </p>
       </article>
     ))
   }
