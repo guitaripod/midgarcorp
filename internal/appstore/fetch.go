@@ -71,6 +71,16 @@ var appEnhancements = map[int]struct {
 	Features     []string
 	Platforms    []string
 }{
+	6779927672: {
+		ID:           "payday",
+		Tagline:      "Peppol & Factur-X Invoices on iPhone",
+		PrimaryColor: "#22C55E",
+		Features: []string{
+			"Factur-X / ZUGFeRD e-invoices",
+			"Peppol delivery, built in",
+			"Real EN 16931 VAT engine",
+		},
+	},
 	6705124497: {
 		ID:           "solar-beam",
 		Tagline:      "Your Window to the Universe",
