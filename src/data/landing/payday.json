@@ -75,7 +75,7 @@
     },
     {
       "q": "What does Pay Day Pro cost?",
-      "a": "Pro is an auto-renewing subscription, monthly or annual, with a 7-day free trial. It unlocks Factur-X e-invoices, Peppol delivery, recurring invoices, branding, and VAT validation. You can cancel anytime in your Apple ID settings."
+      "a": "Pro is an auto-renewing subscription, monthly or annual; the annual plan includes a 7-day free trial. It unlocks Factur-X e-invoices, Peppol delivery, recurring invoices, branding, and VAT validation. You can cancel anytime in your Apple ID settings."
     },
     {
       "q": "What are credit packs for?",
@@ -112,5 +112,5 @@
     ]
   },
   "ctaLine": "Be ready for the EU e-invoicing mandates. Start invoicing free today.",
-  "pricingNote": "Free unlimited invoicing; Pro is a monthly or annual subscription with a 7-day trial, and Peppol sends plus optional AI run on one-time credit packs."
+  "pricingNote": "Free unlimited invoicing; Pro is a monthly or annual subscription (7-day free trial on the annual plan), and Peppol sends plus optional AI run on one-time credit packs."
 }

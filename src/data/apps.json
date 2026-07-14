@@ -230,6 +230,23 @@
       "releaseDate": "2026-06-22T07:00:00Z"
     },
     {
+      "id": "pay-day-e-invoice--peppol",
+      "name": "Pay Day: E-Invoice \u0026 Peppol",
+      "tagline": "Most invoice apps make a pretty PDF.",
+      "description": "Most invoice apps make a pretty PDF. Pay Day makes one your tax authority's system can actually read.",
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ],
+      "category": "Business",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/pay-day-e-invoice-peppol/id6779927672",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/f7/53/95f753a1-b906-36de-27ac-cc3bb8593933/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#3B82F6",
+      "features": [],
+      "releaseDate": "2026-07-14T07:00:00Z"
+    },
+    {
       "id": "flaccy",
       "name": "Flaccy",
       "tagline": "The Player for the Music You Own",
