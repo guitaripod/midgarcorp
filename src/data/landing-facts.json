@@ -65,7 +65,10 @@
       "description": "You wake at 3 a.m. with a dream still vivid. Type it into Dream Eater and within seconds you get a thoughtful reading of what it might mean, plus a piece of dream art generated from your own words. Your first reading is free.\n\nDECODE THE MEANING\nDescribe your dream in your own words and receive an AI-powered interpretation: the key symbols, the emotional undercurrents, and what your subconscious might be working through. A built-in symbol dictionary helps you go deeper on recurring images.\n\nDREAM ART YOU CAN SHARE\nEvery analyzed dream comes with a unique image generated from your dream's own imagery. Save it, share it, or keep it as the cover of that night's entry.\n\nA JOURNAL BUILT FOR 3AM\nCapture dreams fast, while they are still fresh. Big type, minimal taps, and no account setup standing between you and the half-remembered. Writing in your journal is always free.\n\nPATTERNS OVER TIME\nMoods, themes, and recurring symbols surface across weeks of entries, so you can see what your sleeping mind keeps returning to.\n\nMOON PHASES\nEach entry records the moon phase from that night, and lunar info is always on hand if you like tracking your dreams against the sky.\n\nTRY PREMIUM FREE FOR 7 DAYS\nStart a 7-day free trial on the annual plan and analyze unlimited dreams. Cancel anytime during the trial and pay nothing.\n\nOR PAY PER DREAM\nPrefer no subscription right now? Buy credit packs of 5, 15, 50, or 100 dream analyses. Credits never expire.\n\nDream Eater is for entertainment and self-reflection. It is not a medical, psychological, or therapeutic tool.\n\nPrivacy: no account required; dreams stay on your device and iCloud.\n\nAvailable in English, Spanish, and Chinese.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://mako.midgarcorp.cc/privacy/dreameater",
       "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
       "category": "Lifestyle",
-      "genres": ["Lifestyle", "Utilities"],
+      "genres": [
+        "Lifestyle",
+        "Utilities"
+      ],
       "price": "Free",
       "rating": 5,
       "ratingCount": 2,
@@ -74,7 +77,11 @@
       "currentVersionReleaseDate": "2026-06-18T21:20:52Z",
       "minimumOsVersion": "18.0",
       "contentRating": "17+",
-      "languages": ["EN", "ZH", "ES"],
+      "languages": [
+        "EN",
+        "ZH",
+        "ES"
+      ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
@@ -211,7 +218,10 @@
       "supportUrl": "https://x.com/prblemslver",
       "keywords": "meaning,interpretation,analysis,symbols,dictionary,diary,lucid,sleep,subconscious,moon,art,vision",
       "iconLocal": "/screenshots/dreameater/icon.webp",
-      "platforms": ["iPhone", "iPad"]
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ]
     },
     {
       "slug": "psywave",
@@ -278,7 +288,10 @@
       "description": "Describe a mood in one line — or pick a photo — and get a real Apple Music playlist in seconds.\n\nPsywave turns plain words and pictures into soundtracks that fit. Type a vibe, a scene, or a feeling — \"drum and bass intensity,\" \"smooth sailing yacht rock,\" \"focus for deep work\" — and a curated playlist of real songs lands in your Apple Music library with one tap. No endless scrolling. No stale stations.\n\nWORDS IN, PLAYLIST OUT\nTell Psywave what you want to hear and it builds a tailored tracklist around your exact mood, then imports it straight into Apple Music.\n\nPHOTOS BECOME PLAYLISTS\nPoint Psywave at a sunset, a road trip, a rainy window — it reads the mood, the colors, the feeling, and scores the moment with real songs.\n\nSEE YOUR SOUND\nEvery playlist comes with a genre breakdown chart, so you can see exactly what your vibe is made of.\n\nBUILT FOR YOUR MOMENT\n• Workout — high-energy sets in seconds\n• Focus & deep work — distraction-free flow\n• Party & hosting — read the room, set the vibe\n• Wind down — the right closer for a slow night\n\nYOUR LIBRARY OF MOODS\nEvery playlist you generate is saved. Re-import any of them to Apple Music whenever the mood comes back.\n\nGO PRO, OR PAY AS YOU GO\nStart with 3 free playlists. Then choose Psywave Pro for unlimited playlists (with a 7-day free trial on the annual plan), or grab a credit pack and only pay for what you make. Credits never expire.\n\nPsywave requires an Apple Music subscription to import playlists.\n\nPrivacy policy: https://openai-image-proxy.guitaripod.workers.dev/privacy/psywave\nTerms of use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
       "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
       "category": "Music",
-      "genres": ["Music", "Utilities"],
+      "genres": [
+        "Music",
+        "Utilities"
+      ],
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
@@ -287,7 +300,9 @@
       "currentVersionReleaseDate": "2026-06-18T21:23:23Z",
       "minimumOsVersion": "17.0",
       "contentRating": "4+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
@@ -424,7 +439,10 @@
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "generator,mood,photo,song,dj,mix,curator,discovery,focus,workout,party,gym,study,picture,radio",
       "iconLocal": "/screenshots/psywave/icon.webp",
-      "platforms": ["iPhone", "iPad"]
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ]
     },
     {
       "slug": "doublekick",
@@ -465,7 +483,10 @@
       "description": "Standing in front of a menu you can't read? Point your camera and know exactly what to order.\n\nDouble Kick turns any foreign-language menu into a guide you actually understand. Not a word-for-word translation that leaves you guessing, but the real story behind every dish and drink: what's in it, how it's made, what it tastes like, and what it costs in your own currency. Snap one photo and decide with confidence.\n\nKNOW WHAT YOU'RE ORDERING\n- Read and translate menus in any language from a single photo\n- Understand ingredients, preparation, and flavor before you commit\n- See prices converted to your home currency, instantly\n\nA REAL FOOD & DRINK EXPERT\n- Explore regional specialties and global cuisines in plain language\n- Decode spirits, cocktails, and wine lists that simple translators skip\n- Learn the dishes behind the names, not just the words\n\nBUILT FOR TRAVELERS\n- Works on menus from street stalls to fine-dining tasting menus\n- Keeps your menu history on your device for every trip\n- Tracks your taste preferences across cuisines and trips\n\nPRIVATE BY DESIGN\n- No account required, no ads, no tracking\n- We don't sell your data, and your menu history stays on your device\n\nONE PRICE, FOREVER\nNo subscriptions. No ads. Buy it once and own every feature, on every trip.\n\nThe next time the menu is in a language you don't speak, you won't order blind. You'll order exactly what you want.\n\nPhotograph a menu and see for yourself.",
       "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
       "category": "Food & Drink",
-      "genres": ["Food & Drink", "Utilities"],
+      "genres": [
+        "Food & Drink",
+        "Utilities"
+      ],
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
@@ -474,7 +495,9 @@
       "currentVersionReleaseDate": "2026-06-18T21:20:53Z",
       "minimumOsVersion": "17.0",
       "contentRating": "4+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
@@ -611,7 +634,9 @@
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "reader,foreign,cuisine,currency,dining,abroad,order,spirits,cocktail,ingredient,travel,guide",
       "iconLocal": "/screenshots/doublekick/icon.webp",
-      "platforms": ["iPhone"]
+      "platforms": [
+        "iPhone"
+      ]
     },
     {
       "slug": "pixiepocket",
@@ -666,7 +691,10 @@
       "description": "Pro-grade AI images, created by chat. Pay only for what you make — no subscription, ever.\n\nEvery new creator starts with 25 free credits — enough to try Nano Banana image generation the moment the app opens. No sign-up required.\n\nCHAT YOUR WAY TO THE IMAGE\nDescribe what you want, refine it message by message, and watch your image evolve. Attach a photo and edit it by talking: change hair, swap backgrounds, restyle anything.\n\nPOWERED BY NANO BANANA + GPT IMAGE\nPixiePocket generates with Google's Nano Banana (Gemini) and OpenAI's GPT image models — two engines, one chat.\n\nPAY PER IMAGE, NOT PER MONTH\nCredits never expire. Buy a pack once and create whenever inspiration strikes — bigger packs carry up to 68% bonus credits. No weekly trap, no renewals, no surprise charges.\n\nCONTROL THE OUTPUT LIKE A PRO\n• Batch up to 10 images per request\n• Low / Medium / High / Auto quality tiers\n• Custom sizes, square to widescreen\n• PNG, JPEG or WebP output, transparent backgrounds\n• Live credit cost shown before you create\n\nEVERYWHERE YOU ARE\nStart anonymously, then sign in with Apple, Google, or GitHub to keep your gallery in sync across devices. Share your best work to the public community gallery — or keep it all to yourself.\n\nA NOTE ON PRIVACY & SAFETY\nYour prompts and attached photos are sent to Google Gemini and OpenAI to generate images — you approve this in-app before your first creation and can withdraw consent anytime in Settings. Some prompts may be filtered by content moderation. Images shared to the community gallery can be reported in one tap and are reviewed.\n\nGoogle, Gemini and Nano Banana are trademarks of Google LLC. This app is not endorsed by or affiliated with Google or OpenAI.",
       "releaseNotes": "You're in control of your creations:\n\n• Delete any of your posts — they're removed from the public gallery right away.\n• New \"Share to Public Gallery\" setting lets you keep new creations private.\n• Hide or re-share individual images whenever you like.\n• Block accounts you'd rather not see in Explore.\n\nPlus reliability improvements. Thanks for using Pixie!",
       "category": "Photo & Video",
-      "genres": ["Photo & Video", "Lifestyle"],
+      "genres": [
+        "Photo & Video",
+        "Lifestyle"
+      ],
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
@@ -675,7 +703,9 @@
       "currentVersionReleaseDate": "2026-06-19T14:03:46Z",
       "minimumOsVersion": "16.6",
       "contentRating": "4+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
@@ -812,7 +842,10 @@
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "generator,gemini,gpt,chatbot,anime,wallpaper,avatar,sticker,transparent,background,batch,credits",
       "iconLocal": "/screenshots/pixiepocket/icon.webp",
-      "platforms": ["iPhone", "iPad"]
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ]
     },
     {
       "slug": "appofthedead",
@@ -885,7 +918,12 @@
       "description": "What happens after we die? Twenty-two faiths have answered for thousands of years. Explore every one in 5-minute lessons, then talk to the gods themselves.\n\nApp of the Dead turns comparative religion into a game. Bite-size lessons, instant-feedback quizzes, XP, streaks and achievements carry you across 22 belief systems and how each one imagines death, the soul and the world beyond.\n\nMEET THE ORACLE\nConverse with deities and guides as on-device AI personas, Anubis, Hermes, Kali, Odin, Azrael and more, and ask them anything about life, death and the afterlife. The Oracle now runs Google Gemma 4, a 2026-generation model, for dramatically smarter, more in-character answers. It runs entirely on your iPhone, so your conversations never leave the device, online or off.\n\nLEARN THROUGH PLAY\nEvery lesson is a few minutes. Multiple-choice, matching and true-or-false questions give immediate feedback, so the ideas actually stick. Mastery tests crown each path and your streak keeps you coming back.\n\nEVERY BELIEF, SIDE BY SIDE\nJudaism, Christianity, Islam, Buddhism, Hinduism, Norse, Egyptian, Greek, Zoroastrian and many more, each with its own theme and voice. See where traditions agree, where they diverge, and what they each say lies beyond, all in one place.\n\nSTART FREE\nThe complete Judaism path is free forever, no account required. Learn at your own pace, fully offline, with everything stored on your device.\n\nGO PREMIUM\nUnlock all 21 remaining paths, unlimited Oracle conversations and every future path with Premium. Try it free for 7 days, then keep learning for one annual price, or go monthly. Prefer to own forever? Unlock a single path on its own, or take Ultimate lifetime access.\n\nBUILT TO KEEP YOU LEARNING\nDistinct themes per tradition, full VoiceOver and Dynamic Type support, and a profile that maps your whole journey across all 22 realms.\n\nDeath is the one question every culture has tried to answer. Start exploring how.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://docs.google.com/document/d/1hgyLnTBAPtZC4miv1nEHuvw4_oRhj_gScdCxy7kGePw/edit?usp=sharing",
       "releaseNotes": "Game Center has arrived. Climb global leaderboards and collect achievements as you journey through the afterlife. Plus polish and fixes.",
       "category": "Education",
-      "genres": ["Education", "Trivia", "Casual", "Games"],
+      "genres": [
+        "Education",
+        "Trivia",
+        "Casual",
+        "Games"
+      ],
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
@@ -894,7 +932,9 @@
       "currentVersionReleaseDate": "2026-06-22T14:25:29Z",
       "minimumOsVersion": "18.2",
       "contentRating": "12+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
@@ -1031,7 +1071,10 @@
       "supportUrl": "https://x.com/prblemslver",
       "keywords": "comparative,reincarnation,karma,heaven,hell,mythology,norse,egyptian,death,sacred,soul,deity,ritual",
       "iconLocal": "/screenshots/appofthedead/icon.webp",
-      "platforms": ["iPhone", "iPad"]
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ]
     },
     {
       "slug": "masterofflags",
@@ -1104,7 +1147,12 @@
       "description": "Master of Flags is now FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no \"weekly trial\", no account. Play free forever, and if you want more, Pro is a single one-time purchase. Pay once, own it for life.\n\nPLAY FREE\n• Flag quiz across Europe, Asia, Africa, the Americas and the world\n• Daily Challenge — ten flags, once a day, shareable results\n• Daily streaks with streak freezes so one busy day doesn't erase your run\n• XP, levels and per-region progress\n• Game Center leaderboards and achievements\n• Flag Encyclopedia — browse roughly 250 flags and territories with details about each country, completely free\n\nGO PRO — ONE PURCHASE, YOURS FOREVER\n• Hard Mode: eight flags per round instead of three\n• Review Mistakes: drill exactly the flags you got wrong\n• Statistics: levels, streaks and progress across every region\n• 5 streak freezes per month instead of 1\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nThe quiz rewards consistency, and the Encyclopedia doubles as a study reference for geography, capitals and country facts. Perfect for students, travelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app: you are a founder. Everything Pro unlocks is yours automatically, free, forever. Thank you for seven years.",
       "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
       "category": "Education",
-      "genres": ["Education", "Family", "Trivia", "Games"],
+      "genres": [
+        "Education",
+        "Family",
+        "Trivia",
+        "Games"
+      ],
       "price": "Free",
       "rating": 4.6,
       "ratingCount": 5,
@@ -1113,7 +1161,9 @@
       "currentVersionReleaseDate": "2026-06-24T11:25:06Z",
       "minimumOsVersion": "17.4",
       "contentRating": "4+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
@@ -1250,7 +1300,10 @@
       "supportUrl": "https://twitter.com/prblemslver",
       "keywords": "country,guess,game,trivia,map,states,europe,flashcard,study,memorize,atlas,national,city,asia,africa",
       "iconLocal": "/screenshots/masterofflags/icon.webp",
-      "platforms": ["iPhone", "iPad"]
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ]
     },
     {
       "slug": "masterofinventory",
@@ -1293,7 +1346,10 @@
       "description": "Disaster doesn't wait for you to find the receipt. Photograph, value, and receipt-back everything you own now — so an insurance claim, a warranty, or a return is one tap away, not a frantic search.\n\nMaster of Inventory turns your belongings into a documented record that actually holds up: every item with a photo, purchase price, date, and scanned receipt, plus warranty and return deadlines tracked for you. Built for the household that wants to be ready before a fire, theft, flood, or move — not after.\n\nBUILT FOR INSURANCE CLAIMS\n• Photograph each item with its purchase price and date\n• Attach scanned receipts as proof of ownership and value\n• Produce a clear, defensible record of what you own and what it's worth\n• Organize room by room and by your own custom categories\n\nNEVER MISS A WARRANTY OR REFUND\n• Track warranty expirations and get ahead of them\n• Watch online-return windows so refunds don't slip away\n• Keep receipts and coverage details together with each item\n• Stop losing real money to deadlines you forgot\n\nCAPTURE IN SECONDS\n• Built-in document scanner for clean receipt copies\n• Snap item and receipt photos for complete records\n• Search and filter your whole catalog instantly\n• Share an item or receipt in a couple of taps\n\nPRIVATE BY DESIGN\n• Stored locally with Apple's Core Data\n• Optional iCloud sync across your iPhone, iPad, and Mac\n• No third-party servers, no data mining — just your records, yours alone\n\nWHO IT'S FOR\n• Homeowners and renters documenting belongings for insurance\n• Anyone tracking warranties and purchase dates\n• Collectors cataloging valuables\n• Small businesses keeping an asset record\n• People mid-move who need an inventory fast\n\nStart with the things that matter most — your most valuable items, your newest purchases, anything still under warranty — and build from there. Five minutes today can save a claim, a refund, and a lot of stress later.\n\nDocument what you own. Be ready before you need to be.",
       "releaseNotes": "Polished and refreshed.\n\nThis release tightens the foundation under the hood so future updates land faster and the app stays fast and reliable as your inventory grows. We've smoothed rough edges across capturing items, scanning receipts, and iCloud sync.\n\nHave a feature request or hit a snag? Reach out — your feedback shapes what comes next, and we read every message.\n\nThank you for keeping your belongings documented and ready.",
       "category": "Utilities",
-      "genres": ["Utilities", "Lifestyle"],
+      "genres": [
+        "Utilities",
+        "Lifestyle"
+      ],
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
@@ -1302,7 +1358,9 @@
       "currentVersionReleaseDate": "2026-06-09T09:03:03Z",
       "minimumOsVersion": "14.0",
       "contentRating": "4+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
@@ -1439,7 +1497,10 @@
       "supportUrl": "https://twitter.com/ziademarcus",
       "keywords": "home,valuables,belongings,asset,catalog,moving,household,document,deadline,collection,organizer,room",
       "iconLocal": "/screenshots/masterofinventory/icon.webp",
-      "platforms": ["iPhone", "iPad"]
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ]
     },
     {
       "slug": "sforesight",
@@ -1486,7 +1547,10 @@
       "description": "The symbol you mean, not the symbol you typed. Describe a concept and on-device machine learning finds the right SF Symbol in seconds.\n\nSForesight is a native macOS tool for Apple-platform developers and designers who reach for SF Symbols every day. Apple's own browser makes you guess the exact name and scroll. SForesight understands what you mean, ranks the closest matches, and hands you the copy-ready name for your code.\n\nSEARCH BY MEANING, NOT KEYWORDS\nOn-device ML maps your intent to the right glyph. Type an idea, get ranked suggestions that actually fit, not just literal string matches.\n\nFIND IT FAST\nRanked results appear as you type, so you spend seconds per lookup instead of minutes scrolling a giant grid.\n\nSTAY VISUALLY CONSISTENT\nSurface related symbols at a glance and keep your interface coherent across screens and platforms.\n\nONE-CLICK COPY\nGrab the exact symbol name with a single click and paste straight into SwiftUI, UIKit, or any Swift file. No typos, no retyping.\n\nBUILT FOR THE MAC\nA clean, fast, native macOS app that respects your workflow. Everything runs on your device, so your searches stay private.\n\nWHY DEVELOPERS SWITCH\n- Semantic search that reads intent, not just spelling\n- Ranked, relevant suggestions in seconds\n- Related-symbol discovery for consistent design\n- Copy-paste-ready names for Swift, SwiftUI, and UIKit\n- One-time purchase, no subscription, no ads, fully offline\n\nMADE FOR\n- iOS, iPadOS, macOS, watchOS, visionOS, and tvOS developers\n- SwiftUI and UIKit builders\n- UI and UX designers working in the Apple ecosystem\n\nStop hunting for the right glyph. Describe it, copy it, ship it.\n\nBuy once and own it. No subscription, ever.\n\n-\nSForesight is an independent app and is not affiliated with, endorsed by, or sponsored by Apple Inc. SF Symbols is a trademark of Apple Inc. Symbols are used in-app under Apple's SF Symbols license.",
       "releaseNotes": "Polished and refreshed.\n\nThis release sharpens the SForesight experience end to end:\n- Faster, more relevant semantic search results\n- Smoother, more responsive native macOS interface\n- Reliability and stability improvements throughout\n\nThanks for using SForesight. One-time purchase, no subscription, fully on-device. Got a request? Reach out via the support link and a review helps a lot.",
       "category": "Developer Tools",
-      "genres": ["Developer Tools", "Utilities"],
+      "genres": [
+        "Developer Tools",
+        "Utilities"
+      ],
       "price": "$9.99",
       "rating": 0,
       "ratingCount": 0,
@@ -1495,7 +1559,9 @@
       "currentVersionReleaseDate": "2026-06-12T08:57:45Z",
       "minimumOsVersion": "14.7",
       "contentRating": "4+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.sforesight",
@@ -1504,7 +1570,9 @@
       "supportUrl": "https://x.com/prblemslver",
       "keywords": "glyph,semantic,intent,vector,browser,copy,paste,Swift,SwiftUI,UIKit,Xcode,icon,catalog,lookup,design",
       "iconLocal": "/screenshots/sforesight/icon.webp",
-      "platforms": ["Mac"]
+      "platforms": [
+        "Mac"
+      ]
     },
     {
       "slug": "solarbeam",
@@ -1581,7 +1649,10 @@
       "description": "Solar Beam is the most beautiful way to explore the James Webb Space Telescope on every Apple device — plus NASA's daily space picture and near-Earth asteroids, all with a single purchase.\n\nTHE JAMES WEBB GALLERY\nA curated gallery of Webb's most breathtaking images, each with its real caption, credit, distance, and sky position. Browse by collection or search for any target.\n\nWHERE IS WEBB\nA live dashboard for the telescope: days in space, its orbit at Lagrange Point 2, and the temperature gap between its sun-facing side and its supercooled instruments.\n\n4K WALLPAPERS\nSave any Webb image as a 4K wallpaper for iPhone, iPad, Mac, or Apple TV.\n\nPICTURE OF THE DAY\nNASA's daily image, with AI-generated facts that make the science click.\n\nASTEROIDS\nTrack near-Earth objects and close approaches — always free.\n\nOne purchase covers iPhone, iPad, Mac, Apple TV, and Vision Pro, with Family Sharing.\n\nImage credits: NASA, ESA, CSA, STScI. ESA/Webb imagery under CC BY 4.0.",
       "releaseNotes": "",
       "category": "Photo & Video",
-      "genres": ["Photo & Video", "Education"],
+      "genres": [
+        "Photo & Video",
+        "Education"
+      ],
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
@@ -1590,7 +1661,9 @@
       "currentVersionReleaseDate": "2026-06-26T01:54:08Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [
         "MacDesktop-MacDesktop",
         "AppleTV4-AppleTV4",
@@ -1605,7 +1678,13 @@
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "james webb,jwst,webb telescope,nebula,galaxy,deep space,apod,nasa,astronomy,wallpaper,space,asteroids",
       "iconLocal": "/screenshots/solarbeam/icon.webp",
-      "platforms": ["iPhone", "iPad", "Mac", "Apple TV", "Vision Pro"]
+      "platforms": [
+        "iPhone",
+        "iPad",
+        "Mac",
+        "Apple TV",
+        "Vision Pro"
+      ]
     },
     {
       "slug": "psybeam",
@@ -1670,7 +1749,10 @@
       "description": "Hand your phone to anyone and just talk — they never touch the screen.\n\nHold your button and speak; Psybeam says it out loud in their language. Hold their button while they answer, and you hear them in yours. The translation always faces whoever it's for, so the person across from you understands instantly — no app for them, no typing, no learning the UI.\n\nReal-time voice-to-voice, built for travel. Order food, ask directions, sort out a hostel, talk to a pharmacist or a taxi driver — face to face, in seconds.\n\nWHY PSYBEAM\n— No account, no sign-up. It opens straight to talking; sign in with Apple later only if you want to sync.\n— No subscription, no trial trap. Pay only for the minutes you actually talk. Start with free minutes, then buy a pack when you need more — never a recurring charge.\n— Your conversation stays on your device.\n\nHOW IT WORKS\n— Two thumb buttons: your language and theirs. Hold to speak, release to send.\n— Natural speech-to-speech that follows the speaker's own voice.\n— 20+ languages, spoken aloud both ways.\n— Cross a border? Psybeam auto-suggests the local language from your location.\n— One phone, one operator — the other person just listens, then speaks when it's their turn.\n\nBUILT FOR\nTravelers, markets, hotel and hostel desks, taxis, pharmacies, asking a local for help — any moment you and someone else don't share a language.\n\niPhone, iOS 18 and later. Open it, hold a button, and have your first cross-language conversation in seconds.",
       "releaseNotes": "Smoother, more reliable conversations:\n\n• Turn-taking fixed — only one side is ever live, so the talk buttons never get stuck.\n• Clearer guidance if microphone access is off.\n• Steadier connections during quick back-and-forth.\n• More precise privacy wording.\n\nHold up your phone and just talk.",
       "category": "Travel",
-      "genres": ["Travel", "Productivity"],
+      "genres": [
+        "Travel",
+        "Productivity"
+      ],
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
@@ -1679,7 +1761,9 @@
       "currentVersionReleaseDate": "2026-06-24T19:06:12Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
@@ -1816,7 +1900,9 @@
       "supportUrl": "https://x.com/prblemslver",
       "keywords": "voice,interpreter,language,speech,conversation,trip,abroad,foreign,tourist,phrasebook,spanish,french",
       "iconLocal": "/screenshots/psybeam/icon.webp",
-      "platforms": ["iPhone"]
+      "platforms": [
+        "iPhone"
+      ]
     },
     {
       "slug": "payday",
@@ -1875,7 +1961,9 @@
       "supportUrl": "https://mako.midgarcorp.cc/support/payday",
       "keywords": "erechnung,xrechnung,zugferd,e-lasku,facturacion,estimate,freelancer,recurring,KSeF,facturae,ubl",
       "iconLocal": "/screenshots/payday/icon.webp",
-      "platforms": ["iPhone"]
+      "platforms": [
+        "iPhone"
+      ]
     },
     {
       "slug": "helia",
@@ -1946,7 +2034,9 @@
       "supportUrl": "https://midgarcorp.cc/helia",
       "keywords": "spf,sunburn,skin,sunlight,circadian,daylight,forecast,sunset,health,exposure,timer,tracker,light",
       "iconLocal": "/screenshots/helia/icon.webp",
-      "platforms": ["iPhone"]
+      "platforms": [
+        "iPhone"
+      ]
     },
     {
       "slug": "embr",
@@ -2017,7 +2107,10 @@
       "description": "Embr is a fast, native Twitch client built for iPhone — not a wrapped web view. Streams open in a real AVPlayer with picture-in-picture, background audio, and instant quality switching. Chat is rendered natively so it stays smooth even in the busiest channels. No bloat, no clutter, just watch and chat.\n\nBrowse without an account. Sign in with Twitch only when you want to follow channels and join the conversation.\n\nWATCH\n• Native AVPlayer video — live streams, VODs, and clips\n• Picture-in-picture and background audio — keep watching while you use other apps\n• Quality selection, latency display, and landscape fullscreen\n• Double-tap to seek, and adjustable playback speed on VODs\n\nBROWSE & DISCOVER\n• Live channels and top categories at a glance\n• Search channels and categories instantly\n• A Following tab that surfaces who's live (when signed in)\n• Rich channel pages with everything you need to dive in\n\nREAL-TIME CHAT\n• Live chat over Twitch EventSub — fast and reliable\n• Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ, all merged together\n• Badges, cheermotes, mentions, and threaded replies\n• Emote autocomplete and recent-message backfill so you're never lost\n• Search the chat, report or block messages, and hide users you'd rather not see\n• Moderator tools — delete, timeout, and ban — when you're a mod in the channel\n\nMADE FOR iPhone\n• Light and dark themes, with chat readability and text-scale controls\n• Haptics, third-party emote toggles, and a blocked-users list\n• Built natively in UIKit for speed and a small footprint\n• Full guest browsing — an account is optional\n\nEmbr is open source.\n\n———\n\nEmbr is an independent, third-party app and is not affiliated with, endorsed by, sponsored by, or connected to Twitch Interactive, Inc. \"Twitch\" and all related names, marks, and logos are trademarks of their respective owners and are used here only to describe what the app connects to. You sign in with your own Twitch account through Twitch's official OAuth; Embr never sees your password. Use of Twitch is subject to Twitch's own Terms of Service.",
       "releaseNotes": "",
       "category": "Entertainment",
-      "genres": ["Entertainment", "Social Networking"],
+      "genres": [
+        "Entertainment",
+        "Social Networking"
+      ],
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
@@ -2026,7 +2119,9 @@
       "currentVersionReleaseDate": "2026-07-06T20:36:02Z",
       "minimumOsVersion": "18.0",
       "contentRating": "17+",
-      "languages": ["EN"],
+      "languages": [
+        "EN"
+      ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
@@ -2163,7 +2258,9 @@
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "stream,streaming,livestream,twitch viewer,7tv,bttv,ffz,emotes,vod,clips,pip,irc,esports,gaming,chat",
       "iconLocal": "/screenshots/embr/icon.webp",
-      "platforms": ["iPhone"]
+      "platforms": [
+        "iPhone"
+      ]
     },
     {
       "slug": "crucible",
@@ -2218,7 +2315,9 @@
       "githubUrl": "https://github.com/guitaripod/Crucible",
       "latestReleaseUrl": "https://github.com/guitaripod/Crucible/releases/latest",
       "license": "GPL-3.0",
-      "platforms": ["iPhone"]
+      "platforms": [
+        "iPhone"
+      ]
     },
     {
       "slug": "flaccy",
@@ -2282,61 +2381,31 @@
             "src": "/screenshots/flaccy/mac-1.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Library"
+            "label": "Now Playing"
           },
           {
             "src": "/screenshots/flaccy/mac-2.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Album"
+            "label": "Library"
           },
           {
             "src": "/screenshots/flaccy/mac-3.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Now Playing"
+            "label": "Artist"
           },
           {
             "src": "/screenshots/flaccy/mac-4.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Lyrics"
+            "label": "Songs"
           },
           {
             "src": "/screenshots/flaccy/mac-5.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Up Next"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-6.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Songs"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-7.webp",
-            "w": 1920,
-            "h": 1200,
             "label": "Playlists"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-8.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Recap"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-9.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Year in Music"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-10.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Listening Guide"
           }
         ],
         "linux": [
@@ -2423,7 +2492,12 @@
       "marketingUrl": "https://midgarcorp.cc/flaccy",
       "supportUrl": "https://midgarcorp.cc/flaccy",
       "iconLocal": "/screenshots/flaccy/icon.webp",
-      "platforms": ["iPhone", "Apple Watch", "Mac", "Linux"]
+      "platforms": [
+        "iPhone",
+        "Apple Watch",
+        "Mac",
+        "Linux"
+      ]
     }
   ]
 }

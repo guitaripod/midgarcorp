@@ -38,7 +38,7 @@
     },
     {
       "title": "Made for Listening",
-      "body": "Synced lyrics with tap-to-seek, a Now Playing screen with ambient artwork backdrops, AirPlay, a sleep timer, and full playback controls on the Lock Screen and in the Dynamic Island.",
+      "body": "Synced lyrics with tap-to-seek and a full-window Now Playing screen — on Mac, album art, lyrics, and your queue sit side by side over an ambient, palette-tinted backdrop. AirPlay, a sleep timer, Lock Screen and Dynamic Island controls, and full light and dark mode throughout.",
       "glyph": "♪"
     },
     {
@@ -127,16 +127,11 @@
   ],
   "screenshotCaptions": {
     "mac": [
-      "Your albums in a fast, resizable grid — and the whole window takes on the color of what's playing",
-      "Album pages with play, shuffle, and every track a click away",
-      "Now Playing: full-bleed artwork over an ambient, palette-tinted backdrop",
-      "Synced lyrics beside the artwork, line by line as the track plays",
-      "Up Next: see your history, what's playing, and the queue ahead",
-      "A multi-column song list — sort by codec, quality, plays, or date added",
-      "Playlists that mix your whole library — play or shuffle in a click",
-      "Recap: your local listening history, top artists, and streaks",
-      "Year in Music — export full-resolution story cards and posters",
-      "The Listening Guide: what Bluetooth, AAC, and your files really deliver"
+      "Now Playing on Mac: artwork, synced lyrics, and your queue side by side — bring in any one, two, or all three, in light or dark.",
+      "Your albums in a fast, resizable grid — the whole window tinted by what's playing.",
+      "Artist pages with every album, plus play, shuffle, and a station a click away.",
+      "A multi-column song list — sort by codec, quality, plays, or date added.",
+      "Playlists that mix your whole library — play or shuffle in a click."
     ],
     "linux": [
       "Your whole library, tinted live by the album that's playing — Made For You shelves and gapless playback.",
