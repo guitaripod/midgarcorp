@@ -1,0 +1,121 @@
+{
+  "seoTitle": "Tailscode — Claude Code & opencode on your iPhone",
+  "metaDescription": "Native iOS remote for Claude Code and opencode over your Tailscale network. Live Activities on your Lock Screen, inline approvals, no relay, open source under GPL-3.0.",
+  "keywords": [
+    "claude code ios app",
+    "claude code iphone client",
+    "opencode mobile client",
+    "tailscale coding agent",
+    "remote coding agent ios",
+    "coding agent lock screen",
+    "claude code live activity",
+    "self-hosted ai coding",
+    "ios client for claude code",
+    "open source coding agent app"
+  ],
+  "heroHeadline": "Your coding agents, in your pocket",
+  "heroSubhead": "Tailscode is a native iOS remote for Claude Code and opencode running on your own machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen — point-to-point over your tailnet, no relay, no account.",
+  "accentColor": "#546BFF",
+  "highlights": [
+    "Streams every turn live — thinking, tool calls, diffs, code",
+    "Approve or deny agent actions right in the chat",
+    "Live Activities with phase, elapsed time, and tool counts",
+    "Point-to-point over your Tailscale network — no relay, no tracking"
+  ],
+  "features": [
+    {
+      "title": "A real client, not a web view",
+      "body": "Programmatic UIKit and Swift 6 end to end. Streaming transcripts with collapsible thinking and tool groups, syntax-highlighted code with byte-exact copy, Liquid Glass on iOS 26.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Two agents, one app",
+      "body": "Drive opencode directly, and Claude Code through claude-bridge — the open-source companion server that turns claude into structured, streaming, subscription-backed sessions.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Lock Screen status board",
+      "body": "A Live Activity per session shows the phase, elapsed time, and tool counts in real time. Approvals alert you, finished turns linger with the outcome, and updates arrive by push even while the app is suspended.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Steer without stopping",
+      "body": "Queue a follow-up while the agent works, edit it before it lands, stop the turn server-side, fork the conversation, or answer the agent's structured questions with a tap.",
+      "glyph": "⊹"
+    },
+    {
+      "title": "Every machine, one list",
+      "body": "Sessions from all your servers in one place with live status. Discover agent servers on your tailnet with an API token, and start chats in any project directory with the built-in file browser.",
+      "glyph": "✦"
+    },
+    {
+      "title": "Usage you can trust",
+      "body": "Live Claude plan gauges straight from your own bridge, Grok quotas, and opencode cost estimates — session, weekly, and per-model, with reset countdowns.",
+      "glyph": "⬡"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Run an agent server",
+      "body": "On the machine where you code: opencode serve, or claude-bridge in front of Claude Code. Both are open source and take minutes to set up."
+    },
+    {
+      "step": "Join the same tailnet",
+      "body": "Install Tailscale on your phone and your machine — free for personal use. Your devices see each other directly; nothing transits anyone else's servers."
+    },
+    {
+      "step": "Connect and go",
+      "body": "Paste an address or let Tailscode discover your servers. Send a prompt, pocket your phone, and follow the turn from your Lock Screen."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I need my own server?",
+      "a": "Yes — that's the point. Tailscode is a remote for agents running on hardware you control. There is no middleman cloud, which means no relay fees, no data sharing, and no vendor outage between you and your code. A built-in demo lets you explore the full app before wiring anything."
+    },
+    {
+      "q": "Which coding agents does it support?",
+      "a": "opencode natively (any provider you've configured in it), and Claude Code through claude-bridge, an open-source Swift server that exposes Claude Code as structured streaming sessions backed by your Claude subscription."
+    },
+    {
+      "q": "Does my code pass through anyone's cloud?",
+      "a": "No. The app talks directly to your machines over your WireGuard-encrypted Tailscale network. No relay server, no account with us, no analytics, no tracking. The privacy policy is one sentence long in spirit: we collect nothing."
+    },
+    {
+      "q": "How do Live Activities update when the app is closed?",
+      "a": "claude-bridge can push Live Activity updates over APNs, so the Lock Screen keeps ticking — phase, elapsed time, tool counts — even while the app is suspended. Approval requests fire an alert you can act on."
+    },
+    {
+      "q": "What does Pro add?",
+      "a": "Tailscode Pro is a one-time $14.99 unlock for multiple saved servers, concurrent Live Activities, and a supporter badge. The free app is the complete core — full chat, permissions, attachments, models, forking — forever, with one server."
+    },
+    {
+      "q": "Is it really open source?",
+      "a": "All of it, under GPL-3.0: the app (Tailscode), the engine (CodingAgentKit, a Swift 6 package that also runs on Linux), and the bridge (claude-bridge). Build it yourself or grab it from the App Store."
+    },
+    {
+      "q": "Can I try it without a server?",
+      "a": "Yes. Tap 'Try the demo' on the first screen: two sample servers with realistic sessions let you explore streaming, approvals, questions, usage gauges, and the file browser — no tailnet needed."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "A live turn: thinking, tools, code",
+      "Inline permission approvals",
+      "Every server and session in one place",
+      "Live plan and quota gauges",
+      "Chats across machines",
+      "Model picker with providers"
+    ],
+    "ipad": [
+      "A live turn: thinking, tools, code",
+      "Inline permission approvals",
+      "Every server and session in one place",
+      "Live plan and quota gauges",
+      "Chats across machines",
+      "Model picker with providers"
+    ]
+  },
+  "ctaLine": "Your agent is already working. Watch it from anywhere.",
+  "pricingNote": "Free and open source under GPL-3.0. Pro unlocks unlimited servers and concurrent Live Activities for $14.99, one time."
+}

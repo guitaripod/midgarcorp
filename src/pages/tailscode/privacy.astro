@@ -1,0 +1,119 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const accent = '#546BFF';
+const seoTitle = 'Tailscode Privacy Policy';
+const metaDescription =
+  'Tailscode collects nothing. No analytics, no ads, no tracking, no accounts, no server operated by us. Your chats and code travel directly between your device and machines you own.';
+
+const sections = [
+  {
+    title: 'Nothing is collected',
+    body: 'Tailscode collects nothing. No analytics, no ads, no tracking SDKs, no accounts, and no server operated by us. The app’s privacy manifest declares zero collected data types.',
+  },
+  {
+    title: 'Your chats and code stay yours',
+    body: 'Your chats and code travel directly between your device and machines you own, over your own WireGuard-encrypted Tailscale network. We never see them.',
+  },
+  {
+    title: 'Tailscale API token',
+    body: 'The optional Tailscale API token, used for server discovery, is stored in the iOS Keychain and sent only to api.tailscale.com to list your own devices.',
+  },
+  {
+    title: 'Server passwords',
+    body: 'Server passwords are stored in the iOS Keychain and sent only to the servers you configure.',
+  },
+  {
+    title: 'Live Activity push tokens',
+    body: 'Live Activity push tokens are registered only with your own claude-bridge server, which sends updates through Apple’s push service.',
+  },
+  {
+    title: 'Purchases',
+    body: 'Purchases are processed by Apple; we receive no personal information.',
+  },
+  {
+    title: 'Diagnostics',
+    body: 'A diagnostic log file stays on-device; it leaves your phone only if you export and share it yourself.',
+  },
+];
+---
+
+<BaseLayout title={seoTitle} description={metaDescription}>
+  <div style={`--accent:${accent}`}>
+    <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/tailscode" class="hover:text-paper-green dark:hover:text-term-green">
+            tailscode
+          </a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">privacy</li>
+      </ol>
+    </nav>
+
+    <header class="py-10 sm:py-14">
+      <p class="prompt-line mb-5">cat tailscode/PRIVACY.md</p>
+      <h1
+        class="mb-3 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+      >
+        Tailscode Privacy Policy
+      </h1>
+      <p class="text-xs text-paper-faint dark:text-term-faint">Effective July 16, 2026</p>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
+        The short version: <span class="font-semibold text-paper-text dark:text-term-text"
+          >Tailscode collects nothing.</span
+        > There is no middleman between you and your machines, so there is nothing for us to see, store,
+        or share.
+      </p>
+    </header>
+
+    <section class="border-t border-paper-border pb-12 pt-10 dark:border-term-border">
+      <div class="grid max-w-3xl gap-5">
+        {
+          sections.map((s) => (
+            <div class="term-frame p-5 sm:p-6">
+              <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
+                {s.title}
+              </h2>
+              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="border-t border-paper-border py-10 dark:border-term-border">
+      <div class="term-frame max-w-3xl p-5 sm:p-6">
+        <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
+          Questions &amp; changes
+        </h2>
+        <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+          Questions about this policy? Email
+          <a
+            href="mailto:guitaripod@gmail.com"
+            class="text-paper-green underline decoration-dotted underline-offset-2 dark:text-term-green"
+            >guitaripod@gmail.com</a
+          >. Any changes to this policy will be posted on this page.
+        </p>
+      </div>
+      <p class="mt-8 text-xs text-paper-faint dark:text-term-faint">
+        <a href="/tailscode" class="hover:text-paper-green dark:hover:text-term-green"
+          >← back to Tailscode</a
+        >
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: var(--accent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+</style>
