@@ -100,20 +100,16 @@
   ],
   "screenshotCaptions": {
     "iphone": [
-      "A live turn: thinking, tools, code",
-      "Inline permission approvals",
+      "A live turn: thinking, tools, and a running command",
+      "The agent works: to-do list, code edits, subagents",
+      "Approve or deny each action right in the chat",
+      "Answer the agent's multi-select questions with a tap",
+      "Watch the subagents it spawns, each with its own transcript",
+      "Markdown, syntax-highlighted code, and links render inline",
       "Every server and session in one place",
-      "Live plan and quota gauges",
-      "Chats across machines",
-      "Model picker with providers"
-    ],
-    "ipad": [
-      "A live turn: thinking, tools, code",
-      "Inline permission approvals",
-      "Every server and session in one place",
-      "Live plan and quota gauges",
-      "Chats across machines",
-      "Model picker with providers"
+      "Live plan and quota gauges from your own machine",
+      "Chats across all your machines, filtered and searchable",
+      "A model picker grouped by provider"
     ]
   },
   "ctaLine": "Your agent is already working. Watch it from anywhere.",

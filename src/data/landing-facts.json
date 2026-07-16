@@ -2522,8 +2522,7 @@
       "supportUrl": "https://midgarcorp.cc/tailscode/support",
       "keywords": "claude,code,opencode,tailscale,agent,terminal,cli,ssh,developer,ai,pair,vibe,coding,mobile,monitor",
       "platforms": [
-        "iPhone",
-        "iPad"
+        "iPhone"
       ],
       "screenshots": {
         "iphone": [
@@ -2537,69 +2536,55 @@
             "src": "/screenshots/tailscode/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Approvals"
+            "label": "Agent at work"
           },
           {
             "src": "/screenshots/tailscode/iphone-3.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Home"
+            "label": "Inline approvals"
           },
           {
             "src": "/screenshots/tailscode/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Usage"
+            "label": "Multi-select questions"
           },
           {
             "src": "/screenshots/tailscode/iphone-5.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Chats"
+            "label": "Subagents"
           },
           {
             "src": "/screenshots/tailscode/iphone-6.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Models"
-          }
-        ],
-        "ipad": [
-          {
-            "src": "/screenshots/tailscode/ipad-1.webp",
-            "w": 1600,
-            "h": 2134,
-            "label": "Live turn"
+            "label": "Rich rendering"
           },
           {
-            "src": "/screenshots/tailscode/ipad-2.webp",
-            "w": 1600,
-            "h": 2134,
-            "label": "Approvals"
+            "src": "/screenshots/tailscode/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Every server"
           },
           {
-            "src": "/screenshots/tailscode/ipad-3.webp",
-            "w": 1600,
-            "h": 2134,
-            "label": "Home"
+            "src": "/screenshots/tailscode/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Live usage"
           },
           {
-            "src": "/screenshots/tailscode/ipad-4.webp",
-            "w": 1600,
-            "h": 2134,
-            "label": "Usage"
+            "src": "/screenshots/tailscode/iphone-9.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "All your chats"
           },
           {
-            "src": "/screenshots/tailscode/ipad-5.webp",
-            "w": 1600,
-            "h": 2134,
-            "label": "Chats"
-          },
-          {
-            "src": "/screenshots/tailscode/ipad-6.webp",
-            "w": 1600,
-            "h": 2134,
-            "label": "Models"
+            "src": "/screenshots/tailscode/iphone-10.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Model picker"
           }
         ]
       },
