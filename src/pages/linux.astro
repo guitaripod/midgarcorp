@@ -1,0 +1,186 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import LinuxAppCard from '@components/LinuxAppCard.astro';
+import { linuxApps, linuxGroups, linuxStats } from '@data/linux';
+
+const pageTitle = 'Linux Apps & Tools | guitaripod';
+
+const langList =
+  linuxStats.languages.length > 1
+    ? `${linuxStats.languages.slice(0, -1).join(', ')} and ${linuxStats.languages.at(-1)}`
+    : linuxStats.languages.join('');
+
+const ogDescription = `${linuxStats.appCount} Linux apps and command-line tools — ${linuxStats.releaseCount} releases shipped in ${langList}. GTK desktop apps, a Wayland daemon, and single-binary CLIs, installable via cargo, Homebrew, and the AUR.`;
+
+const stats = [
+  { key: 'releases_shipped', value: String(linuxStats.releaseCount) },
+  { key: 'apps_and_tools', value: String(linuxStats.appCount) },
+  { key: 'github_stars', value: String(linuxStats.starCount) },
+  { key: 'languages', value: linuxStats.languages.join(' · ') },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: pageTitle,
+  description: ogDescription,
+  url: 'https://midgarcorp.cc/linux/',
+  author: {
+    '@type': 'Person',
+    name: 'guitaripod',
+    url: 'https://midgarcorp.cc',
+  },
+  hasPart: linuxApps.map((app) => ({
+    '@type': 'SoftwareApplication',
+    name: app.name,
+    description: app.description,
+    applicationCategory: app.group === 'desktop' ? 'DesktopApplication' : 'DeveloperApplication',
+    operatingSystem: 'Linux',
+    programmingLanguage: app.language,
+    softwareVersion: app.latestVersion ?? undefined,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    url: app.githubUrl,
+  })),
+};
+---
+
+<BaseLayout title={pageTitle} description={ogDescription} image="/og-linux.png">
+  <header class="pt-12 sm:pt-16 mb-8 sm:mb-10">
+    <p class="prompt-line mb-4">uname -o &amp;&amp; ls ~/linux</p>
+    <h1
+      class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-paper-text dark:text-term-text"
+    >
+      Linux <span class="phosphor">Apps</span> &amp; Tools
+    </h1>
+    <p
+      class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-3xl mb-3 leading-relaxed"
+    >
+      {linuxStats.appCount} open-source apps and command-line tools built for Linux, with {
+        linuxStats.releaseCount
+      } tagged releases across {langList}. Native GTK desktop apps, a Wayland color-temperature
+      daemon, a system-tray toggle — and a deep bench of single-binary CLIs.
+    </p>
+    <p class="text-sm sm:text-base text-paper-muted dark:text-term-faint max-w-2xl">
+      Every one is installable in a single command — <span
+        class="text-paper-text dark:text-term-text">cargo</span
+      >, <span class="text-paper-text dark:text-term-text">brew</span>, the <span
+        class="text-paper-text dark:text-term-text">AUR</span
+      >, or from source. All developed and released from Arch Linux.
+    </p>
+  </header>
+
+  <section class="mb-12 sm:mb-14">
+    <div class="term-frame p-5 sm:p-6">
+      <p class="prompt-line mb-4">linux --stats</p>
+      <dl class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">
+        {
+          stats.map((stat) => (
+            <div>
+              <dd class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
+                {stat.value}
+              </dd>
+              <dt class="text-xs text-paper-muted dark:text-term-muted mt-1">{stat.key}</dt>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  {
+    linuxGroups.map((group) => (
+      <section class="mb-12 sm:mb-16">
+        <div class="flex items-baseline justify-between gap-4 mb-2">
+          <p class="prompt-line">{group.command}</p>
+          <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">
+            {group.apps.length} {group.apps.length === 1 ? 'entry' : 'entries'}
+          </span>
+        </div>
+        <h2 class="text-lg sm:text-xl font-bold text-paper-text dark:text-term-text mb-1">
+          {group.title}
+        </h2>
+        <p class="text-sm text-paper-muted dark:text-term-muted mb-6 max-w-2xl">{group.blurb}</p>
+        <div class="linux-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+          {group.apps.map((app) => (
+            <LinuxAppCard app={app} />
+          ))}
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="mt-12 sm:mt-16 mb-12">
+    <div class="term-frame p-6 sm:p-8">
+      <p class="prompt-line mb-4">git clone --recursive ~/linux</p>
+      <h2 class="text-xl sm:text-2xl font-bold mb-3 text-paper-text dark:text-term-text">
+        Built on Linux, for Linux.
+      </h2>
+      <p
+        class="text-sm sm:text-base text-paper-muted dark:text-term-muted mb-6 max-w-2xl leading-relaxed"
+      >
+        Source, release binaries, and issue trackers for every tool live on GitHub. Same hands that
+        ship {linuxStats.appCount} Linux tools also ship native Apple-platform apps — cross-platform
+        by habit, not by framework.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="/opensource"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+        >
+          ./browse-all-open-source
+        </a>
+        <a
+          href="https://github.com/guitaripod?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text rounded-sm text-sm font-semibold hover:border-paper-green dark:hover:border-term-green hover:text-paper-green dark:hover:text-term-green transition-colors"
+        >
+          gh browse guitaripod ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</BaseLayout>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .linux-grid > :global(*) {
+      animation: fadeIn 0.45s ease-out both;
+      opacity: 0;
+    }
+    .linux-grid > :global(*:nth-child(1)) {
+      animation-delay: 0.05s;
+    }
+    .linux-grid > :global(*:nth-child(2)) {
+      animation-delay: 0.1s;
+    }
+    .linux-grid > :global(*:nth-child(3)) {
+      animation-delay: 0.15s;
+    }
+    .linux-grid > :global(*:nth-child(4)) {
+      animation-delay: 0.2s;
+    }
+    .linux-grid > :global(*:nth-child(5)) {
+      animation-delay: 0.25s;
+    }
+    .linux-grid > :global(*:nth-child(6)) {
+      animation-delay: 0.3s;
+    }
+    .linux-grid > :global(*:nth-child(n + 7)) {
+      animation-delay: 0.35s;
+    }
+  }
+</style>

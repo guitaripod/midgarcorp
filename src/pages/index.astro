@@ -3,6 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import AppCard from '@components/AppCard.astro';
 import OpenSourceCard from '@components/OpenSourceCard.astro';
 import CLIAppCard from '@components/CLIAppCard.astro';
+import LinuxAppCard from '@components/LinuxAppCard.astro';
 import MatrixRain from '@components/MatrixRain.astro';
 import { getCollection } from 'astro:content';
 import { calculateReadingTime } from '@utils/reading-time';
@@ -10,6 +11,7 @@ import appsData from '../data/apps.json';
 import openSourceData from '../data/opensource.json';
 import careerData from '../data/career.json';
 import { landingApps } from '@data/landing';
+import { featuredLinuxApps, linuxStats } from '@data/linux';
 
 const landingByTrack = new Map(landingApps.map((a) => [String(a.trackId), a]));
 const trackIdFor = (appStoreUrl: string): string | undefined => appStoreUrl.match(/id(\d+)/)?.[1];
@@ -46,6 +48,7 @@ const featuredCLITools = [
 ].slice(0, 2);
 
 const featuredCLIIds = new Set(featuredCLITools.map((tool) => tool.id));
+const featuredLinux = featuredLinuxApps(3, [...featuredCLIIds]);
 const featuredOpenSource = openSourceData.projects
   .filter((project) => !featuredCLIIds.has(project.id))
   .slice(0, 6);
@@ -194,6 +197,26 @@ const engagements = careerData.entries.slice(0, 3);
           <AppCard app={cardApp(app)} landingHref={landingHrefFor(app.appStoreUrl)} />
         ))
       }
+    </div>
+  </section>
+
+  <!-- Linux Apps -->
+  <section class="mb-16">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
+        <span class="text-paper-green dark:text-term-green">~/linux</span> · apps &amp; tools ·
+        <span class="text-paper-amber dark:text-term-amber">{linuxStats.releaseCount} releases</span
+        >
+      </h2>
+      <a
+        href="/linux"
+        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+      >
+        ls linux/ →
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      {featuredLinux.map((app) => <LinuxAppCard app={app} />)}
     </div>
   </section>
 

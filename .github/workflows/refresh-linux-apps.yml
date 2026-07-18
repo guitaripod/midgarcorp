@@ -1,0 +1,93 @@
+name: Refresh Linux apps
+
+# Weekly (and on-demand) refresh of the /linux page. The page AUTO-DISCOVERS which
+# apps to show from the curated opensource.json, so this both picks up newly-
+# shipped Rust/Go/C++ tools and refreshes versions/install data live from the
+# GitHub, crates.io, and AUR APIs. Opened as a reviewable PR so a new app or a
+# version bump can be eyeballed before it deploys. Needs no secrets — `gh` and
+# `ct fetch-github` authenticate with the built-in GITHUB_TOKEN; crates.io/AUR
+# are public.
+
+on:
+  schedule:
+    - cron: '30 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh-linux-apps
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh the curated repo list (drives auto-discovery)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          make build
+          ./ct fetch-github
+
+      - name: Refresh Linux app data + OG image
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/fetch-linux-releases.mjs
+          node scripts/generate-linux-og.js
+          # opensource.json was refreshed only to drive discovery; the /opensource
+          # and /cli-tools pages regenerate it themselves at deploy, so keep this
+          # PR focused on the Linux data.
+          git checkout -- src/data/opensource.json
+
+      - name: Validate the build with the refreshed data
+        run: npx astro build
+
+      - name: Open a PR if the Linux data changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          paths="src/data/linux-apps.json public/og-linux.png"
+          if [ -z "$(git status --porcelain -- $paths)" ]; then
+            echo "No Linux app changes — nothing to open."
+            exit 0
+          fi
+          branch="chore/refresh-linux-apps-${{ github.run_id }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add $paths
+          git commit -m "chore(linux): refresh /linux versions + install data"
+          git push -u origin "$branch"
+
+          # Supersede any prior open refresh PRs so they don't pile up.
+          for n in $(gh pr list --state open --json number,headRefName \
+            --jq '.[] | select(.headRefName | startswith("chore/refresh-linux-apps-")) | .number'); do
+            gh pr close "$n" --delete-branch \
+              --comment "Superseded by a newer Linux-apps refresh (run ${{ github.run_id }})." || true
+          done
+
+          gh pr create --base master --head "$branch" \
+            --title "chore(linux): refresh /linux versions + install data" \
+            --body "Automated refresh of the /linux page data via \`scripts/fetch-linux-releases.mjs\` (latest versions, release dates, install commands, binary links) plus the regenerated OG image. The build was validated in CI before this PR was opened."

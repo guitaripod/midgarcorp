@@ -8,6 +8,7 @@ const currentPath = pathname.slice(1);
 const navItems = [
   { href: '/services', label: 'services' },
   { href: '/apps', label: 'apps' },
+  { href: '/linux', label: 'linux' },
   { href: '/cli-tools', label: 'cli' },
   { href: '/opensource', label: 'oss' },
   { href: '/archive', label: 'blog' },
@@ -35,7 +36,7 @@ const isItemActive = (href: string) => href !== '/' && currentPath.startsWith(hr
       </a>
 
       <div class="flex items-center gap-1 sm:gap-2">
-        <ul class="hidden md:flex items-center gap-4 lg:gap-5">
+        <ul class="hidden lg:flex items-center gap-4 lg:gap-5">
           {
             navItems.map((item) => {
               const isActive = isItemActive(item.href);
@@ -64,7 +65,7 @@ const isItemActive = (href: string) => href !== '/' && currentPath.startsWith(hr
         <Search />
         <ThemeToggle />
 
-        <div class="md:hidden">
+        <div class="lg:hidden">
           <input type="checkbox" id="mobile-menu-toggle" class="hidden" />
           <label
             for="mobile-menu-toggle"
