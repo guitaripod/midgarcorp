@@ -123,6 +123,8 @@ function deriveNote(description, topics) {
 const registryHosts = ['crates.io', 'www.npmjs.com', 'pypi.org', 'pkg.go.dev'];
 const LINUX_ASSET = /(linux|\.appimage$|\.deb$|\.rpm$|\.flatpak$)/i;
 const X64_ASSET = /(x86_64|amd64)/i;
+// Checksums/signatures sit next to the binaries and match LINUX_ASSET on name alone.
+const CHECKSUM_ASSET = /\.(sha\d*|md5|asc|sig|minisig|pem|txt)$/i;
 
 function cleanHomepage(url) {
   if (!url) return null;
@@ -433,7 +435,9 @@ async function buildRecord(id, brewByFormula, aur) {
   const aurPkg = [...aur.keys()].find((p) => p === id || p === `${id}-bin`) ?? null;
   const aurVer = aurPkg ? aur.get(aurPkg) : null;
 
-  const linuxAssets = (release?.assets ?? []).filter((a) => LINUX_ASSET.test(a.name));
+  const linuxAssets = (release?.assets ?? []).filter(
+    (a) => LINUX_ASSET.test(a.name) && !CHECKSUM_ASSET.test(a.name)
+  );
   const x64Asset = linuxAssets.find((a) => X64_ASSET.test(a.name)) ?? null;
 
   const install = buildInstall(lang, repo.githubUrl, repo.name, resolvedCrate, brewCmd, aurPkg);
