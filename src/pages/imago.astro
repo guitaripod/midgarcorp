@@ -116,14 +116,16 @@ const structuredData = {
         class="text-3xl sm:text-5xl font-bold tracking-tight mb-4 text-paper-text dark:text-term-text"
       >
         <span class="text-paper-green dark:text-term-green">imago</span>
-        <span class="text-paper-muted dark:text-term-muted font-normal text-xl sm:text-2xl block sm:inline sm:ml-3">
+        <span
+          class="text-paper-muted dark:text-term-muted font-normal text-xl sm:text-2xl block sm:inline sm:ml-3"
+        >
           archive Instagram profiles completely
         </span>
       </h1>
       <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-2xl mb-6">
-        Drop a profile URL. Walk away. Every photo, video, and carousel slide lands on disk. Watch the
-        profiles you care about and backfill weekly without duplicates. Built for humans and coding
-        agents.
+        Drop a profile URL. Walk away. Every photo, video, and carousel slide lands on disk. Watch
+        the profiles you care about and backfill weekly without duplicates. Built for humans and
+        coding agents.
       </p>
       <ul class="grid sm:grid-cols-2 gap-2 mb-8 max-w-2xl">
         {
@@ -162,14 +164,13 @@ const structuredData = {
     <section class="mb-12 sm:mb-16">
       <div class="term-frame p-5 sm:p-6 overflow-x-auto">
         <p class="prompt-line mb-3 text-xs sm:text-sm">install + first archive</p>
-        <pre class="text-xs sm:text-sm leading-relaxed text-paper-text dark:text-term-text whitespace-pre-wrap"><code
-          >{installCmd}      # or a prebuilt binary from Releases
+        <pre
+          class="text-xs sm:text-sm leading-relaxed text-paper-text dark:text-term-text whitespace-pre-wrap"><code>{installCmd}      # or a prebuilt binary from Releases
 imago auth login                 # reads your logged-in browser session
 imago get https://www.instagram.com/natgeo/
 imago watch add natgeo
 # cron weekly:
-imago watch sync --json</code
-        ></pre>
+imago watch sync --json</code></pre>
       </div>
     </section>
 
