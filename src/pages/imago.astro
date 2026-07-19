@@ -1,0 +1,204 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import FeatureGrid from '@components/landing/FeatureGrid.astro';
+import FaqAccordion from '@components/landing/FaqAccordion.astro';
+
+const site = 'https://midgarcorp.cc';
+const canonical = `${site}/imago`;
+const ogImage = '/og/imago.png';
+const accent = '#E1306C';
+
+const seoTitle = 'imago — archive Instagram profiles completely';
+const metaDescription =
+  'Agent-native CLI that archives every photo, video, and carousel slide from an Instagram profile. Drop a URL, walk away, watch for more weekly without duplicates.';
+
+const githubUrl = 'https://github.com/guitaripod/imago';
+const releasesUrl = 'https://github.com/guitaripod/imago/releases';
+const installCmd = 'cargo install --git https://github.com/guitaripod/imago';
+
+const heroHighlights = [
+  'Photos, videos/reels, every carousel slide',
+  'Drop a profile URL — no interactive babysitting',
+  'Watchlist + weekly sync skips what you already have',
+  'Agent-native: --json, guide, file logs, exit codes',
+];
+
+const features = [
+  {
+    title: 'Everything on the grid',
+    body: 'Images, videos, reels, and full carousel albums. Each asset lands as its own file with a stable key so re-runs never re-download.',
+    glyph: '◫',
+  },
+  {
+    title: 'Walk away',
+    body: 'Auto-resumes interrupted jobs, waits out soft rate limits, and only hard-stops when the session is dead — then tells you exactly how to re-auth.',
+    glyph: '↻',
+  },
+  {
+    title: 'Watchlist',
+    body: 'imago watch add <user> then imago watch sync on a cron. Incremental early-stop when a page is already known; --full when you want a re-scan.',
+    glyph: '◎',
+  },
+  {
+    title: 'Built for agents',
+    body: 'imago guide is the playbook. --json on every command. Logs under $XDG_DATA_HOME/imago/logs. Stable exit codes for scripts and coding agents.',
+    glyph: '⌘',
+  },
+  {
+    title: 'Your session, your disk',
+    body: 'Uses browser session cookies you already have — no shared cloud, no Meta Graph app review. Media stays in ./downloads/<user>/ on your machine.',
+    glyph: '⌂',
+  },
+  {
+    title: 'Honest CLI',
+    body: 'No fake flags. No half-wired config. What the guide says is what the binary does.',
+    glyph: '✓',
+  },
+];
+
+const faq = [
+  {
+    q: 'Is this legal / allowed by Instagram?',
+    a: 'imago is a personal archival tool that uses your own logged-in session, the same way a browser does. You are responsible for complying with Instagram’s terms and local law. Don’t run it as a bulk commercial scraper.',
+  },
+  {
+    q: 'How do I get session cookies?',
+    a: 'Log into Instagram in a browser, open developer tools → Application/Storage → Cookies, copy sessionid and csrftoken. Then: imago auth login --session-id … --csrf-token …',
+  },
+  {
+    q: 'Does it download stories?',
+    a: 'Not in v1. Profile grid media only (including reels that appear on the grid). Stories and highlights are a different surface.',
+  },
+  {
+    q: 'What about duplicates?',
+    a: 'Disk is truth. Existing shortcode / shortcode_NN files are skipped. Watch sync early-stops when an entire page is already known.',
+  },
+  {
+    q: 'Relation to igscraper?',
+    a: 'imago supersedes the old Go project igscraper. Same job, greenfield Rust, full media, watchlist, agent-native I/O.',
+  },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'imago',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Linux, macOS, Windows',
+  description: metaDescription,
+  url: canonical,
+  downloadUrl: releasesUrl,
+  softwareVersion: '0.1.0',
+  author: {
+    '@type': 'Person',
+    name: 'guitaripod',
+    url: site,
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+};
+---
+
+<BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <div class="py-8 sm:py-12">
+    <header class="mb-10 sm:mb-14">
+      <p class="prompt-line mb-4">imago get https://instagram.com/&lt;user&gt;/</p>
+      <h1
+        class="text-3xl sm:text-5xl font-bold tracking-tight mb-4 text-paper-text dark:text-term-text"
+      >
+        <span class="text-paper-green dark:text-term-green">imago</span>
+        <span class="text-paper-muted dark:text-term-muted font-normal text-xl sm:text-2xl block sm:inline sm:ml-3">
+          archive Instagram profiles completely
+        </span>
+      </h1>
+      <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-2xl mb-6">
+        Drop a profile URL. Walk away. Every photo, video, and carousel slide lands on disk. Watch the
+        profiles you care about and backfill weekly without duplicates. Built for humans and coding
+        agents.
+      </p>
+      <ul class="grid sm:grid-cols-2 gap-2 mb-8 max-w-2xl">
+        {
+          heroHighlights.map((h) => (
+            <li class="text-sm text-paper-text dark:text-term-text flex gap-2">
+              <span class="text-paper-green dark:text-term-green" aria-hidden="true">
+                ▸
+              </span>
+              {h}
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={releasesUrl}
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border border-paper-green dark:border-term-green text-paper-green dark:text-term-green hover:bg-paper-green/10 dark:hover:bg-term-green/10 transition-colors"
+        >
+          Releases ↗
+        </a>
+        <a
+          href={githubUrl}
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text hover:border-paper-green dark:hover:border-term-green transition-colors"
+        >
+          Source ↗
+        </a>
+        <a
+          href="/cli-tools"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green transition-colors"
+        >
+          All CLI tools
+        </a>
+      </div>
+    </header>
+
+    <section class="mb-12 sm:mb-16">
+      <div class="term-frame p-5 sm:p-6 overflow-x-auto">
+        <p class="prompt-line mb-3 text-xs sm:text-sm">install + first archive</p>
+        <pre class="text-xs sm:text-sm leading-relaxed text-paper-text dark:text-term-text whitespace-pre-wrap"><code
+          >{installCmd}
+imago auth login --session-id '…' --csrf-token '…'
+imago get https://www.instagram.com/natgeo/
+imago watch add natgeo
+# cron weekly:
+imago watch sync --json</code
+        ></pre>
+      </div>
+    </section>
+
+    <section class="mb-12 sm:mb-16">
+      <h2 class="text-xl sm:text-2xl font-bold mb-6 text-paper-text dark:text-term-text">
+        Why imago
+      </h2>
+      <FeatureGrid features={features} accent={accent} />
+    </section>
+
+    <section class="mb-12 sm:mb-16">
+      <h2 class="text-xl sm:text-2xl font-bold mb-4 text-paper-text dark:text-term-text">
+        Agent contract
+      </h2>
+      <div class="term-frame p-5 sm:p-6 text-sm text-paper-muted dark:text-term-muted space-y-2">
+        <p>
+          <span class="text-paper-text dark:text-term-text font-semibold">Exit codes:</span> 0 ok · 1
+          usage · 2 auth dead · 3 partial · 10 unexpected
+        </p>
+        <p>
+          <span class="text-paper-text dark:text-term-text font-semibold">JSON:</span> --json on every
+          command · playbook: <code class="text-paper-green dark:text-term-green">imago guide</code>
+        </p>
+        <p>
+          <span class="text-paper-text dark:text-term-text font-semibold">Logs:</span>
+          $XDG_DATA_HOME/imago/logs/imago.log
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl sm:text-2xl font-bold mb-6 text-paper-text dark:text-term-text">FAQ</h2>
+      <FaqAccordion faq={faq} accent={accent} />
+    </section>
+  </div>
+</BaseLayout>

@@ -52,6 +52,7 @@ const getInstallCommand = (name: string, language: string) => {
   if (lowerName === 'unrager') return 'cargo install unrager';
   if (lowerName === 'songlink-cli') return 'brew install guitaripod/songlink-cli/songlink-cli';
   if (lowerName === 'pomme') return 'go install github.com/guitaripod/Pomme@latest';
+  if (lowerName === 'imago') return 'cargo install --git https://github.com/guitaripod/imago';
   if (lowerName === 'apod-cli') return 'brew install guitaripod/tap/apod-cli';
   if (lowerName === 'image-collage') return 'cargo install image-collage';
   if (lowerName === 'gh-export') return 'cargo install gh-export';
@@ -67,6 +68,13 @@ const getInstallCommand = (name: string, language: string) => {
 
 const getTerminalDemo = (name: string) => {
   const lowerName = name.toLowerCase();
+  if (lowerName === 'imago') {
+    return [
+      'imago get https://instagram.com/natgeo/',
+      'page 1  +12 new  ~0 skip',
+      'done  natgeo  +412 new',
+    ];
+  }
   if (lowerName === 'flyr') {
     return [
       'flyr MAD NRT --date 2026-07-14',
