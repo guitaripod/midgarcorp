@@ -31,7 +31,7 @@ const features = [
   },
   {
     title: 'Walk away',
-    body: 'Auto-resumes interrupted jobs, waits out soft rate limits, and only hard-stops when the session is dead — then tells you exactly how to re-auth.',
+    body: 'Auto-resumes interrupted jobs, resumes truncated videos, and waits out soft rate limits. A checkpoint or dead session stops with a clear re-auth message instead of spinning — and the final report tells you exactly how many posts it got.',
     glyph: '↻',
   },
   {
@@ -88,7 +88,7 @@ const structuredData = {
   description: metaDescription,
   url: canonical,
   downloadUrl: releasesUrl,
-  softwareVersion: '0.1.1',
+  softwareVersion: '0.1.3',
   author: {
     '@type': 'Person',
     name: 'guitaripod',
