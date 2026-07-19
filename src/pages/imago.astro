@@ -77,10 +77,6 @@ const faq = [
     q: 'What about duplicates?',
     a: 'Disk is truth. Existing shortcode / shortcode_NN files are skipped. Watch sync early-stops when an entire page is already known.',
   },
-  {
-    q: 'Relation to igscraper?',
-    a: 'imago supersedes the old Go project igscraper. Same job, greenfield Rust, full media, watchlist, agent-native I/O.',
-  },
 ];
 
 const structuredData = {
@@ -110,54 +106,68 @@ const structuredData = {
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
   <div class="py-8 sm:py-12">
-    <header class="mb-10 sm:mb-14">
-      <p class="prompt-line mb-4">imago get https://instagram.com/&lt;user&gt;/</p>
-      <h1
-        class="text-3xl sm:text-5xl font-bold tracking-tight mb-4 text-paper-text dark:text-term-text"
-      >
-        <span class="text-paper-green dark:text-term-green">imago</span>
-        <span
-          class="text-paper-muted dark:text-term-muted font-normal text-xl sm:text-2xl block sm:inline sm:ml-3"
-        >
-          archive Instagram profiles completely
-        </span>
-      </h1>
-      <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-2xl mb-6">
-        Drop a profile URL. Walk away. Every photo, video, and carousel slide lands on disk. Watch
-        the profiles you care about and backfill weekly without duplicates. Built for humans and
-        coding agents.
-      </p>
-      <ul class="grid sm:grid-cols-2 gap-2 mb-8 max-w-2xl">
-        {
-          heroHighlights.map((h) => (
-            <li class="text-sm text-paper-text dark:text-term-text flex gap-2">
-              <span class="text-paper-green dark:text-term-green" aria-hidden="true">
-                ▸
-              </span>
-              {h}
-            </li>
-          ))
-        }
-      </ul>
-      <div class="flex flex-wrap gap-3">
-        <a
-          href={releasesUrl}
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border border-paper-green dark:border-term-green text-paper-green dark:text-term-green hover:bg-paper-green/10 dark:hover:bg-term-green/10 transition-colors"
-        >
-          Releases ↗
-        </a>
-        <a
-          href={githubUrl}
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text hover:border-paper-green dark:hover:border-term-green transition-colors"
-        >
-          Source ↗
-        </a>
-        <a
-          href="/cli-tools"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green transition-colors"
-        >
-          All CLI tools
-        </a>
+    <header class="mb-12 sm:mb-16">
+      <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <div>
+          <p class="prompt-line mb-4">imago get instagram.com/&lt;user&gt;/</p>
+          <h1
+            class="mb-4 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-5xl"
+          >
+            <span class="text-paper-green dark:text-term-green">imago</span>
+            <span
+              class="mt-1 block text-xl font-normal text-paper-muted dark:text-term-muted sm:text-2xl"
+            >
+              archive Instagram profiles completely
+            </span>
+          </h1>
+          <p class="mb-6 max-w-xl text-base text-paper-muted dark:text-term-muted sm:text-lg">
+            Drop a profile URL. Walk away. Every photo, video, and carousel slide lands on disk.
+            Watch the profiles you care about and backfill weekly without duplicates. Built for
+            humans and coding agents.
+          </p>
+          <ul class="mb-8 grid max-w-xl gap-2 sm:grid-cols-2 lg:grid-cols-1">
+            {
+              heroHighlights.map((h) => (
+                <li class="flex gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="text-paper-green dark:text-term-green" aria-hidden="true">
+                    ▸
+                  </span>
+                  {h}
+                </li>
+              ))
+            }
+          </ul>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href={releasesUrl}
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border border-paper-green dark:border-term-green text-paper-green dark:text-term-green hover:bg-paper-green/10 dark:hover:bg-term-green/10 transition-colors"
+            >
+              Releases ↗
+            </a>
+            <a
+              href={githubUrl}
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text hover:border-paper-green dark:hover:border-term-green transition-colors"
+            >
+              Source ↗
+            </a>
+            <a
+              href="/cli-tools"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green transition-colors"
+            >
+              All CLI tools
+            </a>
+          </div>
+        </div>
+
+        <img
+          src="/imago-terminal.png"
+          width="1140"
+          height="780"
+          loading="eager"
+          decoding="async"
+          class="w-full max-w-2xl lg:max-w-none"
+          alt="Terminal running imago: 'imago auth login' reads the session from the browser, then 'imago get instagram.com/natgeo' saves photos and videos, ending with 'done · +1571 new · fail=0'."
+        />
       </div>
     </header>
 
