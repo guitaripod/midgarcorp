@@ -17,8 +17,8 @@ const releasesUrl = 'https://github.com/guitaripod/imago/releases';
 const installCmd = 'cargo install --git https://github.com/guitaripod/imago';
 
 const heroHighlights = [
+  'One-command login — reads your session from the browser',
   'Photos, videos/reels, every carousel slide',
-  'Drop a profile URL — no interactive babysitting',
   'Watchlist + weekly sync skips what you already have',
   'Agent-native: --json, guide, file logs, exit codes',
 ];
@@ -46,7 +46,7 @@ const features = [
   },
   {
     title: 'Your session, your disk',
-    body: 'Uses browser session cookies you already have — no shared cloud, no Meta Graph app review. Media stays in ./downloads/<user>/ on your machine.',
+    body: 'imago auth login reads the session straight from your logged-in browser (Chrome, Chromium, Brave, Vivaldi, Edge, Opera) — no devtools copy-paste, no shared cloud, no Meta app review. Media stays in ./downloads/<user>/ on your machine.',
     glyph: '⌂',
   },
   {
@@ -62,8 +62,12 @@ const faq = [
     a: 'imago is a personal archival tool that uses your own logged-in session, the same way a browser does. You are responsible for complying with Instagram’s terms and local law. Don’t run it as a bulk commercial scraper.',
   },
   {
-    q: 'How do I get session cookies?',
-    a: 'Log into Instagram in a browser, open developer tools → Application/Storage → Cookies, copy sessionid and csrftoken. Then: imago auth login --session-id … --csrf-token …',
+    q: 'How does login work?',
+    a: 'Log into Instagram in your browser, then run imago auth login — it reads and decrypts the session cookies from your browser profile automatically (Chrome, Chromium, Brave, Vivaldi, Edge, Opera). No manual copy-paste. On a headless box you can still pass --session-id / --csrf-token by hand.',
+  },
+  {
+    q: 'Why do I need to log in at all?',
+    a: 'Anonymous requests only return a profile’s first 12 posts — Instagram gates deeper pagination behind a logged-in session. imago reuses your own session, exactly like your browser does; it never sees your password.',
   },
   {
     q: 'Does it download stories?',
@@ -84,7 +88,7 @@ const structuredData = {
   '@type': 'SoftwareApplication',
   name: 'imago',
   applicationCategory: 'UtilitiesApplication',
-  operatingSystem: 'Linux, macOS, Windows',
+  operatingSystem: 'Linux, macOS',
   description: metaDescription,
   url: canonical,
   downloadUrl: releasesUrl,
@@ -159,8 +163,8 @@ const structuredData = {
       <div class="term-frame p-5 sm:p-6 overflow-x-auto">
         <p class="prompt-line mb-3 text-xs sm:text-sm">install + first archive</p>
         <pre class="text-xs sm:text-sm leading-relaxed text-paper-text dark:text-term-text whitespace-pre-wrap"><code
-          >{installCmd}
-imago auth login --session-id '…' --csrf-token '…'
+          >{installCmd}      # or a prebuilt binary from Releases
+imago auth login                 # reads your logged-in browser session
 imago get https://www.instagram.com/natgeo/
 imago watch add natgeo
 # cron weekly:
