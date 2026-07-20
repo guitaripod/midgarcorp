@@ -916,7 +916,7 @@
       "name": "App of the Dead: Religions",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
       "description": "What happens after we die? Twenty-two faiths have answered for thousands of years. Explore every one in 5-minute lessons, then talk to the gods themselves.\n\nApp of the Dead turns comparative religion into a game. Bite-size lessons, instant-feedback quizzes, XP, streaks and achievements carry you across 22 belief systems and how each one imagines death, the soul and the world beyond.\n\nMEET THE ORACLE\nConverse with deities and guides as on-device AI personas, Anubis, Hermes, Kali, Odin, Azrael and more, and ask them anything about life, death and the afterlife. The Oracle now runs Google Gemma 4, a 2026-generation model, for dramatically smarter, more in-character answers. It runs entirely on your iPhone, so your conversations never leave the device, online or off.\n\nLEARN THROUGH PLAY\nEvery lesson is a few minutes. Multiple-choice, matching and true-or-false questions give immediate feedback, so the ideas actually stick. Mastery tests crown each path and your streak keeps you coming back.\n\nEVERY BELIEF, SIDE BY SIDE\nJudaism, Christianity, Islam, Buddhism, Hinduism, Norse, Egyptian, Greek, Zoroastrian and many more, each with its own theme and voice. See where traditions agree, where they diverge, and what they each say lies beyond, all in one place.\n\nSTART FREE\nThe complete Judaism path is free forever, no account required. Learn at your own pace, fully offline, with everything stored on your device.\n\nGO PREMIUM\nUnlock all 21 remaining paths, unlimited Oracle conversations and every future path with Premium. Try it free for 7 days, then keep learning for one annual price, or go monthly. Prefer to own forever? Unlock a single path on its own, or take Ultimate lifetime access.\n\nBUILT TO KEEP YOU LEARNING\nDistinct themes per tradition, full VoiceOver and Dynamic Type support, and a profile that maps your whole journey across all 22 realms.\n\nDeath is the one question every culture has tried to answer. Start exploring how.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://docs.google.com/document/d/1hgyLnTBAPtZC4miv1nEHuvw4_oRhj_gScdCxy7kGePw/edit?usp=sharing",
-      "releaseNotes": "Game Center has arrived. Climb global leaderboards and collect achievements as you journey through the afterlife. Plus polish and fixes.",
+      "releaseNotes": "The Oracle now speaks in full. Longer answers are no longer cut off mid-thought, so every consultation reaches its conclusion.\n\nWisdom you've already received now returns instantly: keyword insights and The Eternal's passage readings are remembered, with no need to summon them again.",
       "category": "Education",
       "genres": [
         "Education",
@@ -927,9 +927,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.4.1",
+      "version": "1.4.2",
       "releaseDate": "2025-09-23T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-22T14:25:29Z",
+      "currentVersionReleaseDate": "2026-06-26T21:14:06Z",
       "minimumOsVersion": "18.2",
       "contentRating": "12+",
       "languages": [
@@ -1066,7 +1066,7 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.aotd",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/36/7d/5c/367d5c74-507c-6489-ee4e-3593b90bc817/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/cc/5b/62/cc5b6242-a7d7-cc68-04cc-a0fbdce0165e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/prblemslver",
       "keywords": "comparative,reincarnation,karma,heaven,hell,mythology,norse,egyptian,death,sacred,soul,deity,ritual",
@@ -1119,6 +1119,18 @@
             "w": 1290,
             "h": 2803,
             "label": "Screen 6"
+          },
+          {
+            "src": "/screenshots/masterofflags/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 7"
+          },
+          {
+            "src": "/screenshots/masterofflags/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 8"
           }
         ],
         "ipad": [
@@ -1144,8 +1156,8 @@
       },
       "name": "Master of Flags: World Quiz",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "description": "Master of Flags is now FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no \"weekly trial\", no account. Play free forever, and if you want more, Pro is a single one-time purchase. Pay once, own it for life.\n\nPLAY FREE\n• Flag quiz across Europe, Asia, Africa, the Americas and the world\n• Daily Challenge — ten flags, once a day, shareable results\n• Daily streaks with streak freezes so one busy day doesn't erase your run\n• XP, levels and per-region progress\n• Game Center leaderboards and achievements\n• Flag Encyclopedia — browse roughly 250 flags and territories with details about each country, completely free\n\nGO PRO — ONE PURCHASE, YOURS FOREVER\n• Hard Mode: eight flags per round instead of three\n• Review Mistakes: drill exactly the flags you got wrong\n• Statistics: levels, streaks and progress across every region\n• 5 streak freezes per month instead of 1\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nThe quiz rewards consistency, and the Encyclopedia doubles as a study reference for geography, capitals and country facts. Perfect for students, travelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app: you are a founder. Everything Pro unlocks is yours automatically, free, forever. Thank you for seven years.",
-      "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
+      "description": "Master of Flags is FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no\n\"weekly trial\", no account. Play free forever, and if you want more, Pro is\na single one-time purchase. Pay once, own it for life.\n\nNEW IN 3.0 — THE WHOLE WORLD\n• All 250 countries and territories, fully offline — Oceania finally joins the quiz\n• Capitals mode: learn every capital city, free for everyone\n• Flags drawn at their true shapes — Nepal and Switzerland the way they really look\n\nPLAY FREE\n• Flag and capitals quiz across Europe, Asia, Africa, the Americas, Oceania and the world\n• Daily Challenge — ten flags, once a day, shareable emoji results\n• Daily streaks with streak freezes, and a 48-hour streak repair when life happens\n• Browse your full Daily Challenge history in the archive\n• XP, levels and per-region progress\n• Game Center leaderboards and achievements\n• Flag Encyclopedia — all 250 flags with the story behind each one: what the\n  colors and symbols mean, country shapes, neighbors, languages, currencies\n  and a short history. Completely free, completely offline\n\nGO PRO — ONE PURCHASE, YOURS FOREVER\n• Smart Review: real spaced repetition that resurfaces exactly the flags and\n  capitals you miss, on the day you're about to forget them\n• Similar Flags: drill the lookalikes — Chad vs Romania, Indonesia vs Monaco,\n  the Nordic crosses — plus packs built from your own mix-ups\n• Hard Mode: eight flags per round instead of three\n• Daily Archive: replay every daily you missed\n• Statistics: accuracy, mastery and your toughest countries\n• 5 streak freezes per month instead of 1\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nSpaced repetition is how memory actually works — Master of Flags schedules\nyour reviews so flags stick for good. The Encyclopedia doubles as a study\nreference for geography, capitals and country facts. Perfect for students,\ntravelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app:\nyou are a founder. Everything Pro unlocks is yours automatically, free,\nforever. Thank you for seven years.",
+      "releaseNotes": "3.0 — The whole world.\n\n• All 250 countries and territories join the quiz, including Oceania, fully offline\n• Capitals mode — learn every capital city, free\n• Smart Review (Pro): real spaced repetition that resurfaces exactly what you miss\n• Similar Flags (Pro): drill lookalikes like Chad vs Romania, plus your personal mix-ups\n• Daily Archive: browse your history free, replay missed days with Pro\n• Broke your streak? Repair it within 48 hours by acing today's daily\n• Encyclopedia went deep: every flag's story and symbolism, country shapes,\n  tappable neighbors, languages, currencies and a short history — all offline\n• Flags now drawn at their true shapes\n• Statistics rebuilt: accuracy, mastery and your toughest countries\n\nStill no ads. Still no subscription. One optional one-time purchase.",
       "category": "Education",
       "genres": [
         "Education",
@@ -1156,9 +1168,9 @@
       "price": "Free",
       "rating": 4.6,
       "ratingCount": 5,
-      "version": "2.3.1",
+      "version": "3.0.0",
       "releaseDate": "2019-10-21T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-24T11:25:06Z",
+      "currentVersionReleaseDate": "2026-07-06T23:47:11Z",
       "minimumOsVersion": "17.4",
       "contentRating": "4+",
       "languages": [
@@ -1295,10 +1307,10 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.knowtheflag",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c7/b1/9c/c7b19c18-19b6-9288-c046-59ac810a1386/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/eb/64/61/eb646103-d18c-75a8-fec7-ff7b5818feb1/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://twitter.com/prblemslver",
-      "keywords": "country,guess,game,trivia,map,states,europe,flashcard,study,memorize,atlas,national,city,asia,africa",
+      "keywords": "country,guess,game,trivia,map,states,europe,daily,puzzle,kids,memorize,atlas,city,asia,africa,study",
       "iconLocal": "/screenshots/masterofflags/icon.webp",
       "platforms": [
         "iPhone",
@@ -1315,36 +1327,72 @@
         "iphone": [
           {
             "src": "/screenshots/masterofinventory/iphone-1.webp",
-            "w": 1242,
-            "h": 2688,
-            "label": "Iphonexsmaxhome"
+            "w": 1290,
+            "h": 2803,
+            "label": "Items"
           },
           {
             "src": "/screenshots/masterofinventory/iphone-2.webp",
-            "w": 1242,
-            "h": 2688,
-            "label": "Iphonexsmaxadd"
+            "w": 1290,
+            "h": 2803,
+            "label": "Detail"
+          },
+          {
+            "src": "/screenshots/masterofinventory/iphone-3.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Categories"
+          },
+          {
+            "src": "/screenshots/masterofinventory/iphone-4.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Settings"
+          },
+          {
+            "src": "/screenshots/masterofinventory/iphone-5.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Add"
+          },
+          {
+            "src": "/screenshots/masterofinventory/iphone-6.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Paywall"
           }
         ],
         "ipad": [
           {
             "src": "/screenshots/masterofinventory/ipad-1.webp",
             "w": 1600,
-            "h": 2134,
-            "label": "Ipadpro3Rdhome"
+            "h": 2133,
+            "label": "Items"
           },
           {
             "src": "/screenshots/masterofinventory/ipad-2.webp",
             "w": 1600,
-            "h": 2134,
-            "label": "Ipadpro3Rdadd"
+            "h": 2133,
+            "label": "Detail"
+          },
+          {
+            "src": "/screenshots/masterofinventory/ipad-3.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Categories"
+          },
+          {
+            "src": "/screenshots/masterofinventory/ipad-4.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Paywall"
           }
         ]
       },
       "name": "Master of Inventory: Warranty",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-inventory-warranty/id1523538855",
-      "description": "Disaster doesn't wait for you to find the receipt. Photograph, value, and receipt-back everything you own now — so an insurance claim, a warranty, or a return is one tap away, not a frantic search.\n\nMaster of Inventory turns your belongings into a documented record that actually holds up: every item with a photo, purchase price, date, and scanned receipt, plus warranty and return deadlines tracked for you. Built for the household that wants to be ready before a fire, theft, flood, or move — not after.\n\nBUILT FOR INSURANCE CLAIMS\n• Photograph each item with its purchase price and date\n• Attach scanned receipts as proof of ownership and value\n• Produce a clear, defensible record of what you own and what it's worth\n• Organize room by room and by your own custom categories\n\nNEVER MISS A WARRANTY OR REFUND\n• Track warranty expirations and get ahead of them\n• Watch online-return windows so refunds don't slip away\n• Keep receipts and coverage details together with each item\n• Stop losing real money to deadlines you forgot\n\nCAPTURE IN SECONDS\n• Built-in document scanner for clean receipt copies\n• Snap item and receipt photos for complete records\n• Search and filter your whole catalog instantly\n• Share an item or receipt in a couple of taps\n\nPRIVATE BY DESIGN\n• Stored locally with Apple's Core Data\n• Optional iCloud sync across your iPhone, iPad, and Mac\n• No third-party servers, no data mining — just your records, yours alone\n\nWHO IT'S FOR\n• Homeowners and renters documenting belongings for insurance\n• Anyone tracking warranties and purchase dates\n• Collectors cataloging valuables\n• Small businesses keeping an asset record\n• People mid-move who need an inventory fast\n\nStart with the things that matter most — your most valuable items, your newest purchases, anything still under warranty — and build from there. Five minutes today can save a claim, a refund, and a lot of stress later.\n\nDocument what you own. Be ready before you need to be.",
-      "releaseNotes": "Polished and refreshed.\n\nThis release tightens the foundation under the hood so future updates land faster and the app stays fast and reliable as your inventory grows. We've smoothed rough edges across capturing items, scanning receipts, and iCloud sync.\n\nHave a feature request or hit a snag? Reach out — your feedback shapes what comes next, and we read every message.\n\nThank you for keeping your belongings documented and ready.",
+      "description": "Disaster doesn't wait for you to find the receipt. Photograph, value, and receipt-back everything you own now — so an insurance claim, a warranty, or a return is one tap away, not a frantic search.\n\nMaster of Inventory turns your belongings into a documented record that actually holds up: every item with a photo, purchase price, date, and scanned receipt, plus warranty and return deadlines tracked for you — now with reminders before they expire.\n\nFree to start. Document up to 50 items with every core feature. Go Pro for unlimited items and insurance-ready exports — or grab the one-time Lifetime unlock. Bought this app back when it was paid up front? Pro is yours forever, free. Thank you for believing early.\n\nNEVER MISS A WARRANTY OR REFUND\n- Reminders before each warranty expires and before each return window closes\n- Warranty countdowns on every item at a glance\n- Keep receipts and coverage details together with each item\n\nBUILT FOR INSURANCE CLAIMS\n- Photograph each item with its purchase price and date\n- Attach scanned receipts as proof of ownership and value\n- Export a clear, defensible PDF report of what you own and what it's worth (Pro)\n- CSV spreadsheet export for your own records (Pro)\n\nCAPTURE IN SECONDS\n- Built-in document scanner for clean receipt copies\n- Snap item photos for complete records\n- Search and filter your whole catalog instantly\n\nPRIVATE BY DESIGN\n- No account. No sign-up. No company server.\n- Your inventory lives on your device and in your own iCloud\n- We can't see your data, sell your data, or lose your data\n\nWHO IT'S FOR\n- Homeowners and renters documenting belongings for insurance\n- Anyone tracking warranties, return windows, and purchase dates\n- Collectors cataloging valuables\n- People mid-move who need an inventory fast\n\nStart with the things that matter most — your most valuable items, your newest purchases, anything still under warranty — and build from there. Five minutes today can save a claim, a refund, and a lot of stress later.\n\nDocument what you own. Be ready before you need to be.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://sites.google.com/view/masterofinventory/home",
+      "releaseNotes": "Master of Inventory 2.0 is a relaunch — and the app is now free to download.\n\n- New: warranty and return-window reminders, so deadlines find you\n- New: warranty countdown badges on every item\n- New: insurance-ready PDF report export (Pro)\n- New: CSV spreadsheet export (Pro)\n- New: receipt scans are now optional when adding items\n- Redesigned item grid, item details, settings, and app icon\n- Rebuilt for iOS 26 with Liquid Glass\n\nFree covers your first 50 items. Inventory Pro unlocks unlimited items and exports — subscribe, or pay once for Lifetime.\n\nBought the app when it was paid up front? Pro is unlocked for you, forever. Thank you.",
       "category": "Utilities",
       "genres": [
         "Utilities",
@@ -1353,10 +1401,10 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.0.2",
+      "version": "2.0.0",
       "releaseDate": "2021-02-14T08:00:00Z",
-      "currentVersionReleaseDate": "2026-06-09T09:03:03Z",
-      "minimumOsVersion": "14.0",
+      "currentVersionReleaseDate": "2026-07-15T02:59:17Z",
+      "minimumOsVersion": "17.0",
       "contentRating": "4+",
       "languages": [
         "EN"
@@ -1492,10 +1540,10 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.inventory",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/af/35/08/af350831-9cab-37c6-dcc3-28dc5aa1cfcb/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7f/11/cb/7f11cbf5-915f-b574-61fb-33a0d6f4d51b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://twitter.com/ziademarcus",
-      "keywords": "home,valuables,belongings,asset,catalog,moving,household,document,deadline,collection,organizer,room",
+      "keywords": "tracker,insurance,claim,return,belongings,organizer,serial,catalog,moving,appliance,valuables,scan",
       "iconLocal": "/screenshots/masterofinventory/icon.webp",
       "platforms": [
         "iPhone",
@@ -1581,66 +1629,24 @@
       "status": "live",
       "primaryColor": "#F59E0B",
       "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/solarbeam/iphone-1.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "The curated Webb gallery with live “Where Is Webb” status"
-          },
-          {
-            "src": "/screenshots/solarbeam/iphone-2.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "NASA Picture of the Day"
-          },
-          {
-            "src": "/screenshots/solarbeam/iphone-3.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Near-Earth asteroid tracker"
-          }
-        ],
-        "ipad": [
-          {
-            "src": "/screenshots/solarbeam/ipad-1.webp",
-            "w": 1668,
-            "h": 2420,
-            "label": "The curated Webb gallery with live status"
-          },
-          {
-            "src": "/screenshots/solarbeam/ipad-2.webp",
-            "w": 1668,
-            "h": 2420,
-            "label": "NASA Picture of the Day on iPad"
-          },
-          {
-            "src": "/screenshots/solarbeam/ipad-3.webp",
-            "w": 1668,
-            "h": 2420,
-            "label": "Near-Earth asteroid tracker on iPad"
-          }
-        ],
         "mac": [
           {
             "src": "/screenshots/solarbeam/mac-1.webp",
             "w": 1920,
             "h": 1200,
-            "label": "NASA Picture of the Day on Mac"
+            "label": "Apod"
+          },
+          {
+            "src": "/screenshots/solarbeam/mac-2.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Jwst"
           },
           {
             "src": "/screenshots/solarbeam/mac-3.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Live asteroid threat charts on Mac"
-          }
-        ],
-        "vision": [
-          {
-            "src": "/screenshots/solarbeam/vision-1.webp",
-            "w": 3840,
-            "h": 2160,
-            "label": "The Webb gallery, in your space on Vision Pro"
+            "label": "Asteroids"
           }
         ]
       },
@@ -1656,9 +1662,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "2.1",
+      "version": "3.0.0",
       "releaseDate": "2024-09-29T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-26T01:54:08Z",
+      "currentVersionReleaseDate": "2026-07-02T08:54:05Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
@@ -1666,24 +1672,143 @@
       ],
       "supportedDevices": [
         "MacDesktop-MacDesktop",
-        "AppleTV4-AppleTV4",
-        "AppleTV62-AppleTV5",
-        "AppleTV4KSecondGen-AppleTV4KSecondGen",
-        "AppleTV4KThirdGen-AppleTV4KThirdGen"
+        "iPhone5s-iPhone5s",
+        "iPadAir-iPadAir",
+        "iPadAirCellular-iPadAirCellular",
+        "iPadMiniRetina-iPadMiniRetina",
+        "iPadMiniRetinaCellular-iPadMiniRetinaCellular",
+        "iPhone6-iPhone6",
+        "iPhone6Plus-iPhone6Plus",
+        "iPadAir2-iPadAir2",
+        "iPadAir2Cellular-iPadAir2Cellular",
+        "iPadMini3-iPadMini3",
+        "iPadMini3Cellular-iPadMini3Cellular",
+        "iPodTouchSixthGen-iPodTouchSixthGen",
+        "iPhone6s-iPhone6s",
+        "iPhone6sPlus-iPhone6sPlus",
+        "iPadMini4-iPadMini4",
+        "iPadMini4Cellular-iPadMini4Cellular",
+        "iPadPro-iPadPro",
+        "iPadProCellular-iPadProCellular",
+        "iPadPro97-iPadPro97",
+        "iPadPro97Cellular-iPadPro97Cellular",
+        "iPhoneSE-iPhoneSE",
+        "iPhone7-iPhone7",
+        "iPhone7Plus-iPhone7Plus",
+        "iPad611-iPad611",
+        "iPad612-iPad612",
+        "iPad71-iPad71",
+        "iPad72-iPad72",
+        "iPad73-iPad73",
+        "iPad74-iPad74",
+        "iPhone8-iPhone8",
+        "iPhone8Plus-iPhone8Plus",
+        "iPhoneX-iPhoneX",
+        "iPad75-iPad75",
+        "iPad76-iPad76",
+        "iPhoneXS-iPhoneXS",
+        "iPhoneXSMax-iPhoneXSMax",
+        "iPhoneXR-iPhoneXR",
+        "iPad812-iPad812",
+        "iPad834-iPad834",
+        "iPad856-iPad856",
+        "iPad878-iPad878",
+        "iPadMini5-iPadMini5",
+        "iPadMini5Cellular-iPadMini5Cellular",
+        "iPadAir3-iPadAir3",
+        "iPadAir3Cellular-iPadAir3Cellular",
+        "iPodTouchSeventhGen-iPodTouchSeventhGen",
+        "iPhone11-iPhone11",
+        "iPhone11Pro-iPhone11Pro",
+        "iPadSeventhGen-iPadSeventhGen",
+        "iPadSeventhGenCellular-iPadSeventhGenCellular",
+        "iPhone11ProMax-iPhone11ProMax",
+        "iPhoneSESecondGen-iPhoneSESecondGen",
+        "iPadProSecondGen-iPadProSecondGen",
+        "iPadProSecondGenCellular-iPadProSecondGenCellular",
+        "iPadProFourthGen-iPadProFourthGen",
+        "iPadProFourthGenCellular-iPadProFourthGenCellular",
+        "iPhone12Mini-iPhone12Mini",
+        "iPhone12-iPhone12",
+        "iPhone12Pro-iPhone12Pro",
+        "iPhone12ProMax-iPhone12ProMax",
+        "iPadAir4-iPadAir4",
+        "iPadAir4Cellular-iPadAir4Cellular",
+        "iPadEighthGen-iPadEighthGen",
+        "iPadEighthGenCellular-iPadEighthGenCellular",
+        "iPadProThirdGen-iPadProThirdGen",
+        "iPadProThirdGenCellular-iPadProThirdGenCellular",
+        "iPadProFifthGen-iPadProFifthGen",
+        "iPadProFifthGenCellular-iPadProFifthGenCellular",
+        "iPhone13Pro-iPhone13Pro",
+        "iPhone13ProMax-iPhone13ProMax",
+        "iPhone13Mini-iPhone13Mini",
+        "iPhone13-iPhone13",
+        "iPadMiniSixthGen-iPadMiniSixthGen",
+        "iPadMiniSixthGenCellular-iPadMiniSixthGenCellular",
+        "iPadNinthGen-iPadNinthGen",
+        "iPadNinthGenCellular-iPadNinthGenCellular",
+        "iPhoneSEThirdGen-iPhoneSEThirdGen",
+        "iPadAirFifthGen-iPadAirFifthGen",
+        "iPadAirFifthGenCellular-iPadAirFifthGenCellular",
+        "iPhone14-iPhone14",
+        "iPhone14Plus-iPhone14Plus",
+        "iPhone14Pro-iPhone14Pro",
+        "iPhone14ProMax-iPhone14ProMax",
+        "iPadTenthGen-iPadTenthGen",
+        "iPadTenthGenCellular-iPadTenthGenCellular",
+        "iPadPro11FourthGen-iPadPro11FourthGen",
+        "iPadPro11FourthGenCellular-iPadPro11FourthGenCellular",
+        "iPadProSixthGen-iPadProSixthGen",
+        "iPadProSixthGenCellular-iPadProSixthGenCellular",
+        "iPhone15-iPhone15",
+        "iPhone15Plus-iPhone15Plus",
+        "iPhone15Pro-iPhone15Pro",
+        "iPhone15ProMax-iPhone15ProMax",
+        "iPadAir11M2-iPadAir11M2",
+        "iPadAir11M2Cellular-iPadAir11M2Cellular",
+        "iPadAir13M2-iPadAir13M2",
+        "iPadAir13M2Cellular-iPadAir13M2Cellular",
+        "iPadPro11M4-iPadPro11M4",
+        "iPadPro11M4Cellular-iPadPro11M4Cellular",
+        "iPadPro13M4-iPadPro13M4",
+        "iPadPro13M4Cellular-iPadPro13M4Cellular",
+        "iPhone16-iPhone16",
+        "iPhone16Plus-iPhone16Plus",
+        "iPhone16Pro-iPhone16Pro",
+        "iPhone16ProMax-iPhone16ProMax",
+        "iPadMiniA17Pro-iPadMiniA17Pro",
+        "iPadMiniA17ProCellular-iPadMiniA17ProCellular",
+        "iPhone16e-iPhone16e",
+        "iPadA16-iPadA16",
+        "iPadA16Cellular-iPadA16Cellular",
+        "iPadAir11M3-iPadAir11M3",
+        "iPadAir11M3Cellular-iPadAir11M3Cellular",
+        "iPadAir13M3-iPadAir13M3",
+        "iPadAir13M3Cellular-iPadAir13M3Cellular",
+        "iPhone17Pro-iPhone17Pro",
+        "iPhone17ProMax-iPhone17ProMax",
+        "iPhone17-iPhone17",
+        "iPhoneAir-iPhoneAir",
+        "iPadPro11M5-iPadPro11M5",
+        "iPadPro11M5Cellular-iPadPro11M5Cellular",
+        "iPadPro13M5-iPadPro13M5",
+        "iPadPro13M5Cellular-iPadPro13M5Cellular",
+        "iPhone17e-iPhone17e",
+        "iPadAir11M4-iPadAir11M4",
+        "iPadAir11M4Cellular-iPadAir11M4Cellular",
+        "iPadAir13M4-iPadAir13M4",
+        "iPadAir13M4Cellular-iPadAir13M4Cellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.solarbeam",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/89/3c/52/893c522b-86b9-abcd-bd8a-75e39670b0cc/App_Icon-marketing.lsr/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0b/26/cc/0b26cc4d-91b0-f4af-1497-6a93740514db/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/guitaripod",
-      "keywords": "james webb,jwst,webb telescope,nebula,galaxy,deep space,apod,nasa,astronomy,wallpaper,space,asteroids",
+      "keywords": "james,webb,jwst,telescope,nebula,galaxy,deep,space,apod,astronomy,wallpaper,asteroid,cosmos",
       "iconLocal": "/screenshots/solarbeam/icon.webp",
       "platforms": [
-        "iPhone",
-        "iPad",
-        "Mac",
-        "Apple TV",
-        "Vision Pro"
+        "Mac"
       ]
     },
     {
@@ -2048,64 +2173,64 @@
         "iphone": [
           {
             "src": "/screenshots/embr/iphone-1.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Watch live, with real-time chat"
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 1"
           },
           {
             "src": "/screenshots/embr/iphone-2.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Every live channel, at a glance"
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 2"
           },
           {
             "src": "/screenshots/embr/iphone-3.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Your channels, one tap away"
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 3"
           },
           {
             "src": "/screenshots/embr/iphone-4.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Native chat with 7TV, BTTV & FFZ"
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 4"
           },
           {
             "src": "/screenshots/embr/iphone-5.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Browse by category"
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 5"
           },
           {
             "src": "/screenshots/embr/iphone-6.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Listen in the background"
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 6"
           },
           {
             "src": "/screenshots/embr/iphone-7.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Find channels and games instantly"
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 7"
           },
           {
             "src": "/screenshots/embr/iphone-8.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Make it yours"
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 8"
           },
           {
             "src": "/screenshots/embr/iphone-9.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "A native Twitch client for iPhone"
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 9"
           }
         ]
       },
       "name": "Embr — Live Streams",
       "appStoreUrl": "https://apps.apple.com/us/app/embr-live-streams/id6784940198",
       "description": "Embr is a fast, native Twitch client built for iPhone — not a wrapped web view. Streams open in a real AVPlayer with picture-in-picture, background audio, and instant quality switching. Chat is rendered natively so it stays smooth even in the busiest channels. No bloat, no clutter, just watch and chat.\n\nBrowse without an account. Sign in with Twitch only when you want to follow channels and join the conversation.\n\nWATCH\n• Native AVPlayer video — live streams, VODs, and clips\n• Picture-in-picture and background audio — keep watching while you use other apps\n• Quality selection, latency display, and landscape fullscreen\n• Double-tap to seek, and adjustable playback speed on VODs\n\nBROWSE & DISCOVER\n• Live channels and top categories at a glance\n• Search channels and categories instantly\n• A Following tab that surfaces who's live (when signed in)\n• Rich channel pages with everything you need to dive in\n\nREAL-TIME CHAT\n• Live chat over Twitch EventSub — fast and reliable\n• Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ, all merged together\n• Badges, cheermotes, mentions, and threaded replies\n• Emote autocomplete and recent-message backfill so you're never lost\n• Search the chat, report or block messages, and hide users you'd rather not see\n• Moderator tools — delete, timeout, and ban — when you're a mod in the channel\n\nMADE FOR iPhone\n• Light and dark themes, with chat readability and text-scale controls\n• Haptics, third-party emote toggles, and a blocked-users list\n• Built natively in UIKit for speed and a small footprint\n• Full guest browsing — an account is optional\n\nEmbr is open source.\n\n———\n\nEmbr is an independent, third-party app and is not affiliated with, endorsed by, sponsored by, or connected to Twitch Interactive, Inc. \"Twitch\" and all related names, marks, and logos are trademarks of their respective owners and are used here only to describe what the app connects to. You sign in with your own Twitch account through Twitch's official OAuth; Embr never sees your password. Use of Twitch is subject to Twitch's own Terms of Service.",
-      "releaseNotes": "",
+      "releaseNotes": "This update polishes the sign-in flow (no more spurious errors if you dismiss the Twitch login), makes background audio more reliable when you leave the app, and refines the live stream views. Thanks for using Embr.",
       "category": "Entertainment",
       "genres": [
         "Entertainment",
@@ -2114,9 +2239,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.0",
+      "version": "1.0.1",
       "releaseDate": "2026-07-06T07:00:00Z",
-      "currentVersionReleaseDate": "2026-07-06T20:36:02Z",
+      "currentVersionReleaseDate": "2026-07-07T05:48:21Z",
       "minimumOsVersion": "18.0",
       "contentRating": "17+",
       "languages": [
@@ -2253,7 +2378,7 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.guitaripod.embr",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b4/c9/7e/b4c97ed4-ea47-b7fb-4fe8-5545658f5a99/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a3/63/36/a3633680-a8b8-5ea9-578c-b233bf5db9b5/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": "https://midgarcorp.cc/embr",
       "supportUrl": "https://x.com/guitaripod",
       "keywords": "stream,streaming,livestream,twitch viewer,7tv,bttv,ffz,emotes,vod,clips,pip,irc,esports,gaming,chat",
