@@ -1,6 +1,6 @@
 {
   "generated": "scripts/fetch-linux-releases.mjs — auto-discovered, live from GitHub / crates.io / AUR",
-  "count": 19,
+  "count": 21,
   "apps": [
     {
       "id": "flaccy",
@@ -10,16 +10,16 @@
       "lang": "rust",
       "language": "Rust",
       "description": "A lossless music player with gapless playback and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
-      "stars": 2,
-      "releaseCount": 18,
+      "stars": 3,
+      "releaseCount": 19,
       "githubUrl": "https://github.com/guitaripod/flaccy",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.7.0",
-      "latestReleaseDate": "2026-07-17T20:32:11Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.7.0",
+      "latestVersion": "1.8.0",
+      "latestReleaseDate": "2026-07-18T08:28:30Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.8.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.7.0/flaccy-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.8.0/flaccy-linux-x86_64.tar.gz",
       "note": "GTK4 / libadwaita",
       "install": {
         "primary": {
@@ -277,7 +277,7 @@
       "language": "Go",
       "description": "CLI client for speedrun.com",
       "stars": 1,
-      "releaseCount": 8,
+      "releaseCount": 7,
       "githubUrl": "https://github.com/guitaripod/speedrun-cli",
       "homepageUrl": null,
       "topics": [],
@@ -347,6 +347,45 @@
       }
     },
     {
+      "id": "imago",
+      "name": "imago",
+      "form": "cli",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Agent-native Instagram profile archive",
+      "stars": 0,
+      "releaseCount": 5,
+      "githubUrl": "https://github.com/guitaripod/imago",
+      "homepageUrl": "https://midgarcorp.cc/imago",
+      "topics": [],
+      "latestVersion": "0.1.4",
+      "latestReleaseDate": "2026-07-19T19:20:08Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/imago/releases/tag/v0.1.4",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/imago/releases/download/v0.1.4/imago-x86_64-unknown-linux-gnu.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "aur",
+          "label": "AUR",
+          "command": "yay -S imago"
+        },
+        "all": [
+          {
+            "channel": "aur",
+            "label": "AUR",
+            "command": "yay -S imago"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/imago"
+          }
+        ]
+      }
+    },
+    {
       "id": "pomme",
       "name": "Pomme",
       "form": "cli",
@@ -391,85 +430,6 @@
             "channel": "source",
             "label": "from source",
             "command": "git clone https://github.com/guitaripod/Pomme && cd Pomme && go build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "image-collage",
-      "name": "image-collage",
-      "form": "cli",
-      "group": "bin",
-      "lang": "rust",
-      "language": "Rust",
-      "description": "Create 2x2 image collages in the terminal",
-      "stars": 1,
-      "releaseCount": 3,
-      "githubUrl": "https://github.com/guitaripod/image-collage",
-      "homepageUrl": null,
-      "topics": [
-        "cli",
-        "collage",
-        "image",
-        "rust",
-        "tui"
-      ],
-      "latestVersion": "1.0.0",
-      "latestReleaseDate": "2025-08-17T12:24:57Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/image-collage/releases/tag/1.0.0",
-      "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/image-collage/releases/download/1.0.0/image-collage-1.0.0-x86_64-unknown-linux-gnu.tar.gz",
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "crates.io",
-          "label": "crates.io",
-          "command": "cargo install image-collage"
-        },
-        "all": [
-          {
-            "channel": "crates.io",
-            "label": "crates.io",
-            "command": "cargo install image-collage"
-          },
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "cargo install --git https://github.com/guitaripod/image-collage"
-          }
-        ]
-      }
-    },
-    {
-      "id": "emusync",
-      "name": "emusync",
-      "form": "cli",
-      "group": "bin",
-      "lang": "rust",
-      "language": "Rust",
-      "description": "Cross-machine emulation save, mod, and shader cache sync over SSH",
-      "stars": 0,
-      "releaseCount": 3,
-      "githubUrl": "https://github.com/guitaripod/emusync",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "0.1.2",
-      "latestReleaseDate": "2026-04-04T07:55:03Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/emusync/releases/tag/0.1.2",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "cargo install --git https://github.com/guitaripod/emusync"
-        },
-        "all": [
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "cargo install --git https://github.com/guitaripod/emusync"
           }
         ]
       }
@@ -582,6 +542,40 @@
       }
     },
     {
+      "id": "emusync",
+      "name": "emusync",
+      "form": "cli",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Cross-machine emulation save, mod, and shader cache sync over SSH",
+      "stars": 0,
+      "releaseCount": 2,
+      "githubUrl": "https://github.com/guitaripod/emusync",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.1.2",
+      "latestReleaseDate": "2026-04-04T07:55:03Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/emusync/releases/tag/0.1.2",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "cargo install --git https://github.com/guitaripod/emusync"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/emusync"
+          }
+        ]
+      }
+    },
+    {
       "id": "reposort",
       "name": "reposort",
       "form": "cli",
@@ -650,6 +644,40 @@
       }
     },
     {
+      "id": "tokenmaxxing",
+      "name": "tokenmaxxing",
+      "form": "cli",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Native LLM usage dashboards for KDE and macOS — Claude, Grok, and opencode",
+      "stars": 0,
+      "releaseCount": 2,
+      "githubUrl": "https://github.com/guitaripod/tokenmaxxing",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.2.0",
+      "latestReleaseDate": "2026-07-16T09:28:50Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/tokenmaxxing/releases/tag/0.2.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": "KDE Plasma / Wayland",
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "cargo install --git https://github.com/guitaripod/tokenmaxxing"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/tokenmaxxing"
+          }
+        ]
+      }
+    },
+    {
       "id": "gh-export",
       "name": "gh-export",
       "form": "cli",
@@ -688,6 +716,51 @@
             "channel": "source",
             "label": "from source",
             "command": "cargo install --git https://github.com/guitaripod/gh-export"
+          }
+        ]
+      }
+    },
+    {
+      "id": "image-collage",
+      "name": "image-collage",
+      "form": "cli",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Create 2x2 image collages in the terminal",
+      "stars": 1,
+      "releaseCount": 1,
+      "githubUrl": "https://github.com/guitaripod/image-collage",
+      "homepageUrl": null,
+      "topics": [
+        "cli",
+        "collage",
+        "image",
+        "rust",
+        "tui"
+      ],
+      "latestVersion": "1.0.0",
+      "latestReleaseDate": "2025-08-17T12:24:57Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/image-collage/releases/tag/1.0.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/image-collage/releases/download/1.0.0/image-collage-1.0.0-x86_64-unknown-linux-gnu.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "crates.io",
+          "label": "crates.io",
+          "command": "cargo install image-collage"
+        },
+        "all": [
+          {
+            "channel": "crates.io",
+            "label": "crates.io",
+            "command": "cargo install image-collage"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/image-collage"
           }
         ]
       }
