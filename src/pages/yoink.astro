@@ -1,0 +1,251 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import FeatureGrid from '@components/landing/FeatureGrid.astro';
+import FaqAccordion from '@components/landing/FaqAccordion.astro';
+
+const site = 'https://midgarcorp.cc';
+const canonical = `${site}/yoink`;
+const ogImage = '/og/yoink.png';
+const accent = '#ff0033';
+
+const seoTitle = 'Yoink — grab thumbnails and videos from YouTube';
+const metaDescription =
+  'A Chromium extension that puts a subtle toolbar on every YouTube thumbnail — save full-res thumbnails in one click, or download the whole video at up to 4K with yt-dlp. Open source, local, no account.';
+
+const githubUrl = 'https://github.com/guitaripod/yoink';
+const releasesUrl = 'https://github.com/guitaripod/yoink/releases';
+
+const heroHighlights = [
+  'Save, copy, or open the full-res thumbnail in one click',
+  'Download the whole video — up to 4K, or audio-only',
+  'Live progress, cancel, and Show in folder',
+  'Local and open source — no account, no cloud',
+];
+
+const features = [
+  {
+    title: 'Five one-click actions',
+    body: 'A frosted pill on every thumbnail: save the image, copy the bitmap, copy its link, open full size — and download the video. Styled to match YouTube’s own overlay chips, revealed on hover.',
+    glyph: '◱',
+  },
+  {
+    title: 'Download the whole video',
+    body: 'The fifth button hands the video to a local yt-dlp: best video + best audio merged to an mp4, streamed back to the toolbar with a live progress bar you can cancel, then a Show in folder when it lands.',
+    glyph: '▶',
+  },
+  {
+    title: 'Pick your quality',
+    body: '1080p by default, up to 4K, or audio-only (m4a). “Ask where to save” pops a native folder chooser; otherwise it drops straight into your Downloads folder.',
+    glyph: '◆',
+  },
+  {
+    title: 'Yours, on your disk',
+    body: 'Everything runs locally. No account, no servers, no analytics. The video helper is a tiny native-messaging bridge to yt-dlp on your own machine. GPL-3.0, source on GitHub.',
+    glyph: '⌂',
+  },
+  {
+    title: 'Everywhere on YouTube',
+    body: 'Home, search, subscriptions, channels, the watch-page sidebar, and Shorts — anywhere a video shows up. Works on Chrome, Chromium, Edge, Brave, and Vivaldi.',
+    glyph: '▦',
+  },
+  {
+    title: 'Optional, and guided',
+    body: 'The four core actions need nothing extra. The video button walks you through a one-time helper setup with a live status page that adapts to whatever you already have installed.',
+    glyph: '✓',
+  },
+];
+
+const shots = [
+  {
+    src: '/yoink/grid.png',
+    alt: 'The Yoink toolbar on every thumbnail across a YouTube grid',
+    caption: 'On every thumbnail — home, search, subscriptions, channels, Shorts.',
+    span: true,
+  },
+  {
+    src: '/yoink/progress.png',
+    alt: 'A live video download progress toast showing the title, percent, size, speed, ETA and a cancel button',
+    caption: 'Live download progress — title, size, speed, ETA, cancel, and Show in folder.',
+    span: true,
+  },
+  {
+    src: '/yoink/popup.png',
+    alt: 'The Yoink settings popup with toggles, resolution, helper status and video quality',
+    caption: 'Settings — toggles, live helper status, and video quality.',
+    span: false,
+  },
+  {
+    src: '/yoink/setup.png',
+    alt: 'The Yoink setup page with live helper status and steps that adapt to what is installed',
+    caption: 'A guided setup page that reflects what you already have installed.',
+    span: false,
+  },
+];
+
+const faq = [
+  {
+    q: 'Is it on the Chrome Web Store?',
+    a: 'Not yet — grab the latest release zip, unzip it, and Load unpacked from chrome://extensions. It works on Chrome, Chromium, Edge, Brave, and Vivaldi.',
+  },
+  {
+    q: 'Do I need anything for the thumbnail actions?',
+    a: 'No. Save image, copy image, copy image link, and open full size work the moment you install it. Only the optional video download uses a local helper.',
+  },
+  {
+    q: 'Why does downloading video need a helper?',
+    a: 'A browser can’t run a local program directly, so a tiny native-messaging bridge lets Yoink talk to yt-dlp on your machine. Nothing leaves your computer, and the extension guides you through the one-time setup.',
+  },
+  {
+    q: 'What quality can I download?',
+    a: 'Up to 4K — best video and audio merged to mp4 — down to 480p, or audio-only (m4a). 1080p is the default. Merging 1080p/4K needs ffmpeg installed alongside yt-dlp.',
+  },
+  {
+    q: 'Is it private?',
+    a: 'Completely. Yoink is open source (GPL-3.0) and fully local: no account, no servers, no analytics. Thumbnails and videos go straight to your disk.',
+  },
+  {
+    q: 'Does it work on Shorts?',
+    a: 'Yes — anywhere YouTube shows a video, including Shorts, the watch-page sidebar, and channel pages.',
+  },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Yoink',
+  applicationCategory: 'BrowserApplication',
+  operatingSystem: 'Chrome, Chromium, Edge, Brave, Vivaldi',
+  description: metaDescription,
+  url: canonical,
+  downloadUrl: releasesUrl,
+  softwareVersion: '1.1.0',
+  author: {
+    '@type': 'Person',
+    name: 'guitaripod',
+    url: site,
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+};
+---
+
+<BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <div class="py-8 sm:py-12">
+    <header class="mb-12 sm:mb-16">
+      <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <div>
+          <p class="prompt-line mb-4">hover a thumbnail → yoink it</p>
+          <h1
+            class="mb-4 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-5xl"
+          >
+            <span class="text-paper-green dark:text-term-green">Yoink</span>
+            <span
+              class="mt-1 block text-xl font-normal text-paper-muted dark:text-term-muted sm:text-2xl"
+            >
+              grab thumbnails and videos from YouTube
+            </span>
+          </h1>
+          <p class="mb-6 max-w-xl text-base text-paper-muted dark:text-term-muted sm:text-lg">
+            A subtle, YouTube-native toolbar on every thumbnail. Save the full-res image in one
+            click — or download the whole video at up to 4K with yt-dlp, with a live progress bar.
+            Open source, fully local, no account.
+          </p>
+          <ul class="mb-8 grid max-w-xl gap-2 sm:grid-cols-2 lg:grid-cols-1">
+            {
+              heroHighlights.map((h) => (
+                <li class="flex gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="text-paper-green dark:text-term-green" aria-hidden="true">
+                    ▸
+                  </span>
+                  {h}
+                </li>
+              ))
+            }
+          </ul>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href={releasesUrl}
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border border-paper-green dark:border-term-green text-paper-green dark:text-term-green hover:bg-paper-green/10 dark:hover:bg-term-green/10 transition-colors"
+            >
+              Get it — Releases ↗
+            </a>
+            <a
+              href={githubUrl}
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text hover:border-paper-green dark:hover:border-term-green transition-colors"
+            >
+              Source ↗
+            </a>
+            <a
+              href="/opensource"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green transition-colors"
+            >
+              More open source
+            </a>
+          </div>
+        </div>
+
+        <img
+          src="/yoink/toolbar.png"
+          width="1144"
+          height="690"
+          loading="eager"
+          decoding="async"
+          class="w-full rounded-sm border border-paper-border dark:border-term-border"
+          alt="The Yoink toolbar — a frosted pill with five icons (save image, copy image, copy link, open full size, download video) at the top-left of a YouTube thumbnail."
+        />
+      </div>
+    </header>
+
+    <section class="mb-12 sm:mb-16">
+      <div class="term-frame p-5 sm:p-6 overflow-x-auto">
+        <p class="prompt-line mb-3 text-xs sm:text-sm">install (unpacked)</p>
+        <pre
+          class="text-xs sm:text-sm leading-relaxed text-paper-text dark:text-term-text whitespace-pre-wrap"><code># 1. download the latest release zip and unzip it
+#    github.com/guitaripod/yoink/releases
+# 2. chrome://extensions → Developer mode → Load unpacked → pick the yoink/ folder
+
+# optional — enable video downloads (everything else works without this):
+brew install yt-dlp ffmpeg          # or your package manager / winget
+cd yoink/native-host && ./install.sh
+# then fully restart your browser</code></pre>
+      </div>
+    </section>
+
+    <section class="mb-12 sm:mb-16">
+      <h2 class="text-xl sm:text-2xl font-bold mb-6 text-paper-text dark:text-term-text">
+        Why Yoink
+      </h2>
+      <FeatureGrid features={features} accent={accent} />
+    </section>
+
+    <section class="mb-12 sm:mb-16">
+      <h2 class="text-xl sm:text-2xl font-bold mb-6 text-paper-text dark:text-term-text">
+        See it work
+      </h2>
+      <div class="grid items-start gap-6 sm:grid-cols-2">
+        {
+          shots.map((s) => (
+            <figure class={s.span ? 'sm:col-span-2' : ''}>
+              <div class="overflow-hidden rounded-sm border border-paper-border bg-paper-panel dark:border-term-border dark:bg-term-panel">
+                <img src={s.src} alt={s.alt} loading="lazy" decoding="async" class="w-full" />
+              </div>
+              <figcaption class="mt-2 text-sm text-paper-muted dark:text-term-muted">
+                {s.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl sm:text-2xl font-bold mb-6 text-paper-text dark:text-term-text">FAQ</h2>
+      <FaqAccordion faq={faq} accent={accent} />
+    </section>
+  </div>
+</BaseLayout>
