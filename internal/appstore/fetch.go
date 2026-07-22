@@ -204,6 +204,17 @@ var appEnhancements = map[int]struct {
 		},
 		Platforms: []string{"iPhone", "Apple Watch"},
 	},
+	6785542220: {
+		ID:           "helia",
+		Tagline:      "The Honest Solar Coach",
+		PrimaryColor: "#F5A623",
+		Features: []string{
+			"A live sunburn budget tuned to your skin",
+			"Real-time local UV & a safe-exposure timer",
+			"Circadian, vitamin-D & mood coaching",
+		},
+		Platforms: []string{"iPhone"},
+	},
 }
 
 func FetchData() error {
