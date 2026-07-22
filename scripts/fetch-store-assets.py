@@ -47,7 +47,7 @@ APPS = [
     {"slug": "solarbeam", "trackId": 6705124497, "shortName": "Solar Beam", "color": "#F59E0B", "status": "live"},
     {"slug": "psybeam", "trackId": 6777952645, "shortName": "Psybeam", "color": "#06B6D4", "status": "live"},
     {"slug": "payday", "trackId": 6779927672, "shortName": "Pay Day", "color": "#22C55E", "status": "review"},
-    {"slug": "helia", "trackId": 6785542220, "shortName": "Helia", "color": "#F5A623", "status": "review"},
+    {"slug": "helia", "trackId": 6785542220, "shortName": "Helia", "color": "#F5A623", "status": "live"},
     {"slug": "embr", "trackId": 6784940198, "shortName": "Embr", "color": "#9147FF", "status": "live"},
 ]
 
