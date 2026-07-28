@@ -17,6 +17,11 @@ const c = app.content;
 const accent = c.accentColor || app.primaryColor;
 const isReview = app.status === 'review';
 const isOpenSource = app.openSource === true;
+/// An open-source app may also ship on the App Store (Tailscode), or only from
+/// GitHub releases (Crucible, trackId 0) — a track id is what tells them apart,
+/// and decides whether the store badge is worth showing next to the repo link.
+const onAppStore = app.trackId > 0 && !isReview;
+const showAppStore = !isOpenSource || onAppStore;
 const githubUrl = app.githubUrl;
 const releaseUrl = app.latestReleaseUrl ?? app.githubUrl;
 
@@ -250,7 +255,16 @@ const sectionPrompt = (cmd: string) => cmd;
         <!-- CTAs -->
         <div class="flex flex-wrap items-center gap-3">
           {
-            isOpenSource ? (
+            showAppStore && (
+              <AppStoreBadge
+                href={app.appStoreUrl}
+                platform={platformForBadge}
+                comingSoon={isReview}
+              />
+            )
+          }
+          {
+            isOpenSource && (
               <a
                 href={githubUrl}
                 target="_blank"
@@ -260,12 +274,6 @@ const sectionPrompt = (cmd: string) => cmd;
                 <img src="/icons/github.svg" alt="" width="18" height="18" class="dark:invert" />
                 View on GitHub
               </a>
-            ) : (
-              <AppStoreBadge
-                href={app.appStoreUrl}
-                platform={platformForBadge}
-                comingSoon={isReview}
-              />
             )
           }
           {
@@ -453,9 +461,18 @@ const sectionPrompt = (cmd: string) => cmd;
               <p class="mt-1 text-sm text-paper-muted dark:text-term-muted">{c.pricingNote}</p>
             </div>
           </div>
-          <div class="shrink-0">
+          <div class="flex shrink-0 flex-wrap items-center gap-3">
             {
-              isOpenSource ? (
+              showAppStore && (
+                <AppStoreBadge
+                  href={app.appStoreUrl}
+                  platform={platformForBadge}
+                  comingSoon={isReview}
+                />
+              )
+            }
+            {
+              isOpenSource && (
                 <a
                   href={githubUrl}
                   target="_blank"
@@ -465,12 +482,6 @@ const sectionPrompt = (cmd: string) => cmd;
                   <img src="/icons/github.svg" alt="" width="18" height="18" class="dark:invert" />
                   View on GitHub
                 </a>
-              ) : (
-                <AppStoreBadge
-                  href={app.appStoreUrl}
-                  platform={platformForBadge}
-                  comingSoon={isReview}
-                />
               )
             }
           </div>
@@ -490,7 +501,7 @@ const sectionPrompt = (cmd: string) => cmd;
             )
           }
           {
-            !isReview && !isOpenSource && (
+            onAppStore && (
               <a
                 href={app.appStoreUrl}
                 target="_blank"

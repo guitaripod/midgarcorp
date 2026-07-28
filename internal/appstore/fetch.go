@@ -223,6 +223,17 @@ var appEnhancements = map[int]struct {
 		},
 		Platforms: []string{"iPhone"},
 	},
+	6791660932: {
+		ID:           "tailscode",
+		Tagline:      "The Remote for Your Coding Agents",
+		PrimaryColor: "#546BFF",
+		Features: []string{
+			"Drive Claude Code & opencode from your phone",
+			"Point-to-point over your own Tailscale network",
+			"Watch the turn land on your Lock Screen",
+		},
+		Platforms: []string{"iPhone"},
+	},
 }
 
 func FetchData() error {
