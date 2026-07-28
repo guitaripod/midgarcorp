@@ -63,6 +63,14 @@ type AppsData struct {
 	Apps []App `json:"apps"`
 }
 
+// companionEditions maps a separate App Store record that is really another platform's build of
+// an app already listed here, to the track id of the entry that represents it. The developer-wide
+// iTunes lookup returns every record, so without this a Mac or visionOS edition gets its own card
+// alongside the app it belongs to. The primary entry advertises the extra platform instead.
+var companionEditions = map[int]int{
+	6789594504: 6787493695, // Flaccy for Mac -> Flaccy
+}
+
 var appEnhancements = map[int]struct {
 	ID           string
 	Tagline      string
@@ -202,7 +210,7 @@ var appEnhancements = map[int]struct {
 			"AI-organized library, no manual tagging",
 			"Last.fm scrobbling, charts & Year in Music",
 		},
-		Platforms: []string{"iPhone", "Apple Watch"},
+		Platforms: []string{"iPhone", "Apple Watch", "Mac"},
 	},
 	6785542220: {
 		ID:           "helia",
@@ -319,6 +327,11 @@ func fetchAppStoreData() ([]App, error) {
 
 	apps := make([]App, 0, len(iTunesApps))
 	for _, iTunesApp := range iTunesApps {
+		if primary, isCompanion := companionEditions[iTunesApp.TrackID]; isCompanion {
+			fmt.Printf("skipping %s (%d) — companion edition of %d\n",
+				iTunesApp.TrackName, iTunesApp.TrackID, primary)
+			continue
+		}
 		app := transformiTunesApp(iTunesApp)
 		apps = append(apps, app)
 	}
