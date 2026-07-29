@@ -1,7 +1,7 @@
 {
   "summary": {
-    "yearsActive": 6,
-    "yearsActiveLabel": "6 years shipping",
+    "yearsActive": 7,
+    "yearsActiveLabel": "7 years shipping",
     "totalCommits": "6,000+",
     "totalCommitsLabel": "production commits",
     "totalLocLabel": "~790k",
@@ -99,7 +99,13 @@
         "Mock testing infrastructure",
         "Universal logging interface"
       ],
-      "stack": ["Swift", "Swift Package Manager", "xcframework", "Xcode", "GitHub Actions"],
+      "stack": [
+        "Swift",
+        "Swift Package Manager",
+        "xcframework",
+        "Xcode",
+        "GitHub Actions"
+      ],
       "receipt": "488 commits · ~157k LOC changed · 8 repositories · 120+ PRs merged · 13 feature modules shipped"
     },
     {

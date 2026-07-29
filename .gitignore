@@ -33,3 +33,5 @@ public/pagefind/
 # go binary
 /ct
 /ct-*
+# astro dev output
+dev.log
