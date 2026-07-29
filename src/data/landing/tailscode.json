@@ -17,15 +17,15 @@
   "heroSubhead": "Tailscode is a native iOS remote for Claude Code and opencode running on your own machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen — point-to-point over your tailnet, no relay, no account.",
   "accentColor": "#546BFF",
   "highlights": [
-    "Streams every turn live — thinking, tool calls, diffs, code",
-    "Approve or deny agent actions right in the chat",
+    "Streams every turn live — thinking, tool calls, subagents, code",
+    "Approve or deny agent actions, and answer its questions, right in the chat",
     "Live Activities with phase, elapsed time, and tool counts",
     "Point-to-point over your Tailscale network — no relay, no tracking"
   ],
   "features": [
     {
       "title": "A real client, not a web view",
-      "body": "Programmatic UIKit and Swift 6 end to end. Streaming transcripts with collapsible thinking and tool groups, syntax-highlighted code with byte-exact copy, Liquid Glass on iOS 26.",
+      "body": "Programmatic UIKit and Swift 6 end to end. Streaming transcripts with collapsible thinking and tool groups, syntax-highlighted code with byte-exact copy, Liquid Glass on iOS 26, and ten languages. Hold Send and Apple's on-device model sharpens your prompt without it leaving the phone.",
       "glyph": "◉"
     },
     {
@@ -40,7 +40,7 @@
     },
     {
       "title": "Steer without stopping",
-      "body": "Queue a follow-up while the agent works, edit it before it lands, stop the turn server-side, fork the conversation, or answer the agent's structured questions with a tap.",
+      "body": "Queue a follow-up while the agent works, edit it before it lands, stop the turn server-side, fork the conversation, or answer the agent's structured questions with a tap. Subagents open in place; a compaction becomes a seam you can read instead of a wall of summary.",
       "glyph": "⊹"
     },
     {
@@ -100,16 +100,17 @@
   ],
   "screenshotCaptions": {
     "iphone": [
-      "A live turn: thinking, tools, and a running command",
-      "The agent works: to-do list, code edits, subagents",
-      "Approve or deny each action right in the chat",
-      "Answer the agent's multi-select questions with a tap",
-      "Watch the subagents it spawns, each with its own transcript",
+      "A live turn: the thinking, the code it wrote, the command it's running",
+      "Every agent and machine on one board, with a composer that starts the next chat",
+      "It asks before it edits — allow once, always, or deny, right in the chat",
+      "Answer the agent's questions with a tap instead of guessing what it wanted",
+      "The subagents it spawns open in place, with what each one reported back",
+      "A whole task end to end: todos, edits, subagents, and the summary",
+      "Context compacted, not lost — and you can read exactly what it kept",
       "Markdown, syntax-highlighted code, and links render inline",
-      "Every server and session in one place",
-      "Live plan and quota gauges from your own machine",
-      "Chats across all your machines, filtered and searchable",
-      "A model picker grouped by provider"
+      "Every chat across every machine, filtered and searchable",
+      "Live plan and quota gauges straight from your own machine",
+      "Any model, any reasoning effort, mid-conversation"
     ]
   },
   "ctaLine": "Your agent is already working. Watch it from anywhere.",

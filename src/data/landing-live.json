@@ -18,93 +18,93 @@
     "minimumOsVersion": "17.0"
   },
   "6661019277": {
-    "version": "1.3.1",
+    "version": "1.3.2",
     "price": "Free",
     "rating": 5,
     "ratingCount": 2,
     "releaseDate": "2024-09-18T07:00:00Z",
-    "currentVersionReleaseDate": "2026-06-18T21:20:52Z",
+    "currentVersionReleaseDate": "2026-07-28T15:17:29Z",
     "minimumOsVersion": "18.0"
   },
   "6705124497": {
-    "version": "3.0.0",
+    "version": "3.0.1",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2024-09-29T07:00:00Z",
-    "currentVersionReleaseDate": "2026-07-02T08:54:05Z",
+    "currentVersionReleaseDate": "2026-07-28T15:25:36Z",
     "minimumOsVersion": "18.0"
   },
   "6727000827": {
-    "version": "1.3.1",
+    "version": "1.3.2",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2024-10-02T07:00:00Z",
-    "currentVersionReleaseDate": "2026-06-18T21:23:23Z",
+    "currentVersionReleaseDate": "2026-07-28T15:14:13Z",
     "minimumOsVersion": "17.0"
   },
   "6736438070": {
-    "version": "1.1",
+    "version": "1.2",
     "price": "$9.99",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2024-10-03T07:00:00Z",
-    "currentVersionReleaseDate": "2026-06-12T08:57:45Z",
+    "currentVersionReleaseDate": "2026-07-28T14:42:59Z",
     "minimumOsVersion": "14.7"
   },
   "6736581403": {
-    "version": "1.1.2",
+    "version": "1.1.3",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2024-12-12T08:00:00Z",
-    "currentVersionReleaseDate": "2026-06-18T21:20:53Z",
+    "currentVersionReleaseDate": "2026-07-28T15:14:10Z",
     "minimumOsVersion": "17.0"
   },
   "6746733380": {
-    "version": "1.4.2",
+    "version": "1.4.3",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2025-09-23T07:00:00Z",
-    "currentVersionReleaseDate": "2026-06-26T21:14:06Z",
+    "currentVersionReleaseDate": "2026-07-28T15:20:11Z",
     "minimumOsVersion": "18.2"
   },
   "6751730339": {
-    "version": "1.4.0",
+    "version": "1.4.1",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2025-09-19T07:00:00Z",
-    "currentVersionReleaseDate": "2026-06-19T14:03:46Z",
+    "currentVersionReleaseDate": "2026-07-28T15:15:22Z",
     "minimumOsVersion": "16.6"
   },
   "6777952645": {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2026-06-22T07:00:00Z",
-    "currentVersionReleaseDate": "2026-06-24T19:06:12Z",
+    "currentVersionReleaseDate": "2026-07-28T15:16:53Z",
     "minimumOsVersion": "18.0"
   },
   "6779927672": {
-    "version": "1.0",
-    "price": "Free",
-    "rating": 0,
-    "ratingCount": 0,
-    "releaseDate": "2026-07-14T07:00:00Z",
-    "currentVersionReleaseDate": "2026-07-14T08:07:09Z",
-    "minimumOsVersion": "18.0"
-  },
-  "6784940198": {
     "version": "1.0.1",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
+    "releaseDate": "2026-07-14T07:00:00Z",
+    "currentVersionReleaseDate": "2026-07-28T15:17:31Z",
+    "minimumOsVersion": "18.0"
+  },
+  "6784940198": {
+    "version": "1.0.2",
+    "price": "Free",
+    "rating": 0,
+    "ratingCount": 0,
     "releaseDate": "2026-07-06T07:00:00Z",
-    "currentVersionReleaseDate": "2026-07-07T05:48:21Z",
+    "currentVersionReleaseDate": "2026-07-28T13:41:22Z",
     "minimumOsVersion": "18.0"
   },
   "6785542220": {
@@ -117,12 +117,21 @@
     "minimumOsVersion": "18.0"
   },
   "6787493695": {
-    "version": "1.2",
+    "version": "1.3.1",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2026-07-09T07:00:00Z",
-    "currentVersionReleaseDate": "2026-07-16T05:11:06Z",
+    "currentVersionReleaseDate": "2026-07-29T15:11:51Z",
     "minimumOsVersion": "18.6"
+  },
+  "6791660932": {
+    "version": "1.1",
+    "price": "Free",
+    "rating": 0,
+    "ratingCount": 0,
+    "releaseDate": "2026-07-28T07:00:00Z",
+    "currentVersionReleaseDate": "2026-07-29T02:44:58Z",
+    "minimumOsVersion": "18.0"
   }
 }

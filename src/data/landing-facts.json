@@ -2651,7 +2651,7 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.0",
+      "version": "1.1",
       "minimumOsVersion": "18.0",
       "bundleId": "com.guitaripod.tailscode",
       "sellerName": "Midgar Oy",
@@ -2675,7 +2675,7 @@
             "src": "/screenshots/tailscode/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Agent at work"
+            "label": "One board"
           },
           {
             "src": "/screenshots/tailscode/iphone-3.webp",
@@ -2687,31 +2687,31 @@
             "src": "/screenshots/tailscode/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Multi-select questions"
+            "label": "Answerable questions"
           },
           {
             "src": "/screenshots/tailscode/iphone-5.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Subagents"
+            "label": "Subagents in place"
           },
           {
             "src": "/screenshots/tailscode/iphone-6.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Rich rendering"
+            "label": "A task, end to end"
           },
           {
             "src": "/screenshots/tailscode/iphone-7.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Every server"
+            "label": "Context compacted"
           },
           {
             "src": "/screenshots/tailscode/iphone-8.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Live usage"
+            "label": "Rich rendering"
           },
           {
             "src": "/screenshots/tailscode/iphone-9.webp",
@@ -2721,6 +2721,12 @@
           },
           {
             "src": "/screenshots/tailscode/iphone-10.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Live usage"
+          },
+          {
+            "src": "/screenshots/tailscode/iphone-11.webp",
             "w": 1290,
             "h": 2803,
             "label": "Model picker"
