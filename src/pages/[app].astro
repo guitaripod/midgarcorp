@@ -8,6 +8,7 @@ import FaqAccordion from '@components/landing/FaqAccordion.astro';
 import DeviceFrame from '@components/landing/DeviceFrame.astro';
 import PricingTable from '@components/landing/PricingTable.astro';
 import WebbLive from '@components/landing/WebbLive.astro';
+import AppIcon from '@components/landing/AppIcon.astro';
 import { landingApps, DEVICE_LABELS, primaryDevice, type LandingApp } from '@data/landing';
 import screenshotVariants from '@data/screenshot-variants.json';
 
@@ -243,12 +244,12 @@ const sectionPrompt = (cmd: string) => cmd;
         <div class="mb-5 flex items-center gap-4">
           {
             app.iconLocal && (
-              <img
+              <AppIcon
                 src={app.iconLocal}
-                alt=""
-                width="72"
-                height="72"
-                fetchpriority="high"
+                width={72}
+                height={72}
+                displayWidths={[64, 72]}
+                priority
                 class="hero-icon h-16 w-16 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[72px] sm:w-[72px]"
               />
             )
@@ -555,12 +556,11 @@ const sectionPrompt = (cmd: string) => cmd;
           <div class="flex items-center gap-4">
             {
               app.iconLocal && (
-                <img
+                <AppIcon
                   src={app.iconLocal}
-                  alt=""
-                  width="64"
-                  height="64"
-                  loading="lazy"
+                  width={64}
+                  height={64}
+                  displayWidths={[56]}
                   class="h-14 w-14 rounded-[0.9rem] border border-paper-border object-cover dark:border-term-border"
                 />
               )
@@ -687,13 +687,11 @@ const sectionPrompt = (cmd: string) => cmd;
               class="group inline-flex items-center gap-2.5 rounded-sm border border-paper-border px-3 py-2 text-sm transition-colors hover:border-paper-border2 dark:border-term-border dark:hover:border-term-border2"
             >
               {s.iconLocal && (
-                <img
+                <AppIcon
                   src={s.iconLocal}
-                  alt=""
-                  width="24"
-                  height="24"
-                  loading="lazy"
-                  decoding="async"
+                  width={24}
+                  height={24}
+                  displayWidths={[24]}
                   class="h-6 w-6 rounded-md object-cover"
                 />
               )}

@@ -1,0 +1,50 @@
+---
+import variantManifest from '@data/screenshot-variants.json';
+
+export interface Props {
+  src: string;
+  width: number;
+  height: number;
+  displayWidths: [number] | [number, number];
+  priority?: boolean;
+  class?: string;
+}
+
+const {
+  src,
+  width,
+  height,
+  displayWidths,
+  priority = false,
+  class: className,
+} = Astro.props as Props;
+
+/// App icons ship at 512px but never render above 72 CSS px, so the srcset cites
+/// only the downscales scripts/generate-screenshot-variants.mjs actually wrote —
+/// citing an ungenerated width would 404, and citing the 512px original under
+/// its layout width would let the browser mistake it for the cheapest candidate.
+/// `src` stays the original as the no-srcset fallback.
+const variantSrc = (w: number) => src.replace(/\.webp$/, `@${w}.webp`);
+const available = (variantManifest as Record<string, number[]>)[src] ?? [];
+const srcset = available.length
+  ? available.map((w) => `${variantSrc(w)} ${w}w`).join(', ')
+  : undefined;
+const sizes = srcset
+  ? displayWidths.length === 2
+    ? `(min-width: 640px) ${displayWidths[1]}px, ${displayWidths[0]}px`
+    : `${displayWidths[0]}px`
+  : undefined;
+---
+
+<img
+  src={src}
+  srcset={srcset}
+  sizes={sizes}
+  alt=""
+  width={width}
+  height={height}
+  loading={priority ? 'eager' : 'lazy'}
+  fetchpriority={priority ? 'high' : undefined}
+  decoding="async"
+  class={className}
+/>

@@ -530,5 +530,85 @@
   "/screenshots/tailscode/iphone-11.webp": [
     480,
     960
+  ],
+  "/screenshots/dreameater/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/psywave/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/doublekick/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/pixiepocket/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/appofthedead/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/masterofflags/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/masterofinventory/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/sforesight/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/solarbeam/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/psybeam/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/payday/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/helia/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/embr/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/crucible/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/flaccy/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/tailscode/icon.webp": [
+    72,
+    144,
+    216
   ]
 }
