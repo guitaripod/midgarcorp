@@ -66,11 +66,11 @@ const isItemActive = (href: string) => href !== '/' && currentPath.startsWith(hr
         <ThemeToggle />
 
         <div class="lg:hidden">
-          <input type="checkbox" id="mobile-menu-toggle" class="hidden" />
+          <input type="checkbox" id="mobile-menu-toggle" class="sr-only" aria-label="Toggle menu" />
           <label
             for="mobile-menu-toggle"
-            class="cursor-pointer p-2 block text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green"
-            aria-label="Toggle menu"
+            class="menu-label cursor-pointer p-2 block text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green"
+            aria-hidden="true"
           >
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
@@ -118,5 +118,10 @@ const isItemActive = (href: string) => href !== '/' && currentPath.startsWith(hr
 <style>
   #mobile-menu-toggle:checked ~ .mobile-menu {
     display: block;
+  }
+  #mobile-menu-toggle:focus-visible ~ .menu-label {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: 0.125rem;
   }
 </style>

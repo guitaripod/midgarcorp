@@ -1,0 +1,563 @@
+{
+  "schedule": {
+    "reportUrl": "https://www.stsci.edu/files/live/sites/www/files/home/jwst/science-execution/observing-schedules/_documents/20260803_report_20260730.txt",
+    "sourceUrl": "https://www.stsci.edu/jwst/science-execution/observing-schedules",
+    "coversFrom": "2026-08-03T01:33:43.000Z",
+    "coversTo": "2026-08-10T06:46:41.000Z",
+    "observations": [
+      {
+        "visit": "12528:2:1",
+        "start": "2026-08-03T01:33:43.000Z",
+        "seconds": 3080,
+        "instrument": "MIRI External Flat",
+        "target": "NAME-LMC",
+        "category": "Calibration",
+        "keywords": "External flat field"
+      },
+      {
+        "visit": "7140:6:1",
+        "start": "2026-08-03T03:01:50.000Z",
+        "seconds": 2379,
+        "instrument": "MIRI Medium Resolution Spectroscopy",
+        "target": "NGC5643-BK",
+        "category": "Calibration",
+        "keywords": "Telescope/sky background"
+      },
+      {
+        "visit": "7140:5:1",
+        "start": "2026-08-03T03:49:23.000Z",
+        "seconds": 3606,
+        "instrument": "MIRI Medium Resolution Spectroscopy",
+        "target": "NGC5643",
+        "category": "Galaxy",
+        "keywords": "Active galaxies"
+      },
+      {
+        "visit": "7140:56:1",
+        "start": "2026-08-03T04:55:23.000Z",
+        "seconds": 1452,
+        "instrument": "MIRI Imaging",
+        "target": "NGC5643-image",
+        "category": "Galaxy",
+        "keywords": "Active galaxies"
+      },
+      {
+        "visit": "12525:2:1",
+        "start": "2026-08-03T06:08:24.000Z",
+        "seconds": 1964,
+        "instrument": "NIRISS External Calibration",
+        "target": "BD+60-1753",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "12525:1:1",
+        "start": "2026-08-03T06:47:53.000Z",
+        "seconds": 1107,
+        "instrument": "NIRISS Single-Object Slitless Spectroscopy",
+        "target": "BD+60-1753",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "12525:71:1",
+        "start": "2026-08-03T07:13:22.000Z",
+        "seconds": 5815,
+        "instrument": "MIRI Imaging",
+        "target": "BD+60-1753",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "12525:98:1",
+        "start": "2026-08-03T08:59:42.000Z",
+        "seconds": 3745,
+        "instrument": "NIRSpec Fixed Slit Spectroscopy",
+        "target": "BD+60-1753",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "12525:20:1",
+        "start": "2026-08-03T10:11:17.000Z",
+        "seconds": 1905,
+        "instrument": "NIRISS Single-Object Slitless Spectroscopy",
+        "target": "BD+60-1753",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "12525:3:1",
+        "start": "2026-08-03T10:48:19.000Z",
+        "seconds": 538,
+        "instrument": "NIRISS External Calibration",
+        "target": "BD+60-1753",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "8106:20:1",
+        "start": "2026-08-03T11:40:08.000Z",
+        "seconds": 2726,
+        "instrument": "NIRSpec Fixed Slit Spectroscopy",
+        "target": "2J15550979-2313266",
+        "category": "Star",
+        "keywords": "Brown dwarfs, M dwarfs, Young st"
+      },
+      {
+        "visit": "8106:1:1",
+        "start": "2026-08-03T14:12:24.000Z",
+        "seconds": 7161,
+        "instrument": "NIRSpec Fixed Slit Spectroscopy",
+        "target": "WJ161512.70-222949.0",
+        "category": "Star",
+        "keywords": "Brown dwarfs, L dwarfs, Young st"
+      },
+      {
+        "visit": "8106:25:1",
+        "start": "2026-08-03T16:26:10.000Z",
+        "seconds": 2207,
+        "instrument": "NIRSpec Fixed Slit Spectroscopy",
+        "target": "2J16051544-2802520",
+        "category": "Star",
+        "keywords": "Brown dwarfs, M dwarfs, Young st"
+      },
+      {
+        "visit": "8358:1:1",
+        "start": "2026-08-03T17:56:24.000Z",
+        "seconds": 25144,
+        "instrument": "NIRSpec IFU Spectroscopy",
+        "target": "JADES-191056",
+        "category": "Galaxy",
+        "keywords": "Active galactic nuclei, Emission"
+      },
+      {
+        "visit": "12636:163:1",
+        "start": "2026-08-04T01:07:19.000Z",
+        "seconds": 1719,
+        "instrument": "WFSC NIRCam Fine Phasing",
+        "target": "2MASS-03313052-2739514",
+        "category": "Calibration",
+        "keywords": "Focus test"
+      },
+      {
+        "visit": "7073:32:1",
+        "start": "2026-08-04T03:10:55.000Z",
+        "seconds": 15907,
+        "instrument": "NIRSpec Bright Object Time Series",
+        "target": "LHS-1140",
+        "category": "Star",
+        "keywords": "Exoplanet Systems, M dwarfs"
+      },
+      {
+        "visit": "12498:2:1",
+        "start": "2026-08-04T08:10:07.000Z",
+        "seconds": 32131,
+        "instrument": "MIRI Imaging",
+        "target": "LHS_1140",
+        "category": "Star",
+        "keywords": "M dwarfs"
+      },
+      {
+        "visit": "12517:15:1",
+        "start": "2026-08-04T17:43:16.000Z",
+        "seconds": 20617,
+        "instrument": "NIRSpec Fixed Slit Spectroscopy",
+        "target": "WDFS0458-56",
+        "category": "Star",
+        "keywords": "White dwarfs"
+      },
+      {
+        "visit": "9456:2:1",
+        "start": "2026-08-05T00:00:52.000Z",
+        "seconds": 4211,
+        "instrument": "MIRI Imaging",
+        "target": "MRG-M0138",
+        "category": "Galaxy",
+        "keywords": "Elliptical galaxies"
+      },
+      {
+        "visit": "6882:51:1",
+        "start": "2026-08-05T01:39:02.000Z",
+        "seconds": 4662,
+        "instrument": "NIRCam Imaging",
+        "target": "El-Gordo",
+        "category": "Clusters Of Galaxies",
+        "keywords": "Galaxy groups"
+      },
+      {
+        "visit": "8864:4:1",
+        "start": "2026-08-05T04:17:44.000Z",
+        "seconds": 39974,
+        "instrument": "MIRI Low Resolution Spectroscopy",
+        "target": "TOI-2431b",
+        "category": "Star",
+        "keywords": "K stars"
+      },
+      {
+        "visit": "12522:33:1",
+        "start": "2026-08-05T16:00:51.000Z",
+        "seconds": 602,
+        "instrument": "MIRI Low Resolution Spectroscopy",
+        "target": "HD-2811-bkg",
+        "category": "Unidentified",
+        "keywords": "Blank field"
+      },
+      {
+        "visit": "12522:34:1",
+        "start": "2026-08-05T16:22:55.000Z",
+        "seconds": 1553,
+        "instrument": "MIRI Low Resolution Spectroscopy",
+        "target": "HD-2811-wbkg",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "12584:1:1",
+        "start": "2026-08-05T17:47:53.000Z",
+        "seconds": 1073,
+        "instrument": "MIRI Imaging",
+        "target": "J1757132",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "12584:2:1",
+        "start": "2026-08-05T18:11:02.000Z",
+        "seconds": 850,
+        "instrument": "MIRI Imaging",
+        "target": "J1757132",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "12584:3:1",
+        "start": "2026-08-05T18:29:31.000Z",
+        "seconds": 886,
+        "instrument": "MIRI Imaging",
+        "target": "J1757132",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "12584:4:1",
+        "start": "2026-08-05T18:49:25.000Z",
+        "seconds": 890,
+        "instrument": "MIRI Imaging",
+        "target": "J1757132",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "7073:14:1",
+        "start": "2026-08-05T20:32:14.000Z",
+        "seconds": 13911,
+        "instrument": "NIRSpec Bright Object Time Series",
+        "target": "LTT-1445A",
+        "category": "Star",
+        "keywords": "Exoplanet Systems, M dwarfs"
+      },
+      {
+        "visit": "7041:7:1",
+        "start": "2026-08-06T00:56:39.000Z",
+        "seconds": 6270,
+        "instrument": "MIRI Medium Resolution Spectroscopy",
+        "target": "J0021+0052",
+        "category": "Galaxy",
+        "keywords": "Emission line galaxies"
+      },
+      {
+        "visit": "7041:8:1",
+        "start": "2026-08-06T02:50:20.000Z",
+        "seconds": 3711,
+        "instrument": "MIRI Medium Resolution Spectroscopy",
+        "target": "J0021+0052-B",
+        "category": "Calibration",
+        "keywords": "Telescope/sky background"
+      },
+      {
+        "visit": "11740:78:1",
+        "start": "2026-08-06T04:37:30.000Z",
+        "seconds": 4233,
+        "instrument": "NIRSpec Bright Object Time Series",
+        "target": "WISEA-J221216.27-693121.6",
+        "category": "Star",
+        "keywords": "Brown dwarfs"
+      },
+      {
+        "visit": "10110:156:1",
+        "start": "2026-08-06T05:56:11.000Z",
+        "seconds": 1478,
+        "instrument": "NIRCam Imaging",
+        "target": "WISE221216.33-693121.6",
+        "category": "Star",
+        "keywords": "Brown dwarfs"
+      },
+      {
+        "visit": "7169:17:1",
+        "start": "2026-08-06T07:00:46.000Z",
+        "seconds": 16765,
+        "instrument": "NIRSpec IFU Spectroscopy",
+        "target": "CenterIFUArches",
+        "category": "Stellar Cluster",
+        "keywords": "O clusters, Open star clusters,"
+      },
+      {
+        "visit": "7085:1:1",
+        "start": "2026-08-06T18:18:58.000Z",
+        "seconds": 13067,
+        "instrument": "NIRSpec MultiObject Spectroscopy",
+        "target": "B68-MSA-Update-4",
+        "category": "Observation",
+        "keywords": ""
+      },
+      {
+        "visit": "10749:1:1",
+        "start": "2026-08-07T00:00:00.000Z",
+        "seconds": 1795,
+        "instrument": "MIRI Medium Resolution Spectroscopy",
+        "target": "223-Rosa_bkg",
+        "category": "Solar System",
+        "keywords": "Other"
+      },
+      {
+        "visit": "10749:2:1",
+        "start": "2026-08-07T00:36:48.000Z",
+        "seconds": 31247,
+        "instrument": "MIRI Medium Resolution Spectroscopy",
+        "target": "223-Rosa",
+        "category": "Solar System",
+        "keywords": "Asteroid"
+      },
+      {
+        "visit": "12517:14:1",
+        "start": "2026-08-07T10:18:25.000Z",
+        "seconds": 2984,
+        "instrument": "NIRCam Imaging",
+        "target": "SF1615+001A",
+        "category": "Star",
+        "keywords": "G dwarfs"
+      },
+      {
+        "visit": "9263:4:1",
+        "start": "2026-08-07T11:46:19.000Z",
+        "seconds": 1626,
+        "instrument": "NIRCam Imaging",
+        "target": "NEXUS-Center",
+        "category": "Unidentified",
+        "keywords": "High Latitude Field"
+      },
+      {
+        "visit": "9263:4:2",
+        "start": "2026-08-07T12:20:30.000Z",
+        "seconds": 1443,
+        "instrument": "NIRCam Imaging",
+        "target": "NEXUS-Center",
+        "category": "Unidentified",
+        "keywords": "High Latitude Field"
+      },
+      {
+        "visit": "9263:4:3",
+        "start": "2026-08-07T12:50:09.000Z",
+        "seconds": 1443,
+        "instrument": "NIRCam Imaging",
+        "target": "NEXUS-Center",
+        "category": "Unidentified",
+        "keywords": "High Latitude Field"
+      },
+      {
+        "visit": "9263:4:4",
+        "start": "2026-08-07T13:21:17.000Z",
+        "seconds": 1443,
+        "instrument": "NIRCam Imaging",
+        "target": "NEXUS-Center",
+        "category": "Unidentified",
+        "keywords": "High Latitude Field"
+      },
+      {
+        "visit": "9263:4:5",
+        "start": "2026-08-07T13:50:56.000Z",
+        "seconds": 1443,
+        "instrument": "NIRCam Imaging",
+        "target": "NEXUS-Center",
+        "category": "Unidentified",
+        "keywords": "High Latitude Field"
+      },
+      {
+        "visit": "9263:4:6",
+        "start": "2026-08-07T14:22:04.000Z",
+        "seconds": 1443,
+        "instrument": "NIRCam Imaging",
+        "target": "NEXUS-Center",
+        "category": "Unidentified",
+        "keywords": "High Latitude Field"
+      },
+      {
+        "visit": "9263:5:1",
+        "start": "2026-08-07T14:56:24.000Z",
+        "seconds": 4294,
+        "instrument": "NIRSpec MultiObject Spectroscopy",
+        "target": "msa_catalog_deep_ep8",
+        "category": "Observation",
+        "keywords": ""
+      },
+      {
+        "visit": "9263:5:2",
+        "start": "2026-08-07T16:14:44.000Z",
+        "seconds": 4618,
+        "instrument": "NIRSpec MultiObject Spectroscopy",
+        "target": "msa_catalog_deep_ep8",
+        "category": "Observation",
+        "keywords": ""
+      },
+      {
+        "visit": "9263:5:3",
+        "start": "2026-08-07T17:38:19.000Z",
+        "seconds": 4231,
+        "instrument": "NIRSpec MultiObject Spectroscopy",
+        "target": "msa_catalog_deep_ep8",
+        "category": "Observation",
+        "keywords": ""
+      },
+      {
+        "visit": "9263:5:4",
+        "start": "2026-08-07T18:55:21.000Z",
+        "seconds": 4618,
+        "instrument": "NIRSpec MultiObject Spectroscopy",
+        "target": "msa_catalog_deep_ep8",
+        "category": "Observation",
+        "keywords": ""
+      },
+      {
+        "visit": "11692:1:1",
+        "start": "2026-08-07T21:00:19.000Z",
+        "seconds": 20118,
+        "instrument": "NIRISS Aperture Masking Interferometry",
+        "target": "HD135344A",
+        "category": "Star",
+        "keywords": "A stars, Exoplanets"
+      },
+      {
+        "visit": "11692:2:1",
+        "start": "2026-08-08T02:46:07.000Z",
+        "seconds": 19568,
+        "instrument": "NIRISS Aperture Masking Interferometry",
+        "target": "HD136013",
+        "category": "Calibration",
+        "keywords": "Point spread function"
+      },
+      {
+        "visit": "10749:3:1",
+        "start": "2026-08-08T09:35:00.000Z",
+        "seconds": 1817,
+        "instrument": "MIRI Medium Resolution Spectroscopy",
+        "target": "223-Rosa_bkg",
+        "category": "Solar System",
+        "keywords": "Other"
+      },
+      {
+        "visit": "10749:4:1",
+        "start": "2026-08-08T10:12:09.000Z",
+        "seconds": 32039,
+        "instrument": "MIRI Medium Resolution Spectroscopy",
+        "target": "223-Rosa",
+        "category": "Solar System",
+        "keywords": "Asteroid"
+      },
+      {
+        "visit": "12636:13:1",
+        "start": "2026-08-08T19:21:51.000Z",
+        "seconds": 1719,
+        "instrument": "WFSC NIRCam Fine Phasing",
+        "target": "2MASS-00242795+0542431",
+        "category": "Calibration",
+        "keywords": "Focus test"
+      },
+      {
+        "visit": "6882:2:1",
+        "start": "2026-08-08T20:16:22.000Z",
+        "seconds": 11724,
+        "instrument": "NIRCam Imaging",
+        "target": "MACSJ0025-1222",
+        "category": "Clusters Of Galaxies",
+        "keywords": "Galaxy groups"
+      },
+      {
+        "visit": "8445:4:1",
+        "start": "2026-08-08T23:52:50.000Z",
+        "seconds": 28644,
+        "instrument": "NIRSpec Fixed Slit Spectroscopy",
+        "target": "1999RZ253",
+        "category": "Solar System",
+        "keywords": "Asteroid"
+      },
+      {
+        "visit": "8106:2:1",
+        "start": "2026-08-09T08:55:25.000Z",
+        "seconds": 7161,
+        "instrument": "NIRSpec Fixed Slit Spectroscopy",
+        "target": "WJ160136.90-221202.4",
+        "category": "Star",
+        "keywords": "Brown dwarfs, L dwarfs, Young st"
+      },
+      {
+        "visit": "8106:4:1",
+        "start": "2026-08-09T11:06:00.000Z",
+        "seconds": 7161,
+        "instrument": "NIRSpec Fixed Slit Spectroscopy",
+        "target": "DJ16134589-2442310",
+        "category": "Star",
+        "keywords": "Brown dwarfs, L dwarfs, Young st"
+      },
+      {
+        "visit": "7034:11:1",
+        "start": "2026-08-09T13:33:55.000Z",
+        "seconds": 16687,
+        "instrument": "NIRCam Imaging",
+        "target": "NGC-5839",
+        "category": "Galaxy",
+        "keywords": "Elliptical galaxies, Galaxy halo"
+      },
+      {
+        "visit": "8217:14:1",
+        "start": "2026-08-09T18:23:39.000Z",
+        "seconds": 4942,
+        "instrument": "NIRCam Imaging",
+        "target": "2MASX-J15165808-0106394",
+        "category": "Galaxy",
+        "keywords": "Elliptical galaxies, Giant ellip"
+      },
+      {
+        "visit": "12522:2:1",
+        "start": "2026-08-09T20:42:13.000Z",
+        "seconds": 2337,
+        "instrument": "MIRI Imaging",
+        "target": "HD-2811",
+        "category": "Star",
+        "keywords": "A dwarfs"
+      },
+      {
+        "visit": "7982:1:1",
+        "start": "2026-08-09T22:56:15.000Z",
+        "seconds": 28226,
+        "instrument": "NIRISS Single-Object Slitless Spectroscopy",
+        "target": "NGTS-11",
+        "category": "Star",
+        "keywords": "Exoplanets, K stars"
+      }
+    ]
+  },
+  "status": {
+    "launchIso": "2021-12-25T12:20Z",
+    "orbit": "Sun–Earth Lagrange Point 2 (L2)",
+    "phase": "Science operations",
+    "distanceKm": 1500000,
+    "mirrorDiameterM": 6.5,
+    "mirrorSegments": 18,
+    "warmSideC": 50.2,
+    "coolSideC": -236.3,
+    "deployIndex": 47,
+    "source": "NASA / STScI — Where Is Webb"
+  },
+  "fetchedAt": "2026-08-01T21:58:33.366Z"
+}

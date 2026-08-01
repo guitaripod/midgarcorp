@@ -26,6 +26,8 @@ func PreBuild() error {
 	// Generate OG images (still using Node.js scripts for now)
 	fmt.Println("Generating OG images...")
 	for _, script := range []string{
+		"scripts/fetch-webb-live.mjs",
+		"scripts/generate-screenshot-variants.mjs",
 		"scripts/generate-main-og-image.js",
 		"scripts/generate-apps-og-grid.js",
 		"scripts/generate-app-og.js",

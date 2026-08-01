@@ -91,14 +91,15 @@ var appEnhancements = map[int]struct {
 	},
 	6705124497: {
 		ID:           "solar-beam",
-		Tagline:      "Your Window to the Universe",
+		Tagline:      "The James Webb Telescope, on Every Screen",
 		PrimaryColor: "#F59E0B",
+		Description:  "A curated gallery of the James Webb Space Telescope's greatest images, each with its real caption, credit, distance and sky coordinates. Plus NASA's Astronomy Picture of the Day, near-Earth asteroid tracking and 4K wallpapers — free to download, with optional Premium.",
 		Features: []string{
-			"Real-time space data",
-			"Stunning 4K visualizations",
-			"Educational astronomy content",
+			"Curated Webb image gallery",
+			"NASA Picture of the Day",
+			"Near-Earth asteroid tracker",
 		},
-		Platforms: []string{"Mac"},
+		Platforms: []string{"iPhone", "iPad", "Mac", "Apple TV", "Vision Pro"},
 	},
 	6736438070: {
 		ID:           "sforesight",

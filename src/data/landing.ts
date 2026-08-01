@@ -61,6 +61,31 @@ export interface Faq {
   a: string;
 }
 
+export interface PricingPlan {
+  title: string;
+  price: string;
+  items: string[];
+}
+
+export interface PricingTier {
+  name: string;
+  price: string;
+  amount?: number;
+  period?: string;
+  note?: string;
+}
+
+/// Opt-in block for apps that are free to download with paid unlocks — the store
+/// price chip only ever knows the download price, so the real cost has to be
+/// stated in copy or the page silently promotes an undisclosed purchase.
+export interface Pricing {
+  heading: string;
+  free: PricingPlan;
+  premium: PricingPlan;
+  tiers: PricingTier[];
+  footnote: string;
+}
+
 export interface LandingContent {
   seoTitle: string;
   metaDescription: string;
@@ -76,6 +101,11 @@ export interface LandingContent {
   ctaLine: string;
   pricingNote: string;
   lifestyle?: { src: string; caption: string }[];
+  pricing?: Pricing;
+  trustNote?: string;
+  webbLive?: boolean;
+  bannerDevice?: string;
+  hideAbout?: boolean;
 }
 
 export type LandingApp = LandingFacts & { content: LandingContent };

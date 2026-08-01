@@ -1,0 +1,534 @@
+{
+  "/screenshots/dreameater/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/dreameater/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/dreameater/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/dreameater/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/dreameater/ipad-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/dreameater/ipad-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/dreameater/ipad-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/dreameater/ipad-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/ipad-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/ipad-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/ipad-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/ipad-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/doublekick/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/doublekick/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/doublekick/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/doublekick/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/pixiepocket/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/pixiepocket/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/pixiepocket/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/pixiepocket/ipad-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/pixiepocket/ipad-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/pixiepocket/ipad-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/ipad-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/ipad-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/ipad-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/ipad-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/ipad-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/ipad-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/ipad-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofinventory/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofinventory/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofinventory/ipad-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofinventory/ipad-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/sforesight/mac-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/sforesight/mac-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/sforesight/mac-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/sforesight/mac-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/sforesight/mac-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/ipad-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/ipad-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/ipad-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/mac-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/mac-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/vision-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/tv-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/tv-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/tv-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psybeam/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psybeam/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psybeam/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psybeam/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psybeam/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psybeam/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psybeam/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psybeam/iphone-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/payday/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/payday/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/payday/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/payday/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/payday/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/helia/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/helia/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/helia/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/helia/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/helia/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/helia/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/helia/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/iphone-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/iphone-9.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-9.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-10.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-11.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-9.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-10.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/iphone-11.webp": [
+    480,
+    960
+  ]
+}

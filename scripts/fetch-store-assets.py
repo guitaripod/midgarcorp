@@ -80,12 +80,13 @@ DEVICE_PREF = {
 }
 
 # Pin a slug to specific screenshot buckets when ASC retains platform versions the
-# public storefront no longer surfaces. Solar Beam still has READY_FOR_SALE
-# tvOS/visionOS records and an in-review iOS build in ASC, but the live US listing
-# is a free Mac app — the landing page must match what a visitor can actually get.
-DEVICE_ALLOW = {
-    "solarbeam": {"mac"},
-}
+# public storefront no longer surfaces.
+DEVICE_ALLOW = {}
+
+# Slugs whose landing description is hand-tuned and must survive a re-fetch. The
+# iTunes lookup lags App Store metadata edits by days, so re-running this script
+# would otherwise republish store copy that has already been corrected.
+PINNED_DESCRIPTIONS = {"solarbeam"}
 # Cap the stored webp width per device class (display never exceeds this @2x).
 WIDTH_CAP = {"iphone": 1290, "ipad": 1600, "tv": 1920, "mac": 1920}
 
@@ -373,12 +374,11 @@ def find_repo_icon(repo):
 def keep_pinned_description(fact, slug, existing):
     """Preserve a pinned app's curated description against a stale iTunes cache.
 
-    DEVICE_ALLOW apps are mid platform-transition: the public listing leads (e.g.
-    Solar Beam is already a Mac app) but the iTunes lookup intermittently serves
-    the previous-platform description. For these, keep the committed description
-    so a flaky lookup can't revert the page to wrong-platform copy.
+    The iTunes lookup is edge-cached and serves App Store copy days behind an
+    edit, so for pinned slugs the committed description wins — a flaky or stale
+    lookup can never revert the page to copy that was deliberately corrected.
     """
-    if slug in DEVICE_ALLOW and existing.get(slug, {}).get("description"):
+    if slug in (set(DEVICE_ALLOW) | PINNED_DESCRIPTIONS) and existing.get(slug, {}).get("description"):
         fact["description"] = existing[slug]["description"]
         print(f"  kept curated description for pinned {slug}")
 

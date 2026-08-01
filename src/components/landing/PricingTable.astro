@@ -1,0 +1,94 @@
+---
+import type { Pricing } from '@data/landing';
+
+export interface Props {
+  pricing: Pricing;
+  accent: string;
+}
+
+const { pricing, accent } = Astro.props;
+const plans = [
+  { plan: pricing.free, premium: false },
+  { plan: pricing.premium, premium: true },
+];
+---
+
+<div style={`--accent:${accent}`}>
+  <div
+    class="grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-paper-border bg-paper-border dark:border-term-border dark:bg-term-border md:grid-cols-2"
+  >
+    {
+      plans.map(({ plan, premium }) => (
+        <section
+          class:list={[
+            'flex flex-col gap-4 bg-paper-panel p-6 dark:bg-term-panel',
+            { 'plan-premium': premium },
+          ]}
+        >
+          <header>
+            <h3 class="text-base font-bold text-paper-text dark:text-term-text">{plan.title}</h3>
+            <p
+              class:list={[
+                'mt-1 text-lg font-bold sm:text-xl',
+                premium ? 'accent-text' : 'text-paper-text dark:text-term-text',
+              ]}
+            >
+              {plan.price}
+            </p>
+          </header>
+          <ul class="flex flex-col gap-2">
+            {plan.items.map((item) => (
+              <li class="flex items-start gap-2 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                <span
+                  class:list={[
+                    'mt-0.5 shrink-0',
+                    premium ? 'accent-text' : 'text-paper-green dark:text-term-green',
+                  ]}
+                  aria-hidden="true"
+                >
+                  ▸
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+
+  <ul
+    class="mt-4 grid gap-px overflow-hidden rounded-sm border border-paper-border bg-paper-border dark:border-term-border dark:bg-term-border sm:grid-cols-3"
+  >
+    {
+      pricing.tiers.map((tier) => (
+        <li class="flex flex-col gap-0.5 bg-paper-panel px-4 py-3 dark:bg-term-panel">
+          <span class="text-xs uppercase tracking-[0.14em] text-paper-faint dark:text-term-faint">
+            {tier.name}
+          </span>
+          <span class="accent-text text-lg font-bold tabular-nums">{tier.price}</span>
+          {tier.note && (
+            <span class="text-xs text-paper-muted dark:text-term-muted">{tier.note}</span>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="mt-4 max-w-3xl text-xs leading-relaxed text-paper-faint dark:text-term-faint">
+    {pricing.footnote}
+  </p>
+</div>
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: var(--accent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .plan-premium {
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+</style>

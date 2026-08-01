@@ -8,7 +8,9 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 
-const facts = JSON.parse(fs.readFileSync(path.join(root, 'src/data/landing-facts.json'), 'utf8')).apps;
+const facts = JSON.parse(
+  fs.readFileSync(path.join(root, 'src/data/landing-facts.json'), 'utf8')
+).apps;
 
 const W = 1200;
 const H = 630;
@@ -46,7 +48,13 @@ function roundRectPath(ctx, x, y, w, h, r) {
 
 function hexA(hex, a) {
   const m = hex.replace('#', '');
-  const n = m.length === 3 ? m.split('').map((c) => c + c).join('') : m;
+  const n =
+    m.length === 3
+      ? m
+          .split('')
+          .map((c) => c + c)
+          .join('')
+      : m;
   const r = parseInt(n.slice(0, 2), 16);
   const g = parseInt(n.slice(2, 4), 16);
   const b = parseInt(n.slice(4, 6), 16);
@@ -154,12 +162,26 @@ async function generate(app) {
   ctx.save();
   roundRectPath(ctx, tx + 1, ty + 44, tw - 2, th - 45, 13);
   ctx.clip();
-  const washL = ctx.createRadialGradient(tx + tw * 0.14, ty + th * 0.34, 0, tx + tw * 0.14, ty + th * 0.34, tw * 0.5);
+  const washL = ctx.createRadialGradient(
+    tx + tw * 0.14,
+    ty + th * 0.34,
+    0,
+    tx + tw * 0.14,
+    ty + th * 0.34,
+    tw * 0.5
+  );
   washL.addColorStop(0, hexA(accent, 0.1));
   washL.addColorStop(1, hexA(accent, 0));
   ctx.fillStyle = washL;
   ctx.fillRect(tx, ty, tw, th);
-  const washR = ctx.createRadialGradient(tx + tw * 0.86, ty + th * 0.7, 0, tx + tw * 0.86, ty + th * 0.7, tw * 0.5);
+  const washR = ctx.createRadialGradient(
+    tx + tw * 0.86,
+    ty + th * 0.7,
+    0,
+    tx + tw * 0.86,
+    ty + th * 0.7,
+    tw * 0.5
+  );
   washR.addColorStop(0, hexA(accent, 0.08));
   washR.addColorStop(1, hexA(accent, 0));
   ctx.fillStyle = washR;
@@ -247,7 +269,9 @@ async function generate(app) {
   ctx.fillText(app.shortName, textX, cursorY + 38);
   ctx.fillStyle = MUTED;
   ctx.font = `19px ${MONO}`;
-  const subtitle = app.name.includes(':') ? app.name.split(':').slice(1).join(':').trim() : app.category || '';
+  const subtitle = app.name.includes(':')
+    ? app.name.split(':').slice(1).join(':').trim()
+    : app.category || '';
   ctx.fillText(wrapText(ctx, subtitle, leftMax - (textX - padX), 1)[0] || '', textX, cursorY + 70);
 
   // headline
@@ -272,13 +296,17 @@ async function generate(app) {
   ctx.fillText(app.price, padX, cursorY);
   let chipX = padX + ctx.measureText(app.price).width + 22;
   ctx.fillStyle = MUTED;
+  const released = app.releaseDate ? Date.parse(app.releaseDate) : NaN;
+  const isNew = !Number.isNaN(released) && Date.now() - released < 120 * 86400000;
   const meta = app.openSource
     ? app.license || 'Open source'
     : app.status === 'review'
       ? 'Coming soon'
       : app.ratingCount > 0
         ? `★ ${app.rating.toFixed(1)}`
-        : 'New';
+        : isNew
+          ? 'New'
+          : 'No ratings yet';
   ctx.fillStyle = app.openSource || app.status === 'review' || app.ratingCount > 0 ? AMBER : MUTED;
   ctx.fillText(meta, chipX, cursorY);
   chipX += ctx.measureText(meta).width + 22;

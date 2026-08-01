@@ -1,0 +1,217 @@
+---
+import webbLive from '@data/webb-live.json';
+
+export interface Props {
+  accent: string;
+}
+
+const { accent } = Astro.props;
+
+interface Observation {
+  visit: string;
+  start: string;
+  seconds: number;
+  instrument: string;
+  target: string;
+  category: string;
+  keywords: string;
+}
+
+const data = webbLive as {
+  fetchedAt?: string;
+  schedule?: {
+    reportUrl: string;
+    sourceUrl: string;
+    coversFrom: string;
+    coversTo: string;
+    observations: Observation[];
+  };
+  status?: {
+    launchIso: string;
+    orbit: string;
+    phase: string;
+    distanceKm: number;
+    mirrorDiameterM: number;
+    mirrorSegments: number;
+    warmSideC: number;
+    coolSideC: number;
+    source: string;
+  };
+};
+
+const status = data.status;
+const now = Date.now();
+const ends = (o: Observation) => Date.parse(o.start) + o.seconds * 1000;
+
+/// Only the visits a reader could still be inside of are rendered — the report
+/// covers a full week (60 rows) and the site rebuilds daily on cron.
+const upcoming = (data.schedule?.observations ?? []).filter((o) => ends(o) > now).slice(0, 8);
+
+const daysSinceLaunch = status
+  ? Math.floor((now - Date.parse(status.launchIso)) / 86400000)
+  : undefined;
+
+const utc = (iso: string) =>
+  new Date(iso).toLocaleString('en-GB', {
+    timeZone: 'UTC',
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+
+const hours = (seconds: number) => {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.round((seconds % 3600) / 60);
+  return h ? `${h}h ${m ? `${m}m` : ''}`.trim() : `${m}m`;
+};
+
+const stats = status
+  ? [
+      { value: daysSinceLaunch?.toLocaleString('en-US') ?? '—', label: 'days since launch' },
+      { value: '1.5M km', label: 'from Earth, at Lagrange Point 2' },
+      {
+        value: `${status.mirrorDiameterM} m`,
+        label: `mirror, in ${status.mirrorSegments} segments`,
+      },
+      {
+        value: `+${Math.round(status.warmSideC)} / ${Math.round(status.coolSideC)} °C`,
+        label: 'sunshield gap, sun side to shaded side',
+      },
+    ]
+  : [];
+
+const show = Boolean(status || upcoming.length);
+const launchIso = status?.launchIso ?? '';
+---
+
+{
+  show && (
+    <section
+      id="webb-live"
+      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+      style={`--accent:${accent}`}
+      data-webb-live
+    >
+      <p class="prompt-line mb-3">curl -s jwst/observing-schedule | head</p>
+      <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        What Webb is <span class="accent-text">looking at</span> this week
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        The telescope's real observing plan, straight from the Space Telescope Science Institute.
+        Every target below is a genuine scheduled visit — times are UTC.
+      </p>
+
+      {stats.length > 0 && (
+        <dl class="mb-8 grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-paper-border bg-paper-border dark:border-term-border dark:bg-term-border lg:grid-cols-4">
+          {stats.map((s, i) => (
+            <div class="bg-paper-panel p-4 dark:bg-term-panel sm:p-5">
+              <dt class="accent-text text-xl font-bold tabular-nums sm:text-2xl">
+                <span data-webb-days={i === 0 ? '' : undefined}>{s.value}</span>
+              </dt>
+              <dd class="mt-1 text-xs leading-snug text-paper-muted dark:text-term-muted">
+                {s.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      )}
+
+      {upcoming.length > 0 && (
+        <ol class="divide-y divide-paper-border overflow-hidden rounded-sm border border-paper-border dark:divide-term-border dark:border-term-border">
+          {upcoming.map((o) => (
+            <li
+              class="webb-visit flex flex-col gap-1 bg-paper-panel px-4 py-3 dark:bg-term-panel sm:flex-row sm:items-baseline sm:gap-5"
+              data-start={o.start}
+              data-seconds={o.seconds}
+            >
+              <time
+                datetime={o.start}
+                class="shrink-0 font-mono text-xs text-paper-faint dark:text-term-faint sm:w-44"
+              >
+                {utc(o.start)} UTC
+              </time>
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-semibold text-paper-text dark:text-term-text">
+                  <span class="webb-badge accent-text mr-2 hidden text-[0.65rem] font-bold uppercase tracking-[0.14em]">
+                    on target now
+                  </span>
+                  {o.target}
+                </p>
+                <p class="text-xs text-paper-muted dark:text-term-muted">
+                  {o.instrument} · {o.category} · {hours(o.seconds)}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      )}
+
+      <p class="mt-4 text-xs leading-relaxed text-paper-faint dark:text-term-faint">
+        Schedule:{' '}
+        <a
+          href={data.schedule?.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:text-paper-green dark:hover:text-term-green"
+        >
+          STScI JWST observing schedules
+        </a>
+        , refreshed on every build. Mission figures from NASA/STScI's "Where Is Webb"; the sunshield
+        temperatures are its commissioning readings, which NASA no longer updates. Solar Beam is an
+        independent app and is not affiliated with or endorsed by NASA, ESA or STScI.
+      </p>
+    </section>
+  )
+}
+
+<script is:inline define:vars={{ launchIso }}>
+  (function () {
+    const root = document.querySelector('[data-webb-live]');
+    if (!root) return;
+
+    const rows = Array.from(root.querySelectorAll('.webb-visit'));
+    function markCurrent() {
+      const now = Date.now();
+      for (const row of rows) {
+        const start = Date.parse(row.dataset.start);
+        const end = start + Number(row.dataset.seconds) * 1000;
+        const live = now >= start && now < end;
+        row.classList.toggle('is-live', live);
+        const badge = row.querySelector('.webb-badge');
+        if (badge) badge.classList.toggle('hidden', !live);
+        row.classList.toggle('is-past', now >= end);
+      }
+    }
+
+    const daysEl = root.querySelector('[data-webb-days]');
+    const launch = launchIso ? Date.parse(launchIso) : NaN;
+    function tick() {
+      if (daysEl && !Number.isNaN(launch)) {
+        daysEl.textContent = Math.floor((Date.now() - launch) / 86400000).toLocaleString('en-US');
+      }
+      markCurrent();
+    }
+    tick();
+    setInterval(tick, 60000);
+  })();
+</script>
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: var(--accent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .webb-visit.is-live {
+    background-color: color-mix(in srgb, var(--accent) 9%, transparent);
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+  .webb-visit.is-past {
+    opacity: 0.55;
+  }
+</style>

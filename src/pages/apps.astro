@@ -11,7 +11,7 @@ const trackIdFor = (appStoreUrl: string): string | undefined => appStoreUrl.matc
 const landingHrefFor = (appStoreUrl: string): string | undefined => {
   const id = trackIdFor(appStoreUrl);
   const la = id ? landingByTrack.get(id) : undefined;
-  return la ? `/${la.slug}` : undefined;
+  return la ? `/${la.slug}/` : undefined;
 };
 
 // Prefer the curated landing price (source of truth) over the auto-fetched
@@ -47,7 +47,7 @@ const osCards = landingApps
       features: a.content.highlights ?? [],
       releaseDate: a.releaseDate,
     },
-    landingHref: `/${a.slug}`,
+    landingHref: `/${a.slug}/`,
     openSource: true,
     githubUrl: a.githubUrl,
   }));

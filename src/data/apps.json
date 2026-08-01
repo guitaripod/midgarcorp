@@ -3,20 +3,24 @@
     {
       "id": "solar-beam",
       "name": "Solar Beam",
-      "tagline": "Your Window to the Universe",
-      "description": "Solar Beam is the best way to explore the James Webb Space Telescope on your iPhone and iPad — plus the daily astronomy picture and near-Earth asteroids, all with a single purchase. THE JAMES WEBB GALLERY\nExplore a curated gallery of Webb's most breathtaking images, straight from the ESA/Webb archive.",
+      "tagline": "The James Webb Telescope, on Every Screen",
+      "description": "A curated gallery of the James Webb Space Telescope's greatest images, each with its real caption, credit, distance and sky coordinates. Plus NASA's Astronomy Picture of the Day, near-Earth asteroid tracking and 4K wallpapers — free to download, with optional Premium.",
       "platforms": [
-        "Mac"
+        "iPhone",
+        "iPad",
+        "Mac",
+        "Apple TV",
+        "Vision Pro"
       ],
       "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/51/c5/fd/51c5fd55-b183-4195-b311-b10f2d38e4ba/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b4/98/c6/b498c662-fe2f-9ed2-ffb8-143159eb1ea2/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
-        "Real-time space data",
-        "Stunning 4K visualizations",
-        "Educational astronomy content"
+        "Curated Webb image gallery",
+        "NASA Picture of the Day",
+        "Near-Earth asteroid tracker"
       ],
       "releaseDate": "2024-09-29T07:00:00Z"
     },
@@ -31,7 +35,7 @@
       "category": "Developer Tools",
       "price": "$9.99",
       "appStoreUrl": "https://apps.apple.com/us/app/sforesight-sf-symbols-search/id6736438070",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/38/49/f3/3849f3c8-9920-d86d-40e2-dc6bed710d44/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.png",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9f/6b/54/9f6b5409-5ac8-6dd7-2837-985f1f12b1c7/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.png",
       "primaryColor": "#3B82F6",
       "features": [
         "ML-powered semantic search",
@@ -52,7 +56,7 @@
       "category": "Food \u0026 Drink",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/double-kick-menu-translator/id6736581403",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/18/95/0e/18950e06-9288-95f5-d180-c6e64e554ce3/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1b/30/43/1b3043fb-4dc1-0917-0075-89f9c4eeabe5/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#DC2626",
       "features": [
         "Instant menu translation",
@@ -73,7 +77,7 @@
       "category": "Music",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/psywave-ai-playlist-maker/id6727000827",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2c/95/d8/2c95d878-cf3a-ec3c-04cc-657d9375a3ce/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/72/3d/af/723daf01-15fa-2487-876c-16fa0a6fcf9e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#8B5CF6",
       "features": [
         "ML-powered music analysis",
@@ -94,7 +98,7 @@
       "category": "Lifestyle",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-ai-dream-decoder/id6661019277",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cd/34/e0/cd34e03c-849f-29e9-74ce-280320488a3e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/80/71/31/80713112-312b-76a5-7842-79e060245cd0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#6366F1",
       "features": [
         "Dream pattern analysis",
@@ -157,7 +161,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/28/44/32/28443211-141d-4e0d-9aae-37a0d14f994d/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/32/4e/88/324e8803-fb41-475a-4f6b-c1f7b040910f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#7C3AED",
       "features": [
         "Local MLX LLM technology for offline AI",
@@ -178,7 +182,7 @@
       "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/08/7e/aa/087eaaac-c6a4-6541-3d66-6294435c2454/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/5d/95/04/5d9504b9-0203-3324-244b-653246698140/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EC4899",
       "features": [
         "Advanced OpenAI gpt-image-1 integration",
@@ -199,7 +203,7 @@
       "category": "Entertainment",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/embr-live-streams/id6784940198",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/5a/5e/6a/5a5e6a6e-4707-f347-a27e-1052b5f306b3/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ed/e9/19/ede919a6-572a-f70e-c5b9-fa0d3f78408a/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#9147FF",
       "features": [
         "Native player with PiP \u0026 background audio",
@@ -207,6 +211,26 @@
         "Browse as a guest, sign in for Following"
       ],
       "releaseDate": "2026-07-06T07:00:00Z"
+    },
+    {
+      "id": "tailscode",
+      "name": "Tailscode",
+      "tagline": "The Remote for Your Coding Agents",
+      "description": "Tailscode turns your iPhone into the remote control for the coding agents already running on your machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen.",
+      "platforms": [
+        "iPhone"
+      ],
+      "category": "Developer Tools",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/56/dd/a8/56dda8d9-5e10-8bfd-a2e8-d8ddd93a6f58/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#546BFF",
+      "features": [
+        "Drive Claude Code \u0026 opencode from your phone",
+        "Point-to-point over your own Tailscale network",
+        "Watch the turn land on your Lock Screen"
+      ],
+      "releaseDate": "2026-07-28T07:00:00Z"
     },
     {
       "id": "flaccy",
@@ -221,7 +245,7 @@
       "category": "Music",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/3d/59/26/3d59267f-afdc-ecd7-24b2-0aef2e7cb4b8/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ca/0e/c2/ca0ec2c4-16df-7ad5-b417-c1e85e2d66e4/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#FF4D6D",
       "features": [
         "Gapless FLAC playback with quality badges",
@@ -231,24 +255,25 @@
       "releaseDate": "2026-07-09T07:00:00Z"
     },
     {
-      "id": "tailscode",
-      "name": "Tailscode",
-      "tagline": "The Remote for Your Coding Agents",
-      "description": "Tailscode turns your iPhone into the remote control for the coding agents already running on your machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen.",
+      "id": "psybeam",
+      "name": "Psybeam: Live Translator",
+      "tagline": "Hold Up Your Phone and Talk",
+      "description": "A real-time voice interpreter for travel. Hold your button and speak — it says it out loud in their language. The person across from you never touches the screen.",
       "platforms": [
-        "iPhone"
+        "iPhone",
+        "iPad"
       ],
-      "category": "Developer Tools",
+      "category": "Travel",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/92/9a/ea/929aea8a-e3e4-1b88-5407-6ad10f594894/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#546BFF",
+      "appStoreUrl": "https://apps.apple.com/us/app/psybeam-live-translator/id6777952645",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f7/3e/c3/f73ec3c4-6a23-cc17-dacf-c5f6ec933ecd/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#06B6D4",
       "features": [
-        "Drive Claude Code \u0026 opencode from your phone",
-        "Point-to-point over your own Tailscale network",
-        "Watch the turn land on your Lock Screen"
+        "Real-time voice-to-voice in 20+ languages",
+        "Two thumb buttons — run both sides from one phone",
+        "No account or subscription to start"
       ],
-      "releaseDate": "2026-07-28T07:00:00Z"
+      "releaseDate": "2026-06-22T07:00:00Z"
     },
     {
       "id": "payday",
@@ -262,7 +287,7 @@
       "category": "Business",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pay-day-e-invoice-peppol/id6779927672",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ae/0f/18/ae0f1816-ed74-de83-3bf0-7915fd136516/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/7a/b9/4b7ab9c9-2401-2983-2360-b93ae5ac6246/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#22C55E",
       "features": [
         "Factur-X / ZUGFeRD e-invoices",
@@ -290,27 +315,6 @@
         "Circadian, vitamin-D \u0026 mood coaching"
       ],
       "releaseDate": "2026-07-21T07:00:00Z"
-    },
-    {
-      "id": "psybeam",
-      "name": "Psybeam: Live Translator",
-      "tagline": "Hold Up Your Phone and Talk",
-      "description": "A real-time voice interpreter for travel. Hold your button and speak — it says it out loud in their language. The person across from you never touches the screen.",
-      "platforms": [
-        "iPhone",
-        "iPad"
-      ],
-      "category": "Travel",
-      "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/psybeam-live-translator/id6777952645",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/aa/ed/e0/aaede0aa-7f01-2027-ed67-f2a9dde75662/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#06B6D4",
-      "features": [
-        "Real-time voice-to-voice in 20+ languages",
-        "Two thumb buttons — run both sides from one phone",
-        "No account or subscription to start"
-      ],
-      "releaseDate": "2026-06-22T07:00:00Z"
     }
   ]
 }

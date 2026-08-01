@@ -20,6 +20,15 @@ const heightClass: Record<string, string> = {
   tv: 'h-[240px] sm:h-[320px]',
 };
 
+const heights: Record<string, [number, number]> = {
+  iphone: [440, 540],
+  ipad: [400, 500],
+  mac: [260, 340],
+  linux: [260, 340],
+  vision: [300, 380],
+  tv: [240, 320],
+};
+
 const captionFor = (device: string, i: number) =>
   app.content.screenshotCaptions?.[device]?.[i] ?? app.screenshots[device][i].label;
 
@@ -29,6 +38,19 @@ const gallery = Object.fromEntries(
     app.screenshots[d].map((shot, i) => ({ src: shot.src, caption: captionFor(d, i) })),
   ])
 );
+
+/// Panel switching is CSS-only so the iPad/Mac/Vision shots stay reachable with
+/// JavaScript disabled; the selectors are per-instance and generated because the
+/// device list is data-driven, which Tailwind's static scan can't follow.
+const panelCss = multi
+  ? devices
+      .map(
+        (d) =>
+          `[data-showcase="${name}"]:has(#${name}-${d}:checked) [data-panel]:not([data-panel="${d}"]){display:none}` +
+          `[data-showcase="${name}"]:has(#${name}-${d}:checked) label[data-device="${d}"]{border-color:currentColor}`
+      )
+      .join('')
+  : '';
 ---
 
 <section
@@ -39,14 +61,16 @@ const gallery = Object.fromEntries(
 >
   {
     multi && (
-      <div class="mb-6 flex flex-wrap gap-2" role="tablist" aria-label="Choose a device">
+      <fieldset class="mb-6 flex flex-wrap gap-2 border-0 p-0">
+        <legend class="sr-only">Choose a device</legend>
         {devices.map((d, i) => (
           <>
             <input
               type="radio"
               name={name}
               id={`${name}-${d}`}
-              class="peer/tab sr-only"
+              class="device-radio sr-only"
+              value={d}
               checked={i === 0}
             />
             <label
@@ -58,26 +82,25 @@ const gallery = Object.fromEntries(
             </label>
           </>
         ))}
-      </div>
+      </fieldset>
     )
   }
 
   <div class="device-panels">
     {
       devices.map((device, di) => (
-        <div data-panel={device} class:list={['device-panel', { hidden: di !== 0 }]}>
+        <div data-panel={device} class="device-panel">
           <ul class="no-scrollbar flex snap-x snap-mandatory items-start gap-5 overflow-x-auto pb-4">
             {app.screenshots[device].map((shot, i) => (
               <li class="flex shrink-0 snap-start flex-col items-center gap-3">
-                <div
+                <button
+                  type="button"
                   class={`shot-btn group relative cursor-zoom-in ${heightClass[device] ?? 'h-[440px]'}`}
-                  role="button"
-                  tabindex="0"
                   data-device={device}
                   data-index={i}
                   aria-label={`View ${captionFor(device, i)} full size`}
                 >
-                  <div class="device-glow h-full">
+                  <span class="device-glow block h-full">
                     <DeviceFrame
                       device={device}
                       src={shot.src}
@@ -85,8 +108,9 @@ const gallery = Object.fromEntries(
                       h={shot.h}
                       alt={`${app.shortName} — ${captionFor(device, i)}`}
                       eager={di === 0 && i === 0}
+                      heights={heights[device]}
                     />
-                  </div>
+                  </span>
                   <span class="shot-zoom" aria-hidden="true">
                     <svg
                       width="16"
@@ -104,7 +128,7 @@ const gallery = Object.fromEntries(
                       <path d="M3 21l7-7" />
                     </svg>
                   </span>
-                </div>
+                </button>
                 <p class="max-w-[16rem] text-center text-xs text-paper-muted dark:text-term-muted">
                   {captionFor(device, i)}
                 </p>
@@ -170,6 +194,8 @@ const gallery = Object.fromEntries(
     <div class="lb-counter" aria-live="polite"></div>
   </dialog>
 </section>
+
+{panelCss && <style is:inline set:html={panelCss} />}
 
 <style>
   .shot-btn {
@@ -341,6 +367,10 @@ const gallery = Object.fromEntries(
       transition: none;
       animation: none;
     }
+    .shot-btn:hover,
+    .shot-btn:focus-visible {
+      transform: none;
+    }
   }
 </style>
 
@@ -355,7 +385,7 @@ const gallery = Object.fromEntries(
     function sync() {
       radios.forEach((r, i) => {
         const on = !r || r.checked;
-        if (panels[i]) panels[i].classList.toggle('hidden', !on);
+        if (panels[i]) panels[i].style.display = on ? '' : 'none';
         if (labels[i]) {
           labels[i].classList.toggle('border-paper-green', on);
           labels[i].classList.toggle('text-paper-green', on);

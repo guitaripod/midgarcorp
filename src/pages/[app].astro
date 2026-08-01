@@ -6,7 +6,10 @@ import ScreenshotShowcase from '@components/landing/ScreenshotShowcase.astro';
 import FeatureGrid from '@components/landing/FeatureGrid.astro';
 import FaqAccordion from '@components/landing/FaqAccordion.astro';
 import DeviceFrame from '@components/landing/DeviceFrame.astro';
-import { landingApps, primaryDevice, type LandingApp } from '@data/landing';
+import PricingTable from '@components/landing/PricingTable.astro';
+import WebbLive from '@components/landing/WebbLive.astro';
+import { landingApps, DEVICE_LABELS, primaryDevice, type LandingApp } from '@data/landing';
+import screenshotVariants from '@data/screenshot-variants.json';
 
 export function getStaticPaths() {
   return landingApps.map((app) => ({ params: { app: app.slug }, props: { app } }));
@@ -26,10 +29,10 @@ const githubUrl = app.githubUrl;
 const releaseUrl = app.latestReleaseUrl ?? app.githubUrl;
 
 const site = 'https://midgarcorp.cc';
-const canonical = `${site}/${app.slug}`;
+const canonical = `${site}/${app.slug}/`;
 // Bump OG_REV when card artwork changes so social scrapers refetch (the image
 // path is otherwise stable and gets cached hard by unfurlers).
-const OG_REV = '5';
+const OG_REV = '6';
 const ogImage = `/og/${app.slug}.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
@@ -45,6 +48,7 @@ const osMap: Record<string, string> = {
   Mac: 'macOS',
   'Apple Watch': 'watchOS',
   'Apple TV': 'tvOS',
+  'Vision Pro': 'visionOS',
   Linux: 'Linux',
 };
 const operatingSystem = [...new Set(app.platforms.map((p) => osMap[p]).filter(Boolean))].join(', ');
@@ -52,12 +56,32 @@ const operatingSystem = [...new Set(app.platforms.map((p) => osMap[p]).filter(Bo
 const hasScreenshots = Object.values(app.screenshots).some((shots) => shots.length > 0);
 const heroDevice = primaryDevice(app);
 const heroShot = heroDevice ? app.screenshots[heroDevice]?.[0] : undefined;
-const heroHeightClass =
-  heroDevice === 'iphone'
-    ? 'h-[420px] sm:h-[500px]'
-    : heroDevice === 'ipad'
-      ? 'h-[400px] sm:h-[470px]'
-      : 'h-[230px] sm:h-[300px]';
+const bannerDevice = c.bannerDevice;
+const bannerShot = bannerDevice ? app.screenshots[bannerDevice]?.[0] : undefined;
+const bannerCaption = bannerDevice
+  ? (c.screenshotCaptions?.[bannerDevice]?.[0] ?? bannerShot?.label)
+  : undefined;
+const bannerVariants = bannerShot
+  ? ((screenshotVariants as Record<string, number[]>)[bannerShot.src] ?? [])
+  : [];
+const bannerSrcset =
+  bannerShot && bannerVariants.length
+    ? [
+        ...bannerVariants.map(
+          (wide) => `${bannerShot.src.replace(/\.webp$/, `@${wide}.webp`)} ${wide}w`
+        ),
+        `${bannerShot.src} ${bannerShot.w}w`,
+      ].join(', ')
+    : undefined;
+const HERO_FRAME: Record<string, { class: string; heights: [number, number] }> = {
+  iphone: { class: 'h-[420px] sm:h-[500px]', heights: [420, 500] },
+  ipad: { class: 'h-[400px] sm:h-[470px]', heights: [400, 470] },
+};
+const heroFrame = HERO_FRAME[heroDevice] ?? {
+  class: 'h-[230px] sm:h-[300px]',
+  heights: [230, 300] as [number, number],
+};
+const heroHeightClass = heroFrame.class;
 
 const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
 
@@ -65,6 +89,7 @@ const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : 
 
 const privacyOverrides: Record<string, string> = {
   embr: 'https://embr.guitaripod.workers.dev/legal/privacy',
+  solarbeam: 'https://midgarcorp.cc/solarbeam/privacy',
   tailscode: 'https://midgarcorp.cc/tailscode/privacy',
 };
 const privacyTenants: Record<string, string> = {
@@ -89,6 +114,32 @@ const allShots = Object.values(app.screenshots)
   .flat()
   .map((s) => abs(s.src));
 
+const downloadOffer = {
+  '@type': 'Offer',
+  name: `${app.shortName} download`,
+  price: priceNumeric,
+  priceCurrency: 'USD',
+  url: app.appStoreUrl,
+  availability: 'https://schema.org/InStock',
+};
+
+/// A free download with paid unlocks needs every tier in the graph, or the only
+/// structured price Google sees is "0" for an app that can cost $49.99.
+const premiumOffers = (c.pricing?.tiers ?? [])
+  .filter((tier) => typeof tier.amount === 'number')
+  .map((tier) => ({
+    '@type': 'Offer',
+    name: `${c.pricing!.premium.title} — ${tier.name}`,
+    price: String(tier.amount),
+    priceCurrency: 'USD',
+    url: app.appStoreUrl,
+    availability: 'https://schema.org/InStock',
+    category: 'InAppPurchase',
+    ...(tier.period
+      ? { eligibleDuration: { '@type': 'QuantitativeValue', value: tier.period } }
+      : {}),
+  }));
+
 const softwareApp: Record<string, unknown> = {
   '@type': 'SoftwareApplication',
   name: app.name,
@@ -99,11 +150,7 @@ const softwareApp: Record<string, unknown> = {
   installUrl: app.appStoreUrl,
   image: abs(app.iconLocal),
   screenshot: allShots,
-  offers: {
-    '@type': 'Offer',
-    price: priceNumeric,
-    priceCurrency: 'USD',
-  },
+  offers: premiumOffers.length ? [downloadOffer, ...premiumOffers] : downloadOffer,
   author: { '@type': 'Organization', name: 'Midgar Oy', url: site },
   publisher: { '@type': 'Organization', name: 'Midgar Oy', url: site },
   ...(app.version ? { softwareVersion: app.version } : {}),
@@ -171,7 +218,10 @@ const sectionPrompt = (cmd: string) => cmd;
 <BaseLayout title={c.seoTitle} description={c.metaDescription} image={ogImage}>
   <div style={`--accent:${accent}`}>
     <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+    <nav
+      aria-label="Breadcrumb"
+      class="hidden pt-8 text-xs text-paper-faint dark:text-term-faint sm:block"
+    >
       <ol class="flex flex-wrap items-center gap-1.5">
         <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
         <li aria-hidden="true">/</li>
@@ -183,74 +233,46 @@ const sectionPrompt = (cmd: string) => cmd;
 
     <!-- Hero -->
     <header
-      class="grid grid-cols-1 items-center gap-10 py-10 sm:py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12"
+      class="flex flex-col gap-8 py-8 sm:py-14 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-7"
     >
-      <div>
-        <p class="prompt-line mb-5">open /Applications/{app.shortName.replace(/ /g, '\\ ')}.app</p>
+      <div class="lg:col-start-1 lg:row-start-1">
+        <p class="prompt-line mb-5 hidden sm:block">
+          open /Applications/{app.shortName.replace(/ /g, '\\ ')}.app
+        </p>
 
         <div class="mb-5 flex items-center gap-4">
           {
             app.iconLocal && (
               <img
                 src={app.iconLocal}
-                alt={`${app.name} app icon`}
+                alt=""
                 width="72"
                 height="72"
-                class="hero-icon h-16 w-16 rounded-[1.1rem] border border-paper-border dark:border-term-border sm:h-[72px] sm:w-[72px]"
+                fetchpriority="high"
+                class="hero-icon h-16 w-16 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[72px] sm:w-[72px]"
               />
             )
           }
           <div class="min-w-0">
-            <h1
+            <p
               class="text-2xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-3xl"
             >
               {app.shortName}
-            </h1>
+            </p>
             {subtitle && <p class="text-sm text-paper-muted dark:text-term-muted">{subtitle}</p>}
           </div>
         </div>
 
-        <p
-          class="mb-4 text-2xl font-bold leading-tight tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+        <h1
+          class="mb-4 text-3xl font-bold leading-tight tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
         >
           {c.heroHeadline}
-        </p>
+        </h1>
         <p
           class="mb-6 max-w-xl text-base leading-relaxed text-paper-muted dark:text-term-muted sm:text-lg"
         >
           {c.heroSubhead}
         </p>
-
-        <!-- meta chips -->
-        <div class="mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-          {
-            isOpenSource ? (
-              <span class="inline-flex items-center gap-1.5 rounded-sm border border-paper-green/40 px-2 py-0.5 text-xs font-semibold text-paper-green dark:border-term-green/40 dark:text-term-green">
-                Open source
-              </span>
-            ) : isReview ? (
-              <span class="inline-flex items-center gap-1.5 rounded-sm border border-paper-amber/40 px-2 py-0.5 text-xs font-semibold text-paper-amber dark:border-term-amber/40 dark:text-term-amber">
-                <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-paper-amber dark:bg-term-amber" />
-                In App Store review
-              </span>
-            ) : (
-              <StarRating rating={app.rating} count={app.ratingCount} />
-            )
-          }
-          <span class="font-semibold text-paper-amber dark:text-term-amber">
-            {isOpenSource ? (app.license ?? 'Free') : app.price}
-          </span>
-          <span class="text-paper-faint dark:text-term-faint">{app.category}</span>
-          <span class="flex flex-wrap gap-1.5">
-            {
-              app.platforms.map((p) => (
-                <span class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint">
-                  {p}
-                </span>
-              ))
-            }
-          </span>
-        </div>
 
         <!-- CTAs -->
         <div class="flex flex-wrap items-center gap-3">
@@ -287,9 +309,66 @@ const sectionPrompt = (cmd: string) => cmd;
             )
           }
         </div>
+      </div>
+
+      <!-- hero screenshot -->
+      {
+        heroShot && (
+          <div class="flex justify-center lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:items-center lg:justify-end">
+            <div class={`device-glow ${heroHeightClass}`} style={`--accent:${accent}`}>
+              <DeviceFrame
+                device={heroDevice}
+                src={heroShot.src}
+                w={heroShot.w}
+                h={heroShot.h}
+                alt={`${app.shortName} on ${DEVICE_LABELS[heroDevice] ?? 'iPhone'}: ${c.screenshotCaptions?.[heroDevice]?.[0] ?? heroShot.label}`}
+                eager={true}
+                priority={true}
+                heights={heroFrame.heights}
+              />
+            </div>
+          </div>
+        )
+      }
+
+      <div class="lg:col-start-1 lg:row-start-2">
+        <!-- meta chips -->
+        <div class="mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+          {
+            isOpenSource ? (
+              <span class="inline-flex items-center gap-1.5 rounded-sm border border-paper-green/40 px-2 py-0.5 text-xs font-semibold text-paper-green dark:border-term-green/40 dark:text-term-green">
+                Open source
+              </span>
+            ) : isReview ? (
+              <span class="inline-flex items-center gap-1.5 rounded-sm border border-paper-amber/40 px-2 py-0.5 text-xs font-semibold text-paper-amber dark:border-term-amber/40 dark:text-term-amber">
+                <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-paper-amber dark:bg-term-amber" />
+                In App Store review
+              </span>
+            ) : (
+              <StarRating
+                rating={app.rating}
+                count={app.ratingCount}
+                releaseDate={app.releaseDate}
+              />
+            )
+          }
+          <span class="font-semibold text-paper-amber dark:text-term-amber">
+            {isOpenSource ? (app.license ?? 'Free') : app.price}
+          </span>
+          <span class="text-paper-faint dark:text-term-faint">{app.category}</span>
+          <span class="flex flex-wrap gap-1.5">
+            {
+              app.platforms.map((p) => (
+                <span class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint">
+                  {p}
+                </span>
+              ))
+            }
+          </span>
+        </div>
 
         <!-- highlights -->
-        <ul class="mt-7 grid gap-2 sm:grid-cols-1">
+        <ul class="grid gap-2 sm:grid-cols-1">
           {
             c.highlights.map((h) => (
               <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
@@ -302,25 +381,28 @@ const sectionPrompt = (cmd: string) => cmd;
           }
         </ul>
       </div>
-
-      <!-- hero screenshot -->
-      {
-        heroShot && (
-          <div class="flex justify-center lg:justify-end">
-            <div class={`device-glow ${heroHeightClass}`} style={`--accent:${accent}`}>
-              <DeviceFrame
-                device={heroDevice}
-                src={heroShot.src}
-                w={heroShot.w}
-                h={heroShot.h}
-                alt={`${app.shortName} on ${heroDevice === 'mac' ? 'Mac' : heroDevice === 'tv' ? 'Apple TV' : heroDevice === 'ipad' ? 'iPad' : 'iPhone'}`}
-                eager={true}
-              />
-            </div>
-          </div>
-        )
-      }
     </header>
+
+    {
+      bannerShot && (
+        <figure class="mb-2 overflow-hidden rounded-xl border border-paper-border dark:border-term-border">
+          <img
+            src={bannerShot.src}
+            srcset={bannerSrcset}
+            width={bannerShot.w}
+            height={bannerShot.h}
+            loading="lazy"
+            decoding="async"
+            sizes="(min-width: 1152px) 1088px, 100vw"
+            alt={`${app.shortName} — ${bannerCaption}`}
+            class="block w-full"
+          />
+          <figcaption class="bg-paper-panel px-4 py-2.5 text-xs text-paper-muted dark:bg-term-panel dark:text-term-muted">
+            {bannerCaption}
+          </figcaption>
+        </figure>
+      )
+    }
 
     {
       hasScreenshots && (
@@ -373,12 +455,28 @@ const sectionPrompt = (cmd: string) => cmd;
       class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
     >
       <p class="prompt-line mb-3">{sectionPrompt(`cat ${app.slug}/FEATURES.md`)}</p>
-      <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+      <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
         What <span class="accent-text">{app.shortName}</span> does
       </h2>
-      <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">{c.heroSubhead}</p>
       <FeatureGrid features={c.features} accent={accent} />
     </section>
+
+    {
+      c.pricing && (
+        <section
+          id="pricing"
+          class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+        >
+          <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --pricing`)}</p>
+          <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+            {c.pricing.heading}
+          </h2>
+          <PricingTable pricing={c.pricing} accent={accent} />
+        </section>
+      )
+    }
+
+    {c.webbLive && <WebbLive accent={accent} />}
 
     <!-- How it works -->
     <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
@@ -405,7 +503,12 @@ const sectionPrompt = (cmd: string) => cmd;
     </section>
 
     <!-- About (full store description) -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+    <section
+      class:list={[
+        'border-t border-paper-border py-12 dark:border-term-border sm:py-16',
+        { hidden: c.hideAbout },
+      ]}
+    >
       <p class="prompt-line mb-3">{sectionPrompt(`less ${app.slug}/README`)}</p>
       <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
         About {app.shortName}
@@ -435,6 +538,13 @@ const sectionPrompt = (cmd: string) => cmd;
       <div class="max-w-3xl">
         <FaqAccordion faq={c.faq} accent={accent} />
       </div>
+      {
+        c.trustNote && (
+          <p class="mt-10 max-w-3xl border-l-2 border-paper-border pl-4 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted">
+            {c.trustNote}
+          </p>
+        )
+      }
     </section>
 
     <!-- Final CTA -->
@@ -450,7 +560,8 @@ const sectionPrompt = (cmd: string) => cmd;
                   alt=""
                   width="64"
                   height="64"
-                  class="h-14 w-14 rounded-[0.9rem] border border-paper-border dark:border-term-border"
+                  loading="lazy"
+                  class="h-14 w-14 rounded-[0.9rem] border border-paper-border object-cover dark:border-term-border"
                 />
               )
             }
@@ -572,11 +683,19 @@ const sectionPrompt = (cmd: string) => cmd;
         {
           siblings.map((s) => (
             <a
-              href={`/${s.slug}`}
+              href={`/${s.slug}/`}
               class="group inline-flex items-center gap-2.5 rounded-sm border border-paper-border px-3 py-2 text-sm transition-colors hover:border-paper-border2 dark:border-term-border dark:hover:border-term-border2"
             >
               {s.iconLocal && (
-                <img src={s.iconLocal} alt="" width="24" height="24" class="h-6 w-6 rounded-md" />
+                <img
+                  src={s.iconLocal}
+                  alt=""
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-6 w-6 rounded-md object-cover"
+                />
               )}
               <span class="font-medium text-paper-muted group-hover:text-paper-green dark:text-term-muted dark:group-hover:text-term-green">
                 {s.shortName}
@@ -609,7 +728,7 @@ const sectionPrompt = (cmd: string) => cmd;
     box-shadow: 0 14px 40px -12px color-mix(in srgb, var(--accent) 55%, transparent);
   }
   .accent-btn {
-    color: color-mix(in srgb, var(--accent), #000 34%);
+    color: color-mix(in srgb, var(--accent), #000 42%);
     border-color: color-mix(in srgb, var(--accent) 55%, transparent);
   }
   :global(.dark) .accent-btn {

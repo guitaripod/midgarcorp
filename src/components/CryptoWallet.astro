@@ -76,7 +76,20 @@ const data = currencyData[currency];
 </div>
 
 <script>
-  import QRCode from 'qrcode';
+  /// The QR encoder is the largest script on the site and is only ever needed by
+  /// someone who opens a tip-jar popup, so it loads on that first click.
+  let qrCodePromise;
+  async function renderQrCode(canvas, address) {
+    if (!canvas || !address || canvas.dataset.rendered) return;
+    qrCodePromise = qrCodePromise || import('qrcode');
+    const { default: QRCode } = await qrCodePromise;
+    await QRCode.toCanvas(canvas, address, {
+      width: 160,
+      margin: 1,
+      color: { dark: '#000000', light: '#FFFFFF' },
+    });
+    canvas.dataset.rendered = '1';
+  }
 
   document.addEventListener('DOMContentLoaded', () => {
     const wallets = document.querySelectorAll('.crypto-wallet');
@@ -98,18 +111,6 @@ const data = currencyData[currency];
       const button = wallet.querySelector('.crypto-button');
       const qrContainer = wallet.querySelector('.qr-code');
       const feedback = wallet.querySelector('.copy-feedback');
-
-      // Generate QR code
-      if (qrContainer && address) {
-        QRCode.toCanvas(qrContainer, address, {
-          width: 160,
-          margin: 1,
-          color: {
-            dark: '#000000',
-            light: '#FFFFFF',
-          },
-        });
-      }
 
       // Toggle popup on button click
       button?.addEventListener('click', (e) => {
@@ -146,6 +147,7 @@ const data = currencyData[currency];
           });
 
           // Show this popup
+          renderQrCode(qrContainer, address);
           popup?.classList.remove('hidden');
           setTimeout(() => {
             popup?.classList.add('popup-visible');

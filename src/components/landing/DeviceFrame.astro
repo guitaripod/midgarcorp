@@ -1,4 +1,6 @@
 ---
+import variantManifest from '@data/screenshot-variants.json';
+
 export interface Props {
   device: 'iphone' | 'ipad' | 'mac' | 'tv' | string;
   src: string;
@@ -6,15 +8,33 @@ export interface Props {
   h: number;
   alt: string;
   eager?: boolean;
+  priority?: boolean;
+  heights?: [number, number];
 }
 
-const { device, src, w, h, alt, eager = false } = Astro.props;
+const { device, src, w, h, alt, eager = false, priority = false, heights } = Astro.props;
 const loading = eager ? 'eager' : 'lazy';
 const portrait = device === 'iphone' || device === 'ipad';
 const radius = portrait ? 'rounded-[1.5rem]' : 'rounded-xl';
+
+/// Downscaled variants live next to the original and are enumerated by
+/// scripts/generate-screenshot-variants.mjs; referencing one that was never
+/// generated would 404, so only the manifest's widths reach the srcset.
+const variantSrc = (width: number) => src.replace(/\.webp$/, `@${width}.webp`);
+const available = (variantManifest as Record<string, number[]>)[src] ?? [];
+const srcset = available.length
+  ? [...available.map((width) => `${variantSrc(width)} ${width}w`), `${src} ${w}w`].join(', ')
+  : undefined;
+
+const displayWidth = (height: number) => Math.ceil((height * w) / h);
+const sizes = srcset
+  ? heights
+    ? `(min-width: 640px) ${displayWidth(heights[1])}px, ${displayWidth(heights[0])}px`
+    : `${w}px`
+  : undefined;
 ---
 
-<div
+<span
   class:list={[
     'relative inline-flex h-full overflow-hidden border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5',
     radius,
@@ -22,11 +42,14 @@ const radius = portrait ? 'rounded-[1.5rem]' : 'rounded-xl';
 >
   <img
     src={src}
+    srcset={srcset}
+    sizes={sizes}
     alt={alt}
     width={w}
     height={h}
     loading={loading}
+    fetchpriority={priority ? 'high' : undefined}
     decoding="async"
     class="block h-full w-auto"
   />
-</div>
+</span>

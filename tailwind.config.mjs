@@ -27,7 +27,7 @@ export default {
           border2: '#c9bf9f',
           text: '#073642',
           muted: '#586e75',
-          faint: '#657b83',
+          faint: '#54686f',
           green: '#005f00',
           greendim: '#116329',
           amber: '#7a5d00',

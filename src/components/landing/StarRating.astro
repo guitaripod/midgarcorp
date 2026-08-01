@@ -2,10 +2,18 @@
 export interface Props {
   rating: number;
   count: number;
+  releaseDate?: string;
   class?: string;
 }
 
-const { rating, count, class: className = '' } = Astro.props;
+const { rating, count, releaseDate, class: className = '' } = Astro.props;
+
+/// An unrated app is only "new" while that is still true — everything older than
+/// a season says so plainly rather than implying a fresh release.
+const NEW_FOR_DAYS = 120;
+const released = releaseDate ? Date.parse(releaseDate) : NaN;
+const isNew = !Number.isNaN(released) && Date.now() - released < NEW_FOR_DAYS * 86400000;
+const emptyLabel = isNew ? 'New on the App Store' : 'No ratings yet';
 const rounded = Math.round(rating * 2) / 2;
 const stars = Array.from({ length: 5 }, (_, i) => {
   const v = i + 1;
@@ -13,8 +21,7 @@ const stars = Array.from({ length: 5 }, (_, i) => {
   if (rounded >= v - 0.5) return 'half';
   return 'empty';
 });
-const label =
-  count > 0 ? `Rated ${rating.toFixed(1)} out of 5 from ${count} ratings` : 'New on the App Store';
+const label = count > 0 ? `Rated ${rating.toFixed(1)} out of 5 from ${count} ratings` : emptyLabel;
 ---
 
 {
@@ -69,7 +76,7 @@ const label =
       <span class="text-paper-greendim dark:text-term-greendim" aria-hidden="true">
         ◆
       </span>
-      New on the App Store
+      {emptyLabel}
     </span>
   )
 }
