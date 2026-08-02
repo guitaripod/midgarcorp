@@ -1,5 +1,6 @@
 ---
 import variantManifest from '@data/screenshot-variants.json';
+import { screenshotUrl } from '@data/landing';
 
 export interface Props {
   device: 'iphone' | 'ipad' | 'mac' | 'tv' | string;
@@ -23,7 +24,10 @@ const radius = portrait ? 'rounded-[1.5rem]' : 'rounded-xl';
 const variantSrc = (width: number) => src.replace(/\.webp$/, `@${width}.webp`);
 const available = (variantManifest as Record<string, number[]>)[src] ?? [];
 const srcset = available.length
-  ? [...available.map((width) => `${variantSrc(width)} ${width}w`), `${src} ${w}w`].join(', ')
+  ? [
+      ...available.map((width) => `${screenshotUrl(variantSrc(width))} ${width}w`),
+      `${screenshotUrl(src)} ${w}w`,
+    ].join(', ')
   : undefined;
 
 const displayWidth = (height: number) => Math.ceil((height * w) / h);
@@ -41,7 +45,7 @@ const sizes = srcset
   ]}
 >
   <img
-    src={src}
+    src={screenshotUrl(src)}
     srcset={srcset}
     sizes={sizes}
     alt={alt}

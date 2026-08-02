@@ -9,7 +9,13 @@ import DeviceFrame from '@components/landing/DeviceFrame.astro';
 import PricingTable from '@components/landing/PricingTable.astro';
 import WebbLive from '@components/landing/WebbLive.astro';
 import AppIcon from '@components/landing/AppIcon.astro';
-import { landingApps, DEVICE_LABELS, primaryDevice, type LandingApp } from '@data/landing';
+import {
+  landingApps,
+  DEVICE_LABELS,
+  primaryDevice,
+  screenshotUrl,
+  type LandingApp,
+} from '@data/landing';
 import screenshotVariants from '@data/screenshot-variants.json';
 
 export function getStaticPaths() {
@@ -69,9 +75,9 @@ const bannerSrcset =
   bannerShot && bannerVariants.length
     ? [
         ...bannerVariants.map(
-          (wide) => `${bannerShot.src.replace(/\.webp$/, `@${wide}.webp`)} ${wide}w`
+          (wide) => `${screenshotUrl(bannerShot.src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`
         ),
-        `${bannerShot.src} ${bannerShot.w}w`,
+        `${screenshotUrl(bannerShot.src)} ${bannerShot.w}w`,
       ].join(', ')
     : undefined;
 const HERO_FRAME: Record<string, { class: string; heights: [number, number] }> = {
@@ -388,7 +394,7 @@ const sectionPrompt = (cmd: string) => cmd;
       bannerShot && (
         <figure class="mb-2 overflow-hidden rounded-xl border border-paper-border dark:border-term-border">
           <img
-            src={bannerShot.src}
+            src={screenshotUrl(bannerShot.src)}
             srcset={bannerSrcset}
             width={bannerShot.w}
             height={bannerShot.h}

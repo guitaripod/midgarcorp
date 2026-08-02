@@ -1,6 +1,6 @@
 ---
 import DeviceFrame from './DeviceFrame.astro';
-import { DEVICE_LABELS, deviceKeys, type LandingApp } from '@data/landing';
+import { DEVICE_LABELS, deviceKeys, screenshotUrl, type LandingApp } from '@data/landing';
 
 export interface Props {
   app: LandingApp;
@@ -35,7 +35,10 @@ const captionFor = (device: string, i: number) =>
 const gallery = Object.fromEntries(
   devices.map((d) => [
     d,
-    app.screenshots[d].map((shot, i) => ({ src: shot.src, caption: captionFor(d, i) })),
+    app.screenshots[d].map((shot, i) => ({
+      src: screenshotUrl(shot.src),
+      caption: captionFor(d, i),
+    })),
   ])
 );
 

@@ -143,6 +143,18 @@ export function getLandingApp(slug: string): LandingApp | undefined {
   return landingApps.find((a) => a.slug === slug);
 }
 
+const SCREENSHOT_REV = '2';
+
+/// Cache-busts a committed screenshot the way OG_REV does the card artwork.
+///
+/// Shot paths are stable (`<device>-<n>.webp`) but `_headers` caches
+/// `/screenshots/*` for a week, so refreshing an app's gallery in place leaves
+/// the edge serving the previous release's pixels until the TTL lapses. Bump
+/// SCREENSHOT_REV whenever a committed screenshot's bytes change.
+export function screenshotUrl(src: string): string {
+  return `${src}?v=${SCREENSHOT_REV}`;
+}
+
 export const DEVICE_LABELS: Record<string, string> = {
   iphone: 'iPhone',
   ipad: 'iPad',
