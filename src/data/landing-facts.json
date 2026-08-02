@@ -1517,40 +1517,76 @@
           {
             "src": "/screenshots/solarbeam/iphone-1.webp",
             "w": 1320,
-            "h": 2868,
-            "label": "The curated Webb gallery with live “Where Is Webb” status"
+            "h": 2653,
+            "label": "The curated Webb gallery on iPhone — Webb is the first tab"
           },
           {
             "src": "/screenshots/solarbeam/iphone-2.webp",
             "w": 1320,
             "h": 2868,
-            "label": "NASA Picture of the Day"
+            "label": "Webb’s First Deep Field opens full-width, with 4K download and the full ESA caption"
           },
           {
             "src": "/screenshots/solarbeam/iphone-3.webp",
             "w": 1320,
             "h": 2868,
-            "label": "Near-Earth asteroid tracker"
+            "label": "The live “Where Is Webb” status card sits above the gallery"
+          },
+          {
+            "src": "/screenshots/solarbeam/iphone-4.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "NASA’s Astronomy Picture of the Day, with the 30-day archive"
+          },
+          {
+            "src": "/screenshots/solarbeam/iphone-5.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Ambient Mode: a single Webb image full-bleed, with no interface at all"
+          },
+          {
+            "src": "/screenshots/solarbeam/iphone-6.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Near-Earth asteroids tracked each day — always free, never gated"
           }
         ],
         "ipad": [
           {
             "src": "/screenshots/solarbeam/ipad-1.webp",
-            "w": 1668,
-            "h": 2420,
-            "label": "The curated Webb gallery with live status"
+            "w": 1600,
+            "h": 2134,
+            "label": "Two dozen Webb images at a glance on iPad"
           },
           {
             "src": "/screenshots/solarbeam/ipad-2.webp",
-            "w": 1668,
-            "h": 2420,
-            "label": "NASA Picture of the Day on iPad"
+            "w": 1600,
+            "h": 2134,
+            "label": "Caption, objects, instruments, distance, sky position and the CC BY 4.0 credit"
           },
           {
             "src": "/screenshots/solarbeam/ipad-3.webp",
-            "w": 1668,
-            "h": 2420,
-            "label": "Near-Earth asteroid tracker on iPad"
+            "w": 1600,
+            "h": 2134,
+            "label": "“Where Is Webb” — days in space, distance to L2 and instrument temperatures"
+          },
+          {
+            "src": "/screenshots/solarbeam/ipad-4.webp",
+            "w": 1600,
+            "h": 2134,
+            "label": "NASA’s Picture of the Day with its archive grid"
+          },
+          {
+            "src": "/screenshots/solarbeam/ipad-5.webp",
+            "w": 1600,
+            "h": 2134,
+            "label": "AI-generated facts about the day’s picture, on demand"
+          },
+          {
+            "src": "/screenshots/solarbeam/ipad-6.webp",
+            "w": 1600,
+            "h": 1396,
+            "label": "The near-Earth object threat tracker on iPad"
           }
         ],
         "mac": [
@@ -1558,21 +1594,37 @@
             "src": "/screenshots/solarbeam/mac-1.webp",
             "w": 1920,
             "h": 1200,
-            "label": "NASA Picture of the Day on Mac"
+            "label": "The Nebulae collection in the Mac app"
+          },
+          {
+            "src": "/screenshots/solarbeam/mac-2.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "The full ESA caption and NASA/ESA/CSA/STScI credit beside the image"
           },
           {
             "src": "/screenshots/solarbeam/mac-3.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Live asteroid threat charts on Mac"
-          }
-        ],
-        "vision": [
+            "label": "Live telescope status at the top of the gallery"
+          },
           {
-            "src": "/screenshots/solarbeam/vision-1.webp",
-            "w": 3840,
-            "h": 2160,
-            "label": "The Webb gallery, in your space on Vision Pro"
+            "src": "/screenshots/solarbeam/mac-4.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "NASA’s Picture of the Day with AI facts alongside"
+          },
+          {
+            "src": "/screenshots/solarbeam/mac-5.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Ambient Mode fills the Mac display"
+          },
+          {
+            "src": "/screenshots/solarbeam/mac-6.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Asteroid sizes on Mac, scaled against familiar objects"
           }
         ],
         "tv": [
@@ -1580,19 +1632,69 @@
             "src": "/screenshots/solarbeam/tv-1.webp",
             "w": 1920,
             "h": 1080,
-            "label": "A wall of NASA Pictures of the Day on Apple TV"
+            "label": "Ambient Mode on Apple TV: the Pillars of Creation, full-bleed in 4K"
           },
           {
             "src": "/screenshots/solarbeam/tv-2.webp",
             "w": 1920,
             "h": 1080,
-            "label": "The Hydra Cluster of Galaxies on Apple TV, with AI-generated facts alongside"
+            "label": "The curated Webb gallery on the big screen"
           },
           {
             "src": "/screenshots/solarbeam/tv-3.webp",
             "w": 1920,
             "h": 1080,
-            "label": "The near-Earth asteroid threat tracker on the big screen"
+            "label": "Caption, sky position and credit for every image"
+          },
+          {
+            "src": "/screenshots/solarbeam/tv-4.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "The live “Where Is Webb” dashboard on Apple TV"
+          },
+          {
+            "src": "/screenshots/solarbeam/tv-5.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "NASA’s Picture of the Day on Apple TV"
+          },
+          {
+            "src": "/screenshots/solarbeam/tv-6.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Near-Earth asteroid charts on the big screen"
+          }
+        ],
+        "vision": [
+          {
+            "src": "/screenshots/solarbeam/vision-1.webp",
+            "w": 3440,
+            "h": 1790,
+            "label": "The Webb gallery floating in your room on Vision Pro"
+          },
+          {
+            "src": "/screenshots/solarbeam/vision-2.webp",
+            "w": 3440,
+            "h": 1790,
+            "label": "Caption, sky data and credit — plus Spatial Scene on Vision Pro"
+          },
+          {
+            "src": "/screenshots/solarbeam/vision-3.webp",
+            "w": 3440,
+            "h": 1790,
+            "label": "Live telescope status in the Vision Pro window"
+          },
+          {
+            "src": "/screenshots/solarbeam/vision-4.webp",
+            "w": 3440,
+            "h": 1790,
+            "label": "NASA’s Picture of the Day on Vision Pro"
+          },
+          {
+            "src": "/screenshots/solarbeam/vision-5.webp",
+            "w": 3440,
+            "h": 1790,
+            "label": "Ambient Mode replaces the room with the app’s own starfield"
           }
         ]
       },

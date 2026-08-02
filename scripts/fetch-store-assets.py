@@ -87,6 +87,12 @@ DEVICE_ALLOW = {}
 # iTunes lookup lags App Store metadata edits by days, so re-running this script
 # would otherwise republish store copy that has already been corrected.
 PINNED_DESCRIPTIONS = {"solarbeam"}
+# Slugs whose web screenshots are hand-composed from the app itself rather than
+# mirrored from App Store Connect. Store artwork carries a burnt-in marketing
+# caption band, which the site would render *inside* a device frame; the site's
+# own convention is a bare screenshot with the caption in HTML underneath. ASC
+# also has no visionOS bucket here, so a re-fetch would drop those shots.
+PINNED_SCREENSHOTS = {"solarbeam"}
 # Cap the stored webp width per device class (display never exceeds this @2x).
 WIDTH_CAP = {"iphone": 1290, "ipad": 1600, "tv": 1920, "mac": 1920}
 
@@ -239,6 +245,9 @@ def process_app(app):
     allow = DEVICE_ALLOW.get(slug)
     if allow:
         merged = {b: a for b, a in merged.items() if b in allow}
+    if slug in PINNED_SCREENSHOTS:
+        print(f"  screenshots pinned for {slug} — keeping the committed web set")
+        merged = {}
 
     shots_manifest = {}
     for bucket, assets in merged.items():
@@ -383,6 +392,21 @@ def keep_pinned_description(fact, slug, existing):
         print(f"  kept curated description for pinned {slug}")
 
 
+def keep_pinned_screenshots(fact, slug, existing):
+    """Preserve a pinned app's hand-composed web screenshots against a re-fetch.
+
+    process_app skips downloading store artwork for these slugs, so the manifest
+    it builds is empty; the committed one is the source of truth and restoring it
+    keeps the landing page pointing at files that are still on disk.
+    """
+    if slug not in PINNED_SCREENSHOTS:
+        return
+    kept = existing.get(slug, {}).get("screenshots")
+    if kept:
+        fact["screenshots"] = kept
+        print(f"  kept {sum(len(v) for v in kept.values())} committed screenshots for pinned {slug}")
+
+
 def main():
     global TOKEN
     for var in ("ASC_KEY_ID", "ASC_ISSUER_ID", "ASC_PRIVATE_KEY_PATH"):
@@ -407,6 +431,7 @@ def main():
             print(f"  !! {app['slug']} FAILED: {e}")
             continue
         keep_pinned_description(f, app["slug"], existing)
+        keep_pinned_screenshots(f, app["slug"], existing)
         facts.append(f)
     merged = dict(existing)
     for f in facts:

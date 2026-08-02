@@ -6,7 +6,12 @@ import factsData from '../../src/data/landing-facts.json';
 
 const PUBLIC = path.join(process.cwd(), 'public');
 const variants = manifest as Record<string, number[]>;
-const apps = (factsData as { apps: { slug: string; iconLocal?: string }[] }).apps;
+type Shot = { src: string };
+const apps = (
+  factsData as {
+    apps: { slug: string; iconLocal?: string; screenshots?: Record<string, Shot[]> }[];
+  }
+).apps;
 
 const variantSrc = (src: string, width: number) => src.replace(/\.webp$/, `@${width}.webp`);
 const onDisk = (src: string) => fs.existsSync(path.join(PUBLIC, src.replace(/^\//, '')));
@@ -24,6 +29,16 @@ describe('screenshot variant manifest', () => {
 
   it('has an original behind every entry', () => {
     expect(Object.keys(variants).filter((src) => !onDisk(src))).toEqual([]);
+  });
+
+  it('has a file behind every screenshot a landing page renders', () => {
+    const missing = apps.flatMap((a) =>
+      Object.values(a.screenshots ?? {})
+        .flat()
+        .map((shot) => shot.src)
+        .filter((src) => !onDisk(src))
+    );
+    expect(missing).toEqual([]);
   });
 
   it('covers every app icon, so no landing page ships a 512px icon at 72px', () => {

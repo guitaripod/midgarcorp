@@ -160,25 +160,44 @@
   ],
   "screenshotCaptions": {
     "iphone": [
-      "The curated Webb gallery on iPhone, with the \"Where Is Webb\" status card above it",
-      "NASA's Astronomy Picture of the Day, full-bleed on iPhone",
-      "Near-Earth asteroids ranked by how close they pass — always free"
+      "The curated Webb gallery on iPhone — Webb is the first tab",
+      "Webb’s First Deep Field opens full-width, with 4K download and the full ESA caption",
+      "The live “Where Is Webb” status card sits above the gallery",
+      "NASA’s Astronomy Picture of the Day, with the 30-day archive",
+      "Ambient Mode: a single Webb image full-bleed, with no interface at all",
+      "Near-Earth asteroids tracked each day — always free, never gated"
     ],
     "ipad": [
-      "The curated Webb gallery on iPad, collections side by side",
-      "NASA's Picture of the Day filling an iPad screen",
-      "Near-Earth asteroid charts on iPad"
+      "Two dozen Webb images at a glance on iPad",
+      "Caption, objects, instruments, distance, sky position and the CC BY 4.0 credit",
+      "“Where Is Webb” — days in space, distance to L2 and instrument temperatures",
+      "NASA’s Picture of the Day with its archive grid",
+      "AI-generated facts about the day’s picture, on demand",
+      "The near-Earth object threat tracker on iPad"
     ],
     "mac": [
-      "NASA's Picture of the Day in the Mac app, with the day's explanation alongside",
-      "Asteroid threat charts on Mac: hazardous objects against the daily total"
+      "The Nebulae collection in the Mac app",
+      "The full ESA caption and NASA/ESA/CSA/STScI credit beside the image",
+      "Live telescope status at the top of the gallery",
+      "NASA’s Picture of the Day with AI facts alongside",
+      "Ambient Mode fills the Mac display",
+      "Asteroid sizes on Mac, scaled against familiar objects"
     ],
     "tv": [
-      "A wall of NASA Pictures of the Day on Apple TV",
-      "The Hydra Cluster of Galaxies on Apple TV, with AI-generated facts alongside",
-      "The near-Earth asteroid threat tracker on the big screen"
+      "Ambient Mode on Apple TV: the Pillars of Creation, full-bleed in 4K",
+      "The curated Webb gallery on the big screen",
+      "Caption, sky position and credit for every image",
+      "The live “Where Is Webb” dashboard on Apple TV",
+      "NASA’s Picture of the Day on Apple TV",
+      "Near-Earth asteroid charts on the big screen"
     ],
-    "vision": ["The Webb gallery floating in your room on Vision Pro"]
+    "vision": [
+      "The Webb gallery floating in your room on Vision Pro",
+      "Caption, sky data and credit — plus Spatial Scene on Vision Pro",
+      "Live telescope status in the Vision Pro window",
+      "NASA’s Picture of the Day on Vision Pro",
+      "Ambient Mode replaces the room with the app’s own starfield"
+    ]
   },
   "ctaLine": "The James Webb Space Telescope, on every screen you own.",
   "pricingNote": "Free on the App Store — a new NASA picture every day, the asteroid tracker, the \"Where Is Webb\" dashboard, 60 Webb images and a 30-day archive at no cost. Premium — $2.99/month, $19.99/year with a 1-week free trial, or $49.99 once — unlocks the full Webb gallery, 4K wallpapers, Ambient Mode, the complete archive and unlimited AI facts on every device."
