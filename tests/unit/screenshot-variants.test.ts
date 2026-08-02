@@ -8,8 +8,8 @@ const PUBLIC = path.join(process.cwd(), 'public');
 const variants = manifest as Record<string, number[]>;
 type Shot = { src: string };
 const apps = (
-  factsData as {
-    apps: { slug: string; iconLocal?: string; screenshots?: Record<string, Shot[]> }[];
+  factsData as unknown as {
+    apps: { slug: string; iconLocal?: string; screenshots?: Record<string, Shot[] | undefined> }[];
   }
 ).apps;
 
@@ -34,7 +34,7 @@ describe('screenshot variant manifest', () => {
   it('has a file behind every screenshot a landing page renders', () => {
     const missing = apps.flatMap((a) =>
       Object.values(a.screenshots ?? {})
-        .flat()
+        .flatMap((bucket) => bucket ?? [])
         .map((shot) => shot.src)
         .filter((src) => !onDisk(src))
     );
