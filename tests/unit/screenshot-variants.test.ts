@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import manifest from '../../src/data/screenshot-variants.json';
 import factsData from '../../src/data/landing-facts.json';
+import { screenshotUrl } from '../../src/data/landing';
 
 const PUBLIC = path.join(process.cwd(), 'public');
 const variants = manifest as Record<string, number[]>;
@@ -47,5 +48,30 @@ describe('screenshot variant manifest', () => {
       .filter((a) => !(variants[a.iconLocal as string] ?? []).length)
       .map((a) => a.slug);
     expect(uncovered).toEqual([]);
+  });
+});
+
+/// `_headers` caches `/screenshots/*` for a week on stable paths, so any shot
+/// URL that skips `screenshotUrl()` keeps serving the previous release's pixels
+/// until the TTL lapses. The rendered `<img>` tags were fixed when the rev was
+/// introduced but the JSON-LD `screenshot` array was not, which left crawlers
+/// reading a structured-data list of stale artwork.
+describe('screenshot cache-busting', () => {
+  const landingPage = fs.readFileSync(
+    path.join(process.cwd(), 'src', 'pages', '[app].astro'),
+    'utf8'
+  );
+
+  it('routes every emitted screenshot path through screenshotUrl', () => {
+    const raw = [...landingPage.matchAll(/(?<!screenshotUrl\()\babs\((\w+\.)?src\b/g)].map(
+      (m) => m[0]
+    );
+    expect(raw).toEqual([]);
+  });
+
+  it('stamps a rev onto a screenshot path', () => {
+    expect(screenshotUrl('/screenshots/solarbeam/mac-1.webp')).toMatch(
+      /^\/screenshots\/solarbeam\/mac-1\.webp\?v=\d+$/
+    );
   });
 });

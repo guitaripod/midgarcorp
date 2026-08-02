@@ -119,7 +119,7 @@ const supportUrl = app.supportUrl ?? undefined;
 
 const allShots = Object.values(app.screenshots)
   .flat()
-  .map((s) => abs(s.src));
+  .map((s) => abs(screenshotUrl(s.src)));
 
 const downloadOffer = {
   '@type': 'Offer',
