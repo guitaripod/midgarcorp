@@ -2,8 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LastFmNowPlaying from '../components/LastFmNowPlaying.astro';
 import GitHubStats from '../components/GitHubStats.astro';
-import SteamStatus from '../components/SteamStatus.astro';
-import TraktStatus from '../components/TraktStatus.astro';
+import GamerProfile from '../components/GamerProfile.astro';
 import appsData from '../data/apps.json';
 import openSourceData from '../data/opensource.json';
 
@@ -27,26 +26,6 @@ const links = [
     size: 'large',
     widget: 'lastfm',
     priority: 2,
-  },
-  {
-    title: 'Trakt.tv',
-    url: 'https://trakt.tv/users/guitaripod',
-    description: "Track what I'm watching",
-    iconPath: '/icons/trakt.svg',
-    brandColor: '#ED1C24',
-    size: 'large',
-    widget: 'trakt',
-    priority: 3,
-  },
-  {
-    title: 'Steam',
-    url: 'https://steamcommunity.com/id/kratos42069/',
-    description: 'Gaming profile',
-    iconPath: '/icons/steam.svg',
-    brandColor: '#00adee',
-    size: 'large',
-    widget: 'steam',
-    priority: 4,
   },
   {
     title: 'App Store',
@@ -109,72 +88,172 @@ const sortedLinks = links.sort((a, b) => a.priority - b.priority);
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {
-        sortedLinks.map((link) => {
-          const spanClass =
-            link.size === 'large' ? 'md:col-span-1 lg:col-span-2' : 'md:col-span-1 lg:col-span-1';
-          const padding = link.widget ? 'p-6' : 'p-5';
-          const chipBorder =
-            link.brandColor === '#000000' ? 'dark:border dark:border-term-border' : '';
+        sortedLinks
+          .filter((link) => link.priority < 4)
+          .map((link) => {
+            const spanClass =
+              link.size === 'large' ? 'md:col-span-1 lg:col-span-2' : 'md:col-span-1 lg:col-span-1';
+            const padding = link.widget ? 'p-6' : 'p-5';
+            const chipBorder =
+              link.brandColor === '#000000' ? 'dark:border dark:border-term-border' : '';
 
-          return (
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class={`${spanClass} group relative flex flex-col ${padding} term-frame term-frame-hover overflow-hidden`}
-            >
-              <div class="relative flex flex-col h-full">
-                <div class="flex items-start gap-4 mb-3">
-                  <div
-                    class={`flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-sm ${chipBorder}`}
-                    style={`background-color: ${link.brandColor};`}
-                  >
-                    <img
-                      src={link.iconPath}
-                      alt={`${link.title} icon`}
-                      class="w-6 h-6"
-                      style="filter: brightness(0) saturate(100%) invert(100%);"
-                      loading="lazy"
-                    />
+            return (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`${spanClass} group relative flex flex-col ${padding} term-frame term-frame-hover overflow-hidden`}
+              >
+                <div class="relative flex flex-col h-full">
+                  <div class="flex items-start gap-4 mb-3">
+                    <div
+                      class={`flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-sm ${chipBorder}`}
+                      style={`background-color: ${link.brandColor};`}
+                    >
+                      <img
+                        src={link.iconPath}
+                        alt={`${link.title} icon`}
+                        class="w-6 h-6"
+                        style="filter: brightness(0) saturate(100%) invert(100%);"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="flex-1">
+                      <h2 class="text-lg font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors flex items-center gap-2">
+                        {link.title}
+                        <svg
+                          class="w-4 h-4 text-paper-faint dark:text-term-faint group-hover:text-paper-green dark:group-hover:text-term-green transition-all duration-200 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </h2>
+                    </div>
                   </div>
-                  <div class="flex-1">
-                    <h2 class="text-lg font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors flex items-center gap-2">
-                      {link.title}
-                      <svg
-                        class="w-4 h-4 text-paper-faint dark:text-term-faint group-hover:text-paper-green dark:group-hover:text-term-green transition-all duration-200 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </h2>
-                  </div>
+                  <p class="text-sm text-paper-muted dark:text-term-muted mb-3">
+                    {link.description}
+                  </p>
+
+                  {link.widget && (
+                    <div
+                      class={`mt-auto ${link.widget !== 'lastfm' ? 'pt-3 border-t border-paper-border dark:border-term-border' : ''}`}
+                    >
+                      {link.widget === 'lastfm' && (
+                        <LastFmNowPlaying username="guitaripod" size="large" />
+                      )}
+                      {link.widget === 'github' && <GitHubStats username="guitaripod" />}
+                    </div>
+                  )}
                 </div>
-                <p class="text-sm text-paper-muted dark:text-term-muted mb-3">{link.description}</p>
+              </a>
+            );
+          })
+      }
 
-                {link.widget && (
-                  <div
-                    class={`mt-auto ${link.widget !== 'lastfm' ? 'pt-3 border-t border-paper-border dark:border-term-border' : ''}`}
-                  >
-                    {link.widget === 'lastfm' && (
-                      <LastFmNowPlaying username="guitaripod" size="large" />
-                    )}
-                    {link.widget === 'github' && <GitHubStats username="guitaripod" />}
-                    {link.widget === 'steam' && <SteamStatus />}
-                    {link.widget === 'trakt' && <TraktStatus username="guitaripod" size="large" />}
+      <div
+        class="md:col-span-2 lg:col-span-4 group relative flex flex-col p-6 term-frame term-frame-hover overflow-hidden"
+      >
+        <div class="flex items-start gap-4 mb-3">
+          <div class="flex items-center -space-x-2 flex-shrink-0">
+            <div class="w-12 h-12 flex items-center justify-center rounded-sm bg-[#00adee]">
+              <img
+                src="/icons/steam.svg"
+                alt="Steam icon"
+                class="w-6 h-6"
+                style="filter: brightness(0) saturate(100%) invert(100%);"
+                loading="lazy"
+              />
+            </div>
+            <div class="w-12 h-12 flex items-center justify-center rounded-sm bg-[#c5a253]">
+              <img
+                src="/icons/retroachievements.svg"
+                alt="RetroAchievements icon"
+                class="w-6 h-6"
+                style="filter: brightness(0) saturate(100%) invert(100%);"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="flex-1">
+            <h2
+              class="text-lg font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors"
+            >
+              Gamer Profile
+            </h2>
+          </div>
+        </div>
+        <p class="text-sm text-paper-muted dark:text-term-muted mb-4">
+          Steam & RetroAchievements — live from both profiles.
+        </p>
+        <GamerProfile />
+      </div>
+
+      {
+        sortedLinks
+          .filter((link) => link.priority >= 5)
+          .map((link) => {
+            const spanClass =
+              link.size === 'large' ? 'md:col-span-1 lg:col-span-2' : 'md:col-span-1 lg:col-span-1';
+            const padding = link.widget ? 'p-6' : 'p-5';
+            const chipBorder =
+              link.brandColor === '#000000' ? 'dark:border dark:border-term-border' : '';
+
+            return (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`${spanClass} group relative flex flex-col ${padding} term-frame term-frame-hover overflow-hidden`}
+              >
+                <div class="relative flex flex-col h-full">
+                  <div class="flex items-start gap-4 mb-3">
+                    <div
+                      class={`flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-sm ${chipBorder}`}
+                      style={`background-color: ${link.brandColor};`}
+                    >
+                      <img
+                        src={link.iconPath}
+                        alt={`${link.title} icon`}
+                        class="w-6 h-6"
+                        style="filter: brightness(0) saturate(100%) invert(100%);"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="flex-1">
+                      <h2 class="text-lg font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors flex items-center gap-2">
+                        {link.title}
+                        <svg
+                          class="w-4 h-4 text-paper-faint dark:text-term-faint group-hover:text-paper-green dark:group-hover:text-term-green transition-all duration-200 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </h2>
+                    </div>
                   </div>
-                )}
-              </div>
-            </a>
-          );
-        })
+                  <p class="text-sm text-paper-muted dark:text-term-muted mb-3">
+                    {link.description}
+                  </p>
+                </div>
+              </a>
+            );
+          })
       }
     </div>
   </section>

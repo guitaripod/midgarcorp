@@ -1,0 +1,508 @@
+---
+// Gamer profile: Steam + RetroAchievements live status, side by side
+---
+
+<div id="gamer-profile" class="grid grid-cols-1 md:grid-cols-2 gap-0">
+  <a
+    href="https://steamcommunity.com/id/kratos42069/"
+    target="_blank"
+    rel="noopener noreferrer"
+    id="gamer-steam"
+    class="block md:pr-6 group/steam"
+  >
+    <div class="flex items-center gap-2 mb-3">
+      <div class="w-6 h-6 flex items-center justify-center rounded-sm bg-[#00adee]">
+        <img
+          src="/icons/steam.svg"
+          alt=""
+          class="w-3.5 h-3.5"
+          style="filter: brightness(0) saturate(100%) invert(100%);"
+        />
+      </div>
+      <span
+        class="text-sm font-semibold text-paper-text dark:text-term-text group-hover/steam:text-paper-green dark:group-hover/steam:text-term-green transition-colors"
+      >
+        Steam
+      </span>
+    </div>
+    <div id="steam-status" class="space-y-3">
+      <div
+        class="flex items-center gap-2 text-xs text-paper-muted dark:text-term-muted animate-pulse"
+      >
+        <div class="w-2 h-2 bg-paper-faint dark:bg-term-faint rounded-full"></div>
+        <span>Loading Steam status...</span>
+      </div>
+    </div>
+  </a>
+
+  <a
+    href="https://retroachievements.org/user/guitaripod"
+    target="_blank"
+    rel="noopener noreferrer"
+    id="gamer-retro"
+    class="block mt-4 pt-4 border-t border-paper-border dark:border-term-border md:mt-0 md:pt-0 md:pl-6 md:border-t-0 md:border-l group/retro"
+  >
+    <div class="flex items-center gap-2 mb-3">
+      <div class="w-6 h-6 flex items-center justify-center rounded-sm bg-[#c5a253]">
+        <img
+          src="/icons/retroachievements.svg"
+          alt=""
+          class="w-3.5 h-3.5"
+          style="filter: brightness(0) saturate(100%) invert(100%);"
+        />
+      </div>
+      <span
+        class="text-sm font-semibold text-paper-text dark:text-term-text group-hover/retro:text-paper-green dark:group-hover/retro:text-term-green transition-colors"
+      >
+        RetroAchievements
+      </span>
+    </div>
+    <div id="retro-status" class="space-y-3">
+      <div
+        class="flex items-center gap-2 text-xs text-paper-muted dark:text-term-muted animate-pulse"
+      >
+        <div class="w-2 h-2 bg-paper-faint dark:bg-term-faint rounded-full"></div>
+        <span>Loading RetroAchievements...</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+<script>
+  const esc = (value) =>
+    String(value ?? '').replace(
+      /[&<>"']/g,
+      (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]
+    );
+
+  const raHost = 'https://retroachievements.org';
+
+  async function fetchJson(url) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      if (!response.ok) return { loading: true };
+      return await response.json();
+    } catch {
+      return { loading: true };
+    }
+  }
+
+  function fmtHours(minutes) {
+    if (!minutes && minutes !== 0) return null;
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+  }
+
+  function fmtNum(n) {
+    return n == null ? '—' : Number(n).toLocaleString('en-US');
+  }
+
+  function timeAgo(dateStr) {
+    if (!dateStr) return null;
+    const date = new Date(dateStr);
+    const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
+    const intervals = {
+      year: 31536000,
+      month: 2592000,
+      week: 604800,
+      day: 86400,
+      hour: 3600,
+      minute: 60,
+    };
+    for (const [name, secs] of Object.entries(intervals)) {
+      const interval = Math.floor(seconds / secs);
+      if (interval >= 1) return interval === 1 ? `1 ${name} ago` : `${interval} ${name}s ago`;
+    }
+    return 'just now';
+  }
+
+  function personaState(state) {
+    switch (parseInt(state, 10)) {
+      case 0:
+        return { text: 'Offline', color: 'bg-paper-faint dark:bg-term-faint' };
+      case 1:
+        return { text: 'Online', color: 'bg-paper-green dark:bg-term-green' };
+      case 2:
+        return { text: 'Busy', color: 'bg-paper-red dark:bg-term-red' };
+      case 3:
+        return { text: 'Away', color: 'bg-paper-amber dark:bg-term-amber' };
+      case 4:
+        return { text: 'Snooze', color: 'bg-paper-amber dark:bg-term-amber' };
+      case 5:
+        return { text: 'Looking to trade', color: 'bg-paper-greendim dark:bg-term-greendim' };
+      case 6:
+        return { text: 'Looking to play', color: 'bg-paper-green dark:bg-term-green' };
+      default:
+        return { text: 'Unknown', color: 'bg-paper-faint dark:bg-term-faint' };
+    }
+  }
+
+  const sectionLabel = (text) =>
+    `<p class="text-[10px] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5">${text}</p>`;
+
+  const progressBar = (pct, colorClass) => `
+    <div class="h-1 mt-1 bg-paper-raised dark:bg-term-raised rounded-sm overflow-hidden">
+      <div class="h-full ${colorClass} rounded-sm" style="width: ${Math.max(4, Math.min(100, pct))}%"></div>
+    </div>`;
+
+  function renderSteam(data) {
+    const root = document.getElementById('steam-status');
+    if (!root) return;
+
+    if (data.loading || !data.player) {
+      root.innerHTML = `
+        <div class="flex items-center gap-2 text-xs text-paper-faint dark:text-term-faint">
+          <div class="w-2 h-2 bg-paper-faint dark:bg-term-faint rounded-full"></div>
+          <span>Status unavailable</span>
+        </div>`;
+      return;
+    }
+
+    const player = data.player;
+    const state = personaState(player.personastate);
+    const avatar = player.avatarfull || player.avatarmedium || player.avatar;
+    const memberSince = player.timecreated
+      ? ` since ${new Date(player.timecreated * 1000).getFullYear()}`
+      : '';
+    const lastOnline =
+      player.lastlogoff && parseInt(player.personastate, 10) === 0
+        ? ` · last online ${timeAgo(new Date(player.lastlogoff * 1000).toISOString())}`
+        : '';
+
+    const metaBits = [];
+    if (lastOnline) metaBits.push(lastOnline.slice(3));
+    if (player.countrycode) metaBits.push(esc(player.countrycode));
+    if (memberSince) metaBits.push(memberSince.slice(3));
+
+    let html = `
+      <div class="flex items-center gap-3">
+        ${avatar ? `<img src="${esc(avatar)}" alt="" class="w-10 h-10 rounded-sm flex-shrink-0" />` : ''}
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 ${state.color} rounded-full"></div>
+            <span class="text-xs font-medium text-paper-text dark:text-term-text truncate">${esc(player.personaname || 'Steam')}</span>
+          </div>
+          <div class="text-[11px] text-paper-faint dark:text-term-faint truncate">
+            ${state.text}${metaBits.length ? ' · ' + metaBits.join(' · ') : ''}
+          </div>
+        </div>
+      </div>`;
+
+    if (data.currentGame) {
+      const ach = data.currentGame.achievements;
+      html += `
+        <div class="flex items-center gap-2 text-xs bg-paper-raised dark:bg-term-raised rounded-sm px-3 py-2">
+          <svg class="w-4 h-4 text-paper-green dark:text-term-green animate-pulse flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+          </svg>
+          <span class="text-paper-green dark:text-term-green min-w-0 truncate">
+            Playing <strong>${esc(data.currentGame.name)}</strong>
+            ${ach ? `<span class="text-paper-faint dark:text-term-faint">· ${ach.earned}/${ach.total} achievements</span>` : ''}
+          </span>
+        </div>`;
+    }
+
+    const statCells = [];
+    if (data.steamLevel != null) {
+      statCells.push(`
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
+          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.steamLevel)}</div>
+          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">level</div>
+        </div>`);
+    }
+    if (data.ownedGames) {
+      statCells.push(`
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
+          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.ownedGames.count)}</div>
+          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">owned</div>
+        </div>`);
+      statCells.push(`
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
+          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.ownedGames.totalPlaytimeHours)}h</div>
+          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">played</div>
+        </div>`);
+    }
+    if (data.badges) {
+      statCells.push(`
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center" title="${fmtNum(data.badges.xp)} XP">
+          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.badges.count)}</div>
+          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">badges</div>
+        </div>`);
+    }
+    if (statCells.length > 0) {
+      html += `<div class="grid grid-cols-4 gap-2">${statCells.join('')}</div>`;
+    }
+
+    const lowerCols = [];
+
+    const gamesList =
+      data.recentActivity && data.recentActivity.length > 0
+        ? data.recentActivity
+        : data.recentGames;
+    if (gamesList && gamesList.length > 0) {
+      const maxRecent = Math.max(...gamesList.map((g) => g.playtime_2weeks || 0));
+      const gamesHtml = gamesList
+        .slice(0, 5)
+        .map((game) => {
+          const recently = fmtHours(game.playtime_2weeks);
+          const total = fmtHours(game.playtime_forever);
+          const lastPlayed = game.lastPlayed
+            ? timeAgo(new Date(game.lastPlayed * 1000).toISOString())
+            : null;
+          const iconUrl = `https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`;
+          const pct = maxRecent ? ((game.playtime_2weeks || 0) / maxRecent) * 100 : 0;
+          const subBits = [];
+          if (lastPlayed) subBits.push(`Last played ${lastPlayed}`);
+          if (recently && game.playtime_2weeks) subBits.push(`${recently} this week`);
+          if (total) subBits.push(`${total} total`);
+          return `
+            <div class="flex items-center gap-2 py-1">
+              <img src="${iconUrl}" alt="" class="w-7 h-7 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />
+              <div class="flex-1 min-w-0">
+                <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(game.name)}</div>
+                <div class="text-[10px] text-paper-faint dark:text-term-faint truncate">${subBits.join(' · ')}</div>
+                ${game.playtime_2weeks ? progressBar(pct, 'bg-[#00adee]') : ''}
+              </div>
+            </div>`;
+        })
+        .join('');
+      lowerCols.push(`<div>${sectionLabel('This week')}${gamesHtml}</div>`);
+    }
+
+    if (data.mostPlayed && data.mostPlayed.length > 0) {
+      const maxTotal = Math.max(...data.mostPlayed.map((g) => g.playtime_forever || 0));
+      const mostPlayedHtml = data.mostPlayed
+        .map((game) => {
+          const total = fmtHours(game.playtime_forever);
+          const iconUrl = `https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`;
+          const pct = maxTotal ? ((game.playtime_forever || 0) / maxTotal) * 100 : 0;
+          return `
+            <div class="flex items-center gap-2 py-1">
+              <img src="${iconUrl}" alt="" class="w-7 h-7 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />
+              <div class="flex-1 min-w-0">
+                <div class="flex items-baseline justify-between gap-2">
+                  <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(game.name)}</div>
+                  <div class="text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0">${total}</div>
+                </div>
+                ${progressBar(pct, 'bg-[#00adee]')}
+              </div>
+            </div>`;
+        })
+        .join('');
+      lowerCols.push(`<div>${sectionLabel('Most played')}${mostPlayedHtml}</div>`);
+    }
+
+    if (lowerCols.length > 0) {
+      html += `<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-6">${lowerCols.join('')}</div>`;
+    }
+
+    root.innerHTML = html;
+  }
+
+  function renderRetro(data) {
+    const root = document.getElementById('retro-status');
+    if (!root) return;
+
+    if (data.loading || !data.summary) {
+      root.innerHTML = `
+        <div class="flex items-center gap-2 text-xs text-paper-faint dark:text-term-faint">
+          <div class="w-2 h-2 bg-paper-faint dark:bg-term-faint rounded-full"></div>
+          <span>Status unavailable</span>
+        </div>`;
+      return;
+    }
+
+    const summary = data.summary;
+    const awards = data.awards || {};
+    const avatar = summary.UserPic ? `${raHost}${summary.UserPic}` : null;
+    const hardcore = summary.TotalPoints || 0;
+    const softcore = summary.TotalSoftcorePoints || 0;
+    const isRanked = summary.Rank != null && summary.Rank > 0;
+
+    let html = `
+      <div class="flex items-center gap-3">
+        ${avatar ? `<img src="${esc(avatar)}" alt="" class="w-10 h-10 rounded-sm flex-shrink-0" />` : ''}
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-paper-amber dark:bg-term-amber rounded-full"></div>
+            <span class="text-xs font-medium text-paper-text dark:text-term-text truncate">${esc(summary.User || 'guitaripod')}</span>
+          </div>
+          <div class="text-[11px] text-paper-faint dark:text-term-faint truncate">
+            ${isRanked ? `#${fmtNum(summary.Rank)} of ${fmtNum(summary.TotalRanked)}` : 'Unranked'} · since ${new Date(summary.MemberSince).getFullYear()}
+          </div>
+        </div>
+      </div>`;
+
+    if (data.lastGame) {
+      const g = data.lastGame;
+      const lastSession = timeAgo(summary.RichPresenceMsgDate);
+      const fresh = lastSession && !lastSession.includes('ago');
+      const cover = g.imageBoxArt || g.imageIcon;
+      const metaBits = [];
+      if (g.consoleName) metaBits.push(esc(g.consoleName));
+      if (g.genre) metaBits.push(esc(g.genre));
+      html += `
+        <div>
+          ${sectionLabel(fresh ? 'Now playing' : 'Last played')}
+          <div class="flex gap-3 bg-paper-raised dark:bg-term-raised rounded-sm px-3 py-2">
+          ${cover ? `<img src="${esc(cover)}" alt="" class="w-12 h-14 object-cover rounded-sm flex-shrink-0" onerror="this.style.display='none'" />` : ''}
+          <div class="flex-1 min-w-0">
+            <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(g.title)}</div>
+            <div class="text-[10px] text-paper-faint dark:text-term-faint truncate">${metaBits.join(' · ')}</div>
+            <div class="flex items-center gap-1.5 mt-1 text-[10px] min-w-0">
+              <svg class="w-3 h-3 ${fresh ? 'text-paper-green dark:text-term-green animate-pulse' : 'text-paper-amber dark:text-term-amber'} flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17 3H7v5a5 5 0 0 0 10 0V3z"/>
+                <path d="M17 5h3a1 1 0 0 1 1 1 4 4 0 0 1-4 4"/>
+                <path d="M7 5H4a1 1 0 0 0-1 1 4 4 0 0 0 4 4"/>
+                <path d="M12 13v3"/>
+                <path d="M8 21h8"/>
+                <path d="M12 16v5"/>
+              </svg>
+              <span class="truncate ${fresh ? 'text-paper-green dark:text-term-green' : 'text-paper-muted dark:text-term-muted'}">
+                ${summary.RichPresenceMsg ? `<strong>${esc(summary.RichPresenceMsg)}</strong>` : 'Last session'}
+                ${lastSession ? `<span class="text-paper-faint dark:text-term-faint"> · ${lastSession}</span>` : ''}
+              </span>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    const completionPct = data.stats?.achievementsPossible
+      ? Math.round((data.stats.achievementsEarned / data.stats.achievementsPossible) * 100)
+      : null;
+
+    html += `
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center" title="${fmtNum(softcore)} softcore + ${fmtNum(hardcore)} hardcore">
+          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(hardcore + softcore)}</div>
+          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">points</div>
+        </div>
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
+          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.stats?.achievementsEarned ?? '—')}</div>
+          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">unlocks</div>
+        </div>
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
+          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(awards.TotalAwardsCount ?? 0)}</div>
+          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">awards</div>
+        </div>
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
+          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.stats?.gamesPlayed ?? '—')}</div>
+          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">games</div>
+        </div>
+      </div>`;
+
+    if (completionPct != null) {
+      html += `
+        <div>
+          ${sectionLabel('Collection completion')}
+          <div class="text-[11px] text-paper-muted dark:text-term-muted mb-1">
+            ${fmtNum(data.stats.achievementsEarned)} of ${fmtNum(data.stats.achievementsPossible)} achievements · ${completionPct}%
+          </div>
+          ${progressBar(completionPct, 'bg-paper-green dark:bg-term-green')}
+        </div>`;
+    }
+
+    if (data.mostRecentGame) {
+      const g = data.mostRecentGame;
+      const daysSinceLastPlayed = g.MostRecentAwardedDate
+        ? (Date.now() - new Date(g.MostRecentAwardedDate).getTime()) / 86400000
+        : Infinity;
+      if (daysSinceLastPlayed <= 30) {
+        const pct = Math.round((g.NumAwarded / g.MaxPossible) * 100);
+        const icon = g.ImageIcon ? `${raHost}${g.ImageIcon}` : null;
+        html += `
+          <div>
+            ${sectionLabel('Currently grinding')}
+            <div class="flex items-center gap-2 py-1">
+              ${icon ? `<img src="${esc(icon)}" alt="" class="w-7 h-7 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />` : ''}
+              <div class="flex-1 min-w-0">
+                <div class="flex items-baseline justify-between gap-2">
+                  <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(g.Title)}</div>
+                  <div class="text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0">${pct}%</div>
+                </div>
+                <div class="text-[10px] text-paper-faint dark:text-term-faint">${g.NumAwarded}/${g.MaxPossible} achievements · ${esc(g.ConsoleName || '')}</div>
+                ${progressBar(pct, 'bg-paper-amber dark:bg-term-amber')}
+              </div>
+            </div>
+          </div>`;
+      }
+    }
+
+    const lowerCols = [];
+
+    if (data.topGames && data.topGames.length > 0) {
+      const topHtml = data.topGames
+        .map((g) => {
+          const pct = Math.round((g.NumAwarded / g.MaxPossible) * 100);
+          const icon = g.ImageIcon ? `${raHost}${g.ImageIcon}` : null;
+          return `
+            <div class="flex items-center gap-2 py-1">
+              ${icon ? `<img src="${esc(icon)}" alt="" class="w-6 h-6 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />` : ''}
+              <div class="flex-1 min-w-0">
+                <div class="flex items-baseline justify-between gap-2">
+                  <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(g.Title)}</div>
+                  <div class="text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0">${pct}%</div>
+                </div>
+                <div class="text-[10px] text-paper-faint dark:text-term-faint">${g.NumAwarded}/${g.MaxPossible}</div>
+                ${progressBar(pct, 'bg-paper-amber dark:bg-term-amber')}
+              </div>
+            </div>`;
+        })
+        .join('');
+      lowerCols.push(`<div>${sectionLabel('Best progress')}${topHtml}</div>`);
+    }
+
+    if (awards.VisibleUserAwards && awards.VisibleUserAwards.length > 0) {
+      const beaten = awards.VisibleUserAwards.filter((a) => a.AwardType === 'Game Beaten')
+        .slice(0, 3)
+        .map((a) => {
+          const icon = a.ImageIcon ? `${raHost}${a.ImageIcon}` : null;
+          return `
+            <div class="flex items-center gap-2 py-1">
+              ${icon ? `<img src="${esc(icon)}" alt="" class="w-6 h-6 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />` : ''}
+              <div class="flex-1 min-w-0">
+                <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(a.Title)}</div>
+                <div class="text-[10px] text-paper-faint dark:text-term-faint">${esc(a.ConsoleName || '')} · ${timeAgo(a.AwardedAt) || ''}</div>
+              </div>
+            </div>`;
+        })
+        .join('');
+      if (beaten) lowerCols.push(`<div>${sectionLabel('Beaten')}${beaten}</div>`);
+    }
+
+    if (lowerCols.length > 0) {
+      html += `<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-6">${lowerCols.join('')}</div>`;
+    }
+
+    root.innerHTML = html;
+  }
+
+  async function load() {
+    const [steam, retro] = await Promise.all([
+      fetchJson('/api/steam.json'),
+      fetchJson('/api/retroachievements.json'),
+    ]);
+    renderSteam(steam);
+    renderRetro(retro);
+  }
+
+  function init() {
+    const root = document.getElementById('gamer-profile');
+    if (!root) {
+      setTimeout(init, 100);
+      return;
+    }
+    load();
+    setInterval(load, 120000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    requestAnimationFrame(init);
+  }
+</script>
