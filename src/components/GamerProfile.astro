@@ -26,11 +26,12 @@
       </span>
     </div>
     <div id="steam-status" class="space-y-3">
-      <div
-        class="flex items-center gap-2 text-xs text-paper-muted dark:text-term-muted animate-pulse"
-      >
-        <div class="w-2 h-2 bg-paper-faint dark:bg-term-faint rounded-full"></div>
-        <span>Loading Steam status...</span>
+      <div class="flex items-center gap-3 animate-pulse">
+        <div class="w-11 h-11 bg-paper-raised dark:bg-term-raised rounded-sm flex-shrink-0"></div>
+        <div class="flex-1 space-y-1.5">
+          <div class="h-3 w-1/2 bg-paper-raised dark:bg-term-raised rounded-sm"></div>
+          <div class="h-3 w-1/3 bg-paper-raised dark:bg-term-raised rounded-sm"></div>
+        </div>
       </div>
     </div>
   </a>
@@ -155,9 +156,12 @@
 
     if (data.loading || !data.player) {
       root.innerHTML = `
-        <div class="flex items-center gap-2 text-xs text-paper-faint dark:text-term-faint">
-          <div class="w-2 h-2 bg-paper-faint dark:bg-term-faint rounded-full"></div>
-          <span>Status unavailable</span>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse flex-shrink-0"></div>
+          <div class="flex-1 space-y-1.5">
+            <div class="h-3 w-1/2 bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse"></div>
+            <div class="h-3 w-1/3 bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse"></div>
+          </div>
         </div>`;
       return;
     }
@@ -166,54 +170,65 @@
     const state = personaState(player.personastate);
     const avatar = player.avatarfull || player.avatarmedium || player.avatar;
     const memberSince = player.timecreated
-      ? ` since ${new Date(player.timecreated * 1000).getFullYear()}`
-      : '';
+      ? new Date(player.timecreated * 1000).getFullYear()
+      : null;
     const lastOnline =
       player.lastlogoff && parseInt(player.personastate, 10) === 0
-        ? ` · last online ${timeAgo(new Date(player.lastlogoff * 1000).toISOString())}`
-        : '';
-
-    const metaBits = [];
-    if (lastOnline) metaBits.push(lastOnline.slice(3));
-    if (player.countrycode) metaBits.push(esc(player.countrycode));
-    if (memberSince) metaBits.push(memberSince.slice(3));
+        ? timeAgo(new Date(player.lastlogoff * 1000).toISOString())
+        : null;
 
     let html = `
       <div class="flex items-center gap-3">
-        ${avatar ? `<img src="${esc(avatar)}" alt="" class="w-10 h-10 rounded-sm flex-shrink-0" />` : ''}
+        ${avatar ? `<img src="${esc(avatar)}" alt="" class="w-11 h-11 rounded-sm flex-shrink-0" />` : ''}
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2">
-            <div class="w-2 h-2 ${state.color} rounded-full"></div>
-            <span class="text-xs font-medium text-paper-text dark:text-term-text truncate">${esc(player.personaname || 'Steam')}</span>
+            <span class="w-2 h-2 ${state.color} rounded-full flex-shrink-0"></span>
+            <span class="text-sm font-medium text-paper-text dark:text-term-text truncate">${esc(player.personaname || 'Steam')}</span>
+            ${
+              data.steamLevel != null
+                ? `<span class="text-[10px] font-semibold text-paper-faint dark:text-term-faint flex-shrink-0 px-1.5 py-0.5 bg-paper-raised dark:bg-term-raised rounded-sm">Lv ${fmtNum(data.steamLevel)}</span>`
+                : ''
+            }
           </div>
           <div class="text-[11px] text-paper-faint dark:text-term-faint truncate">
-            ${state.text}${metaBits.length ? ' · ' + metaBits.join(' · ') : ''}
+            ${state.text}${lastOnline ? ` · last online ${lastOnline}` : ''}${memberSince ? ` · since ${memberSince}` : ''}${player.countrycode ? ` · ${esc(player.countrycode)}` : ''}
           </div>
         </div>
       </div>`;
 
     if (data.currentGame) {
-      const ach = data.currentGame.achievements;
+      const g = data.currentGame;
+      const ach = g.achievements;
+      const banner = `https://cdn.cloudflare.steamstatic.com/steam/apps/${g.id}/header.jpg`;
+      const pct = ach ? Math.round((ach.earned / ach.total) * 100) : null;
       html += `
-        <div class="flex items-center gap-2 text-xs bg-paper-raised dark:bg-term-raised rounded-sm px-3 py-2">
-          <svg class="w-4 h-4 text-paper-green dark:text-term-green animate-pulse flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-          </svg>
-          <span class="text-paper-green dark:text-term-green min-w-0 truncate">
-            Playing <strong>${esc(data.currentGame.name)}</strong>
-            ${ach ? `<span class="text-paper-faint dark:text-term-faint">· ${ach.earned}/${ach.total} achievements</span>` : ''}
-          </span>
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm overflow-hidden">
+          <div class="relative">
+            <img src="${banner}" alt="" class="w-full h-24 object-cover" onerror="this.closest('.relative').style.display='none'" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-1.5 left-2 right-2 flex items-center gap-1.5 min-w-0">
+              <svg class="w-3.5 h-3.5 text-paper-green dark:text-term-green animate-pulse flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <span class="text-[11px] font-medium text-white truncate">${esc(g.name)}</span>
+            </div>
+          </div>
+          ${
+            ach
+              ? `
+            <div class="px-2 py-1.5">
+              <div class="flex items-baseline justify-between gap-2 mb-1">
+                <span class="text-[10px] text-paper-muted dark:text-term-muted">${fmtNum(ach.earned)}/${fmtNum(ach.total)} achievements</span>
+                <span class="text-[10px] font-semibold text-paper-text dark:text-term-text">${pct}%</span>
+              </div>
+              ${progressBar(pct, 'bg-[#00adee]')}
+            </div>`
+              : ''
+          }
         </div>`;
     }
 
     const statCells = [];
-    if (data.steamLevel != null) {
-      statCells.push(`
-        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
-          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.steamLevel)}</div>
-          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">level</div>
-        </div>`);
-    }
     if (data.ownedGames) {
       statCells.push(`
         <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
@@ -228,13 +243,18 @@
     }
     if (data.badges) {
       statCells.push(`
-        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center" title="${fmtNum(data.badges.xp)} XP">
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
           <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.badges.count)}</div>
           <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">badges</div>
         </div>`);
+      statCells.push(`
+        <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center" title="Total Steam XP">
+          <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.badges.xp)}</div>
+          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">xp</div>
+        </div>`);
     }
     if (statCells.length > 0) {
-      html += `<div class="grid grid-cols-4 gap-2">${statCells.join('')}</div>`;
+      html += `<div class="grid gap-2" style="grid-template-columns: repeat(${statCells.length}, minmax(0, 1fr))">${statCells.join('')}</div>`;
     }
 
     const lowerCols = [];
