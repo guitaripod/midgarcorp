@@ -276,7 +276,7 @@
           const iconUrl = `https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`;
           const pct = maxRecent ? ((game.playtime_2weeks || 0) / maxRecent) * 100 : 0;
           const subBits = [];
-          if (lastPlayed) subBits.push(`Last played ${lastPlayed}`);
+          if (lastPlayed) subBits.push(lastPlayed);
           if (recently && game.playtime_2weeks) subBits.push(`${recently} this week`);
           if (total) subBits.push(`${total} total`);
           return `
