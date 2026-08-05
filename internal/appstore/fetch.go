@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 	"time"
@@ -338,13 +339,22 @@ func fetchAppStoreData() ([]App, error) {
 	iTunesApps := iTunesResp.Results[1:]
 
 	apps := make([]App, 0, len(iTunesApps))
+	companions := make(map[int]iTunesApp, len(companionEditions))
 	for _, iTunesApp := range iTunesApps {
 		if primary, isCompanion := companionEditions[iTunesApp.TrackID]; isCompanion {
 			fmt.Printf("skipping %s (%d) — companion edition of %d\n",
 				iTunesApp.TrackName, iTunesApp.TrackID, primary)
+			companions[primary] = iTunesApp
 			continue
 		}
 		app := transformiTunesApp(iTunesApp)
+		if companion, ok := companions[iTunesApp.TrackID]; ok {
+			for _, platform := range mapDeviceTosPlatform(companion) {
+				if !slices.Contains(app.Platforms, platform) {
+					app.Platforms = append(app.Platforms, platform)
+				}
+			}
+		}
 		apps = append(apps, app)
 	}
 
