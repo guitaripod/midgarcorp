@@ -3,24 +3,20 @@
     {
       "id": "solar-beam",
       "name": "Solar Beam",
-      "tagline": "The James Webb Telescope, on Every Screen",
-      "description": "A curated gallery of the James Webb Space Telescope's greatest images, each with its real caption, credit, distance and sky coordinates. Plus NASA's Astronomy Picture of the Day, near-Earth asteroid tracking and 4K wallpapers — free to download, with optional Premium.",
+      "tagline": "Your Window to the Universe",
+      "description": "Solar Beam is a free app for exploring the James Webb Space Telescope on your iPhone and iPad — plus NASA's daily astronomy picture and near-Earth asteroids. Premium is optional: unlock everything with a subscription or a one-time lifetime purchase, and it carries across iPhone, iPad, Mac, Apple TV and Vision Pro.",
       "platforms": [
-        "iPhone",
-        "iPad",
-        "Mac",
-        "Apple TV",
-        "Vision Pro"
+        "Mac"
       ],
       "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b4/98/c6/b498c662-fe2f-9ed2-ffb8-143159eb1ea2/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9f/b9/3c/9fb93cb6-bd66-ac39-e9fc-d563c1904978/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
-        "Curated Webb image gallery",
-        "NASA Picture of the Day",
-        "Near-Earth asteroid tracker"
+        "Real-time space data",
+        "Stunning 4K visualizations",
+        "Educational astronomy content"
       ],
       "releaseDate": "2024-09-29T07:00:00Z"
     },
@@ -140,7 +136,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/eb/64/61/eb646103-d18c-75a8-fec7-ff7b5818feb1/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/80/93/aa/8093aaa9-3843-3b7e-ecf7-24486451fd59/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EF4444",
       "features": [
         "All country flags",
@@ -213,48 +209,6 @@
       "releaseDate": "2026-07-06T07:00:00Z"
     },
     {
-      "id": "tailscode",
-      "name": "Tailscode",
-      "tagline": "The Remote for Your Coding Agents",
-      "description": "Tailscode turns your iPhone into the remote control for the coding agents already running on your machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen.",
-      "platforms": [
-        "iPhone"
-      ],
-      "category": "Developer Tools",
-      "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/56/dd/a8/56dda8d9-5e10-8bfd-a2e8-d8ddd93a6f58/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#546BFF",
-      "features": [
-        "Drive Claude Code \u0026 opencode from your phone",
-        "Point-to-point over your own Tailscale network",
-        "Watch the turn land on your Lock Screen"
-      ],
-      "releaseDate": "2026-07-28T07:00:00Z"
-    },
-    {
-      "id": "flaccy",
-      "name": "Flaccy",
-      "tagline": "The Player for the Music You Own",
-      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
-      "platforms": [
-        "iPhone",
-        "Apple Watch",
-        "Mac"
-      ],
-      "category": "Music",
-      "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ca/0e/c2/ca0ec2c4-16df-7ad5-b417-c1e85e2d66e4/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#FF4D6D",
-      "features": [
-        "Gapless FLAC playback with quality badges",
-        "AI-organized library, no manual tagging",
-        "Last.fm scrobbling, charts \u0026 Year in Music"
-      ],
-      "releaseDate": "2026-07-09T07:00:00Z"
-    },
-    {
       "id": "psybeam",
       "name": "Psybeam: Live Translator",
       "tagline": "Hold Up Your Phone and Talk",
@@ -274,6 +228,43 @@
         "No account or subscription to start"
       ],
       "releaseDate": "2026-06-22T07:00:00Z"
+    },
+    {
+      "id": "flaccy-flac-music-player",
+      "name": "Flaccy: FLAC Music Player",
+      "tagline": "Flaccy is a beautiful player for the music you own.",
+      "description": "Flaccy is a beautiful player for the music you own. Point it at your FLAC, ALAC, AAC, or MP3 collection and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
+      "platforms": [
+        "Mac"
+      ],
+      "category": "Music",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/flaccy-flac-music-player/id6789594504",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c6/93/0b/c6930b14-9022-e6e6-4e1e-afc98e6d3099/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.png",
+      "primaryColor": "#3B82F6",
+      "features": [],
+      "releaseDate": "2026-07-27T07:00:00Z"
+    },
+    {
+      "id": "flaccy",
+      "name": "Flaccy",
+      "tagline": "The Player for the Music You Own",
+      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
+      "platforms": [
+        "iPhone",
+        "Apple Watch"
+      ],
+      "category": "Music",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ca/0e/c2/ca0ec2c4-16df-7ad5-b417-c1e85e2d66e4/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#FF4D6D",
+      "features": [
+        "Gapless FLAC playback with quality badges",
+        "AI-organized library, no manual tagging",
+        "Last.fm scrobbling, charts \u0026 Year in Music"
+      ],
+      "releaseDate": "2026-07-09T07:00:00Z"
     },
     {
       "id": "payday",
@@ -297,24 +288,38 @@
       "releaseDate": "2026-07-14T07:00:00Z"
     },
     {
-      "id": "helia",
+      "id": "helia-uv-index--sun-safety",
       "name": "Helia: UV Index \u0026 Sun Safety",
-      "tagline": "The Honest Solar Coach",
+      "tagline": "Helia is the honest solar coach.",
       "description": "Helia is the honest solar coach. Most sun apps either push you to maximize a tan or just show a raw UV number.",
       "platforms": [
-        "iPhone"
+        "iPhone",
+        "iPad"
       ],
       "category": "Health \u0026 Fitness",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/helia-uv-index-sun-safety/id6785542220",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/19/25/1f/19251f97-b2c5-733d-2870-366d450af97f/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
-      "primaryColor": "#F5A623",
-      "features": [
-        "A live sunburn budget tuned to your skin",
-        "Real-time local UV \u0026 a safe-exposure timer",
-        "Circadian, vitamin-D \u0026 mood coaching"
-      ],
+      "primaryColor": "#3B82F6",
+      "features": [],
       "releaseDate": "2026-07-21T07:00:00Z"
+    },
+    {
+      "id": "tailscode",
+      "name": "Tailscode",
+      "tagline": "Innovative app for Apple platforms",
+      "description": "Tailscode turns your iPhone into the remote control for the coding agents already running on your machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen.",
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ],
+      "category": "Developer Tools",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a4/0b/18/a40b184f-480e-6dfd-611a-a681062306cb/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#3B82F6",
+      "features": [],
+      "releaseDate": "2026-07-28T07:00:00Z"
     }
   ]
 }

@@ -1,11 +1,11 @@
 {
   "1484270248": {
-    "version": "3.0.0",
+    "version": "3.0.1",
     "price": "Free",
     "rating": 4.6,
     "ratingCount": 5,
     "releaseDate": "2019-10-21T07:00:00Z",
-    "currentVersionReleaseDate": "2026-07-06T23:47:11Z",
+    "currentVersionReleaseDate": "2026-08-04T07:30:21Z",
     "minimumOsVersion": "17.4"
   },
   "1523538855": {
@@ -27,12 +27,12 @@
     "minimumOsVersion": "18.0"
   },
   "6705124497": {
-    "version": "3.1.0",
+    "version": "3.1.1",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2024-09-29T07:00:00Z",
-    "currentVersionReleaseDate": "2026-08-01T21:11:19Z",
+    "currentVersionReleaseDate": "2026-08-03T05:19:40Z",
     "minimumOsVersion": "18.0"
   },
   "6727000827": {
@@ -126,12 +126,12 @@
     "minimumOsVersion": "18.6"
   },
   "6791660932": {
-    "version": "1.3",
+    "version": "1.6",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2026-07-28T07:00:00Z",
-    "currentVersionReleaseDate": "2026-08-01T19:08:59Z",
+    "currentVersionReleaseDate": "2026-08-05T12:18:54Z",
     "minimumOsVersion": "18.0"
   }
 }
