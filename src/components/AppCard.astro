@@ -1,5 +1,6 @@
 ---
 import { cleanAppStoreDescription } from '@utils/app-description';
+import variantManifest from '@data/screenshot-variants.json';
 
 export interface Props {
   app: {
@@ -28,6 +29,14 @@ const onStore = app.appStoreUrl.includes('apps.apple.com');
 const primaryHref = onStore ? app.appStoreUrl : (githubUrl ?? app.appStoreUrl);
 const primaryLabel = onStore ? 'open in app store ↗' : 'view on github ↗';
 const sourceHref = onStore && openSource ? githubUrl : undefined;
+
+/// Self-hosted icons ship at 512px for a slot that is never wider than 80 CSS
+/// px, so cite the downscales generate-screenshot-variants.mjs actually wrote.
+/// A remote App Store artwork URL has no manifest entry and stays srcset-less.
+const iconVariants = (variantManifest as Record<string, number[]>)[app.icon] ?? [];
+const iconSrcset = iconVariants.length
+  ? iconVariants.map((w) => `${app.icon.replace(/\.webp$/, `@${w}.webp`)} ${w}w`).join(', ')
+  : undefined;
 ---
 
 <article class="app-card group relative term-frame term-frame-hover overflow-hidden flex flex-col">
@@ -40,9 +49,14 @@ const sourceHref = onStore && openSource ? githubUrl : undefined;
     <div class="flex items-start gap-3 sm:gap-4">
       <img
         src={app.icon}
+        srcset={iconSrcset}
+        sizes={iconSrcset ? '(min-width: 640px) 80px, 64px' : undefined}
         alt={`${app.name} icon`}
+        width="512"
+        height="512"
         class="w-16 h-16 sm:w-20 sm:h-20 rounded-lg border border-paper-border dark:border-term-border flex-shrink-0"
         loading="lazy"
+        decoding="async"
       />
 
       <div class="flex-1 min-w-0">

@@ -10,6 +10,25 @@ const __dirname = path.dirname(__filename);
 
 const appsDataPath = path.join(__dirname, '..', 'src', 'data', 'apps.json');
 const appsData = JSON.parse(await fs.readFile(appsDataPath, 'utf-8'));
+const factsPath = path.join(__dirname, '..', 'src', 'data', 'landing-facts.json');
+const facts = JSON.parse(await fs.readFile(factsPath, 'utf-8'));
+
+const localIconByTrack = new Map(
+  facts.apps.filter((a) => a.iconLocal).map((a) => [String(a.trackId), a.iconLocal])
+);
+
+const trackIdFor = (appStoreUrl) => appStoreUrl.match(/id(\d+)/)?.[1] ?? '';
+
+/// The self-hosted icon is the same artwork with the corner-mask repair applied
+/// (scripts/unmask_icon.py), so prefer it and only reach for the store artwork
+/// when an app has no landing assets yet.
+async function readIcon(app) {
+  const local = localIconByTrack.get(trackIdFor(app.appStoreUrl));
+  if (local) {
+    return fs.readFile(path.join(__dirname, '..', 'public', local.replace(/^\//, '')));
+  }
+  return downloadImage(app.icon);
+}
 
 function downloadImage(url) {
   return new Promise((resolve, reject) => {
@@ -37,8 +56,7 @@ async function generateOGGrid(sharp) {
 
   const icons = await Promise.all(
     apps.map(async (app) => {
-      console.log(`Downloading icon for ${app.name}...`);
-      const iconBuffer = await downloadImage(app.icon);
+      const iconBuffer = await readIcon(app);
       return sharp(iconBuffer)
         .resize(iconSize, iconSize, { fit: 'cover' })
         .composite([

@@ -17,12 +17,14 @@ const storeCount = storeApps.length;
 const storeTrackIds = new Set(storeApps.map((app) => trackIdFor(app.appStoreUrl)));
 
 // Prefer the curated landing price (source of truth) over the auto-fetched
-// iTunes price, which lags a few hours behind an App Store Connect price change.
+// iTunes price, which lags a few hours behind an App Store Connect price change,
+// and the self-hosted icon over the remote artwork, which is a 512px original
+// for an 80px slot and skips the corner-mask repair the landing assets get.
 const storeCards = storeApps.map((app) => {
   const id = trackIdFor(app.appStoreUrl);
   const la = id ? landingByTrack.get(id) : undefined;
   return {
-    app: la ? { ...app, price: la.price } : app,
+    app: la ? { ...app, price: la.price, icon: la.iconLocal ?? app.icon } : app,
     landingHref: la ? `/${la.slug}/` : undefined,
     openSource: la?.openSource === true,
     githubUrl: la?.githubUrl,

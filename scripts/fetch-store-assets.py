@@ -14,7 +14,8 @@ Outputs:
 
 Requires ASC creds in env (source ~/.config/midgar/credentials.env first):
   ASC_KEY_ID, ASC_ISSUER_ID, ASC_PRIVATE_KEY_PATH
-Tools: cwebp on PATH. Run from repo root: python3 scripts/fetch-store-assets.py
+Tools: cwebp on PATH, Pillow installed.
+Run from repo root: python3 scripts/fetch-store-assets.py
 """
 
 import json
@@ -28,6 +29,9 @@ import urllib.request
 import urllib.error
 
 import jwt
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from unmask_icon import unmask  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOTS_DIR = os.path.join(ROOT, "public", "screenshots")
@@ -347,6 +351,8 @@ def process_app(app):
                 download(icon_src, icon_png)
             else:
                 shutil.copyfile(icon_src, icon_png)
+            if unmask(icon_png):
+                print("  icon: filled the baked-in corner mask")
             to_webp(icon_png, os.path.join(out_dir, "icon.webp"), 512)
             fact["iconLocal"] = f"/screenshots/{slug}/icon.webp"
         except Exception as e:

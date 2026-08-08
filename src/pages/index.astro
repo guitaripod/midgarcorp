@@ -21,7 +21,7 @@ const landingHrefFor = (appStoreUrl: string): string | undefined => {
 };
 const cardApp = (app: (typeof appsData.apps)[number]) => {
   const la = landingByTrack.get(trackIdFor(app.appStoreUrl) ?? '');
-  return la ? { ...app, price: la.price } : app;
+  return la ? { ...app, price: la.price, icon: la.iconLocal ?? app.icon } : app;
 };
 
 const posts = (await getCollection('blog'))
