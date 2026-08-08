@@ -8,30 +8,32 @@ const pageTitle = 'Apple Platform Apps | guitaripod';
 
 const landingByTrack = new Map(landingApps.map((a) => [String(a.trackId), a]));
 const trackIdFor = (appStoreUrl: string): string | undefined => appStoreUrl.match(/id(\d+)/)?.[1];
-const landingHrefFor = (appStoreUrl: string): string | undefined => {
-  const id = trackIdFor(appStoreUrl);
-  const la = id ? landingByTrack.get(id) : undefined;
-  return la ? `/${la.slug}/` : undefined;
-};
-
-// Prefer the curated landing price (source of truth) over the auto-fetched
-// iTunes price, which lags a few hours behind an App Store Connect price change.
-const cardApp = (app: (typeof appsData.apps)[number]) => {
-  const id = trackIdFor(app.appStoreUrl);
-  const la = id ? landingByTrack.get(id) : undefined;
-  return la ? { ...app, price: la.price } : app;
-};
 
 // App Store apps are tracked dynamically from iTunes (apps.json).
 const storeApps = [...appsData.apps].sort(
   (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
 );
 const storeCount = storeApps.length;
+const storeTrackIds = new Set(storeApps.map((app) => trackIdFor(app.appStoreUrl)));
+
+// Prefer the curated landing price (source of truth) over the auto-fetched
+// iTunes price, which lags a few hours behind an App Store Connect price change.
+const storeCards = storeApps.map((app) => {
+  const id = trackIdFor(app.appStoreUrl);
+  const la = id ? landingByTrack.get(id) : undefined;
+  return {
+    app: la ? { ...app, price: la.price } : app,
+    landingHref: la ? `/${la.slug}/` : undefined,
+    openSource: la?.openSource === true,
+    githubUrl: la?.githubUrl,
+  };
+});
 
 // Open-source apps come from the landing config so the grid stays dynamic:
-// flag a landing app `openSource` and it appears here automatically.
+// flag a landing app `openSource` and it appears here automatically. An app
+// that also ships on the App Store is already covered by its store card.
 const osCards = landingApps
-  .filter((a) => a.openSource)
+  .filter((a) => a.openSource && !storeTrackIds.has(String(a.trackId)))
   .map((a) => ({
     app: {
       id: a.slug,
@@ -52,15 +54,7 @@ const osCards = landingApps
     githubUrl: a.githubUrl,
   }));
 
-const cards = [
-  ...storeApps.map((app) => ({
-    app: cardApp(app),
-    landingHref: landingHrefFor(app.appStoreUrl),
-    openSource: false,
-    githubUrl: undefined as string | undefined,
-  })),
-  ...osCards,
-].sort(
+const cards = [...storeCards, ...osCards].sort(
   (a, b) => new Date(b.app.releaseDate ?? 0).getTime() - new Date(a.app.releaseDate ?? 0).getTime()
 );
 

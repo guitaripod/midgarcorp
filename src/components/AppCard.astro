@@ -24,6 +24,10 @@ export interface Props {
 const { app, landingHref, openSource = false, githubUrl } = Astro.props;
 const description = cleanAppStoreDescription(app.description);
 const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
+const onStore = app.appStoreUrl.includes('apps.apple.com');
+const primaryHref = onStore ? app.appStoreUrl : (githubUrl ?? app.appStoreUrl);
+const primaryLabel = onStore ? 'open in app store ↗' : 'view on github ↗';
+const sourceHref = onStore && openSource ? githubUrl : undefined;
 ---
 
 <article class="app-card group relative term-frame term-frame-hover overflow-hidden flex flex-col">
@@ -113,14 +117,28 @@ const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
         }
       </div>
 
-      <a
-        href={openSource && githubUrl ? githubUrl : app.appStoreUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="relative z-10 inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity w-full sm:w-auto"
-      >
-        {openSource && githubUrl ? 'view on github ↗' : 'open in app store ↗'}
-      </a>
+      <div class="flex items-center gap-3 w-full sm:w-auto">
+        {
+          sourceHref && (
+            <a
+              href={sourceHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="relative z-10 inline-flex items-center gap-1 px-1 py-2 text-xs sm:text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors whitespace-nowrap"
+            >
+              github ↗
+            </a>
+          )
+        }
+        <a
+          href={primaryHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative z-10 inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity flex-1 sm:flex-none"
+        >
+          {primaryLabel}
+        </a>
+      </div>
     </div>
   </div>
 </article>
