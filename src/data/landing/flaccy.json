@@ -28,7 +28,7 @@
   "features": [
     {
       "title": "Your Library, Organized",
-      "body": "Albums, artists, songs, and playlists with search, sorting, and stunning artwork. Scene releases and messy folder names are identified and cleaned up automatically on import.",
+      "body": "Albums, artists, songs, and playlists with search, sorting, and stunning artwork. Scene releases and messy folder names are identified and cleaned up automatically on import, and the first scan reports every stage with live counts instead of leaving you at a spinner.",
       "glyph": "▤"
     },
     {
@@ -68,19 +68,19 @@
     },
     {
       "title": "Flaccy for Mac",
-      "body": "A native Liquid Glass Mac app, built for the desk, that wears the color of your music — the whole window takes on an ambient palette pulled from the album you're playing. Watch a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, browse keyboard-first, and export full-resolution Year in Music posters. Coming soon to the Mac App Store.",
+      "body": "A native Liquid Glass Mac app, built for the desk, that wears the color of your music — the whole window takes on an ambient palette pulled from the album you're playing. Watch a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, browse keyboard-first, and export full-resolution Year in Music posters. On the Mac App Store now.",
       "glyph": "⌘"
     },
     {
       "title": "Flaccy for Linux",
-      "body": "A native GTK4 app for the penguin at your desk, and one of the best-looking music players on Linux: an adaptive shell reflows from a phone-width drawer to a full desktop layout, and an adaptive theme engine tints the whole app with the dominant color of whatever's playing — ambient gradient backdrops, glass cards, a glowing now-playing pulse, and a full-window Now Playing that slides synced lyrics and your queue in beside the cover. Gapless GStreamer playback, media keys via MPRIS, Last.fm scrobbling, tap-to-seek synced lyrics, and listening stats, in light or dark. Free and open (1.5.1). Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
+      "body": "A native GTK4 app for the penguin at your desk, and one of the best-looking music players on Linux: an adaptive shell reflows from a phone-width drawer to a full desktop layout, and an adaptive theme engine tints the whole app with the dominant color of whatever's playing — ambient gradient backdrops, glass cards, a glowing now-playing pulse, and a full-window Now Playing that slides synced lyrics and your queue in beside the cover. Gapless GStreamer playback, media keys via MPRIS, Last.fm scrobbling, tap-to-seek synced lyrics, and listening stats, in light or dark. Free and open (1.8.0). Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
       "glyph": "🐧"
     }
   ],
   "howItWorks": [
     {
       "step": "Import",
-      "body": "Copy music over USB or pick files in the Files app. Flaccy identifies and cleans up messy folder names and scene releases automatically."
+      "body": "Copy music over USB or pick files in the Files app. Flaccy shows you exactly what it is doing while it indexes — files found, tags read, albums built — and identifies and cleans up messy folder names and scene releases automatically. After that it opens straight into your library."
     },
     {
       "step": "Listen",
@@ -118,11 +118,11 @@
     },
     {
       "q": "Is there a Mac app?",
-      "a": "Yes — Flaccy for Mac is a native Liquid Glass app for macOS, coming soon to the Mac App Store, and the whole window takes on an ambient color pulled from the album you're playing. Point it at a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, and export full-resolution Year in Music posters. It's a separate one-time purchase from the iOS app."
+      "a": "Yes — Flaccy for Mac is a native Liquid Glass app for macOS, on the Mac App Store now, and the whole window takes on an ambient color pulled from the album you're playing. Point it at a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, and export full-resolution Year in Music posters. It's a separate one-time purchase from the iOS app."
     },
     {
       "q": "Is there a Linux app?",
-      "a": "Yes — Flaccy for Linux is a native GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, and synced lyrics. The window reflows from a narrow drawer layout to a full desktop shell; full-window Now Playing sets synced lyrics and your queue beside the cover; and the adaptive theme engine retints the whole app with the color of whatever you're playing (or pick from seven curated palettes). It is free and open (1.5.1): install with a single command (see the Flaccy for Linux section) or from the AUR with yay -S flaccy-bin."
+      "a": "Yes — Flaccy for Linux is a native GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, and synced lyrics. The window reflows from a narrow drawer layout to a full desktop shell; full-window Now Playing sets synced lyrics and your queue beside the cover; and the adaptive theme engine retints the whole app with the color of whatever you're playing (or pick from seven curated palettes). It is free and open (1.8.0): install with a single command (see the Flaccy for Linux section) or from the AUR with yay -S flaccy-bin."
     }
   ],
   "screenshotCaptions": {
@@ -148,6 +148,6 @@
     ]
   },
   "ctaLine": "Your music deserves a better player.",
-  "pricingNote": "Free to try with a 7-day free trial, then a $9.99 one-time purchase — no subscription, no account, no upload. The iOS app (with Apple Watch) and the Mac app are separate purchases, $9.99 each. Flaccy for Mac is coming soon to the Mac App Store. Flaccy for Linux is free and open.",
+  "pricingNote": "Free to try with a 7-day free trial, then a $9.99 one-time purchase — no subscription, no account, no upload. The iOS app (with Apple Watch) and the Mac app are separate purchases, $9.99 each. Flaccy for Mac is on the Mac App Store now. Flaccy for Linux is free and open.",
   "lifestyle": []
 }
