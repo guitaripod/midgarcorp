@@ -48,7 +48,7 @@ const FORM_LABELS: Record<LinuxForm, string> = {
 /// Flagship apps lead the page regardless of release count. The generator writes
 /// linux-apps.json already lead-first, but re-applying the order here keeps the
 /// page independent of file ordering.
-const LEAD = ['flaccy', 'emojipick'];
+const LEAD = ['flaccy', 'emojipick', 'recview'];
 const leadRank = (id: string) => {
   const i = LEAD.indexOf(id);
   return i === -1 ? Number.MAX_SAFE_INTEGER : i;

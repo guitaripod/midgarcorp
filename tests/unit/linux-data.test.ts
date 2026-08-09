@@ -69,12 +69,13 @@ describe('linux data module', () => {
   it('leads with the flagship desktop apps', () => {
     expect(linuxApps[0]?.id).toBe('flaccy');
     expect(linuxApps[1]?.id).toBe('emojipick');
+    expect(linuxApps[2]?.id).toBe('recview');
   });
 
   it('discovers shipped tools while excluding SDKs and web apps', () => {
     const ids = new Set(linuxApps.map((a) => a.id));
     // Auto-discovered Rust/Go/C++ tools that ship releases.
-    for (const id of ['themeswitch', 'circadia', 'flyr', 'unrager']) {
+    for (const id of ['themeswitch', 'circadia', 'flyr', 'unrager', 'recview']) {
       expect(ids.has(id), `expected ${id} on /linux`).toBe(true);
     }
     // Libraries and web apps must never be discovered.
@@ -84,7 +85,7 @@ describe('linux data module', () => {
   });
 
   it('sorts the non-lead apps by release count, then stars', () => {
-    const lead = new Set(['flaccy', 'emojipick']);
+    const lead = new Set(['flaccy', 'emojipick', 'recview']);
     const tail = linuxApps.filter((app) => !lead.has(app.id));
     for (let i = 1; i < tail.length; i++) {
       const prev = tail[i - 1];

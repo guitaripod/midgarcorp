@@ -42,7 +42,7 @@ const CRATES_UA = 'midgarcorp-linux-page (guitaripod@gmail.com)';
 // ---------------------------------------------------------------------------
 
 /** Repos to force onto the page that the auto-rule can't discover on its own. */
-const FORCE_INCLUDE = ['flaccy', 'emojipick'];
+const FORCE_INCLUDE = ['flaccy', 'emojipick', 'recview'];
 
 /** False positives to drop (a backend/library the rule let through). */
 const EXCLUDE = new Set([]);
@@ -62,10 +62,13 @@ const OVERRIDES = {
   },
   // Tagged `tui` on GitHub but runs as a one-shot CLI (`image-collage a.png …`).
   'image-collage': { form: 'cli' },
+  // The wayland/kde topics belong to the rec capture script; the review window
+  // itself is a plain GTK4 app that runs on any desktop.
+  recview: { note: 'GTK4 / libadwaita' },
 };
 
 /** Flagship apps pinned to the top regardless of release count. */
-const LEAD = ['flaccy', 'emojipick'];
+const LEAD = ['flaccy', 'emojipick', 'recview'];
 
 // ---------------------------------------------------------------------------
 // Discovery rule

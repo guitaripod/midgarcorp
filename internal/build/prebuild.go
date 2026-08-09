@@ -32,6 +32,7 @@ func PreBuild() error {
 		"scripts/generate-apps-og-grid.js",
 		"scripts/generate-app-og.js",
 		"scripts/generate-linux-og.js",
+		"scripts/generate-recview-og.js",
 	} {
 		cmd := exec.Command("node", script)
 		cmd.Stdout = nil // Hide output since it's handled by the script

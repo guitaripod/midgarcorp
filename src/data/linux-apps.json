@@ -1,6 +1,6 @@
 {
   "generated": "scripts/fetch-linux-releases.mjs — auto-discovered, live from GitHub / crates.io / AUR",
-  "count": 19,
+  "count": 20,
   "apps": [
     {
       "id": "flaccy",
@@ -10,16 +10,16 @@
       "lang": "rust",
       "language": "Rust",
       "description": "A lossless music player with gapless playback and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
-      "stars": 2,
-      "releaseCount": 18,
+      "stars": 3,
+      "releaseCount": 19,
       "githubUrl": "https://github.com/guitaripod/flaccy",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.7.0",
-      "latestReleaseDate": "2026-07-17T20:32:11Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.7.0",
+      "latestVersion": "1.8.0",
+      "latestReleaseDate": "2026-07-18T08:28:30Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.8.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.7.0/flaccy-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.8.0/flaccy-linux-x86_64.tar.gz",
       "note": "GTK4 / libadwaita",
       "install": {
         "primary": {
@@ -100,6 +100,55 @@
       }
     },
     {
+      "id": "recview",
+      "name": "recview",
+      "form": "gui",
+      "group": "desktop",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "GPU-accelerated review window for screen recordings — trim, crop, export, discard. GTK4 + libmpv + NVENC.",
+      "stars": 1,
+      "releaseCount": 1,
+      "githubUrl": "https://github.com/guitaripod/recview",
+      "homepageUrl": "https://midgarcorp.cc/recview",
+      "topics": [
+        "ffmpeg",
+        "gtk4",
+        "libadwaita",
+        "linux",
+        "mpv",
+        "rust",
+        "screen-recording",
+        "video-editing",
+        "wayland"
+      ],
+      "latestVersion": "0.2.0",
+      "latestReleaseDate": "2026-08-09T13:26:08Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/recview/releases/tag/0.2.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/recview/releases/download/0.2.0/recview-x86_64-unknown-linux-gnu.tar.gz",
+      "note": "GTK4 / libadwaita",
+      "install": {
+        "primary": {
+          "channel": "crates.io",
+          "label": "crates.io",
+          "command": "cargo install recview"
+        },
+        "all": [
+          {
+            "channel": "crates.io",
+            "label": "crates.io",
+            "command": "cargo install recview"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/recview"
+          }
+        ]
+      }
+    },
+    {
       "id": "unrager",
       "name": "unrager",
       "form": "tui",
@@ -107,16 +156,16 @@
       "lang": "rust",
       "language": "Rust",
       "description": "A calm Twitter/X TUI with a local-LLM rage filter",
-      "stars": 8,
-      "releaseCount": 55,
+      "stars": 9,
+      "releaseCount": 56,
       "githubUrl": "https://github.com/guitaripod/unrager",
       "homepageUrl": "https://midgarcorp.cc/unrager",
       "topics": [],
-      "latestVersion": "0.21.1",
-      "latestReleaseDate": "2026-07-04T13:45:37Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/unrager/releases/tag/0.21.1",
+      "latestVersion": "0.22.0",
+      "latestReleaseDate": "2026-07-28T21:10:15Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/unrager/releases/tag/0.22.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/unrager/releases/download/0.21.1/unrager-0.21.1-cli-x86_64-unknown-linux-gnu.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/unrager/releases/download/0.22.0/unrager-0.22.0-cli-x86_64-unknown-linux-gnu.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -192,7 +241,7 @@
       "lang": "rust",
       "language": "Rust",
       "description": "Search Google Flights from the terminal",
-      "stars": 9,
+      "stars": 10,
       "releaseCount": 10,
       "githubUrl": "https://github.com/guitaripod/flyr",
       "homepageUrl": null,
