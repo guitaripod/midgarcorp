@@ -10,7 +10,7 @@ const accent = '#ff0033';
 
 const seoTitle = 'Yoink — grab thumbnails and videos from YouTube';
 const metaDescription =
-  'A Chromium extension that puts a subtle toolbar on every YouTube thumbnail — save full-res thumbnails in one click, or download the whole video at up to 4K with yt-dlp. Open source, local, no account.';
+  'A Chromium extension that puts a subtle toolbar on every YouTube thumbnail — save full-res thumbnails in one click, or download the whole video at up to 4K with yt-dlp, finished X-ready so it posts to x.com without a re-encode. Open source, local, no account.';
 
 const githubUrl = 'https://github.com/guitaripod/yoink';
 const releasesUrl = 'https://github.com/guitaripod/yoink/releases';
@@ -18,6 +18,7 @@ const releasesUrl = 'https://github.com/guitaripod/yoink/releases';
 const heroHighlights = [
   'Save, copy, or open the full-res thumbnail in one click',
   'Download the whole video — up to 4K, or audio-only',
+  'Clips come out X-ready — H.264 / AAC, ready to post',
   'Live progress, cancel, and Show in folder',
   'Local and open source — no account, no cloud',
 ];
@@ -37,6 +38,11 @@ const features = [
     title: 'Pick your quality',
     body: '1080p by default, up to 4K, or audio-only (m4a). “Ask where to save” pops a native folder chooser; otherwise it drops straight into your Downloads folder.',
     glyph: '◆',
+  },
+  {
+    title: 'Clips X.com will actually take',
+    body: 'x.com ingests H.264 in yuv420p with AAC and nothing else — hand it YouTube’s AV1 or Opus and the upload is accepted, then fails. Yoink asks yt-dlp for an H.264 rendition, then checks the finished file and stream-copies it when it already complies, or re-encodes once when it doesn’t. Drop it straight into the composer.',
+    glyph: '✕',
   },
   {
     title: 'Yours, on your disk',
@@ -65,7 +71,13 @@ const shots = [
   {
     src: '/yoink/progress.png',
     alt: 'A live video download progress toast showing the title, percent, size, speed, ETA and a cancel button',
-    caption: 'Live download progress — title, size, speed, ETA, cancel, and Show in folder.',
+    caption: 'Live progress for the download and the X-ready pass — size, speed, ETA, cancel.',
+    span: true,
+  },
+  {
+    src: '/yoink/toasts.png',
+    alt: 'A green result toast reading Saved 1080p, X-ready, with a Show in folder action',
+    caption: 'Every clip lands X-ready — post it without touching HandBrake.',
     span: true,
   },
   {
@@ -100,6 +112,10 @@ const faq = [
     a: 'Up to 4K — best video and audio merged to mp4 — down to 480p, or audio-only (m4a). 1080p is the default. Merging 1080p/4K needs ffmpeg installed alongside yt-dlp.',
   },
   {
+    q: 'Why does my downloaded clip fail to upload to X?',
+    a: 'Because YouTube serves AV1 video and Opus audio, and x.com only processes H.264 in yuv420p with AAC — it accepts the upload and then fails it. Yoink handles this for you: X-ready clips is on by default, so every download comes out as an mp4 X takes. Compliant files are stream-copied in seconds; anything else is re-encoded once, at up to 4K60.',
+  },
+  {
     q: 'Is it private?',
     a: 'Completely. Yoink is open source (GPL-3.0) and fully local: no account, no servers, no analytics. Thumbnails and videos go straight to your disk.',
   },
@@ -118,7 +134,7 @@ const structuredData = {
   description: metaDescription,
   url: canonical,
   downloadUrl: releasesUrl,
-  softwareVersion: '1.1.2',
+  softwareVersion: '1.2.1',
   author: {
     '@type': 'Person',
     name: 'guitaripod',
@@ -152,8 +168,8 @@ const structuredData = {
           </h1>
           <p class="mb-6 max-w-xl text-base text-paper-muted dark:text-term-muted sm:text-lg">
             A subtle, YouTube-native toolbar on every thumbnail. Save the full-res image in one
-            click — or download the whole video at up to 4K with yt-dlp, with a live progress bar.
-            Open source, fully local, no account.
+            click — or download the whole video at up to 4K with yt-dlp, with a live progress bar,
+            finished X-ready so it posts straight to x.com. Open source, fully local, no account.
           </p>
           <ul class="mb-8 grid max-w-xl gap-2 sm:grid-cols-2 lg:grid-cols-1">
             {
