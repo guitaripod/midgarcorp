@@ -84,11 +84,11 @@ const deskCompaction = `${shotBase}/desk-dark-compaction.webp`;
 const deskAsk = `${shotBase}/desk-dark-ask.webp`;
 const deskUltracode = `${shotBase}/desk-dark-ultracode.webp`;
 
-const video = {
-  mp4: '/videos/tailscode/sync.mp4',
-  webm: '/videos/tailscode/sync.webm',
-  poster: '/videos/tailscode/sync-poster.jpg',
-  uploadDate: '2026-08-11',
+/// Three stills from one real ultracode turn, captured on both machines at once.
+const syncShots = {
+  send: { src: `${shotBase}/sync-01-send.webp`, w: 1320, h: 2868 },
+  desk: { src: `${shotBase}/sync-02-desk.webp`, w: 1920, h: 1080 },
+  both: { src: `${shotBase}/sync-03-both.webp`, w: 1920, h: 1080 },
 };
 
 const operatingSystem = 'iOS, Linux, macOS';
@@ -152,16 +152,6 @@ const softwareApp = {
   codeRepository: githubUrl,
 };
 
-const videoObject = {
-  '@type': 'VideoObject',
-  name: 'One session on two machines at once',
-  description:
-    'A prompt sent from the Tailscode iPhone app lands on a claude-bridge server and streams live in the Linux desktop client at the same moment — point-to-point over a Tailscale network.',
-  thumbnailUrl: abs(video.poster),
-  contentUrl: abs(video.mp4),
-  uploadDate: video.uploadDate,
-};
-
 const breadcrumb = {
   '@type': 'BreadcrumbList',
   itemListElement: [
@@ -180,7 +170,7 @@ const faqPage = {
 };
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@graph': [softwareApp, videoObject, breadcrumb, faqPage],
+  '@graph': [softwareApp, breadcrumb, faqPage],
 };
 
 const siblings = landingApps
@@ -279,7 +269,7 @@ const clients = [
             href="#sync"
             class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
           >
-            Watch it sync ↓
+            See it sync ↓
           </a>
         </div>
 
@@ -318,9 +308,9 @@ const clients = [
         </ul>
       </div>
 
-      <!-- hero composite: the desktop behind, the phone in front, both faces theme-live -->
-      <div class="relative mx-auto w-full max-w-[560px] lg:max-w-none">
-        <figure
+      <!-- hero: the Linux desk mid-fan-out, wearing whichever Suomi face the page wears -->
+      <figure class="mx-auto w-full max-w-[560px] lg:max-w-none">
+        <div
           class="overflow-hidden rounded-lg border border-paper-border shadow-2xl dark:border-term-border"
         >
           <img
@@ -343,34 +333,11 @@ const clients = [
             class="w-full dark:hidden"
             fetchpriority="high"
           />
-        </figure>
-        <figure
-          class="phone-float absolute -bottom-8 right-3 w-[30%] overflow-hidden rounded-xl border border-paper-border dark:border-term-border sm:-bottom-10"
-        >
-          <img
-            src={screenshotUrl(phoneShots[0].dark)}
-            srcset={srcsetFor(phoneShots[0].dark, phoneShots[0].w)}
-            sizes="170px"
-            width={phoneShots[0].w}
-            height={phoneShots[0].h}
-            alt={`Tailscode on iPhone, Suomi theme dark: ${phoneShots[0].caption}`}
-            class="hidden w-full dark:block"
-          />
-          <img
-            src={screenshotUrl(phoneShots[0].light)}
-            srcset={srcsetFor(phoneShots[0].light, phoneShots[0].w)}
-            sizes="170px"
-            width={phoneShots[0].w}
-            height={phoneShots[0].h}
-            alt={`Tailscode on iPhone, Suomi theme light: ${phoneShots[0].caption}`}
-            class="w-full dark:hidden"
-          />
-        </figure>
-        <figcaption class="mt-12 text-center text-xs text-paper-faint dark:text-term-faint">
-          The same session, live on the desk and in the pocket — wearing the Suomi theme. Flip this
-          page's theme and every screenshot follows.
+        </div>
+        <figcaption class="mt-3 text-center text-xs text-paper-faint dark:text-term-faint">
+          The Linux desk in the Suomi theme. Flip this page's theme — every screenshot follows.
         </figcaption>
-      </div>
+      </figure>
     </header>
 
     <!-- Sync film -->
@@ -380,56 +347,77 @@ const clients = [
         One session, two machines, zero relays
       </h2>
       <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        This is real footage of one real turn: a prompt leaves the iPhone, lands on a claude-bridge
-        server over the tailnet, and the session appears in the Linux desktop's sidebar already
-        live. It is an <span class="font-semibold text-paper-text dark:text-term-text"
-          >ultracode</span
-        > turn, so both composers burn the rainbow while it thinks — and the answer writes itself out
-        on both screens at once, at the display's own frame rate. No relay server ever sees a byte of
+        Three stills from one real turn, captured on both machines at once: a prompt leaves the
+        iPhone, lands on a claude-bridge server over the tailnet, and the session appears in the
+        Linux desktop's sidebar already live. It is an <span
+          class="font-semibold text-paper-text dark:text-term-text">ultracode</span
+        > turn, so both composers burn the rainbow while it runs. No relay server ever sees a byte of
         it.
       </p>
-      <div
-        class="overflow-hidden rounded-lg border border-paper-border bg-black dark:border-term-border"
-      >
-        <video
-          class="w-full"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster={video.poster}
-          width="1920"
-          height="1080"
-          aria-label="Screen recording: a prompt sent from the Tailscode iPhone app streams live in the Linux desktop client at the same time"
+      <div class="grid gap-4 lg:grid-cols-12">
+        <figure
+          class="flex flex-col overflow-hidden rounded-lg border border-paper-border dark:border-term-border lg:col-span-4"
         >
-          <source src={video.webm} type="video/webm" />
-          <source src={video.mp4} type="video/mp4" />
-          <a href={video.mp4}>Download the recording</a>
-        </video>
-      </div>
-      <div class="mt-6 grid gap-4 sm:grid-cols-3">
-        {
-          [
-            ['01', 'Send from the phone', 'The Home composer mints the chat and the turn starts.'],
-            [
-              '02',
-              'The desk lights up',
-              'The same session appears in the Linux sidebar, already live.',
-            ],
-            [
-              '03',
-              'Watch it anywhere',
-              'Open it on any client mid-turn and the transcript is already streaming.',
-            ],
-          ].map(([n, t, b]) => (
-            <div class="term-frame p-4">
-              <p class="term-label accent-text mb-1.5">{n}</p>
-              <p class="mb-1 text-sm font-semibold text-paper-text dark:text-term-text">{t}</p>
-              <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">{b}</p>
-            </div>
-          ))
-        }
+          <img
+            src={screenshotUrl(syncShots.send.src)}
+            srcset={srcsetFor(syncShots.send.src, syncShots.send.w)}
+            sizes="(min-width: 1024px) 352px, 100vw"
+            width={syncShots.send.w}
+            height={syncShots.send.h}
+            alt="Tailscode on iPhone: the prompt just sent, the turn starting, the composer edge burning the ultracode rainbow"
+            loading="lazy"
+            class="w-full"
+          />
+          <figcaption
+            class="mt-auto border-t border-paper-border px-4 py-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted"
+          >
+            <span class="accent-text mr-1 font-semibold">01 · Send from the phone</span> — the Home composer
+            mints the chat and the turn starts, rainbow already burning.
+          </figcaption>
+        </figure>
+        <div class="grid content-start gap-4 lg:col-span-8">
+          <figure
+            class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+          >
+            <img
+              src={screenshotUrl(syncShots.desk.src)}
+              srcset={srcsetFor(syncShots.desk.src, syncShots.desk.w)}
+              sizes="(min-width: 1024px) 720px, 100vw"
+              width={syncShots.desk.w}
+              height={syncShots.desk.h}
+              alt="Tailscode for Linux seconds later: the same session live in the sidebar, transcript already streaming, no files pane"
+              loading="lazy"
+              class="w-full"
+            />
+            <figcaption
+              class="border-t border-paper-border px-4 py-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted"
+            >
+              <span class="accent-text mr-1 font-semibold">02 · The desk lights up</span> — seconds later
+              the same session is in the Linux sidebar, opened mid-turn, transcript already streaming.
+            </figcaption>
+          </figure>
+          <figure
+            class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+          >
+            <img
+              src={screenshotUrl(syncShots.both.src)}
+              srcset={srcsetFor(syncShots.both.src, syncShots.both.w)}
+              sizes="(min-width: 1024px) 720px, 100vw"
+              width={syncShots.both.w}
+              height={syncShots.both.h}
+              alt="Both machines side by side with the same settled answer, the turn priced in the phone's chrome"
+              loading="lazy"
+              class="w-full"
+            />
+            <figcaption
+              class="border-t border-paper-border px-4 py-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted"
+            >
+              <span class="accent-text mr-1 font-semibold">03 · One answer, two screens</span> — the
+              turn settles on both machines at once, priced in the phone's chrome. Open it on any client
+              and it is simply there.
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -844,17 +832,6 @@ const clients = [
   </div>
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
-  <script>
-    // Autoplay is a courtesy, not a rule: viewers who asked the OS for less
-    // motion get a poster and a play button instead of a moving page.
-    const video = document.querySelector<HTMLVideoElement>('#sync video');
-    if (video && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      video.removeAttribute('autoplay');
-      video.pause();
-      video.controls = true;
-    }
-  </script>
 </BaseLayout>
 
 <style>
@@ -883,8 +860,5 @@ const clients = [
   .cta-spine {
     background-color: var(--accent);
     opacity: 0.7;
-  }
-  .phone-float {
-    box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.55);
   }
 </style>

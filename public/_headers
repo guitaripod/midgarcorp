@@ -35,6 +35,3 @@
 
 /og/*
   Cache-Control: public, max-age=604800
-
-/videos/*
-  Cache-Control: public, max-age=604800
