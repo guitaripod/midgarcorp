@@ -1,36 +1,53 @@
 {
-  "seoTitle": "Tailscode — Claude Code & opencode on your iPhone",
-  "metaDescription": "Native iOS remote for Claude Code and opencode over your Tailscale network. Live Activities on your Lock Screen, inline approvals, no relay, open source under GPL-3.0.",
+  "seoTitle": "Tailscode — Claude Code & opencode on iPhone, Linux & Mac",
+  "metaDescription": "Native remote for Claude Code and opencode over your Tailscale network — an iPhone app with Lock Screen Live Activities, plus open-source GTK4 Linux and macOS desktop clients. No relay, no account, GPL-3.0.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
+    "claude code linux client",
+    "claude code desktop app",
+    "gtk4 claude code",
     "opencode mobile client",
     "tailscale coding agent",
     "remote coding agent ios",
     "coding agent lock screen",
     "claude code live activity",
     "self-hosted ai coding",
-    "ios client for claude code",
     "open source coding agent app"
   ],
-  "heroHeadline": "Your coding agents, in your pocket",
-  "heroSubhead": "Tailscode is a native iOS remote for Claude Code and opencode running on your own machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen — point-to-point over your tailnet, no relay, no account.",
+  "heroHeadline": "Your coding agents, on every screen you own",
+  "heroSubhead": "Tailscode is a native remote for Claude Code and opencode running on your own machines — an iPhone app with the turn on your Lock Screen, and open-source desktop clients for Linux and the Mac. Point-to-point over your tailnet, no relay, no account.",
   "accentColor": "#546BFF",
   "highlights": [
     "Streams every turn live — thinking, tool calls, subagents, code",
-    "Approve or deny agent actions, and answer its questions, right in the chat",
-    "Live Activities with phase, elapsed time, and tool counts",
+    "Approve, answer, and steer the agent without leaving the chat",
+    "iPhone, Linux, and Mac clients built on one shared core",
     "Point-to-point over your Tailscale network — no relay, no tracking"
   ],
   "features": [
     {
       "title": "A real client, not a web view",
-      "body": "Programmatic UIKit and Swift 6 end to end. Streaming transcripts with collapsible thinking and tool groups, syntax-highlighted code with byte-exact copy, Liquid Glass on iOS 26, and ten languages. Hold Send and Apple's on-device model sharpens your prompt without it leaving the phone.",
+      "body": "Programmatic UIKit on iOS, GTK4 on Linux, AppKit on the Mac — Swift 6 end to end, zero web views. Streaming transcripts with collapsible thinking and tool groups, and syntax-highlighted code with one-tap, byte-exact copy.",
       "glyph": "◉"
     },
     {
+      "title": "Written, not pasted",
+      "body": "Text leaves a model in lumps, so every client plays the answer out of a buffer at a reading pace: the reveal counts rendered characters and a shimmer wave rides the newest span. Frames come from the display's own clock — CADisplayLink at up to 120Hz on iPhone, GTK's frame clock on Linux — and nothing ever re-wraps under the reader: a frame changes colours, never layout.",
+      "glyph": "∿"
+    },
+    {
+      "title": "Ultracode wears a rainbow",
+      "body": "Push a turn to the deepest reasoning tier and the app says so out loud: the composer's edge burns with the ultracode rainbow, the effort chip names it, and the presence orb wears the same rim while the turn runs. You can read a session's effort from across the room.",
+      "glyph": "❋"
+    },
+    {
+      "title": "Three desks, one registry",
+      "body": "Every capability is a case in a shared parity registry, and each client must answer it in an exhaustive switch — adding a feature to one client refuses to compile until all three have decided what they do about it. Nothing ships to one screen silently.",
+      "glyph": "⌘"
+    },
+    {
       "title": "Two agents, one app",
-      "body": "Drive opencode directly, and Claude Code through claude-bridge — the open-source companion server that turns claude into structured, streaming, subscription-backed sessions.",
+      "body": "Drive opencode directly, and Claude Code through claude-bridge — the open-source companion server that turns claude into structured, streaming, subscription-backed sessions with push notifications.",
       "glyph": "◈"
     },
     {
@@ -44,14 +61,29 @@
       "glyph": "⊹"
     },
     {
-      "title": "Every machine, one list",
-      "body": "Sessions from all your servers in one place with live status. Discover agent servers on your tailnet with an API token, and start chats in any project directory with the built-in file browser.",
+      "title": "Seven themes, two faces each",
+      "body": "One catalog shared by every client, from Suomi's aurora-over-a-frozen-lake to fresh snow by day. Every color is pushed through an OKLab contrast corrector until it clears WCAG on its own canvas — a theme that cannot be made readable fails the build.",
+      "glyph": "◐"
+    },
+    {
+      "title": "The month has numbers",
+      "body": "Every server's transcripts are priced turn by turn and merged into one account: daily bars, the week's rhythm, models, projects, tools, what caching saved — plus a trophy room that scores the same ledger into Game Center.",
+      "glyph": "⬡"
+    },
+    {
+      "title": "The repo, read — never operated",
+      "body": "Branch, drift, conflicts, staged and changed files, and per-file diffs, read from the machine that has to live with them. A chip in the chat chrome spells the tree out the way a prompt does. Nothing offers to commit from your phone.",
+      "glyph": "⑂"
+    },
+    {
+      "title": "One question, from anywhere",
+      "body": "On the desktops a global hotkey summons a quick ask over whatever you are doing — no project, no setup. On the phone it lives in the jump list and Control Center. The answer lands in a real conversation you can pick up later.",
       "glyph": "✦"
     },
     {
-      "title": "Usage you can trust",
-      "body": "Live Claude plan gauges straight from your own bridge, Grok quotas, and opencode cost estimates — session, weekly, and per-model, with reset countdowns.",
-      "glyph": "⬡"
+      "title": "A cue is a meaning, not an amplitude",
+      "body": "Send, step, needs-you, received — each is a composed Core Haptics recipe authored to stay pleasant at the top of the slider: rounded body, soft attack, never an alarm. One intensity dial scales every cue, and a burst of tool calls is felt as progress rather than a rattle.",
+      "glyph": "◦"
     }
   ],
   "howItWorks": [
@@ -61,13 +93,46 @@
     },
     {
       "step": "Join the same tailnet",
-      "body": "Install Tailscale on your phone and your machine — free for personal use. Your devices see each other directly; nothing transits anyone else's servers."
+      "body": "Install Tailscale on your devices — free for personal use. They see each other directly; nothing transits anyone else's servers."
     },
     {
       "step": "Connect and go",
-      "body": "Paste an address or let Tailscode discover your servers. Send a prompt, pocket your phone, and follow the turn from your Lock Screen."
+      "body": "Paste an address or let Tailscode discover your servers. Send a prompt from the phone, follow it on the Lock Screen, sit down at the desktop and the same session is already there."
     }
   ],
+  "pricing": {
+    "heading": "The free app is the complete core",
+    "free": {
+      "title": "Tailscode",
+      "price": "Free",
+      "items": [
+        "One server, full chat, approvals, and questions",
+        "Attachments, models, forking, compaction",
+        "Live Activities, one session at a time",
+        "Every theme, the analytics, the git surface",
+        "The built-in demo — explore with no server"
+      ]
+    },
+    "premium": {
+      "title": "Tailscode Pro",
+      "price": "$14.99 once",
+      "items": [
+        "Multiple saved servers, one session list",
+        "Concurrent Live Activities",
+        "A supporter badge, and that is all it is"
+      ]
+    },
+    "tiers": [
+      {
+        "name": "Pro",
+        "price": "$14.99",
+        "amount": 14.99,
+        "period": "one-time",
+        "note": "No subscription"
+      }
+    ],
+    "footnote": "The Linux and Mac desktop clients are free, open-source, and complete — Pro lives on the iPhone, once."
+  },
   "faq": [
     {
       "q": "Do I need my own server?",
@@ -76,6 +141,10 @@
     {
       "q": "Which coding agents does it support?",
       "a": "opencode natively (any provider you've configured in it), and Claude Code through claude-bridge, an open-source Swift server that exposes Claude Code as structured streaming sessions backed by your Claude subscription."
+    },
+    {
+      "q": "Is there really a Linux desktop client?",
+      "a": "Yes — a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. All three clients share one toolkit-free core, and a parity registry refuses to compile a client that hasn't answered for a capability the others have. The desktops add tiling splits, an embedded terminal, web and video panes, and a global quick-ask hotkey."
     },
     {
       "q": "Does my code pass through anyone's cloud?",
@@ -87,30 +156,37 @@
     },
     {
       "q": "What does Pro add?",
-      "a": "Tailscode Pro is a one-time $14.99 unlock for multiple saved servers, concurrent Live Activities, and a supporter badge. The free app is the complete core — full chat, permissions, attachments, models, forking — forever, with one server."
+      "a": "Tailscode Pro is a one-time $14.99 unlock for multiple saved servers, concurrent Live Activities, and a supporter badge. The free app is the complete core — full chat, permissions, attachments, models, forking, themes, analytics — forever, with one server."
     },
     {
       "q": "Is it really open source?",
-      "a": "All of it, under GPL-3.0: the app (Tailscode), the engine (CodingAgentKit, a Swift 6 package that also runs on Linux), and the bridge (claude-bridge). Build it yourself or grab it from the App Store."
+      "a": "All of it, under GPL-3.0: the iPhone app, both desktop clients, the engine (CodingAgentKit, a Swift 6 package that also runs on Linux), and the bridge (claude-bridge). Build it yourself or grab it from the App Store."
     },
     {
       "q": "Can I try it without a server?",
-      "a": "Yes. Tap 'Try the demo' on the first screen: two sample servers with realistic sessions let you explore streaming, approvals, questions, usage gauges, and the file browser — no tailnet needed."
+      "a": "Yes. Tap 'Try the demo' on the first screen: two sample servers with realistic sessions let you explore streaming, approvals, questions, analytics, and the file browser — no tailnet needed. Every screenshot on this page is that demo wearing the Suomi theme."
     }
   ],
   "screenshotCaptions": {
     "iphone": [
       "A live turn: the thinking, the code it wrote, the command it's running",
-      "Every agent and machine on one board, with a composer that starts the next chat",
+      "A whole task end to end: todos, edits, subagents, and the summary",
       "It asks before it edits — allow once, always, or deny, right in the chat",
       "Answer the agent's questions with a tap instead of guessing what it wanted",
       "The subagents it spawns open in place, with what each one reported back",
-      "A whole task end to end: todos, edits, subagents, and the summary",
-      "Context compacted, not lost — and you can read exactly what it kept",
       "Markdown, syntax-highlighted code, and links render inline",
-      "Every chat across every machine, filtered and searchable",
+      "Every agent and machine on one board, with a composer that starts the next chat",
       "Live plan and quota gauges straight from your own machine",
-      "Any model, any reasoning effort, mid-conversation"
+      "Every chat across every machine, filtered and searchable",
+      "Any model, any reasoning effort, mid-conversation",
+      "Context compacted, not lost — and you can read exactly what it kept",
+      "The repo read from the machine that owns it: branch, drift, diffs"
+    ],
+    "linux": [
+      "The Linux client: GTK4, tiling splits, quota gauges, and the presence orb",
+      "Two sessions side by side — subagents fanning out, todos burning down",
+      "The month, priced and drawn: daily bars, the week's rhythm, models",
+      "An ultracode turn announces itself: the composer's edge burns rainbow"
     ]
   },
   "ctaLine": "Your agent is already working. Watch it from anywhere.",

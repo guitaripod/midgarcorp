@@ -1,0 +1,890 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AppStoreBadge from '@components/landing/AppStoreBadge.astro';
+import StarRating from '@components/landing/StarRating.astro';
+import FeatureGrid from '@components/landing/FeatureGrid.astro';
+import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import PricingTable from '@components/landing/PricingTable.astro';
+import AppIcon from '@components/landing/AppIcon.astro';
+import { landingApps, screenshotUrl, type LandingApp } from '@data/landing';
+import screenshotVariants from '@data/screenshot-variants.json';
+
+export const prerender = true;
+
+const app = landingApps.find((a) => a.slug === 'tailscode') as LandingApp;
+const c = app.content;
+const accent = c.accentColor || app.primaryColor;
+const githubUrl = app.githubUrl;
+const releaseUrl = app.latestReleaseUrl ?? app.githubUrl;
+
+const site = 'https://midgarcorp.cc';
+const canonical = `${site}/tailscode/`;
+const OG_REV = '7';
+const ogImage = `/og/tailscode.png?v=${OG_REV}`;
+
+const subtitle = app.name.includes(':')
+  ? app.name.split(':').slice(1).join(':').trim()
+  : (app.category ?? '');
+
+const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : undefined);
+const variants = screenshotVariants as Record<string, number[]>;
+
+/// srcset from the generated variants manifest; falls back to the original only.
+const srcsetFor = (src: string, w: number) => {
+  const widths = variants[src] ?? [];
+  return [
+    ...widths.map((wide) => `${screenshotUrl(src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`),
+    `${screenshotUrl(src)} ${w}w`,
+  ].join(', ');
+};
+
+/// One screen in its two faces. The site's own theme toggle decides which face
+/// renders, so every screenshot on the page follows the reader's choice.
+interface PairedShot {
+  dark: string;
+  light: string;
+  w: number;
+  h: number;
+  caption: string;
+}
+
+const shotBase = '/screenshots/tailscode';
+const phoneCaptions = c.screenshotCaptions?.iphone ?? [];
+const phoneShots: PairedShot[] = Array.from({ length: 12 }, (_, i) => ({
+  dark: `${shotBase}/suomi-dark-${String(i + 1).padStart(2, '0')}.webp`,
+  light: `${shotBase}/suomi-light-${String(i + 1).padStart(2, '0')}.webp`,
+  w: 1320,
+  h: 2868,
+  caption: phoneCaptions[i] ?? '',
+}));
+
+const deskCaptions = c.screenshotCaptions?.linux ?? [];
+const deskChat: PairedShot = {
+  dark: `${shotBase}/desk-dark-chat.webp`,
+  light: `${shotBase}/desk-light-chat.webp`,
+  w: 1920,
+  h: 1080,
+  caption: deskCaptions[0] ?? '',
+};
+const deskSplit: PairedShot = {
+  dark: `${shotBase}/desk-dark-split.webp`,
+  light: `${shotBase}/desk-light-split.webp`,
+  w: 1920,
+  h: 1080,
+  caption: deskCaptions[1] ?? '',
+};
+const deskAnalytics: PairedShot = {
+  dark: `${shotBase}/desk-dark-analytics.webp`,
+  light: `${shotBase}/desk-light-analytics.webp`,
+  w: 1920,
+  h: 1080,
+  caption: deskCaptions[2] ?? '',
+};
+const deskCompaction = `${shotBase}/desk-dark-compaction.webp`;
+const deskAsk = `${shotBase}/desk-dark-ask.webp`;
+const deskUltracode = `${shotBase}/desk-dark-ultracode.webp`;
+
+const video = {
+  mp4: '/videos/tailscode/sync.mp4',
+  webm: '/videos/tailscode/sync.webm',
+  poster: '/videos/tailscode/sync-poster.jpg',
+  uploadDate: '2026-08-11',
+};
+
+const operatingSystem = 'iOS, Linux, macOS';
+const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
+
+const allShots = Object.values(app.screenshots)
+  .flat()
+  .map((s) => abs(screenshotUrl(s.src)));
+
+const downloadOffer = {
+  '@type': 'Offer',
+  name: `${app.shortName} download`,
+  price: priceNumeric,
+  priceCurrency: 'USD',
+  url: app.appStoreUrl,
+  availability: 'https://schema.org/InStock',
+};
+const premiumOffers = (c.pricing?.tiers ?? [])
+  .filter((tier) => typeof tier.amount === 'number')
+  .map((tier) => ({
+    '@type': 'Offer',
+    name: `${c.pricing!.premium.title} — ${tier.name}`,
+    price: String(tier.amount),
+    priceCurrency: 'USD',
+    url: app.appStoreUrl,
+    availability: 'https://schema.org/InStock',
+    category: 'InAppPurchase',
+    ...(tier.period
+      ? { eligibleDuration: { '@type': 'QuantitativeValue', value: tier.period } }
+      : {}),
+  }));
+
+const softwareApp = {
+  '@type': 'SoftwareApplication',
+  name: app.name,
+  operatingSystem,
+  applicationCategory: app.category,
+  description: c.metaDescription,
+  url: canonical,
+  installUrl: app.appStoreUrl,
+  image: abs(app.iconLocal),
+  screenshot: allShots,
+  offers: premiumOffers.length ? [downloadOffer, ...premiumOffers] : downloadOffer,
+  author: { '@type': 'Organization', name: 'Midgar Oy', url: site },
+  publisher: { '@type': 'Organization', name: 'Midgar Oy', url: site },
+  ...(app.version ? { softwareVersion: app.version } : {}),
+  ...(app.releaseDate ? { datePublished: app.releaseDate } : {}),
+  ...(app.ratingCount > 0
+    ? {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: app.rating,
+          ratingCount: app.ratingCount,
+          bestRating: 5,
+          worstRating: 1,
+        },
+      }
+    : {}),
+  isAccessibleForFree: true,
+  license: 'https://www.gnu.org/licenses/gpl-3.0.html',
+  codeRepository: githubUrl,
+};
+
+const videoObject = {
+  '@type': 'VideoObject',
+  name: 'One session on two machines at once',
+  description:
+    'A prompt sent from the Tailscode iPhone app lands on a claude-bridge server and streams live in the Linux desktop client at the same moment — point-to-point over a Tailscale network.',
+  thumbnailUrl: abs(video.poster),
+  contentUrl: abs(video.mp4),
+  uploadDate: video.uploadDate,
+};
+
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site },
+    { '@type': 'ListItem', position: 2, name: 'Apps', item: `${site}/apps` },
+    { '@type': 'ListItem', position: 3, name: app.shortName, item: canonical },
+  ],
+};
+const faqPage = {
+  '@type': 'FAQPage',
+  mainEntity: c.faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [softwareApp, videoObject, breadcrumb, faqPage],
+};
+
+const siblings = landingApps
+  .filter((a) => a.slug !== 'tailscode')
+  .sort((a, b) => new Date(b.releaseDate ?? 0).getTime() - new Date(a.releaseDate ?? 0).getTime())
+  .slice(0, 6);
+
+const clients = [
+  {
+    name: 'iPhone',
+    stack: 'UIKit · Liquid Glass · Live Activities',
+    note: 'The pocket remote: send, steer, approve, and watch the turn finish on your Lock Screen.',
+  },
+  {
+    name: 'Linux',
+    stack: 'GTK4 · libadwaita · tiling splits',
+    note: 'A full desk: split panes, an embedded terminal, web and video panes, a global quick-ask key.',
+  },
+  {
+    name: 'Mac',
+    stack: 'AppKit · Liquid Glass · macOS 26',
+    note: 'The same desk with Apple materials — and Game Center wearing the usage ledger as trophies.',
+  },
+];
+---
+
+<BaseLayout title={c.seoTitle} description={c.metaDescription} image={ogImage}>
+  <div style={`--accent:${accent}`}>
+    <!-- Breadcrumb -->
+    <nav
+      aria-label="Breadcrumb"
+      class="hidden pt-8 text-xs text-paper-faint dark:text-term-faint sm:block"
+    >
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/apps" class="hover:text-paper-green dark:hover:text-term-green">apps</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">tailscode</li>
+      </ol>
+    </nav>
+
+    <!-- Hero -->
+    <header
+      class="flex flex-col gap-10 py-8 sm:py-14 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-x-12"
+    >
+      <div>
+        <p class="prompt-line mb-5 hidden sm:block">tailscode --everywhere</p>
+
+        <div class="mb-5 flex items-center gap-4">
+          {
+            app.iconLocal && (
+              <AppIcon
+                src={app.iconLocal}
+                width={72}
+                height={72}
+                displayWidths={[64, 72]}
+                priority
+                class="hero-icon h-16 w-16 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[72px] sm:w-[72px]"
+              />
+            )
+          }
+          <div class="min-w-0">
+            <p
+              class="text-2xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-3xl"
+            >
+              {app.shortName}
+            </p>
+            {subtitle && <p class="text-sm text-paper-muted dark:text-term-muted">{subtitle}</p>}
+          </div>
+        </div>
+
+        <h1
+          class="mb-4 text-3xl font-bold leading-tight tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+        >
+          {c.heroHeadline}
+        </h1>
+        <p
+          class="mb-6 max-w-xl text-base leading-relaxed text-paper-muted dark:text-term-muted sm:text-lg"
+        >
+          {c.heroSubhead}
+        </p>
+
+        <div class="mb-7 flex flex-wrap items-center gap-3">
+          <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
+          >
+            <img src="/icons/github.svg" alt="" width="18" height="18" class="dark:invert" />
+            View on GitHub
+          </a>
+          <a
+            href="#sync"
+            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
+          >
+            Watch it sync ↓
+          </a>
+        </div>
+
+        <div class="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+          <span
+            class="inline-flex items-center gap-1.5 rounded-sm border border-paper-green/40 px-2 py-0.5 text-xs font-semibold text-paper-green dark:border-term-green/40 dark:text-term-green"
+          >
+            Open source
+          </span>
+          <StarRating rating={app.rating} count={app.ratingCount} releaseDate={app.releaseDate} />
+          <span class="font-semibold text-paper-amber dark:text-term-amber">
+            {app.license ?? 'GPL-3.0'}
+          </span>
+          <span class="flex flex-wrap gap-1.5">
+            {
+              ['iPhone', 'Linux', 'Mac'].map((p) => (
+                <span class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint">
+                  {p}
+                </span>
+              ))
+            }
+          </span>
+        </div>
+
+        <ul class="grid gap-2">
+          {
+            c.highlights.map((h) => (
+              <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                  ▸
+                </span>
+                <span>{h}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- hero composite: the desktop behind, the phone in front, both faces theme-live -->
+      <div class="relative mx-auto w-full max-w-[560px] lg:max-w-none">
+        <figure
+          class="overflow-hidden rounded-lg border border-paper-border shadow-2xl dark:border-term-border"
+        >
+          <img
+            src={screenshotUrl(deskSplit.dark)}
+            srcset={srcsetFor(deskSplit.dark, deskSplit.w)}
+            sizes="(min-width: 1024px) 560px, 100vw"
+            width={deskSplit.w}
+            height={deskSplit.h}
+            alt={`Tailscode for Linux, Suomi theme dark: ${deskSplit.caption}`}
+            class="hidden w-full dark:block"
+            fetchpriority="high"
+          />
+          <img
+            src={screenshotUrl(deskSplit.light)}
+            srcset={srcsetFor(deskSplit.light, deskSplit.w)}
+            sizes="(min-width: 1024px) 560px, 100vw"
+            width={deskSplit.w}
+            height={deskSplit.h}
+            alt={`Tailscode for Linux, Suomi theme light: ${deskSplit.caption}`}
+            class="w-full dark:hidden"
+            fetchpriority="high"
+          />
+        </figure>
+        <figure
+          class="phone-float absolute -bottom-8 right-3 w-[30%] overflow-hidden rounded-xl border border-paper-border dark:border-term-border sm:-bottom-10"
+        >
+          <img
+            src={screenshotUrl(phoneShots[0].dark)}
+            srcset={srcsetFor(phoneShots[0].dark, phoneShots[0].w)}
+            sizes="170px"
+            width={phoneShots[0].w}
+            height={phoneShots[0].h}
+            alt={`Tailscode on iPhone, Suomi theme dark: ${phoneShots[0].caption}`}
+            class="hidden w-full dark:block"
+          />
+          <img
+            src={screenshotUrl(phoneShots[0].light)}
+            srcset={srcsetFor(phoneShots[0].light, phoneShots[0].w)}
+            sizes="170px"
+            width={phoneShots[0].w}
+            height={phoneShots[0].h}
+            alt={`Tailscode on iPhone, Suomi theme light: ${phoneShots[0].caption}`}
+            class="w-full dark:hidden"
+          />
+        </figure>
+        <figcaption class="mt-12 text-center text-xs text-paper-faint dark:text-term-faint">
+          The same session, live on the desk and in the pocket — wearing the Suomi theme. Flip this
+          page's theme and every screenshot follows.
+        </figcaption>
+      </div>
+    </header>
+
+    <!-- Sync film -->
+    <section id="sync" class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-2">tailscode sync --watch</p>
+      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        One session, two machines, zero relays
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        This is real footage of one real turn: a prompt leaves the iPhone, lands on a claude-bridge
+        server over the tailnet, and the session appears in the Linux desktop's sidebar already
+        live. It is an <span class="font-semibold text-paper-text dark:text-term-text"
+          >ultracode</span
+        > turn, so both composers burn the rainbow while it thinks — and the answer writes itself out
+        on both screens at once, at the display's own frame rate. No relay server ever sees a byte of
+        it.
+      </p>
+      <div
+        class="overflow-hidden rounded-lg border border-paper-border bg-black dark:border-term-border"
+      >
+        <video
+          class="w-full"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster={video.poster}
+          width="1920"
+          height="1080"
+          aria-label="Screen recording: a prompt sent from the Tailscode iPhone app streams live in the Linux desktop client at the same time"
+        >
+          <source src={video.webm} type="video/webm" />
+          <source src={video.mp4} type="video/mp4" />
+          <a href={video.mp4}>Download the recording</a>
+        </video>
+      </div>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        {
+          [
+            ['01', 'Send from the phone', 'The Home composer mints the chat and the turn starts.'],
+            [
+              '02',
+              'The desk lights up',
+              'The same session appears in the Linux sidebar, already live.',
+            ],
+            [
+              '03',
+              'Watch it anywhere',
+              'Open it on any client mid-turn and the transcript is already streaming.',
+            ],
+          ].map(([n, t, b]) => (
+            <div class="term-frame p-4">
+              <p class="term-label accent-text mb-1.5">{n}</p>
+              <p class="mb-1 text-sm font-semibold text-paper-text dark:text-term-text">{t}</p>
+              <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">{b}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Theme faces -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-2">tailscode theme suomi</p>
+      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        Seven themes, and every one has two faces
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        Shown here: <span class="font-semibold text-paper-text dark:text-term-text">Suomi</span> — kaamos
+        night under an aurora, and fresh snow under flag-blue ink by day. One catalog is shared by all
+        three clients, light or dark can be pinned separately from the theme, and every color is walked
+        through an OKLab contrast corrector until it clears WCAG on its own canvas. A theme that cannot
+        be made readable fails the build.
+      </p>
+      <div class="grid gap-4 lg:grid-cols-2">
+        <figure
+          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+        >
+          <img
+            src={screenshotUrl(deskChat.dark)}
+            srcset={srcsetFor(deskChat.dark, deskChat.w)}
+            sizes="(min-width: 1024px) 544px, 100vw"
+            width={deskChat.w}
+            height={deskChat.h}
+            alt="Tailscode for Linux wearing the Suomi theme's dark face"
+            loading="lazy"
+            class="w-full"
+          />
+          <figcaption
+            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
+          >
+            Night is kaamos over a frozen lake — the aurora carries motion, ice the agent's marks.
+          </figcaption>
+        </figure>
+        <figure
+          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+        >
+          <img
+            src={screenshotUrl(deskChat.light)}
+            srcset={srcsetFor(deskChat.light, deskChat.w)}
+            sizes="(min-width: 1024px) 544px, 100vw"
+            width={deskChat.w}
+            height={deskChat.h}
+            alt="Tailscode for Linux wearing the Suomi theme's light face"
+            loading="lazy"
+            class="w-full"
+          />
+          <figcaption
+            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
+          >
+            Day is fresh snow under flag-blue ink, with spruce for affirmation and cloudberry for
+            attention.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Phone rail -->
+    <section
+      id="screenshots"
+      class="border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-2">ls ~/tailscode/iphone</p>
+      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        The pocket client, screen by screen
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        Every frame below is the built-in demo wearing Suomi — what you see before wiring a single
+        server. Scroll the rail; flip the site theme to see the other face.
+      </p>
+      <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-3">
+        {
+          phoneShots.map((shot, i) => (
+            <figure class="w-[240px] shrink-0 snap-center sm:w-[260px]">
+              <div class="overflow-hidden rounded-[1.4rem] border border-paper-border bg-black/5 dark:border-term-border dark:bg-white/5">
+                <img
+                  src={screenshotUrl(shot.dark)}
+                  srcset={srcsetFor(shot.dark, shot.w)}
+                  sizes="260px"
+                  width={shot.w}
+                  height={shot.h}
+                  alt={`Tailscode on iPhone, Suomi dark: ${shot.caption}`}
+                  loading={i < 3 ? 'eager' : 'lazy'}
+                  class="hidden w-full dark:block"
+                />
+                <img
+                  src={screenshotUrl(shot.light)}
+                  srcset={srcsetFor(shot.light, shot.w)}
+                  sizes="260px"
+                  width={shot.w}
+                  height={shot.h}
+                  alt={`Tailscode on iPhone, Suomi light: ${shot.caption}`}
+                  loading={i < 3 ? 'eager' : 'lazy'}
+                  class="w-full dark:hidden"
+                />
+              </div>
+              <figcaption class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+                <span class="accent-text mr-1 font-semibold">{String(i + 1).padStart(2, '0')}</span>
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Desktop band -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-2">ls ~/tailscode/desktop</p>
+      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        Three desks, one shared core
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        The Linux client is native GTK4; the Mac client is native AppKit; the phone is programmatic
+        UIKit. All three render the same toolkit-free core, and a parity registry refuses to compile
+        a client that hasn't answered for a capability the others have.
+      </p>
+
+      <div class="mb-4 grid gap-4 sm:grid-cols-3">
+        {
+          clients.map((cl) => (
+            <div class="term-frame p-4">
+              <p class="mb-1 text-sm font-bold text-paper-text dark:text-term-text">{cl.name}</p>
+              <p class="term-label accent-text mb-2">{cl.stack}</p>
+              <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">{cl.note}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="grid gap-4 lg:grid-cols-2">
+        <figure
+          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border lg:col-span-2"
+        >
+          <img
+            src={screenshotUrl(deskAnalytics.dark)}
+            srcset={srcsetFor(deskAnalytics.dark, deskAnalytics.w)}
+            sizes="(min-width: 1152px) 1088px, 100vw"
+            width={deskAnalytics.w}
+            height={deskAnalytics.h}
+            alt={`Tailscode for Linux, Suomi dark: ${deskAnalytics.caption}`}
+            loading="lazy"
+            class="hidden w-full dark:block"
+          />
+          <img
+            src={screenshotUrl(deskAnalytics.light)}
+            srcset={srcsetFor(deskAnalytics.light, deskAnalytics.w)}
+            sizes="(min-width: 1152px) 1088px, 100vw"
+            width={deskAnalytics.w}
+            height={deskAnalytics.h}
+            alt={`Tailscode for Linux, Suomi light: ${deskAnalytics.caption}`}
+            loading="lazy"
+            class="w-full dark:hidden"
+          />
+          <figcaption
+            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
+          >
+            {deskAnalytics.caption} — every server's ledger merged into one account, priced turn by turn
+            from the CLI's own transcripts.
+          </figcaption>
+        </figure>
+        <figure
+          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border lg:col-span-2"
+        >
+          <img
+            src={screenshotUrl(deskUltracode)}
+            srcset={srcsetFor(deskUltracode, 1920)}
+            sizes="(min-width: 1152px) 1088px, 100vw"
+            width={1920}
+            height={1080}
+            alt="Tailscode for Linux: an ultracode turn — the composer's edge burns with the rainbow, the effort chip names it"
+            loading="lazy"
+            class="w-full"
+          />
+          <figcaption
+            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
+          >
+            An ultracode turn announces itself: the composer's edge burns rainbow, the chip names
+            the tier, and the presence orb wears the same rim while it runs.
+          </figcaption>
+        </figure>
+        <figure
+          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+        >
+          <img
+            src={screenshotUrl(deskCompaction)}
+            srcset={srcsetFor(deskCompaction, 1920)}
+            sizes="(min-width: 1024px) 544px, 100vw"
+            width={1920}
+            height={1080}
+            alt="Tailscode for Linux: a compaction rendered as a readable seam in the transcript"
+            loading="lazy"
+            class="w-full"
+          />
+          <figcaption
+            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
+          >
+            A compaction is a seam, not a wall: what was traded for what, with the full summary
+            behind a reader.
+          </figcaption>
+        </figure>
+        <figure
+          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+        >
+          <img
+            src={screenshotUrl(deskAsk)}
+            srcset={srcsetFor(deskAsk, 1920)}
+            sizes="(min-width: 1024px) 544px, 100vw"
+            width={1920}
+            height={1080}
+            alt="Tailscode for Linux: the quick ask summoned over a live chat"
+            loading="lazy"
+            class="w-full"
+          />
+          <figcaption
+            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
+          >
+            The quick ask: one global chord from any program, and the answer lands in a real
+            conversation.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section
+      id="features"
+      class="border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-2">tailscode --features</p>
+      <h2 class="mb-8 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        What {app.shortName} does
+      </h2>
+      <FeatureGrid features={c.features} accent={accent} />
+    </section>
+
+    <!-- Pricing -->
+    {
+      c.pricing && (
+        <section
+          id="pricing"
+          class="border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+        >
+          <p class="prompt-line mb-2">tailscode --pricing</p>
+          <h2 class="mb-8 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+            {c.pricing.heading}
+          </h2>
+          <PricingTable pricing={c.pricing} accent={accent} />
+        </section>
+      )
+    }
+
+    <!-- How it works -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-2">man tailscode</p>
+      <h2 class="mb-8 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        How {app.shortName} works
+      </h2>
+      <ol class="grid gap-4 sm:grid-cols-3">
+        {
+          c.howItWorks.map((step, i) => (
+            <li class="term-frame p-5">
+              <p class="term-label accent-text mb-2">{String(i + 1).padStart(2, '0')}</p>
+              <p class="mb-1.5 text-sm font-bold text-paper-text dark:text-term-text">
+                {step.step}
+              </p>
+              <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+                {step.body}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-2">tailscode --help</p>
+      <h2 class="mb-8 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        Questions, answered
+      </h2>
+      <FaqAccordion faq={c.faq} accent={accent} />
+    </section>
+
+    <!-- Final CTA -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <div class="term-frame relative overflow-hidden p-6 sm:p-10" style={`--accent:${accent}`}>
+        <span class="cta-spine absolute inset-y-0 left-0 w-1" aria-hidden="true"></span>
+        <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-4">
+            {
+              app.iconLocal && (
+                <AppIcon
+                  src={app.iconLocal}
+                  width={64}
+                  height={64}
+                  displayWidths={[56]}
+                  class="h-14 w-14 rounded-[0.9rem] border border-paper-border object-cover dark:border-term-border"
+                />
+              )
+            }
+            <div>
+              <h2 class="text-lg font-bold text-paper-text dark:text-term-text sm:text-xl">
+                {c.ctaLine}
+              </h2>
+              <p class="mt-1 text-sm text-paper-muted dark:text-term-muted">{c.pricingNote}</p>
+            </div>
+          </div>
+          <div class="flex shrink-0 flex-wrap items-center gap-3">
+            <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
+            >
+              <img src="/icons/github.svg" alt="" width="18" height="18" class="dark:invert" />
+              View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-paper-border pt-5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint"
+        >
+          {
+            app.version && (
+              <span>
+                v{app.version}
+                {app.minimumOsVersion ? ` · requires iOS ${app.minimumOsVersion}+` : ''}
+              </span>
+            )
+          }
+          <a
+            href={app.appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-paper-green dark:hover:text-term-green"
+          >
+            App Store ↗
+          </a>
+          {
+            githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-paper-green dark:hover:text-term-green"
+              >
+                GitHub ↗
+              </a>
+            )
+          }
+          {
+            releaseUrl && (
+              <a
+                href={releaseUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-paper-green dark:hover:text-term-green"
+              >
+                Releases ↗
+              </a>
+            )
+          }
+          <a href="/tailscode/support" class="hover:text-paper-green dark:hover:text-term-green">
+            Support ↗
+          </a>
+          <a href="/tailscode/privacy" class="hover:text-paper-green dark:hover:text-term-green">
+            Privacy ↗
+          </a>
+          <span>by {app.sellerName ?? 'Midgar Oy'}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- More apps -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border">
+      <p class="prompt-line mb-5">ls ~/apps</p>
+      <div class="flex flex-wrap gap-3">
+        {
+          siblings.map((s) => (
+            <a
+              href={`/${s.slug}/`}
+              class="group inline-flex items-center gap-2.5 rounded-sm border border-paper-border px-3 py-2 text-sm transition-colors hover:border-paper-border2 dark:border-term-border dark:hover:border-term-border2"
+            >
+              {s.iconLocal && (
+                <AppIcon
+                  src={s.iconLocal}
+                  width={24}
+                  height={24}
+                  displayWidths={[24]}
+                  class="h-6 w-6 rounded-md object-cover"
+                />
+              )}
+              <span class="font-medium text-paper-muted group-hover:text-paper-green dark:text-term-muted dark:group-hover:text-term-green">
+                {s.shortName}
+              </span>
+            </a>
+          ))
+        }
+        <a
+          href="/apps"
+          class="inline-flex items-center gap-2 rounded-sm border border-paper-border px-3 py-2 text-sm font-medium text-paper-muted transition-colors hover:border-paper-border2 hover:text-paper-green dark:border-term-border dark:text-term-muted dark:hover:border-term-border2 dark:hover:text-term-green"
+        >
+          all apps →
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <script>
+    // Autoplay is a courtesy, not a rule: viewers who asked the OS for less
+    // motion get a poster and a play button instead of a moving page.
+    const video = document.querySelector<HTMLVideoElement>('#sync video');
+    if (video && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.removeAttribute('autoplay');
+      video.pause();
+      video.controls = true;
+    }
+  </script>
+</BaseLayout>
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: var(--accent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .hero-icon {
+    box-shadow: 0 14px 40px -12px color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  .accent-btn {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  :global(.dark) .accent-btn {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .accent-btn:hover {
+    background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+  }
+  .cta-spine {
+    background-color: var(--accent);
+    opacity: 0.7;
+  }
+  .phone-float {
+    box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.55);
+  }
+</style>

@@ -19,7 +19,11 @@ import {
 import screenshotVariants from '@data/screenshot-variants.json';
 
 export function getStaticPaths() {
-  return landingApps.map((app) => ({ params: { app: app.slug }, props: { app } }));
+  // tailscode has a bespoke page at src/pages/tailscode/index.astro; emitting it
+  // here too would render the same dist path twice with whichever wins.
+  return landingApps
+    .filter((app) => app.slug !== 'tailscode')
+    .map((app) => ({ params: { app: app.slug }, props: { app } }));
 }
 
 const { app } = Astro.props as { app: LandingApp };

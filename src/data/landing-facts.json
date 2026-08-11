@@ -2788,70 +2788,208 @@
       "screenshots": {
         "iphone": [
           {
-            "src": "/screenshots/tailscode/iphone-1.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Live turn"
+            "src": "/screenshots/tailscode/suomi-dark-01.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 1"
           },
           {
-            "src": "/screenshots/tailscode/iphone-2.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "One board"
+            "src": "/screenshots/tailscode/suomi-dark-02.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 2"
           },
           {
-            "src": "/screenshots/tailscode/iphone-3.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Inline approvals"
+            "src": "/screenshots/tailscode/suomi-dark-03.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 3"
           },
           {
-            "src": "/screenshots/tailscode/iphone-4.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Answerable questions"
+            "src": "/screenshots/tailscode/suomi-dark-04.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 4"
           },
           {
-            "src": "/screenshots/tailscode/iphone-5.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Subagents in place"
+            "src": "/screenshots/tailscode/suomi-dark-05.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 5"
           },
           {
-            "src": "/screenshots/tailscode/iphone-6.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "A task, end to end"
+            "src": "/screenshots/tailscode/suomi-dark-06.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 6"
           },
           {
-            "src": "/screenshots/tailscode/iphone-7.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Context compacted"
+            "src": "/screenshots/tailscode/suomi-dark-07.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 7"
           },
           {
-            "src": "/screenshots/tailscode/iphone-8.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Rich rendering"
+            "src": "/screenshots/tailscode/suomi-dark-08.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 8"
           },
           {
-            "src": "/screenshots/tailscode/iphone-9.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "All your chats"
+            "src": "/screenshots/tailscode/suomi-dark-09.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 9"
           },
           {
-            "src": "/screenshots/tailscode/iphone-10.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Live usage"
+            "src": "/screenshots/tailscode/suomi-dark-10.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 10"
           },
           {
-            "src": "/screenshots/tailscode/iphone-11.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Model picker"
+            "src": "/screenshots/tailscode/suomi-dark-11.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 11"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-dark-12.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (dark), screen 12"
+          }
+        ],
+        "iphonelight": [
+          {
+            "src": "/screenshots/tailscode/suomi-light-01.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 1"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-02.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 2"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-03.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 3"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-04.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 4"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-05.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 5"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-06.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 6"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-07.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 7"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-08.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 8"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-09.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 9"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-10.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 10"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-11.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 11"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-12.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, Suomi theme (light), screen 12"
+          }
+        ],
+        "linux": [
+          {
+            "src": "/screenshots/tailscode/desk-dark-chat.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Tailscode for Linux: live transcript, file tree, quota gauges"
+          },
+          {
+            "src": "/screenshots/tailscode/desk-dark-split.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Tailscode for Linux: two sessions in tiled splits"
+          },
+          {
+            "src": "/screenshots/tailscode/desk-dark-analytics.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Tailscode for Linux: usage analytics dashboard"
+          },
+          {
+            "src": "/screenshots/tailscode/desk-dark-compaction.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Tailscode for Linux: a compaction seam in the transcript"
+          },
+          {
+            "src": "/screenshots/tailscode/desk-dark-ask.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Tailscode for Linux: the quick ask, summoned over a chat"
+          },
+          {
+            "src": "/screenshots/tailscode/desk-dark-ultracode.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Tailscode for Linux: an ultracode turn with the rainbow composer edge"
+          }
+        ],
+        "linuxlight": [
+          {
+            "src": "/screenshots/tailscode/desk-light-chat.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Tailscode for Linux in the Suomi light face: live transcript"
+          },
+          {
+            "src": "/screenshots/tailscode/desk-light-split.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Tailscode for Linux in the Suomi light face: tiled splits"
+          },
+          {
+            "src": "/screenshots/tailscode/desk-light-analytics.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Tailscode for Linux in the Suomi light face: analytics"
           }
         ]
       },
