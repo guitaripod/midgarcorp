@@ -38,6 +38,13 @@ const srcsetFor = (src: string, w: number) => {
   ].join(', ');
 };
 
+/// The click-through asset for the lightbox: desk and composite shots have true-4K
+/// masters under full/; phone shots are already served at full resolution.
+const fullFor = (src: string) =>
+  screenshotUrl(
+    /\/(desk-|sync-02|sync-03)/.test(src) ? src.replace('/tailscode/', '/tailscode/full/') : src
+  );
+
 /// One screen in its two faces. The site's own theme toggle decides which face
 /// renders, so every screenshot on the page follows the reader's choice.
 interface PairedShot {
@@ -320,8 +327,9 @@ const clients = [
             width={deskSplit.w}
             height={deskSplit.h}
             alt={`Tailscode for Linux, Suomi theme dark: ${deskSplit.caption}`}
-            class="hidden w-full dark:block"
+            class="hidden w-full cursor-zoom-in dark:block"
             fetchpriority="high"
+            data-full={fullFor(deskSplit.dark)}
           />
           <img
             src={screenshotUrl(deskSplit.light)}
@@ -330,8 +338,9 @@ const clients = [
             width={deskSplit.w}
             height={deskSplit.h}
             alt={`Tailscode for Linux, Suomi theme light: ${deskSplit.caption}`}
-            class="w-full dark:hidden"
+            class="w-full cursor-zoom-in dark:hidden"
             fetchpriority="high"
+            data-full={fullFor(deskSplit.light)}
           />
         </div>
         <figcaption class="mt-3 text-center text-xs text-paper-faint dark:text-term-faint">
@@ -366,7 +375,8 @@ const clients = [
             height={syncShots.send.h}
             alt="Tailscode on iPhone: the prompt just sent, the turn starting, the composer edge burning the ultracode rainbow"
             loading="lazy"
-            class="w-full"
+            class="w-full cursor-zoom-in"
+            data-full={fullFor(syncShots.send.src)}
           />
           <figcaption
             class="mt-auto border-t border-paper-border px-4 py-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted"
@@ -387,7 +397,8 @@ const clients = [
               height={syncShots.desk.h}
               alt="Tailscode for Linux seconds later: the same session live in the sidebar, transcript already streaming, no files pane"
               loading="lazy"
-              class="w-full"
+              class="w-full cursor-zoom-in"
+              data-full={fullFor(syncShots.desk.src)}
             />
             <figcaption
               class="border-t border-paper-border px-4 py-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted"
@@ -407,7 +418,8 @@ const clients = [
               height={syncShots.both.h}
               alt="Both machines side by side with the same settled answer, the turn priced in the phone's chrome"
               loading="lazy"
-              class="w-full"
+              class="w-full cursor-zoom-in"
+              data-full={fullFor(syncShots.both.src)}
             />
             <figcaption
               class="border-t border-paper-border px-4 py-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted"
@@ -446,7 +458,8 @@ const clients = [
             height={deskChat.h}
             alt="Tailscode for Linux wearing the Suomi theme's dark face"
             loading="lazy"
-            class="w-full"
+            class="w-full cursor-zoom-in"
+            data-full={fullFor(deskChat.dark)}
           />
           <figcaption
             class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
@@ -465,7 +478,8 @@ const clients = [
             height={deskChat.h}
             alt="Tailscode for Linux wearing the Suomi theme's light face"
             loading="lazy"
-            class="w-full"
+            class="w-full cursor-zoom-in"
+            data-full={fullFor(deskChat.light)}
           />
           <figcaption
             class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
@@ -503,7 +517,8 @@ const clients = [
                   height={shot.h}
                   alt={`Tailscode on iPhone, Suomi dark: ${shot.caption}`}
                   loading={i < 3 ? 'eager' : 'lazy'}
-                  class="hidden w-full dark:block"
+                  class="hidden w-full cursor-zoom-in dark:block"
+                  data-full={fullFor(shot.dark)}
                 />
                 <img
                   src={screenshotUrl(shot.light)}
@@ -513,7 +528,8 @@ const clients = [
                   height={shot.h}
                   alt={`Tailscode on iPhone, Suomi light: ${shot.caption}`}
                   loading={i < 3 ? 'eager' : 'lazy'}
-                  class="w-full dark:hidden"
+                  class="w-full cursor-zoom-in dark:hidden"
+                  data-full={fullFor(shot.light)}
                 />
               </div>
               <figcaption class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
@@ -562,7 +578,8 @@ const clients = [
             height={deskAnalytics.h}
             alt={`Tailscode for Linux, Suomi dark: ${deskAnalytics.caption}`}
             loading="lazy"
-            class="hidden w-full dark:block"
+            class="hidden w-full cursor-zoom-in dark:block"
+            data-full={fullFor(deskAnalytics.dark)}
           />
           <img
             src={screenshotUrl(deskAnalytics.light)}
@@ -572,7 +589,8 @@ const clients = [
             height={deskAnalytics.h}
             alt={`Tailscode for Linux, Suomi light: ${deskAnalytics.caption}`}
             loading="lazy"
-            class="w-full dark:hidden"
+            class="w-full cursor-zoom-in dark:hidden"
+            data-full={fullFor(deskAnalytics.light)}
           />
           <figcaption
             class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
@@ -592,7 +610,8 @@ const clients = [
             height={1080}
             alt="Tailscode for Linux: an ultracode turn — the composer's edge burns with the rainbow, the effort chip names it"
             loading="lazy"
-            class="w-full"
+            class="w-full cursor-zoom-in"
+            data-full={fullFor(deskUltracode)}
           />
           <figcaption
             class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
@@ -612,7 +631,8 @@ const clients = [
             height={1080}
             alt="Tailscode for Linux: a compaction rendered as a readable seam in the transcript"
             loading="lazy"
-            class="w-full"
+            class="w-full cursor-zoom-in"
+            data-full={fullFor(deskCompaction)}
           />
           <figcaption
             class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
@@ -632,7 +652,8 @@ const clients = [
             height={1080}
             alt="Tailscode for Linux: the quick ask summoned over a live chat"
             loading="lazy"
-            class="w-full"
+            class="w-full cursor-zoom-in"
+            data-full={fullFor(deskAsk)}
           />
           <figcaption
             class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
@@ -831,6 +852,99 @@ const clients = [
     </section>
   </div>
 
+  <div
+    id="shot-lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Screenshot at full resolution"
+  >
+    <img id="shot-lightbox-img" src="" alt="" draggable="false" />
+    <button
+      type="button"
+      data-lightbox-close
+      aria-label="Close"
+      class="fixed right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-xl text-white/80 transition-colors hover:text-white"
+    >
+      ✕
+    </button>
+    <button
+      type="button"
+      data-lightbox-prev
+      aria-label="Previous screenshot"
+      class="fixed left-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-xl text-white/80 transition-colors hover:text-white sm:flex"
+    >
+      ‹
+    </button>
+    <button
+      type="button"
+      data-lightbox-next
+      aria-label="Next screenshot"
+      class="fixed right-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-xl text-white/80 transition-colors hover:text-white sm:flex"
+    >
+      ›
+    </button>
+  </div>
+
+  <script>
+    const box = document.getElementById('shot-lightbox') as HTMLDivElement;
+    const view = document.getElementById('shot-lightbox-img') as HTMLImageElement;
+    let rail: HTMLImageElement[] = [];
+    let at = -1;
+
+    const visible = () =>
+      Array.from(document.querySelectorAll<HTMLImageElement>('img[data-full]')).filter(
+        (img) => img.offsetParent !== null
+      );
+
+    const show = (index: number) => {
+      at = (index + rail.length) % rail.length;
+      const source = rail[at];
+      view.src = source.dataset.full ?? source.src;
+      view.alt = source.alt;
+      view.classList.remove('zoomed');
+    };
+
+    const open = (source: HTMLImageElement) => {
+      rail = visible();
+      box.classList.remove('hidden');
+      box.classList.add('flex');
+      document.documentElement.style.overflow = 'hidden';
+      show(rail.indexOf(source));
+    };
+
+    const close = () => {
+      box.classList.add('hidden');
+      box.classList.remove('flex');
+      document.documentElement.style.overflow = '';
+      view.src = '';
+      at = -1;
+    };
+
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target instanceof HTMLImageElement && target.dataset.full && !box.contains(target)) {
+        open(target);
+        return;
+      }
+      if (box.classList.contains('hidden')) return;
+      if (target === view) {
+        view.classList.toggle('zoomed');
+        return;
+      }
+      if (target.closest('[data-lightbox-prev]')) show(at - 1);
+      else if (target.closest('[data-lightbox-next]')) show(at + 1);
+      else if (target === box || target.closest('[data-lightbox-close]')) close();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (box.classList.contains('hidden')) return;
+      if (event.key === 'Escape') close();
+      else if (event.key === 'ArrowLeft') show(at - 1);
+      else if (event.key === 'ArrowRight') show(at + 1);
+    });
+  </script>
+
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </BaseLayout>
 
@@ -860,5 +974,21 @@ const clients = [
   .cta-spine {
     background-color: var(--accent);
     opacity: 0.7;
+  }
+  #shot-lightbox-img {
+    max-width: 94vw;
+    max-height: 94vh;
+    object-fit: contain;
+    cursor: zoom-in;
+  }
+  #shot-lightbox-img.zoomed {
+    max-width: none;
+    max-height: none;
+    cursor: zoom-out;
+  }
+  #shot-lightbox:has(.zoomed) {
+    overflow: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 </style>
