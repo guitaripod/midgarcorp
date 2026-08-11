@@ -15,7 +15,7 @@
       "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9f/b9/3c/9fb93cb6-bd66-ac39-e9fc-d563c1904978/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/bf/73/53/bf7353ef-8559-35ae-600c-b1a121c4fba7/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
         "Curated Webb image gallery",
@@ -119,7 +119,7 @@
       "category": "Utilities",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-inventory-warranty/id1523538855",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7f/11/cb/7f11cbf5-915f-b574-61fb-33a0d6f4d51b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1d/61/70/1d617007-7bde-48be-cc5c-a836b3d15262/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#10B981",
       "features": [
         "Barcode scanning",
@@ -140,7 +140,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/80/93/aa/8093aaa9-3843-3b7e-ecf7-24486451fd59/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b8/f7/a1/b8f7a192-7e9a-815f-c2c8-087f196c3007/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EF4444",
       "features": [
         "All country flags",
@@ -223,7 +223,7 @@
       "category": "Developer Tools",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a4/0b/18/a40b184f-480e-6dfd-611a-a681062306cb/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/53/ec/b3/53ecb3ae-4fe4-fb08-d316-fc0f06194f56/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#546BFF",
       "features": [
         "Drive Claude Code \u0026 opencode from your phone",
@@ -231,6 +231,26 @@
         "Watch the turn land on your Lock Screen"
       ],
       "releaseDate": "2026-07-28T07:00:00Z"
+    },
+    {
+      "id": "helia",
+      "name": "Helia: UV Index \u0026 Sun Safety",
+      "tagline": "The Honest Solar Coach",
+      "description": "Helia is the honest solar coach. Most sun apps either push you to maximize a tan or just show a raw UV number.",
+      "platforms": [
+        "iPhone"
+      ],
+      "category": "Health \u0026 Fitness",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/helia-uv-index-sun-safety/id6785542220",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/96/5a/16/965a168c-422b-3aa4-5c20-3602a93448fd/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "primaryColor": "#F5A623",
+      "features": [
+        "A live sunburn budget tuned to your skin",
+        "Real-time local UV \u0026 a safe-exposure timer",
+        "Circadian, vitamin-D \u0026 mood coaching"
+      ],
+      "releaseDate": "2026-07-21T07:00:00Z"
     },
     {
       "id": "psybeam",
@@ -254,6 +274,28 @@
       "releaseDate": "2026-06-22T07:00:00Z"
     },
     {
+      "id": "flaccy",
+      "name": "Flaccy",
+      "tagline": "The Player for the Music You Own",
+      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
+      "platforms": [
+        "iPhone",
+        "Apple Watch",
+        "Mac"
+      ],
+      "category": "Music",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/29/d6/1929d60e-a606-59d1-1235-fbd2c6013730/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#FF4D6D",
+      "features": [
+        "Gapless FLAC playback with quality badges",
+        "AI-organized library, no manual tagging",
+        "Last.fm scrobbling, charts \u0026 Year in Music"
+      ],
+      "releaseDate": "2026-07-09T07:00:00Z"
+    },
+    {
       "id": "payday",
       "name": "Pay Day: E-Invoice \u0026 Peppol",
       "tagline": "Peppol \u0026 Factur-X Invoices on iPhone",
@@ -273,48 +315,6 @@
         "Real EN 16931 VAT engine"
       ],
       "releaseDate": "2026-07-14T07:00:00Z"
-    },
-    {
-      "id": "helia",
-      "name": "Helia: UV Index \u0026 Sun Safety",
-      "tagline": "The Honest Solar Coach",
-      "description": "Helia is the honest solar coach. Most sun apps either push you to maximize a tan or just show a raw UV number.",
-      "platforms": [
-        "iPhone"
-      ],
-      "category": "Health \u0026 Fitness",
-      "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/helia-uv-index-sun-safety/id6785542220",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/19/25/1f/19251f97-b2c5-733d-2870-366d450af97f/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
-      "primaryColor": "#F5A623",
-      "features": [
-        "A live sunburn budget tuned to your skin",
-        "Real-time local UV \u0026 a safe-exposure timer",
-        "Circadian, vitamin-D \u0026 mood coaching"
-      ],
-      "releaseDate": "2026-07-21T07:00:00Z"
-    },
-    {
-      "id": "flaccy",
-      "name": "Flaccy",
-      "tagline": "The Player for the Music You Own",
-      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
-      "platforms": [
-        "iPhone",
-        "Apple Watch",
-        "Mac"
-      ],
-      "category": "Music",
-      "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ca/0e/c2/ca0ec2c4-16df-7ad5-b417-c1e85e2d66e4/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#FF4D6D",
-      "features": [
-        "Gapless FLAC playback with quality badges",
-        "AI-organized library, no manual tagging",
-        "Last.fm scrobbling, charts \u0026 Year in Music"
-      ],
-      "releaseDate": "2026-07-09T07:00:00Z"
     }
   ]
 }
