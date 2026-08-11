@@ -2900,6 +2900,38 @@
             "h": 1080,
             "label": "The same answer settled on both machines, with the turn priced in the phone chrome"
           }
+        ],
+        "iphonereal": [
+          {
+            "src": "/screenshots/tailscode/real-01-board.webp",
+            "w": 1260,
+            "h": 2736,
+            "label": "Home board with two live turns, real servers"
+          },
+          {
+            "src": "/screenshots/tailscode/real-02-agent.webp",
+            "w": 1260,
+            "h": 2736,
+            "label": "A live agent turn with a review fan-out, priced as it runs"
+          },
+          {
+            "src": "/screenshots/tailscode/real-03-ultracode.webp",
+            "w": 1260,
+            "h": 2736,
+            "label": "An ultracode turn finished: task board done, rainbow composer"
+          },
+          {
+            "src": "/screenshots/tailscode/real-04-quickask.webp",
+            "w": 1260,
+            "h": 2736,
+            "label": "Quick ask picking the machine and the model"
+          },
+          {
+            "src": "/screenshots/tailscode/real-05-usage.webp",
+            "w": 1260,
+            "h": 2736,
+            "label": "Claude, Grok and opencode plan gauges on one screen"
+          }
         ]
       },
       "openSource": true,

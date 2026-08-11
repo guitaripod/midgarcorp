@@ -91,6 +91,34 @@ const deskCompaction = `${shotBase}/desk-dark-compaction.webp`;
 const deskAsk = `${shotBase}/desk-dark-ask.webp`;
 const deskUltracode = `${shotBase}/desk-dark-ultracode.webp`;
 
+/// Five frames off a real phone on a real evening — live turns, real servers, real spend.
+const realShots = [
+  {
+    src: `${shotBase}/real-01-board.webp`,
+    caption:
+      'Two turns live at once — one wearing the ultracode rainbow on its row — over recents from half a dozen models.',
+  },
+  {
+    src: `${shotBase}/real-02-agent.webp`,
+    caption:
+      'A code review fanning out mid-turn: 35 tools deep, one agent working, the session priced live in the chrome.',
+  },
+  {
+    src: `${shotBase}/real-03-ultracode.webp`,
+    caption:
+      'An ultracode turn lands: five of five tasks struck through, master ↑4 on the git chip, the composer edge still burning.',
+  },
+  {
+    src: `${shotBase}/real-04-quickask.webp`,
+    caption: 'Quick ask aims anywhere: pick the machine, pick the model, ask.',
+  },
+  {
+    src: `${shotBase}/real-05-usage.webp`,
+    caption:
+      'The tanks, read from the machines themselves: Claude, Grok and opencode, each window with its own reset clock.',
+  },
+];
+
 /// Three stills from one real ultracode turn, captured on both machines at once.
 const syncShots = {
   send: { src: `${shotBase}/sync-01-send.webp`, w: 1320, h: 2868 },
@@ -542,6 +570,44 @@ const clients = [
       </div>
     </section>
 
+    <!-- Real-device rail -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-2">tailscode ps --live</p>
+      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        And this is a real evening
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        Everything above is the built-in demo. These five are the app in service, pulled straight
+        off the phone — real servers, real chats across half a dozen providers, real money on the
+        chrome. Status bar and all.
+      </p>
+      <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-3">
+        {
+          realShots.map((shot, i) => (
+            <figure class="w-[250px] shrink-0 snap-center sm:w-[270px]">
+              <div class="phone-frame overflow-hidden rounded-[2.3rem] bg-neutral-900 p-[7px]">
+                <img
+                  src={screenshotUrl(shot.src)}
+                  srcset={srcsetFor(shot.src, 1260)}
+                  sizes="270px"
+                  width={1260}
+                  height={2736}
+                  alt={`Tailscode on a real iPhone: ${shot.caption}`}
+                  loading="lazy"
+                  class="w-full cursor-zoom-in rounded-[1.85rem]"
+                  data-full={fullFor(shot.src)}
+                />
+              </div>
+              <figcaption class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+                <span class="accent-text mr-1 font-semibold">{String(i + 1).padStart(2, '0')}</span>
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
     <!-- Desktop band -->
     <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
       <p class="prompt-line mb-2">ls ~/tailscode/desktop</p>
@@ -974,6 +1040,11 @@ const clients = [
   .cta-spine {
     background-color: var(--accent);
     opacity: 0.7;
+  }
+  .phone-frame {
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 8%),
+      0 18px 50px -18px rgb(0 0 0 / 55%);
   }
   #shot-lightbox-img {
     max-width: 94vw;
