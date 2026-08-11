@@ -277,7 +277,7 @@
           const pct = maxRecent ? ((game.playtime_2weeks || 0) / maxRecent) * 100 : 0;
           const subBits = [];
           if (lastPlayed) subBits.push(lastPlayed);
-          if (recently && game.playtime_2weeks) subBits.push(`${recently} this week`);
+          if (recently && game.playtime_2weeks) subBits.push(recently);
           if (total) subBits.push(`${total} total`);
           return `
             <div class="flex items-center gap-2 py-1">
