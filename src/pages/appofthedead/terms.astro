@@ -1,0 +1,135 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const accent = '#A855F7';
+const seoTitle = 'App of the Dead Terms of Use';
+const metaDescription =
+  'Terms of Use (EULA) for App of the Dead, including auto-renewable subscription terms, one-time purchases, and educational-content disclaimers.';
+
+const sections = [
+  {
+    title: 'Acceptance',
+    body: 'By downloading or using App of the Dead you agree to these Terms of Use. If you do not agree, do not use the app. These terms are between you and Midgar Oy; Apple is not a party to them.',
+  },
+  {
+    title: 'Licence',
+    body: 'Midgar Oy grants you a personal, non-transferable, non-exclusive licence to use App of the Dead on Apple-branded devices you own or control, as permitted by the App Store Terms of Service. You may not redistribute, resell, reverse-engineer, or extract the app’s content for republication.',
+  },
+  {
+    title: 'What the app is — and is not',
+    body: 'App of the Dead is an educational overview of what world religions and belief traditions teach about death and the afterlife. It presents those traditions descriptively and is not religious instruction, pastoral guidance, theological authority, or advice of any kind. It is not affiliated with or endorsed by any religious body.',
+  },
+  {
+    title: 'The Oracle is generated text',
+    body: 'The Oracle produces responses using a language model that runs on your device. Its output is generated text written in the voice of a tradition’s figure — it is not a real person, not a religious authority, and may be inaccurate. Do not rely on it for factual, medical, legal, financial, or spiritual decisions.',
+  },
+  {
+    title: 'Subscriptions',
+    body: 'Premium is offered as an auto-renewable subscription: Premium Annual at $19.99 per year (with a 7-day free trial for new subscribers) or Premium Monthly at $2.99 per month. Prices are in US dollars and vary by territory; your local price is always shown in the app before you buy.',
+  },
+  {
+    title: 'Renewal and cancellation',
+    body: 'Payment is charged to your Apple Account at confirmation of purchase. A subscription renews automatically unless auto-renew is turned off at least 24 hours before the end of the current period, and your Apple Account is charged for renewal within 24 hours of the end of that period. You can manage or cancel a subscription in Settings → your name → Subscriptions after purchase. If you cancel during a free trial, any unused portion of that trial is forfeited when you buy a subscription.',
+  },
+  {
+    title: 'One-time purchases',
+    body: 'Individual tradition paths, deity packs, the Oracle Wisdom Pack, and the lifetime Ultimate Enlightenment unlock are one-time, non-consumable purchases tied to your Apple Account. They do not renew and do not expire. Use Restore Purchases to recover them on a new device.',
+  },
+  {
+    title: 'Refunds',
+    body: 'All purchases are handled by Apple, and refunds are governed by Apple’s policies — we cannot issue them directly. Request a refund at reportaproblem.apple.com.',
+  },
+  {
+    title: 'Content changes',
+    body: 'Lessons, traditions and features may be added, revised or removed over time as the app is corrected and expanded. A purchased path remains unlocked for as long as it ships in the app.',
+  },
+  {
+    title: 'No warranty and limitation of liability',
+    body: 'The app is provided “as is”, without warranty of any kind to the fullest extent permitted by law. Midgar Oy is not liable for any indirect or consequential loss arising from your use of the app. Nothing here limits liability that cannot lawfully be limited. These terms are governed by the laws of Finland.',
+  },
+  {
+    title: 'Contact',
+    body: 'Questions about these terms: guitaripod@gmail.com. Midgar Oy, Finland.',
+  },
+];
+---
+
+<BaseLayout title={seoTitle} description={metaDescription}>
+  <div style={`--accent:${accent}`}>
+    <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/appofthedead" class="hover:text-paper-green dark:hover:text-term-green">
+            appofthedead
+          </a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">terms</li>
+      </ol>
+    </nav>
+
+    <header class="py-10 sm:py-14">
+      <p class="prompt-line mb-5">cat appofthedead/TERMS.md</p>
+      <h1
+        class="mb-3 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+      >
+        App of the Dead Terms of Use
+      </h1>
+      <p class="text-xs text-paper-faint dark:text-term-faint">Effective August 17, 2026</p>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
+        An educational app about what the world’s traditions teach about death. <span
+          class="font-semibold text-paper-text dark:text-term-text"
+          >It teaches about belief; it does not speak for any of them.</span
+        >
+      </p>
+    </header>
+
+    <section class="border-t border-paper-border pb-12 pt-10 dark:border-term-border">
+      <div class="grid max-w-3xl gap-5">
+        {
+          sections.map((s) => (
+            <div class="term-frame p-5 sm:p-6">
+              <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
+                {s.title}
+              </h2>
+              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="border-t border-paper-border py-10 dark:border-term-border">
+      <div class="term-frame max-w-3xl p-5 sm:p-6">
+        <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
+          Privacy
+        </h2>
+        <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+          App of the Dead collects no personal data. See the
+          <a
+            href="/appofthedead/privacy"
+            class="text-paper-green underline decoration-dotted underline-offset-2 dark:text-term-green"
+            >privacy policy</a
+          > for the detail.
+        </p>
+      </div>
+      <p class="mt-8 text-xs text-paper-faint dark:text-term-faint">
+        <a href="/appofthedead" class="hover:text-paper-green dark:hover:text-term-green"
+          >← back to App of the Dead</a
+        >
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: var(--accent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+</style>
