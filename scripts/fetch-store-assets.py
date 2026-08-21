@@ -96,7 +96,7 @@ PINNED_DESCRIPTIONS = {"solarbeam"}
 # caption band, which the site would render *inside* a device frame; the site's
 # own convention is a bare screenshot with the caption in HTML underneath. ASC
 # also has no visionOS bucket here, so a re-fetch would drop those shots.
-PINNED_SCREENSHOTS = {"solarbeam"}
+PINNED_SCREENSHOTS = {"solarbeam", "tailscode"}
 # Cap the stored webp width per device class (display never exceeds this @2x).
 WIDTH_CAP = {"iphone": 1290, "ipad": 1600, "tv": 1920, "mac": 1920}
 
