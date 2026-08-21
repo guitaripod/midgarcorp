@@ -67,7 +67,7 @@
     },
     {
       "title": "The month has numbers",
-      "body": "Every server's transcripts are priced turn by turn and merged into one account: daily bars, the week's rhythm, models, projects, tools, what caching saved — plus a trophy room that scores the same ledger into Game Center.",
+      "body": "Every server's transcripts are priced turn by turn and merged into one account: daily bars, the week's rhythm, models, projects, tools, and what caching saved — plus a trophy room that scores the same ledger, and wears it in Game Center on iPhone.",
       "glyph": "⬡"
     },
     {
@@ -118,7 +118,8 @@
       "price": "$14.99 once",
       "items": [
         "Multiple saved servers, one session list",
-        "Concurrent Live Activities",
+        "Concurrent Live Activities (iPhone)",
+        "One purchase, iPhone and Mac",
         "A supporter badge, and that is all it is"
       ]
     },
@@ -131,7 +132,7 @@
         "note": "No subscription"
       }
     ],
-    "footnote": "The Linux and Mac desktop clients are free, open-source, and complete — Pro lives on the iPhone, once."
+    "footnote": "One purchase covers iPhone and Mac on the same Apple Account. The Linux client and the Mac build you compile yourself are free, open-source and complete — the unlock is how the work gets funded, not a wall around it."
   },
   "faq": [
     {
@@ -144,7 +145,7 @@
     },
     {
       "q": "Is there really a Linux desktop client?",
-      "a": "Yes — a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. All three clients share one toolkit-free core, and a parity registry refuses to compile a client that hasn't answered for a capability the others have. The desktops add tiling splits, an embedded terminal, web and video panes, and a global quick-ask hotkey."
+      "a": "Yes — a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. All three clients share one toolkit-free core, and a parity registry refuses to compile a client that hasn't answered for a capability the others have. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and the Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
     },
     {
       "q": "Does my code pass through anyone's cloud?",
@@ -164,7 +165,7 @@
     },
     {
       "q": "Can I try it without a server?",
-      "a": "Yes. Tap 'Try the demo' on the first screen: two sample servers with realistic sessions let you explore streaming, approvals, questions, analytics, and the file browser — no tailnet needed. Every screenshot on this page is that demo wearing the Suomi theme."
+      "a": "Yes. Tap 'Try the demo' on the first screen: two sample servers with realistic sessions let you explore streaming, approvals, questions, the analytics and the git surface — no tailnet needed. Every screenshot on this page is that demo wearing the Suomi theme."
     }
   ],
   "screenshotCaptions": {
@@ -190,5 +191,5 @@
     ]
   },
   "ctaLine": "Your agent is already working. Watch it from anywhere.",
-  "pricingNote": "Free and open source under GPL-3.0. Pro unlocks unlimited servers and concurrent Live Activities for $14.99, one time."
+  "pricingNote": "Free and open source under GPL-3.0. Pro unlocks unlimited servers — and concurrent Live Activities on iPhone — for $14.99, one time, across iPhone and Mac."
 }
