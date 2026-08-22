@@ -131,7 +131,7 @@
     {
       "id": "master-of-flags",
       "name": "Master of Flags: World Quiz",
-      "tagline": "Learn World Flags",
+      "tagline": "Learn Flags \u0026 Capitals",
       "description": "Master of Flags is FREE. No ads.",
       "platforms": [
         "iPhone",
@@ -140,12 +140,12 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b8/f7/a1/b8f7a192-7e9a-815f-c2c8-087f196c3007/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/63/a2/06/63a206fb-c43d-4b30-b973-e1d2cab4840b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EF4444",
       "features": [
-        "All country flags",
-        "Interactive quizzes",
-        "Progress tracking"
+        "Flags and capitals, six regions",
+        "Daily Challenge and streaks",
+        "250-flag encyclopedia"
       ],
       "releaseDate": "2019-10-21T07:00:00Z"
     },
@@ -161,7 +161,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/32/4e/88/324e8803-fb41-475a-4f6b-c1f7b040910f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2e/b5/ac/2eb5ac1d-6523-959e-de9f-a7788daf1388/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#7C3AED",
       "features": [
         "Local MLX LLM technology for offline AI",
@@ -213,26 +213,6 @@
       "releaseDate": "2026-07-06T07:00:00Z"
     },
     {
-      "id": "tailscode",
-      "name": "Tailscode",
-      "tagline": "The Remote for Your Coding Agents",
-      "description": "Tailscode turns your iPhone into the remote control for the coding agents already running on your machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen.",
-      "platforms": [
-        "iPhone"
-      ],
-      "category": "Developer Tools",
-      "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/53/ec/b3/53ecb3ae-4fe4-fb08-d316-fc0f06194f56/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#546BFF",
-      "features": [
-        "Drive Claude Code \u0026 opencode from your phone",
-        "Point-to-point over your own Tailscale network",
-        "Watch the turn land on your Lock Screen"
-      ],
-      "releaseDate": "2026-07-28T07:00:00Z"
-    },
-    {
       "id": "helia",
       "name": "Helia: UV Index \u0026 Sun Safety",
       "tagline": "The Honest Solar Coach",
@@ -274,26 +254,24 @@
       "releaseDate": "2026-06-22T07:00:00Z"
     },
     {
-      "id": "flaccy",
-      "name": "Flaccy",
-      "tagline": "The Player for the Music You Own",
-      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
+      "id": "tailscode",
+      "name": "Tailscode",
+      "tagline": "The Remote for Your Coding Agents",
+      "description": "Tailscode turns your iPhone into the remote control for the coding agents already running on your machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen.",
       "platforms": [
-        "iPhone",
-        "Apple Watch",
-        "Mac"
+        "iPhone"
       ],
-      "category": "Music",
+      "category": "Developer Tools",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/29/d6/1929d60e-a606-59d1-1235-fbd2c6013730/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#FF4D6D",
+      "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/44/9a/c4/449ac406-bcdf-1df8-8191-245b6f4166d8/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#546BFF",
       "features": [
-        "Gapless FLAC playback with quality badges",
-        "AI-organized library, no manual tagging",
-        "Last.fm scrobbling, charts \u0026 Year in Music"
+        "Drive Claude Code \u0026 opencode from your phone",
+        "Point-to-point over your own Tailscale network",
+        "Watch the turn land on your Lock Screen"
       ],
-      "releaseDate": "2026-07-09T07:00:00Z"
+      "releaseDate": "2026-07-28T07:00:00Z"
     },
     {
       "id": "payday",
@@ -315,6 +293,28 @@
         "Real EN 16931 VAT engine"
       ],
       "releaseDate": "2026-07-14T07:00:00Z"
+    },
+    {
+      "id": "flaccy",
+      "name": "Flaccy",
+      "tagline": "The Player for the Music You Own",
+      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
+      "platforms": [
+        "iPhone",
+        "Apple Watch",
+        "Mac"
+      ],
+      "category": "Music",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7f/d0/09/7fd0099e-a6b4-79ba-7cdf-ca911b095715/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#FF4D6D",
+      "features": [
+        "Gapless FLAC playback with quality badges",
+        "AI-organized library, no manual tagging",
+        "Last.fm scrobbling, charts \u0026 Year in Music"
+      ],
+      "releaseDate": "2026-07-09T07:00:00Z"
     }
   ]
 }

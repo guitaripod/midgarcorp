@@ -154,12 +154,12 @@ var appEnhancements = map[int]struct {
 	},
 	1484270248: {
 		ID:           "master-of-flags",
-		Tagline:      "Learn World Flags",
+		Tagline:      "Learn Flags & Capitals",
 		PrimaryColor: "#EF4444",
 		Features: []string{
-			"All country flags",
-			"Interactive quizzes",
-			"Progress tracking",
+			"Flags and capitals, six regions",
+			"Daily Challenge and streaks",
+			"250-flag encyclopedia",
 		},
 	},
 	6751730339: {
