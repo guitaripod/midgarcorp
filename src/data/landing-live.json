@@ -117,21 +117,21 @@
     "minimumOsVersion": "18.0"
   },
   "6787493695": {
-    "version": "1.4.0",
+    "version": "1.3.4",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2026-07-09T07:00:00Z",
-    "currentVersionReleaseDate": "2026-08-22T18:30:00Z",
+    "currentVersionReleaseDate": "2026-08-13T16:50:00Z",
     "minimumOsVersion": "18.6"
   },
   "6791660932": {
-    "version": "1.23",
+    "version": "1.21",
     "price": "Free",
     "rating": 0,
     "ratingCount": 0,
     "releaseDate": "2026-07-28T07:00:00Z",
-    "currentVersionReleaseDate": "2026-08-21T22:50:21Z",
+    "currentVersionReleaseDate": "2026-08-17T17:36:35Z",
     "minimumOsVersion": "18.0"
   }
 }
