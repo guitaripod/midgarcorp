@@ -1,6 +1,6 @@
 {
   "seoTitle": "Master of Flags — Free Flag Quiz App, No Ads",
-  "metaDescription": "Learn every country flag and capital with a no-ads, no-subscription quiz. Daily Challenge, streaks, spaced-repetition review and a 250-flag encyclopedia. Free forever.",
+  "metaDescription": "Learn every country flag and capital with a no-ads, no-subscription quiz. Daily Challenge, streaks, capitals mode and a 250-flag encyclopedia. Free forever — start today.",
   "accentColor": "#EF4444",
   "keywords": [
     "flag quiz app",
@@ -44,12 +44,12 @@
     },
     {
       "title": "Pro: drill what you miss",
-      "body": "Smart Review schedules the flags you got wrong with spaced repetition. Similar Flags drills the lookalikes — Chad and Romania, Chile and Texas. Hard Mode deals eight flags instead of three.",
+      "body": "Smart Review schedules the flags you got wrong with spaced repetition. Similar Flags drills the lookalikes — Chad and Romania, Indonesia and Monaco. Hard Mode deals eight flags instead of three.",
       "glyph": "▲"
     },
     {
       "title": "Progress you can see",
-      "body": "XP, levels, per-region accuracy and a full statistics dashboard, plus Game Center leaderboards and achievements.",
+      "body": "XP, levels, per-region accuracy, plus Game Center leaderboards and achievements. The full Statistics dashboard is part of Pro.",
       "glyph": "✹"
     }
   ],
@@ -64,7 +64,7 @@
     },
     {
       "step": "Master it",
-      "body": "Let Smart Review resurface the ones you miss, and unlock Pro if you want harder rounds and full statistics."
+      "body": "Unlock Pro to let Smart Review resurface the ones you miss, and to get harder rounds and full statistics."
     }
   ],
   "faq": [

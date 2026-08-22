@@ -1144,8 +1144,8 @@
       },
       "name": "Master of Flags: World Quiz",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "description": "Master of Flags is now FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no \"weekly trial\", no account. Play free forever, and if you want more, Pro is a single one-time purchase. Pay once, own it for life.\n\nPLAY FREE\n• Flag quiz across Europe, Asia, Africa, the Americas and the world\n• Daily Challenge — ten flags, once a day, shareable results\n• Daily streaks with streak freezes so one busy day doesn't erase your run\n• XP, levels and per-region progress\n• Game Center leaderboards and achievements\n• Flag Encyclopedia — browse roughly 250 flags and territories with details about each country, completely free\n\nGO PRO — ONE PURCHASE, YOURS FOREVER\n• Hard Mode: eight flags per round instead of three\n• Review Mistakes: drill exactly the flags you got wrong\n• Statistics: levels, streaks and progress across every region\n• 5 streak freezes per month instead of 1\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nThe quiz rewards consistency, and the Encyclopedia doubles as a study reference for geography, capitals and country facts. Perfect for students, travelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app: you are a founder. Everything Pro unlocks is yours automatically, free, forever. Thank you for seven years.",
-      "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
+      "description": "Master of Flags is now FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no \"weekly trial\", no account. Play free forever, and if you want more, Pro is a single one-time purchase. Pay once, own it for life.\n\nPLAY FREE\n• Flag and capital quizzes across Europe, Asia, Africa, the Americas, Oceania and the whole world\n• Daily Challenge — ten flags, once a day, shareable results\n• Daily streaks with streak freezes so one busy day doesn't erase your run\n• XP, levels and per-region progress\n• Game Center leaderboards and achievements\n• Flag Encyclopedia — browse roughly 250 flags and territories with details about each country, completely free\n\nGO PRO — ONE PURCHASE, YOURS FOREVER\n• Hard Mode: eight flags per round instead of three\n• Smart Review: spaced repetition resurfaces exactly the flags you got wrong\n• Similar Flags: drill the lookalike packs — Tricolor Twins, Nordic Crosses, Pan-Arab and more\n• Daily Archive: replay any past Daily Challenge\n• Statistics: levels, streaks and progress across every region\n• 5 streak freezes per month instead of 1\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nThe quiz rewards consistency, and the Encyclopedia doubles as a study reference for geography, capitals and country facts. Perfect for students, travelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app: you are a founder. Everything Pro unlocks is yours automatically, free, forever. Thank you for seven years.",
+      "releaseNotes": "Capitals mode, Smart Review, Similar Flags drills and the Oceania region. Plus fixes and improvements.",
       "category": "Education",
       "genres": [
         "Education",
@@ -1156,13 +1156,22 @@
       "price": "Free",
       "rating": 4.6,
       "ratingCount": 5,
-      "version": "2.3.1",
+      "version": "3.1.0",
       "releaseDate": "2019-10-21T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-24T11:25:06Z",
+      "currentVersionReleaseDate": "2026-08-20T00:27:44Z",
       "minimumOsVersion": "17.4",
       "contentRating": "4+",
       "languages": [
-        "EN"
+        "EN",
+        "ES",
+        "DE",
+        "FR",
+        "IT",
+        "PT",
+        "JA",
+        "KO",
+        "ZH-Hans",
+        "ZH-Hant"
       ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
