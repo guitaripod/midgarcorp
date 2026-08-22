@@ -213,24 +213,24 @@
       "releaseDate": "2026-07-06T07:00:00Z"
     },
     {
-      "id": "helia",
-      "name": "Helia: UV Index \u0026 Sun Safety",
-      "tagline": "The Honest Solar Coach",
-      "description": "Helia is the honest solar coach. Most sun apps either push you to maximize a tan or just show a raw UV number.",
+      "id": "tailscode",
+      "name": "Tailscode",
+      "tagline": "The Remote for Your Coding Agents",
+      "description": "Tailscode turns your iPhone into the remote control for the coding agents already running on your machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen.",
       "platforms": [
         "iPhone"
       ],
-      "category": "Health \u0026 Fitness",
+      "category": "Developer Tools",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/helia-uv-index-sun-safety/id6785542220",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/96/5a/16/965a168c-422b-3aa4-5c20-3602a93448fd/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
-      "primaryColor": "#F5A623",
+      "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/30/2f/92/302f9203-4bfa-12ad-9326-aa1abcdb0350/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#546BFF",
       "features": [
-        "A live sunburn budget tuned to your skin",
-        "Real-time local UV \u0026 a safe-exposure timer",
-        "Circadian, vitamin-D \u0026 mood coaching"
+        "Drive Claude Code \u0026 opencode from your phone",
+        "Point-to-point over your own Tailscale network",
+        "Watch the turn land on your Lock Screen"
       ],
-      "releaseDate": "2026-07-21T07:00:00Z"
+      "releaseDate": "2026-07-28T07:00:00Z"
     },
     {
       "id": "psybeam",
@@ -254,24 +254,24 @@
       "releaseDate": "2026-06-22T07:00:00Z"
     },
     {
-      "id": "tailscode",
-      "name": "Tailscode",
-      "tagline": "The Remote for Your Coding Agents",
-      "description": "Tailscode turns your iPhone into the remote control for the coding agents already running on your machines. Send a prompt from anywhere, pocket your phone, and watch the turn finish on your Lock Screen.",
+      "id": "helia",
+      "name": "Helia: UV Index \u0026 Sun Safety",
+      "tagline": "The Honest Solar Coach",
+      "description": "Helia is the honest solar coach. Most sun apps either push you to maximize a tan or just show a raw UV number.",
       "platforms": [
         "iPhone"
       ],
-      "category": "Developer Tools",
+      "category": "Health \u0026 Fitness",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/44/9a/c4/449ac406-bcdf-1df8-8191-245b6f4166d8/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#546BFF",
+      "appStoreUrl": "https://apps.apple.com/us/app/helia-uv-index-sun-safety/id6785542220",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/96/5a/16/965a168c-422b-3aa4-5c20-3602a93448fd/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "primaryColor": "#F5A623",
       "features": [
-        "Drive Claude Code \u0026 opencode from your phone",
-        "Point-to-point over your own Tailscale network",
-        "Watch the turn land on your Lock Screen"
+        "A live sunburn budget tuned to your skin",
+        "Real-time local UV \u0026 a safe-exposure timer",
+        "Circadian, vitamin-D \u0026 mood coaching"
       ],
-      "releaseDate": "2026-07-28T07:00:00Z"
+      "releaseDate": "2026-07-21T07:00:00Z"
     },
     {
       "id": "payday",
@@ -307,7 +307,7 @@
       "category": "Music",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/flaccy/id6787493695",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7f/d0/09/7fd0099e-a6b4-79ba-7cdf-ca911b095715/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/bd/13/ed/bd13ede9-4e8f-91c5-0f03-37653396d61d/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#FF4D6D",
       "features": [
         "Gapless FLAC playback with quality badges",

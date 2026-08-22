@@ -163,6 +163,14 @@
     480,
     960
   ],
+  "/screenshots/masterofflags/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/iphone-8.webp": [
+    480,
+    960
+  ],
   "/screenshots/masterofflags/ipad-1.webp": [
     480,
     960
@@ -172,6 +180,22 @@
     960
   ],
   "/screenshots/masterofflags/ipad-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/mac-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/mac-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/mac-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/mac-4.webp": [
     480,
     960
   ],
@@ -443,118 +467,6 @@
     480,
     960
   ],
-  "/screenshots/crucible/iphone-1.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/iphone-2.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/iphone-3.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/iphone-4.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/iphone-1.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/iphone-2.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/iphone-3.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/iphone-4.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/iphone-5.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/iphone-6.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/iphone-7.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/iphone-8.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/mac-1.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/mac-2.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/mac-3.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/mac-4.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/mac-5.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-1.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-2.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-3.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-4.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-5.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-6.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-7.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-8.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-9.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-10.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/linux-11.webp": [
-    480,
-    960
-  ],
   "/screenshots/tailscode/suomi-dark-01.webp": [
     480,
     960
@@ -719,6 +631,118 @@
     480,
     960
   ],
+  "/screenshots/crucible/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/iphone-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-9.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-10.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/linux-11.webp": [
+    480,
+    960
+  ],
   "/screenshots/dreameater/icon.webp": [
     72,
     144,
@@ -784,17 +808,17 @@
     144,
     216
   ],
+  "/screenshots/tailscode/icon.webp": [
+    72,
+    144,
+    216
+  ],
   "/screenshots/crucible/icon.webp": [
     72,
     144,
     216
   ],
   "/screenshots/flaccy/icon.webp": [
-    72,
-    144,
-    216
-  ],
-  "/screenshots/tailscode/icon.webp": [
     72,
     144,
     216

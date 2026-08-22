@@ -1119,6 +1119,18 @@
             "w": 1290,
             "h": 2803,
             "label": "Screen 6"
+          },
+          {
+            "src": "/screenshots/masterofflags/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 7"
+          },
+          {
+            "src": "/screenshots/masterofflags/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Screen 8"
           }
         ],
         "ipad": [
@@ -1140,12 +1152,38 @@
             "h": 2133,
             "label": "Screen 3"
           }
+        ],
+        "mac": [
+          {
+            "src": "/screenshots/masterofflags/mac-1.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Play"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-2.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Encyclopedia"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-3.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Daily"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-4.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Pro"
+          }
         ]
       },
       "name": "Master of Flags: World Quiz",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "description": "Master of Flags is now FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no \"weekly trial\", no account. Play free forever, and if you want more, Pro is a single one-time purchase. Pay once, own it for life.\n\nPLAY FREE\n• Flag and capital quizzes across Europe, Asia, Africa, the Americas, Oceania and the whole world\n• Daily Challenge — ten flags, once a day, shareable results\n• Daily streaks with streak freezes so one busy day doesn't erase your run\n• XP, levels and per-region progress\n• Game Center leaderboards and achievements\n• Flag Encyclopedia — browse roughly 250 flags and territories with details about each country, completely free\n\nGO PRO — ONE PURCHASE, YOURS FOREVER\n• Hard Mode: eight flags per round instead of three\n• Smart Review: spaced repetition resurfaces exactly the flags you got wrong\n• Similar Flags: drill the lookalike packs — Tricolor Twins, Nordic Crosses, Pan-Arab and more\n• Daily Archive: replay any past Daily Challenge\n• Statistics: levels, streaks and progress across every region\n• 5 streak freezes per month instead of 1\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nThe quiz rewards consistency, and the Encyclopedia doubles as a study reference for geography, capitals and country facts. Perfect for students, travelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app: you are a founder. Everything Pro unlocks is yours automatically, free, forever. Thank you for seven years.",
-      "releaseNotes": "Capitals mode, Smart Review, Similar Flags drills and the Oceania region. Plus fixes and improvements.",
+      "description": "Master of Flags is FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no\n\"weekly trial\", no account. Play free forever, and if you want more, Pro is\na single one-time purchase. Pay once, own it for life.\n\nNEW IN 3.0 — THE WHOLE WORLD\n• All 250 countries and territories, fully offline — Oceania finally joins the quiz\n• Capitals mode: learn every capital city, free for everyone\n• Flags drawn at their true shapes — Nepal and Switzerland the way they really look\n\nPLAY FREE\n• Flag and capitals quiz across Europe, Asia, Africa, the Americas, Oceania and the world\n• Daily Challenge — ten flags, once a day, shareable emoji results\n• Daily streaks with streak freezes, and a 48-hour streak repair when life happens\n• Browse your full Daily Challenge history in the archive\n• XP, levels and per-region progress\n• Game Center leaderboards and achievements\n• Flag Encyclopedia — the story behind each flag: what the\n  colors and symbols mean, country shapes, neighbors, languages, currencies\n  and a short history. Completely free, completely offline\n\nGO PRO — ONE PURCHASE, YOURS FOREVER\n• Smart Review: real spaced repetition that resurfaces exactly the flags and\n  capitals you miss, on the day you're about to forget them\n• Similar Flags: drill the lookalikes — Chad vs Romania, Indonesia vs Monaco,\n  the Nordic crosses — plus packs built from your own mix-ups\n• Hard Mode: eight flags per round instead of three\n• Daily Archive: replay every daily you missed\n• Statistics: accuracy, mastery and your toughest countries\n• 5 streak freezes per month instead of 1\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nSpaced repetition is how memory actually works — Master of Flags schedules\nyour reviews so flags stick for good. The Encyclopedia doubles as a study\nreference for geography, capitals and country facts. Perfect for students,\ntravelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app:\nyou are a founder. Everything Pro unlocks is yours automatically, free,\nforever. Thank you for seven years.",
+      "releaseNotes": "The whole app is now localized — every screen, not just this page. Now in Spanish.",
       "category": "Education",
       "genres": [
         "Education",
@@ -1163,15 +1201,15 @@
       "contentRating": "4+",
       "languages": [
         "EN",
-        "ES",
-        "DE",
         "FR",
+        "DE",
         "IT",
-        "PT",
         "JA",
         "KO",
-        "ZH-Hans",
-        "ZH-Hant"
+        "PT",
+        "ZH",
+        "ES",
+        "ZH"
       ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
@@ -1304,14 +1342,15 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.knowtheflag",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c7/b1/9c/c7b19c18-19b6-9288-c046-59ac810a1386/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/63/a2/06/63a206fb-c43d-4b30-b973-e1d2cab4840b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://twitter.com/prblemslver",
-      "keywords": "country,guess,game,trivia,map,states,europe,flashcard,study,memorize,atlas,national,city,asia,africa",
+      "keywords": "atlas,country,africa,europe,asia,trivia,guess,map,states,daily,kids,memorize,city,offline,nations",
       "iconLocal": "/screenshots/masterofflags/icon.webp",
       "platforms": [
         "iPhone",
-        "iPad"
+        "iPad",
+        "Mac"
       ]
     },
     {
@@ -2533,243 +2572,6 @@
       ]
     },
     {
-      "slug": "crucible",
-      "trackId": 0,
-      "shortName": "Crucible",
-      "status": "live",
-      "primaryColor": "#F97316",
-      "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/crucible/iphone-1.webp",
-            "w": 1290,
-            "h": 2796,
-            "label": "Home — Continue Watching, On Deck, and Recently Added"
-          },
-          {
-            "src": "/screenshots/crucible/iphone-2.webp",
-            "w": 1290,
-            "h": 2796,
-            "label": "Detail with backdrop, cast & crew, and more like this"
-          },
-          {
-            "src": "/screenshots/crucible/iphone-3.webp",
-            "w": 1290,
-            "h": 2796,
-            "label": "Built-in player with Skip Intro and Picture-in-Picture"
-          },
-          {
-            "src": "/screenshots/crucible/iphone-4.webp",
-            "w": 1290,
-            "h": 2796,
-            "label": "Movie library with Continue Watching and a poster grid"
-          }
-        ]
-      },
-      "name": "Crucible: Plex Client",
-      "appStoreUrl": "https://github.com/guitaripod/Crucible/releases/latest",
-      "description": "Crucible is a fast, native Plex client for iPhone — and a love letter to building iOS apps without a Mac. The whole app is Swift 6 and programmatic UIKit, cross-compiled on Arch Linux and deployed straight to an iPhone over USB. No Xcode, no storyboards, no macOS anywhere in the loop.\n\nEVERYTHING IN ITS PLACE\nContinue Watching, On Deck, and Recently Added greet you on the home screen. Browse libraries as poster grids with genre filters and sort options, or dig into raw folders for unindexed content.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits straight from Plex markers, Picture-in-Picture with background audio, lock screen and Control Center controls, and Up Next that rolls the next episode as the credits start. Direct play when your device can handle the file, automatic HLS transcoding when it can't.\n\nTAKE IT OFFLINE\nDownload movies, whole seasons, or single episodes at the quality you pick — Original, High, Medium, Low, or Data Saver. Background transfers keep going when the app is closed and resume after interruptions, downloads stay Wi-Fi-only unless you allow cellular, and a dedicated Downloads tab shows progress, storage used, and free space. A Live Activity tracks live progress on the Lock Screen and in the Dynamic Island — a WidgetKit extension compiled and signed on Arch Linux via xtool — while downloads run in the background, auto-resume from where they left off, and ping you when they finish. Offline playback runs through the same player — Skip Intro/Credits, resume, Picture-in-Picture, background audio, and lock screen controls all work with no network.\n\nGO DEEPER\nCast and crew, More Like This recommendations, subtitle and audio track selection, and adjustable playback speed. Hand a title off between your devices and find what you've watched in Spotlight.\n\nOPEN SOURCE, BUILT ON LINUX\nCrucible is free and open source under the GPL-3.0 license, with zero third-party dependencies — pure Apple frameworks. Read the code, file an issue, or build it yourself.",
-      "category": "Entertainment",
-      "price": "Free",
-      "rating": 0,
-      "ratingCount": 0,
-      "version": "1.4.0",
-      "releaseDate": "2026-03-21T19:58:59Z",
-      "currentVersionReleaseDate": "2026-07-02T14:45:00Z",
-      "minimumOsVersion": "17.0",
-      "sellerName": "guitaripod",
-      "icon": "/screenshots/crucible/icon.webp",
-      "iconLocal": "/screenshots/crucible/icon.webp",
-      "supportUrl": "https://github.com/guitaripod/Crucible/issues",
-      "openSource": true,
-      "githubUrl": "https://github.com/guitaripod/Crucible",
-      "latestReleaseUrl": "https://github.com/guitaripod/Crucible/releases/latest",
-      "license": "GPL-3.0",
-      "platforms": [
-        "iPhone"
-      ]
-    },
-    {
-      "slug": "flaccy",
-      "trackId": 6787493695,
-      "shortName": "Flaccy",
-      "status": "live",
-      "primaryColor": "#FF4D6D",
-      "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/flaccy/iphone-1.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Library"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-2.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Now Playing"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-3.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Lyrics"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-4.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Quality"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-5.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Recap"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-6.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Year in Music"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-7.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Listening Guide"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-8.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Album"
-          }
-        ],
-        "mac": [
-          {
-            "src": "/screenshots/flaccy/mac-1.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Now Playing"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-2.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Library"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-3.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Artist"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-4.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Songs"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-5.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Playlists"
-          }
-        ],
-        "linux": [
-          {
-            "src": "/screenshots/flaccy/linux-1.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Library"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-2.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Now Playing"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-3.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Album"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-4.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Songs"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-5.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Artist"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-6.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Playlists"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-7.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Queue"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-8.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Lyrics"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-9.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Stats"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-10.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Wantlist"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-11.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Light mode"
-          }
-        ]
-      },
-      "name": "Flaccy",
-      "appStoreUrl": "https://apps.apple.com/us/app/id6787493695",
-      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.\n\nYOUR LIBRARY, ORGANIZED\n• Import via USB or the Files app — messy folder names and scene releases are identified and cleaned up automatically\n• Albums, artists, songs, and playlists with search, sorting, and stunning artwork\n• Gapless playback that honors your albums, with queue persistence across launches\n• Codec, bit depth, and sample rate shown on every track — see exactly what you're playing\n\nMADE FOR LISTENING\n• Synced lyrics with tap-to-seek\n• Full playback controls on the Lock Screen and in the Dynamic Island\n• AirPlay, sleep timer, and a Now Playing screen with ambient artwork backdrops\n\nSCROBBLE EVERYTHING\n• Sign in with Last.fm and every play is scrobbled — even offline, with automatic retry\n• Loved tracks, listening charts, and artist bios matched to your library\n• Year in Music: shareable story cards and a poster of your listening year\n\nPHONE-FREE ON APPLE WATCH\n• Sync tracks to your watch and play them offline — no iPhone required\n• A true standalone player: gapless playback, shuffle, repeat, and AirPods controls from your wrist\n• Storage-smart sync that knows what fits on your watch\n\nREDISCOVER YOUR COLLECTION\n• Start a station from any song — Flaccy builds a queue from your own library\n• Suggested playlists and similar-artist trails\n• Share any track as a universal streaming link — friends open it in their app, you keep your FLACs\n\nHONEST ABOUT AUDIO\nThe built-in Listening Guide explains what actually reaches your ears — Bluetooth codecs, why lossless can't reach AirPods, when FLAC is worth it, and what blind tests really show. No snake oil.\n\nFlaccy plays FLAC, ALAC, AAC, M4A, MP3, WAV, AIFF, and CAF.",
-      "category": "Music",
-      "price": "Free",
-      "rating": 0,
-      "ratingCount": 0,
-      "version": "1.0",
-      "minimumOsVersion": "18.0",
-      "bundleId": "com.midgarcorp.flaccy",
-      "sellerName": "Midgar Oy",
-      "icon": null,
-      "marketingUrl": "https://midgarcorp.cc/flaccy",
-      "supportUrl": "https://midgarcorp.cc/flaccy",
-      "iconLocal": "/screenshots/flaccy/icon.webp",
-      "platforms": [
-        "iPhone",
-        "Apple Watch",
-        "Mac",
-        "Linux"
-      ]
-    },
-    {
       "slug": "tailscode",
       "trackId": 6791660932,
       "shortName": "Tailscode",
@@ -3058,6 +2860,243 @@
       "githubUrl": "https://github.com/guitaripod/Tailscode",
       "license": "GPL-3.0",
       "currentVersionReleaseDate": "2026-08-20T04:18:33Z"
+    },
+    {
+      "slug": "crucible",
+      "trackId": 0,
+      "shortName": "Crucible",
+      "status": "live",
+      "primaryColor": "#F97316",
+      "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/crucible/iphone-1.webp",
+            "w": 1290,
+            "h": 2796,
+            "label": "Home — Continue Watching, On Deck, and Recently Added"
+          },
+          {
+            "src": "/screenshots/crucible/iphone-2.webp",
+            "w": 1290,
+            "h": 2796,
+            "label": "Detail with backdrop, cast & crew, and more like this"
+          },
+          {
+            "src": "/screenshots/crucible/iphone-3.webp",
+            "w": 1290,
+            "h": 2796,
+            "label": "Built-in player with Skip Intro and Picture-in-Picture"
+          },
+          {
+            "src": "/screenshots/crucible/iphone-4.webp",
+            "w": 1290,
+            "h": 2796,
+            "label": "Movie library with Continue Watching and a poster grid"
+          }
+        ]
+      },
+      "name": "Crucible: Plex Client",
+      "appStoreUrl": "https://github.com/guitaripod/Crucible/releases/latest",
+      "description": "Crucible is a fast, native Plex client for iPhone — and a love letter to building iOS apps without a Mac. The whole app is Swift 6 and programmatic UIKit, cross-compiled on Arch Linux and deployed straight to an iPhone over USB. No Xcode, no storyboards, no macOS anywhere in the loop.\n\nEVERYTHING IN ITS PLACE\nContinue Watching, On Deck, and Recently Added greet you on the home screen. Browse libraries as poster grids with genre filters and sort options, or dig into raw folders for unindexed content.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits straight from Plex markers, Picture-in-Picture with background audio, lock screen and Control Center controls, and Up Next that rolls the next episode as the credits start. Direct play when your device can handle the file, automatic HLS transcoding when it can't.\n\nTAKE IT OFFLINE\nDownload movies, whole seasons, or single episodes at the quality you pick — Original, High, Medium, Low, or Data Saver. Background transfers keep going when the app is closed and resume after interruptions, downloads stay Wi-Fi-only unless you allow cellular, and a dedicated Downloads tab shows progress, storage used, and free space. A Live Activity tracks live progress on the Lock Screen and in the Dynamic Island — a WidgetKit extension compiled and signed on Arch Linux via xtool — while downloads run in the background, auto-resume from where they left off, and ping you when they finish. Offline playback runs through the same player — Skip Intro/Credits, resume, Picture-in-Picture, background audio, and lock screen controls all work with no network.\n\nGO DEEPER\nCast and crew, More Like This recommendations, subtitle and audio track selection, and adjustable playback speed. Hand a title off between your devices and find what you've watched in Spotlight.\n\nOPEN SOURCE, BUILT ON LINUX\nCrucible is free and open source under the GPL-3.0 license, with zero third-party dependencies — pure Apple frameworks. Read the code, file an issue, or build it yourself.",
+      "category": "Entertainment",
+      "price": "Free",
+      "rating": 0,
+      "ratingCount": 0,
+      "version": "1.4.0",
+      "releaseDate": "2026-03-21T19:58:59Z",
+      "currentVersionReleaseDate": "2026-07-02T14:45:00Z",
+      "minimumOsVersion": "17.0",
+      "sellerName": "guitaripod",
+      "icon": "/screenshots/crucible/icon.webp",
+      "iconLocal": "/screenshots/crucible/icon.webp",
+      "supportUrl": "https://github.com/guitaripod/Crucible/issues",
+      "openSource": true,
+      "githubUrl": "https://github.com/guitaripod/Crucible",
+      "latestReleaseUrl": "https://github.com/guitaripod/Crucible/releases/latest",
+      "license": "GPL-3.0",
+      "platforms": [
+        "iPhone"
+      ]
+    },
+    {
+      "slug": "flaccy",
+      "trackId": 6787493695,
+      "shortName": "Flaccy",
+      "status": "live",
+      "primaryColor": "#FF4D6D",
+      "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/flaccy/iphone-1.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-2.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Now Playing"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-3.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Lyrics"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-4.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Quality"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-5.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Recap"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-6.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Year in Music"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Listening Guide"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Album"
+          }
+        ],
+        "mac": [
+          {
+            "src": "/screenshots/flaccy/mac-1.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Now Playing"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-2.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-3.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Artist"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-4.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Songs"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-5.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Playlists"
+          }
+        ],
+        "linux": [
+          {
+            "src": "/screenshots/flaccy/linux-1.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-2.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Now Playing"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-3.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Album"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-4.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Songs"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-5.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Artist"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-6.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Playlists"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-7.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Queue"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-8.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Lyrics"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-9.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Stats"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-10.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Wantlist"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-11.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Light mode"
+          }
+        ]
+      },
+      "name": "Flaccy",
+      "appStoreUrl": "https://apps.apple.com/us/app/id6787493695",
+      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.\n\nYOUR LIBRARY, ORGANIZED\n• Import via USB or the Files app — messy folder names and scene releases are identified and cleaned up automatically\n• Albums, artists, songs, and playlists with search, sorting, and stunning artwork\n• Gapless playback that honors your albums, with queue persistence across launches\n• Codec, bit depth, and sample rate shown on every track — see exactly what you're playing\n\nMADE FOR LISTENING\n• Synced lyrics with tap-to-seek\n• Full playback controls on the Lock Screen and in the Dynamic Island\n• AirPlay, sleep timer, and a Now Playing screen with ambient artwork backdrops\n\nSCROBBLE EVERYTHING\n• Sign in with Last.fm and every play is scrobbled — even offline, with automatic retry\n• Loved tracks, listening charts, and artist bios matched to your library\n• Year in Music: shareable story cards and a poster of your listening year\n\nPHONE-FREE ON APPLE WATCH\n• Sync tracks to your watch and play them offline — no iPhone required\n• A true standalone player: gapless playback, shuffle, repeat, and AirPods controls from your wrist\n• Storage-smart sync that knows what fits on your watch\n\nREDISCOVER YOUR COLLECTION\n• Start a station from any song — Flaccy builds a queue from your own library\n• Suggested playlists and similar-artist trails\n• Share any track as a universal streaming link — friends open it in their app, you keep your FLACs\n\nHONEST ABOUT AUDIO\nThe built-in Listening Guide explains what actually reaches your ears — Bluetooth codecs, why lossless can't reach AirPods, when FLAC is worth it, and what blind tests really show. No snake oil.\n\nFlaccy plays FLAC, ALAC, AAC, M4A, MP3, WAV, AIFF, and CAF.",
+      "category": "Music",
+      "price": "Free",
+      "rating": 0,
+      "ratingCount": 0,
+      "version": "1.0",
+      "minimumOsVersion": "18.0",
+      "bundleId": "com.midgarcorp.flaccy",
+      "sellerName": "Midgar Oy",
+      "icon": null,
+      "marketingUrl": "https://midgarcorp.cc/flaccy",
+      "supportUrl": "https://midgarcorp.cc/flaccy",
+      "iconLocal": "/screenshots/flaccy/icon.webp",
+      "platforms": [
+        "iPhone",
+        "Apple Watch",
+        "Mac",
+        "Linux"
+      ]
     }
   ]
 }
