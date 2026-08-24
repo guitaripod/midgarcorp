@@ -227,7 +227,7 @@ const clients = [
   {
     name: 'Mac',
     stack: 'AppKit · Liquid Glass · macOS 26',
-    note: 'The same desk with Apple materials: split panes, the analytics, the git surface, and a global quick-ask key.',
+    note: 'The same desk with Apple materials: split panes, the analytics, the git surface, and a global quick-ask key — on the App Store, and it updates itself from it.',
   },
 ];
 ---
@@ -291,6 +291,14 @@ const clients = [
 
         <div class="mb-7 flex flex-wrap items-center gap-3">
           <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+          <a
+            href="https://aur.archlinux.org/packages/tailscode"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
+          >
+            Linux — AUR ↗
+          </a>
           <a
             href={githubUrl}
             target="_blank"
@@ -465,7 +473,7 @@ const clients = [
     <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
       <p class="prompt-line mb-2">tailscode theme suomi</p>
       <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        Seven themes, and every one has two faces
+        Eight themes, and every one has two faces
       </h2>
       <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
         Shown here: <span class="font-semibold text-paper-text dark:text-term-text">Suomi</span> — kaamos
@@ -862,14 +870,22 @@ const clients = [
           }
           {
             releaseUrl && (
-              <a
-                href={releaseUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:text-paper-green dark:hover:text-term-green"
-              >
-                Releases ↗
-              </a>
+          <a
+            href={releaseUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-paper-green dark:hover:text-term-green"
+          >
+            Releases ↗
+          </a>
+          <a
+            href="https://aur.archlinux.org/packages/tailscode"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-paper-green dark:hover:text-term-green"
+          >
+            AUR ↗
+          </a>
             )
           }
           <a href="/tailscode/support" class="hover:text-paper-green dark:hover:text-term-green">

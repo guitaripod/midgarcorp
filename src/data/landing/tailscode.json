@@ -1,6 +1,6 @@
 {
   "seoTitle": "Tailscode — Claude Code & opencode on iPhone, Linux & Mac",
-  "metaDescription": "Native remote for Claude Code and opencode over your Tailscale network — an iPhone app with Lock Screen Live Activities, plus open-source GTK4 Linux and macOS desktop clients. No relay, no account, GPL-3.0.",
+  "metaDescription": "Native remote for Claude Code and opencode over your Tailscale network — an iPhone app with Lock Screen Live Activities, plus open-source GTK4 Linux and macOS desktop clients. Linux is in the AUR and on the App Store. No relay, no account, GPL-3.0.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
@@ -13,7 +13,10 @@
     "coding agent lock screen",
     "claude code live activity",
     "self-hosted ai coding",
-    "open source coding agent app"
+    "open source coding agent app",
+    "tailscode aur",
+    "claude code arch linux",
+    "aur coding agent"
   ],
   "heroHeadline": "Your coding agents, on every screen you own",
   "heroSubhead": "Tailscode is a native remote for Claude Code and opencode running on your own machines — an iPhone app with the turn on your Lock Screen, and open-source desktop clients for Linux and the Mac. Point-to-point over your tailnet, no relay, no account.",
@@ -61,7 +64,7 @@
       "glyph": "⊹"
     },
     {
-      "title": "Seven themes, two faces each",
+      "title": "Eight themes, two faces each",
       "body": "One catalog shared by every client, from Suomi's aurora-over-a-frozen-lake to fresh snow by day. Every color is pushed through an OKLab contrast corrector until it clears WCAG on its own canvas — a theme that cannot be made readable fails the build.",
       "glyph": "◐"
     },
@@ -74,6 +77,11 @@
       "title": "The repo, read — never operated",
       "body": "Branch, drift, conflicts, staged and changed files, and per-file diffs, read from the machine that has to live with them. A chip in the chat chrome spells the tree out the way a prompt does. Nothing offers to commit from your phone.",
       "glyph": "⑂"
+    },
+    {
+      "title": "Updates are standing facts",
+      "body": "Every machine in the picture — this app and each server — reports what it runs and what it could run, and one quiet mark in the chrome stays until the update is taken. A Linux package install checks the project's own release feed and hands over your package manager's command when a newer release exists; a bridge is installed end to end under one press.",
+      "glyph": "↻"
     },
     {
       "title": "One question, from anywhere",
@@ -145,7 +153,7 @@
     },
     {
       "q": "Is there really a Linux desktop client?",
-      "a": "Yes — a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. All three clients share one toolkit-free core, and a parity registry refuses to compile a client that hasn't answered for a capability the others have. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and the Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
+"a": "Yes — a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. Arch users install it from the AUR (`paru -S tailscode`); everyone else grabs the release tarball from GitHub. All three clients share one toolkit-free core, and a parity registry refuses to compile a client that hasn't answered for a capability the others have. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and the Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
     },
     {
       "q": "Does my code pass through anyone's cloud?",
