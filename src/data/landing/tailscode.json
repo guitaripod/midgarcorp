@@ -1,6 +1,6 @@
 {
-  "seoTitle": "Tailscode — Claude Code & opencode on iPhone, iPad, Linux & Mac",
-  "metaDescription": "Native remote for Claude Code and opencode over your Tailscale network — a universal iPhone & iPad app with Lock Screen Live Activities, plus open-source GTK4 Linux and macOS desktop clients. Linux is in the AUR and on the App Store. No relay, no account, GPL-3.0.",
+  "seoTitle": "Tailscode — Claude Code, Oh My Pi & opencode on iPhone, iPad, Linux & Mac",
+  "metaDescription": "Native remote for Claude Code, Oh My Pi and opencode over your Tailscale network — a universal iPhone & iPad app with Lock Screen Live Activities, plus open-source GTK4 Linux and macOS desktop clients. Linux is in the AUR and on the App Store. No relay, no account, GPL-3.0.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
@@ -10,6 +10,9 @@
     "claude code desktop app",
     "gtk4 claude code",
     "opencode mobile client",
+    "oh my pi ios app",
+    "oh my pi remote",
+    "omp mobile client",
     "tailscale coding agent",
     "remote coding agent ios",
     "coding agent lock screen",
@@ -21,7 +24,7 @@
     "aur coding agent"
   ],
   "heroHeadline": "Your AI agents, anywhere",
-  "heroSubhead": "Tailscode is a native remote for Claude Code and opencode running on your own machines — a universal app for iPhone and iPad with the turn on your Lock Screen, and open-source desktop clients for Linux and the Mac. Point-to-point over your tailnet, no relay, no account.",
+  "heroSubhead": "Tailscode is a native remote for Claude Code, Oh My Pi and opencode running on your own machines — a universal app for iPhone and iPad with the turn on your Lock Screen, and open-source desktop clients for Linux and the Mac. Point-to-point over your tailnet, no relay, no account.",
   "accentColor": "#546BFF",
   "highlights": [
     "Streams every turn live — thinking, tool calls, subagents, code",
@@ -51,8 +54,8 @@
       "glyph": "⌘"
     },
     {
-      "title": "Two agents, one app",
-      "body": "Drive opencode directly, and Claude Code through claude-bridge — the open-source companion server that turns claude into structured, streaming, subscription-backed sessions with push notifications.",
+      "title": "Three agents, one app",
+      "body": "Drive opencode directly, Claude Code through claude-bridge, and Oh My Pi through omp-bridge — two open-source companion servers that turn a terminal agent into structured, streaming, subscription-backed sessions, with push notifications on Claude. Every model Oh My Pi can reach — Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek — is one picker away, filterable by the subscription that pays for it.",
       "glyph": "◈"
     },
     {
@@ -99,7 +102,7 @@
   "howItWorks": [
     {
       "step": "Run an agent server",
-      "body": "On the machine where you code: opencode serve, or claude-bridge in front of Claude Code. Both are open source and take minutes to set up."
+      "body": "On the machine where you code: opencode serve, claude-bridge in front of Claude Code, or omp-bridge in front of Oh My Pi. All three are open source and take minutes to set up."
     },
     {
       "step": "Join the same tailnet",
@@ -151,7 +154,7 @@
     },
     {
       "q": "Which coding agents does it support?",
-      "a": "opencode natively (any provider you've configured in it), and Claude Code through claude-bridge, an open-source Swift server that exposes Claude Code as structured streaming sessions backed by your Claude subscription."
+      "a": "opencode natively (any provider you've configured in it), Claude Code through claude-bridge, and Oh My Pi through omp-bridge — two open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog with it: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama, priced per turn from the agent's own ledger."
     },
     {
       "q": "Is there really a Linux desktop client?",
@@ -171,7 +174,7 @@
     },
     {
       "q": "Is it really open source?",
-      "a": "All of it, under GPL-3.0: the iPhone app, both desktop clients, the engine (CodingAgentKit, a Swift 6 package that also runs on Linux), and the bridge (claude-bridge). Build it yourself or grab it from the App Store."
+      "a": "All of it, under GPL-3.0: the iPhone app, both desktop clients, the engine (CodingAgentKit, a Swift 6 package that also runs on Linux), and both bridges (claude-bridge, omp-bridge). Build it yourself or grab it from the App Store."
     },
     {
       "q": "Does it run on iPad?",
