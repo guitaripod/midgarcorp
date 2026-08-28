@@ -126,7 +126,16 @@ const syncShots = {
   both: { src: `${shotBase}/sync-03-both.webp`, w: 1920, h: 1080 },
 };
 
-const operatingSystem = 'iOS, Linux, macOS';
+/// The iPad set: the same demo on a 13" iPad, one face — the readable column is the point.
+const ipadCaptions = c.screenshotCaptions?.ipad ?? [];
+const ipadShots = ['live', 'home', 'subagents', 'models', 'usage', 'git'].map((name, i) => ({
+  src: `${shotBase}/ipad-${name}.webp`,
+  w: 1600,
+  h: 2133,
+  caption: ipadCaptions[i] ?? '',
+}));
+
+const operatingSystem = 'iOS, iPadOS, Linux, macOS';
 const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
 
 const allShots = Object.values(app.screenshots)
@@ -215,9 +224,9 @@ const siblings = landingApps
 
 const clients = [
   {
-    name: 'iPhone',
-    stack: 'UIKit · Liquid Glass · Live Activities',
-    note: 'The pocket remote: send, steer, approve, and watch the turn finish on your Lock Screen.',
+    name: 'iPhone & iPad',
+    stack: 'UIKit · universal · Live Activities',
+    note: 'The pocket remote: send, steer, approve, and watch the turn finish on your Lock Screen. On iPad the same app spreads out — readable columns, windows in Stage Manager, a hardware keyboard.',
   },
   {
     name: 'Linux',
@@ -328,7 +337,7 @@ const clients = [
           </span>
           <span class="flex flex-wrap gap-1.5">
             {
-              ['iPhone', 'Linux', 'Mac'].map((p) => (
+              ['iPhone', 'iPad', 'Linux', 'Mac'].map((p) => (
                 <span class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint">
                   {p}
                 </span>
@@ -616,6 +625,44 @@ const clients = [
       </div>
     </section>
 
+    <!-- iPad band -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-2">ls ~/tailscode/ipad</p>
+      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        The same app, given a bigger screen
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        Tailscode is universal: one purchase, one app, and on iPad it spreads out. Every list keeps
+        to a readable column, a chat opens in its own window for Split View and Stage Manager, and a
+        hardware keyboard drives the whole app through the same shortcut registry as the desktops.
+      </p>
+      <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-3">
+        {
+          ipadShots.map((shot, i) => (
+            <figure class="w-[320px] shrink-0 snap-center sm:w-[360px]">
+              <div class="overflow-hidden rounded-[1.3rem] border border-paper-border bg-neutral-900 p-[6px] dark:border-term-border">
+                <img
+                  src={screenshotUrl(shot.src)}
+                  srcset={srcsetFor(shot.src, shot.w)}
+                  sizes="360px"
+                  width={shot.w}
+                  height={shot.h}
+                  alt={`Tailscode on iPad: ${shot.caption}`}
+                  loading="lazy"
+                  class="w-full cursor-zoom-in rounded-[0.95rem]"
+                  data-full={fullFor(shot.src)}
+                />
+              </div>
+              <figcaption class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+                <span class="accent-text mr-1 font-semibold">{String(i + 1).padStart(2, '0')}</span>
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
     <!-- Desktop band -->
     <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
       <p class="prompt-line mb-2">ls ~/tailscode/desktop</p>
@@ -870,22 +917,24 @@ const clients = [
           }
           {
             releaseUrl && (
-          <a
-            href={releaseUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover:text-paper-green dark:hover:text-term-green"
-          >
-            Releases ↗
-          </a>
-          <a
-            href="https://aur.archlinux.org/packages/tailscode"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover:text-paper-green dark:hover:text-term-green"
-          >
-            AUR ↗
-          </a>
+              <>
+                <a
+                  href={releaseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-paper-green dark:hover:text-term-green"
+                >
+                  Releases ↗
+                </a>
+                <a
+                  href="https://aur.archlinux.org/packages/tailscode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-paper-green dark:hover:text-term-green"
+                >
+                  AUR ↗
+                </a>
+              </>
             )
           }
           <a href="/tailscode/support" class="hover:text-paper-green dark:hover:text-term-green">
