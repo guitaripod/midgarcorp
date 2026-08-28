@@ -1,9 +1,11 @@
 {
-  "seoTitle": "Tailscode — Claude Code & opencode on iPhone, Linux & Mac",
-  "metaDescription": "Native remote for Claude Code and opencode over your Tailscale network — an iPhone app with Lock Screen Live Activities, plus open-source GTK4 Linux and macOS desktop clients. Linux is in the AUR and on the App Store. No relay, no account, GPL-3.0.",
+  "seoTitle": "Tailscode — Claude Code & opencode on iPhone, iPad, Linux & Mac",
+  "metaDescription": "Native remote for Claude Code and opencode over your Tailscale network — a universal iPhone & iPad app with Lock Screen Live Activities, plus open-source GTK4 Linux and macOS desktop clients. Linux is in the AUR and on the App Store. No relay, no account, GPL-3.0.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
+    "claude code ipad app",
+    "claude code ipad client",
     "claude code linux client",
     "claude code desktop app",
     "gtk4 claude code",
@@ -19,12 +21,12 @@
     "aur coding agent"
   ],
   "heroHeadline": "Your AI agents, anywhere",
-  "heroSubhead": "Tailscode is a native remote for Claude Code and opencode running on your own machines — an iPhone app with the turn on your Lock Screen, and open-source desktop clients for Linux and the Mac. Point-to-point over your tailnet, no relay, no account.",
+  "heroSubhead": "Tailscode is a native remote for Claude Code and opencode running on your own machines — a universal app for iPhone and iPad with the turn on your Lock Screen, and open-source desktop clients for Linux and the Mac. Point-to-point over your tailnet, no relay, no account.",
   "accentColor": "#546BFF",
   "highlights": [
     "Streams every turn live — thinking, tool calls, subagents, code",
     "Approve, answer, and steer the agent without leaving the chat",
-    "iPhone, Linux, and Mac clients built on one shared core",
+    "iPhone, iPad, Linux, and Mac clients built on one shared core",
     "Point-to-point over your Tailscale network — no relay, no tracking"
   ],
   "features": [
@@ -172,6 +174,10 @@
       "a": "All of it, under GPL-3.0: the iPhone app, both desktop clients, the engine (CodingAgentKit, a Swift 6 package that also runs on Linux), and the bridge (claude-bridge). Build it yourself or grab it from the App Store."
     },
     {
+      "q": "Does it run on iPad?",
+      "a": "Yes — the same app is universal. On iPad every list keeps to a readable column, chats open in their own windows for Split View and Stage Manager, and a hardware keyboard drives the whole app: ⌘N starts a chat, the desktop clients' shortcut registry answers the rest. One purchase covers iPhone and iPad."
+    },
+    {
       "q": "Can I try it without a server?",
       "a": "Yes. Tap 'Try the demo' on the first screen: two sample servers with realistic sessions let you explore streaming, approvals, questions, the analytics and the git surface — no tailnet needed. Every screenshot on this page is that demo wearing the Suomi theme."
     }
@@ -190,6 +196,14 @@
       "Any model, any reasoning effort, mid-conversation",
       "Context compacted, not lost — and you can read exactly what it kept",
       "The repo read from the machine that owns it: branch, drift, diffs"
+    ],
+    "ipad": [
+      "The same live turn, given the room an iPad has: thinking, code, commands",
+      "Home on iPad — machines, projects, and recents in a readable column",
+      "Subagents fan out and dock inside the turn that spawned them",
+      "The model directory: every provider's catalog, starred and searchable",
+      "The month in numbers — per machine, per model, priced",
+      "Branch, staged, changed — the repo straight from the machine"
     ],
     "linux": [
       "The Linux client: GTK4, tiling splits, quota gauges, and the presence orb",

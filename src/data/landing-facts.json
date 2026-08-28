@@ -2784,6 +2784,7 @@
       "keywords": "claude,code,opencode,tailscale,agent,terminal,cli,ssh,developer,ai,pair,vibe,coding,mobile,monitor",
       "platforms": [
         "iPhone",
+        "iPad",
         "Mac"
       ],
       "screenshots": {
@@ -2933,6 +2934,44 @@
             "w": 1320,
             "h": 2868,
             "label": "Tailscode on iPhone, Suomi theme (light), screen 12"
+          }
+        ],
+        "ipad": [
+          {
+            "src": "/screenshots/tailscode/ipad-live.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Tailscode on iPad: a live turn streaming in the readable column"
+          },
+          {
+            "src": "/screenshots/tailscode/ipad-home.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Tailscode on iPad: Home with recent sessions, projects, and the composer"
+          },
+          {
+            "src": "/screenshots/tailscode/ipad-subagents.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Tailscode on iPad: a fan-out of subagents docked inside the turn"
+          },
+          {
+            "src": "/screenshots/tailscode/ipad-models.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Tailscode on iPad: the model directory across every provider"
+          },
+          {
+            "src": "/screenshots/tailscode/ipad-usage.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Tailscode on iPad: the month in numbers, per machine and per model"
+          },
+          {
+            "src": "/screenshots/tailscode/ipad-git.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Tailscode on iPad: branch, staged, and changed straight from the machine"
           }
         ],
         "linux": [

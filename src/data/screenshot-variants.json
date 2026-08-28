@@ -163,14 +163,6 @@
     480,
     960
   ],
-  "/screenshots/masterofflags/iphone-7.webp": [
-    480,
-    960
-  ],
-  "/screenshots/masterofflags/iphone-8.webp": [
-    480,
-    960
-  ],
   "/screenshots/masterofflags/ipad-1.webp": [
     480,
     960
@@ -180,22 +172,6 @@
     960
   ],
   "/screenshots/masterofflags/ipad-3.webp": [
-    480,
-    960
-  ],
-  "/screenshots/masterofflags/mac-1.webp": [
-    480,
-    960
-  ],
-  "/screenshots/masterofflags/mac-2.webp": [
-    480,
-    960
-  ],
-  "/screenshots/masterofflags/mac-3.webp": [
-    480,
-    960
-  ],
-  "/screenshots/masterofflags/mac-4.webp": [
     480,
     960
   ],
@@ -467,170 +443,6 @@
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-01.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-02.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-03.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-04.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-05.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-06.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-07.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-08.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-09.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-10.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-11.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-12.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-01.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-02.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-03.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-04.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-05.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-06.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-07.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-08.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-09.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-10.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-11.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-12.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-chat.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-split.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-analytics.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-compaction.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-ask.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-ultracode.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-light-chat.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-light-split.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-light-analytics.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/sync-01-send.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/sync-02-desk.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/sync-03-both.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-01-board.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-02-agent.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-03-ultracode.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-04-quickask.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-05-usage.webp": [
-    480,
-    960
-  ],
   "/screenshots/crucible/iphone-1.webp": [
     480,
     960
@@ -743,6 +555,194 @@
     480,
     960
   ],
+  "/screenshots/tailscode/suomi-dark-01.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-02.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-03.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-04.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-05.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-06.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-07.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-08.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-09.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-10.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-11.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-12.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-01.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-02.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-03.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-04.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-05.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-06.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-07.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-08.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-09.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-10.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-11.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-12.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-live.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-home.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-subagents.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-models.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-usage.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-git.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-chat.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-split.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-analytics.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-compaction.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-ask.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-ultracode.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-light-chat.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-light-split.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-light-analytics.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/sync-01-send.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/sync-02-desk.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/sync-03-both.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/real-01-board.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/real-02-agent.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/real-03-ultracode.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/real-04-quickask.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/real-05-usage.webp": [
+    480,
+    960
+  ],
   "/screenshots/dreameater/icon.webp": [
     72,
     144,
@@ -808,17 +808,17 @@
     144,
     216
   ],
-  "/screenshots/tailscode/icon.webp": [
-    72,
-    144,
-    216
-  ],
   "/screenshots/crucible/icon.webp": [
     72,
     144,
     216
   ],
   "/screenshots/flaccy/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/tailscode/icon.webp": [
     72,
     144,
     216
