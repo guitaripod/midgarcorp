@@ -1,6 +1,6 @@
 {
   "seoTitle": "Helia — UV Index & Sun Safety Coach for iPhone",
-  "metaDescription": "The honest solar coach. A live UV index, a personal sunburn budget, and sunscreen reminders — plus vitamin D, circadian and mood coaching on the upside. Free safety core; Pro coaching.",
+  "metaDescription": "How long can you stay in the sun today? Helia answers in minutes, for your skin and today's UV — free, hands-free, and honest. Pro adds vitamin D and morning-light coaching.",
   "keywords": [
     "sun exposure app iphone",
     "uv index tracker app",
@@ -13,8 +13,8 @@
     "daylight mood sleep tracker",
     "honest sun health app"
   ],
-  "heroHeadline": "All the upside of daylight, on a sunburn budget you never overdraw",
-  "heroSubhead": "Helia is the honest solar coach — the Oura of sunlight. It notices when you're out in daylight and tracks the session itself, hands-free: the real UV around you, a personal sunburn budget for your skin, and coaching for the daylight you actually want — circadian rhythm, mood, sleep, and vitamin D. The sun is not the enemy. The sunburn is.",
+  "heroHeadline": "How long can you stay in the sun today?",
+  "heroSubhead": "Helia is the honest solar coach. It notices when you step into daylight and tracks the session itself, hands-free: the real UV around you, a personal sunburn budget for your skin, and coaching for the daylight you actually want — vitamin D, morning light, mood and sleep. The sun is not the enemy. The sunburn is.",
   "accentColor": "#F5A623",
   "highlights": [
     "Fully automatic — Helia notices you're in the sun and logs it, no timers to start",
@@ -75,7 +75,7 @@
     },
     {
       "q": "What does Helia Pro cost?",
-      "a": "Pro is $9.99 a year (with a 7-day free trial, no payment due now) or $1.99 a month, with a one-time $129.99 lifetime option that never renews. It unlocks the year-round Light & Vitamin-D Plan: circadian light coaching, vitamin-D estimates, mood and sleep guidance, full history and trends, and the solar coach. Cancel anytime in your Apple ID settings."
+      "a": "Pro is $9.99 a year (with a 7-day free trial, no payment due now) or $1.99 a month, with a one-time $29.99 lifetime option that never renews. It unlocks the year-round Light & Vitamin-D Plan: circadian light coaching, vitamin-D estimates, mood and sleep guidance, full history and trends, and the solar coach. Cancel anytime in your Apple ID settings."
     },
     {
       "q": "Is Helia trying to give me a tan?",
@@ -108,15 +108,15 @@
   ],
   "screenshotCaptions": {
     "iphone": [
-      "Your sun, to the minute — a live, cautious estimate of your useful time",
-      "Helia flags the moment more sun mostly adds damage, not vitamin D",
-      "Every session on the map, with a vitamin-D estimate — logged automatically",
-      "Ask the science — private answers drawn from a cited, evidence-badged library",
-      "Sun School: the honest science, labeled by strength of evidence",
-      "Quiet patterns from your own days — never a diagnosis or a verdict",
-      "Pro coaches the upside — morning light, vitamin D, trends. Safety stays free"
+      "How long can I stay in the sun today? — One honest answer, in minutes — from today's UV and your skin.",
+      "Know when to cover up — Helia flags the moment more sun mostly adds damage, not vitamin D.",
+      "It tracks the sun for you — Every session logged automatically, on a map, with a vitamin-D estimate.",
+      "Ask the science — Private answers on your phone, drawn from a cited, evidence-graded library.",
+      "The honest facts about sun — Labelled by strength of evidence — no hype, no fear.",
+      "Your patterns, never a verdict — Quiet insights from your own days. Not a diagnosis.",
+      "Safety is free. Pro coaches the upside. — Morning light, vitamin D, trends — from $9.99 a year."
     ]
   },
   "ctaLine": "Get the upside of daylight, on a sunburn budget you never overdraw.",
-  "pricingNote": "Free safety core forever — live UV, your sunburn budget, and the safe-exposure timer. Pro coaching is $9.99/year (7-day free trial) or $1.99/month, with a one-time $129.99 lifetime option."
+  "pricingNote": "Free safety core forever — live UV, your sunburn budget, hands-free tracking and reminders. Pro coaching is $9.99/year (7-day free trial) or $1.99/month, with a one-time $29.99 lifetime option."
 }
