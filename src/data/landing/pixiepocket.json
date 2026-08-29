@@ -21,7 +21,8 @@
   "highlights": [
     "25 free credits to start, no sign-up",
     "Two engines: Nano Banana and GPT image",
-    "Pay per image, credits never expire"
+    "Pay per image, credits never expire",
+    "Fully localized in 10 languages"
   ],
   "features": [
     {
@@ -101,13 +102,18 @@
     {
       "q": "What are the limits on each image?",
       "a": "You can batch up to 10 images per request, choose Low, Medium, High, or Auto quality, set custom sizes from square to widescreen, and export with transparent backgrounds. Some prompts may be filtered by content moderation."
+    },
+    {
+      "q": "Is PixiePocket available in my language?",
+      "a": "Yes. The app and its App Store page are localized in English, German, Spanish, French, Italian, Japanese, Korean, Brazilian Portuguese, Simplified Chinese and Traditional Chinese."
     }
   ],
   "screenshotCaptions": {
     "iphone": [
-      "Create an image by chat",
+      "Chat your way to the image",
       "Edit a photo by talking",
-      "Browse your synced gallery"
+      "Pay per image, not per month",
+      "Nano Banana + GPT image, synced across devices"
     ],
     "ipad": [
       "Create an image by chat",
