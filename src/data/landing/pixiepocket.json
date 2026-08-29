@@ -47,12 +47,12 @@
     },
     {
       "title": "Synced across devices",
-      "body": "Start anonymously, then sign in with Apple, Google, or GitHub to keep your gallery in sync across iPhone and iPad.",
+      "body": "Start anonymously, then sign in with Apple, Google, or GitHub to keep your images in sync across iPhone and iPad.",
       "glyph": "❖"
     },
     {
-      "title": "Community gallery",
-      "body": "Share your work to the public gallery or keep it private. Any image can be reported in one tap and is reviewed.",
+      "title": "Private by default",
+      "body": "Your images are yours alone. There is no public feed, nothing you make is shown to other users, and you can delete anything with one tap.",
       "glyph": "✦"
     }
   ],
@@ -67,7 +67,7 @@
     },
     {
       "step": "Export",
-      "body": "Save as PNG, JPEG, or WebP, share to the community gallery, or keep it to yourself."
+      "body": "Save as PNG, JPEG, or WebP, or share it anywhere from the share sheet. It stays private unless you send it."
     }
   ],
   "faq": [
@@ -89,7 +89,7 @@
     },
     {
       "q": "Do I need an account to use it?",
-      "a": "No. You can start anonymously. To sync your gallery across devices, sign in with Apple, Google, or GitHub."
+      "a": "No. You can start anonymously. To sync your images across devices, sign in with Apple, Google, or GitHub."
     },
     {
       "q": "Can I edit my own photos with AI?",
@@ -113,12 +113,12 @@
       "Chat your way to the image",
       "Edit a photo by talking",
       "Pay per image, not per month",
-      "Nano Banana + GPT image, synced across devices"
+      "Nano Banana + GPT image, private and synced across devices"
     ],
     "ipad": [
       "Create an image by chat",
       "Edit a photo by talking",
-      "Browse your synced gallery"
+      "Your images, private and synced"
     ]
   },
   "ctaLine": "Start with 25 free credits and make your first image in seconds.",
