@@ -3010,6 +3010,18 @@
             "w": 1920,
             "h": 1080,
             "label": "Tailscode for Linux: an ultracode turn with the rainbow composer edge"
+          },
+          {
+            "src": "/screenshots/tailscode/desk-dark-studio.webp",
+            "w": 1920,
+            "h": 1004,
+            "label": "Tailscode for Linux: the image studio with a finished render"
+          },
+          {
+            "src": "/screenshots/tailscode/desk-dark-studio-states.webp",
+            "w": 1920,
+            "h": 1315,
+            "label": "Tailscode for Linux: the image studio in four states"
           }
         ],
         "linuxlight": [

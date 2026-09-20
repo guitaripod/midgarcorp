@@ -87,6 +87,8 @@ const deskAnalytics: PairedShot = {
   h: 1080,
   caption: deskCaptions[2] ?? '',
 };
+const deskStudio = `${shotBase}/desk-dark-studio.webp`;
+const deskStudioStates = `${shotBase}/desk-dark-studio-states.webp`;
 const deskCompaction = `${shotBase}/desk-dark-compaction.webp`;
 const deskAsk = `${shotBase}/desk-dark-ask.webp`;
 const deskUltracode = `${shotBase}/desk-dark-ultracode.webp`;
@@ -781,6 +783,67 @@ const clients = [
           >
             The quick ask: one global chord from any program, and the answer lands in a real
             conversation.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Image studio band -->
+    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+      <p class="prompt-line mb-2">tailscode image --on arch</p>
+      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        A picture is something you ask for in words
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        The image studio paints on your own machine — ComfyUI behind Tailscale, Qwen-Image for
+        quality and FLUX.2 Klein for speed — and the desktop lays it out as a brief, a stage and a
+        shelf: the ask as a form with room for a paragraph, the picture in the middle with the
+        machine's own progress narrated over it, and every picture the machine has ever kept down
+        the right, read back from the files themselves. Nothing leaves your tailnet.
+      </p>
+      <div class="grid gap-4">
+        <figure
+          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+        >
+          <img
+            src={screenshotUrl(deskStudioStates)}
+            srcset={srcsetFor(deskStudioStates, 1920)}
+            sizes="(min-width: 1152px) 1088px, 100vw"
+            width={1920}
+            height={1315}
+            alt="Tailscode for Linux: the image studio in four states — a finished render, a picture from the machine's shelf, an edit from a reference, and a render in progress"
+            loading="lazy"
+            class="w-full cursor-zoom-in"
+            data-full={fullFor(deskStudioStates)}
+          />
+          <figcaption
+            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
+          >
+            Four states of one surface: rendered, picked off the shelf, turned into an edit with one
+            press, and painting — the machine's own step count on the bar, the picture being edited
+            held dimmed until the result lands.
+          </figcaption>
+        </figure>
+        <figure
+          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+        >
+          <img
+            src={screenshotUrl(deskStudio)}
+            srcset={srcsetFor(deskStudio, 1920)}
+            sizes="(min-width: 1152px) 1088px, 100vw"
+            width={1920}
+            height={1004}
+            alt="Tailscode for Linux: the image studio with a finished render of northern lights over a cabin, the brief on the left and the machine's shelf on the right"
+            loading="lazy"
+            class="w-full cursor-zoom-in"
+            data-full={fullFor(deskStudio)}
+          />
+          <figcaption
+            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
+          >
+            Engine, shape, size, detail, a held seed and a cutout switch — every decision the render
+            is made of, laid out where the hands already are. The shelf is the machine's output
+            folder: what it made, for whom, with which words, seed and model.
           </figcaption>
         </figure>
       </div>

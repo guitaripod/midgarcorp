@@ -822,5 +822,13 @@
     72,
     144,
     216
+  ],
+  "/screenshots/tailscode/desk-dark-studio.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-studio-states.webp": [
+    480,
+    960
   ]
 }
