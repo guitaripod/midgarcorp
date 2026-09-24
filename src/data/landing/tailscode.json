@@ -10,6 +10,7 @@
     "claude code desktop app",
     "gtk4 claude code",
     "opencode mobile client",
+    "opencode 2 client",
     "oh my pi ios app",
     "oh my pi remote",
     "omp mobile client",
@@ -57,6 +58,16 @@
       "title": "Three agents, one app",
       "body": "Drive opencode directly, Claude Code through claude-bridge, and Oh My Pi through omp-bridge — two open-source companion servers that turn a terminal agent into structured, streaming, subscription-backed sessions, with push notifications on Claude. Every model Oh My Pi can reach — Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek — is one picker away, filterable by the subscription that pays for it.",
       "glyph": "◈"
+    },
+    {
+      "title": "Hand work down the ladder",
+      "body": "The delegate board sends a bounded task to your own local and cheap-cloud models and brings back a patch that was verified before it lands. Every run is on the board, and it taps your shoulder only when a person is needed. Part of Pro.",
+      "glyph": "⇣"
+    },
+    {
+      "title": "Pictures and clips, made at home",
+      "body": "Ask for an image or a short clip in words and your own ComfyUI machine renders it over the tailnet — Qwen-Image and FLUX.2 Klein for pictures, LTX for video. A helper model on the same machine can turn a thin brief into the paragraph the model was trained on, and the picture is watched as it paints. Nothing leaves your tailnet.",
+      "glyph": "▣"
     },
     {
       "title": "Lock Screen status board",
@@ -130,10 +141,11 @@
       "title": "Tailscode Pro",
       "price": "$14.99 once",
       "items": [
-        "Multiple saved servers, one session list",
+        "Unlimited servers, one session list",
+        "The delegate board — bounded tasks for your cheaper models",
         "Concurrent Live Activities (iPhone)",
         "One purchase, iPhone and Mac",
-        "A supporter badge, and that is all it is"
+        "A supporter badge"
       ]
     },
     "tiers": [
@@ -154,11 +166,11 @@
     },
     {
       "q": "Which coding agents does it support?",
-      "a": "opencode natively (any provider you've configured in it), Claude Code through claude-bridge, and Oh My Pi through omp-bridge — two open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog with it: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama, priced per turn from the agent's own ledger."
+      "a": "opencode natively, 1.x or 2 (the app asks each server which API it speaks), with any provider you've configured in it; Claude Code through claude-bridge, and Oh My Pi through omp-bridge — two open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog with it: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama, priced per turn from the agent's own ledger."
     },
     {
       "q": "Is there really a Linux desktop client?",
-"a": "Yes — a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. Arch users install it from the AUR (`paru -S tailscode`); everyone else grabs the release tarball from GitHub. All three clients share one toolkit-free core, and a parity registry refuses to compile a client that hasn't answered for a capability the others have. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and the Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
+      "a": "Yes — a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. Arch users install it from the AUR (`paru -S tailscode`); everyone else grabs the release tarball from GitHub. All three clients share one toolkit-free core, and a parity registry refuses to compile a client that hasn't answered for a capability the others have. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and the Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
     },
     {
       "q": "Does my code pass through anyone's cloud?",
@@ -170,7 +182,7 @@
     },
     {
       "q": "What does Pro add?",
-      "a": "Tailscode Pro is a one-time $14.99 unlock for multiple saved servers, concurrent Live Activities, and a supporter badge. The free app is the complete core — full chat, permissions, attachments, models, forking, themes, analytics — forever, with one server."
+      "a": "Tailscode Pro is a one-time $14.99 unlock for unlimited servers, the delegate board, concurrent Live Activities on iPhone, and a supporter badge. The free app is the complete core — full chat, permissions, attachments, models, forking, themes, analytics — forever, with one server."
     },
     {
       "q": "Is it really open source?",
@@ -216,5 +228,5 @@
     ]
   },
   "ctaLine": "Your agent is already working. Watch it from anywhere.",
-  "pricingNote": "Free and open source under GPL-3.0. Pro unlocks unlimited servers — and concurrent Live Activities on iPhone — for $14.99, one time, across iPhone and Mac."
+  "pricingNote": "Free and open source under GPL-3.0. Pro unlocks unlimited servers, the delegate board and concurrent Live Activities on iPhone for $14.99, one time, across iPhone and Mac."
 }

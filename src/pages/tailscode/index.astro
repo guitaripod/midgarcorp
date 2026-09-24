@@ -950,14 +950,7 @@ const clients = [
         <div
           class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-paper-border pt-5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint"
         >
-          {
-            app.version && (
-              <span>
-                v{app.version}
-                {app.minimumOsVersion ? ` · requires iOS ${app.minimumOsVersion}+` : ''}
-              </span>
-            )
-          }
+          {app.minimumOsVersion && <span>requires iOS {app.minimumOsVersion}+</span>}
           <a
             href={app.appStoreUrl}
             target="_blank"

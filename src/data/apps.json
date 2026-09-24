@@ -299,9 +299,12 @@
       "id": "tailscode",
       "name": "Tailscode",
       "tagline": "The Remote for Your Coding Agents",
-      "description": "Send a prompt to Claude Code, opencode or Oh My Pi from your phone, pocket it, and watch the turn finish on your Lock Screen. Approve the risky command, answer the agent's question, read every diff — from anywhere on your own Tailscale network.",
+      "description": "Tailscode is a native remote for the coding agents already running on your machines — Claude Code, opencode and Oh My Pi — on iPhone, iPad, Mac and Linux. Send a prompt from anywhere and watch the turn finish on your Lock Screen.",
       "platforms": [
-        "iPhone"
+        "iPhone",
+        "iPad",
+        "Mac",
+        "Linux"
       ],
       "category": "Developer Tools",
       "price": "Free",
