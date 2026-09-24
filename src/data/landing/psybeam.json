@@ -1,6 +1,6 @@
 {
   "seoTitle": "Psybeam — Live Voice Translator for Travel",
-  "metaDescription": "Hold up your phone and just talk. Psybeam translates voice to voice in 20+ languages, hold a button and they hear you in theirs — no app on their end. Start with free minutes.",
+  "metaDescription": "Two people, one phone, no app on their end. Hold your button and they hear you in their language; hold theirs and you hear their reply in yours. 22 languages, spoken aloud both ways. Start with free minutes, no subscription.",
   "keywords": [
     "live voice translator app",
     "speech to speech translation app",
@@ -11,11 +11,11 @@
     "translator with no subscription",
     "spanish french voice translation"
   ],
-  "heroHeadline": "Hold up your phone and just talk",
-  "heroSubhead": "Psybeam is a real-time voice interpreter for travel. Hold your button and speak; it says it out loud in their language. The person across from you never touches the screen.",
+  "heroHeadline": "Hold up your phone. They don't touch it.",
+  "heroSubhead": "Psybeam is a real-time voice interpreter for travel: you hold the phone and run both sides of the conversation. Hold your button and speak — they hear it aloud in their language. Hold theirs while they answer — you hear it in yours. The stranger in front of you never touches your phone.",
   "accentColor": "#06B6D4",
   "highlights": [
-    "20+ languages, spoken aloud both ways",
+    "22 languages, spoken aloud both ways",
     "No account and no subscription to start",
     "Your transcript stays on your device"
   ],
@@ -47,7 +47,7 @@
     },
     {
       "title": "Private by design",
-      "body": "Audio is streamed to OpenAI only to translate it, never stored and never used to train models. Your transcript stays on your phone.",
+      "body": "Audio is streamed to OpenAI only to translate it. OpenAI does not use it to train models, though it may briefly retain API audio for abuse monitoring. Your transcript never leaves your phone.",
       "glyph": "⬡"
     }
   ],
@@ -68,7 +68,7 @@
   "faq": [
     {
       "q": "How much does Psybeam cost?",
-      "a": "Psybeam is free to download and comes with free minutes to start. After that you buy a pack of minutes when you need more. There is no subscription and no recurring charge."
+      "a": "Psybeam is free to download and starts you with 5 free minutes. After that you buy a one-time minute pack, starting at $4.99, only when you need more. There is no subscription and no recurring charge."
     },
     {
       "q": "Do I need to create an account?",
@@ -80,11 +80,11 @@
     },
     {
       "q": "How many languages does it support?",
-      "a": "More than 20 languages, spoken aloud in both directions, including Spanish, French, German, Arabic, Thai, Turkish, Greek, Japanese, Korean and Chinese."
+      "a": "22 languages, spoken aloud in both directions: Arabic, Chinese, Dutch, English, Finnish, French, German, Greek, Hebrew, Hindi, Indonesian, Italian, Japanese, Korean, Polish, Portuguese, Russian, Spanish, Swedish, Thai, Turkish and Vietnamese."
     },
     {
       "q": "Is my conversation private?",
-      "a": "Your conversation transcript stays on your device. To translate, the audio is streamed to OpenAI in real time; OpenAI does not store it on our servers and does not use it to train models."
+      "a": "Your conversation transcript stays on your phone and is never uploaded anywhere. To translate your speech, the audio itself is streamed to OpenAI in real time; OpenAI does not use that audio to train its models, though like any API traffic it may be retained briefly for abuse monitoring. Psybeam's own servers never see or store your audio or transcript."
     },
     {
       "q": "Does it work offline?",
@@ -104,7 +104,7 @@
       "Two thumb buttons, one phone",
       "Hold to speak in your language",
       "Their reply, in your language",
-      "20+ languages, both ways",
+      "22 languages, both ways",
       "Free minutes, no subscription"
     ]
   },
