@@ -651,27 +651,35 @@
     480,
     960
   ],
-  "/screenshots/tailscode/ipad-live.webp": [
+  "/screenshots/tailscode/ipad-ws-live.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/ipad-home.webp": [
+  "/screenshots/tailscode/ipad-ws-approve.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/ipad-subagents.webp": [
+  "/screenshots/tailscode/ipad-ws-question.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/ipad-models.webp": [
+  "/screenshots/tailscode/ipad-ws-agents.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/ipad-usage.webp": [
+  "/screenshots/tailscode/ipad-ws-diff.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/ipad-git.webp": [
+  "/screenshots/tailscode/ipad-ws-focus.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-usage.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-delegate.webp": [
     480,
     960
   ],
@@ -696,6 +704,14 @@
     960
   ],
   "/screenshots/tailscode/desk-dark-ultracode.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-studio.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-studio-states.webp": [
     480,
     960
   ],
@@ -822,13 +838,5 @@
     72,
     144,
     216
-  ],
-  "/screenshots/tailscode/desk-dark-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-studio-states.webp": [
-    480,
-    960
   ]
 }

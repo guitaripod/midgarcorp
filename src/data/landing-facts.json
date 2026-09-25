@@ -2938,40 +2938,52 @@
         ],
         "ipad": [
           {
-            "src": "/screenshots/tailscode/ipad-live.webp",
+            "src": "/screenshots/tailscode/ipad-ws-live.webp",
             "w": 1600,
-            "h": 2133,
-            "label": "Tailscode on iPad: a live turn streaming in the readable column"
+            "h": 1200,
+            "label": "Tailscode on iPad: a live turn in the workspace: places and servers in the sidebar, every chat beside it, the conversation filling the rest"
           },
           {
-            "src": "/screenshots/tailscode/ipad-home.webp",
+            "src": "/screenshots/tailscode/ipad-ws-approve.webp",
             "w": 1600,
-            "h": 2133,
-            "label": "Tailscode on iPad: Home with recent sessions, projects, and the composer"
+            "h": 1200,
+            "label": "Tailscode on iPad: an edit waiting for approval, its chat marked NEEDS YOU in the list"
           },
           {
-            "src": "/screenshots/tailscode/ipad-subagents.webp",
+            "src": "/screenshots/tailscode/ipad-ws-question.webp",
             "w": 1600,
-            "h": 2133,
-            "label": "Tailscode on iPad: a fan-out of subagents docked inside the turn"
+            "h": 1200,
+            "label": "Tailscode on iPad: the agent's question docked at the end of the turn, answered with a tap"
           },
           {
-            "src": "/screenshots/tailscode/ipad-models.webp",
+            "src": "/screenshots/tailscode/ipad-ws-agents.webp",
             "w": 1600,
-            "h": 2133,
-            "label": "Tailscode on iPad: the model directory across every provider"
+            "h": 1200,
+            "label": "Tailscode on iPad: a subagent opened where it ran, its grep and its findings inline"
           },
           {
-            "src": "/screenshots/tailscode/ipad-usage.webp",
+            "src": "/screenshots/tailscode/ipad-ws-diff.webp",
             "w": 1600,
-            "h": 2133,
-            "label": "Tailscode on iPad: the month in numbers, per machine and per model"
+            "h": 1200,
+            "label": "Tailscode on iPad: the real patch from the machine: numbered lines, staged and changed"
           },
           {
-            "src": "/screenshots/tailscode/ipad-git.webp",
+            "src": "/screenshots/tailscode/ipad-ws-focus.webp",
             "w": 1600,
-            "h": 2133,
-            "label": "Tailscode on iPad: branch, staged, and changed straight from the machine"
+            "h": 1200,
+            "label": "Tailscode on iPad: the columns hidden, the conversation in a readable column across the whole screen"
+          },
+          {
+            "src": "/screenshots/tailscode/ipad-ws-usage.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Tailscode on iPad: the quota board: the tightest window first, every provider with its reset clock"
+          },
+          {
+            "src": "/screenshots/tailscode/ipad-ws-delegate.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Tailscode on iPad: the delegate ladder: a packet climbing tiers, one waiting for approval"
           }
         ],
         "linux": [

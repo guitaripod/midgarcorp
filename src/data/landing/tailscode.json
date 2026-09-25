@@ -190,7 +190,7 @@
     },
     {
       "q": "Does it run on iPad?",
-      "a": "Yes — the same app is universal. On iPad every list keeps to a readable column, chats open in their own windows for Split View and Stage Manager, and a hardware keyboard drives the whole app: ⌘N starts a chat, the desktop clients' shortcut registry answers the rest. One purchase covers iPhone and iPad."
+      "a": "Yes — the same app is universal, and on iPad it is a workspace rather than a stretched phone: a sidebar of places (Home, Usage, Delegate, Video), chat scopes and servers; the chat list beside it; the conversation filling the rest, with one tap to give it the whole screen. Narrow the window and it becomes the phone's app without closing the chat you were reading. Chats open in their own windows for Split View and Stage Manager, and a hardware keyboard drives the whole app: ⌘N starts a chat, the desktop clients' shortcut registry answers the rest. One purchase covers iPhone and iPad."
     },
     {
       "q": "Can I try it without a server?",
@@ -213,12 +213,14 @@
       "The repo read from the machine that owns it: branch, drift, diffs"
     ],
     "ipad": [
-      "The same live turn, given the room an iPad has: thinking, code, commands",
-      "Home on iPad — machines, projects, and recents in a readable column",
-      "Subagents fan out and dock inside the turn that spawned them",
-      "The model directory: every provider's catalog, starred and searchable",
-      "The month in numbers — per machine, per model, priced",
-      "Branch, staged, changed — the repo straight from the machine"
+      "The workspace: places and servers in the sidebar, every chat beside it, the live turn filling the rest",
+      "An edit waits for approval — and its chat wears NEEDS YOU in the list while it does",
+      "The agent stopped to ask: answer in place, the rest of the board still in view",
+      "A subagent opened where it ran, its tool calls and findings inline",
+      "The real patch from the machine, line-numbered, before you trust the change",
+      "One tap hides the columns; the conversation keeps a readable column across the screen",
+      "The quota board: the tightest window first, every provider with its reset clock",
+      "Delegate: a packet climbing a ladder of cheaper models, one rung waiting on you"
     ],
     "linux": [
       "The Linux client: GTK4, tiling splits, quota gauges, and the presence orb",
