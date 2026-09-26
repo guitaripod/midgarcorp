@@ -2,7 +2,7 @@
   "apps": [
     {
       "id": "solar-beam",
-      "name": "Solar Beam",
+      "name": "Solar Beam: James Webb Images",
       "tagline": "The James Webb Telescope, on Every Screen",
       "description": "A curated gallery of the James Webb Space Telescope's greatest images, each with its real caption, credit, distance and sky coordinates. Plus NASA's Astronomy Picture of the Day, near-Earth asteroid tracking and 4K wallpapers — free to download, with optional Premium.",
       "platforms": [
@@ -14,8 +14,8 @@
       ],
       "category": "Photo \u0026 Video",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/solar-beam/id6705124497",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/45/b2/40/45b24081-f804-463a-c141-22f5e798e551/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/us/app/solar-beam-james-webb-images/id6705124497",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d4/54/21/d4542180-5a75-96b2-3f0c-b306cded40c5/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
         "Curated Webb image gallery",
@@ -35,7 +35,7 @@
       "category": "Developer Tools",
       "price": "$9.99",
       "appStoreUrl": "https://apps.apple.com/us/app/sforesight-sf-symbols-search/id6736438070",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9f/6b/54/9f6b5409-5ac8-6dd7-2837-985f1f12b1c7/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.png",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c4/a4/30/c4a4301f-b85b-e12b-e375-2a302b88c86f/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.png",
       "primaryColor": "#3B82F6",
       "features": [
         "ML-powered semantic search",
@@ -56,7 +56,7 @@
       "category": "Food \u0026 Drink",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/double-kick-menu-translator/id6736581403",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1b/30/43/1b3043fb-4dc1-0917-0075-89f9c4eeabe5/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/03/57/a2/0357a2b1-dac4-3871-5c25-9b7f87e3431d/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#DC2626",
       "features": [
         "Instant menu translation",
@@ -88,7 +88,7 @@
     },
     {
       "id": "dream-eater",
-      "name": "Dream Eater: AI Dream Decoder",
+      "name": "Dream Eater: Dream Interpreter",
       "tagline": "ML-Powered Dream Journaling",
       "description": "You wake at 3 a. m.",
       "platforms": [
@@ -97,8 +97,8 @@
       ],
       "category": "Lifestyle",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-ai-dream-decoder/id6661019277",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/80/71/31/80713112-312b-76a5-7842-79e060245cd0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-dream-interpreter/id6661019277",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/36/6c/90/366c9011-ff72-3b1d-9340-1b24734867e8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#6366F1",
       "features": [
         "Dream pattern analysis",
@@ -160,7 +160,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2e/b5/ac/2eb5ac1d-6523-959e-de9f-a7788daf1388/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/01/60/de/0160de5a-0967-16ee-da94-1cf00158fd40/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#7C3AED",
       "features": [
         "Local MLX LLM technology for offline AI",
@@ -181,7 +181,7 @@
       "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/5d/95/04/5d9504b9-0203-3324-244b-653246698140/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c5/db/fb/c5dbfbd7-f0a9-b0ec-1eec-d59ae83154d7/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EC4899",
       "features": [
         "Advanced OpenAI gpt-image-1 integration",
@@ -202,7 +202,7 @@
       "category": "Entertainment",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/embr-live-streams/id6784940198",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ed/e9/19/ede919a6-572a-f70e-c5b9-fa0d3f78408a/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/94/0a/85940a2a-ee8c-8538-50b0-2b3fcc09f33f/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#9147FF",
       "features": [
         "Native player with PiP \u0026 background audio",
@@ -210,49 +210,6 @@
         "Browse as a guest, sign in for Following"
       ],
       "releaseDate": "2026-07-06T07:00:00Z"
-    },
-    {
-      "id": "flaccy",
-      "name": "Flaccy – Lossless FLAC Player",
-      "tagline": "The Player for the Music You Own",
-      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
-      "platforms": [
-        "iPhone",
-        "Apple Watch",
-        "Mac"
-      ],
-      "category": "Music",
-      "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/flaccy-lossless-flac-player/id6787493695",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a1/86/18/a18618f8-2819-e43c-def3-18f05b862690/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#FF4D6D",
-      "features": [
-        "Gapless FLAC playback with quality badges",
-        "AI-organized library, no manual tagging",
-        "Last.fm scrobbling, charts \u0026 Year in Music"
-      ],
-      "releaseDate": "2026-07-09T07:00:00Z"
-    },
-    {
-      "id": "psybeam",
-      "name": "Psybeam: AI Voice Translator",
-      "tagline": "Hold Up Your Phone and Talk",
-      "description": "A real-time voice interpreter for travel. Hold your button and speak — it says it out loud in their language. The person across from you never touches the screen.",
-      "platforms": [
-        "iPhone",
-        "iPad"
-      ],
-      "category": "Travel",
-      "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/psybeam-ai-voice-translator/id6777952645",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/98/53/e8/9853e8a4-8a76-df1c-177c-2155d407e38d/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#06B6D4",
-      "features": [
-        "Real-time voice-to-voice in 20+ languages",
-        "Two thumb buttons — run both sides from one phone",
-        "No account or subscription to start"
-      ],
-      "releaseDate": "2026-06-22T07:00:00Z"
     },
     {
       "id": "helia",
@@ -275,6 +232,47 @@
       "releaseDate": "2026-07-21T07:00:00Z"
     },
     {
+      "id": "psybeam",
+      "name": "Psybeam: AI Voice Translator",
+      "tagline": "Hold Up Your Phone and Talk",
+      "description": "A real-time voice interpreter for travel. Hold your button and speak — it says it out loud in their language. The person across from you never touches the screen.",
+      "platforms": [
+        "iPhone",
+        "iPad"
+      ],
+      "category": "Travel",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/psybeam-ai-voice-translator/id6777952645",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/55/fb/9a/55fb9a2d-cc90-ec1c-a093-6e96462c87d7/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#06B6D4",
+      "features": [
+        "Real-time voice-to-voice in 20+ languages",
+        "Two thumb buttons — run both sides from one phone",
+        "No account or subscription to start"
+      ],
+      "releaseDate": "2026-06-22T07:00:00Z"
+    },
+    {
+      "id": "tailscode",
+      "name": "Tailscode: Coding Agent Remote",
+      "tagline": "The Remote for Your Coding Agents",
+      "description": "Send a prompt to Claude Code, opencode or Oh My Pi from your phone, pocket it, and watch the turn finish on your Lock Screen. Approve the risky command, answer the agent's question, read every diff — from anywhere on your own Tailscale network.",
+      "platforms": [
+        "iPhone"
+      ],
+      "category": "Developer Tools",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/tailscode-coding-agent-remote/id6791660932",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/43/f7/62/43f7629b-1a93-0ca8-53cc-e939cc667ef2/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#546BFF",
+      "features": [
+        "Drive Claude Code \u0026 opencode from your phone",
+        "Point-to-point over your own Tailscale network",
+        "Watch the turn land on your Lock Screen"
+      ],
+      "releaseDate": "2026-07-28T07:00:00Z"
+    },
+    {
       "id": "payday",
       "name": "Pay Day: E-Invoice \u0026 Peppol",
       "tagline": "Peppol \u0026 Factur-X Invoices on iPhone",
@@ -286,7 +284,7 @@
       "category": "Business",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pay-day-e-invoice-peppol/id6779927672",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/7a/b9/4b7ab9c9-2401-2983-2360-b93ae5ac6246/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/fe/ff/00feffeb-3baa-3cee-1057-d1c5df649534/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#22C55E",
       "features": [
         "Factur-X / ZUGFeRD e-invoices",
@@ -296,27 +294,26 @@
       "releaseDate": "2026-07-14T07:00:00Z"
     },
     {
-      "id": "tailscode",
-      "name": "Tailscode",
-      "tagline": "The Remote for Your Coding Agents",
-      "description": "Tailscode is a native remote for the coding agents already running on your machines — Claude Code, opencode and Oh My Pi — on iPhone, iPad, Mac and Linux. Send a prompt from anywhere and watch the turn finish on your Lock Screen.",
+      "id": "flaccy",
+      "name": "Flaccy – Lossless FLAC Player",
+      "tagline": "The Player for the Music You Own",
+      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics, and scrobbling — no streaming subscription, no upload, no account.",
       "platforms": [
         "iPhone",
-        "iPad",
-        "Mac",
-        "Linux"
+        "Apple Watch",
+        "Mac"
       ],
-      "category": "Developer Tools",
+      "category": "Music",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/1f/63/c1/1f63c177-4142-759d-b9cd-68ab6e364918/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#546BFF",
+      "appStoreUrl": "https://apps.apple.com/us/app/flaccy-lossless-flac-player/id6787493695",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/34/b6/1b/34b61b89-798b-91b7-4bf2-ade55d2c0cab/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#FF4D6D",
       "features": [
-        "Drive Claude Code \u0026 opencode from your phone",
-        "Point-to-point over your own Tailscale network",
-        "Watch the turn land on your Lock Screen"
+        "Gapless FLAC playback with quality badges",
+        "AI-organized library, no manual tagging",
+        "Last.fm scrobbling, charts \u0026 Year in Music"
       ],
-      "releaseDate": "2026-07-28T07:00:00Z"
+      "releaseDate": "2026-07-09T07:00:00Z"
     }
   ]
 }
