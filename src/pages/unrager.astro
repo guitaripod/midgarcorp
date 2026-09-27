@@ -22,10 +22,10 @@ const githubUrl = 'https://github.com/guitaripod/unrager';
 const releasesUrl = 'https://github.com/guitaripod/unrager/releases';
 
 const heroHighlights = [
-  'New posts wait out of view until your model has judged them',
+  'Tested on 1,000 real posts: about 2 in 3 rage posts gone, about 1 good post in 20 hidden by mistake',
   'Every hidden post says which rule caught it, and one click brings it back',
-  'Runs on a small model on your own computer: Qwen3 4B, 2.5 GB',
-  'No account, no telemetry; your posts never leave your machine',
+  'A small 2.5 GB model on your own computer; bigger ones hide more of what you wanted',
+  'No account, no cloud; your feed never leaves your machine',
 ];
 
 type Step = {
@@ -109,12 +109,16 @@ const features = [
   },
   {
     title: 'Measured, not guessed',
-    body: 'unrager counts a good post hidden as worse than a rage post let through, because you never see the first. Every change to the prompt is scored on both before it ships.',
+    body: 'Tested on 1,000 real posts from one feed, the default model takes out about two in three rage posts and hides about one good post in twenty. A good post hidden counts as the worse mistake, because you never see it, and every change to the prompt is scored on both before it ships.',
     glyph: '≋',
   },
 ];
 
 const faq = [
+  {
+    q: 'How accurate is it?',
+    a: 'Good, not perfect. Tested on 1,049 real posts from one person’s feed, judged against their own rules, the default model took out about two in three rage posts and hid about one good post in twenty. Nothing it hides is gone: turn on Show hidden posts to see each one with the rule that caught it, and one click brings it back for good.',
+  },
   {
     q: 'Does anything leave my computer?',
     a: 'No. The extension hands posts to unrager on localhost, and unrager hands them to your model. There’s no account and no telemetry. The background server that setup installs never reads your X login and never talks to X, and it refuses requests from web pages, so a site you visit can’t use it.',
@@ -125,7 +129,7 @@ const faq = [
   },
   {
     q: 'Which models work?',
-    a: 'The default is Qwen3 4B on Ollama: in unrager’s tests it hid a quarter as many good posts as a 27B model while catching most of the same rage, loads in about two seconds and stays loaded in about 3 GB. Any instruction-tuned model that can answer HIDE or KEEP will do, served by Ollama or anything that speaks the OpenAI chat API. unrager eval tells you how well yours filters.',
+    a: 'The default is Qwen3 4B on Ollama, and it’s small on purpose: on 1,000 real posts it hid about one good post in twenty, where a 27B model hid one in four. It loads in about two seconds and stays loaded in about 3 GB. Any instruction-tuned model that can answer HIDE or KEEP will do, served by Ollama or anything that speaks the OpenAI chat API. unrager eval tells you how well yours filters.',
   },
   {
     q: 'Can the model run on a different computer?',
@@ -227,9 +231,9 @@ const withCode = (text: string) =>
         <p
           class="mb-6 max-w-xl text-base leading-relaxed text-paper-muted dark:text-term-muted sm:text-lg"
         >
-          A browser extension that takes the rage-bait out of your x.com Home timeline. A model on
-          your own computer reads each new post before you see it, against rules you write, and
-          nothing is sent anywhere else.
+          A browser extension for the x.com you already use. A small model on your own computer
+          reads each post before X shows it and hides the rage bait, the dunking and the doom. You
+          can see what it hid and why, and one click brings a post back.
         </p>
 
         <!-- platform chips -->
