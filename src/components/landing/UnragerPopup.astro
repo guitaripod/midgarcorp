@@ -1,0 +1,283 @@
+---
+/**
+ * The unrager extension's popup, drawn in HTML: status, the two switches,
+ * and the rules panel with the strictness control and what each topic hid.
+ * The numbers are made up.
+ */
+const topics = [
+  { text: 'american electoral politics, presidents, congress, partisan fights', hidden: 41 },
+  {
+    text: 'economic fearmongering: tariff panic, inflation doom, market-crash prophecies',
+    hidden: 23,
+  },
+  { text: 'rage-bait reply farming, ratio threads, inflammatory hot takes', hidden: 17 },
+  { text: 'crypto and NFT shilling, pump-and-dump hype', hidden: 6 },
+];
+---
+
+<figure
+  class="upm"
+  aria-label="The extension's popup: 12 posts hidden and 148 checked on this tab, the filter set to Balanced, and the topics that get hidden, each with how many posts it hid"
+>
+  <div class="upm-top">
+    <svg class="upm-mark" viewBox="0 0 32 32" aria-hidden="true"
+      ><rect x="0.5" y="0.5" width="31" height="31" rx="7"></rect><path
+        d="M5 16.5 Q7.4 3.5 9.8 16.5 Q12 26.5 14.2 16.5 Q15.6 11 17 16.5 L27 16.5"></path></svg
+    >
+    <b>unrager</b>
+  </div>
+  <div class="upm-status">
+    <p class="upm-headline">12 posts hidden</p>
+    <p class="upm-detail">148 posts checked on this tab.</p>
+  </div>
+  <p class="upm-switch"><span>Pause filtering</span><i></i></p>
+  <p class="upm-switch"><span>Show hidden posts</span><i></i></p>
+  <div class="upm-panel">
+    <p class="upm-summary is-open">What gets hidden</p>
+    <p class="upm-label">How strict</p>
+    <p class="upm-strict"><span>Relaxed</span><b>Balanced</b><span>Strict</span></p>
+    <ul class="upm-topics">
+      {
+        topics.map((t) => (
+          <li>
+            <span>{t.text}</span>
+            <b>Remove</b>
+            <small>{t.hidden} hidden</small>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="upm-add"><span>Add a topic</span><b>Add</b></p>
+    <p class="upm-save"><b>Save rules</b></p>
+  </div>
+  <p class="upm-summary upm-last">Settings</p>
+</figure>
+
+<style>
+  .upm {
+    --upm-bg: #f1f5f3;
+    --upm-surface: #ffffff;
+    --upm-ink: #0f2a30;
+    --upm-muted: #56707a;
+    --upm-line: #d3dfdb;
+    --upm-accent: #1b6b80;
+    --upm-accent-ink: #ffffff;
+    --upm-knob: #ffffff;
+    width: min(100%, 360px);
+    margin: 0;
+    padding: 16px 18px 12px;
+    border-radius: 14px;
+    background: var(--upm-bg);
+    border: 1px solid #dcd3b8;
+    box-shadow:
+      0 30px 70px -40px rgba(7, 54, 66, 0.45),
+      0 2px 6px rgba(7, 54, 66, 0.06);
+    color: var(--upm-ink);
+    font:
+      14px/1.45 -apple-system,
+      'Segoe UI',
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif;
+  }
+  :global(.dark) .upm {
+    --upm-bg: #10252e;
+    --upm-surface: #173340;
+    --upm-ink: #e4eef1;
+    --upm-muted: #9db4be;
+    --upm-line: #28474f;
+    --upm-accent: #62b6d0;
+    --upm-accent-ink: #06222b;
+    --upm-knob: #d8e6ea;
+    border-color: #2d333b;
+    box-shadow: 0 30px 70px -40px rgba(0, 0, 0, 0.85);
+  }
+  .upm p {
+    margin: 0;
+  }
+  .upm-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+  }
+  .upm-mark {
+    width: 20px;
+    height: 20px;
+  }
+  .upm-mark rect {
+    fill: var(--upm-accent);
+  }
+  .upm-mark path {
+    fill: none;
+    stroke: var(--upm-accent-ink);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .upm-status {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--upm-surface);
+    border: 1px solid var(--upm-line);
+  }
+  .upm-headline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 650;
+  }
+  .upm-headline::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--upm-accent);
+  }
+  .upm-detail {
+    margin-top: 4px !important;
+    color: var(--upm-muted);
+  }
+  .upm-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 2px;
+  }
+  .upm-switch:first-of-type {
+    margin-top: 10px !important;
+  }
+  .upm-switch i {
+    position: relative;
+    width: 34px;
+    height: 20px;
+    border-radius: 999px;
+    background: var(--upm-line);
+  }
+  .upm-switch i::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--upm-knob);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  }
+  .upm-panel,
+  .upm-last {
+    margin-top: 6px !important;
+    padding-top: 8px;
+    border-top: 1px solid var(--upm-line);
+  }
+  .upm-summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 2px;
+    font-weight: 600;
+  }
+  .upm-summary::before {
+    content: '';
+    border: 5px solid transparent;
+    border-left-color: currentColor;
+    border-right-width: 0;
+  }
+  .upm-summary.is-open::before {
+    border: 5px solid transparent;
+    border-top-color: currentColor;
+    border-bottom-width: 0;
+  }
+  .upm-label {
+    margin: 8px 0 4px !important;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .upm-strict {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2px;
+    border-radius: 8px;
+    border: 1px solid var(--upm-line);
+    background: var(--upm-surface);
+    font-size: 13px;
+    text-align: center;
+  }
+  .upm-strict span,
+  .upm-strict b {
+    padding: 4px 0;
+    border-radius: 6px;
+    color: var(--upm-muted);
+    font-weight: 400;
+  }
+  .upm-strict b {
+    background: var(--upm-accent);
+    color: var(--upm-accent-ink);
+    font-weight: 600;
+  }
+  .upm-topics {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+  }
+  .upm-topics li,
+  .upm-add {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2px 6px;
+    align-items: start;
+  }
+  .upm-topics span,
+  .upm-add span {
+    padding: 6px 8px;
+    border-radius: 7px;
+    border: 1px solid var(--upm-line);
+    background: var(--upm-surface);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .upm-topics small {
+    grid-column: 1;
+    padding-left: 2px;
+    font-size: 12px;
+    color: var(--upm-muted);
+  }
+  .upm-add {
+    margin-top: 8px !important;
+  }
+  .upm-add span {
+    color: var(--upm-muted);
+  }
+  .upm-topics b,
+  .upm-add b {
+    padding: 4px 10px;
+    border-radius: 7px;
+    border: 1px solid var(--upm-line);
+    background: var(--upm-surface);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--upm-muted);
+  }
+  .upm-add b {
+    font-size: 13px;
+    color: var(--upm-ink);
+  }
+  .upm-save {
+    margin-top: 10px !important;
+  }
+  .upm-save b {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 7px;
+    background: var(--upm-accent);
+    color: var(--upm-accent-ink);
+    font-size: 13px;
+    font-weight: 600;
+  }
+</style>

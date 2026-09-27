@@ -1,0 +1,546 @@
+---
+/**
+ * The unrager hero: a mocked x.com Home timeline with the extension at work.
+ * New posts are judged before they show; rage-bait never appears, and the
+ * badge counts it. "Show what it hid" brings the hidden posts back, dimmed
+ * and labelled with the rule that caught them, as the real extension does.
+ * Every account and post here is made up.
+ */
+const posts = [
+  {
+    name: 'Mira Okafor',
+    handle: 'mira_bakes',
+    hue: 28,
+    text: "Day 3 of the new sourdough starter. It smells like green apples, which I'm told is good news.",
+  },
+  {
+    name: 'Outrage Daily',
+    handle: 'outrage_daily',
+    hue: 355,
+    rule: 'manufactured outrage',
+    text: 'THIS IS WHY NOBODY TRUSTS THEM ANYMORE 😡😡 share before they delete it!!!',
+  },
+  {
+    name: 'Kestrel',
+    handle: 'kestrel_dev',
+    hue: 200,
+    text: 'Shipped v2 of my tiny CLI. Startup went from 180 ms to 9 ms by deleting one dependency.',
+  },
+  {
+    name: 'Harbor Light',
+    handle: 'harborlight',
+    hue: 190,
+    text: 'Morning ferry. The fog was sitting right on the water and nobody said a word.',
+  },
+  {
+    name: 'Doomcast',
+    handle: 'doomcast',
+    hue: 10,
+    rule: 'economic fearmongering',
+    text: 'The economy has THREE WEEKS left. Pull your savings NOW. Nobody is talking about this.',
+  },
+  {
+    name: 'Juno Reads',
+    handle: 'juno_reads',
+    hue: 280,
+    text: "Halfway through a 900-page novel and I've started rationing chapters so it doesn't end.",
+  },
+  {
+    name: 'Hot Take Harold',
+    handle: 'hottake_harold',
+    hue: 40,
+    rule: 'engagement farming',
+    text: "Unpopular opinion: anyone who uses tabs instead of spaces shouldn't be allowed near a keyboard. RT if you agree.",
+  },
+  {
+    name: 'Ada Lindqvist',
+    handle: 'ada_plots',
+    hue: 160,
+    text: 'The new paper on sparse attention is unusually readable. My notes are in the thread.',
+  },
+  {
+    name: 'Tomás',
+    handle: 'tomas_climbs',
+    hue: 95,
+    text: "Finally sent the route I've been falling off since April. Hands shredded, heart full.",
+  },
+  {
+    name: 'Rick',
+    handle: 'ratio_rick',
+    hue: 330,
+    rule: 'ratio bait and dunking',
+    text: 'Imagine being this wrong in public. Quote this with your worst take, cowards.',
+  },
+  {
+    name: 'Fern & Fog',
+    handle: 'fernandfog',
+    hue: 130,
+    text: 'Repotted every plant in the apartment. The cat supervised.',
+  },
+  {
+    name: 'Priya',
+    handle: 'priya_maps',
+    hue: 250,
+    text: 'Made a map of every bench in my neighborhood. There are 212. I have sat on 40.',
+  },
+  {
+    name: 'Payout Pete',
+    handle: 'payout_pete',
+    hue: 50,
+    rule: 'X/Twitter creator payouts',
+    text: 'X paid me $4 for 90 million impressions. This platform is DEAD. Screenshot below 👇',
+  },
+  {
+    name: 'Lin',
+    handle: 'lin_synth',
+    hue: 300,
+    text: 'Recorded a four-minute track using only the sound of my radiator.',
+  },
+  {
+    name: 'The Real Truth',
+    handle: 'realtruth_now',
+    hue: 0,
+    rule: 'manufactured outrage',
+    text: "They don't want you to see this. Everyone who disagrees is part of the problem. Simple as.",
+  },
+  {
+    name: 'Owen',
+    handle: 'owen_repairs',
+    hue: 170,
+    text: 'Fixed a 1974 radio with one capacitor and a lot of patience. It found a jazz station first try.',
+  },
+];
+---
+
+<figure
+  class="utl"
+  aria-label="An x.com Home timeline with unrager: each new post is judged before it shows, rage-bait never appears, and the extension's badge counts what it hid"
+>
+  <div class="utl-browser">
+    <div class="utl-bar" aria-hidden="true">
+      <span class="utl-lights"><i></i><i></i><i></i></span>
+      <span class="utl-address">x.com/home</span>
+      <span class="utl-ext" title="unrager">
+        <svg class="utl-mark" viewBox="0 0 32 32"
+          ><rect x="0.5" y="0.5" width="31" height="31" rx="7"></rect><path
+            d="M5 16.5 Q7.4 3.5 9.8 16.5 Q12 26.5 14.2 16.5 Q15.6 11 17 16.5 L27 16.5"></path></svg
+        >
+        <b class="utl-badge" data-utl-badge hidden>0</b>
+      </span>
+    </div>
+    <div class="utl-tabs" aria-hidden="true">
+      <span class="is-on">For you</span><span>Following</span>
+    </div>
+    <ol class="utl-feed" data-utl-feed aria-hidden="true"></ol>
+  </div>
+  <label class="utl-reveal">
+    <input type="checkbox" role="switch" data-utl-reveal />
+    <span>Show what it hid</span>
+  </label>
+</figure>
+
+<script is:inline define:vars={{ posts }}>
+  (() => {
+    const feed = document.querySelector('[data-utl-feed]');
+    const badge = document.querySelector('[data-utl-badge]');
+    const reveal = document.querySelector('[data-utl-reveal]');
+    if (!feed || !badge || !reveal) return;
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const FIRST_SCREEN = 9;
+    const ARRIVAL_MS = 3200;
+    const JUDGE_MS = 900;
+    const MAX_ROWS = 10;
+    let next = 0;
+    let hidden = 0;
+    let visible = true;
+    let timer = null;
+
+    const initials = (name) =>
+      name
+        .split(/\s+/)
+        .filter((w) => /\p{L}/u.test(w[0]))
+        .slice(0, 2)
+        .map((w) => w[0])
+        .join('')
+        .toUpperCase();
+
+    const row = (post, ago) => {
+      const li = document.createElement('li');
+      li.className = 'utl-post is-judging';
+      li.innerHTML = `<div class="utl-clip"><div class="utl-inner">
+          <span class="utl-note"><span class="utl-pill"></span><span class="utl-action">Show this post</span></span>
+          <span class="utl-avatar"></span>
+          <div class="utl-main"><p class="utl-head"><b></b> <span></span></p><p class="utl-text"></p></div>
+        </div></div>`;
+      const avatar = li.querySelector('.utl-avatar');
+      avatar.style.setProperty('--hue', post.hue);
+      avatar.textContent = initials(post.name);
+      li.querySelector('.utl-head b').textContent = post.name;
+      li.querySelector('.utl-head span').textContent = `@${post.handle} · ${ago}`;
+      li.querySelector('.utl-text').textContent = post.text;
+      if (post.rule) li.querySelector('.utl-pill').textContent = `Hidden: ${post.rule}`;
+      return li;
+    };
+
+    const count = () => {
+      hidden += 1;
+      badge.textContent = String(hidden);
+      badge.hidden = false;
+      badge.classList.remove('is-bumped');
+      void badge.offsetWidth;
+      badge.classList.add('is-bumped');
+    };
+
+    const judge = (li, post) => {
+      li.classList.remove('is-judging');
+      if (post.rule) {
+        li.classList.add('is-hidden');
+        count();
+      }
+    };
+
+    const take = () => posts[next++ % posts.length];
+
+    for (let i = 0; i < FIRST_SCREEN; i++) {
+      const post = take();
+      const li = row(post, `${2 + i * 7}m`);
+      feed.append(li);
+      if (still) judge(li, post);
+      else setTimeout(() => judge(li, post), 700 + i * 380);
+    }
+
+    reveal.addEventListener('change', () => feed.classList.toggle('is-revealing', reveal.checked));
+    if (still) return;
+
+    const arrive = () => {
+      if (!visible || document.hidden) return;
+      const post = take();
+      const li = row(post, 'now');
+      feed.prepend(li);
+      setTimeout(() => judge(li, post), JUDGE_MS);
+      while (feed.children.length > MAX_ROWS) feed.lastElementChild.remove();
+    };
+    const run = () => {
+      if (timer === null) timer = setInterval(arrive, ARRIVAL_MS);
+    };
+    const halt = () => {
+      clearInterval(timer);
+      timer = null;
+    };
+    new IntersectionObserver((entries) => {
+      visible = entries.some((e) => e.isIntersecting);
+      if (visible) run();
+      else halt();
+    }).observe(feed);
+    document.addEventListener('visibilitychange', () =>
+      document.hidden ? halt() : visible && run()
+    );
+  })();
+</script>
+
+<style is:global>
+  .utl {
+    --utl-bg: #ffffff;
+    --utl-ink: #0f1419;
+    --utl-muted: #536471;
+    --utl-line: #eff3f4;
+    --utl-chrome: #f1f4f3;
+    --utl-dot: #cfd8dc;
+    --utl-mark: #1b6b80;
+    --utl-mark-ink: #ffffff;
+    --utl-judge: #8fa3ab;
+    margin: 0;
+    display: grid;
+    gap: 14px;
+    justify-items: end;
+    width: 100%;
+  }
+  .dark .utl {
+    --utl-bg: #000000;
+    --utl-ink: #e7e9ea;
+    --utl-muted: #71767b;
+    --utl-line: #2f3336;
+    --utl-chrome: #16181c;
+    --utl-dot: #3a4046;
+    --utl-mark: #62b6d0;
+    --utl-mark-ink: #06222b;
+    --utl-judge: #5b6a70;
+  }
+  .utl-browser {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--utl-bg);
+    border: 1px solid #dcd3b8;
+    box-shadow:
+      0 30px 70px -40px rgba(7, 54, 66, 0.45),
+      0 2px 6px rgba(7, 54, 66, 0.06);
+    font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--utl-ink);
+  }
+  .dark .utl-browser {
+    border-color: #2d333b;
+    box-shadow:
+      0 30px 70px -40px rgba(0, 0, 0, 0.85),
+      0 0 0 1px rgba(29, 155, 240, 0.08);
+  }
+  .utl-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 14px;
+    background: var(--utl-chrome);
+    border-bottom: 1px solid var(--utl-line);
+  }
+  .utl-lights {
+    display: flex;
+    gap: 6px;
+  }
+  .utl-lights i {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--utl-dot);
+  }
+  .utl-address {
+    flex: 1;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: var(--utl-bg);
+    color: var(--utl-muted);
+    font-size: 13px;
+  }
+  .utl-ext {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  .utl-mark {
+    width: 22px;
+    height: 22px;
+  }
+  .utl-mark rect {
+    fill: var(--utl-mark);
+  }
+  .utl-mark path {
+    fill: none;
+    stroke: var(--utl-mark-ink);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .utl-badge {
+    position: absolute;
+    top: -7px;
+    right: -9px;
+    min-width: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--utl-mark);
+    color: var(--utl-mark-ink);
+    font:
+      700 11px/18px -apple-system,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
+    text-align: center;
+    box-shadow: 0 0 0 2px var(--utl-chrome);
+  }
+  .utl-badge.is-bumped {
+    animation: utl-bump 0.35s ease;
+  }
+  @keyframes utl-bump {
+    40% {
+      transform: scale(1.25);
+    }
+  }
+  .utl-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--utl-line);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .utl-tabs span {
+    flex: 1;
+    padding: 13px 0 11px;
+    text-align: center;
+    color: var(--utl-muted);
+  }
+  .utl-tabs .is-on {
+    color: var(--utl-ink);
+    box-shadow: inset 0 -3px 0 #1d9bf0;
+  }
+  .utl-feed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: clamp(380px, 44vw, 500px);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent);
+    mask-image: linear-gradient(to bottom, #000 78%, transparent);
+  }
+  .utl-post {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr;
+    min-height: 0;
+    border-bottom: 1px solid var(--utl-line);
+    transition:
+      grid-template-rows 0.55s ease,
+      min-height 0.4s ease,
+      opacity 0.45s ease,
+      border-color 0.45s ease;
+  }
+  .utl-post.is-judging {
+    grid-template-rows: 0fr;
+    min-height: 30px;
+    border-bottom-style: dashed;
+  }
+  .utl-post.is-judging::before {
+    content: 'judging…';
+    position: absolute;
+    left: 16px;
+    top: 9px;
+    font:
+      500 11px/1 'JetBrains Mono',
+      ui-monospace,
+      monospace;
+    color: var(--utl-judge);
+  }
+  .utl-post.is-hidden {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    border-bottom-color: transparent;
+  }
+  .utl-clip {
+    min-height: 0;
+    overflow: hidden;
+    transition: opacity 0.35s ease;
+  }
+  .utl-post.is-judging .utl-clip {
+    opacity: 0;
+  }
+  .utl-inner {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  .utl-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: hsl(var(--hue) 45% 78%);
+    color: hsl(var(--hue) 45% 22%);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .utl-head {
+    margin: 0;
+    font-size: 15px;
+    color: var(--utl-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .utl-head b {
+    color: var(--utl-ink);
+  }
+  .utl-text {
+    margin: 2px 0 0;
+    font-size: 15px;
+    line-height: 1.35;
+  }
+  .utl-note {
+    display: none;
+    grid-column: 1 / -1;
+    justify-self: start;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .utl-pill {
+    padding: 1px 10px;
+    border-radius: 999px;
+    background: #1d6f8b;
+    color: #ffffff;
+  }
+  .utl-action {
+    padding: 0 10px;
+    border: 1px solid #1d6f8b;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #1d6f8b;
+  }
+  .utl-feed.is-revealing .utl-post.is-hidden {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    border-bottom-color: var(--utl-line);
+  }
+  .utl-feed.is-revealing .utl-post.is-hidden .utl-note {
+    display: inline-flex;
+  }
+  .utl-feed.is-revealing .utl-post.is-hidden .utl-avatar,
+  .utl-feed.is-revealing .utl-post.is-hidden .utl-main {
+    opacity: 0.4;
+  }
+  .utl-reveal {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #586e75;
+    cursor: pointer;
+  }
+  .dark .utl-reveal {
+    color: #9198a1;
+  }
+  .utl-reveal input {
+    appearance: none;
+    position: relative;
+    width: 38px;
+    height: 22px;
+    margin: 0;
+    border-radius: 999px;
+    background: #dcd3b8;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+  .dark .utl-reveal input {
+    background: #2d333b;
+  }
+  .utl-reveal input::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fdf6e3;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease;
+  }
+  .utl-reveal input:checked {
+    background: #1d9bf0;
+  }
+  .utl-reveal input:checked::after {
+    transform: translateX(16px);
+  }
+  .utl-reveal input:focus-visible {
+    outline: 2px solid #1d9bf0;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .utl-post,
+    .utl-badge.is-bumped,
+    .utl-reveal input,
+    .utl-reveal input::after {
+      transition: none;
+      animation: none;
+    }
+  }
+</style>

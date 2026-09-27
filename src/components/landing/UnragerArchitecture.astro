@@ -11,14 +11,14 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
   <div
     class="term-frame relative overflow-hidden p-5 sm:p-8"
     role="img"
-    aria-label="How unrager works: chaotic, rage-baity tweets are pulled from X using your own browser session, passed through a local rage filter powered by an Ollama model on a machine you own — a Linux box, a Mac, a home server — and the resulting calm feed is served over a private Tailscale tunnel to the terminal, iOS, macOS, and Linux clients."
+    aria-label="How unrager works: x.com sends your Home timeline to your browser as usual; the extension hands each new post to unrager on your own computer, where your model answers keep, or hide and the rule it broke; posts it hides never appear on the page."
   >
     <span class="arch-spine" aria-hidden="true"></span>
 
     <div class="arch-flow">
-      <!-- STAGE 1 — X (source) -->
+      <!-- STAGE 1 — x.com, in your browser -->
       <div class="arch-stage" data-stage="source">
-        <p class="arch-kicker">source</p>
+        <p class="arch-kicker">x.com · in your browser</p>
         <div class="arch-node arch-node--x">
           <div class="arch-node-head">
             <span class="arch-glyph arch-glyph--x" aria-hidden="true">
@@ -29,24 +29,24 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
               </svg>
             </span>
             <div>
-              <p class="arch-node-title">X (Twitter)</p>
-              <p class="arch-node-sub">the firehose</p>
+              <p class="arch-node-title">Your Home timeline</p>
+              <p class="arch-node-sub">For you · Following</p>
             </div>
           </div>
           <ul class="arch-stream arch-stream--noisy" aria-hidden="true">
-            <li class="t t-rage"><span></span><span></span><span></span></li>
+            <li class="t t-calm"><span></span><span></span><span></span></li>
             <li class="t t-rage"><span></span><span></span></li>
+            <li class="t t-calm"><span></span><span></span></li>
             <li class="t t-bait"><span></span><span></span><span></span></li>
-            <li class="t t-rage"><span></span><span></span></li>
-            <li class="t t-bait"><span></span></li>
+            <li class="t t-calm"><span></span></li>
           </ul>
-          <p class="arch-node-note">rage-bait, dunks, outrage</p>
+          <p class="arch-node-note">what X already sends your browser</p>
         </div>
       </div>
 
       <!-- LINK 1 -->
       <div class="arch-link" data-link="1">
-        <span class="arch-link-label">cookies → GraphQL</span>
+        <span class="arch-link-label">the extension reads it</span>
         <svg class="arch-arrow" viewBox="0 0 120 24" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="arch-g-in" x1="0" y1="0" x2="1" y2="0">
@@ -58,16 +58,16 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
           ></line>
           <path class="arch-arrow-head" d="M104 6 L116 12 L104 18" fill="none"></path>
           <circle class="arch-dot arch-dot--rage d1" cx="0" cy="12" r="3"></circle>
-          <circle class="arch-dot arch-dot--rage d2" cx="0" cy="12" r="3"></circle>
+          <circle class="arch-dot arch-dot--calm d2" cx="0" cy="12" r="3"></circle>
         </svg>
-        <span class="arch-link-foot">no API key · free reads</span>
+        <span class="arch-link-foot">nothing extra asked of X</span>
       </div>
 
-      <!-- STAGE 2 — the rage filter / unrager serve (CENTERPIECE) -->
+      <!-- STAGE 2 — unrager and your model, on your computer (CENTERPIECE) -->
       <div class="arch-stage arch-stage--core" data-stage="core">
-        <p class="arch-kicker arch-kicker--accent">the rage filter · on your own box</p>
+        <p class="arch-kicker arch-kicker--accent">the rage filter · on your own computer</p>
         <div class="arch-node arch-node--core">
-          <span class="arch-mac" aria-hidden="true">$ unrager serve</span>
+          <span class="arch-mac" aria-hidden="true">localhost:7777</span>
           <div class="arch-core-ring">
             <img
               src={iconSrc}
@@ -81,21 +81,22 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
             />
             <span class="arch-core-glow" aria-hidden="true"></span>
           </div>
-          <p class="arch-node-title arch-node-title--core">Rust engine</p>
-          <p class="arch-node-sub">fetch · classify · serve</p>
+          <p class="arch-node-title arch-node-title--core">unrager</p>
+          <p class="arch-node-sub">your rules · cached verdicts</p>
           <div class="arch-chip arch-chip--ollama">
             <span class="arch-chip-dot" aria-hidden="true"></span>
-            <span>Ollama · local LLM</span>
+            <span>your model · Qwen3 4B</span>
           </div>
           <p class="arch-node-note arch-node-note--core">
-            every tweet → <b>HIDE / KEEP</b><br />Ask · Brief · Translate
+            every new post → <b>KEEP</b> or <b class="whitespace-nowrap">HIDE 3</b><br />and the
+            rule it broke
           </p>
         </div>
       </div>
 
       <!-- LINK 2 -->
       <div class="arch-link" data-link="2">
-        <span class="arch-link-label">/api + SSE</span>
+        <span class="arch-link-label">verdicts</span>
         <svg class="arch-arrow" viewBox="0 0 120 24" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="arch-g-out" x1="0" y1="0" x2="1" y2="0">
@@ -111,63 +112,41 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
           <circle class="arch-dot arch-dot--calm d2" cx="0" cy="12" r="3"></circle>
           <circle class="arch-dot arch-dot--calm d3" cx="0" cy="12" r="3"></circle>
         </svg>
-        <span class="arch-link-foot arch-link-foot--ts">
-          <span class="arch-ts-glyph" aria-hidden="true">⛓</span> over Tailscale
-        </span>
+        <span class="arch-link-foot arch-link-foot--ts">before the page paints them</span>
       </div>
 
-      <!-- STAGE 3 — clients -->
+      <!-- STAGE 3 — the calm timeline -->
       <div class="arch-stage arch-stage--clients" data-stage="clients">
-        <p class="arch-kicker">your devices · the calm feed</p>
-        <div class="arch-clients">
-          <div class="arch-node arch-node--client">
-            <span class="arch-client-glyph" aria-hidden="true">▟</span>
-            <p class="arch-client-name">Terminal</p>
-            <p class="arch-client-sub">TUI / CLI</p>
-            <ul class="arch-stream arch-stream--calm" aria-hidden="true">
-              <li class="t t-calm"><span></span><span></span></li>
-              <li class="t t-calm"><span></span></li>
-              <li class="t t-calm"><span></span><span></span></li>
-            </ul>
+        <p class="arch-kicker">x.com · without the rage</p>
+        <div class="arch-node arch-node--calm">
+          <div class="arch-node-head">
+            <span class="arch-client-glyph" aria-hidden="true">◌</span>
+            <div>
+              <p class="arch-node-title">Your Home timeline</p>
+              <p class="arch-node-sub">the same page, minus the bait</p>
+            </div>
           </div>
-          <div class="arch-node arch-node--client">
-            <span class="arch-client-glyph" aria-hidden="true">◍</span>
-            <p class="arch-client-name">iPhone</p>
-            <p class="arch-client-sub">UIKit</p>
-            <ul class="arch-stream arch-stream--calm" aria-hidden="true">
-              <li class="t t-calm"><span></span><span></span></li>
-              <li class="t t-calm"><span></span></li>
-              <li class="t t-calm"><span></span><span></span></li>
-            </ul>
-          </div>
-          <div class="arch-node arch-node--client">
-            <span class="arch-client-glyph" aria-hidden="true">▣</span>
-            <p class="arch-client-name">Mac</p>
-            <p class="arch-client-sub">AppKit</p>
-            <ul class="arch-stream arch-stream--calm" aria-hidden="true">
-              <li class="t t-calm"><span></span><span></span></li>
-              <li class="t t-calm"><span></span></li>
-              <li class="t t-calm"><span></span><span></span></li>
-            </ul>
-          </div>
-          <div class="arch-node arch-node--client">
-            <span class="arch-client-glyph" aria-hidden="true">◆</span>
-            <p class="arch-client-name">Linux</p>
-            <p class="arch-client-sub">GTK4</p>
-            <ul class="arch-stream arch-stream--calm" aria-hidden="true">
-              <li class="t t-calm"><span></span><span></span></li>
-              <li class="t t-calm"><span></span></li>
-              <li class="t t-calm"><span></span><span></span></li>
-            </ul>
-          </div>
+          <ul class="arch-stream arch-stream--calm" aria-hidden="true">
+            <li class="t t-calm"><span></span><span></span><span></span></li>
+            <li class="t t-calm"><span></span><span></span></li>
+            <li class="t t-calm"><span></span></li>
+          </ul>
+          <p class="arch-hidden-line">
+            <span class="arch-hidden-pill">Hidden: engagement farming</span>
+            <span class="arch-hidden-count">counted on the toolbar badge</span>
+          </p>
+          <p class="arch-node-note">
+            also judged the same way: the terminal client and the iPhone app
+          </p>
         </div>
       </div>
     </div>
   </div>
 
   <figcaption id="arch-caption" class="arch-caption">
-    Chaotic tweets are pulled from X with your own session, sifted through a local rage filter on a
-    box you own, and the calm feed is served over your private Tailnet to every device.
+    Your browser already has your timeline: X sent it. The extension hands each new post to unrager
+    on your own computer, your model judges it against your rules, and the posts it hides never
+    appear. Nothing goes anywhere else.
   </figcaption>
 </figure>
 
@@ -195,7 +174,7 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
   /* desktop: horizontal flow */
   @media (min-width: 900px) {
     .arch-flow {
-      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.15fr) auto minmax(0, 1.6fr);
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.15fr) auto minmax(0, 1fr);
       gap: 0.75rem;
       align-items: center;
     }
@@ -577,50 +556,7 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
     }
   }
 
-  /* clients */
-  .arch-clients {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.5rem;
-  }
-  @media (max-width: 479.98px) {
-    .arch-clients {
-      grid-template-columns: 1fr;
-    }
-    .arch-node--client {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-start;
-      text-align: left;
-      gap: 0.1rem 0.55rem;
-    }
-    .arch-node--client .arch-client-glyph {
-      order: 0;
-    }
-    .arch-node--client .arch-client-name {
-      order: 1;
-    }
-    .arch-node--client .arch-client-sub {
-      order: 2;
-    }
-    .arch-node--client .arch-stream--calm {
-      order: 3;
-      flex-basis: 100%;
-      margin-top: 0.15rem;
-    }
-  }
-  .arch-node--client {
-    align-items: center;
-    text-align: center;
-    gap: 0.3rem;
-    padding: 0.7rem 0.45rem;
-    min-width: 0;
-    border-color: color-mix(in srgb, var(--accent) 28%, theme('colors.paper.border'));
-  }
-  :global(.dark) .arch-node--client {
-    border-color: color-mix(in srgb, var(--accent) 30%, theme('colors.term.border'));
-  }
+  /* the calm timeline */
   .arch-client-glyph {
     font-size: 1.15rem;
     line-height: 1;
@@ -630,27 +566,39 @@ const { accent, iconSrc = '/unrager-icon.png' } = Astro.props;
     color: var(--accent);
     text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 50%, transparent);
   }
-  .arch-client-name {
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: theme('colors.paper.text');
-  }
-  :global(.dark) .arch-client-name {
-    color: theme('colors.term.text');
-  }
-  .arch-client-sub {
-    margin: 0;
-    font-size: 0.62rem;
-    color: theme('colors.paper.faint');
-  }
-  :global(.dark) .arch-client-sub {
-    color: theme('colors.term.faint');
-  }
   .arch-stream--calm {
     width: 100%;
     margin-top: 0.2rem;
     gap: 0.22rem;
+  }
+
+  .arch-node--calm {
+    border-color: color-mix(in srgb, var(--accent) 28%, theme('colors.paper.border'));
+  }
+  :global(.dark) .arch-node--calm {
+    border-color: color-mix(in srgb, var(--accent) 30%, theme('colors.term.border'));
+  }
+  .arch-hidden-line {
+    margin: 0.1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .arch-hidden-pill {
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    background: #1d6f8b;
+    color: #ffffff;
+  }
+  .arch-hidden-count {
+    font-size: 0.62rem;
+    color: theme('colors.paper.faint');
+  }
+  :global(.dark) .arch-hidden-count {
+    color: theme('colors.term.faint');
   }
 
   .arch-caption {

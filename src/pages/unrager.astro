@@ -1,249 +1,166 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import DeviceFrame from '@components/landing/DeviceFrame.astro';
 import FeatureGrid from '@components/landing/FeatureGrid.astro';
 import FaqAccordion from '@components/landing/FaqAccordion.astro';
 import UnragerArchitecture from '@components/landing/UnragerArchitecture.astro';
+import UnragerTimeline from '@components/landing/UnragerTimeline.astro';
+import UnragerPopup from '@components/landing/UnragerPopup.astro';
+import UnragerTerminal from '@components/landing/UnragerTerminal.astro';
 
 const site = 'https://midgarcorp.cc';
 const canonical = `${site}/unrager`;
 const ogImage = '/og/unrager.png';
 const accent = '#1D9BF0';
 
-const seoTitle = 'unrager — a calm X on every screen';
+const seoTitle = 'unrager — keep x.com, lose the rage';
 const metaDescription =
-  'A calm Twitter/X client with a local-LLM rage filter. Four faces — a Rust terminal TUI/CLI and native iOS, macOS and GNOME/Linux apps — all talking to the same engine. Rage-bait is dropped before it reaches your eyes.';
+  'A browser extension that takes the rage-bait out of your x.com timeline, judged by a model on your own computer. Free, open source, and nothing leaves your machine.';
 
 const installCmd = 'curl -fsSL https://unrager.com/install.sh | bash';
+const modelCmd = 'ollama pull qwen3:4b-instruct';
 const githubUrl = 'https://github.com/guitaripod/unrager';
 const releasesUrl = 'https://github.com/guitaripod/unrager/releases';
 
 const heroHighlights = [
-  'Local LLM drops rage-bait before you ever see it',
-  'Four native faces, one Rust engine',
-  'No API key, no cloud, no per-feed cost',
-  'GPL-3.0 — your X session, your machine',
+  'New posts wait out of view until your model has judged them',
+  'Every hidden post says which rule caught it, and one click brings it back',
+  'Runs on a small model on your own computer: Qwen3 4B, 2.5 GB',
+  'No account, no telemetry; your posts never leave your machine',
 ];
 
-type Face = {
-  id: string;
-  glyph: string;
-  name: string;
-  blurb: string;
-  meta: string;
-  cta: { label: string; href: string }[];
+type Step = {
+  title: string;
+  body: string;
   code?: { prompt: string; copy: string }[];
+  list?: string[];
   note?: string;
 };
 
-const faces: Face[] = [
+const steps: Step[] = [
   {
-    id: 'tui',
-    glyph: '▟',
-    name: 'Terminal — TUI & CLI',
-    blurb:
-      'A full ratatui client and a one-shot CLI in one Rust binary. Inline photos, video posters and GIF frames via the kitty graphics protocol; author-avatar chips on every row; Vim-mode composing everywhere.',
-    meta: 'Rust · macOS, Linux, Windows · Ghostty / Kitty / WezTerm',
-    cta: [
-      { label: 'Releases ↗', href: releasesUrl },
-      { label: 'Source ↗', href: githubUrl },
-    ],
+    title: 'Run a model',
+    body: 'Install Ollama from ollama.com, then pull the default model. It’s 2.5 GB and judges a post in a fraction of a second.',
+    code: [{ prompt: modelCmd, copy: modelCmd }],
+    note: 'Already running LM Studio, vLLM, llama.cpp or SGLang? Skip this: step 2 finds it and prints the lines to put in filter.toml.',
+  },
+  {
+    title: 'Install unrager',
+    body: 'One program for macOS and Linux. The script runs `unrager setup` for you: it checks that your model answers, starts unrager in the background so it comes back after a restart, and unpacks the extension.',
     code: [
-      { prompt: 'curl -fsSL https://unrager.com/install.sh | bash', copy: installCmd },
-      { prompt: 'cargo install unrager', copy: 'cargo install unrager' },
+      { prompt: installCmd, copy: installCmd },
+      {
+        prompt: 'cargo install unrager && unrager setup',
+        copy: 'cargo install unrager && unrager setup',
+      },
     ],
   },
   {
-    id: 'ios',
-    glyph: '◍',
-    name: 'iOS — native app',
-    blurb:
-      'A thin UIKit client built for iOS 26 with Liquid Glass and buttery scrolling. It talks to your own `unrager serve` over Tailscale — the Rust engine does the X work, the app stays a fast native shell.',
-    meta: 'Swift / UIKit · iOS 26 · Liquid Glass',
-    code: [
-      {
-        prompt: 'git clone https://github.com/guitaripod/unrager',
-        copy: 'git clone https://github.com/guitaripod/unrager',
-      },
-      {
-        prompt: 'cd unrager/ios && xcodegen generate',
-        copy: 'cd unrager/ios && xcodegen generate',
-      },
+    title: 'Add the extension',
+    body: 'In Chrome, Brave, Edge, Vivaldi or Arc:',
+    list: [
+      'Open `chrome://extensions`.',
+      'Turn on Developer mode.',
+      'Click Load unpacked and pick the folder `unrager setup` printed.',
     ],
-    cta: [{ label: 'Source ↗', href: githubUrl }],
-    note: 'Not on the App Store — it uses your own X session. Open the generated `Unrager.xcodeproj` in Xcode 26, sign with your team, and run on your iPhone. Then set your `unrager serve` address in Settings.',
-  },
-  {
-    id: 'mac',
-    glyph: '▣',
-    name: 'macOS — native app',
-    blurb:
-      'A native AppKit app for macOS 26, sharing the iOS design language and Liquid Glass. Point it at your `unrager serve` instance on the Tailnet and read every feed from a real Mac window.',
-    meta: 'Swift / AppKit · macOS 26 · Liquid Glass',
-    code: [
-      {
-        prompt: 'git clone https://github.com/guitaripod/unrager',
-        copy: 'git clone https://github.com/guitaripod/unrager',
-      },
-      {
-        prompt: 'cd unrager/macos && ./scripts/run.sh',
-        copy: 'cd unrager/macos && ./scripts/run.sh',
-      },
-    ],
-    cta: [{ label: 'Source ↗', href: githubUrl }],
-    note: 'Not on the Mac App Store — it uses your own X session. `run.sh` builds and launches it (unsigned is fine on your own Mac; `scripts/release-dmg.sh` makes a notarized DMG if you prefer). Then set your server address in Settings.',
-  },
-  {
-    id: 'linux',
-    glyph: '◆',
-    name: 'Linux — native app',
-    blurb:
-      'A native GNOME desktop client in GTK4 and libadwaita (via relm4) — the Linux peer of the Apple apps. It auto-spawns or reuses a local `unrager serve`, or you point it at one over Tailscale. Feeds, threads, profiles, notifications, compose and the Ask / Brief / Translate sheet, all in a real Adwaita window with inline media that fills the column.',
-    meta: 'Rust · GTK4 / libadwaita · GNOME',
-    code: [
-      {
-        prompt: 'git clone https://github.com/guitaripod/unrager',
-        copy: 'git clone https://github.com/guitaripod/unrager',
-      },
-      {
-        prompt: 'cd unrager/linux && cargo run -p unrager-gtk',
-        copy: 'cd unrager/linux && cargo run -p unrager-gtk',
-      },
-    ],
-    cta: [{ label: 'Source ↗', href: githubUrl }],
-    note: 'Built from source like the Apple apps. Needs the GTK4 + libadwaita dev packages (`gtk4 libadwaita` on Arch, `libgtk-4-dev libadwaita-1-dev` on Debian/Ubuntu). On first launch it manages `unrager serve` for you; point it at a Tailscale server in Settings to read from anywhere.',
+    note: 'Then open x.com. Posts that match your rules never show up in For you and Following, and the unrager icon counts the ones it hid.',
   },
 ];
 
 const features = [
   {
-    title: 'The rage filter',
-    body: 'Every tweet is classified by a local Ollama model against your own rubric. Matches are physically removed — not collapsed, not greyed, gone. Verdicts cache to SQLite; edit the rubric and the cache invalidates.',
+    title: 'Judged before you see it',
+    body: 'A post seen for the first time waits out of view until your model answers, which a small model does in a fraction of a second. A post never shows up only to vanish while you read it.',
+    glyph: '⧗',
+  },
+  {
+    title: 'Says why',
+    body: 'Every hidden post names the rule it broke. Turn on Show hidden posts and they come back dimmed, each labelled “Hidden: war”, “Hidden: engagement farming”.',
     glyph: '⊘',
   },
   {
-    title: 'All your sources',
-    body: 'For You, Following, lists, search, bookmarks, notifications, likes and any profile timeline. Free reads come straight from X’s own GraphQL endpoints — the same path the web client uses.',
-    glyph: '❖',
-  },
-  {
-    title: 'Threads & media',
-    body: 'Split-pane reply chains with the focal tweet expanded and replies beneath. Photos, video posters and GIF frames render inline on the terminal and natively on iOS and macOS.',
-    glyph: '◧',
-  },
-  {
-    title: 'Profiles & briefs',
-    body: 'Open any profile with header, follower counts and a large avatar. Ask the local LLM for a short, third-person brief of someone’s recent timeline — a dossier no other client has.',
-    glyph: '◉',
-  },
-  {
-    title: 'Compose & reply',
-    body: 'Write and reply through the official X API v2 with your own registered client. Auto-likes on reply. Your identity, your rate limits — never a shared key.',
+    title: 'You overrule it',
+    body: 'Show this post brings one back for good; right-click any post on Home to hide it by hand. Your call outranks the model in every client and survives rule changes.',
     glyph: '✎',
   },
   {
-    title: 'Ask · Brief · Translate',
-    body: 'One local model powers four hooks: Filter classifies, Translate rewrites foreign posts in English, Ask opens an inline chat about a post with thread context attached, and Brief profiles a timeline. Nothing leaves your machine.',
-    glyph: '✶',
+    title: 'As strict as you like',
+    body: 'Relaxed, Balanced or Strict, and a count of what each rule hid since you last changed them, so the rule that hides too much stands out.',
+    glyph: '◐',
   },
   {
-    title: 'Native on every desktop',
-    body: 'The iOS and macOS apps adopt the iOS 26 / macOS 26 Liquid Glass material; the Linux app is built in GTK4 / libadwaita and feels right at home in GNOME. Every face is the real platform toolkit — translucent depth and motion on Apple, an Adwaita window on Linux — never a wrapped web view.',
+    title: 'Your posts stay',
+    body: 'Your own posts, retweets of them and the conversations you replied in are never hidden. Profiles, threads and search are never filtered: you went looking.',
+    glyph: '◉',
+  },
+  {
+    title: 'Any local model',
+    body: 'Qwen3 4B on Ollama by default, or anything with an OpenAI-compatible API: LM Studio, vLLM, llama.cpp, SGLang, llama-swap. unrager eval scores yours on about 200 made-up posts.',
+    glyph: '⚙',
+  },
+  {
+    title: 'Private by default',
+    body: 'Posts go to unrager on localhost and to your model, nowhere else. No account, no telemetry, and the server refuses requests from web pages.',
     glyph: '◇',
   },
   {
-    title: 'Smooth scrolling',
-    body: 'Cell-image recycling and prefetch keep the native feeds gliding at 120 Hz, with avatars and media decoded off the main thread so the timeline never stutters.',
-    glyph: '⇅',
-  },
-];
-
-const iosShots = [
-  { src: '/screenshots/unrager/ios-home.png', label: 'A calm Home feed' },
-  { src: '/screenshots/unrager/ios-home-dark.png', label: 'Home in dark mode' },
-  { src: '/screenshots/unrager/ios-thread.png', label: 'A thread with photos' },
-  { src: '/screenshots/unrager/ios-profile.png', label: 'A profile timeline' },
-  { src: '/screenshots/unrager/ios-ask.png', label: 'Ask the local LLM' },
-];
-
-const macosShots = [
-  { src: '/screenshots/unrager/macos-home.png', label: 'The feed in a native Mac window' },
-  { src: '/screenshots/unrager/macos-home-light.png', label: 'Home in light mode' },
-  { src: '/screenshots/unrager/macos-thread.png', label: 'A thread with the reply rail' },
-  { src: '/screenshots/unrager/macos-profile.png', label: 'A profile timeline' },
-  { src: '/screenshots/unrager/macos-ask.png', label: 'Ask the local LLM about a post' },
-  { src: '/screenshots/unrager/macos-settings.png', label: 'Settings, with adjustable text size' },
-];
-
-const linuxShots = [
-  { src: '/screenshots/unrager/linux-home.png', label: 'A calm Home feed in a GNOME window' },
-  { src: '/screenshots/unrager/linux-home-light.png', label: 'Home in light mode' },
-  { src: '/screenshots/unrager/linux-thread.png', label: 'A thread with replies' },
-  { src: '/screenshots/unrager/linux-notifications.png', label: 'Notifications' },
-  {
-    src: '/screenshots/unrager/linux-settings.png',
-    label: 'Settings, with adjustable text & media size',
-  },
-];
-
-const tuiShots = [
-  {
-    src: '/screenshots/unrager/tui-detail.png',
-    label: 'Split-pane thread with inline media, rage filter ate 12',
+    title: 'Fails open',
+    body: 'If your model is off or slow, X works as usual: a new post shows after a couple of seconds, a failed check is never remembered, and the badge says what to fix.',
+    glyph: '⇄',
   },
   {
-    src: '/screenshots/unrager/tui-ask.png',
-    label: 'Ask the local model while Vim composes underneath',
+    title: 'Measured, not guessed',
+    body: 'unrager counts a good post hidden as worse than a rage post let through, because you never see the first. Every change to the prompt is scored on both before it ships.',
+    glyph: '≋',
   },
-  { src: '/screenshots/unrager/tui-brief.png', label: 'A streamed profile brief' },
-  {
-    src: '/screenshots/unrager/tui-notifications.png',
-    label: 'Notifications with actor avatars',
-  },
-  { src: '/screenshots/unrager/tui-help.png', label: 'Every keybinding, one glyph at a time' },
 ];
 
 const faq = [
   {
-    q: 'Why isn’t it on the App Store?',
-    a: 'unrager logs in with your own existing X session and reads from X’s own GraphQL endpoints, which is incompatible with App Store distribution policy. So the native apps are built from source: clone the repo and run them — iOS on your own device from Xcode 26, macOS via `scripts/run.sh` (or a notarized DMG with `scripts/release-dmg.sh`), and the GNOME/Linux app with `cd linux && cargo run -p unrager-gtk`. The terminal client installs with one curl command or `cargo install`.',
+    q: 'Does anything leave my computer?',
+    a: 'No. The extension hands posts to unrager on localhost, and unrager hands them to your model. There’s no account and no telemetry. The background server that setup installs never reads your X login and never talks to X, and it refuses requests from web pages, so a site you visit can’t use it.',
   },
   {
-    q: 'How do the apps connect to my account?',
-    a: 'You run `unrager serve` on a machine you control — a Mac, a Linux box, a home server. That Rust process does all the X work using your browser session and OAuth tokens. The iOS, macOS and Linux apps are thin native clients that reach the server over Tailscale, so your feeds are available anywhere without ever exposing the server to the public internet. (The Linux app can also just spawn and manage a local server for you.)',
+    q: 'What if my model is off, or slow?',
+    a: 'X works as usual. unrager fails open: a new post waits a couple of seconds for its verdict and then shows anyway, a failed check is never remembered, and unrager asks again shortly. The toolbar badge shows ! while posts can’t be checked, and the popup says what to run.',
   },
   {
-    q: 'Is my data private?',
-    a: 'Yes. Everything runs on hardware you own. The rage filter, translate, ask and brief all call a local Ollama model — no prompt, tweet or timeline ever leaves your machine. There is no unrager cloud, no analytics, and no shared API key. Reads use X’s own endpoints; writes go through the official X API v2 with a client you register yourself.',
+    q: 'Which models work?',
+    a: 'The default is Qwen3 4B on Ollama: in unrager’s tests it hid a quarter as many good posts as a 27B model while catching most of the same rage, loads in about two seconds and stays loaded in about 3 GB. Any instruction-tuned model that can answer HIDE or KEEP will do, served by Ollama or anything that speaks the OpenAI chat API. unrager eval tells you how well yours filters.',
   },
   {
-    q: 'What exactly is the rage filter?',
-    a: 'A local LLM classifier. You write a plain-language rubric of topics and tones you don’t want to see; for every incoming tweet, a local Ollama model returns HIDE or KEEP, and HIDE matches are removed from the feed entirely. Verdicts are cached in SQLite keyed by the tweet and a hash of your rubric, so editing the rubric re-evaluates automatically and nothing is reclassified twice. If Ollama is down, the filter quietly disables and you see an unfiltered feed.',
+    q: 'Can the model run on a different computer?',
+    a: 'Yes. Run unrager setup --bind 0.0.0.0:7777 on the machine with the GPU, then enter its address under Settings in the extension’s popup. Keep that to a private network such as Tailscale: unrager has no login of its own.',
   },
   {
-    q: 'Does it cost anything to read?',
-    a: 'No. Reads go through the same GraphQL endpoints the X web client uses, authenticated with your existing browser session — no developer API key, no paid tier, no per-feed cost. Only posting and replying use the official X API v2, with your own registered client and your own rate limits.',
+    q: 'Which browsers and systems?',
+    a: 'Chromium browsers (Chrome, Brave, Edge, Vivaldi, Arc) on macOS and Linux. Firefox, Safari and Windows aren’t supported yet.',
   },
   {
-    q: 'Which platforms are supported?',
-    a: 'The terminal TUI and CLI run on macOS, Linux and Windows. The native GUI apps target iOS 26, macOS 26 and Linux (GTK4 / libadwaita, i.e. GNOME and most modern desktops). Inline terminal media needs a kitty-graphics terminal such as Ghostty, Kitty or WezTerm; elsewhere it falls back to glyph placeholders.',
+    q: 'Why load it unpacked instead of from the Chrome Web Store?',
+    a: 'It isn’t listed yet. Loading it unpacked takes three clicks once; after that, unrager update keeps it current and the toolbar icon shows ↑ until you reload it.',
+  },
+  {
+    q: 'Does it filter replies, search and profiles too?',
+    a: 'No, only your Home timeline, For you and Following. When you open a profile, a thread or a search, you went looking, so you see all of it.',
+  },
+  {
+    q: 'Does it cost anything?',
+    a: 'No. unrager is free and open source under the GPL-3.0, and it runs on hardware you own: no API key, no subscription, no per-post cost.',
   },
 ];
-
-const allShots = [...iosShots, ...macosShots, ...linuxShots, ...tuiShots].map((s) => site + s.src);
 
 const softwareApp = {
   '@type': 'SoftwareApplication',
   name: 'unrager',
-  operatingSystem: 'iOS, macOS, Linux, Windows',
-  applicationCategory: 'SocialNetworkingApplication',
+  operatingSystem: 'macOS, Linux',
+  applicationCategory: 'BrowserApplication',
   description: metaDescription,
   url: canonical,
   downloadUrl: githubUrl,
   image: site + ogImage,
-  screenshot: allShots,
-  programmingLanguage: ['Rust', 'Swift'],
+  programmingLanguage: ['Rust', 'JavaScript'],
   license: 'https://www.gnu.org/licenses/gpl-3.0.html',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   author: { '@type': 'Organization', name: 'Midgar Oy', url: site },
   publisher: { '@type': 'Organization', name: 'Midgar Oy', url: site },
 };
@@ -266,6 +183,17 @@ const faqPage = {
 };
 
 const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, breadcrumb, faqPage] };
+
+/** Renders `code` spans in copy that's otherwise plain text. */
+const withCode = (text: string) =>
+  text
+    .split(/(`[^`]+`)/)
+    .map((part) =>
+      part.startsWith('`')
+        ? `<code class="rounded-sm bg-paper-raised px-1 py-0.5 text-paper-text dark:bg-term-raised dark:text-term-text">${part.slice(1, -1)}</code>`
+        : part
+    )
+    .join('');
 ---
 
 <BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>
@@ -281,7 +209,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
 
     <!-- Hero -->
     <header
-      class="grid grid-cols-1 items-center gap-10 py-10 sm:py-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12"
+      class="grid grid-cols-1 items-center gap-10 py-10 sm:py-14 lg:grid-cols-[1fr_1fr] lg:gap-12"
     >
       <div>
         <p class="prompt-line mb-5">./unrager</p>
@@ -294,14 +222,14 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         <p
           class="mb-4 text-2xl font-bold leading-tight tracking-tight text-paper-text dark:text-term-text sm:text-3xl"
         >
-          A calm X, <span class="accent-text">on every screen.</span>
+          Keep x.com. <span class="accent-text">Lose the rage.</span>
         </p>
         <p
           class="mb-6 max-w-xl text-base leading-relaxed text-paper-muted dark:text-term-muted sm:text-lg"
         >
-          A Twitter/X client with a local-LLM rage filter. Rage-bait is dropped before it ever
-          reaches your eyes. One Rust engine, four native faces — a terminal TUI and native iOS,
-          macOS and Linux apps.
+          A browser extension that takes the rage-bait out of your x.com Home timeline. A model on
+          your own computer reads each new post before you see it, against rules you write, and
+          nothing is sent anywhere else.
         </p>
 
         <!-- platform chips -->
@@ -310,7 +238,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
           <span class="text-paper-faint dark:text-term-faint">free &amp; open source</span>
           <span class="flex flex-wrap gap-1.5">
             {
-              ['Terminal', 'iOS', 'macOS', 'Linux'].map((p) => (
+              ['Chrome', 'Brave', 'Edge', 'Vivaldi', 'Arc'].map((p) => (
                 <span class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint">
                   {p}
                 </span>
@@ -339,33 +267,34 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
             </button>
           </div>
           <p class="mt-2 text-xs text-paper-faint dark:text-term-faint">
-            macOS &amp; Linux · or <code
-              class="rounded-sm bg-paper-raised px-1 py-0.5 dark:bg-term-raised"
-              >cargo install unrager</code
-            >
+            macOS &amp; Linux · then <a
+              href="#install"
+              class="underline decoration-dotted underline-offset-2 hover:text-paper-green dark:hover:text-term-green"
+              >add the extension</a
+            >, three clicks
           </p>
         </div>
 
         <!-- CTAs -->
         <div class="flex flex-wrap items-center gap-3">
           <a
+            href="#install"
+            class="inline-flex items-center gap-2 rounded-sm bg-paper-green px-4 py-2.5 text-sm font-bold text-paper-bg transition-opacity hover:opacity-90 dark:bg-term-green dark:text-term-bg"
+          >
+            Install it ↓
+          </a>
+          <a
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-sm bg-paper-green px-4 py-2.5 text-sm font-bold text-paper-bg transition-opacity hover:opacity-90 dark:bg-term-green dark:text-term-bg"
+            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
           >
             <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
               ></path>
             </svg>
-            View on GitHub
-          </a>
-          <a
-            href="#screenshots"
-            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
-          >
-            See it in action ↓
+            Source on GitHub
           </a>
         </div>
 
@@ -392,7 +321,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
             <p class="text-[0.72rem] leading-relaxed text-paper-muted dark:text-term-muted">
               HTTP requests that fetched the binary, not unique people. Updating with <code
                 class="rounded-sm bg-paper-bg px-1 text-paper-text dark:bg-term-bg dark:text-term-text"
-                >cargo install --force</code
+                >unrager update</code
               > or re-running the install script counts again.
             </p>
             <div
@@ -433,77 +362,68 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         </ul>
       </div>
 
-      <!-- hero screenshot -->
-      <div class="flex justify-center lg:justify-end">
-        <div class="device-glow h-[460px] sm:h-[560px]" style={`--accent:${accent}`}>
-          <DeviceFrame
-            device="iphone"
-            src="/screenshots/unrager/ios-home.png"
-            w={1206}
-            h={2622}
-            alt="unrager on iPhone — a calm Home feed with the rage filter on"
-            eager={true}
-          />
-        </div>
+      <!-- hero demo -->
+      <div class="min-w-0">
+        <UnragerTimeline />
       </div>
     </header>
 
-    <!-- The three faces -->
+    <!-- How it works -->
+    <section
+      id="how-it-works"
+      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-3">./unrager --how-it-works</p>
+      <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        How <span class="accent-text">unrager</span> works
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
+        It only reads what X already sends your browser and never asks X for anything else. The
+        judging happens on your computer, before the page shows the post.
+      </p>
+      <UnragerArchitecture accent={accent} />
+    </section>
+
+    <!-- Install -->
     <section
       id="install"
       class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
     >
-      <p class="prompt-line mb-3">ls unrager/faces</p>
+      <p class="prompt-line mb-3">./unrager --install</p>
       <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        Four faces, <span class="accent-text">one engine</span>
+        Three steps, <span class="accent-text">about five minutes</span>
       </h2>
       <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
-        Every face talks to the same Rust core. Pick the terminal, the phone, the Mac, the Linux
-        desktop — or all four at once.
+        You need a Chromium browser on macOS or Linux and a model to run. unrager does the rest, and
+        keeps running in the background.
       </p>
 
-      <div class="flex flex-col gap-5">
+      <ol class="flex flex-col gap-5">
         {
-          faces.map((face) => (
-            <article
-              id={`install-${face.id}`}
-              class="term-frame term-frame-hover scroll-mt-20 grid grid-cols-1 gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10"
-            >
-              <div class="flex flex-col gap-3 min-w-0">
+          steps.map((step, i) => (
+            <li class="term-frame term-frame-hover grid grid-cols-1 gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10">
+              <div class="flex min-w-0 flex-col gap-3">
                 <div class="flex items-center gap-3">
                   <span
-                    class="face-glyph inline-flex h-10 w-10 items-center justify-center rounded-sm text-xl"
+                    class="face-glyph inline-flex h-10 w-10 items-center justify-center rounded-sm text-lg font-bold"
                     aria-hidden="true"
                   >
-                    {face.glyph}
+                    {i + 1}
                   </span>
                   <h3 class="text-base font-bold text-paper-text dark:text-term-text">
-                    {face.name}
+                    {step.title}
                   </h3>
                 </div>
-                <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-                  {face.blurb}
-                </p>
-                <p class="text-xs text-paper-faint dark:text-term-faint">{face.meta}</p>
-                <div class="mt-1 flex flex-wrap gap-3">
-                  {face.cta.map((c) => (
-                    <a
-                      href={c.href}
-                      {...(c.href.startsWith('http')
-                        ? { target: '_blank', rel: 'noopener noreferrer' }
-                        : {})}
-                      class="accent-btn inline-flex items-center gap-1.5 rounded-sm border px-3 py-1.5 text-xs font-semibold transition-colors"
-                    >
-                      {c.label}
-                    </a>
-                  ))}
-                </div>
+                <p
+                  class="text-sm leading-relaxed text-paper-muted dark:text-term-muted"
+                  set:html={withCode(step.body)}
+                />
               </div>
 
-              <div class="flex flex-col gap-3 min-w-0">
-                {face.code && (
+              <div class="flex min-w-0 flex-col gap-3">
+                {step.code && (
                   <div class="flex flex-col gap-2">
-                    {face.code.map((line) => (
+                    {step.code.map((line) => (
                       <div class="flex items-center justify-between gap-3 rounded-md border border-paper-border bg-paper-raised px-3 py-2.5 font-mono text-sm dark:border-term-border dark:bg-term-raised">
                         <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text">
                           <span class="accent-text">$</span> {line.prompt}
@@ -520,16 +440,80 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
                     ))}
                   </div>
                 )}
-
-                {face.note && (
+                {step.list && (
+                  <ol class="flex flex-col gap-2 text-sm text-paper-text dark:text-term-text">
+                    {step.list.map((item, j) => (
+                      <li class="flex items-start gap-2">
+                        <span class="accent-text shrink-0 font-bold">
+                          {String.fromCharCode(97 + j)}.
+                        </span>
+                        <span set:html={withCode(item)} />
+                      </li>
+                    ))}
+                  </ol>
+                )}
+                {step.note && (
                   <p class="rounded-sm border border-paper-border bg-paper-raised p-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:bg-term-raised dark:text-term-muted">
-                    {face.note}
+                    {step.note}
                   </p>
                 )}
               </div>
-            </article>
+            </li>
           ))
         }
+      </ol>
+      <p class="mt-6 max-w-3xl text-xs leading-relaxed text-paper-faint dark:text-term-faint">
+        Later, <code class="rounded-sm bg-paper-raised px-1 py-0.5 dark:bg-term-raised"
+          >unrager update</code
+        > updates everything, and the toolbar icon shows ↑ until you reload the extension. <code
+          class="rounded-sm bg-paper-raised px-1 py-0.5 dark:bg-term-raised">unrager doctor</code
+        > says what's wrong if anything is.
+      </p>
+    </section>
+
+    <!-- Rules -->
+    <section
+      id="rules"
+      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-3">cat ~/.config/unrager/filter.toml</p>
+      <div
+        class="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
+      >
+        <div class="max-w-2xl">
+          <h2 class="mb-4 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+            You write <span class="accent-text">the rules</span>
+          </h2>
+          <div
+            class="flex flex-col gap-4 text-sm leading-relaxed text-paper-muted dark:text-term-muted"
+          >
+            <p>
+              unrager starts with the usual suspects: electoral politics, culture-war fights, doom,
+              engagement farming, crypto shilling. Change any of it from the extension's popup, in
+              plain words. A post is hidden when a topic is the point of it, not when it mentions
+              one in passing, so a physicist's joke about the election stays.
+            </p>
+            <p>
+              Pick how strict it is. <b class="text-paper-text dark:text-term-text">Relaxed</b>
+              hides only posts clearly about your topics.
+              <b class="text-paper-text dark:text-term-text">Balanced</b>, the default, also hides
+              rage bait and dunking but keeps anything the model isn't sure about.
+              <b class="text-paper-text dark:text-term-text">Strict</b> hides that too. Each topic shows
+              how many posts it hid, so the one that hides too much stands out.
+            </p>
+            <p>
+              Curious what it caught? <b class="text-paper-text dark:text-term-text"
+                >Show hidden posts</b
+              > brings them back dimmed, each labelled with the rule that caught it.
+              <b class="text-paper-text dark:text-term-text">Show this post</b> keeps one for good, and
+              right-clicking any post on Home hides it by hand. unrager remembers both, in every client
+              and through rule changes.
+            </p>
+          </div>
+        </div>
+        <div class="flex justify-center lg:justify-end">
+          <UnragerPopup />
+        </div>
       </div>
     </section>
 
@@ -543,155 +527,58 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         What <span class="accent-text">unrager</span> does
       </h2>
       <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
-        A complete X client where the timeline is yours to shape — and the only model that ever sees
-        your feed runs on your own machine.
+        X's own app, your account and every feature stay. The posts that exist to make you angry go,
+        and the only model that ever sees your timeline runs on your own machine.
       </p>
       <FeatureGrid features={features} accent={accent} />
     </section>
 
-    <!-- Screenshots -->
+    <!-- Also in the box -->
     <section
-      id="screenshots"
+      id="more"
       class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
     >
-      <p class="prompt-line mb-3">./unrager --screenshots</p>
+      <p class="prompt-line mb-3">ls unrager/</p>
       <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        unrager <span class="accent-text">in action</span>
+        Also <span class="accent-text">in the box</span>
       </h2>
-
-      <!-- iOS -->
-      <h3
-        class="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-paper-muted dark:text-term-muted"
+      <div
+        class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]"
       >
-        On iPhone
-      </h3>
-      <ul
-        class="no-scrollbar mb-12 flex h-[480px] snap-x snap-mandatory gap-5 overflow-x-auto pb-4 sm:h-[560px]"
-      >
-        {
-          iosShots.map((shot, i) => (
-            <li class="flex h-full shrink-0 snap-start flex-col items-center gap-3">
-              <div class="h-[calc(100%-2rem)]" style={`--accent:${accent}`}>
-                <div class="device-glow h-full">
-                  <DeviceFrame
-                    device="iphone"
-                    src={shot.src}
-                    w={1206}
-                    h={2622}
-                    alt={`unrager on iPhone — ${shot.label}`}
-                    eager={i === 0}
-                  />
-                </div>
-              </div>
-              <p class="max-w-[16rem] text-center text-xs text-paper-muted dark:text-term-muted">
-                {shot.label}
-              </p>
-            </li>
-          ))
-        }
-      </ul>
-
-      <!-- macOS -->
-      <h3
-        class="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-paper-muted dark:text-term-muted"
-      >
-        On Mac
-      </h3>
-      <ul class="no-scrollbar mb-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
-        {
-          macosShots.map((shot, i) => (
-            <li class="flex w-[88vw] shrink-0 snap-start flex-col gap-3 sm:w-[720px]">
-              <div class="device-glow" style={`--accent:${accent}`}>
-                <img
-                  src={shot.src}
-                  width={1180}
-                  height={820}
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                  decoding="async"
-                  alt={`unrager on macOS — ${shot.label}`}
-                  class="block h-auto w-full rounded-xl"
-                />
-              </div>
-              <p class="text-center text-xs text-paper-muted dark:text-term-muted">{shot.label}</p>
-            </li>
-          ))
-        }
-      </ul>
-
-      <!-- Linux -->
-      <h3
-        class="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-paper-muted dark:text-term-muted"
-      >
-        On Linux
-      </h3>
-      <ul class="no-scrollbar mb-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
-        {
-          linuxShots.map((shot) => (
-            <li class="flex w-[88vw] shrink-0 snap-start flex-col gap-3 sm:w-[720px]">
-              <div class="device-glow" style={`--accent:${accent}`}>
-                <img
-                  src={shot.src}
-                  width={1180}
-                  height={820}
-                  loading="lazy"
-                  decoding="async"
-                  alt={`unrager on Linux — ${shot.label}`}
-                  class="block h-auto w-full rounded-xl"
-                />
-              </div>
-              <p class="text-center text-xs text-paper-muted dark:text-term-muted">{shot.label}</p>
-            </li>
-          ))
-        }
-      </ul>
-
-      <!-- Terminal -->
-      <h3
-        class="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-paper-muted dark:text-term-muted"
-      >
-        In the terminal
-      </h3>
-      <ul class="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
-        {
-          tuiShots.map((shot) => (
-            <li class="flex w-[88vw] shrink-0 snap-start flex-col gap-3 sm:w-[640px]">
-              <div class="device-glow term-frame overflow-hidden" style={`--accent:${accent}`}>
-                <img
-                  src={shot.src}
-                  width={3600}
-                  height={2120}
-                  loading="lazy"
-                  decoding="async"
-                  alt={`unrager in the terminal — ${shot.label}`}
-                  class="block h-auto w-full"
-                />
-              </div>
-              <p class="text-center text-xs text-paper-muted dark:text-term-muted">{shot.label}</p>
-            </li>
-          ))
-        }
-      </ul>
-
-      <p class="mt-2 text-center text-xs text-paper-faint dark:text-term-faint sm:hidden">
-        swipe to see more →
-      </p>
-    </section>
-
-    <!-- How it works -->
-    <section
-      id="how-it-works"
-      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
-    >
-      <p class="prompt-line mb-3">./unrager --how-it-works</p>
-      <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        How <span class="accent-text">unrager</span> works
-      </h2>
-      <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
-        One small Rust server on a box you own — a Linux machine, a Mac, a home server — stands
-        between you and the firehose. Rage goes in; a calm feed comes out on every screen, and
-        nothing ever leaves your machine.
-      </p>
-      <UnragerArchitecture accent={accent} />
+        <UnragerTerminal />
+        <div class="flex flex-col gap-5">
+          <div>
+            <h3 class="mb-2 text-base font-bold text-paper-text dark:text-term-text">
+              A terminal client
+            </h3>
+            <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+              unrager began as an X client for the terminal, and it's still here: run <code
+                class="rounded-sm bg-paper-raised px-1 py-0.5 text-paper-text dark:bg-term-raised dark:text-term-text"
+                >unrager</code
+              > for your timeline with the same filter, threads in a split pane, inline images in Ghostty,
+              Kitty and WezTerm, and a local model that translates posts and explains threads. Every
+              text box is a small Vim editor.
+            </p>
+          </div>
+          <div>
+            <h3 class="mb-2 text-base font-bold text-paper-text dark:text-term-text">
+              An iPhone app and a CLI
+            </h3>
+            <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+              The extension can't reach X's own iPhone app, so there's a native one you build from
+              source, served by <code
+                class="rounded-sm bg-paper-raised px-1 py-0.5 text-paper-text dark:bg-term-raised dark:text-term-text"
+                >unrager setup --apps</code
+              >. And a command line for reading and posting. The <a
+                href={`${githubUrl}#also-in-the-box`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="accent-text underline decoration-dotted underline-offset-2">README</a
+              > has the details.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- FAQ -->
@@ -715,20 +602,18 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, bread
         <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 class="text-lg font-bold text-paper-text dark:text-term-text sm:text-xl">
-              Take the rage out of X. Keep the signal.
+              Keep x.com. Lose the rage.
             </h2>
             <p class="mt-1 text-sm text-paper-muted dark:text-term-muted">
-              Free, open source, and entirely on your own hardware.
+              Free, open source, and entirely on your own computer.
             </p>
           </div>
           <div class="flex shrink-0 flex-wrap gap-3">
             <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#install"
               class="inline-flex items-center gap-2 rounded-sm bg-paper-green px-4 py-2.5 text-sm font-bold text-paper-bg transition-opacity hover:opacity-90 dark:bg-term-green dark:text-term-bg"
             >
-              GitHub ↗
+              Install it ↑
             </a>
             <a
               href={releasesUrl}

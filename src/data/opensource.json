@@ -296,7 +296,7 @@
     {
       "id": "unrager",
       "name": "unrager",
-      "description": "A calm Twitter/X TUI with a local-LLM rage filter",
+      "description": "A browser extension that takes the rage out of your x.com timeline, judged by a local model",
       "language": "Rust",
       "platforms": [
         "macOS",
@@ -315,7 +315,7 @@
       "topics": [],
       "commitCount": 396,
       "releaseCount": 48,
-      "homepageUrl": "https://unrager.com"
+      "homepageUrl": "https://midgarcorp.cc/unrager"
     },
     {
       "id": "deepseekkit",

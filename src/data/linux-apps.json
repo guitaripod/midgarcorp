@@ -155,7 +155,7 @@
       "group": "bin",
       "lang": "rust",
       "language": "Rust",
-      "description": "A calm Twitter/X TUI with a local-LLM rage filter",
+      "description": "A browser extension that takes the rage out of your x.com timeline, judged by a local model",
       "stars": 9,
       "releaseCount": 56,
       "githubUrl": "https://github.com/guitaripod/unrager",
