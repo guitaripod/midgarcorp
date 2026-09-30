@@ -2539,26 +2539,26 @@
         "iphone": [
           {
             "src": "/screenshots/crucible/iphone-1.webp",
-            "w": 1290,
-            "h": 2796,
+            "w": 1260,
+            "h": 2736,
             "label": "Home — Continue Watching, On Deck, and Recently Added"
           },
           {
             "src": "/screenshots/crucible/iphone-2.webp",
-            "w": 1290,
-            "h": 2796,
+            "w": 1260,
+            "h": 2736,
             "label": "Detail with backdrop, cast & crew, and more like this"
           },
           {
             "src": "/screenshots/crucible/iphone-3.webp",
-            "w": 1290,
-            "h": 2796,
+            "w": 1260,
+            "h": 2736,
             "label": "Built-in player with Skip Intro and Picture-in-Picture"
           },
           {
             "src": "/screenshots/crucible/iphone-4.webp",
-            "w": 1290,
-            "h": 2796,
+            "w": 1260,
+            "h": 2736,
             "label": "Movie library with Continue Watching and a poster grid"
           }
         ]
