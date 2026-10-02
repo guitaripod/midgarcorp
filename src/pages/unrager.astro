@@ -167,6 +167,26 @@ const phoneNotes = [
   },
 ];
 
+const phoneSteps = [
+  {
+    title: 'Start the server for the app',
+    body: 'On the computer that runs unrager, signed in to x.com in your browser. It prints the address the app needs. Keep it on a private network such as Tailscale: unrager has no login of its own.',
+    code: ['unrager setup --apps --bind 0.0.0.0:7777'],
+  },
+  {
+    title: 'Build it and put it on your phone',
+    body: 'On a Mac with Xcode 26, after `brew install xcodegen`, signed in to your Apple ID under Xcode > Settings > Accounts, with the phone plugged in, unlocked and trusted, and Developer Mode on. The script finds your phone and signing team, and asks for the address from step 1.',
+    code: [
+      'git clone https://github.com/guitaripod/unrager',
+      'cd unrager/ios && ./scripts/install.sh',
+    ],
+  },
+  {
+    title: 'Trust it and open it',
+    body: 'On the phone: Settings > General > VPN & Device Management > your Apple ID > Trust, then open Unrager and allow the local network. A free Apple ID’s build stops opening after 7 days; run the script again to renew it.',
+  },
+];
+
 const faq = [
   {
     q: 'How accurate is it?',
@@ -194,7 +214,7 @@ const faq = [
   },
   {
     q: 'Is there an iPhone app?',
-    a: 'Yes, but you build it yourself. X’s own iPhone app can’t run extensions, so unrager has a native client that talks to unrager on your computer: the same filter, with every hidden post listed under its rule, plus Ask, Brief and Translate on your model. It uses your X session, so it isn’t on the App Store: build it from the repo and sideload it with your Apple developer account, over a private network such as Tailscale.',
+    a: 'Yes, but you build it yourself, once. X’s own iPhone app can’t run extensions, so unrager has a native client that talks to unrager on your computer: the same filter, with every hidden post listed under its rule, plus Ask, Brief and Translate on your model. It uses your X session, so it isn’t on the App Store: on a Mac with Xcode, one script builds it with your own (free) Apple ID and installs it on your phone, and it reaches your computer over a private network such as Tailscale.',
   },
   {
     q: 'Where do the country flags in the iPhone app come from?',
@@ -635,20 +655,68 @@ const withCode = (text: string) =>
         }
       </ul>
 
-      <p
-        class="mt-8 max-w-3xl rounded-sm border border-paper-border bg-paper-raised p-4 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:bg-term-raised dark:text-term-muted"
-      >
-        It isn't on the App Store: it runs on your own X session through unrager, so you build it
-        from source and sideload it with your Apple developer account. On the computer, run <code
-          class="rounded-sm bg-paper-bg px-1 py-0.5 text-paper-text dark:bg-term-bg dark:text-term-text"
-          >unrager setup --apps --bind 0.0.0.0:7777</code
-        > (keep it on a private network such as Tailscale), then point the app at it. The <a
-          href={`${githubUrl}#the-iphone-app`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="accent-text underline decoration-dotted underline-offset-2">README</a
-        > has the build steps. The screens above show made-up posts.
-      </p>
+      <div class="mt-10 max-w-5xl">
+        <h3 class="mb-1 text-base font-bold text-paper-text dark:text-term-text">
+          Put it on your iPhone, <span class="accent-text">about ten minutes</span>
+        </h3>
+        <p class="mb-5 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
+          It isn't on the App Store, because it runs on your own X session. You build it once on a
+          Mac, and a free Apple ID is enough.
+        </p>
+        <ol class="flex flex-col gap-4">
+          {
+            phoneSteps.map((step, i) => (
+              <li class="term-frame grid grid-cols-1 gap-4 p-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-8">
+                <div class="flex min-w-0 flex-col gap-2">
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="face-glyph inline-flex h-8 w-8 items-center justify-center rounded-sm text-base font-bold"
+                      aria-hidden="true"
+                    >
+                      {i + 1}
+                    </span>
+                    <h4 class="text-sm font-bold text-paper-text dark:text-term-text">
+                      {step.title}
+                    </h4>
+                  </div>
+                  <p
+                    class="text-xs leading-relaxed text-paper-muted dark:text-term-muted sm:text-sm"
+                    set:html={withCode(step.body)}
+                  />
+                </div>
+                {step.code && (
+                  <div class="flex min-w-0 flex-col gap-2">
+                    {step.code.map((line) => (
+                      <div class="flex min-w-0 items-center justify-between gap-3 rounded-md border border-paper-border bg-paper-raised px-3 py-2.5 font-mono text-xs dark:border-term-border dark:bg-term-raised sm:text-[0.8rem]">
+                        <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text">
+                          <span class="accent-text">$</span> {line}
+                        </code>
+                        <button
+                          type="button"
+                          class="copy-cmd shrink-0 rounded-sm border border-paper-border px-2 py-1 text-xs text-paper-muted transition-colors hover:border-paper-border2 hover:text-paper-text dark:border-term-border dark:text-term-muted dark:hover:border-term-border2 dark:hover:text-term-text"
+                          data-copy={line}
+                          aria-label="Copy command"
+                        >
+                          <span class="copy-glyph">⧉</span>
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </li>
+            ))
+          }
+        </ol>
+        <p class="mt-4 text-xs leading-relaxed text-paper-faint dark:text-term-faint">
+          The <a
+            href={`${githubUrl}/blob/master/ios/README.md`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="accent-text underline decoration-dotted underline-offset-2">step-by-step guide</a
+          > explains every screen, what each error means and how to do it by hand in Xcode. The screens
+          above show made-up posts.
+        </p>
+      </div>
     </section>
 
     <!-- Also in the box -->
