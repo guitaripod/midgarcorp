@@ -6,6 +6,7 @@ import UnragerArchitecture from '@components/landing/UnragerArchitecture.astro';
 import UnragerTimeline from '@components/landing/UnragerTimeline.astro';
 import UnragerPopup from '@components/landing/UnragerPopup.astro';
 import UnragerTerminal from '@components/landing/UnragerTerminal.astro';
+import UnragerPhones from '@components/landing/UnragerPhones.astro';
 
 const site = 'https://midgarcorp.cc';
 const canonical = `${site}/unrager`;
@@ -114,6 +115,58 @@ const features = [
   },
 ];
 
+const phoneShots = [
+  {
+    src: '/unrager/iphone-home.webp',
+    alt: 'The unrager iPhone app on For you: a hiking photo from Field Notes with a Norwegian flag by the name, and below it a post by Mira Koski marked Kit Wren reposted. The Notifications tab carries a small blue badge.',
+    caption: 'For you, a country flag on every author and the whole post behind a repost.',
+  },
+  {
+    src: '/unrager/iphone-hidden.webp',
+    alt: 'A list titled Hidden posts: three posts, each headed by the rule that hid it (culture-war threads, outrage bait, engagement bait) with a Show button beside it.',
+    caption: 'What the filter hid, each post under the rule that caught it. Show brings one back.',
+  },
+  {
+    src: '/unrager/iphone-thread.webp',
+    alt: 'A thread in the iPhone app: an illustration post with two options and, under it, replies nested under the replies they answer.',
+    caption: 'Threads with replies under their parents, and who quoted a post.',
+  },
+  {
+    src: '/unrager/iphone-profile.webp',
+    alt: 'A profile in the iPhone app: a header image, the name Mira Koski with a verified badge, a bio with a tappable mention and link, location and join date, follower counts and a pinned post.',
+    caption: 'Profiles with bio, location, join date and the pinned post, plus Mute and Block.',
+  },
+  {
+    src: '/unrager/iphone-ask.webp',
+    alt: 'A sheet titled Explain over a post, with an answer from the local model streaming in about why the sky is blue.',
+    caption: 'Ask, Brief and Translate stream from your own model.',
+  },
+  {
+    src: '/unrager/iphone-notifications.webp',
+    alt: 'The Notifications tab: grouped likes, follows, replies and a mention, with the people behind each as stacked avatars.',
+    caption: 'Notifications grouped by who did what, with a calm unread badge on the tab.',
+  },
+];
+
+const phoneNotes = [
+  {
+    title: 'Hidden, not gone',
+    body: 'Every post the filter hides is listed with the rule that caught it and a Show button. Your rules and strictness are editable on the phone too.',
+  },
+  {
+    title: 'Your model on tap',
+    body: 'Ask about a post, Brief an account, Translate a reply. The answer streams from the model on your computer, and you can stop it, retry it or read along.',
+  },
+  {
+    title: 'A real X client',
+    body: 'Threads, profiles, search, notifications, drafts, quotes, Mute and Block, and deleting your own posts. A repost shows the whole original, and links to x.com open in the app.',
+  },
+  {
+    title: 'Made for iOS 26',
+    body: 'Liquid Glass tabs, Dynamic Type up to the largest sizes, and every post a single VoiceOver stop with actions.',
+  },
+];
+
 const faq = [
   {
     q: 'How accurate is it?',
@@ -138,6 +191,14 @@ const faq = [
   {
     q: 'Which browsers and systems?',
     a: 'Chromium browsers (Chrome, Brave, Edge, Vivaldi, Arc) on macOS and Linux. Firefox, Safari and Windows aren’t supported yet.',
+  },
+  {
+    q: 'Is there an iPhone app?',
+    a: 'Yes, but you build it yourself. X’s own iPhone app can’t run extensions, so unrager has a native client that talks to unrager on your computer: the same filter, with every hidden post listed under its rule, plus Ask, Brief and Translate on your model. It uses your X session, so it isn’t on the App Store: build it from the repo and sideload it with your Apple developer account, over a private network such as Tailscale.',
+  },
+  {
+    q: 'Where do the country flags in the iPhone app come from?',
+    a: 'From X’s own About this account lookup, asked one author at a time. When X rate-limits it, put community_cache = true under [about] in config.toml and unrager asks the X-Posed community cache first, in one request for everyone on screen. That sends the handles you are looking at to a third-party service and nothing else, which is why it is off by default.',
   },
   {
     q: 'Why load it unpacked instead of from the Chrome Web Store?',
@@ -275,7 +336,11 @@ const withCode = (text: string) =>
               href="#install"
               class="underline decoration-dotted underline-offset-2 hover:text-paper-green dark:hover:text-term-green"
               >add the extension</a
-            >, three clicks
+            >, three clicks · <a
+              href="#iphone"
+              class="underline decoration-dotted underline-offset-2 hover:text-paper-green dark:hover:text-term-green"
+              >iPhone app</a
+            >
           </p>
         </div>
 
@@ -537,6 +602,55 @@ const withCode = (text: string) =>
       <FeatureGrid features={features} accent={accent} />
     </section>
 
+    <!-- iPhone -->
+    <section
+      id="iphone"
+      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-3">./unrager --iphone</p>
+      <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        The same filter, <span class="accent-text">in your pocket</span>
+      </h2>
+      <p class="mb-8 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
+        An extension can't reach X's own iPhone app, so there's a native one. It talks to unrager on
+        your computer: the model that judges your desktop timeline judges your phone's too, and Home
+        opens instantly because your computer keeps it ready.
+      </p>
+
+      <UnragerPhones shots={phoneShots} accent={accent} />
+
+      <ul class="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+        {
+          phoneNotes.map((n) => (
+            <li class="flex items-start gap-2 text-sm leading-relaxed">
+              <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                ▸
+              </span>
+              <span class="text-paper-muted dark:text-term-muted">
+                <b class="text-paper-text dark:text-term-text">{n.title}.</b>
+                {n.body}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p
+        class="mt-8 max-w-3xl rounded-sm border border-paper-border bg-paper-raised p-4 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:bg-term-raised dark:text-term-muted"
+      >
+        It isn't on the App Store: it runs on your own X session through unrager, so you build it
+        from source and sideload it with your Apple developer account. On the computer, run <code
+          class="rounded-sm bg-paper-bg px-1 py-0.5 text-paper-text dark:bg-term-bg dark:text-term-text"
+          >unrager setup --apps --bind 0.0.0.0:7777</code
+        > (keep it on a private network such as Tailscale), then point the app at it. The <a
+          href={`${githubUrl}#the-iphone-app`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="accent-text underline decoration-dotted underline-offset-2">README</a
+        > has the build steps. The screens above show made-up posts.
+      </p>
+    </section>
+
     <!-- Also in the box -->
     <section
       id="more"
@@ -566,19 +680,27 @@ const withCode = (text: string) =>
           </div>
           <div>
             <h3 class="mb-2 text-base font-bold text-paper-text dark:text-term-text">
-              An iPhone app and a CLI
+              A command line
             </h3>
             <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-              The extension can't reach X's own iPhone app, so there's a native one you build from
-              source, served by <code
+              <code
                 class="rounded-sm bg-paper-raised px-1 py-0.5 text-paper-text dark:bg-term-raised dark:text-term-text"
-                >unrager setup --apps</code
-              >. And a command line for reading and posting. The <a
-                href={`${githubUrl}#also-in-the-box`}
+                >unrager read</code
+              >, <code
+                class="rounded-sm bg-paper-raised px-1 py-0.5 text-paper-text dark:bg-term-raised dark:text-term-text"
+                >thread</code
+              >, <code
+                class="rounded-sm bg-paper-raised px-1 py-0.5 text-paper-text dark:bg-term-raised dark:text-term-text"
+                >search</code
+              > and friends print posts as text or JSON, and <code
+                class="rounded-sm bg-paper-raised px-1 py-0.5 text-paper-text dark:bg-term-raised dark:text-term-text"
+                >unrager eval</code
+              > scores your model on your own labelled posts. The <a
+                href={`${githubUrl}#the-cli`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="accent-text underline decoration-dotted underline-offset-2">README</a
-              > has the details.
+              > lists every command.
             </p>
           </div>
         </div>

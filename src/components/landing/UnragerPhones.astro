@@ -1,0 +1,99 @@
+---
+export interface Shot {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
+export interface Props {
+  shots: Shot[];
+  accent: string;
+}
+
+const { shots, accent } = Astro.props;
+const width = 533;
+const height = 1100;
+---
+
+<div class="phones relative" style={`--accent:${accent}`}>
+  <ul
+    data-phones-list
+    class="no-scrollbar flex snap-x snap-mandatory items-start gap-6 overflow-x-auto pb-4 sm:gap-8"
+    tabindex="0"
+    aria-label="iPhone app screenshots, scroll sideways"
+  >
+    {
+      shots.map((shot, i) => (
+        <li class="flex shrink-0 snap-start flex-col items-center gap-3">
+          <img
+            src={shot.src}
+            alt={shot.alt}
+            width={width}
+            height={height}
+            loading={i < 2 ? 'eager' : 'lazy'}
+            decoding="async"
+            class="phone-shot block h-[440px] w-auto sm:h-[540px]"
+          />
+          <p class="max-w-[13rem] text-center text-xs leading-snug text-paper-muted dark:text-term-muted sm:max-w-[16rem] sm:text-sm">
+            {shot.caption}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="mt-2 hidden justify-end gap-2 [@media(hover:hover)]:flex">
+    {
+      [
+        ['prev', '←', 'Previous screens'],
+        ['next', '→', 'Next screens'],
+      ].map(([dir, glyph, label]) => (
+        <button
+          type="button"
+          data-phones-step={dir}
+          aria-label={label}
+          class="rounded-sm border border-paper-border px-3 py-1 text-sm text-paper-muted transition-colors hover:border-paper-border2 hover:text-paper-text disabled:cursor-default disabled:opacity-40 dark:border-term-border dark:text-term-muted dark:hover:border-term-border2 dark:hover:text-term-text"
+        >
+          {glyph}
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.phones').forEach((root) => {
+    const list = root.querySelector<HTMLElement>('[data-phones-list]');
+    const prev = root.querySelector<HTMLButtonElement>('[data-phones-step="prev"]');
+    const next = root.querySelector<HTMLButtonElement>('[data-phones-step="next"]');
+    if (!list || !prev || !next) return;
+    const sync = () => {
+      prev.disabled = list.scrollLeft <= 4;
+      next.disabled = list.scrollLeft + list.clientWidth >= list.scrollWidth - 4;
+    };
+    const step = (dir: number) => {
+      const item = list.querySelector<HTMLElement>('li');
+      const gap = parseFloat(getComputedStyle(list).columnGap) || 0;
+      const distance = (item?.offsetWidth ?? 280) + gap;
+      list.scrollBy({
+        left: dir * distance,
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      });
+    };
+    prev.addEventListener('click', () => step(-1));
+    next.addEventListener('click', () => step(1));
+    list.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  });
+</script>
+
+<style>
+  .phone-shot {
+    filter: drop-shadow(0 18px 28px color-mix(in srgb, var(--accent) 22%, transparent));
+  }
+  ul:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
+    outline-offset: 4px;
+    border-radius: 0.125rem;
+  }
+</style>
