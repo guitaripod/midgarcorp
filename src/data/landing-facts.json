@@ -2539,33 +2539,72 @@
         "iphone": [
           {
             "src": "/screenshots/crucible/iphone-1.webp",
-            "w": 1260,
-            "h": 2736,
-            "label": "Home — Continue Watching, On Deck, and Recently Added"
+            "w": 1470,
+            "h": 3000,
+            "label": "Home — a Resume hero, Continue Watching, Up Next and your week at a glance",
+            "framed": true
           },
           {
             "src": "/screenshots/crucible/iphone-2.webp",
-            "w": 1260,
-            "h": 2736,
-            "label": "Detail with backdrop, cast & crew, and more like this"
+            "w": 1470,
+            "h": 3000,
+            "label": "Library — filter chips, 3-up posters, unwatched badges and a Continue banner",
+            "framed": true
           },
           {
             "src": "/screenshots/crucible/iphone-3.webp",
-            "w": 1260,
-            "h": 2736,
-            "label": "Built-in player with Skip Intro and Picture-in-Picture"
+            "w": 1470,
+            "h": 3000,
+            "label": "Detail — immersive backdrop, one-tap Resume, audio and subtitle menus",
+            "framed": true
           },
           {
             "src": "/screenshots/crucible/iphone-4.webp",
-            "w": 1260,
-            "h": 2736,
-            "label": "Movie library with Continue Watching and a poster grid"
+            "w": 1470,
+            "h": 3000,
+            "label": "Shows — season picker, episode rows, swipe actions and per-episode download rings",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-5.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Search — grouped results with a Top Result, recents and genre browse",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-6.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Downloads — storage at a glance, the queue, and everything ready to watch offline",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-7.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Statistics — your year in watch time, streaks and an activity heatmap",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-8.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "You — profile and server status, Year in Review, Watch History and settings, in Light",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-9.webp",
+            "w": 3000,
+            "h": 1470,
+            "label": "Player — Skip Intro with a live progress sweep, in landscape",
+            "framed": true
           }
         ]
       },
       "name": "Crucible: Plex Client",
       "appStoreUrl": "https://github.com/guitaripod/Crucible/releases/latest",
-      "description": "Crucible is a fast, native Plex client for iPhone — and a love letter to building iOS apps without a Mac. The whole app is Swift 6 and programmatic UIKit, cross-compiled on Arch Linux and deployed straight to an iPhone over USB. No Xcode, no storyboards, no macOS anywhere in the loop.\n\nEVERYTHING IN ITS PLACE\nContinue Watching, On Deck, and Recently Added greet you on the home screen. Browse libraries as poster grids with genre filters and sort options, or dig into raw folders for unindexed content.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits straight from Plex markers, Picture-in-Picture with background audio, lock screen and Control Center controls, and Up Next that rolls the next episode as the credits start. Direct play when your device can handle the file, automatic HLS transcoding when it can't.\n\nTAKE IT OFFLINE\nDownload movies, whole seasons, or single episodes at the quality you pick — Original, High, Medium, Low, or Data Saver. Background transfers keep going when the app is closed and resume after interruptions, downloads stay Wi-Fi-only unless you allow cellular, and a dedicated Downloads tab shows progress, storage used, and free space. A Live Activity tracks live progress on the Lock Screen and in the Dynamic Island — a WidgetKit extension compiled and signed on Arch Linux via xtool — while downloads run in the background, auto-resume from where they left off, and ping you when they finish. Offline playback runs through the same player — Skip Intro/Credits, resume, Picture-in-Picture, background audio, and lock screen controls all work with no network.\n\nGO DEEPER\nCast and crew, More Like This recommendations, subtitle and audio track selection, and adjustable playback speed. Hand a title off between your devices and find what you've watched in Spotlight.\n\nOPEN SOURCE, BUILT ON LINUX\nCrucible is free and open source under the GPL-3.0 license, with zero third-party dependencies — pure Apple frameworks. Read the code, file an issue, or build it yourself.",
+      "description": "Crucible is a fast, native Plex client for iPhone — and a love letter to building iOS apps without a Mac. The whole app is Swift 6 and programmatic UIKit, cross-compiled on Arch Linux and deployed straight to an iPhone over USB. No Xcode, no storyboards, no macOS anywhere in the loop.\n\nEVERYTHING IN ITS PLACE\nHome opens on a Resume hero for whatever you were watching, then Continue Watching, Up Next, your week in watch time, and Recently Added. Library grids have filter chips for Unwatched and In Progress, genre and sort, unwatched badges, an A–Z scrubber, and raw folder browsing for unindexed content. Search groups results by type with a Top Result.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits straight from Plex markers, Picture-in-Picture with background audio, lock screen and Control Center controls, and Up Next that rolls the next episode as the credits start. Direct play when your device can handle the file, automatic HLS transcoding when it can't.\n\nTAKE IT OFFLINE\nDownload movies, whole seasons, or single episodes at the quality you pick — Original, High, Medium, Low, or Data Saver. Background transfers keep going when the app is closed and resume after interruptions, downloads stay Wi-Fi-only unless you allow cellular, and a dedicated Downloads tab shows a storage summary, the live queue, and everything ready to watch — with one-tap cleanup of watched titles. A season sheet downloads all, unwatched, or the next three episodes, and can keep the next episodes downloaded as you watch. A Live Activity tracks live progress on the Lock Screen and in the Dynamic Island — a WidgetKit extension compiled and signed on Arch Linux via xtool — while downloads run in the background, auto-resume from where they left off, and ping you when they finish. Offline playback runs through the same player — Skip Intro/Credits, resume, Picture-in-Picture, background audio, and lock screen controls all work with no network.\n\nKNOW YOUR VIEWING\nThe You tab shows your server and connection status, Watch History grouped by day, and a Year-in-Review dashboard: watch time, streaks, an activity heatmap, top shows, and a shareable card built from your own Plex history.\n\nGO DEEPER\nCast and crew, More Like This recommendations, subtitle and audio track selection, and adjustable playback speed. Hand a title off between your devices and find what you've watched in Spotlight.\n\nOPEN SOURCE, BUILT ON LINUX\nCrucible is free and open source under the GPL-3.0 license, with one third-party dependency, GRDB, for the statistics store — everything else is pure Apple frameworks. Read the code, file an issue, or build it yourself.",
       "category": "Entertainment",
       "price": "Free",
       "rating": 0,

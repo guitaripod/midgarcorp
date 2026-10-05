@@ -208,34 +208,50 @@ async function generate(app) {
       const dx = tx + tw - 52 - drawW;
       const dy = contentTop + (th - 44 - drawH) / 2 - 6;
       const rad = portrait ? 28 : 12;
-      // soft accent bloom
-      ctx.save();
-      ctx.shadowColor = hexA(accent, 0.55);
-      ctx.shadowBlur = 90;
-      ctx.shadowOffsetY = 0;
-      roundRectPath(ctx, dx, dy, drawW, drawH, rad);
-      ctx.fillStyle = '#000';
-      ctx.fill();
-      ctx.restore();
-      // neutral depth shadow
-      ctx.save();
-      ctx.shadowColor = 'rgba(0,0,0,0.55)';
-      ctx.shadowBlur = 38;
-      ctx.shadowOffsetY = 26;
-      roundRectPath(ctx, dx, dy, drawW, drawH, rad);
-      ctx.fillStyle = '#000';
-      ctx.fill();
-      ctx.restore();
-      ctx.save();
-      roundRectPath(ctx, dx + 6, dy + 6, drawW - 12, drawH - 12, portrait ? 22 : 8);
-      ctx.clip();
-      ctx.drawImage(img, dx + 6, dy + 6, drawW - 12, drawH - 12);
-      ctx.restore();
-      ctx.strokeStyle = 'rgba(255,255,255,0.06)';
-      ctx.lineWidth = 1;
-      roundRectPath(ctx, dx, dy, drawW, drawH, portrait ? 28 : 12);
-      ctx.stroke();
-      rightEdge = dx - 40;
+      if (shot.framed) {
+        ctx.save();
+        ctx.shadowColor = hexA(accent, 0.5);
+        ctx.shadowBlur = 90;
+        ctx.shadowOffsetY = 0;
+        ctx.drawImage(img, dx, dy, drawW, drawH);
+        ctx.restore();
+        ctx.save();
+        ctx.shadowColor = 'rgba(0,0,0,0.5)';
+        ctx.shadowBlur = 38;
+        ctx.shadowOffsetY = 26;
+        ctx.drawImage(img, dx, dy, drawW, drawH);
+        ctx.restore();
+        rightEdge = dx - 40;
+      } else {
+        // soft accent bloom
+        ctx.save();
+        ctx.shadowColor = hexA(accent, 0.55);
+        ctx.shadowBlur = 90;
+        ctx.shadowOffsetY = 0;
+        roundRectPath(ctx, dx, dy, drawW, drawH, rad);
+        ctx.fillStyle = '#000';
+        ctx.fill();
+        ctx.restore();
+        // neutral depth shadow
+        ctx.save();
+        ctx.shadowColor = 'rgba(0,0,0,0.55)';
+        ctx.shadowBlur = 38;
+        ctx.shadowOffsetY = 26;
+        roundRectPath(ctx, dx, dy, drawW, drawH, rad);
+        ctx.fillStyle = '#000';
+        ctx.fill();
+        ctx.restore();
+        ctx.save();
+        roundRectPath(ctx, dx + 6, dy + 6, drawW - 12, drawH - 12, portrait ? 22 : 8);
+        ctx.clip();
+        ctx.drawImage(img, dx + 6, dy + 6, drawW - 12, drawH - 12);
+        ctx.restore();
+        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+        ctx.lineWidth = 1;
+        roundRectPath(ctx, dx, dy, drawW, drawH, portrait ? 28 : 12);
+        ctx.stroke();
+        rightEdge = dx - 40;
+      }
     } catch (e) {
       console.warn(`  shot failed for ${app.slug}: ${e.message}`);
     }

@@ -335,6 +335,7 @@ const sectionPrompt = (cmd: string) => cmd;
                 src={heroShot.src}
                 w={heroShot.w}
                 h={heroShot.h}
+                framed={heroShot.framed}
                 alt={`${app.shortName} on ${DEVICE_LABELS[heroDevice] ?? 'iPhone'}: ${c.screenshotCaptions?.[heroDevice]?.[0] ?? heroShot.label}`}
                 eager={true}
                 priority={true}
