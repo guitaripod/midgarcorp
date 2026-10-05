@@ -14,7 +14,17 @@ export interface Props {
   framed?: boolean;
 }
 
-const { device, src, w, h, alt, eager = false, priority = false, heights, framed = false } = Astro.props;
+const {
+  device,
+  src,
+  w,
+  h,
+  alt,
+  eager = false,
+  priority = false,
+  heights,
+  framed = false,
+} = Astro.props;
 const loading = eager ? 'eager' : 'lazy';
 const portrait = device === 'iphone' || device === 'ipad';
 const radius = portrait ? 'rounded-[1.5rem]' : 'rounded-xl';
@@ -42,7 +52,8 @@ const sizes = srcset
 <span
   class:list={[
     'relative inline-flex h-full',
-    !framed && 'overflow-hidden border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5',
+    !framed &&
+      'overflow-hidden border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5',
     !framed && radius,
   ]}
 >
