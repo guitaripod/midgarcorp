@@ -18,21 +18,29 @@ const metaDescription =
   'A browser extension that takes the rage-bait out of your x.com timeline, judged by a model on your own computer. Free, open source, and nothing leaves your machine.';
 
 const installCmd = 'curl -fsSL https://unrager.com/install.sh | bash';
-const modelCmd = 'ollama pull qwen3:4b-instruct';
+const modelCmd = 'ollama pull hf.co/guitaripod/unrager-4b:Q4_K_M';
 const hfModelUrl = 'https://huggingface.co/guitaripod/unrager-4b';
 const pirateModelUrl = 'https://pirateface.co/guitaripod/unrager-4b';
 const modelStats = [
-  { value: '1 in 27', label: 'good posts hidden', note: 'the 26B model it replaced hid 1 in 14' },
-  { value: '4 in 5', label: 'rage posts caught', note: 'on 1,049 real posts, scored by hand' },
+  {
+    value: '1 in 31',
+    label: 'good posts hidden',
+    note: 'the Qwen3 4B it replaced hid 1 in 24, a 26B model 1 in 15',
+  },
+  {
+    value: '3 in 4',
+    label: 'rage posts caught',
+    note: 'on 1,049 real posts, scored by hand; the Qwen3 4B caught 3 in 5',
+  },
   { value: '2.7 GB', label: 'to download', note: 'Q4_K_M, 4.5 GB at Q8_0, runs on a laptop' },
 ];
 const githubUrl = 'https://github.com/guitaripod/unrager';
 const releasesUrl = 'https://github.com/guitaripod/unrager/releases';
 
 const heroHighlights = [
-  'Tested on 1,000 real posts: about 2 in 3 rage posts gone, about 1 good post in 20 hidden by mistake',
+  'Tested on 1,049 real posts: about 3 in 4 rage posts gone, about 1 good post in 31 hidden by mistake',
   'Every hidden post says which rule caught it, and one click brings it back',
-  'A small 2.5 GB model on your own computer; bigger ones hide more of what you wanted',
+  'A small 2.7 GB model, unrager-4b, on your own computer; bigger ones hide more of what you wanted',
   'No account, no cloud; your feed never leaves your machine',
 ];
 
@@ -47,7 +55,7 @@ type Step = {
 const steps: Step[] = [
   {
     title: 'Run a model',
-    body: 'Install Ollama from ollama.com, then pull the default model. It’s 2.5 GB and judges a post in a fraction of a second.',
+    body: 'Install Ollama from ollama.com, then pull the default model, unrager-4b. It’s 2.7 GB, made for this filter, and judges a post in a fraction of a second.',
     code: [{ prompt: modelCmd, copy: modelCmd }],
     note: 'Already running LM Studio, vLLM, llama.cpp or SGLang? Skip this: step 2 finds it and prints the lines to put in filter.toml.',
   },
@@ -102,7 +110,7 @@ const features = [
   },
   {
     title: 'Any local model',
-    body: 'Qwen3 4B on Ollama by default, or anything with an OpenAI-compatible API: LM Studio, vLLM, llama.cpp, SGLang, llama-swap. unrager eval scores yours on about 200 made-up posts.',
+    body: 'unrager-4b on Ollama by default, or anything with an OpenAI-compatible API: LM Studio, vLLM, llama.cpp, SGLang, llama-swap. unrager eval scores yours on about 200 made-up posts.',
     glyph: '⚙',
   },
   {
@@ -117,7 +125,7 @@ const features = [
   },
   {
     title: 'Measured, not guessed',
-    body: 'Tested on 1,000 real posts from one feed, the default model takes out about two in three rage posts and hides about one good post in twenty. A good post hidden counts as the worse mistake, because you never see it, and every change to the prompt is scored on both before it ships.',
+    body: 'Tested on 1,049 real posts from one feed, the default model takes out about three in four rage posts and hides about one good post in 31. A good post hidden counts as the worse mistake, because you never see it, and every change to the prompt is scored on both before it ships.',
     glyph: '≋',
   },
 ];
@@ -197,7 +205,7 @@ const phoneSteps = [
 const faq = [
   {
     q: 'How accurate is it?',
-    a: 'Good, not perfect. Tested on 1,049 real posts from one person’s feed, judged against their own rules, the default model took out about two in three rage posts and hid about one good post in twenty. Nothing it hides is gone: turn on Show hidden posts to see each one with the rule that caught it, and one click brings it back for good.',
+    a: 'Good, not perfect. Tested on 1,049 real posts from one person’s feed, judged against their own rules, the default model took out about three in four rage posts and hid about one good post in 31. Nothing it hides is gone: turn on Show hidden posts to see each one with the rule that caught it, and one click brings it back for good.',
   },
   {
     q: 'Does anything leave my computer?',
@@ -209,11 +217,11 @@ const faq = [
   },
   {
     q: 'Which models work?',
-    a: 'The default is Qwen3 4B on Ollama, and it’s small on purpose: on 1,000 real posts it hid about one good post in twenty, where a 27B model hid one in four. It loads in about two seconds and stays loaded in about 3 GB. Any instruction-tuned model that can answer HIDE or KEEP will do, served by Ollama or anything that speaks the OpenAI chat API. unrager eval tells you how well yours filters.',
+    a: 'The default is unrager-4b on Ollama, and it’s small on purpose: on 1,049 real posts it hid about one good post in 31, where a 26B model hid one in 15. It is 2.7 GB, loads in about two seconds and stays loaded. Any instruction-tuned model that can answer HIDE or KEEP will do, served by Ollama or anything that speaks the OpenAI chat API. unrager eval tells you how well yours filters.',
   },
   {
-    q: 'Is there a model made for unrager?',
-    a: 'Yes: unrager-4b, Qwen3.5-4B fine-tuned on about 7,000 posts from one feed. On 1,049 real posts it hides about one good post in 27 and catches about four in five rage posts, against one in 14 for the 26B model it replaced. It is tuned to the author’s rules (the default topics plus Finnish political commentary), so it works best with those, and its prompt is published next to the weights on Hugging Face and as a torrent on Pirate Face.',
+    q: 'What is unrager-4b?',
+    a: 'Qwen3.5-4B fine-tuned for this filter on about 7,400 posts from one feed, labelled against unrager’s default rules by a 26B model and a second model that had to agree. On 1,049 real posts it hid about one good post in 31 and caught about three in four rage posts, where the Qwen3 4B it replaced hid one in 24 and caught three in five. It is Apache 2.0, and its weights, GGUFs and prompt are on Hugging Face and as a torrent on Pirate Face. It is tuned to the default rules; with rules of your own it still follows them, so check it with unrager eval.',
   },
   {
     q: 'Can the model run on a different computer?',
@@ -739,44 +747,65 @@ const withCode = (text: string) =>
       <h2 class="mb-4 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
         A model <span class="accent-text">made for it</span>
       </h2>
-      <p class="mb-8 max-w-3xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        unrager-4b is Qwen3.5-4B fine-tuned on about 7,000 posts from one real feed, labelled by
-        local models that had to agree with each other. It reads a post and answers KEEP, or HIDE
-        and the number of the rule that caught it. It hides half as many good posts as the 26B model
-        it replaced, and it is small enough to stay loaded on a laptop.
-      </p>
-      <div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        {
-          modelStats.map((stat) => (
-            <div class="rounded-sm border border-paper-border bg-paper-raised p-5 dark:border-term-border dark:bg-term-raised">
-              <p class="accent-text text-3xl font-bold">{stat.value}</p>
-              <p class="mt-1 text-sm font-bold text-paper-text dark:text-term-text">{stat.label}</p>
-              <p class="mt-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
-                {stat.note}
-              </p>
-            </div>
-          ))
-        }
-      </div>
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
-        <a
-          href={hfModelUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="accent-text underline decoration-dotted underline-offset-2"
-          >Weights on Hugging Face</a
-        >
-        <a
-          href={pirateModelUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="accent-text underline decoration-dotted underline-offset-2"
-          >Torrent on Pirate Face</a
-        >
-        <span class="text-xs text-paper-muted dark:text-term-muted">
-          Apache 2.0. Tuned to the author's rules, so it works best with those; the prompt ships
-          with the weights.
-        </span>
+      <div
+        class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]"
+      >
+        <video
+          class="w-full rounded-md border border-paper-border dark:border-term-border"
+          src="/unrager/unrager-4b.mp4"
+          poster="/unrager/unrager-4b-poster.webp"
+          width="1080"
+          height="1080"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="Posts scroll past a scan line; unrager-4b answers KEEP or HIDE and the rule for each, and hidden posts collapse out of the feed."
+        ></video>
+        <div>
+          <p class="mb-6 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            unrager-4b is the default model: Qwen3.5-4B fine-tuned on about 7,400 posts from one
+            real feed, labelled against unrager’s default rules by a 26B model and a second model
+            that had to agree. It reads a post and answers KEEP, or HIDE and the number of the rule
+            that caught it. It hides half as many good posts as the 26B model, and it is small
+            enough to stay loaded on a laptop.
+          </p>
+          <div class="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {
+              modelStats.map((stat) => (
+                <div class="rounded-sm border border-paper-border bg-paper-raised p-4 dark:border-term-border dark:bg-term-raised">
+                  <p class="accent-text text-2xl font-bold">{stat.value}</p>
+                  <p class="mt-1 text-sm font-bold text-paper-text dark:text-term-text">
+                    {stat.label}
+                  </p>
+                  <p class="mt-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+                    {stat.note}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+            <a
+              href={hfModelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="accent-text underline decoration-dotted underline-offset-2"
+              >Weights on Hugging Face</a
+            >
+            <a
+              href={pirateModelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="accent-text underline decoration-dotted underline-offset-2"
+              >Torrent on Pirate Face</a
+            >
+          </div>
+          <p class="mt-4 text-xs text-paper-muted dark:text-term-muted">
+            Apache 2.0. Tuned to unrager’s default rules; the prompt ships with the weights.
+          </p>
+        </div>
       </div>
     </section>
 
