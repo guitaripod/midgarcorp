@@ -50,6 +50,11 @@
       "glyph": "❋"
     },
     {
+      "title": "One pill for model and effort",
+      "body": "Which model, and how hard it thinks, are one decision, so they are one pill in the message box. Tap the effort half and the levels open on a solid card: tap one, or put a finger down and slide to it, a tick for each. Pin a model and a level together and swipe along the pill to cycle your favourites. Switch to a model that does not take your level and it moves to the nearest cooler one, out loud — never hotter than you asked. The Mac and Linux clients carry the same dial.",
+      "glyph": "◐"
+    },
+    {
       "title": "Three desks, one registry",
       "body": "Every capability is a case in a shared parity registry, and each client must answer it in an exhaustive switch — adding a feature to one client refuses to compile until all three have decided what they do about it. Nothing ships to one screen silently.",
       "glyph": "⌘"
@@ -199,16 +204,16 @@
   ],
   "screenshotCaptions": {
     "iphone": [
-      "A live turn: the thinking, the code it wrote, the command it's running",
-      "A whole task end to end: todos, edits, subagents, and the summary",
+      "A live turn: the thinking, the code it wrote, the command it's running — and the model and effort it's running on",
+      "One pill, two decisions: pick the model, tap the effort and choose how hard it thinks, and pinned favourites are a swipe away",
       "It asks before it edits — allow once, always, or deny, right in the chat",
       "Answer the agent's questions with a tap instead of guessing what it wanted",
       "The subagents it spawns open in place, with what each one reported back",
-      "Markdown, syntax-highlighted code, and links render inline",
+      "A whole task end to end: todos, edits, subagents, and the summary",
       "Every agent and machine on one board, with a composer that starts the next chat",
       "Live plan and quota gauges straight from your own machine",
-      "Every chat across every machine, filtered and searchable",
-      "Any model, any reasoning effort, mid-conversation",
+      "Delegate: a ladder from your own GPU to the frontier, a verifier that decides, nothing applied until it passes",
+      "The month in numbers: every transcript priced turn by turn, merged across your servers",
       "Context compacted, not lost — and you can read exactly what it kept",
       "The repo read from the machine that owns it: branch, drift, diffs"
     ],
