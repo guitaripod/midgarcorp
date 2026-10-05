@@ -19,6 +19,13 @@ const metaDescription =
 
 const installCmd = 'curl -fsSL https://unrager.com/install.sh | bash';
 const modelCmd = 'ollama pull qwen3:4b-instruct';
+const hfModelUrl = 'https://huggingface.co/guitaripod/unrager-4b';
+const pirateModelUrl = 'https://pirateface.co/guitaripod/unrager-4b';
+const modelStats = [
+  { value: '1 in 27', label: 'good posts hidden', note: 'the 26B model it replaced hid 1 in 14' },
+  { value: '4 in 5', label: 'rage posts caught', note: 'on 1,049 real posts, scored by hand' },
+  { value: '2.7 GB', label: 'to download', note: 'Q4_K_M, 4.5 GB at Q8_0, runs on a laptop' },
+];
 const githubUrl = 'https://github.com/guitaripod/unrager';
 const releasesUrl = 'https://github.com/guitaripod/unrager/releases';
 
@@ -203,6 +210,10 @@ const faq = [
   {
     q: 'Which models work?',
     a: 'The default is Qwen3 4B on Ollama, and it’s small on purpose: on 1,000 real posts it hid about one good post in twenty, where a 27B model hid one in four. It loads in about two seconds and stays loaded in about 3 GB. Any instruction-tuned model that can answer HIDE or KEEP will do, served by Ollama or anything that speaks the OpenAI chat API. unrager eval tells you how well yours filters.',
+  },
+  {
+    q: 'Is there a model made for unrager?',
+    a: 'Yes: unrager-4b, Qwen3.5-4B fine-tuned on about 7,000 posts from one feed. On 1,049 real posts it hides about one good post in 27 and catches about four in five rage posts, against one in 14 for the 26B model it replaced. It is tuned to the author’s rules (the default topics plus Finnish political commentary), so it works best with those, and its prompt is published next to the weights on Hugging Face and as a torrent on Pirate Face.',
   },
   {
     q: 'Can the model run on a different computer?',
@@ -720,6 +731,53 @@ const withCode = (text: string) =>
     </section>
 
     <!-- Also in the box -->
+    <section
+      id="model"
+      class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+    >
+      <p class="prompt-line mb-3">ls models/</p>
+      <h2 class="mb-4 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        A model <span class="accent-text">made for it</span>
+      </h2>
+      <p class="mb-8 max-w-3xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        unrager-4b is Qwen3.5-4B fine-tuned on about 7,000 posts from one real feed, labelled by
+        local models that had to agree with each other. It reads a post and answers KEEP, or HIDE
+        and the number of the rule that caught it. It hides half as many good posts as the 26B model
+        it replaced, and it is small enough to stay loaded on a laptop.
+      </p>
+      <div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {
+          modelStats.map((stat) => (
+            <div class="rounded-sm border border-paper-border bg-paper-raised p-5 dark:border-term-border dark:bg-term-raised">
+              <p class="accent-text text-3xl font-bold">{stat.value}</p>
+              <p class="mt-1 text-sm font-bold text-paper-text dark:text-term-text">{stat.label}</p>
+              <p class="mt-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+                {stat.note}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+        <a
+          href={hfModelUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="accent-text underline decoration-dotted underline-offset-2">Weights on Hugging Face</a
+        >
+        <a
+          href={pirateModelUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="accent-text underline decoration-dotted underline-offset-2">Torrent on Pirate Face</a
+        >
+        <span class="text-xs text-paper-muted dark:text-term-muted">
+          Apache 2.0. Tuned to the author's rules, so it works best with those; the prompt ships
+          with the weights.
+        </span>
+      </div>
+    </section>
+
     <section
       id="more"
       class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
