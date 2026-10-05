@@ -40,7 +40,7 @@ const releasesUrl = 'https://github.com/guitaripod/unrager/releases';
 const heroHighlights = [
   'Tested on 1,049 real posts: about 3 in 4 rage posts gone, about 1 good post in 31 hidden by mistake',
   'Every hidden post says which rule caught it, and one click brings it back',
-  'A small 2.7 GB model, unrager-4b, on your own computer; bigger ones hide more of what you wanted',
+  'Ships with unrager-4b, a 2.7 GB model trained for this filter and the default; bigger ones hide more of what you wanted',
   'No account, no cloud; your feed never leaves your machine',
 ];
 
@@ -55,7 +55,7 @@ type Step = {
 const steps: Step[] = [
   {
     title: 'Run a model',
-    body: 'Install Ollama from ollama.com, then pull the default model, unrager-4b. It’s 2.7 GB, made for this filter, and judges a post in a fraction of a second.',
+    body: 'Install Ollama from ollama.com, then pull the default model, unrager-4b, which was trained for this filter. It’s 2.7 GB and judges a post in a fraction of a second.',
     code: [{ prompt: modelCmd, copy: modelCmd }],
     note: 'Already running LM Studio, vLLM, llama.cpp or SGLang? Skip this: step 2 finds it and prints the lines to put in filter.toml.',
   },
@@ -221,7 +221,7 @@ const faq = [
   },
   {
     q: 'What is unrager-4b?',
-    a: 'Qwen3.5-4B fine-tuned for this filter on about 7,400 posts from one feed, labelled against unrager’s default rules by a 26B model and a second model that had to agree. On 1,049 real posts it hid about one good post in 31 and caught about three in four rage posts, where the Qwen3 4B it replaced hid one in 24 and caught three in five. It is Apache 2.0, and its weights, GGUFs and prompt are on Hugging Face and as a torrent on Pirate Face. It is tuned to the default rules; with rules of your own it still follows them, so check it with unrager eval.',
+    a: 'A model trained for unrager, and the default one: Qwen3.5-4B fine-tuned on about 7,400 posts from one feed, labelled against unrager’s default rules by a 26B model and a second model that had to agree. On 1,049 real posts it hid about one good post in 31 and caught about three in four rage posts, where the Qwen3 4B it replaced hid one in 24 and caught three in five. It is Apache 2.0, and its weights, GGUFs and prompt are on Hugging Face and as a torrent on Pirate Face. It is tuned to the default rules; with rules of your own it still follows them, so check it with unrager eval.',
   },
   {
     q: 'Can the model run on a different computer?',
@@ -745,7 +745,7 @@ const withCode = (text: string) =>
     >
       <p class="prompt-line mb-3">ls models/</p>
       <h2 class="mb-4 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        A model <span class="accent-text">made for it</span>
+        A model <span class="accent-text">trained for it</span>
       </h2>
       <div
         class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]"
@@ -765,10 +765,11 @@ const withCode = (text: string) =>
         ></video>
         <div>
           <p class="mb-6 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-            unrager-4b is the default model: Qwen3.5-4B fine-tuned on about 7,400 posts from one
-            real feed, labelled against unrager’s default rules by a 26B model and a second model
-            that had to agree. It reads a post and answers KEEP, or HIDE and the number of the rule
-            that caught it. It hides half as many good posts as the 26B model, and it is small
+            unrager-4b is a custom model trained for unrager, and it is the default: setup points at
+            it, so there is nothing to configure. It is Qwen3.5-4B fine-tuned on about 7,400 posts
+            from one real feed, labelled against unrager’s default rules by a 26B model and a second
+            model that had to agree. It reads a post and answers KEEP, or HIDE and the number of the
+            rule that caught it. It hides half as many good posts as the 26B model, and it is small
             enough to stay loaded on a laptop.
           </p>
           <div class="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
