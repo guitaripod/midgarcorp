@@ -160,7 +160,7 @@ export function getLandingApp(slug: string): LandingApp | undefined {
   return landingApps.find((a) => a.slug === slug);
 }
 
-const SCREENSHOT_REV = '4';
+const SCREENSHOT_REV = '5';
 
 /// Cache-busts a committed screenshot the way OG_REV does the card artwork.
 ///

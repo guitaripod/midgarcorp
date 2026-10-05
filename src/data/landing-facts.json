@@ -2548,7 +2548,7 @@
             "src": "/screenshots/crucible/iphone-2.webp",
             "w": 1470,
             "h": 3000,
-            "label": "Library — filter chips, 3-up posters, unwatched badges and a Continue banner",
+            "label": "Library — filter chips, a Continue banner and a Recently Watched rail with See All",
             "framed": true
           },
           {
@@ -2583,18 +2583,32 @@
             "src": "/screenshots/crucible/iphone-7.webp",
             "w": 1470,
             "h": 3000,
-            "label": "Statistics — your year in watch time, streaks and an activity heatmap",
+            "label": "Statistics — your year in watch time, streaks and an activity heatmap, filterable by library",
             "framed": true
           },
           {
             "src": "/screenshots/crucible/iphone-8.webp",
             "w": 1470,
             "h": 3000,
-            "label": "You — profile and server status, Year in Review, Watch History and settings, in Light",
+            "label": "Share Your Year — preview a Story or Square poster before it goes out",
             "framed": true
           },
           {
             "src": "/screenshots/crucible/iphone-9.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "You — profile and server status, Year in Review, Watch History and settings, in Light",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-10.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Libraries — choose what appears on Home and counts toward your stats",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-11.webp",
             "w": 3000,
             "h": 1470,
             "label": "Player — Skip Intro with a live progress sweep, in landscape",
@@ -2609,9 +2623,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.6.0",
+      "version": "2.0.0",
       "releaseDate": "2026-03-21T19:58:59Z",
-      "currentVersionReleaseDate": "2026-09-22T16:52:37Z",
+      "currentVersionReleaseDate": "2026-10-05T15:52:20Z",
       "minimumOsVersion": "17.0",
       "sellerName": "guitaripod",
       "icon": "/screenshots/crucible/icon.webp",

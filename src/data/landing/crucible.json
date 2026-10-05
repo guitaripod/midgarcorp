@@ -16,7 +16,9 @@
     "plex client swift uikit",
     "build ios app on linux",
     "ios app without xcode",
-    "plex handoff spotlight"
+    "plex handoff spotlight",
+    "plex year in review",
+    "plex statistics app"
   ],
   "heroHeadline": "Your Plex library, done right on iPhone",
   "heroSubhead": "A fast, native Plex client with a Resume-first Home, offline downloads, Skip Intro, Picture-in-Picture, and a Year in Review of your viewing — open source and built entirely on Arch Linux without ever opening Xcode.",
@@ -44,7 +46,7 @@
     },
     {
       "title": "Browse the way you think",
-      "body": "Home opens on a Resume hero, then Continue Watching, Up Next, your week in watch time, and Recently Added. Library grids have filter chips for Unwatched and In Progress, genre and sort, an A–Z scrubber, and raw folder browsing. Search groups results by type with a Top Result.",
+      "body": "Home opens on a Resume hero, then Continue Watching, Up Next, your week in watch time, and Recently Added. Library grids have filter chips for Unwatched and In Progress, genre and sort, an A–Z scrubber, a Recently Watched rail with See All, and raw folder browsing. Search groups results by type with a Top Result.",
       "glyph": "⬡"
     },
     {
@@ -54,7 +56,7 @@
     },
     {
       "title": "Know your viewing",
-      "body": "The You tab shows your server and connection status, Watch History grouped by day, and a Year-in-Review dashboard — watch time, streaks, an activity heatmap, top shows, and a shareable card built from your own Plex history.",
+      "body": "The You tab shows your server and connection status, Watch History grouped by day, and a Year-in-Review dashboard — watch time, streaks, an activity heatmap and top shows from your own Plex history. Share it as a Story or Square poster you preview first, and choose which libraries count toward Home and your stats.",
       "glyph": "◐"
     },
     {
@@ -108,6 +110,10 @@
       "a": "Yes. Download movies, full seasons, or single episodes at the quality you choose — Original, High, Medium, Low, or Data Saver. Downloads run in the background and resume after interruptions, stay Wi-Fi-only unless you allow cellular, and live in a dedicated Downloads tab with a storage summary, the live queue, and one-tap cleanup of watched titles. A season sheet downloads all, unwatched, or the next three episodes, and can keep the next ones downloaded as you watch. A Live Activity shows live progress on the Lock Screen and in the Dynamic Island, and a notification fires when a download finishes while you're away. Offline playback uses the same player, so Skip Intro/Credits, resume, PiP, background audio, and lock-screen controls all work with no network."
     },
     {
+      "q": "Can I leave a library out of Home and my statistics?",
+      "a": "Yes. Settings › Libraries has a switch for each library, and the Statistics screen has the same switches in a filter menu. Libraries you've hidden from Home in Plex start switched off, and at least one library always stays on."
+    },
+    {
       "q": "Is it really open source?",
       "a": "Yes — GPL-3.0, with one third-party dependency (GRDB, for the statistics store) and pure Apple frameworks for everything else. Read the code, file an issue, or fork it on GitHub."
     }
@@ -115,13 +121,15 @@
   "screenshotCaptions": {
     "iphone": [
       "Home — a Resume hero, Continue Watching, Up Next and your week at a glance",
-      "Library — filter chips, 3-up posters, unwatched badges and a Continue banner",
+      "Library — filter chips, a Continue banner and a Recently Watched rail with See All",
       "Detail — immersive backdrop, one-tap Resume, audio and subtitle menus",
       "Shows — season picker, episode rows, swipe actions and per-episode download rings",
       "Search — grouped results with a Top Result, recents and genre browse",
       "Downloads — storage at a glance, the queue, and everything ready to watch offline",
-      "Statistics — your year in watch time, streaks and an activity heatmap",
+      "Statistics — your year in watch time, streaks and an activity heatmap, filterable by library",
+      "Share Your Year — preview a Story or Square poster before it goes out",
       "You — profile and server status, Year in Review, Watch History and settings, in Light",
+      "Libraries — choose what appears on Home and counts toward your stats",
       "Player — Skip Intro with a live progress sweep, in landscape"
     ]
   },

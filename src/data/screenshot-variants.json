@@ -463,6 +463,34 @@
     480,
     960
   ],
+  "/screenshots/crucible/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-9.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-10.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/iphone-11.webp": [
+    480,
+    960
+  ],
   "/screenshots/flaccy/iphone-1.webp": [
     480,
     960
@@ -842,25 +870,5 @@
     72,
     144,
     216
-  ],
-  "/screenshots/crucible/iphone-5.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/iphone-6.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/iphone-7.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/iphone-8.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/iphone-9.webp": [
-    480,
-    960
   ]
 }
