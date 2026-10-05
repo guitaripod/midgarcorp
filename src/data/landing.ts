@@ -87,6 +87,21 @@ export interface Pricing {
   footnote: string;
 }
 
+export interface InstallStep {
+  title: string;
+  body: string;
+  code?: string[];
+  note?: string;
+}
+
+export interface Install {
+  title: string;
+  time: string;
+  intro: string;
+  steps: InstallStep[];
+  guideUrl?: string;
+}
+
 export interface LandingContent {
   seoTitle: string;
   metaDescription: string;
@@ -107,6 +122,7 @@ export interface LandingContent {
   webbLive?: boolean;
   bannerDevice?: string;
   hideAbout?: boolean;
+  install?: Install;
 }
 
 export type LandingApp = LandingFacts & { content: LandingContent };

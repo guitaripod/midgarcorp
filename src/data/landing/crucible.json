@@ -85,15 +85,19 @@
   "faq": [
     {
       "q": "Is Crucible on the App Store?",
-      "a": "No. Crucible is a free, open-source personal project — not an App Store release. You build it from source and deploy it to your own iPhone with xtool, or grab a tagged release from GitHub."
+      "a": "No. Crucible is a free, open-source personal project, not an App Store release. You build it once with xtool and sign it with your own Apple ID; the steps above take about fifteen minutes, and a free Apple ID is enough. GitHub releases carry the changelog, not an installable app."
     },
     {
       "q": "Do I need a Mac or Xcode to build it?",
-      "a": "No. That's the whole point. Crucible is written in Swift 6 and programmatic UIKit, cross-compiled on Arch Linux with SwiftPM, and deployed to an iPhone over USB via xtool. No Xcode, no storyboards, no macOS anywhere."
+      "a": "No. Crucible is written in Swift 6 and programmatic UIKit and built with SwiftPM and xtool, which runs on Linux, Windows (WSL) and macOS and installs to an iPhone over USB. Building it on Linux without a Mac is exactly how it is made."
+    },
+    {
+      "q": "How long does a free Apple ID build last?",
+      "a": "Seven days. After that the app stops opening until you install it again: plug the phone in and run `./scripts/install-ios.sh` once more. A paid Apple Developer account lasts a year."
     },
     {
       "q": "What does it need to run?",
-      "a": "An iPhone on iOS 17 or later and a Plex Media Server you can reach. Crucible talks directly to your server — it works great over Tailscale for secure remote access."
+      "a": "An iPhone on iOS 17 or later and a Plex Media Server you can reach. Crucible talks directly to your server, so a phone away from home needs a route to it; it works well over Tailscale."
     },
     {
       "q": "Does it support Skip Intro, PiP, and lock-screen controls?",
@@ -122,5 +126,40 @@
     ]
   },
   "ctaLine": "Build it, side-load it, watch everything.",
-  "pricingNote": "Free and open source under GPL-3.0. Built on Arch Linux, deployed with xtool."
+  "pricingNote": "Free and open source under GPL-3.0. Built on Arch Linux, deployed with xtool.",
+  "install": {
+    "title": "Put it on your iPhone,",
+    "time": "about 15 minutes",
+    "intro": "Crucible isn't on the App Store. You build it once with xtool, signed with your own Apple ID, and it installs over USB. A free Apple ID is enough. You need an iPhone on iOS 17 or later, a cable, and a Mac, a Linux PC, or Windows with WSL.",
+    "steps": [
+      {
+        "title": "Install xtool",
+        "body": "xtool builds and installs iOS apps without Xcode's interface. On a Mac, install Xcode 26 or newer from the App Store, open it once, then install xtool.",
+        "code": [
+          "brew install xtool-org/tap/xtool"
+        ],
+        "note": "On Linux or Windows (WSL) you install Swift 6.4, usbmuxd, and Xcode's `.xip` from Apple instead; the step-by-step guide below lists each command."
+      },
+      {
+        "title": "Sign in to Apple",
+        "body": "Pick `1: Password` to use any Apple ID, a free one included, then enter the two-factor code. Your credentials go only to Apple. On Linux and Windows it also asks for the path to the `.xip`.",
+        "code": [
+          "xtool setup"
+        ]
+      },
+      {
+        "title": "Build it and put it on your phone",
+        "body": "Plug the phone in, unlock it and tap Trust. The script checks your setup, builds Crucible in release mode and installs it. The first build takes several minutes. If it asks for Developer Mode, turn it on in Settings > Privacy & Security, restart the phone and run the script again.",
+        "code": [
+          "git clone https://github.com/guitaripod/Crucible",
+          "cd Crucible && ./scripts/install-ios.sh"
+        ]
+      },
+      {
+        "title": "Trust it and open it",
+        "body": "On the phone: Settings > General > VPN & Device Management > your Apple ID > Trust, then open Crucible and sign in with Plex. A free Apple ID's build stops opening after 7 days; run the script again to renew it."
+      }
+    ],
+    "guideUrl": "https://github.com/guitaripod/Crucible/blob/master/INSTALL.md"
+  }
 }
