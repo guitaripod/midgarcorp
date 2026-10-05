@@ -110,7 +110,7 @@ func diffStoreFacts(a auditApp, it *iTunesApp) []drift {
 	var out []drift
 
 	committedClass := platformClass(a.Platforms)
-	liveClass := platformClass(mapDeviceTosPlatform(*it))
+	liveClass := liveStorePlatformClass(*it)
 	if committedClass != liveClass {
 		out = append(out, drift{"platform", committedClass, liveClass, true})
 	}
@@ -142,20 +142,51 @@ func anyStructural(drifts []drift) bool {
 	return false
 }
 
-// / platformClass collapses a device list to the OS family that defines the
-// / listing, so an iPhone app that merely runs on iPad (or carries iPad
-// / screenshots) doesn't read as a platform change — only an iOS↔macOS↔tvOS move
-// / does.
+// / platformClass collapses a committed platform list to the OS family that
+// / defines the listing. iPhone or iPad anywhere in the list wins, so an iPhone
+// / app that also ships a Mac, Watch or TV companion doesn't read as a platform
+// / change — only an iOS↔macOS↔tvOS move does.
 func platformClass(platforms []string) string {
-	for _, p := range platforms {
-		switch {
-		case strings.Contains(p, "Mac"):
-			return "macOS"
-		case strings.Contains(p, "TV"):
-			return "tvOS"
-		case strings.Contains(p, "Watch"):
-			return "watchOS"
+	return classFromFamilies(hasDeviceFamily(platforms, "iPhone", "iPad"), hasDeviceFamily(platforms, "Mac"),
+		hasDeviceFamily(platforms, "TV"), hasDeviceFamily(platforms, "Watch"))
+}
+
+// / liveStorePlatformClass classifies the live listing the same way as
+// / platformClass, from the raw supportedDevices rather than the display
+// / platforms, which collapse any app with a MacDesktop device to just "Mac".
+func liveStorePlatformClass(it iTunesApp) string {
+	if it.Kind == "mac-software" {
+		return "macOS"
+	}
+	if len(it.SupportedDevices) == 0 {
+		return platformClass(mapDeviceTosPlatform(it))
+	}
+	devices := it.SupportedDevices
+	return classFromFamilies(hasDeviceFamily(devices, "iPhone", "iPad"), hasDeviceFamily(devices, "Mac"),
+		hasDeviceFamily(devices, "TV"), hasDeviceFamily(devices, "Watch"))
+}
+
+func hasDeviceFamily(names []string, markers ...string) bool {
+	for _, name := range names {
+		for _, marker := range markers {
+			if strings.Contains(name, marker) {
+				return true
+			}
 		}
+	}
+	return false
+}
+
+func classFromFamilies(ios, mac, tv, watch bool) string {
+	switch {
+	case ios:
+		return "iOS"
+	case mac:
+		return "macOS"
+	case tv:
+		return "tvOS"
+	case watch:
+		return "watchOS"
 	}
 	return "iOS"
 }
