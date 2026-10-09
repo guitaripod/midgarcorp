@@ -3,6 +3,8 @@ import BaseHead from '@components/BaseHead.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import '@styles/global.css';
+import { landingSlugs } from '@data/landing';
+import { searchKind, searchTitle } from '@utils/search';
 
 export interface Props {
   title: string;
@@ -11,9 +13,12 @@ export interface Props {
   article?: boolean;
   publishedTime?: string;
   tags?: string[];
+  searchable?: boolean;
 }
 
-const { title, description, image, article, publishedTime, tags } = Astro.props;
+const { title, description, image, article, publishedTime, tags, searchable = true } = Astro.props;
+
+const kind = searchKind(Astro.url.pathname, landingSlugs);
 ---
 
 <!doctype html>
@@ -36,7 +41,18 @@ const { title, description, image, article, publishedTime, tags } = Astro.props;
       Skip to content
     </a>
     <Header />
-    <main id="main" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <main
+      id="main"
+      class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"
+      data-pagefind-body={searchable ? '' : undefined}
+      data-pagefind-meta={searchable
+        ? 'title[data-search-title], description[data-search-description], kind[data-search-kind]'
+        : undefined}
+      data-pagefind-filter={searchable ? 'kind[data-search-kind]' : undefined}
+      data-search-title={searchTitle(title)}
+      data-search-description={description}
+      data-search-kind={kind}
+    >
       <slot />
     </main>
     <Footer />

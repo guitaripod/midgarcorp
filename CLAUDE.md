@@ -37,7 +37,7 @@ This is an Astro-based static blog with the following key architectural patterns
 - **Reading Time**: `src/utils/reading-time.ts` - calculates based on word count
 - **Table of Contents**: `src/utils/toc.ts` - auto-generates from MDX headings
 - **Related Posts**: `src/utils/related-posts.ts` - finds similar posts by tag overlap
-- **Search**: Pagefind integration built during post-build process
+- **Search**: Pagefind index built in `ct postbuild` (fails the build if it errors). `BaseLayout` marks `<main>` with `data-pagefind-body` + `title`/`description`/`kind` meta and a `kind` filter (`searchKind` in `src/utils/search.ts`: app/post/tool/page); pass `searchable={false}` to keep a page out (404, tags, archive). `Search.astro` is a custom `<dialog>` palette on the Pagefind JS API (Ctrl/⌘K or `/`), not the default UI; filters must be preloaded (`pagefind.filters()`) or the first search returns no counts. No index exists under `npm run dev`.
 
 ### Component Architecture
 - **Layouts**: `BaseLayout.astro` for pages, `BlogPost.astro` for posts

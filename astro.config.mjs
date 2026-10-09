@@ -36,9 +36,4 @@ export default defineConfig({
       langs: [],
     },
   },
-  vite: {
-    optimizeDeps: {
-      exclude: ['@pagefind/default-ui'],
-    },
-  },
 });

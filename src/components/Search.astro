@@ -6,10 +6,11 @@
   id="search-button"
   type="button"
   class="p-2 rounded-sm text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green hover:bg-paper-panel dark:hover:bg-term-panel transition-colors"
-  aria-label="Search (Cmd+K)"
-  title="Search (⌘K)"
+  aria-label="Search"
+  aria-haspopup="dialog"
+  title="Search (Ctrl+K)"
 >
-  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
     <path
       stroke-linecap="round"
       stroke-linejoin="round"
@@ -18,106 +19,425 @@
   </svg>
 </button>
 
-<div id="search-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
-  <div class="flex min-h-screen items-start justify-center p-4 pt-[12vh]">
-    <div class="fixed inset-0 bg-black bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-
+<dialog
+  id="search-dialog"
+  aria-label="Search the site"
+  class="fixed inset-0 m-0 h-full max-h-none w-full max-w-none overflow-hidden bg-transparent p-0 text-paper-text backdrop:bg-black/75 dark:text-term-text"
+>
+  <div
+    class="flex h-full items-start justify-center p-3 pt-[8vh] sm:p-4 sm:pt-[12vh]"
+    data-search-backdrop
+  >
     <div
-      class="relative w-full max-w-2xl bg-paper-bg dark:bg-term-panel border border-paper-border dark:border-term-border rounded-sm shadow-2xl"
+      class="flex max-h-[80vh] w-full max-w-2xl flex-col rounded-sm border border-paper-border bg-paper-bg font-mono shadow-2xl dark:border-term-border dark:bg-term-panel"
+      data-search-panel
     >
       <div
-        class="flex items-center gap-2 px-4 py-2 border-b border-paper-border dark:border-term-border text-xs text-paper-muted dark:text-term-muted"
+        class="flex items-center gap-2 border-b border-paper-border px-4 py-3 dark:border-term-border"
       >
-        <span class="text-paper-green dark:text-term-green">$</span>
-        <span>grep -r "..." ~/midgar</span>
-        <span class="ml-auto">esc to close</span>
+        <span class="text-paper-green dark:text-term-green" aria-hidden="true">$</span>
+        <span class="text-sm text-paper-muted dark:text-term-muted" aria-hidden="true"
+          >grep -ri</span
+        >
+        <input
+          id="search-input"
+          type="text"
+          inputmode="search"
+          class="min-w-0 flex-1 appearance-none border-0 bg-transparent p-0 text-base text-paper-text outline-none placeholder:text-paper-faint focus:ring-0 focus-visible:outline-none dark:text-term-text dark:placeholder:text-term-faint"
+          placeholder="apps, posts, tools…"
+          autocomplete="off"
+          autocapitalize="off"
+          autocorrect="off"
+          spellcheck="false"
+          enterkeyhint="go"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="search-results"
+          aria-autocomplete="list"
+          aria-label="Search query"
+        />
+        <button
+          type="button"
+          data-search-close
+          class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-muted hover:text-paper-green dark:border-term-border dark:text-term-muted dark:hover:text-term-green"
+          aria-label="Close search"
+        >
+          esc
+        </button>
       </div>
-      <div class="p-4">
-        <div id="search"></div>
+
+      <div
+        id="search-filters"
+        class="hidden flex-wrap gap-1.5 border-b border-paper-border px-4 py-2 text-xs dark:border-term-border"
+        role="group"
+        aria-label="Filter results"
+      >
+      </div>
+
+      <div id="search-body" class="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+        <ul id="search-results" role="listbox" aria-label="Results" class="hidden"></ul>
+        <div id="search-empty" class="px-4 py-6 text-sm text-paper-muted dark:text-term-muted">
+        </div>
+      </div>
+
+      <div
+        class="flex items-center gap-3 border-t border-paper-border px-4 py-2 text-xs text-paper-faint dark:border-term-border dark:text-term-faint"
+      >
+        <span id="search-status" role="status" aria-live="polite" class="truncate"></span>
+        <span class="ml-auto hidden shrink-0 sm:inline">↑↓ navigate · ↵ open · esc close</span>
       </div>
     </div>
   </div>
-</div>
+</dialog>
 
 <script>
-  function initSearch() {
-    const searchButton = document.getElementById('search-button');
-    const searchModal = document.getElementById('search-modal');
+  import { SEARCH_KINDS, isSearchKind, moveSelection, safeExcerpt } from '@utils/search';
+  import type { SearchKind } from '@utils/search';
 
-    if (!searchButton || !searchModal) return;
+  interface SubResult {
+    title: string;
+    url: string;
+    excerpt: string;
+  }
 
-    let pagefindLoading = false;
-    let lastFocused = null;
+  interface ResultData {
+    url: string;
+    excerpt: string;
+    meta: { title?: string; description?: string; kind?: string };
+    sub_results: SubResult[];
+  }
 
-    const focusSearchInput = (attempt = 0) => {
-      const input = searchModal.querySelector('.pagefind-ui__search-input');
-      if (input) {
-        input.focus();
-      } else if (attempt < 30) {
-        setTimeout(() => focusSearchInput(attempt + 1), 100);
-      }
-    };
+  interface SearchHit {
+    data: () => Promise<ResultData>;
+  }
 
-    const openModal = () => {
-      lastFocused = document.activeElement;
-      searchModal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
+  interface SearchResponse {
+    results: SearchHit[];
+    totalFilters: { kind?: Record<string, number> };
+  }
 
-      if (!window.PagefindUI && !pagefindLoading) {
-        pagefindLoading = true;
-        const script = document.createElement('script');
-        script.src = '/pagefind/pagefind-ui.js';
-        script.onload = () => {
-          new window.PagefindUI({
-            element: '#search',
-            showSubResults: true,
-            showImages: false,
-            resetStyles: false,
+  interface PagefindApi {
+    init: () => Promise<void>;
+    filters: () => Promise<unknown>;
+    search: (
+      query: string,
+      options?: { filters?: Record<string, string> }
+    ) => Promise<SearchResponse>;
+  }
+
+  const MAX_RESULTS = 10;
+  const DEBOUNCE_MS = 120;
+  const SUGGESTIONS = ['swift', 'rust', 'cloudflare', 'solar beam', 'cli', 'ollama'];
+  const KIND_PLURALS: Record<SearchKind, string> = {
+    app: 'apps',
+    post: 'posts',
+    tool: 'tools',
+    page: 'pages',
+  };
+
+  const button = document.getElementById('search-button') as HTMLButtonElement | null;
+  const dialog = document.getElementById('search-dialog') as HTMLDialogElement | null;
+  const input = document.getElementById('search-input') as HTMLInputElement | null;
+  const filtersEl = document.getElementById('search-filters');
+  const resultsEl = document.getElementById('search-results');
+  const emptyEl = document.getElementById('search-empty');
+  const statusEl = document.getElementById('search-status');
+  const bodyEl = document.getElementById('search-body');
+
+  if (button && dialog && input && filtersEl && resultsEl && emptyEl && statusEl && bodyEl) {
+    let api: Promise<PagefindApi> | null = null;
+    let requestId = 0;
+    let activeKind: SearchKind | null = null;
+    let selected = -1;
+    let lastFocused: Element | null = null;
+
+    const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
+    if (isMac) button.title = 'Search (⌘K)';
+
+    /** Loads the Pagefind runtime once; a failed load is retried on the next open. */
+    const loadApi = (): Promise<PagefindApi> => {
+      if (!api) {
+        const url = '/pagefind/pagefind.js';
+        api = import(/* @vite-ignore */ url)
+          .then(async (mod: PagefindApi) => {
+            await mod.init();
+            await mod.filters();
+            return mod;
+          })
+          .catch((error) => {
+            api = null;
+            throw error;
           });
-          focusSearchInput();
-        };
-        document.head.appendChild(script);
+      }
+      return api;
+    };
 
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = '/pagefind/pagefind-ui.css';
-        document.head.appendChild(link);
+    const options = () => Array.from(resultsEl.querySelectorAll<HTMLAnchorElement>('a'));
+
+    const select = (index: number) => {
+      const items = options();
+      selected = items.length ? Math.max(-1, Math.min(index, items.length - 1)) : -1;
+      items.forEach((item, i) => {
+        const active = i === selected;
+        item.setAttribute('aria-selected', String(active));
+        item.dataset.active = String(active);
+      });
+      const current = items[selected];
+      if (current) {
+        input.setAttribute('aria-activedescendant', current.id);
+        current.scrollIntoView({ block: 'nearest' });
       } else {
-        focusSearchInput();
+        input.removeAttribute('aria-activedescendant');
       }
     };
 
-    const closeModal = () => {
-      searchModal.classList.add('hidden');
-      document.body.style.overflow = '';
-      if (lastFocused && typeof lastFocused.focus === 'function') {
-        lastFocused.focus();
+    const showMessage = (html: string) => {
+      resultsEl.classList.add('hidden');
+      resultsEl.replaceChildren();
+      input.setAttribute('aria-expanded', 'false');
+      emptyEl.classList.remove('hidden');
+      emptyEl.innerHTML = html;
+      selected = -1;
+    };
+
+    const escapeText = (text: string) =>
+      text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    const showIdle = () => {
+      filtersEl.classList.add('hidden');
+      filtersEl.replaceChildren();
+      statusEl.textContent = '';
+      const chips = SUGGESTIONS.map(
+        (term) =>
+          `<button type="button" data-suggest="${term}" class="rounded-sm border border-paper-border px-2 py-0.5 text-paper-text hover:border-paper-green hover:text-paper-green dark:border-term-border dark:text-term-text dark:hover:border-term-green dark:hover:text-term-green">${term}</button>`
+      ).join(' ');
+      showMessage(
+        `<p class="mb-3">Search apps, blog posts, CLI tools and pages.</p><p class="flex flex-wrap items-center gap-2"><span class="text-paper-faint dark:text-term-faint">try</span>${chips}</p>`
+      );
+    };
+
+    const renderFilters = (counts: Record<string, number>) => {
+      const kinds = SEARCH_KINDS.filter((kind) => (counts[kind] ?? 0) > 0);
+      if (kinds.length < 2 && !activeKind) {
+        filtersEl.classList.add('hidden');
+        filtersEl.replaceChildren();
+        return;
+      }
+      const total = Object.values(counts).reduce((sum, n) => sum + n, 0);
+      const chip = (kind: SearchKind | null, label: string, count: number) => {
+        const on = kind === activeKind;
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.dataset.kind = kind ?? '';
+        el.setAttribute('aria-pressed', String(on));
+        el.className = on
+          ? 'rounded-sm border border-paper-green bg-paper-panel px-2 py-0.5 text-paper-green dark:border-term-green dark:bg-term-raised dark:text-term-green'
+          : 'rounded-sm border border-paper-border px-2 py-0.5 text-paper-muted hover:text-paper-green dark:border-term-border dark:text-term-muted dark:hover:text-term-green';
+        el.textContent = `${label} ${count}`;
+        return el;
+      };
+      filtersEl.replaceChildren(
+        chip(null, 'all', total),
+        ...kinds.map((kind) => chip(kind, KIND_PLURALS[kind], counts[kind] ?? 0))
+      );
+      filtersEl.classList.remove('hidden');
+      filtersEl.classList.add('flex');
+    };
+
+    const renderResult = (data: ResultData, index: number) => {
+      const sub = data.sub_results[0];
+      const kind = isSearchKind(data.meta.kind) ? data.meta.kind : 'page';
+      const title = data.meta.title || sub?.title || data.url;
+      const heading = sub && sub.title && sub.title !== data.meta.title ? sub.title : '';
+      const excerpt = sub?.excerpt || data.excerpt;
+
+      const link = document.createElement('a');
+      link.id = `search-result-${index}`;
+      link.href = sub?.url || data.url;
+      link.setAttribute('role', 'option');
+      link.setAttribute('aria-selected', 'false');
+      link.dataset.active = 'false';
+      link.className =
+        'block border-b border-paper-border px-4 py-3 last:border-b-0 data-[active=true]:bg-paper-panel dark:border-term-border dark:data-[active=true]:bg-term-raised';
+
+      const head = document.createElement('div');
+      head.className = 'mb-1 flex items-baseline gap-2';
+      const tag = document.createElement('span');
+      tag.className =
+        'shrink-0 rounded-sm border border-paper-border px-1 text-[10px] uppercase tracking-wide text-paper-amber dark:border-term-border dark:text-term-amber';
+      tag.textContent = kind;
+      const name = document.createElement('span');
+      name.className = 'truncate font-semibold text-paper-green dark:text-term-green';
+      name.textContent = title;
+      head.append(tag, name);
+      if (heading) {
+        const section = document.createElement('span');
+        section.className = 'truncate text-xs text-paper-muted dark:text-term-muted';
+        section.textContent = `› ${heading}`;
+        head.append(section);
+      }
+
+      const body = document.createElement('p');
+      body.className =
+        'line-clamp-2 text-xs leading-relaxed text-paper-muted dark:text-term-muted [&_mark]:bg-transparent [&_mark]:font-semibold [&_mark]:text-paper-text dark:[&_mark]:text-term-text [&_mark]:underline [&_mark]:decoration-paper-green dark:[&_mark]:decoration-term-green';
+      body.innerHTML = safeExcerpt(excerpt || data.meta.description || '');
+
+      link.append(head, body);
+      return link;
+    };
+
+    const runSearch = async () => {
+      const query = input.value.trim();
+      const id = ++requestId;
+      if (!query) {
+        activeKind = null;
+        showIdle();
+        return;
+      }
+      statusEl.textContent = 'searching…';
+      try {
+        const pagefind = await loadApi();
+        await new Promise((resolve) => setTimeout(resolve, DEBOUNCE_MS));
+        if (id !== requestId) return;
+        const started = performance.now();
+        const response = activeKind
+          ? await pagefind.search(query, { filters: { kind: activeKind } })
+          : await pagefind.search(query);
+        if (id !== requestId) return;
+
+        const hits = await Promise.all(response.results.slice(0, MAX_RESULTS).map((r) => r.data()));
+        if (id !== requestId) return;
+
+        const counts = response.totalFilters.kind ?? {};
+        renderFilters(counts);
+
+        if (!hits.length) {
+          showMessage(
+            `<p>No matches for <span class="text-paper-text dark:text-term-text">${escapeText(query)}</span>.</p>`
+          );
+          statusEl.textContent = '0 results';
+          return;
+        }
+
+        emptyEl.classList.add('hidden');
+        resultsEl.classList.remove('hidden');
+        resultsEl.replaceChildren(...hits.map(renderResult));
+        input.setAttribute('aria-expanded', 'true');
+        bodyEl.scrollTop = 0;
+        select(0);
+
+        const total = response.results.length;
+        const elapsed = Math.max(1, Math.round(performance.now() - started));
+        statusEl.textContent =
+          total > hits.length
+            ? `top ${hits.length} of ${total} · ${elapsed}ms`
+            : `${total} result${total === 1 ? '' : 's'} · ${elapsed}ms`;
+      } catch (error) {
+        if (id !== requestId) return;
+        console.error('search failed', error);
+        const hint = import.meta.env.DEV
+          ? ' The index is generated by <code>npm run build</code>; it does not exist under <code>npm run dev</code>.'
+          : '';
+        showMessage(
+          `<p class="text-paper-red dark:text-term-red">Search index unavailable.${hint}</p>`
+        );
+        filtersEl.classList.add('hidden');
+        statusEl.textContent = '';
       }
     };
 
-    searchButton.addEventListener('click', openModal);
+    const open = () => {
+      if (dialog.open) return;
+      lastFocused = document.activeElement;
+      dialog.showModal();
+      document.documentElement.style.overflow = 'hidden';
+      input.focus();
+      input.select();
+      if (input.value.trim()) {
+        void runSearch();
+      } else {
+        showIdle();
+        void loadApi().catch(() => {});
+      }
+    };
 
-    searchModal.addEventListener('click', (e) => {
-      if (e.target === searchModal || e.target.classList.contains('bg-opacity-75')) {
-        closeModal();
+    const close = () => {
+      if (dialog.open) dialog.close();
+    };
+
+    dialog.addEventListener('close', () => {
+      document.documentElement.style.overflow = '';
+      requestId++;
+      if (lastFocused instanceof HTMLElement) lastFocused.focus();
+    });
+
+    button.addEventListener('click', open);
+    button.addEventListener('pointerenter', () => void loadApi().catch(() => {}), { once: true });
+
+    dialog.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('[data-search-close]')) return close();
+      if (target.closest('[data-search-panel]')) {
+        const suggestion = target.closest<HTMLElement>('[data-suggest]');
+        if (suggestion) {
+          input.value = suggestion.dataset.suggest ?? '';
+          input.focus();
+          void runSearch();
+          return;
+        }
+        const chip = target.closest<HTMLElement>('[data-kind]');
+        if (chip) {
+          activeKind = isSearchKind(chip.dataset.kind) ? chip.dataset.kind : null;
+          input.focus();
+          void runSearch();
+          return;
+        }
+        if (target.closest('a')) close();
+        return;
+      }
+      if (target.closest('[data-search-backdrop]')) close();
+    });
+
+    resultsEl.addEventListener('pointermove', (event) => {
+      const link = (event.target as HTMLElement).closest('a');
+      if (!link) return;
+      const index = options().indexOf(link);
+      if (index !== selected) select(index);
+    });
+
+    input.addEventListener('input', () => {
+      activeKind = null;
+      void runSearch();
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        select(moveSelection(selected, event.key === 'ArrowDown' ? 1 : -1, options().length));
+      } else if (event.key === 'Enter') {
+        const current = options()[selected];
+        if (current) {
+          event.preventDefault();
+          current.click();
+        }
       }
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !searchModal.classList.contains('hidden')) {
-        closeModal();
+    document.addEventListener('keydown', (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        if (dialog.open) close();
+        else open();
+        return;
       }
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        if (searchModal.classList.contains('hidden')) {
-          openModal();
-        } else {
-          closeModal();
+      if (event.key === '/' && !dialog.open && !event.metaKey && !event.ctrlKey && !event.altKey) {
+        const target = event.target as HTMLElement;
+        const typing = target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName);
+        if (!typing) {
+          event.preventDefault();
+          open();
         }
       }
     });
   }
-
-  document.addEventListener('DOMContentLoaded', initSearch);
-  document.addEventListener('astro:after-swap', initSearch);
 </script>

@@ -2,7 +2,11 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="404 — command not found | guitaripod" description="This page does not exist.">
+<BaseLayout
+  searchable={false}
+  title="404 — command not found | guitaripod"
+  description="This page does not exist."
+>
   <section class="pt-16 sm:pt-24 pb-16 max-w-2xl">
     <p class="prompt-line mb-4">cat {'{requested_page}'}</p>
     <h1

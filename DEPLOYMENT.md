@@ -143,7 +143,7 @@ Add to `package.json`:
   "scripts": {
     "build": "astro build && npm run postbuild",
     "postbuild": "npm run build:search && npm run optimize:images",
-    "build:search": "pagefind --source dist",
+    "build:search": "pagefind --site dist",
     "optimize:images": "node scripts/optimize-images.js"
   }
 }

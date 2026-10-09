@@ -107,31 +107,6 @@
     @apply text-paper-green dark:text-term-green font-medium;
   }
 
-  .pagefind-ui {
-    @apply text-paper-text dark:text-term-text font-mono;
-    --pagefind-ui-primary: theme('colors.paper.green');
-    --pagefind-ui-text: theme('colors.paper.text');
-    --pagefind-ui-background: theme('colors.paper.bg');
-    --pagefind-ui-border: theme('colors.paper.border');
-    --pagefind-ui-border-radius: 2px;
-    --pagefind-ui-font: theme('fontFamily.mono');
-  }
-
-  .dark .pagefind-ui {
-    --pagefind-ui-primary: theme('colors.term.green');
-    --pagefind-ui-text: theme('colors.term.text');
-    --pagefind-ui-background: theme('colors.term.panel');
-    --pagefind-ui-border: theme('colors.term.border');
-  }
-
-  .pagefind-ui__search-input {
-    @apply bg-paper-panel dark:bg-term-panel border-paper-border dark:border-term-border text-paper-text dark:text-term-text;
-  }
-
-  .pagefind-ui__search-clear {
-    @apply text-paper-muted dark:text-term-muted;
-  }
-
   .dark {
     @apply text-term-text;
   }

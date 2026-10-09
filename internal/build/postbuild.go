@@ -10,16 +10,14 @@ import (
 func PostBuild() error {
 	fmt.Println("Running post-build optimizations...")
 
-	// Run Pagefind
 	fmt.Println("Building search index with Pagefind...")
-	cmd := exec.Command("npx", "pagefind", "--source", "dist")
+	cmd := exec.Command("npx", "pagefind", "--site", "dist")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
-		fmt.Printf("Failed to build search index: %v\n", err.Error())
-	} else {
-		fmt.Println("✓ Search index built successfully")
+		return fmt.Errorf("build search index: %w", err)
 	}
+	fmt.Println("✓ Search index built successfully")
 
 	// Check if performance budget script exists
 	perfBudgetScript := filepath.Join("scripts", "performance-budget.js")
