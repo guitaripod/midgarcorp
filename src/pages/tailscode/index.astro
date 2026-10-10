@@ -6,8 +6,9 @@ import FeatureGrid from '@components/landing/FeatureGrid.astro';
 import FaqAccordion from '@components/landing/FaqAccordion.astro';
 import PricingTable from '@components/landing/PricingTable.astro';
 import AppIcon from '@components/landing/AppIcon.astro';
+import SectionHead from '@components/landing/SectionHead.astro';
+import ShotFigure from '@components/landing/ShotFigure.astro';
 import { landingApps, screenshotUrl, type LandingApp } from '@data/landing';
-import screenshotVariants from '@data/screenshot-variants.json';
 
 export const prerender = true;
 
@@ -27,116 +28,82 @@ const subtitle = app.name.includes(':')
   : (app.category ?? '');
 
 const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : undefined);
-const variants = screenshotVariants as Record<string, number[]>;
-
-/// srcset from the generated variants manifest; falls back to the original only.
-const srcsetFor = (src: string, w: number) => {
-  const widths = variants[src] ?? [];
-  return [
-    ...widths.map((wide) => `${screenshotUrl(src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`),
-    `${screenshotUrl(src)} ${w}w`,
-  ].join(', ');
-};
-
-/// The click-through asset for the lightbox: desk and composite shots have true-4K
-/// masters under full/; phone shots are already served at full resolution.
-const fullFor = (src: string) =>
-  screenshotUrl(
-    /\/(desk-|sync-02|sync-03|ipad-ws-)/.test(src)
-      ? src.replace('/tailscode/', '/tailscode/full/')
-      : src
-  );
-
-/// One screen in its two faces. The site's own theme toggle decides which face
-/// renders, so every screenshot on the page follows the reader's choice.
-interface PairedShot {
-  dark: string;
-  light: string;
-  w: number;
-  h: number;
-  caption: string;
-}
 
 const shotBase = '/screenshots/tailscode';
+const shot = (name: string) => `${shotBase}/${name}.webp`;
+
+/// A screen in both of its faces; a pair whose faces are the same file renders one image.
+const faces = (dark: string, light: string, w: number, h: number) => ({
+  dark: shot(dark),
+  light: shot(light),
+  w,
+  h,
+});
+
+/// The Studio figures, one entry per shot. The names below stand in until the shots made for
+/// them exist; swapping one is a one-line edit here and nothing else on the page changes.
+const STUDIO = {
+  mac: faces('desk-dark-studio-states', 'desk-dark-studio-states', 1920, 1315),
+  phonePainting: faces('suomi-dark-01', 'suomi-light-01', 1320, 2868),
+  phoneFinished: faces('suomi-dark-02', 'suomi-light-02', 1320, 2868),
+  linux: faces('desk-dark-studio', 'desk-dark-studio', 1920, 1004),
+  videoPhone: faces('suomi-dark-03', 'suomi-light-03', 1320, 2868),
+  videoMac: faces('desk-dark-studio-states', 'desk-dark-studio-states', 1920, 1315),
+};
+
+/// Where the rebuilt Studio can be had today. It is the one place the page names a release,
+/// so it is the one line to change when the Apple builds carry it.
+const studioAvailability =
+  'The rebuilt Studio is in the Linux 1.72 release; the iPhone and Mac builds follow.';
+
+const hero = faces('desk-dark-chat', 'desk-light-chat', 1920, 1080);
+const heroCaption =
+  'The Linux desk in the Suomi theme. Flip this page’s theme: every screenshot follows.';
+const syncBoth = faces('sync-03-both', 'sync-03-both', 1920, 1080);
+
+/// The phone rail: the demo wearing Suomi, by file number. The Studio shots are in their own section.
+const phonePicks = [1, 2, 3, 4, 7, 8, 9, 12];
 const phoneCaptions = c.screenshotCaptions?.iphone ?? [];
-const phoneShots: PairedShot[] = Array.from({ length: 12 }, (_, i) => ({
-  dark: `${shotBase}/suomi-dark-${String(i + 1).padStart(2, '0')}.webp`,
-  light: `${shotBase}/suomi-light-${String(i + 1).padStart(2, '0')}.webp`,
-  w: 1320,
-  h: 2868,
+const phoneShots = phonePicks.map((n, i) => ({
+  ...faces(
+    `suomi-dark-${String(n).padStart(2, '0')}`,
+    `suomi-light-${String(n).padStart(2, '0')}`,
+    1320,
+    2868
+  ),
   caption: phoneCaptions[i] ?? '',
 }));
 
-const deskCaptions = c.screenshotCaptions?.linux ?? [];
-const deskChat: PairedShot = {
-  dark: `${shotBase}/desk-dark-chat.webp`,
-  light: `${shotBase}/desk-light-chat.webp`,
-  w: 1920,
-  h: 1080,
-  caption: deskCaptions[0] ?? '',
-};
-const deskSplit: PairedShot = {
-  dark: `${shotBase}/desk-dark-split.webp`,
-  light: `${shotBase}/desk-light-split.webp`,
-  w: 1920,
-  h: 1080,
-  caption: deskCaptions[1] ?? '',
-};
-const deskAnalytics: PairedShot = {
-  dark: `${shotBase}/desk-dark-analytics.webp`,
-  light: `${shotBase}/desk-light-analytics.webp`,
-  w: 1920,
-  h: 1080,
-  caption: deskCaptions[2] ?? '',
-};
-const deskStudio = `${shotBase}/desk-dark-studio.webp`;
-const deskStudioStates = `${shotBase}/desk-dark-studio-states.webp`;
-const deskCompaction = `${shotBase}/desk-dark-compaction.webp`;
-const deskAsk = `${shotBase}/desk-dark-ask.webp`;
-const deskUltracode = `${shotBase}/desk-dark-ultracode.webp`;
+const ipadCaptions = c.screenshotCaptions?.ipad ?? [];
+const ipadShots = (app.screenshots.ipad ?? []).map((s, i) => ({
+  src: s.src,
+  w: s.w,
+  h: s.h,
+  caption: ipadCaptions[i] ?? s.label,
+}));
 
-/// Five frames off a real phone on a real evening — live turns, real servers, real spend.
-const realShots = [
+const deskCaptions = c.screenshotCaptions?.linux ?? [];
+const deskShots = [
+  { ...faces('desk-dark-split', 'desk-light-split', 1920, 1080), caption: deskCaptions[0] ?? '' },
   {
-    src: `${shotBase}/real-01-board.webp`,
-    caption:
-      'Two turns live at once — one wearing the ultracode rainbow on its row — over recents from half a dozen models.',
-  },
-  {
-    src: `${shotBase}/real-02-agent.webp`,
-    caption:
-      'A code review fanning out mid-turn: 35 tools deep, one agent working, the session priced live in the chrome.',
-  },
-  {
-    src: `${shotBase}/real-03-ultracode.webp`,
-    caption:
-      'An ultracode turn lands: five of five tasks struck through, master ↑4 on the git chip, the composer edge still burning.',
-  },
-  {
-    src: `${shotBase}/real-04-quickask.webp`,
-    caption: 'Quick ask aims anywhere: pick the machine, pick the model, ask.',
-  },
-  {
-    src: `${shotBase}/real-05-usage.webp`,
-    caption:
-      'The tanks, read from the machines themselves: Claude, Grok and opencode, each window with its own reset clock.',
+    ...faces('desk-dark-analytics', 'desk-light-analytics', 1920, 1080),
+    caption: deskCaptions[1] ?? '',
   },
 ];
 
-/// Three stills from one real ultracode turn, captured on both machines at once.
-const syncShots = {
-  send: { src: `${shotBase}/sync-01-send.webp`, w: 1320, h: 2868 },
-  desk: { src: `${shotBase}/sync-02-desk.webp`, w: 1920, h: 1080 },
-  both: { src: `${shotBase}/sync-03-both.webp`, w: 1920, h: 1080 },
-};
+const studioBullets = [
+  'The machine’s own sketch fills the stage while it paints, when it sends one, and a progress line runs along the stage’s foot.',
+  'On the phone, under a finished picture: Save, Share, Copy, Again, Edit this. Animate this waits in its menu.',
+  'The shelf is the machine’s own output folder, newest first, with the words, seed and steps read back from the files.',
+  'Enhance has a language model of yours write the paragraph; Continue it picks up where a finished clip ends.',
+];
 
-/// The iPad set: the workspace on a 13" iPad in landscape — sidebar, chat list and conversation
-/// side by side is the point.
-const ipadCaptions = c.screenshotCaptions?.ipad ?? [];
-const ipadShots = (app.screenshots.ipad ?? []).map((shot, i) => ({
-  ...shot,
-  caption: ipadCaptions[i] ?? shot.label,
-}));
+const section = 'border-t border-paper-border py-8 dark:border-term-border sm:py-9';
+
+/// A row of figures that scrolls sideways on a phone and lays out as a grid from `sm` up.
+const rail =
+  'no-scrollbar -mx-4 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-4 pb-3 sm:mx-0 sm:grid sm:overflow-visible sm:px-0 sm:pb-0';
+const railItem = 'shrink-0 snap-center';
 
 const operatingSystem = 'iOS, iPadOS, Linux, macOS';
 const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
@@ -262,7 +229,7 @@ const clients = [
 
     <!-- Hero -->
     <header
-      class="flex flex-col gap-10 py-8 sm:py-14 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-x-12"
+      class="flex flex-col gap-10 py-8 sm:py-6 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-x-12"
     >
       <div>
         <p class="prompt-line mb-5 hidden sm:block">tailscode --everywhere</p>
@@ -338,7 +305,7 @@ const clients = [
           <span class="font-semibold text-paper-amber dark:text-term-amber">
             {app.license ?? 'GPL-3.0'}
           </span>
-          <span class="flex flex-wrap gap-1.5">
+          <span class="hidden flex-wrap gap-1.5 sm:flex">
             {
               ['iPhone', 'iPad', 'Linux', 'Mac'].map((p) => (
                 <span class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint">
@@ -363,327 +330,223 @@ const clients = [
         </ul>
       </div>
 
-      <!-- hero: the Linux desk mid-fan-out, wearing whichever Suomi face the page wears -->
-      <figure class="mx-auto w-full max-w-[560px] lg:max-w-none">
-        <div
-          class="overflow-hidden rounded-lg border border-paper-border shadow-2xl dark:border-term-border"
-        >
-          <img
-            src={screenshotUrl(deskSplit.dark)}
-            srcset={srcsetFor(deskSplit.dark, deskSplit.w)}
-            sizes="(min-width: 1024px) 560px, 100vw"
-            width={deskSplit.w}
-            height={deskSplit.h}
-            alt={`Tailscode for Linux, Suomi theme dark: ${deskSplit.caption}`}
-            class="hidden w-full cursor-zoom-in dark:block"
-            fetchpriority="high"
-            data-full={fullFor(deskSplit.dark)}
-          />
-          <img
-            src={screenshotUrl(deskSplit.light)}
-            srcset={srcsetFor(deskSplit.light, deskSplit.w)}
-            sizes="(min-width: 1024px) 560px, 100vw"
-            width={deskSplit.w}
-            height={deskSplit.h}
-            alt={`Tailscode for Linux, Suomi theme light: ${deskSplit.caption}`}
-            class="w-full cursor-zoom-in dark:hidden"
-            fetchpriority="high"
-            data-full={fullFor(deskSplit.light)}
-          />
-        </div>
-        <figcaption class="mt-3 text-center text-xs text-paper-faint dark:text-term-faint">
-          The Linux desk in the Suomi theme. Flip this page's theme — every screenshot follows.
-        </figcaption>
-      </figure>
+      <ShotFigure
+        dark={hero.dark}
+        light={hero.light}
+        w={hero.w}
+        h={hero.h}
+        alt="Tailscode for Linux in the Suomi theme: a conversation in the compact chat"
+        sizes="(min-width: 1024px) 560px, 100vw"
+        variant="hero"
+        priority
+        class="mx-auto w-full max-w-[560px] lg:max-w-none"
+      >
+        {heroCaption}
+      </ShotFigure>
     </header>
 
-    <!-- Sync film -->
-    <section id="sync" class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-      <p class="prompt-line mb-2">tailscode sync --watch</p>
-      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        One session, two machines, zero relays
-      </h2>
-      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        Three stills from one real turn, captured on both machines at once: a prompt leaves the
-        iPhone, lands on a claude-bridge server over the tailnet, and the session appears in the
-        Linux desktop's sidebar already live. It is an <span
-          class="font-semibold text-paper-text dark:text-term-text">ultracode</span
-        > turn, so both composers burn the rainbow while it runs. No relay server ever sees a byte of
-        it.
-      </p>
-      <div class="grid gap-4 lg:grid-cols-12">
-        <figure
-          class="flex flex-col overflow-hidden rounded-lg border border-paper-border dark:border-term-border lg:col-span-4"
+    <section id="sync" class={section}>
+      <div class="grid items-center gap-x-10 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <SectionHead
+            prompt="tailscode sync --watch"
+            title="One session, two machines, zero relays"
+          >
+            One real <span class="font-semibold text-paper-text dark:text-term-text">ultracode</span
+            > turn, captured on both machines at once. A prompt leaves the iPhone, reaches a claude-bridge
+            server over the tailnet, and the session is already live in the Linux sidebar. Both composers
+            burn the rainbow while it runs, and both show the same answer when it settles. No relay sees
+            a byte.
+          </SectionHead>
+        </div>
+        <ShotFigure
+          dark={syncBoth.dark}
+          w={syncBoth.w}
+          h={syncBoth.h}
+          alt="Both machines side by side with the same settled answer, the turn priced in the phone's chrome"
+          sizes="(min-width: 1152px) 704px, 100vw"
+          class="lg:col-span-8"
         >
-          <img
-            src={screenshotUrl(syncShots.send.src)}
-            srcset={srcsetFor(syncShots.send.src, syncShots.send.w)}
-            sizes="(min-width: 1024px) 352px, 100vw"
-            width={syncShots.send.w}
-            height={syncShots.send.h}
-            alt="Tailscode on iPhone: the prompt just sent, the turn starting, the composer edge burning the ultracode rainbow"
-            loading="lazy"
-            class="w-full cursor-zoom-in"
-            data-full={fullFor(syncShots.send.src)}
-          />
-          <figcaption
-            class="mt-auto border-t border-paper-border px-4 py-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted"
+          <span class="accent-text mr-1 font-semibold">One answer, two screens</span> — the turn settles
+          on both machines at once, priced in the phone's chrome.
+        </ShotFigure>
+      </div>
+    </section>
+
+    <section id="studio" class={section}>
+      <div class="mb-8 grid items-start gap-x-10 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <SectionHead
+            prompt="tailscode studio --on arch"
+            title="A picture is something you ask for in words"
           >
-            <span class="accent-text mr-1 font-semibold">01 · Send from the phone</span> — the Home composer
-            mints the chat and the turn starts, rainbow already burning.
-          </figcaption>
-        </figure>
-        <div class="grid content-start gap-4 lg:col-span-8">
-          <figure
-            class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+            Describe it and your own machine paints it: ComfyUI behind Tailscale, Qwen-Image for
+            quality, FLUX.2 Klein for speed. A clip is the same sentence with a longer verb,
+            rendered by LTX from words or from a first frame. Nothing leaves your tailnet.
+          </SectionHead>
+        </div>
+        <div class="lg:col-span-7 lg:pt-9">
+          <ul class="mb-3 grid gap-2">
+            {
+              studioBullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                    ▸
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-xs text-paper-faint dark:text-term-faint">{studioAvailability}</p>
+        </div>
+      </div>
+
+      <div class="grid gap-4">
+        <ShotFigure
+          dark={STUDIO.mac.dark}
+          light={STUDIO.mac.light}
+          w={STUDIO.mac.w}
+          h={STUDIO.mac.h}
+          alt="The Studio on the Mac: image and video lanes in one window, the stage, the machine's shelf and the brief"
+          sizes="(min-width: 1024px) 880px, 100vw"
+          class="lg:mx-auto lg:max-w-[880px]"
+        >
+          <span class="accent-text mr-1 font-semibold">Mac</span> — Image and video are one window: a
+          lane switch, the stage, the machine's shelf and the brief docked under it.
+        </ShotFigure>
+
+        <div class={`${rail} lg:grid-cols-12`}>
+          <ShotFigure
+            dark={STUDIO.phonePainting.dark}
+            light={STUDIO.phonePainting.light}
+            w={STUDIO.phonePainting.w}
+            h={STUDIO.phonePainting.h}
+            alt="The Studio on iPhone while a picture is painting"
+            sizes="(min-width: 1024px) 175px, 170px"
+            variant="phone"
+            class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
           >
-            <img
-              src={screenshotUrl(syncShots.desk.src)}
-              srcset={srcsetFor(syncShots.desk.src, syncShots.desk.w)}
-              sizes="(min-width: 1024px) 720px, 100vw"
-              width={syncShots.desk.w}
-              height={syncShots.desk.h}
-              alt="Tailscode for Linux seconds later: the same session live in the sidebar, transcript already streaming, no files pane"
-              loading="lazy"
-              class="w-full cursor-zoom-in"
-              data-full={fullFor(syncShots.desk.src)}
-            />
-            <figcaption
-              class="border-t border-paper-border px-4 py-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted"
-            >
-              <span class="accent-text mr-1 font-semibold">02 · The desk lights up</span> — seconds later
-              the same session is in the Linux sidebar, opened mid-turn, transcript already streaming.
-            </figcaption>
-          </figure>
-          <figure
-            class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
+            <span class="accent-text mr-1 font-semibold">iPhone</span> — painting: the sketch on the
+            stage.
+          </ShotFigure>
+          <ShotFigure
+            dark={STUDIO.phoneFinished.dark}
+            light={STUDIO.phoneFinished.light}
+            w={STUDIO.phoneFinished.w}
+            h={STUDIO.phoneFinished.h}
+            alt="The Studio on iPhone with a finished picture and its verbs"
+            sizes="(min-width: 1024px) 175px, 170px"
+            variant="phone"
+            class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
           >
-            <img
-              src={screenshotUrl(syncShots.both.src)}
-              srcset={srcsetFor(syncShots.both.src, syncShots.both.w)}
-              sizes="(min-width: 1024px) 720px, 100vw"
-              width={syncShots.both.w}
-              height={syncShots.both.h}
-              alt="Both machines side by side with the same settled answer, the turn priced in the phone's chrome"
-              loading="lazy"
-              class="w-full cursor-zoom-in"
-              data-full={fullFor(syncShots.both.src)}
-            />
-            <figcaption
-              class="border-t border-paper-border px-4 py-3 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted"
-            >
-              <span class="accent-text mr-1 font-semibold">03 · One answer, two screens</span> — the
-              turn settles on both machines at once, priced in the phone's chrome. Open it on any client
-              and it is simply there.
-            </figcaption>
-          </figure>
+            <span class="accent-text mr-1 font-semibold">iPhone</span> — done: the verbs sit under the
+            picture.
+          </ShotFigure>
+          <ShotFigure
+            dark={STUDIO.linux.dark}
+            light={STUDIO.linux.light}
+            w={STUDIO.linux.w}
+            h={STUDIO.linux.h}
+            alt="The Studio on Linux"
+            sizes="(min-width: 1024px) 720px, 80vw"
+            class={`${railItem} w-[80vw] lg:w-auto lg:col-span-8 lg:self-center`}
+          >
+            <span class="accent-text mr-1 font-semibold">Linux</span> — the same brief, stage and shelf.
+          </ShotFigure>
+          <ShotFigure
+            dark={STUDIO.videoPhone.dark}
+            light={STUDIO.videoPhone.light}
+            w={STUDIO.videoPhone.w}
+            h={STUDIO.videoPhone.h}
+            alt="The video screen on iPhone"
+            sizes="(min-width: 1024px) 175px, 170px"
+            variant="phone"
+            class={`${railItem} w-[170px] lg:col-span-2 lg:col-start-3 lg:w-auto`}
+          >
+            <span class="accent-text mr-1 font-semibold">iPhone</span> — a clip is a screen of its own.
+          </ShotFigure>
+          <ShotFigure
+            dark={STUDIO.videoMac.dark}
+            light={STUDIO.videoMac.light}
+            w={STUDIO.videoMac.w}
+            h={STUDIO.videoMac.h}
+            alt="The video lane of the Studio on the Mac"
+            sizes="(min-width: 1024px) 544px, 80vw"
+            class={`${railItem} w-[80vw] lg:w-auto lg:col-span-6 lg:self-center`}
+          >
+            <span class="accent-text mr-1 font-semibold">Mac</span> — the Video lane, in the same window
+            as Image.
+          </ShotFigure>
         </div>
       </div>
     </section>
 
-    <!-- Theme faces -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-      <p class="prompt-line mb-2">tailscode theme suomi</p>
-      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        Eight themes, and every one has two faces
-      </h2>
-      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        Shown here: <span class="font-semibold text-paper-text dark:text-term-text">Suomi</span> — kaamos
-        night under an aurora, and fresh snow under flag-blue ink by day. One catalog is shared by all
-        three clients, light or dark can be pinned separately from the theme, and every color is walked
-        through an OKLab contrast corrector until it clears WCAG on its own canvas. A theme that cannot
-        be made readable fails the build.
-      </p>
-      <div class="grid gap-4 lg:grid-cols-2">
-        <figure
-          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
-        >
-          <img
-            src={screenshotUrl(deskChat.dark)}
-            srcset={srcsetFor(deskChat.dark, deskChat.w)}
-            sizes="(min-width: 1024px) 544px, 100vw"
-            width={deskChat.w}
-            height={deskChat.h}
-            alt="Tailscode for Linux wearing the Suomi theme's dark face"
-            loading="lazy"
-            class="w-full cursor-zoom-in"
-            data-full={fullFor(deskChat.dark)}
-          />
-          <figcaption
-            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
-          >
-            Night is kaamos over a frozen lake — the aurora carries motion, ice the agent's marks.
-          </figcaption>
-        </figure>
-        <figure
-          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
-        >
-          <img
-            src={screenshotUrl(deskChat.light)}
-            srcset={srcsetFor(deskChat.light, deskChat.w)}
-            sizes="(min-width: 1024px) 544px, 100vw"
-            width={deskChat.w}
-            height={deskChat.h}
-            alt="Tailscode for Linux wearing the Suomi theme's light face"
-            loading="lazy"
-            class="w-full cursor-zoom-in"
-            data-full={fullFor(deskChat.light)}
-          />
-          <figcaption
-            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
-          >
-            Day is fresh snow under flag-blue ink, with spruce for affirmation and cloudberry for
-            attention.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Phone rail -->
-    <section
-      id="screenshots"
-      class="border-t border-paper-border py-12 dark:border-term-border sm:py-16"
-    >
-      <p class="prompt-line mb-2">ls ~/tailscode/iphone</p>
-      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        The pocket client, screen by screen
-      </h2>
-      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        Every frame below is the built-in demo wearing Suomi — what you see before wiring a single
-        server. Scroll the rail; flip the site theme to see the other face.
-      </p>
+    <section id="screenshots" class={section}>
+      <SectionHead prompt="ls ~/tailscode/iphone" title="The pocket client, screen by screen">
+        Every frame is the built-in demo wearing Suomi: what you see before wiring a single server.
+        Scroll the rail; flip the site theme to see the other face.
+      </SectionHead>
       <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-3">
         {
-          phoneShots.map((shot, i) => (
-            <figure class="w-[240px] shrink-0 snap-center sm:w-[260px]">
-              <div class="overflow-hidden rounded-[1.4rem] border border-paper-border bg-black/5 dark:border-term-border dark:bg-white/5">
-                <img
-                  src={screenshotUrl(shot.dark)}
-                  srcset={srcsetFor(shot.dark, shot.w)}
-                  sizes="260px"
-                  width={shot.w}
-                  height={shot.h}
-                  alt={`Tailscode on iPhone, Suomi dark: ${shot.caption}`}
-                  loading={i < 3 ? 'eager' : 'lazy'}
-                  class="hidden w-full cursor-zoom-in dark:block"
-                  data-full={fullFor(shot.dark)}
-                />
-                <img
-                  src={screenshotUrl(shot.light)}
-                  srcset={srcsetFor(shot.light, shot.w)}
-                  sizes="260px"
-                  width={shot.w}
-                  height={shot.h}
-                  alt={`Tailscode on iPhone, Suomi light: ${shot.caption}`}
-                  loading={i < 3 ? 'eager' : 'lazy'}
-                  class="w-full cursor-zoom-in dark:hidden"
-                  data-full={fullFor(shot.light)}
-                />
-              </div>
-              <figcaption class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
-                <span class="accent-text mr-1 font-semibold">{String(i + 1).padStart(2, '0')}</span>
-                {shot.caption}
-              </figcaption>
-            </figure>
+          phoneShots.map((s, i) => (
+            <ShotFigure
+              dark={s.dark}
+              light={s.light}
+              w={s.w}
+              h={s.h}
+              alt={`Tailscode on iPhone: ${s.caption}`}
+              sizes="260px"
+              variant="phone"
+              class="w-[210px] shrink-0 snap-center sm:w-[260px]"
+            >
+              <span class="accent-text mr-1 font-semibold">{String(i + 1).padStart(2, '0')}</span>
+              {s.caption}
+            </ShotFigure>
           ))
         }
       </div>
     </section>
 
-    <!-- Real-device rail -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-      <p class="prompt-line mb-2">tailscode ps --live</p>
-      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        And this is a real evening
-      </h2>
-      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        Everything above is the built-in demo. These five are the app in service, pulled straight
-        off the phone — real servers, real chats across half a dozen providers, real money on the
-        chrome. Status bar and all.
-      </p>
-      <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-3">
+    <section id="desks" class={section}>
+      <SectionHead prompt="ls ~/tailscode/ipad" title="A workspace, not a stretched phone">
+        On iPad the sidebar holds places, chat scopes and servers, the chat list sits beside it and
+        the conversation fills the rest. Narrow the window and it becomes the phone's app without
+        closing the chat you were in; a chat opens in its own window for Stage Manager, and a
+        hardware keyboard drives it all.
+      </SectionHead>
+      <div class={`${rail} mb-8 sm:grid-cols-2 sm:items-stretch`}>
         {
-          realShots.map((shot, i) => (
-            <figure class="w-[250px] shrink-0 snap-center sm:w-[270px]">
-              <div class="phone-frame overflow-hidden rounded-[2.3rem] bg-neutral-900 p-[7px]">
-                <img
-                  src={screenshotUrl(shot.src)}
-                  srcset={srcsetFor(shot.src, 1260)}
-                  sizes="270px"
-                  width={1260}
-                  height={2736}
-                  alt={`Tailscode on a real iPhone: ${shot.caption}`}
-                  loading="lazy"
-                  class="w-full cursor-zoom-in rounded-[1.85rem]"
-                  data-full={fullFor(shot.src)}
-                />
-              </div>
-              <figcaption class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
-                <span class="accent-text mr-1 font-semibold">{String(i + 1).padStart(2, '0')}</span>
-                {shot.caption}
-              </figcaption>
-            </figure>
+          ipadShots.map((s, i) => (
+            <ShotFigure
+              dark={s.src}
+              w={s.w}
+              h={s.h}
+              alt={`Tailscode on iPad: ${s.caption}`}
+              sizes="(min-width: 1152px) 536px, (min-width: 640px) 50vw, 86vw"
+              variant="ipad"
+              class={`${railItem} w-[86vw] sm:w-auto`}
+            >
+              <span class="accent-text mr-1 font-semibold">{String(i + 1).padStart(2, '0')}</span>
+              {s.caption}
+            </ShotFigure>
           ))
         }
       </div>
-    </section>
 
-    <!-- iPad band -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-      <p class="prompt-line mb-2">ls ~/tailscode/ipad</p>
-      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        A workspace, not a stretched phone
-      </h2>
-      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        Tailscode is universal: one purchase, one app. On iPad the sidebar holds the places, chat
-        scopes and servers, the chat list sits beside it, and the conversation fills the rest — one
-        tap hides the columns when you want to read. Narrow the window and it becomes the phone's
-        app without closing the chat you were in; a chat opens in its own window for Stage Manager,
-        and a hardware keyboard drives it all through the same shortcut registry as the desktops.
-      </p>
-      <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-3">
-        {
-          ipadShots.map((shot, i) => (
-            <figure class="w-[min(86vw,480px)] shrink-0 snap-center sm:w-[640px]">
-              <div class="overflow-hidden rounded-[1.1rem] border border-paper-border bg-neutral-900 p-[6px] dark:border-term-border">
-                <img
-                  src={screenshotUrl(shot.src)}
-                  srcset={srcsetFor(shot.src, shot.w)}
-                  sizes="(min-width: 640px) 640px, 86vw"
-                  width={shot.w}
-                  height={shot.h}
-                  alt={`Tailscode on iPad: ${shot.caption}`}
-                  loading="lazy"
-                  class="w-full cursor-zoom-in rounded-[0.8rem]"
-                  data-full={fullFor(shot.src)}
-                />
-              </div>
-              <figcaption class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
-                <span class="accent-text mr-1 font-semibold">{String(i + 1).padStart(2, '0')}</span>
-                {shot.caption}
-              </figcaption>
-            </figure>
-          ))
-        }
-      </div>
-    </section>
-
-    <!-- Desktop band -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
       <p class="prompt-line mb-2">ls ~/tailscode/desktop</p>
-      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
+      <h3 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
         Three desks, one shared core
-      </h2>
-      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        The Linux client is native GTK4; the Mac client is native AppKit; the phone is programmatic
-        UIKit. All three render the same toolkit-free core, and a parity registry refuses to compile
-        a client that hasn't answered for a capability the others have.
+      </h3>
+      <p class="mb-6 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        The Linux client is native GTK4, the Mac client native AppKit, the phone programmatic UIKit.
+        All three render the same toolkit-free core, and a parity registry refuses to compile a
+        client that hasn't answered for a capability the others have.
       </p>
-
-      <div class="mb-4 grid gap-4 sm:grid-cols-3">
+      <div class={`${rail} mb-4 sm:grid-cols-3`}>
         {
           clients.map((cl) => (
-            <div class="term-frame p-4">
+            <div class={`${railItem} term-frame w-[80vw] p-4 sm:w-auto`}>
               <p class="mb-1 text-sm font-bold text-paper-text dark:text-term-text">{cl.name}</p>
               <p class="term-label accent-text mb-2">{cl.stack}</p>
               <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">{cl.note}</p>
@@ -691,205 +554,45 @@ const clients = [
           ))
         }
       </div>
-
-      <div class="grid gap-4 lg:grid-cols-2">
-        <figure
-          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border lg:col-span-2"
-        >
-          <img
-            src={screenshotUrl(deskAnalytics.dark)}
-            srcset={srcsetFor(deskAnalytics.dark, deskAnalytics.w)}
-            sizes="(min-width: 1152px) 1088px, 100vw"
-            width={deskAnalytics.w}
-            height={deskAnalytics.h}
-            alt={`Tailscode for Linux, Suomi dark: ${deskAnalytics.caption}`}
-            loading="lazy"
-            class="hidden w-full cursor-zoom-in dark:block"
-            data-full={fullFor(deskAnalytics.dark)}
-          />
-          <img
-            src={screenshotUrl(deskAnalytics.light)}
-            srcset={srcsetFor(deskAnalytics.light, deskAnalytics.w)}
-            sizes="(min-width: 1152px) 1088px, 100vw"
-            width={deskAnalytics.w}
-            height={deskAnalytics.h}
-            alt={`Tailscode for Linux, Suomi light: ${deskAnalytics.caption}`}
-            loading="lazy"
-            class="w-full cursor-zoom-in dark:hidden"
-            data-full={fullFor(deskAnalytics.light)}
-          />
-          <figcaption
-            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
-          >
-            {deskAnalytics.caption} — every server's ledger merged into one account, priced turn by turn
-            from the CLI's own transcripts.
-          </figcaption>
-        </figure>
-        <figure
-          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border lg:col-span-2"
-        >
-          <img
-            src={screenshotUrl(deskUltracode)}
-            srcset={srcsetFor(deskUltracode, 1920)}
-            sizes="(min-width: 1152px) 1088px, 100vw"
-            width={1920}
-            height={1080}
-            alt="Tailscode for Linux: an ultracode turn — the composer's edge burns with the rainbow, the effort chip names it"
-            loading="lazy"
-            class="w-full cursor-zoom-in"
-            data-full={fullFor(deskUltracode)}
-          />
-          <figcaption
-            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
-          >
-            An ultracode turn announces itself: the composer's edge burns rainbow, the chip names
-            the tier, and the presence orb wears the same rim while it runs.
-          </figcaption>
-        </figure>
-        <figure
-          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
-        >
-          <img
-            src={screenshotUrl(deskCompaction)}
-            srcset={srcsetFor(deskCompaction, 1920)}
-            sizes="(min-width: 1024px) 544px, 100vw"
-            width={1920}
-            height={1080}
-            alt="Tailscode for Linux: a compaction rendered as a readable seam in the transcript"
-            loading="lazy"
-            class="w-full cursor-zoom-in"
-            data-full={fullFor(deskCompaction)}
-          />
-          <figcaption
-            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
-          >
-            A compaction is a seam, not a wall: what was traded for what, with the full summary
-            behind a reader.
-          </figcaption>
-        </figure>
-        <figure
-          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
-        >
-          <img
-            src={screenshotUrl(deskAsk)}
-            srcset={srcsetFor(deskAsk, 1920)}
-            sizes="(min-width: 1024px) 544px, 100vw"
-            width={1920}
-            height={1080}
-            alt="Tailscode for Linux: the quick ask summoned over a live chat"
-            loading="lazy"
-            class="w-full cursor-zoom-in"
-            data-full={fullFor(deskAsk)}
-          />
-          <figcaption
-            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
-          >
-            The quick ask: one global chord from any program, and the answer lands in a real
-            conversation.
-          </figcaption>
-        </figure>
+      <div class={`${rail} sm:grid-cols-2 sm:items-stretch`}>
+        {
+          deskShots.map((s) => (
+            <ShotFigure
+              dark={s.dark}
+              light={s.light}
+              w={s.w}
+              h={s.h}
+              alt={`Tailscode for Linux: ${s.caption}`}
+              sizes="(min-width: 1152px) 536px, (min-width: 640px) 50vw, 86vw"
+              class={`${railItem} w-[86vw] sm:w-auto`}
+            >
+              {s.caption}
+            </ShotFigure>
+          ))
+        }
       </div>
     </section>
 
-    <!-- Image studio band -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-      <p class="prompt-line mb-2">tailscode image --on arch</p>
-      <h2 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        A picture is something you ask for in words
-      </h2>
-      <p class="mb-8 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        The image studio paints on your own machine — ComfyUI behind Tailscale, Qwen-Image for
-        quality and FLUX.2 Klein for speed — and the desktop lays it out as a brief, a stage and a
-        shelf: the ask as a form with room for a paragraph, the picture in the middle with the
-        machine's own progress narrated over it, and every picture the machine has ever kept down
-        the right, read back from the files themselves. Nothing leaves your tailnet.
-      </p>
-      <div class="grid gap-4">
-        <figure
-          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
-        >
-          <img
-            src={screenshotUrl(deskStudioStates)}
-            srcset={srcsetFor(deskStudioStates, 1920)}
-            sizes="(min-width: 1152px) 1088px, 100vw"
-            width={1920}
-            height={1315}
-            alt="Tailscode for Linux: the image studio in four states — a finished render, a picture from the machine's shelf, an edit from a reference, and a render in progress"
-            loading="lazy"
-            class="w-full cursor-zoom-in"
-            data-full={fullFor(deskStudioStates)}
-          />
-          <figcaption
-            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
-          >
-            Four states of one surface: rendered, picked off the shelf, turned into an edit with one
-            press, and painting — the machine's own step count on the bar, the picture being edited
-            held dimmed until the result lands.
-          </figcaption>
-        </figure>
-        <figure
-          class="overflow-hidden rounded-lg border border-paper-border dark:border-term-border"
-        >
-          <img
-            src={screenshotUrl(deskStudio)}
-            srcset={srcsetFor(deskStudio, 1920)}
-            sizes="(min-width: 1152px) 1088px, 100vw"
-            width={1920}
-            height={1004}
-            alt="Tailscode for Linux: the image studio with a finished render of northern lights over a cabin, the brief on the left and the machine's shelf on the right"
-            loading="lazy"
-            class="w-full cursor-zoom-in"
-            data-full={fullFor(deskStudio)}
-          />
-          <figcaption
-            class="border-t border-paper-border px-4 py-2.5 text-xs text-paper-muted dark:border-term-border dark:text-term-muted"
-          >
-            Engine, shape, size, detail, a held seed and a cutout switch — every decision the render
-            is made of, laid out where the hands already are. The shelf is the machine's output
-            folder: what it made, for whom, with which words, seed and model.
-          </figcaption>
-        </figure>
-      </div>
+    <section id="features" class={section}>
+      <SectionHead prompt="tailscode --features" title={`What ${app.shortName} does`} />
+      <FeatureGrid features={c.features} accent={accent} compact />
     </section>
 
-    <!-- Features -->
-    <section
-      id="features"
-      class="border-t border-paper-border py-12 dark:border-term-border sm:py-16"
-    >
-      <p class="prompt-line mb-2">tailscode --features</p>
-      <h2 class="mb-8 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        What {app.shortName} does
-      </h2>
-      <FeatureGrid features={c.features} accent={accent} />
-    </section>
-
-    <!-- Pricing -->
     {
       c.pricing && (
-        <section
-          id="pricing"
-          class="border-t border-paper-border py-12 dark:border-term-border sm:py-16"
-        >
-          <p class="prompt-line mb-2">tailscode --pricing</p>
-          <h2 class="mb-8 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-            {c.pricing.heading}
-          </h2>
+        <section id="pricing" class={section}>
+          <SectionHead prompt="tailscode --pricing" title={c.pricing.heading} />
           <PricingTable pricing={c.pricing} accent={accent} />
         </section>
       )
     }
 
-    <!-- How it works -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-      <p class="prompt-line mb-2">man tailscode</p>
-      <h2 class="mb-8 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        How {app.shortName} works
-      </h2>
-      <ol class="grid gap-4 sm:grid-cols-3">
+    <section class={section}>
+      <SectionHead prompt="man tailscode" title={`How ${app.shortName} works`} />
+      <ol class={`${rail} sm:grid-cols-3`}>
         {
           c.howItWorks.map((step, i) => (
-            <li class="term-frame p-5">
+            <li class={`${railItem} term-frame w-[80vw] p-5 sm:w-auto`}>
               <p class="term-label accent-text mb-2">{String(i + 1).padStart(2, '0')}</p>
               <p class="mb-1.5 text-sm font-bold text-paper-text dark:text-term-text">
                 {step.step}
@@ -903,17 +606,13 @@ const clients = [
       </ol>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-      <p class="prompt-line mb-2">tailscode --help</p>
-      <h2 class="mb-8 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        Questions, answered
-      </h2>
+    <section id="faq" class={section}>
+      <SectionHead prompt="tailscode --help" title="Questions, answered" />
       <FaqAccordion faq={c.faq} accent={accent} />
     </section>
 
     <!-- Final CTA -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+    <section class={section}>
       <div class="term-frame relative overflow-hidden p-6 sm:p-10" style={`--accent:${accent}`}>
         <span class="cta-spine absolute inset-y-0 left-0 w-1" aria-hidden="true"></span>
         <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -1008,7 +707,7 @@ const clients = [
     </section>
 
     <!-- More apps -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border">
+    <section class="border-t border-paper-border py-10 dark:border-term-border">
       <p class="prompt-line mb-5">ls ~/apps</p>
       <div class="flex flex-wrap gap-3">
         {
@@ -1164,11 +863,6 @@ const clients = [
   .cta-spine {
     background-color: var(--accent);
     opacity: 0.7;
-  }
-  .phone-frame {
-    box-shadow:
-      0 0 0 1px rgb(255 255 255 / 8%),
-      0 18px 50px -18px rgb(0 0 0 / 55%);
   }
   #shot-lightbox-img {
     max-width: 94vw;

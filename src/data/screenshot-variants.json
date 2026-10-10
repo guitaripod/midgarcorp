@@ -607,14 +607,6 @@
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-05.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-06.webp": [
-    480,
-    960
-  ],
   "/screenshots/tailscode/suomi-dark-07.webp": [
     480,
     960
@@ -624,14 +616,6 @@
     960
   ],
   "/screenshots/tailscode/suomi-dark-09.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-10.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-11.webp": [
     480,
     960
   ],
@@ -655,14 +639,6 @@
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-light-05.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-06.webp": [
-    480,
-    960
-  ],
   "/screenshots/tailscode/suomi-light-07.webp": [
     480,
     960
@@ -672,14 +648,6 @@
     960
   ],
   "/screenshots/tailscode/suomi-light-09.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-10.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-11.webp": [
     480,
     960
   ],
@@ -695,30 +663,6 @@
     480,
     960
   ],
-  "/screenshots/tailscode/ipad-ws-question.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-agents.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-diff.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-focus.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-usage.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-delegate.webp": [
-    480,
-    960
-  ],
   "/screenshots/tailscode/desk-dark-chat.webp": [
     480,
     960
@@ -728,18 +672,6 @@
     960
   ],
   "/screenshots/tailscode/desk-dark-analytics.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-compaction.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-ask.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-ultracode.webp": [
     480,
     960
   ],
@@ -763,35 +695,7 @@
     480,
     960
   ],
-  "/screenshots/tailscode/sync-01-send.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/sync-02-desk.webp": [
-    480,
-    960
-  ],
   "/screenshots/tailscode/sync-03-both.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-01-board.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-02-agent.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-03-ultracode.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-04-quickask.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/real-05-usage.webp": [
     480,
     960
   ],

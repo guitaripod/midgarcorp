@@ -36,83 +36,48 @@
   "features": [
     {
       "title": "A real client, not a web view",
-      "body": "Programmatic UIKit on iOS, GTK4 on Linux, AppKit on the Mac — Swift 6 end to end, zero web views. Streaming transcripts with collapsible thinking and tool groups, and syntax-highlighted code with one-tap, byte-exact copy.",
+      "body": "Programmatic UIKit on iOS, GTK4 on Linux, AppKit on the Mac, all Swift 6. Streaming transcripts with collapsible thinking and tool groups, and code you copy byte-exact.",
       "glyph": "◉"
     },
     {
       "title": "Written, not pasted",
-      "body": "Text leaves a model in lumps, so every client plays the answer out of a buffer at a reading pace: the reveal counts rendered characters and a shimmer wave rides the newest span. Frames come from the display's own clock — CADisplayLink at up to 120Hz on iPhone, GTK's frame clock on Linux — and nothing ever re-wraps under the reader: a frame changes colours, never layout.",
+      "body": "Answers play out of a buffer at a reading pace, a shimmer riding the newest words. Frames come from the display's own clock, and nothing re-wraps under the reader.",
       "glyph": "∿"
     },
     {
-      "title": "Ultracode wears a rainbow",
-      "body": "Push a turn to the deepest reasoning tier and the app says so out loud: the composer's edge burns with the ultracode rainbow, the effort chip names it, and the presence orb wears the same rim while the turn runs. You can read a session's effort from across the room.",
-      "glyph": "❋"
-    },
-    {
       "title": "One pill for model and effort",
-      "body": "Which model, and how hard it thinks, are one decision, so they are one pill in the message box. Tap the effort half and the levels open on a solid card: tap one, or put a finger down and slide to it, a tick for each. Pin a model and a level together and swipe along the pill to cycle your favourites. Switch to a model that does not take your level and it moves to the nearest cooler one, out loud — never hotter than you asked. The Mac and Linux clients carry the same dial.",
+      "body": "Which model and how hard it thinks are one decision: tap a level or slide to it, pin a pair, swipe to cycle. Ultracode burns a rainbow along the composer's edge.",
       "glyph": "◐"
-    },
-    {
-      "title": "Three desks, one registry",
-      "body": "Every capability is a case in a shared parity registry, and each client must answer it in an exhaustive switch — adding a feature to one client refuses to compile until all three have decided what they do about it. Nothing ships to one screen silently.",
-      "glyph": "⌘"
     },
     {
       "title": "Three agents, one app",
-      "body": "Drive opencode directly, Claude Code through claude-bridge, and Oh My Pi through omp-bridge — two open-source companion servers that turn a terminal agent into structured, streaming, subscription-backed sessions, with push notifications on Claude. Every model Oh My Pi can reach — Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek — is one picker away, filterable by the subscription that pays for it.",
+      "body": "opencode directly, Claude Code through claude-bridge, Oh My Pi through omp-bridge: two open-source companion servers. Every model Oh My Pi can reach is one picker away.",
       "glyph": "◈"
     },
     {
-      "title": "Hand work down the ladder",
-      "body": "The delegate board sends a bounded task to your own local and cheap-cloud models and brings back a patch that was verified before it lands. Every run is on the board, and it taps your shoulder only when a person is needed. Part of Pro.",
-      "glyph": "⇣"
-    },
-    {
-      "title": "Pictures and clips, made at home",
-      "body": "Ask for an image or a short clip in words and your own ComfyUI machine renders it over the tailnet — Qwen-Image and FLUX.2 Klein for pictures, LTX for video. A helper model on the same machine can turn a thin brief into the paragraph the model was trained on, and the picture is watched as it paints. Nothing leaves your tailnet.",
-      "glyph": "▣"
-    },
-    {
-      "title": "Lock Screen status board",
-      "body": "A Live Activity per session shows the phase, elapsed time, and tool counts in real time. Approvals alert you, finished turns linger with the outcome, and updates arrive by push even while the app is suspended.",
-      "glyph": "❖"
-    },
-    {
       "title": "Steer without stopping",
-      "body": "Queue a follow-up while the agent works, edit it before it lands, stop the turn server-side, fork the conversation, or answer the agent's structured questions with a tap. Subagents open in place; a compaction becomes a seam you can read instead of a wall of summary.",
+      "body": "Queue a follow-up and edit it before it lands, stop a turn, fork it, answer the agent's questions with a tap. Subagents open in place; a compaction is a seam you can read.",
       "glyph": "⊹"
     },
     {
+      "title": "Pictures and clips, made at home",
+      "body": "A Studio on your own ComfyUI machine: the brief, a stage that shows the sketch as it paints, and the machine's shelf. Enhance has a language model of yours write the paragraph.",
+      "glyph": "▣"
+    },
+    {
+      "title": "Compact by default",
+      "body": "Furniture takes a line, not a card. Tools, thinking and seams rest as one flat line, and a run of links gathers on one rail that opens on hover or tap. Comfortable is a setting.",
+      "glyph": "▤"
+    },
+    {
+      "title": "Lock Screen status board",
+      "body": "A Live Activity per session shows the phase, elapsed time and tool counts. Finished turns linger with the outcome, and claude-bridge can push updates while the app is suspended.",
+      "glyph": "❖"
+    },
+    {
       "title": "Eight themes, two faces each",
-      "body": "One catalog shared by every client, from Suomi's aurora-over-a-frozen-lake to fresh snow by day. Every color is pushed through an OKLab contrast corrector until it clears WCAG on its own canvas — a theme that cannot be made readable fails the build.",
-      "glyph": "◐"
-    },
-    {
-      "title": "The month has numbers",
-      "body": "Every server's transcripts are priced turn by turn and merged into one account: daily bars, the week's rhythm, models, projects, tools, and what caching saved — plus a trophy room that scores the same ledger, and wears it in Game Center on iPhone.",
-      "glyph": "⬡"
-    },
-    {
-      "title": "The repo, read — never operated",
-      "body": "Branch, drift, conflicts, staged and changed files, and per-file diffs, read from the machine that has to live with them. A chip in the chat chrome spells the tree out the way a prompt does. Nothing offers to commit from your phone.",
-      "glyph": "⑂"
-    },
-    {
-      "title": "Updates are standing facts",
-      "body": "Every machine in the picture — this app and each server — reports what it runs and what it could run, and one quiet mark in the chrome stays until the update is taken. A Linux package install checks the project's own release feed and hands over your package manager's command when a newer release exists; a bridge is installed end to end under one press.",
-      "glyph": "↻"
-    },
-    {
-      "title": "One question, from anywhere",
-      "body": "On the desktops a global hotkey summons a quick ask over whatever you are doing — no project, no setup. On the phone it lives in the jump list and Control Center. The answer lands in a real conversation you can pick up later.",
-      "glyph": "✦"
-    },
-    {
-      "title": "A cue is a meaning, not an amplitude",
-      "body": "Send, step, needs-you, received — each is a composed Core Haptics recipe authored to stay pleasant at the top of the slider: rounded body, soft attack, never an alarm. One intensity dial scales every cue, and a burst of tool calls is felt as progress rather than a rattle.",
-      "glyph": "◦"
+      "body": "One catalog for every client, from Suomi's aurora over a frozen lake to fresh snow by day. Every colour is pushed through a contrast corrector until it clears WCAG.",
+      "glyph": "◑"
     }
   ],
   "howItWorks": [
@@ -167,19 +132,19 @@
   "faq": [
     {
       "q": "Do I need my own server?",
-      "a": "Yes — that's the point. Tailscode is a remote for agents running on hardware you control. There is no middleman cloud, which means no relay fees, no data sharing, and no vendor outage between you and your code. A built-in demo lets you explore the full app before wiring anything."
+      "a": "Yes, that's the point. Tailscode is a remote for agents running on hardware you control, so there is no middleman cloud: no relay fees, no data sharing, no vendor outage between you and your code. No server yet? Tap 'Try the demo' on the first screen to explore the whole app with sample sessions, no tailnet needed."
     },
     {
       "q": "Which coding agents does it support?",
-      "a": "opencode natively, 1.x or 2 (the app asks each server which API it speaks), with any provider you've configured in it; Claude Code through claude-bridge, and Oh My Pi through omp-bridge — two open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog with it: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama, priced per turn from the agent's own ledger."
+      "a": "opencode natively, 1.x or 2, with any provider you've configured in it; Claude Code through claude-bridge; and Oh My Pi through omp-bridge. The bridges are open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama."
     },
     {
       "q": "Is there really a Linux desktop client?",
-      "a": "Yes — a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. Arch users install it from the AUR (`paru -S tailscode`); everyone else grabs the release tarball from GitHub. All three clients share one toolkit-free core, and a parity registry refuses to compile a client that hasn't answered for a capability the others have. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and the Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
+      "a": "Yes: a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. Arch users install it from the AUR (`paru -S tailscode`); everyone else grabs the release tarball from GitHub. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and the Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
     },
     {
-      "q": "Does my code pass through anyone's cloud?",
-      "a": "No. The app talks directly to your machines over your WireGuard-encrypted Tailscale network. No relay server, no account with us, no analytics, no tracking. The privacy policy is one sentence long in spirit: we collect nothing."
+      "q": "Where do pictures and clips get made?",
+      "a": "On a machine of yours running ComfyUI, reached over your tailnet: Qwen-Image or FLUX.2 Klein for pictures, LTX for clips. Tailscode is the brief, the stage and the shelf; the files stay in the machine's own output folder, and nothing leaves your tailnet."
     },
     {
       "q": "How do Live Activities update when the app is closed?",
@@ -192,46 +157,26 @@
     {
       "q": "Is it really open source?",
       "a": "All of it, under GPL-3.0: the iPhone app, both desktop clients, the engine (CodingAgentKit, a Swift 6 package that also runs on Linux), and both bridges (claude-bridge, omp-bridge). Build it yourself or grab it from the App Store."
-    },
-    {
-      "q": "Does it run on iPad?",
-      "a": "Yes — the same app is universal, and on iPad it is a workspace rather than a stretched phone: a sidebar of places (Home, Usage, Delegate, Video), chat scopes and servers; the chat list beside it; the conversation filling the rest, with one tap to give it the whole screen. Narrow the window and it becomes the phone's app without closing the chat you were reading. Chats open in their own windows for Split View and Stage Manager, and a hardware keyboard drives the whole app: ⌘N starts a chat, the desktop clients' shortcut registry answers the rest. One purchase covers iPhone and iPad."
-    },
-    {
-      "q": "Can I try it without a server?",
-      "a": "Yes. Tap 'Try the demo' on the first screen: two sample servers with realistic sessions let you explore streaming, approvals, questions, the analytics and the git surface — no tailnet needed. Every screenshot on this page is that demo wearing the Suomi theme."
     }
   ],
   "screenshotCaptions": {
     "iphone": [
-      "A live turn: the thinking, the code it wrote, the command it's running — and the model and effort it's running on",
-      "One pill, two decisions: pick the model, tap the effort and choose how hard it thinks, and pinned favourites are a swipe away",
-      "It asks before it edits — allow once, always, or deny, right in the chat",
-      "Answer the agent's questions with a tap instead of guessing what it wanted",
-      "The subagents it spawns open in place, with what each one reported back",
-      "A whole task end to end: todos, edits, subagents, and the summary",
+      "A live turn: the thinking, the code, the running command, and the model and effort it runs on",
+      "One pill, two decisions: pick the model, slide the effort, swipe through pinned favourites",
+      "It asks before it edits: allow once, always, or deny, in the chat",
+      "Answer the agent's questions with a tap instead of guessing",
       "Every agent and machine on one board, with a composer that starts the next chat",
       "Live plan and quota gauges straight from your own machine",
-      "Delegate: a ladder from your own GPU to the frontier, a verifier that decides, nothing applied until it passes",
-      "The month in numbers: every transcript priced turn by turn, merged across your servers",
-      "Context compacted, not lost — and you can read exactly what it kept",
+      "Delegate: a ladder from your own GPU to the frontier, and nothing applied until a verifier passes",
       "The repo read from the machine that owns it: branch, drift, diffs"
     ],
     "ipad": [
       "The workspace: places and servers in the sidebar, every chat beside it, the live turn filling the rest",
-      "An edit waits for approval — and its chat wears NEEDS YOU in the list while it does",
-      "The agent stopped to ask: answer in place, the rest of the board still in view",
-      "A subagent opened where it ran, its tool calls and findings inline",
-      "The real patch from the machine, line-numbered, before you trust the change",
-      "One tap hides the columns; the conversation keeps a readable column across the screen",
-      "The quota board: the tightest window first, every provider with its reset clock",
-      "Delegate: a packet climbing a ladder of cheaper models, one rung waiting on you"
+      "An edit waits for approval, and its chat wears NEEDS YOU in the list while it does"
     ],
     "linux": [
-      "The Linux client: GTK4, tiling splits, quota gauges, and the presence orb",
-      "Two sessions side by side — subagents fanning out, todos burning down",
-      "The month, priced and drawn: daily bars, the week's rhythm, models",
-      "An ultracode turn announces itself: the composer's edge burns rainbow"
+      "Two sessions side by side: subagents fanning out, todos burning down",
+      "The month, priced and drawn: daily bars, the week's rhythm, models, merged across every server"
     ]
   },
   "ctaLine": "Your agent is already working. Watch it from anywhere.",
