@@ -3056,19 +3056,25 @@
             "src": "/screenshots/tailscode/mac-dark-studio.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Tailscode for Mac: the Studio's Image lane with a finished picture"
+            "label": "Tailscode for Mac: the Studio, a sheet inside the window with a finished picture"
           },
           {
             "src": "/screenshots/tailscode/mac-light-studio.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Tailscode for Mac in the light face: the Studio's Image lane"
+            "label": "Tailscode for Mac in the light face: the Studio sheet"
           },
           {
-            "src": "/screenshots/tailscode/mac-dark-video.webp",
+            "src": "/screenshots/tailscode/mac-dark-viewer.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Tailscode for Mac: the Studio's Video lane"
+            "label": "Tailscode for Mac: the picture viewer risen as a second sheet over the Studio"
+          },
+          {
+            "src": "/screenshots/tailscode/mac-light-viewer.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Tailscode for Mac in the light face: the picture viewer sheet over the Studio"
           },
           {
             "src": "/screenshots/tailscode/mac-dark-chat.webp",

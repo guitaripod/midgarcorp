@@ -43,17 +43,16 @@ const faces = (dark: string, light: string, w: number, h: number) => ({
 /// The Studio figures, one entry per shot; a pair whose faces are the same file renders one image.
 const STUDIO = {
   mac: faces('mac-dark-studio', 'mac-light-studio', 1920, 1200),
-  phonePainting: faces('suomi-dark-13', 'suomi-light-13', 1320, 2868),
   phoneFinished: faces('suomi-dark-14', 'suomi-light-14', 1320, 2868),
   linux: faces('desk-dark-studio', 'desk-light-studio', 1920, 1080),
   videoPhone: faces('suomi-dark-15', 'suomi-light-15', 1320, 2868),
-  videoMac: faces('mac-dark-video', 'mac-dark-video', 1920, 1200),
+  viewer: faces('mac-dark-viewer', 'mac-light-viewer', 1920, 1200),
 };
 
 /// Where the rebuilt Studio can be had today. It is the one place the page names a release,
 /// so it is the one line to change when the Apple builds carry it.
 const studioAvailability =
-  'The rebuilt Studio is in the Linux 1.72 release and in builds from source, not yet in the App Store builds.';
+  'On the Mac and Linux the Studio rises as a sheet inside the Tailscode window, the conversation dimmed behind it, and closing it never stops a render; on the phone it is a full-screen modal. The sheet is in builds from source and in the next Mac and Linux releases. Linux 1.72 has the Studio as two separate windows, and the App Store builds in review do not have it yet.';
 
 const hero = faces('desk-dark-chat', 'desk-light-chat', 1920, 1080);
 const heroCaption =
@@ -413,27 +412,14 @@ const clients = [
           w={STUDIO.mac.w}
           h={STUDIO.mac.h}
           alt="The Studio on the Mac: a finished picture on the stage with its verbs under it, the machine's shelf at the right and the brief docked below"
-          sizes="(min-width: 1024px) 880px, 100vw"
-          class="lg:mx-auto lg:max-w-[880px]"
+          sizes="(min-width: 1024px) 760px, 100vw"
+          class="lg:mx-auto lg:max-w-[760px]"
         >
-          <span class="accent-text mr-1 font-semibold">Mac</span> — Image and video are one window: a
-          lane switch, the stage, the machine's shelf and the brief docked under it.
+          <span class="accent-text mr-1 font-semibold">Mac</span> — Image and video are one sheet inside
+          the Tailscode window, the conversation dimmed behind it; closing it never stops a render.
         </ShotFigure>
 
         <div class={`${rail} lg:grid-cols-12`}>
-          <ShotFigure
-            dark={STUDIO.phonePainting.dark}
-            light={STUDIO.phonePainting.light}
-            w={STUDIO.phonePainting.w}
-            h={STUDIO.phonePainting.h}
-            alt="The Studio on iPhone while a picture is painting"
-            sizes="(min-width: 1024px) 175px, 170px"
-            variant="phone"
-            class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
-          >
-            <span class="accent-text mr-1 font-semibold">iPhone</span> — painting: the sketch on the
-            stage.
-          </ShotFigure>
           <ShotFigure
             dark={STUDIO.phoneFinished.dark}
             light={STUDIO.phoneFinished.light}
@@ -456,8 +442,8 @@ const clients = [
             sizes="(min-width: 1024px) 720px, 80vw"
             class={`${railItem} w-[80vw] lg:w-auto lg:col-span-8 lg:self-center`}
           >
-            <span class="accent-text mr-1 font-semibold">Linux</span> — the same brief, stage and shelf,
-            with the machine named above.
+            <span class="accent-text mr-1 font-semibold">Linux</span> — the same sheet: brief, stage
+            and shelf, the machine named above.
           </ShotFigure>
           <ShotFigure
             dark={STUDIO.videoPhone.dark}
@@ -467,22 +453,22 @@ const clients = [
             alt="The video screen on iPhone: the second pass of a render with the sketch on the stage"
             sizes="(min-width: 1024px) 175px, 170px"
             variant="phone"
-            class={`${railItem} w-[170px] lg:col-span-2 lg:col-start-3 lg:w-auto`}
+            class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
           >
             <span class="accent-text mr-1 font-semibold">iPhone</span> — a clip is a screen of its own,
-            with its sketch too.
+            the machine’s sketch on the stage while it renders.
           </ShotFigure>
           <ShotFigure
-            dark={STUDIO.videoMac.dark}
-            light={STUDIO.videoMac.light}
-            w={STUDIO.videoMac.w}
-            h={STUDIO.videoMac.h}
-            alt="The Video lane of the Studio on the Mac: a staged demo clip on the stage, the clip shelf at the right"
+            dark={STUDIO.viewer.dark}
+            light={STUDIO.viewer.light}
+            w={STUDIO.viewer.w}
+            h={STUDIO.viewer.h}
+            alt="The picture viewer on the Mac, risen as a second sheet over the Studio: the finished lighthouse at 1728 by 1152"
             sizes="(min-width: 1024px) 544px, 80vw"
-            class={`${railItem} w-[80vw] lg:w-auto lg:col-span-6 lg:self-center`}
+            class={`${railItem} w-[80vw] lg:w-auto lg:col-span-6 lg:col-start-4 lg:self-center`}
           >
-            <span class="accent-text mr-1 font-semibold">Mac</span> — the Video lane, in the same window
-            as Image.
+            <span class="accent-text mr-1 font-semibold">Mac</span> — the picture viewer rises as a sheet
+            of the same kind, stacked over the Studio when opened from it.
           </ShotFigure>
         </div>
       </div>
