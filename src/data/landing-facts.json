@@ -669,6 +669,12 @@
             "w": 1290,
             "h": 2803,
             "label": "PixiePocket on iPhone: refining the latest image by chat"
+          },
+          {
+            "src": "/screenshots/pixiepocket/iphone-5.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "PixiePocket on iPhone: start with a sample photo, no sign-up"
           }
         ],
         "ipad": [
