@@ -441,6 +441,42 @@ const sectionPrompt = (cmd: string) => cmd;
     }
 
     {
+      c.video && (
+        <section
+          id="watch"
+          class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+        >
+          <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --watch`)}</p>
+          <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+            {app.shortName}
+            <span class="accent-text">in 30 seconds</span>
+          </h2>
+          <div
+            class="device-glow mx-auto w-full max-w-[300px] sm:max-w-[340px]"
+            style={`--accent:${accent}`}
+          >
+            <video
+              class="promo-video w-full rounded-[1.75rem] border border-paper-border dark:border-term-border"
+              src={c.video.src}
+              poster={c.video.poster}
+              width="720"
+              height="1280"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              aria-label={c.video.caption}
+            />
+          </div>
+          <p class="mx-auto mt-4 max-w-md text-center text-sm text-paper-muted dark:text-term-muted">
+            {c.video.caption}
+          </p>
+        </section>
+      )
+    }
+
+    {
       hasScreenshots && (
         <section
           id="screenshots"
@@ -843,6 +879,13 @@ const sectionPrompt = (cmd: string) => cmd;
         }
       });
     });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.promo-video').forEach((v) => {
+        v.pause();
+        v.removeAttribute('autoplay');
+        v.controls = true;
+      });
+    }
   </script>
 </BaseLayout>
 

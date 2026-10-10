@@ -122,5 +122,10 @@
     ]
   },
   "ctaLine": "Start with 3 free images and edit your first photo in seconds.",
-  "pricingNote": "Free to download with 3 free images. You buy credit packs once, bigger packs carry up to 68% bonus credits, and credits never expire — no subscription."
+  "pricingNote": "Free to download with 3 free images. You buy credit packs once, bigger packs carry up to 68% bonus credits, and credits never expire — no subscription.",
+  "video": {
+    "src": "/screenshots/pixiepocket/promo.mp4?v=1",
+    "poster": "/screenshots/pixiepocket/promo-poster.webp?v=1",
+    "caption": "A 30-second tour: one-tap edits, refine by chat, three AI models, the gallery, and the app on iPhone and iPhone Duo."
+  }
 }

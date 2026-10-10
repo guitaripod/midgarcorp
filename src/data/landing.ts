@@ -117,6 +117,7 @@ export interface LandingContent {
   ctaLine: string;
   pricingNote: string;
   lifestyle?: { src: string; caption: string }[];
+  video?: { src: string; poster: string; caption: string };
   pricing?: Pricing;
   trustNote?: string;
   webbLive?: boolean;
