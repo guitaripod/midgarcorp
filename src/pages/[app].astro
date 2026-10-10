@@ -348,20 +348,36 @@ const sectionPrompt = (cmd: string) => cmd;
 
       <!-- hero screenshot -->
       {
-        heroShot && (
+        (c.video || heroShot) && (
           <div class="flex justify-center lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:items-center lg:justify-end">
             <div class={`device-glow ${heroHeightClass}`} style={`--accent:${accent}`}>
-              <DeviceFrame
-                device={heroDevice}
-                src={heroShot.src}
-                w={heroShot.w}
-                h={heroShot.h}
-                framed={heroShot.framed}
-                alt={`${app.shortName} on ${DEVICE_LABELS[heroDevice] ?? 'iPhone'}: ${c.screenshotCaptions?.[heroDevice]?.[0] ?? heroShot.label}`}
-                eager={true}
-                priority={true}
-                heights={heroFrame.heights}
-              />
+              {c.video ? (
+                <video
+                  class="promo-video h-full w-auto rounded-[1.6rem] border border-paper-border dark:border-term-border"
+                  src={c.video.src}
+                  poster={c.video.poster}
+                  width="720"
+                  height="1280"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="auto"
+                  aria-label={c.video.caption}
+                />
+              ) : (
+                <DeviceFrame
+                  device={heroDevice}
+                  src={heroShot.src}
+                  w={heroShot.w}
+                  h={heroShot.h}
+                  framed={heroShot.framed}
+                  alt={`${app.shortName} on ${DEVICE_LABELS[heroDevice] ?? 'iPhone'}: ${c.screenshotCaptions?.[heroDevice]?.[0] ?? heroShot.label}`}
+                  eager={true}
+                  priority={true}
+                  heights={heroFrame.heights}
+                />
+              )}
             </div>
           </div>
         )
@@ -437,42 +453,6 @@ const sectionPrompt = (cmd: string) => cmd;
             {bannerCaption}
           </figcaption>
         </figure>
-      )
-    }
-
-    {
-      c.video && (
-        <section
-          id="watch"
-          class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
-        >
-          <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --watch`)}</p>
-          <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-            {app.shortName}
-            <span class="accent-text">in 30 seconds</span>
-          </h2>
-          <div
-            class="device-glow mx-auto w-full max-w-[300px] sm:max-w-[340px]"
-            style={`--accent:${accent}`}
-          >
-            <video
-              class="promo-video w-full rounded-[1.75rem] border border-paper-border dark:border-term-border"
-              src={c.video.src}
-              poster={c.video.poster}
-              width="720"
-              height="1280"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              aria-label={c.video.caption}
-            />
-          </div>
-          <p class="mx-auto mt-4 max-w-md text-center text-sm text-paper-muted dark:text-term-muted">
-            {c.video.caption}
-          </p>
-        </section>
       )
     }
 
