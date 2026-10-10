@@ -161,9 +161,9 @@
   ],
   "screenshotCaptions": {
     "iphone": [
-      "A live turn: the thinking, the code, the running command, and the model and effort it runs on",
+      "A live turn in the compact chat: thinking and tools are flat lines, and the model and effort show in the composer",
       "One pill, two decisions: pick the model, slide the effort, swipe through pinned favourites",
-      "It asks before it edits: allow once, always, or deny, in the chat",
+      "It asks before it edits: allow once, always, or deny, right under the diff",
       "Answer the agent's questions with a tap instead of guessing",
       "Every agent and machine on one board, with a composer that starts the next chat",
       "Live plan and quota gauges straight from your own machine",
@@ -174,9 +174,9 @@
       "The workspace: places and servers in the sidebar, every chat beside it, the live turn filling the rest",
       "An edit waits for approval, and its chat wears NEEDS YOU in the list while it does"
     ],
-    "linux": [
-      "Two sessions side by side: subagents fanning out, todos burning down",
-      "The month, priced and drawn: daily bars, the week's rhythm, models, merged across every server"
+    "desktop": [
+      "Four panes, four sessions: an edit waiting on one, subagents fanning out in another",
+      "The Mac's compact chat: a strip of pictures, a seam, and a rail of links whose plate opens over the rows below"
     ]
   },
   "ctaLine": "Your agent is already working. Watch it from anywhere.",

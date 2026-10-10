@@ -20,7 +20,7 @@ const releaseUrl = app.latestReleaseUrl ?? app.githubUrl;
 
 const site = 'https://midgarcorp.cc';
 const canonical = `${site}/tailscode/`;
-const OG_REV = '7';
+const OG_REV = '8';
 const ogImage = `/og/tailscode.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
@@ -40,21 +40,20 @@ const faces = (dark: string, light: string, w: number, h: number) => ({
   h,
 });
 
-/// The Studio figures, one entry per shot. The names below stand in until the shots made for
-/// them exist; swapping one is a one-line edit here and nothing else on the page changes.
+/// The Studio figures, one entry per shot; a pair whose faces are the same file renders one image.
 const STUDIO = {
-  mac: faces('desk-dark-studio-states', 'desk-dark-studio-states', 1920, 1315),
-  phonePainting: faces('suomi-dark-01', 'suomi-light-01', 1320, 2868),
-  phoneFinished: faces('suomi-dark-02', 'suomi-light-02', 1320, 2868),
-  linux: faces('desk-dark-studio', 'desk-dark-studio', 1920, 1004),
-  videoPhone: faces('suomi-dark-03', 'suomi-light-03', 1320, 2868),
-  videoMac: faces('desk-dark-studio-states', 'desk-dark-studio-states', 1920, 1315),
+  mac: faces('mac-dark-studio', 'mac-light-studio', 1920, 1200),
+  phonePainting: faces('suomi-dark-13', 'suomi-light-13', 1320, 2868),
+  phoneFinished: faces('suomi-dark-14', 'suomi-light-14', 1320, 2868),
+  linux: faces('desk-dark-studio', 'desk-light-studio', 1920, 1080),
+  videoPhone: faces('suomi-dark-15', 'suomi-light-15', 1320, 2868),
+  videoMac: faces('mac-dark-video', 'mac-dark-video', 1920, 1200),
 };
 
 /// Where the rebuilt Studio can be had today. It is the one place the page names a release,
 /// so it is the one line to change when the Apple builds carry it.
 const studioAvailability =
-  'The rebuilt Studio is in the Linux 1.72 release; the iPhone and Mac builds follow.';
+  'The rebuilt Studio is in the Linux 1.72 release and in builds from source, not yet in the App Store builds.';
 
 const hero = faces('desk-dark-chat', 'desk-light-chat', 1920, 1080);
 const heroCaption =
@@ -82,11 +81,16 @@ const ipadShots = (app.screenshots.ipad ?? []).map((s, i) => ({
   caption: ipadCaptions[i] ?? s.label,
 }));
 
-const deskCaptions = c.screenshotCaptions?.linux ?? [];
+const deskCaptions = c.screenshotCaptions?.desktop ?? [];
 const deskShots = [
-  { ...faces('desk-dark-split', 'desk-light-split', 1920, 1080), caption: deskCaptions[0] ?? '' },
   {
-    ...faces('desk-dark-analytics', 'desk-light-analytics', 1920, 1080),
+    ...faces('desk-dark-split', 'desk-light-split', 1920, 1080),
+    client: 'Linux',
+    caption: deskCaptions[0] ?? '',
+  },
+  {
+    ...faces('mac-dark-chat', 'mac-dark-chat', 1920, 1200),
+    client: 'Mac',
     caption: deskCaptions[1] ?? '',
   },
 ];
@@ -374,7 +378,7 @@ const clients = [
     </section>
 
     <section id="studio" class={section}>
-      <div class="mb-8 grid items-start gap-x-10 lg:grid-cols-12">
+      <div class="mb-6 grid items-start gap-x-10 lg:grid-cols-12">
         <div class="lg:col-span-5">
           <SectionHead
             prompt="tailscode studio --on arch"
@@ -408,7 +412,7 @@ const clients = [
           light={STUDIO.mac.light}
           w={STUDIO.mac.w}
           h={STUDIO.mac.h}
-          alt="The Studio on the Mac: image and video lanes in one window, the stage, the machine's shelf and the brief"
+          alt="The Studio on the Mac: a finished picture on the stage with its verbs under it, the machine's shelf at the right and the brief docked below"
           sizes="(min-width: 1024px) 880px, 100vw"
           class="lg:mx-auto lg:max-w-[880px]"
         >
@@ -448,30 +452,32 @@ const clients = [
             light={STUDIO.linux.light}
             w={STUDIO.linux.w}
             h={STUDIO.linux.h}
-            alt="The Studio on Linux"
+            alt="The Studio on Linux: a finished picture with its verbs under it, the machine pill above and the shelf rail at the right"
             sizes="(min-width: 1024px) 720px, 80vw"
             class={`${railItem} w-[80vw] lg:w-auto lg:col-span-8 lg:self-center`}
           >
-            <span class="accent-text mr-1 font-semibold">Linux</span> — the same brief, stage and shelf.
+            <span class="accent-text mr-1 font-semibold">Linux</span> — the same brief, stage and shelf,
+            with the machine named above.
           </ShotFigure>
           <ShotFigure
             dark={STUDIO.videoPhone.dark}
             light={STUDIO.videoPhone.light}
             w={STUDIO.videoPhone.w}
             h={STUDIO.videoPhone.h}
-            alt="The video screen on iPhone"
+            alt="The video screen on iPhone: the second pass of a render with the sketch on the stage"
             sizes="(min-width: 1024px) 175px, 170px"
             variant="phone"
             class={`${railItem} w-[170px] lg:col-span-2 lg:col-start-3 lg:w-auto`}
           >
-            <span class="accent-text mr-1 font-semibold">iPhone</span> — a clip is a screen of its own.
+            <span class="accent-text mr-1 font-semibold">iPhone</span> — a clip is a screen of its own,
+            with its sketch too.
           </ShotFigure>
           <ShotFigure
             dark={STUDIO.videoMac.dark}
             light={STUDIO.videoMac.light}
             w={STUDIO.videoMac.w}
             h={STUDIO.videoMac.h}
-            alt="The video lane of the Studio on the Mac"
+            alt="The Video lane of the Studio on the Mac: a staged demo clip on the stage, the clip shelf at the right"
             sizes="(min-width: 1024px) 544px, 80vw"
             class={`${railItem} w-[80vw] lg:w-auto lg:col-span-6 lg:self-center`}
           >
@@ -515,7 +521,7 @@ const clients = [
         closing the chat you were in; a chat opens in its own window for Stage Manager, and a
         hardware keyboard drives it all.
       </SectionHead>
-      <div class={`${rail} mb-8 sm:grid-cols-2 sm:items-stretch`}>
+      <div class={`${rail} mb-6 sm:grid-cols-2 sm:items-stretch`}>
         {
           ipadShots.map((s, i) => (
             <ShotFigure
@@ -543,7 +549,7 @@ const clients = [
         All three render the same toolkit-free core, and a parity registry refuses to compile a
         client that hasn't answered for a capability the others have.
       </p>
-      <div class={`${rail} mb-4 sm:grid-cols-3`}>
+      <div class={`${rail} mb-3 sm:grid-cols-3`}>
         {
           clients.map((cl) => (
             <div class={`${railItem} term-frame w-[80vw] p-4 sm:w-auto`}>
@@ -562,7 +568,7 @@ const clients = [
               light={s.light}
               w={s.w}
               h={s.h}
-              alt={`Tailscode for Linux: ${s.caption}`}
+              alt={`Tailscode for ${s.client}: ${s.caption}`}
               sizes="(min-width: 1152px) 536px, (min-width: 640px) 50vw, 86vw"
               class={`${railItem} w-[86vw] sm:w-auto`}
             >

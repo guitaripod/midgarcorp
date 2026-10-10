@@ -2901,6 +2901,24 @@
             "w": 1320,
             "h": 2868,
             "label": "Tailscode on iPhone, Suomi theme (dark), screen 12"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-dark-13.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: the Studio painting, the sketch on the stage"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-dark-14.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: the Studio with a finished picture and its verbs"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-dark-15.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: the video screen in its second pass"
           }
         ],
         "iphonelight": [
@@ -2951,6 +2969,24 @@
             "w": 1320,
             "h": 2868,
             "label": "Tailscode on iPhone, Suomi theme (light), screen 12"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-13.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, light: the Studio painting, the sketch on the stage"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-14.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, light: the Studio with a finished picture and its verbs"
+          },
+          {
+            "src": "/screenshots/tailscode/suomi-light-15.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone, light: the video screen in its second pass"
           }
         ],
         "ipad": [
@@ -2981,22 +3017,10 @@
             "label": "Tailscode for Linux: two sessions in tiled splits"
           },
           {
-            "src": "/screenshots/tailscode/desk-dark-analytics.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Tailscode for Linux: usage analytics dashboard"
-          },
-          {
             "src": "/screenshots/tailscode/desk-dark-studio.webp",
             "w": 1920,
-            "h": 1004,
-            "label": "Tailscode for Linux: the image studio with a finished render"
-          },
-          {
-            "src": "/screenshots/tailscode/desk-dark-studio-states.webp",
-            "w": 1920,
-            "h": 1315,
-            "label": "Tailscode for Linux: the image studio in four states"
+            "h": 1080,
+            "label": "Tailscode for Linux: the Studio with a finished render, the verbs under it and the machine's shelf"
           }
         ],
         "linuxlight": [
@@ -3013,10 +3037,10 @@
             "label": "Tailscode for Linux in the Suomi light face: tiled splits"
           },
           {
-            "src": "/screenshots/tailscode/desk-light-analytics.webp",
+            "src": "/screenshots/tailscode/desk-light-studio.webp",
             "w": 1920,
             "h": 1080,
-            "label": "Tailscode for Linux in the Suomi light face: analytics"
+            "label": "Tailscode for Linux in the Suomi light face: the Studio"
           }
         ],
         "sync": [
@@ -3025,6 +3049,32 @@
             "w": 1920,
             "h": 1080,
             "label": "The same answer settled on both machines, with the turn priced in the phone chrome"
+          }
+        ],
+        "mac": [
+          {
+            "src": "/screenshots/tailscode/mac-dark-studio.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Tailscode for Mac: the Studio's Image lane with a finished picture"
+          },
+          {
+            "src": "/screenshots/tailscode/mac-light-studio.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Tailscode for Mac in the light face: the Studio's Image lane"
+          },
+          {
+            "src": "/screenshots/tailscode/mac-dark-video.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Tailscode for Mac: the Studio's Video lane"
+          },
+          {
+            "src": "/screenshots/tailscode/mac-dark-chat.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Tailscode for Mac: the compact chat with its link rail open"
           }
         ]
       },

@@ -623,6 +623,18 @@
     480,
     960
   ],
+  "/screenshots/tailscode/suomi-dark-13.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-14.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-15.webp": [
+    480,
+    960
+  ],
   "/screenshots/tailscode/suomi-light-01.webp": [
     480,
     960
@@ -655,6 +667,18 @@
     480,
     960
   ],
+  "/screenshots/tailscode/suomi-light-13.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-14.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-15.webp": [
+    480,
+    960
+  ],
   "/screenshots/tailscode/ipad-ws-live.webp": [
     480,
     960
@@ -671,15 +695,7 @@
     480,
     960
   ],
-  "/screenshots/tailscode/desk-dark-analytics.webp": [
-    480,
-    960
-  ],
   "/screenshots/tailscode/desk-dark-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-studio-states.webp": [
     480,
     960
   ],
@@ -691,11 +707,27 @@
     480,
     960
   ],
-  "/screenshots/tailscode/desk-light-analytics.webp": [
+  "/screenshots/tailscode/desk-light-studio.webp": [
     480,
     960
   ],
   "/screenshots/tailscode/sync-03-both.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-studio.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-light-studio.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-video.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-chat.webp": [
     480,
     960
   ],
