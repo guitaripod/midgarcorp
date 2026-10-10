@@ -1,0 +1,105 @@
+---
+import { screenshotUrl } from '@data/landing';
+import screenshotVariants from '@data/screenshot-variants.json';
+
+export interface Props {
+  dark: string;
+  light?: string;
+  w: number;
+  h: number;
+  alt: string;
+  sizes: string;
+  variant?: 'card' | 'phone' | 'ipad' | 'hero';
+  priority?: boolean;
+  class?: string;
+}
+
+const {
+  dark,
+  light = dark,
+  w,
+  h,
+  alt,
+  sizes,
+  variant = 'card',
+  priority = false,
+  class: className = '',
+} = Astro.props;
+
+const variants = screenshotVariants as Record<string, number[]>;
+
+/// srcset from the generated variants manifest; falls back to the original only.
+const srcsetFor = (src: string) =>
+  [
+    ...(variants[src] ?? []).map(
+      (wide) => `${screenshotUrl(src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`
+    ),
+    `${screenshotUrl(src)} ${w}w`,
+  ].join(', ');
+
+/// The click-through asset for the lightbox: desk, Mac and composite shots have true-4K
+/// masters under full/; phone shots are already served at full resolution.
+const fullFor = (src: string) =>
+  screenshotUrl(
+    /\/(desk-|mac-|sync-03|ipad-ws-)/.test(src)
+      ? src.replace('/tailscode/', '/tailscode/full/')
+      : src
+  );
+
+const faces =
+  dark === light
+    ? [{ src: dark, label: '', cls: '' }]
+    : [
+        { src: dark, label: 'dark', cls: 'hidden dark:block' },
+        { src: light, label: 'light', cls: 'dark:hidden' },
+      ];
+
+const frames = {
+  card: '',
+  hero: 'overflow-hidden rounded-lg border border-paper-border shadow-2xl dark:border-term-border',
+  phone:
+    'overflow-hidden rounded-[1.4rem] border border-paper-border bg-black/5 dark:border-term-border dark:bg-white/5',
+  ipad: 'overflow-hidden rounded-[1.1rem] border border-paper-border bg-neutral-900 p-[6px] dark:border-term-border',
+};
+const captions = {
+  card: 'mt-auto border-t border-paper-border px-4 py-2.5 text-paper-muted dark:border-term-border dark:text-term-muted',
+  hero: 'mt-3 text-center text-paper-faint dark:text-term-faint',
+  phone: 'mt-2.5 px-1 text-paper-muted dark:text-term-muted',
+  ipad: 'mt-2.5 px-1 text-paper-muted dark:text-term-muted',
+};
+const outline =
+  variant === 'card'
+    ? 'overflow-hidden rounded-lg border border-paper-border dark:border-term-border'
+    : '';
+const radius = variant === 'ipad' ? 'rounded-[0.8rem]' : '';
+const hasCaption = Astro.slots.has('default');
+---
+
+<figure class:list={['flex flex-col', outline, className]}>
+  <div class={frames[variant]}>
+    {
+      faces.map((face) => (
+        <img
+          src={screenshotUrl(face.src)}
+          srcset={srcsetFor(face.src)}
+          sizes={sizes}
+          width={w}
+          height={h}
+          alt={face.label ? `${alt} (${face.label} face)` : alt}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchpriority={priority ? 'high' : undefined}
+          class:list={['w-full cursor-zoom-in', radius, face.cls]}
+          data-full={fullFor(face.src)}
+        />
+      ))
+    }
+  </div>
+  {
+    hasCaption && (
+      <figcaption class:list={['text-xs leading-relaxed', captions[variant]]}>
+        <slot />
+      </figcaption>
+    )
+  }
+</figure>

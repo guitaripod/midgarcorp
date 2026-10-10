@@ -4,9 +4,10 @@ import type { Feature } from '@data/landing';
 export interface Props {
   features: Feature[];
   accent: string;
+  compact?: boolean;
 }
 
-const { features, accent } = Astro.props;
+const { features, accent, compact = false } = Astro.props;
 ---
 
 <div
@@ -15,7 +16,14 @@ const { features, accent } = Astro.props;
 >
   {
     features.map((f) => (
-      <article class="group flex flex-col gap-3 bg-paper-panel p-5 transition-colors hover:bg-paper-raised dark:bg-term-panel dark:hover:bg-term-raised sm:p-6">
+      <article
+        class:list={[
+          'group bg-paper-panel transition-colors hover:bg-paper-raised dark:bg-term-panel dark:hover:bg-term-raised',
+          compact
+            ? 'grid grid-cols-[auto_1fr] items-center gap-x-3 gap-y-2 p-4 sm:flex sm:flex-col sm:items-stretch sm:gap-3 sm:p-5'
+            : 'flex flex-col gap-3 p-5 sm:p-6',
+        ]}
+      >
         <span
           class="feature-glyph inline-flex h-9 w-9 items-center justify-center rounded-sm text-lg"
           aria-hidden="true"
@@ -23,7 +31,12 @@ const { features, accent } = Astro.props;
           {f.glyph}
         </span>
         <h3 class="text-base font-bold text-paper-text dark:text-term-text">{f.title}</h3>
-        <p class="text-sm leading-relaxed text-paper-muted [overflow-wrap:anywhere] dark:text-term-muted">
+        <p
+          class:list={[
+            'text-sm leading-relaxed text-paper-muted [overflow-wrap:anywhere] dark:text-term-muted',
+            compact ? 'col-span-2 sm:col-auto' : '',
+          ]}
+        >
           {f.body}
         </p>
       </article>
