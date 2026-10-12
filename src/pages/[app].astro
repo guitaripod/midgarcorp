@@ -127,6 +127,7 @@ const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
 const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : undefined);
 
 const privacyOverrides: Record<string, string> = {
+  crucible: 'https://midgarcorp.cc/crucible/privacy',
   embr: 'https://embr.guitaripod.workers.dev/legal/privacy',
   solarbeam: 'https://midgarcorp.cc/solarbeam/privacy',
   tailscode: 'https://midgarcorp.cc/tailscode/privacy',
