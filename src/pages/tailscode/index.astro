@@ -17,10 +17,12 @@ const c = app.content;
 const accent = c.accentColor || app.primaryColor;
 const githubUrl = app.githubUrl;
 const releaseUrl = app.latestReleaseUrl ?? app.githubUrl;
+const macStoreUrl = c.macAppStoreUrl ?? app.appStoreUrl;
+const aurUrl = 'https://aur.archlinux.org/packages/tailscode';
 
 const site = 'https://midgarcorp.cc';
 const canonical = `${site}/tailscode/`;
-const OG_REV = '8';
+const OG_REV = '9';
 const ogImage = `/og/tailscode.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
@@ -40,6 +42,11 @@ const faces = (dark: string, light: string, w: number, h: number) => ({
   h,
 });
 
+/// An iPhone screen of the demo world. One face: the phone shots are the app's own System theme.
+const phone = (role: string) => ({
+  ...faces(`phone-${role}`, `phone-${role}`, 1320, 2868),
+});
+
 /// The Studio figures, one entry per shot; a pair whose faces are the same file renders one image.
 const STUDIO = {
   mac: faces('mac-dark-studio', 'mac-light-studio', 1920, 1200),
@@ -52,24 +59,25 @@ const STUDIO = {
 /// Where the rebuilt Studio can be had today. It is the one place the page names a release,
 /// so it is the one line to change when the Apple builds carry it.
 const studioAvailability =
-  'On the Mac and Linux the Studio rises as a sheet inside the Tailscode window, the conversation dimmed behind it, and closing it never stops a render; on the phone it is a full-screen modal. Linux 1.73 and builds from source have the sheet, and the iPhone Studio is in iOS 1.73, now in App Review. The Mac App Store build does not have it yet.';
+  'On the Mac and Linux the Studio rises as a sheet inside the Tailscode window, the conversation dimmed behind it, and closing it never stops a render; on the phone it is a full-screen modal. It is in iOS 1.75 and Linux 1.75, and in builds from source. The Mac App Store build that is live today is 1.65, which predates it; Mac 1.75 is waiting for App Review.';
 
-const hero = faces('desk-dark-chat', 'desk-light-chat', 1920, 1080);
-const heroCaption =
-  'The Linux desk in the Suomi theme. Flip this page’s theme: every screenshot follows.';
+const hero = {
+  desk: faces('desk-dark-chat', 'desk-light-chat', 1920, 1080),
+  phone: phone('lock'),
+};
 const syncBoth = faces('sync-03-both', 'sync-03-both', 1920, 1080);
 
-/// The phone rail: the demo wearing Suomi, by file number. The Studio shots are in their own section.
-const phonePicks = [1, 2, 3, 4, 7, 8, 9, 12];
+const splitCaption = (text: string) => {
+  const at = text.indexOf(' — ');
+  return at < 0 ? { head: text, body: '' } : { head: text.slice(0, at), body: text.slice(at + 3) };
+};
+
+/// The phone rail, in the store set's order. The costs and limits screens live in the money section.
+const phoneRoles = ['approval', 'board', 'diff', 'question', 'effort', 'delegate'];
 const phoneCaptions = c.screenshotCaptions?.iphone ?? [];
-const phoneShots = phonePicks.map((n, i) => ({
-  ...faces(
-    `suomi-dark-${String(n).padStart(2, '0')}`,
-    `suomi-light-${String(n).padStart(2, '0')}`,
-    1320,
-    2868
-  ),
-  caption: phoneCaptions[i] ?? '',
+const phoneShots = phoneRoles.map((role, i) => ({
+  ...phone(role),
+  ...splitCaption(phoneCaptions[i] ?? ''),
 }));
 
 const ipadCaptions = c.screenshotCaptions?.ipad ?? [];
@@ -86,11 +94,19 @@ const deskShots = [
     ...faces('desk-dark-split', 'desk-light-split', 1920, 1080),
     client: 'Linux',
     caption: deskCaptions[0] ?? '',
+    wide: true,
   },
   {
-    ...faces('mac-dark-chat', 'mac-dark-chat', 1920, 1200),
+    ...faces('mac-dark-chat', 'mac-dark-chat', 1920, 825),
     client: 'Mac',
     caption: deskCaptions[1] ?? '',
+    wide: false,
+  },
+  {
+    ...faces('mac-dark-split', 'mac-dark-split', 1920, 825),
+    client: 'Mac',
+    caption: deskCaptions[2] ?? '',
+    wide: false,
   },
 ];
 
@@ -101,12 +117,42 @@ const studioBullets = [
   'Enhance has a language model of yours write the paragraph; Continue it picks up where a finished clip ends.',
 ];
 
+const lockBullets = [
+  'One Live Activity per conversation: what the agent is doing, for how long, and how many tools it has run.',
+  'An approval request alerts you. A finished turn lingers with its outcome, then leaves on its own.',
+  'Tap it and you land in the exact chat, with the Allow, Always and Deny buttons under the edit.',
+  'When the app is closed, iOS holds the wait and the notification still fires, straight over your tailnet.',
+];
+
+const moneyBullets = [
+  'Every conversation priced, every month totalled across your machines, by model, project and tool.',
+  'Each provider’s tightest window and its reset clock, on Home and in a widget: walls first.',
+  'Always marked an estimate: a subscription bills a flat fee, so the figure is API-equivalent value, never a bill.',
+];
+
+const checks = [
+  {
+    cmd: 'tailscale status',
+    note: 'lists the nodes involved: your phone and your machine, both yours.',
+  },
+  {
+    cmd: 'tailscale ping <machine>',
+    note: 'says whether the path is direct or goes through one of Tailscale’s own DERP relays.',
+  },
+  {
+    cmd: 'git clone ' + (githubUrl ?? '').replace('https://', ''),
+    note: 'the app, the engine and both bridges are GPL-3.0. Read what it sends.',
+  },
+];
+
 const section = 'border-t border-paper-border py-8 dark:border-term-border sm:py-9';
 
 /// A row of figures that scrolls sideways on a phone and lays out as a grid from `sm` up.
 const rail =
   'no-scrollbar -mx-4 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-4 pb-3 sm:mx-0 sm:grid sm:overflow-visible sm:px-0 sm:pb-0';
 const railItem = 'shrink-0 snap-center';
+const btn =
+  'accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors';
 
 const operatingSystem = 'iOS, iPadOS, Linux, macOS';
 const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
@@ -141,17 +187,18 @@ const premiumOffers = (c.pricing?.tiers ?? [])
 const softwareApp = {
   '@type': 'SoftwareApplication',
   name: app.name,
+  alternateName: 'Tailscode',
   operatingSystem,
-  applicationCategory: app.category,
+  applicationCategory: 'DeveloperApplication',
   description: c.metaDescription,
   url: canonical,
   installUrl: app.appStoreUrl,
+  downloadUrl: app.appStoreUrl,
   image: abs(app.iconLocal),
   screenshot: allShots,
   offers: premiumOffers.length ? [downloadOffer, ...premiumOffers] : downloadOffer,
   author: { '@type': 'Organization', name: 'Midgar Oy', url: site },
   publisher: { '@type': 'Organization', name: 'Midgar Oy', url: site },
-  ...(app.version ? { softwareVersion: app.version } : {}),
   ...(app.releaseDate ? { datePublished: app.releaseDate } : {}),
   ...(app.ratingCount > 0
     ? {
@@ -202,21 +249,20 @@ const clients = [
     note: 'The pocket remote: send, steer, approve, and watch the turn finish on your Lock Screen. On iPad it becomes a workspace — sidebar, chat list and conversation side by side, windows in Stage Manager, a hardware keyboard.',
   },
   {
-    name: 'Linux',
-    stack: 'GTK4 · libadwaita · tiling splits',
-    note: 'A full desk: split panes, an embedded terminal, web and video panes, a global quick-ask key.',
-  },
-  {
     name: 'Mac',
     stack: 'AppKit · Liquid Glass · macOS 26',
-    note: 'The same desk with Apple materials: split panes, the analytics, the git surface, and a global quick-ask key — on the App Store, and it updates itself from it.',
+    note: 'The same desk with Apple materials: split panes, the analytics, the git surface, and a global quick-ask key. On the Mac App Store under the same purchase as the iPhone app.',
+  },
+  {
+    name: 'Linux',
+    stack: 'GTK4 · libadwaita · tiling splits',
+    note: 'A full desk: split panes, an embedded terminal, web and video panes, a global quick-ask key. In the AUR and on GitHub.',
   },
 ];
 ---
 
 <BaseLayout title={c.seoTitle} description={c.metaDescription} image={ogImage}>
   <div style={`--accent:${accent}`}>
-    <!-- Breadcrumb -->
     <nav
       aria-label="Breadcrumb"
       class="hidden pt-8 text-xs text-paper-faint dark:text-term-faint sm:block"
@@ -230,13 +276,10 @@ const clients = [
       </ol>
     </nav>
 
-    <!-- Hero -->
     <header
-      class="flex flex-col gap-10 py-8 sm:py-6 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-x-12"
+      class="flex flex-col gap-8 py-6 sm:py-6 lg:grid lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-x-12"
     >
       <div>
-        <p class="prompt-line mb-5 hidden sm:block">tailscode --everywhere</p>
-
         <div class="mb-5 flex items-center gap-4">
           {
             app.iconLocal && (
@@ -246,13 +289,13 @@ const clients = [
                 height={72}
                 displayWidths={[64, 72]}
                 priority
-                class="hero-icon h-16 w-16 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[72px] sm:w-[72px]"
+                class="hero-icon h-14 w-14 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[72px] sm:w-[72px]"
               />
             )
           }
           <div class="min-w-0">
             <p
-              class="text-2xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-3xl"
+              class="text-xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-3xl"
             >
               {app.shortName}
             </p>
@@ -261,7 +304,7 @@ const clients = [
         </div>
 
         <h1
-          class="mb-4 text-3xl font-bold leading-tight tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+          class="mb-4 text-[1.85rem] font-bold leading-tight tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
         >
           {c.heroHeadline}
         </h1>
@@ -271,46 +314,55 @@ const clients = [
           {c.heroSubhead}
         </p>
 
-        <div class="mb-7 flex flex-wrap items-center gap-3">
+        <ul class="mb-6 flex flex-wrap gap-2" aria-label="What Tailscode does not have">
+          {
+            ['No relay', 'No account', 'No analytics', 'GPL-3.0'].map((fact) => (
+              <li>
+                <a
+                  href="#trust"
+                  class="inline-flex items-center gap-1 rounded-sm border border-paper-green/40 px-2 py-1 text-[11px] font-semibold sm:gap-1.5 sm:px-2.5 sm:text-xs text-paper-green transition-colors hover:bg-paper-green/10 dark:border-term-green/40 dark:text-term-green dark:hover:bg-term-green/10"
+                >
+                  <span aria-hidden="true">✓</span>
+                  {fact}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mb-3 flex flex-wrap items-center gap-3">
           <AppStoreBadge href={app.appStoreUrl} platform="ios" />
-          <a
-            href="https://aur.archlinux.org/packages/tailscode"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
-          >
-            Linux — AUR ↗
-          </a>
-          <a
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
-          >
+          <a href={aurUrl} target="_blank" rel="noopener noreferrer" class={btn}>Linux: AUR ↗</a>
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class={btn}>
             <img src="/icons/github.svg" alt="" width="18" height="18" class="dark:invert" />
-            View on GitHub
-          </a>
-          <a
-            href="#sync"
-            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
-          >
-            See it sync ↓
+            GitHub
           </a>
         </div>
-
-        <div class="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-          <span
-            class="inline-flex items-center gap-1.5 rounded-sm border border-paper-green/40 px-2 py-0.5 text-xs font-semibold text-paper-green dark:border-term-green/40 dark:text-term-green"
+        <p class="mb-6 text-xs text-paper-faint dark:text-term-faint">
+          iPhone, iPad and Mac share one purchase on the App Store ·
+          <a
+            href={macStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline decoration-dotted underline-offset-2 hover:text-paper-green dark:hover:text-term-green"
+            >Mac App Store ↗</a
           >
-            Open source
-          </span>
-          <StarRating rating={app.rating} count={app.ratingCount} releaseDate={app.releaseDate} />
-          <span class="font-semibold text-paper-amber dark:text-term-amber">
-            {app.license ?? 'GPL-3.0'}
-          </span>
+          · Free, Pro is $14.99 once
+        </p>
+
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+          {
+            app.ratingCount >= 5 && (
+              <StarRating
+                rating={app.rating}
+                count={app.ratingCount}
+                releaseDate={app.releaseDate}
+              />
+            )
+          }
           <span class="hidden flex-wrap gap-1.5 sm:flex">
             {
-              ['iPhone', 'iPad', 'Linux', 'Mac'].map((p) => (
+              ['iPhone', 'iPad', 'Mac', 'Linux'].map((p) => (
                 <span class="rounded-sm border border-paper-border px-1.5 py-0.5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint">
                   {p}
                 </span>
@@ -318,35 +370,335 @@ const clients = [
             }
           </span>
         </div>
-
-        <ul class="grid gap-2">
-          {
-            c.highlights.map((h) => (
-              <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
-                <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
-                  ▸
-                </span>
-                <span>{h}</span>
-              </li>
-            ))
-          }
-        </ul>
       </div>
 
-      <ShotFigure
-        dark={hero.dark}
-        light={hero.light}
-        w={hero.w}
-        h={hero.h}
-        alt="Tailscode for Linux in the Suomi theme: a conversation in the compact chat"
-        sizes="(min-width: 1024px) 560px, 100vw"
-        variant="hero"
-        priority
-        class="mx-auto w-full max-w-[560px] lg:max-w-none"
-      >
-        {heroCaption}
-      </ShotFigure>
+      <div class="relative mx-auto aspect-[100/71] w-full max-w-[600px] lg:max-w-none">
+        <ShotFigure
+          dark={hero.desk.dark}
+          light={hero.desk.light}
+          w={hero.desk.w}
+          h={hero.desk.h}
+          alt="Tailscode for Linux: a conversation in the compact chat, with the sidebar of every machine's chats"
+          sizes="(min-width: 1024px) 600px, 92vw"
+          variant="hero"
+          priority
+          class="absolute right-0 top-[12%] w-[86%]"
+        />
+        <ShotFigure
+          dark={hero.phone.dark}
+          w={hero.phone.w}
+          h={hero.phone.h}
+          alt="The iPhone Lock Screen with a Tailscode Live Activity: Dark mode for the settings screen, awaiting your approval"
+          sizes="(min-width: 1024px) 200px, 30vw"
+          variant="phone"
+          priority
+          class="absolute bottom-0 left-0 w-[32%] shadow-2xl"
+        />
+      </div>
     </header>
+
+    <section id="lockscreen" class={section}>
+      <div class="grid items-start gap-x-10 gap-y-8 lg:grid-cols-12">
+        <div class="lg:col-span-5 lg:pt-10">
+          <SectionHead prompt="tailscode --lock-screen" title="Send. Pocket it. Get pinged.">
+            Your agent is working on a machine across the room, or across the country. The turn
+            lives on your Lock Screen the whole time, and the moment it needs you it says so.
+          </SectionHead>
+          <ul class="grid gap-2.5">
+            {
+              lockBullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                    ▸
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="flex items-start justify-center gap-4 sm:gap-6 lg:col-span-7">
+          <figure class="w-[46%] max-w-[300px] shrink-0">
+            <div
+              class="overflow-hidden rounded-[1.4rem] border border-paper-border bg-black dark:border-term-border"
+            >
+              <video
+                id="promo-video"
+                class="block w-full"
+                width="608"
+                height="1080"
+                poster={`${shot('promo-poster')}?v=9`}
+                muted
+                loop
+                playsinline
+                controls
+                preload="none"
+                aria-label="Thirty seconds of Tailscode: a Live Activity on the Lock Screen, an approval, a question, the board across two machines, a diff, the month in numbers and the tailnet"
+              >
+                <source src="/video/tailscode-promo.mp4?v=1" type="video/mp4" />
+                <source src="/video/tailscode-promo.webm?v=1" type="video/webm" />
+              </video>
+            </div>
+            <figcaption
+              class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted"
+            >
+              <span class="accent-text mr-1 font-semibold">29 s</span> — no narration: ping, approve,
+              answer, board, diff, cost, tailnet.
+            </figcaption>
+          </figure>
+          <ShotFigure
+            dark={phoneShots[0].dark}
+            w={phoneShots[0].w}
+            h={phoneShots[0].h}
+            alt="Tailscode on iPhone: the chat the notification opens, with Allow once, Always and Deny under the edit"
+            sizes="(min-width: 1024px) 280px, 46vw"
+            variant="phone"
+            class="mt-10 w-[46%] max-w-[300px] shrink-0 sm:mt-16"
+          >
+            <span class="accent-text mr-1 font-semibold">Tap</span> — and the agent waits on you, right
+            under the edit.
+          </ShotFigure>
+        </div>
+      </div>
+    </section>
+
+    <section id="trust" class={section}>
+      <div class="grid items-center gap-x-10 gap-y-8 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <SectionHead prompt="tailscode --trust" title="Nothing leaves your tailnet">
+            Your phone talks to your machine, and nothing else is in the picture. Three facts you
+            can check, and a licence that lets you.
+          </SectionHead>
+          <ul
+            class="mb-6 grid grid-cols-3 gap-px overflow-hidden rounded-sm border border-paper-border bg-paper-border text-center dark:border-term-border dark:bg-term-border"
+          >
+            {
+              [
+                ['No relay', 'no Tailscode server sits between you and the machine'],
+                ['No account', 'nothing to sign up for, nothing to leak'],
+                ['No analytics', 'zero collected data types in the privacy manifest'],
+              ].map(([head, body]) => (
+                <li class="bg-paper-panel px-3 py-4 dark:bg-term-panel">
+                  <p class="accent-text text-sm font-bold">{head}</p>
+                  <p class="mt-1.5 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+                    {body}
+                  </p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="term-frame p-4 sm:p-6 lg:col-span-7">
+          <svg
+            viewBox="0 0 760 270"
+            role="img"
+            aria-labelledby="tailnet-title tailnet-desc"
+            class="hidden h-auto w-full text-paper-muted dark:text-term-muted sm:block"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title id="tailnet-title">Two devices of yours joined by your tailnet</title>
+            <desc id="tailnet-desc">
+              Tailscode on your iPhone, iPad, Mac or Linux desk connects directly to the machine
+              running your agent through your own Tailscale network. A dashed box labelled Tailscode
+              cloud is struck out: there is no such server.
+            </desc>
+            <g
+              class="fill-paper-panel stroke-paper-border2 dark:fill-term-panel dark:stroke-term-border2"
+              stroke-width="1.5"
+            >
+              <rect x="16" y="96" width="210" height="104" rx="3"></rect>
+              <rect x="534" y="96" width="210" height="104" rx="3"></rect>
+            </g>
+            <g
+              class="fill-paper-text font-bold dark:fill-term-text"
+              font-size="15"
+              text-anchor="middle"
+            >
+              <text x="121" y="136">Tailscode</text>
+              <text x="639" y="136">Your machine</text>
+            </g>
+            <g fill="currentColor" font-size="11.5" text-anchor="middle">
+              <text x="121" y="160">iPhone · iPad · Mac · Linux</text>
+              <text x="121" y="180">the app, GPL-3.0</text>
+              <text x="639" y="160">claude-bridge · omp-bridge</text>
+              <text x="639" y="180">opencode · your agent</text>
+            </g>
+            <line
+              x1="226"
+              y1="148"
+              x2="534"
+              y2="148"
+              stroke-width="3"
+              stroke-linecap="round"
+              class="stroke-paper-green dark:stroke-term-green"></line>
+            <circle cx="226" cy="148" r="5" class="fill-paper-green dark:fill-term-green"></circle>
+            <circle cx="534" cy="148" r="5" class="fill-paper-green dark:fill-term-green"></circle>
+            <g
+              class="fill-paper-green font-bold dark:fill-term-green"
+              font-size="13"
+              text-anchor="middle"
+            >
+              <text x="380" y="132">your tailnet</text>
+            </g>
+            <g fill="currentColor" font-size="11" text-anchor="middle">
+              <text x="380" y="172">WireGuard-encrypted</text>
+              <text x="380" y="188">device-authenticated</text>
+            </g>
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-dasharray="5 5"
+              opacity="0.75"
+            >
+              <rect x="290" y="14" width="180" height="52" rx="3"></rect>
+            </g>
+            <text
+              x="380"
+              y="45"
+              fill="currentColor"
+              font-size="12"
+              text-anchor="middle"
+              opacity="0.8"
+            >
+              Tailscode cloud
+            </text>
+            <line
+              x1="290"
+              y1="66"
+              x2="470"
+              y2="14"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              class="stroke-paper-red dark:stroke-term-red"></line>
+            <text x="380" y="86" fill="currentColor" font-size="11" text-anchor="middle">
+              there isn't one
+            </text>
+            <g fill="currentColor" font-size="11.5" text-anchor="middle">
+              <text x="380" y="238">The path is phone to machine. Tailscode adds no hop.</text>
+            </g>
+          </svg>
+
+          <svg
+            viewBox="0 0 320 440"
+            role="img"
+            aria-label="Two devices of yours joined by your tailnet; a struck-out Tailscode cloud box: there is no such server"
+            class="mx-auto block h-auto w-full max-w-[340px] text-paper-muted dark:text-term-muted sm:hidden"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              class="fill-paper-panel stroke-paper-border2 dark:fill-term-panel dark:stroke-term-border2"
+              stroke-width="1.5"
+            >
+              <rect x="40" y="12" width="240" height="96" rx="3"></rect>
+              <rect x="40" y="272" width="240" height="96" rx="3"></rect>
+            </g>
+            <g
+              class="fill-paper-text font-bold dark:fill-term-text"
+              font-size="16"
+              text-anchor="middle"
+            >
+              <text x="160" y="48">Tailscode</text>
+              <text x="160" y="308">Your machine</text>
+            </g>
+            <g fill="currentColor" font-size="12.5" text-anchor="middle">
+              <text x="160" y="72">iPhone · iPad · Mac · Linux</text>
+              <text x="160" y="92">the app, GPL-3.0</text>
+              <text x="160" y="332">claude-bridge · omp-bridge</text>
+              <text x="160" y="352">opencode · your agent</text>
+            </g>
+            <line
+              x1="160"
+              y1="108"
+              x2="160"
+              y2="272"
+              stroke-width="3"
+              stroke-linecap="round"
+              class="stroke-paper-green dark:stroke-term-green"></line>
+            <circle cx="160" cy="108" r="5" class="fill-paper-green dark:fill-term-green"></circle>
+            <circle cx="160" cy="272" r="5" class="fill-paper-green dark:fill-term-green"></circle>
+            <g
+              class="fill-paper-green font-bold dark:fill-term-green"
+              font-size="14"
+              text-anchor="start"
+            >
+              <text x="174" y="184">your tailnet</text>
+            </g>
+            <g fill="currentColor" font-size="11.5" text-anchor="start">
+              <text x="174" y="204">WireGuard-encrypted</text>
+              <text x="174" y="220">device-authenticated</text>
+            </g>
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-dasharray="5 5"
+              opacity="0.75"
+            >
+              <rect x="12" y="148" width="116" height="44" rx="3"></rect>
+            </g>
+            <text
+              x="70"
+              y="176"
+              fill="currentColor"
+              font-size="11.5"
+              text-anchor="middle"
+              opacity="0.8"
+            >
+              Tailscode cloud
+            </text>
+            <line
+              x1="12"
+              y1="192"
+              x2="128"
+              y2="148"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              class="stroke-paper-red dark:stroke-term-red"></line>
+            <text x="70" y="212" fill="currentColor" font-size="11" text-anchor="middle">
+              there isn't one
+            </text>
+            <text x="160" y="410" fill="currentColor" font-size="12" text-anchor="middle">
+              Phone to machine. Tailscode adds no hop.
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div
+        class="mt-8 grid items-start gap-x-10 gap-y-6 border-t border-paper-border pt-6 dark:border-term-border lg:grid-cols-12"
+      >
+        <div class="lg:col-span-5">
+          <p class="prompt-line mb-3">check it yourself</p>
+          <ol class="grid gap-3">
+            {
+              checks.map((check) => (
+                <li class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                  <code class="rounded-sm border border-paper-border bg-paper-panel px-1.5 py-0.5 text-xs text-paper-text dark:border-term-border dark:bg-term-panel dark:text-term-text">
+                    {check.cmd}
+                  </code>
+                  <span class="mt-1 block">{check.note}</span>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+        <div class="lg:col-span-7">
+          <p class="text-xs leading-relaxed text-paper-faint dark:text-term-faint">
+            The honest footnotes: Tailscale itself may relay encrypted packets when two devices
+            cannot reach each other directly, and Tailscode adds no hop of its own. Your agent still
+            talks to its own model provider. And a claude-bridge that holds an Apple push key sends
+            Lock Screen updates through Apple's push service, carrying the conversation's title, its
+            phase and tool counts. Read the
+            <a
+              href="/tailscode/privacy"
+              class="underline decoration-dotted underline-offset-2 hover:text-paper-green dark:hover:text-term-green"
+              >privacy policy</a
+            >.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <section id="sync" class={section}>
       <div class="grid items-center gap-x-10 lg:grid-cols-12">
@@ -373,6 +725,111 @@ const clients = [
           <span class="accent-text mr-1 font-semibold">One answer, two screens</span> — the turn settles
           on both machines at once, priced in the phone's chrome.
         </ShotFigure>
+      </div>
+    </section>
+
+    <section id="screenshots" class={section}>
+      <SectionHead prompt="ls ~/tailscode/iphone" title="The pocket client, screen by screen">
+        Every frame is the built-in demo: what you see before wiring a single server. Scroll the
+        rail; tap a screen for the full-resolution picture.
+      </SectionHead>
+      <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-3">
+        {
+          phoneShots.map((s) => (
+            <ShotFigure
+              dark={s.dark}
+              w={s.w}
+              h={s.h}
+              alt={`Tailscode on iPhone: ${s.head}. ${s.body}`}
+              sizes="260px"
+              variant="phone"
+              class="w-[210px] shrink-0 snap-center sm:w-[260px]"
+            >
+              <span class="accent-text block font-semibold">{s.head}</span>
+              {s.body}
+            </ShotFigure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="money" class={section}>
+      <div class="grid items-start gap-x-10 gap-y-8 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <SectionHead
+            prompt="tailscode --usage --month"
+            title="See what it costs. Before the wall."
+          >
+            A price is a conversation's, and the month is the account's. The numbers come from the
+            machines that hold the transcripts, so nothing about your spend is sent anywhere to be
+            added up.
+          </SectionHead>
+          <ul class="mb-6 grid gap-2.5">
+            {
+              moneyBullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                    ▸
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="term-frame p-4">
+            <p class="term-label accent-text mb-1.5">trophies · game center</p>
+            <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+              The ledger is also a game. 27 trophies and four leaderboards (streak days, and turns,
+              tokens and tool calls over thirty days) are scored from the same numbers, and Apple's
+              Game Center shows them. Signing in is optional: the trophy card renders whole without
+              an account.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 items-start gap-4 sm:gap-6 lg:col-span-7">
+          <ShotFigure
+            dark={shot('phone-costs')}
+            w={1320}
+            h={2868}
+            alt="Tailscode on iPhone: the month in numbers, about 1,865 dollars over 25 active days, with a bar for every day"
+            sizes="(min-width: 1024px) 300px, 45vw"
+            variant="phone"
+          >
+            <span class="accent-text block font-semibold">See what it costs</span>
+            Every turn priced, every month totalled across your machines.
+          </ShotFigure>
+          <ShotFigure
+            dark={shot('phone-limits')}
+            w={1320}
+            h={2868}
+            alt="Tailscode on iPhone: each provider's tightest window with its reset clock"
+            sizes="(min-width: 1024px) 300px, 45vw"
+            variant="phone"
+            class="mt-8"
+          >
+            <span class="accent-text block font-semibold">Limits before the wall</span>
+            Each provider's tightest window and reset clock.
+          </ShotFigure>
+          <figure class="col-span-2 mt-2">
+            <div class="term-frame overflow-hidden px-4 py-5 sm:px-8">
+              <img
+                src={`${shot('widgets')}?v=9`}
+                width="2042"
+                height="474"
+                loading="lazy"
+                decoding="async"
+                alt="Three Home Screen widgets: a medium usage widget with a ring and three provider rows, a small usage widget, and a small DeepSeek balance widget"
+                class="mx-auto block h-auto w-full max-w-[760px]"
+              />
+            </div>
+            <figcaption
+              class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted"
+            >
+              <span class="accent-text mr-1 font-semibold">Widgets</span> — the same quotas on your Home
+              Screen, a wall drawn as Used up rather than a bare percentage.
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -474,32 +931,6 @@ const clients = [
       </div>
     </section>
 
-    <section id="screenshots" class={section}>
-      <SectionHead prompt="ls ~/tailscode/iphone" title="The pocket client, screen by screen">
-        Every frame is the built-in demo wearing Suomi: what you see before wiring a single server.
-        Scroll the rail; flip the site theme to see the other face.
-      </SectionHead>
-      <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-3">
-        {
-          phoneShots.map((s, i) => (
-            <ShotFigure
-              dark={s.dark}
-              light={s.light}
-              w={s.w}
-              h={s.h}
-              alt={`Tailscode on iPhone: ${s.caption}`}
-              sizes="260px"
-              variant="phone"
-              class="w-[210px] shrink-0 snap-center sm:w-[260px]"
-            >
-              <span class="accent-text mr-1 font-semibold">{String(i + 1).padStart(2, '0')}</span>
-              {s.caption}
-            </ShotFigure>
-          ))
-        }
-      </div>
-    </section>
-
     <section id="desks" class={section}>
       <SectionHead prompt="ls ~/tailscode/ipad" title="A workspace, not a stretched phone">
         On iPad the sidebar holds places, chat scopes and servers, the chat list sits beside it and
@@ -528,14 +959,14 @@ const clients = [
 
       <p class="prompt-line mb-2">ls ~/tailscode/desktop</p>
       <h3 class="mb-3 text-2xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        Three desks, one shared core
+        Three desks, one shared engine
       </h3>
       <p class="mb-6 max-w-2xl text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-        The Linux client is native GTK4, the Mac client native AppKit, the phone programmatic UIKit.
-        All three render the same toolkit-free core, and a parity registry refuses to compile a
-        client that hasn't answered for a capability the others have.
+        The phone is programmatic UIKit, the Mac native AppKit, Linux native GTK4. All three render
+        the same toolkit-free core, and a parity registry refuses to compile a client that hasn't
+        answered for a capability the others have.
       </p>
-      <div class={`${rail} mb-3 sm:grid-cols-3`}>
+      <div class={`${rail} mb-3 sm:grid-cols-3 sm:items-stretch`}>
         {
           clients.map((cl) => (
             <div class={`${railItem} term-frame w-[80vw] p-4 sm:w-auto`}>
@@ -556,7 +987,7 @@ const clients = [
               h={s.h}
               alt={`Tailscode for ${s.client}: ${s.caption}`}
               sizes="(min-width: 1152px) 536px, (min-width: 640px) 50vw, 86vw"
-              class={`${railItem} w-[86vw] sm:w-auto`}
+              class={`${railItem} w-[86vw] sm:w-auto ${s.wide ? 'sm:col-span-2 sm:w-full sm:max-w-[880px] sm:justify-self-center' : ''}`}
             >
               {s.caption}
             </ShotFigure>
@@ -603,7 +1034,6 @@ const clients = [
       <FaqAccordion faq={c.faq} accent={accent} />
     </section>
 
-    <!-- Final CTA -->
     <section class={section}>
       <div class="term-frame relative overflow-hidden p-6 sm:p-10" style={`--accent:${accent}`}>
         <span class="cta-spine absolute inset-y-0 left-0 w-1" aria-hidden="true"></span>
@@ -629,14 +1059,10 @@ const clients = [
           </div>
           <div class="flex shrink-0 flex-wrap items-center gap-3">
             <AppStoreBadge href={app.appStoreUrl} platform="ios" />
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
-            >
+            <AppStoreBadge href={macStoreUrl} platform="mac" />
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" class={btn}>
               <img src="/icons/github.svg" alt="" width="18" height="18" class="dark:invert" />
-              View on GitHub
+              GitHub
             </a>
           </div>
         </div>
@@ -652,6 +1078,14 @@ const clients = [
             class="hover:text-paper-green dark:hover:text-term-green"
           >
             App Store ↗
+          </a>
+          <a
+            href={macStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-paper-green dark:hover:text-term-green"
+          >
+            Mac App Store ↗
           </a>
           {
             githubUrl && (
@@ -677,7 +1111,7 @@ const clients = [
                   Releases ↗
                 </a>
                 <a
-                  href="https://aur.archlinux.org/packages/tailscode"
+                  href={aurUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   class="hover:text-paper-green dark:hover:text-term-green"
@@ -698,7 +1132,6 @@ const clients = [
       </div>
     </section>
 
-    <!-- More apps -->
     <section class="border-t border-paper-border py-10 dark:border-term-border">
       <p class="prompt-line mb-5">ls ~/apps</p>
       <div class="flex flex-wrap gap-3">
@@ -824,6 +1257,22 @@ const clients = [
       else if (event.key === 'ArrowLeft') show(at - 1);
       else if (event.key === 'ArrowRight') show(at + 1);
     });
+  </script>
+
+  <script>
+    const promo = document.getElementById('promo-video') as HTMLVideoElement | null;
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (promo && !calm && 'IntersectionObserver' in window) {
+      new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) promo.play().catch(() => {});
+            else promo.pause();
+          }
+        },
+        { threshold: 0.5 }
+      ).observe(promo);
+    }
   </script>
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

@@ -1,14 +1,16 @@
 {
-  "seoTitle": "Tailscode — Claude Code, Oh My Pi & opencode on iPhone, iPad, Linux & Mac",
-  "metaDescription": "Native remote for Claude Code, Oh My Pi and opencode over your Tailscale network — a universal iPhone & iPad app with Lock Screen Live Activities, plus open-source GTK4 Linux and macOS desktop clients. Linux is in the AUR and on the App Store. No relay, no account, GPL-3.0.",
+  "seoTitle": "Tailscode: Claude Code, opencode & Oh My Pi on your Lock Screen",
+  "metaDescription": "Claude Code, opencode and Oh My Pi on your Lock Screen. Approve, read diffs, price every turn. iPhone, iPad, Mac, Linux. No relay, no account, no analytics.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
     "claude code ipad app",
-    "claude code ipad client",
+    "claude code mac app",
     "claude code linux client",
-    "claude code desktop app",
-    "gtk4 claude code",
+    "claude code live activity",
+    "claude code lock screen",
+    "claude code remote",
+    "claude code approve from phone",
     "opencode mobile client",
     "opencode 2 client",
     "oh my pi ios app",
@@ -17,67 +19,67 @@
     "tailscale coding agent",
     "remote coding agent ios",
     "coding agent lock screen",
-    "claude code live activity",
+    "claude code usage tracker",
+    "claude code spend",
     "self-hosted ai coding",
     "open source coding agent app",
     "tailscode aur",
-    "claude code arch linux",
-    "aur coding agent"
+    "claude code arch linux"
   ],
-  "heroHeadline": "Your AI agents, anywhere",
-  "heroSubhead": "Tailscode is a native remote for Claude Code, Oh My Pi and opencode running on your own machines — a universal app for iPhone and iPad with the turn on your Lock Screen, and open-source desktop clients for Linux and the Mac. Point-to-point over your tailnet, no relay, no account.",
+  "heroHeadline": "Your coding agents, live on the Lock Screen",
+  "heroSubhead": "Send a prompt to Claude Code, opencode or Oh My Pi, pocket the phone, and watch the turn finish. Approve, answer and read the diff over your own tailnet, from the iPhone, iPad, Mac or Linux.",
   "accentColor": "#546BFF",
   "highlights": [
-    "Streams every turn live — thinking, tool calls, subagents, code",
-    "Approve, answer, and steer the agent without leaving the chat",
-    "iPhone, iPad, Linux, and Mac clients built on one shared core",
-    "Point-to-point over your Tailscale network — no relay, no tracking"
+    "Live Activity per conversation on the Lock Screen",
+    "Approve, answer and read the diff from the phone",
+    "Every turn priced, every month totalled",
+    "Free, open source, no relay, no account"
   ],
   "features": [
     {
-      "title": "A real client, not a web view",
-      "body": "Programmatic UIKit on iOS, GTK4 on Linux, AppKit on the Mac, all Swift 6. Streaming transcripts with collapsible thinking and tool groups, and code you copy byte-exact.",
+      "title": "The Lock Screen is the status board",
+      "body": "A Live Activity per conversation shows what the agent is doing, for how long and how many tools it has run. An approval alerts you; a finished turn lingers with its outcome. Tap to land in the exact chat.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Approve with the edit in view",
+      "body": "Allow once, always or deny, right under the diff, while the agent waits. A question arrives as a card you answer with a tap. Queue the next message, edit it before it goes, or stop the turn on the server.",
+      "glyph": "⊹"
+    },
+    {
+      "title": "Every machine, one board",
+      "body": "All your servers' conversations in one list: live turns first, grouped by project. Subagents open in place inside the turn that spawned them; a compaction is a seam you can read.",
+      "glyph": "◈"
+    },
+    {
+      "title": "A repository is read, never operated",
+      "body": "Branch, drift from upstream, staged, changed and the real patch of any file, read from the machine that owns it. Nothing offers to commit or push: a change made from a phone is a change nobody reviewed.",
       "glyph": "◉"
     },
     {
-      "title": "Written, not pasted",
-      "body": "Answers play out of a buffer at a reading pace, a shimmer riding the newest words. Frames come from the display's own clock, and nothing re-wraps under the reader.",
-      "glyph": "∿"
+      "title": "Prices in dollars",
+      "body": "Every conversation priced, every month totalled across machines by model, project and tool. Always marked an estimate: a subscription bills a flat fee, so the figure is API-equivalent value, never a bill.",
+      "glyph": "▤"
+    },
+    {
+      "title": "Limits before the wall",
+      "body": "Each provider's tightest window and its reset clock on Home and in a widget: Claude plan limits, Grok quotas, Ollama Cloud, DeepSeek balance. The board holds still while you read it.",
+      "glyph": "◐"
     },
     {
       "title": "One pill for model and effort",
       "body": "Which model and how hard it thinks are one decision: tap a level or slide to it, pin a pair, swipe to cycle. Ultracode burns a rainbow along the composer's edge.",
-      "glyph": "◐"
+      "glyph": "∿"
     },
     {
       "title": "Three agents, one app",
       "body": "opencode directly, Claude Code through claude-bridge, Oh My Pi through omp-bridge: two open-source companion servers. Every model Oh My Pi can reach is one picker away.",
-      "glyph": "◈"
-    },
-    {
-      "title": "Steer without stopping",
-      "body": "Queue a follow-up and edit it before it lands, stop a turn, fork it, answer the agent's questions with a tap. Subagents open in place; a compaction is a seam you can read.",
-      "glyph": "⊹"
-    },
-    {
-      "title": "Pictures and clips, made at home",
-      "body": "A Studio on your own ComfyUI machine: the brief, a stage that shows the sketch as it paints, and the machine's shelf. Enhance has a language model of yours write the paragraph.",
-      "glyph": "▣"
-    },
-    {
-      "title": "Compact by default",
-      "body": "Furniture takes a line, not a card. Tools, thinking and seams rest as one flat line, and a run of links gathers on one rail that opens on hover or tap. Comfortable is a setting.",
-      "glyph": "▤"
-    },
-    {
-      "title": "Lock Screen status board",
-      "body": "A Live Activity per session shows the phase, elapsed time and tool counts. Finished turns linger with the outcome, and claude-bridge can push updates while the app is suspended.",
-      "glyph": "❖"
-    },
-    {
-      "title": "Eight themes, two faces each",
-      "body": "One catalog for every client, from Suomi's aurora over a frozen lake to fresh snow by day. Every colour is pushed through a contrast corrector until it clears WCAG.",
       "glyph": "◑"
+    },
+    {
+      "title": "Native, and written not pasted",
+      "body": "Programmatic UIKit on iOS, GTK4 on Linux, AppKit on the Mac, all Swift 6. Answers play out at a reading pace with nothing re-wrapping under you, and code copies byte-exact.",
+      "glyph": "▣"
     }
   ],
   "howItWorks": [
@@ -87,7 +89,7 @@
     },
     {
       "step": "Join the same tailnet",
-      "body": "Install Tailscale on your devices — free for personal use. They see each other directly; nothing transits anyone else's servers."
+      "body": "Install Tailscale on your devices, free for personal use. They see each other directly; the app checks your phone's tailnet address and which agent answers the address you type."
     },
     {
       "step": "Connect and go",
@@ -104,7 +106,7 @@
         "Attachments, models, forking, compaction",
         "Live Activities, one session at a time",
         "Every theme, the analytics, the git surface",
-        "The built-in demo — explore with no server"
+        "The built-in demo: explore with no server"
       ]
     },
     "premium": {
@@ -112,10 +114,10 @@
       "price": "$14.99 once",
       "items": [
         "Unlimited servers, one session list",
-        "The delegate board — bounded tasks for your cheaper models",
         "Concurrent Live Activities (iPhone)",
         "One purchase, iPhone and Mac",
-        "A supporter badge"
+        "A supporter badge",
+        "The delegate board (beta): bounded tasks for your cheaper models"
       ]
     },
     "tiers": [
@@ -127,32 +129,44 @@
         "note": "No subscription"
       }
     ],
-    "footnote": "One purchase covers iPhone and Mac on the same Apple Account. The Linux client and the Mac build you compile yourself are free, open-source and complete — the unlock is how the work gets funded, not a wall around it."
+    "footnote": "One purchase covers iPhone and Mac on the same Apple Account. The Linux client and the Mac build you compile yourself are free, open-source and complete: the unlock is how the work gets funded, not a wall around it."
   },
   "faq": [
     {
-      "q": "Do I need my own server?",
-      "a": "Yes, that's the point. Tailscode is a remote for agents running on hardware you control, so there is no middleman cloud: no relay fees, no data sharing, no vendor outage between you and your code. No server yet? Tap 'Try the demo' on the first screen to explore the whole app with sample sessions, no tailnet needed."
+      "q": "Is it free?",
+      "a": "Yes. The free app is the complete core: one server, full chat, approvals and questions, attachments, models, forking, Live Activities, the analytics and the git surface. Tailscode Pro is a one-time $14.99 unlock for unlimited servers, concurrent Live Activities on iPhone, the delegate board (beta) and a supporter badge. There is no subscription, and the Linux client and a Mac build you compile yourself are free and complete."
+    },
+    {
+      "q": "What do I need?",
+      "a": "A computer you code on, running opencode, Claude Code through claude-bridge, or Oh My Pi through omp-bridge; Tailscale (free for personal use) on that machine and on your phone; and the app. Set-up is three steps the app verifies as you go. No server yet? Tap 'Try the demo' on the first screen to explore every screen with sample conversations, no tailnet needed."
+    },
+    {
+      "q": "Is my code sent anywhere?",
+      "a": "Not by Tailscode. Prompts, answers, diffs and files travel between your devices and your machines over your own Tailscale network. There is no Tailscode server and no account system, the app's privacy manifest declares zero collected data types, and the source is public. Your agent still talks to its own model provider the way it always did; that part is between you and them. One optional exception: if your claude-bridge holds an Apple push key, Lock Screen updates ride Apple's push service and carry the conversation's title, its phase and tool counts."
+    },
+    {
+      "q": "Does it work without Tailscale?",
+      "a": "It is built around Tailscale: set-up checks your tailnet, and the bridges admit a device signed into the same Tailscale account without a password. A server reachable some other private way (a LAN, another VPN) works with the server's password, but then the privacy claim rests on that route rather than on ours."
     },
     {
       "q": "Which coding agents does it support?",
       "a": "opencode natively, 1.x or 2, with any provider you've configured in it; Claude Code through claude-bridge; and Oh My Pi through omp-bridge. The bridges are open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama."
     },
     {
-      "q": "Is there really a Linux desktop client?",
-      "a": "Yes: a native GTK4/libadwaita app, plus an AppKit app for macOS 26, in the same repository. Arch users install it from the AUR (`paru -S tailscode`); everyone else grabs the release tarball from GitHub. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and the Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
+      "q": "Is there a Mac and a Linux client?",
+      "a": "Yes: a native AppKit app for macOS 26, on the Mac App Store under the same purchase as the iPhone app, and a native GTK4/libadwaita app for Linux. Arch users install it from the AUR (`paru -S tailscode`); everyone else grabs the release tarball from GitHub. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and a Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
+    },
+    {
+      "q": "How does the Lock Screen update when the app is closed?",
+      "a": "Two optional ways. claude-bridge can push Live Activity updates over Apple's push service. And when a turn ends while the app is closed, iOS holds a background request that the server answers only when the turn ends or stops for you (claude-bridge 1.13+, omp-bridge 0.7+, opencode 2), then posts the notification; that wait runs straight over your tailnet, not through Midgar or Apple. Background App Refresh off, or a force-quit, silences it, and Settings says so."
+    },
+    {
+      "q": "What does Pro add?",
+      "a": "Tailscode Pro is a one-time $14.99 unlock for unlimited servers, concurrent Live Activities on iPhone, a supporter badge and the delegate board, a beta that hands routine tasks to a cheaper model and lets a verifier decide. The free app is the complete core forever, with one server."
     },
     {
       "q": "Where do pictures and clips get made?",
       "a": "On a machine of yours running ComfyUI, reached over your tailnet: Qwen-Image or FLUX.2 Klein for pictures, LTX for clips. Tailscode is the brief, the stage and the shelf; the files stay in the machine's own output folder, and nothing leaves your tailnet."
-    },
-    {
-      "q": "How do Live Activities update when the app is closed?",
-      "a": "claude-bridge can push Live Activity updates over APNs, so the Lock Screen keeps ticking — phase, elapsed time, tool counts — even while the app is suspended. Approval requests fire an alert you can act on."
-    },
-    {
-      "q": "What does Pro add?",
-      "a": "Tailscode Pro is a one-time $14.99 unlock for unlimited servers, the delegate board, concurrent Live Activities on iPhone, and a supporter badge. The free app is the complete core — full chat, permissions, attachments, models, forking, themes, analytics — forever, with one server."
     },
     {
       "q": "Is it really open source?",
@@ -161,24 +175,26 @@
   ],
   "screenshotCaptions": {
     "iphone": [
-      "A live turn in the compact chat: thinking and tools are flat lines, and the model and effort show in the composer",
-      "One pill, two decisions: pick the model, slide the effort, swipe through pinned favourites",
-      "It asks before it edits: allow once, always, or deny, right under the diff",
-      "Answer the agent's questions with a tap instead of guessing",
-      "Every agent and machine on one board, with a composer that starts the next chat",
-      "Live plan and quota gauges straight from your own machine",
-      "Delegate: a ladder from your own GPU to the frontier, and nothing applied until a verifier passes",
-      "The repo read from the machine that owns it: branch, drift, diffs"
+      "Approve the risky command — Allow once, always or deny, right under the edit, while the agent waits.",
+      "Every machine, one board — Live turns first, grouped by project, across all your servers.",
+      "Read every diff from your phone — Branch, staged, changed: the real patch, from the machine that owns it.",
+      "When it asks, you answer — A question arrives as a card. Answer with a tap.",
+      "Pick the model. Set the effort. — One pill carries both. Pin pairs and swipe between them.",
+      "Hand off the routine work (beta) — A cheaper model tries first, a verifier decides. Nothing lands until it passes."
     ],
     "ipad": [
       "The workspace: places and servers in the sidebar, every chat beside it, the live turn filling the rest",
-      "An edit waits for approval, and its chat wears NEEDS YOU in the list while it does"
+      "An edit waits for approval with the list in view, and its chat wears NEEDS YOU while it does",
+      "The real diff rises as a sheet over the conversation, read from the machine that owns the repo",
+      "The month in numbers beside the list: every turn priced, totalled across your machines"
     ],
     "desktop": [
-      "Four panes, four sessions: an edit waiting on one, subagents fanning out in another",
-      "The Mac's compact chat: a strip of pictures, a seam, and a rail of links whose plate opens over the rows below"
+      "Four panes, four sessions: an edit waiting on one, subagents fanning out in another, the live count in the title bar",
+      "The Mac in Liquid Glass: every chat in the sidebar, the transcript, the facts row and the model-and-effort pill",
+      "Two machines side by side on the Mac: a question waiting in one pane, a turn running in the other"
     ]
   },
+  "macAppStoreUrl": "https://apps.apple.com/app/id6791660932",
   "ctaLine": "Your agent is already working. Watch it from anywhere.",
-  "pricingNote": "Free and open source under GPL-3.0. Pro unlocks unlimited servers, the delegate board and concurrent Live Activities on iPhone for $14.99, one time, across iPhone and Mac."
+  "pricingNote": "Free and open source under GPL-3.0. Pro unlocks unlimited servers and concurrent Live Activities on iPhone for $14.99, one time, across iPhone and Mac."
 }
