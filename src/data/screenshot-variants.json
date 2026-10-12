@@ -607,35 +607,39 @@
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-01.webp": [
+  "/screenshots/tailscode/phone-lock.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-02.webp": [
+  "/screenshots/tailscode/phone-approval.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-03.webp": [
+  "/screenshots/tailscode/phone-board.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-04.webp": [
+  "/screenshots/tailscode/phone-diff.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-07.webp": [
+  "/screenshots/tailscode/phone-question.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-08.webp": [
+  "/screenshots/tailscode/phone-costs.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-09.webp": [
+  "/screenshots/tailscode/phone-limits.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/suomi-dark-12.webp": [
+  "/screenshots/tailscode/phone-effort.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-delegate.webp": [
     480,
     960
   ],
@@ -648,38 +652,6 @@
     960
   ],
   "/screenshots/tailscode/suomi-dark-15.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-01.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-02.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-03.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-04.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-07.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-08.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-09.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-12.webp": [
     480,
     960
   ],
@@ -700,6 +672,14 @@
     960
   ],
   "/screenshots/tailscode/ipad-ws-approve.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-diff.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-month.webp": [
     480,
     960
   ],
@@ -748,6 +728,10 @@
     960
   ],
   "/screenshots/tailscode/mac-dark-chat.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-split.webp": [
     480,
     960
   ],
