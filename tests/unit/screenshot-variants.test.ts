@@ -42,6 +42,23 @@ describe('screenshot variant manifest', () => {
     expect(missing).toEqual([]);
   });
 
+  it('has a file behind every landing hero image and each of its variants', () => {
+    const landingDir = path.join(process.cwd(), 'src', 'data', 'landing');
+    const missing = fs
+      .readdirSync(landingDir)
+      .filter((name) => name.endsWith('.json'))
+      .flatMap((name) => {
+        const hero = JSON.parse(fs.readFileSync(path.join(landingDir, name), 'utf8')).heroImage as
+          | { src: string }
+          | undefined;
+        if (!hero) return [];
+        return [hero.src, ...(variants[hero.src] ?? []).map((w) => variantSrc(hero.src, w))].filter(
+          (file) => !onDisk(file)
+        );
+      });
+    expect(missing).toEqual([]);
+  });
+
   it('covers every app icon, so no landing page ships a 512px icon at 72px', () => {
     const uncovered = apps
       .filter((a) => a.iconLocal && onDisk(a.iconLocal))

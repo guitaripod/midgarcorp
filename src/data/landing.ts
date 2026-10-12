@@ -103,6 +103,16 @@ export interface Install {
   guideUrl?: string;
 }
 
+/// A pre-composed hero picture (several devices in one transparent image) that
+/// replaces the single-device hero shot; its downscales come from the screenshot
+/// variant manifest like every other committed screenshot.
+export interface HeroImage {
+  src: string;
+  w: number;
+  h: number;
+  alt: string;
+}
+
 export interface LandingContent {
   seoTitle: string;
   metaDescription: string;
@@ -126,6 +136,9 @@ export interface LandingContent {
   hideAbout?: boolean;
   install?: Install;
   macAppStoreUrl?: string;
+  heroImage?: HeroImage;
+  installCta?: string;
+  requires?: string;
 }
 
 export type LandingApp = LandingFacts & { content: LandingContent };
