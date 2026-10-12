@@ -197,7 +197,7 @@ async function generate(app) {
   let rightEdge = tx + tw - 52;
   if (shotKey) {
     try {
-      const shot = app.screenshots[shotKey][0];
+      const shot = app.ogShot ?? app.screenshots[shotKey][0];
       const abs = path.join(root, 'public', shot.src.replace(/^\//, ''));
       const img = await loadShotPng(abs);
       const portrait = shot.h >= shot.w;

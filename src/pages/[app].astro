@@ -43,7 +43,7 @@ const site = 'https://midgarcorp.cc';
 const canonical = `${site}/${app.slug}/`;
 // Bump OG_REV when card artwork changes so social scrapers refetch (the image
 // path is otherwise stable and gets cached hard by unfurlers).
-const OG_REV = '7';
+const OG_REV = '8';
 const ogImage = `/og/${app.slug}.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
@@ -63,6 +63,14 @@ const osMap: Record<string, string> = {
   Linux: 'Linux',
 };
 const operatingSystem = [...new Set(app.platforms.map((p) => osMap[p]).filter(Boolean))].join(', ');
+
+/// The store record's minimum OS belongs to its own platform, so a multi-platform app
+/// (iPhone + Watch + Mac + Linux) must not read "requires iOS, watchOS, macOS, Linux 18.6+".
+const minimumOsName = app.platforms.some((p) => p === 'iPhone' || p === 'iPad')
+  ? 'iOS'
+  : app.platforms.includes('Mac')
+    ? 'macOS'
+    : operatingSystem;
 
 const hasScreenshots = Object.values(app.screenshots).some((shots) => shots.length > 0);
 const heroDevice = primaryDevice(app);
@@ -310,6 +318,7 @@ const sectionPrompt = (cmd: string) => cmd;
               />
             )
           }
+          {c.macAppStoreUrl && <AppStoreBadge href={c.macAppStoreUrl} platform="mac" />}
           {
             isOpenSource && (
               <a
@@ -712,6 +721,7 @@ const sectionPrompt = (cmd: string) => cmd;
                 />
               )
             }
+            {c.macAppStoreUrl && <AppStoreBadge href={c.macAppStoreUrl} platform="mac" />}
             {
               isOpenSource && (
                 <a
@@ -736,7 +746,7 @@ const sectionPrompt = (cmd: string) => cmd;
               <span>
                 v{app.version}
                 {app.minimumOsVersion
-                  ? ` · requires ${operatingSystem} ${app.minimumOsVersion}+`
+                  ? ` · requires ${minimumOsName} ${app.minimumOsVersion}+`
                   : ''}
               </span>
             )
@@ -750,6 +760,18 @@ const sectionPrompt = (cmd: string) => cmd;
                 class="hover:text-paper-green dark:hover:text-term-green"
               >
                 App Store ↗
+              </a>
+            )
+          }
+          {
+            c.macAppStoreUrl && (
+              <a
+                href={c.macAppStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-paper-green dark:hover:text-term-green"
+              >
+                Mac App Store ↗
               </a>
             )
           }

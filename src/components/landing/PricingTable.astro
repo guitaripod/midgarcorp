@@ -11,6 +11,7 @@ const plans = [
   { plan: pricing.free, premium: false },
   { plan: pricing.premium, premium: true },
 ];
+const tierColumns = pricing.tiers.length === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-3';
 ---
 
 <div style={`--accent:${accent}`}>
@@ -58,7 +59,7 @@ const plans = [
   </div>
 
   <ul
-    class="mt-4 grid gap-px overflow-hidden rounded-sm border border-paper-border bg-paper-border dark:border-term-border dark:bg-term-border sm:grid-cols-3"
+    class={`mt-4 grid gap-px overflow-hidden rounded-sm border border-paper-border bg-paper-border dark:border-term-border dark:bg-term-border ${tierColumns}`}
   >
     {
       pricing.tiers.map((tier) => (

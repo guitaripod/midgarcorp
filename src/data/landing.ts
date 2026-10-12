@@ -40,6 +40,7 @@ export interface LandingFacts {
   keywords?: string;
   platforms: string[];
   screenshots: Record<string, Screenshot[]>;
+  ogShot?: Screenshot;
   openSource?: boolean;
   githubUrl?: string;
   latestReleaseUrl?: string;
@@ -124,6 +125,7 @@ export interface LandingContent {
   bannerDevice?: string;
   hideAbout?: boolean;
   install?: Install;
+  macAppStoreUrl?: string;
 }
 
 export type LandingApp = LandingFacts & { content: LandingContent };

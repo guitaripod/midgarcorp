@@ -9,6 +9,8 @@ export interface Props {
 const { href, platform = 'ios', comingSoon = false, class: className = '' } = Astro.props;
 
 const bottomLine = platform === 'mac' ? 'Mac App Store' : 'App Store';
+/// "Mac App Store" is four characters longer than "App Store", so it needs a smaller size to stay inside the badge.
+const bottomFontSize = platform === 'mac' ? 16 : 20;
 const topLine = comingSoon ? 'Coming soon to the' : 'Download on the';
 const label = comingSoon ? `Coming soon to the ${bottomLine}` : `Download on the ${bottomLine}`;
 
@@ -56,7 +58,7 @@ const wrapperProps = comingSoon
       y="40"
       fill="#fff"
       font-family="system-ui, -apple-system, Helvetica, Arial, sans-serif"
-      font-size="20"
+      font-size={bottomFontSize}
       font-weight="600"
       letter-spacing="-0.3">{bottomLine}</text
     >

@@ -1,137 +1,168 @@
 {
-  "seoTitle": "Flaccy — FLAC Player & Music Library for iPhone and Mac",
-  "metaDescription": "A beautiful player for the music you own. Import FLAC, ALAC, AAC, or MP3 and get a fast library with gapless playback, synced lyrics, Last.fm scrobbling, a standalone Apple Watch app, and native Mac and Linux apps — no streaming subscription, no account.",
+  "seoTitle": "Flaccy — Lossless FLAC Player for iPhone, Apple Watch and Mac",
+  "metaDescription": "Play the music you own at full quality. Flaccy handles FLAC, ALAC, WAV, AIFF, MP3 and AAC with gapless playback, synced lyrics, Last.fm scrobbling and a standalone Apple Watch app. No account, no ads, nothing uploaded. Free to try.",
   "keywords": [
     "flac player iphone",
     "lossless music player ios",
+    "hi-res music player iphone",
     "local music player iphone",
-    "gapless playback app",
+    "gapless music player",
+    "alac player ios",
     "last.fm scrobbler iphone",
     "offline music player no subscription",
-    "alac player ios",
-    "music library app iphone",
     "synced lyrics music player",
-    "apple watch music player",
+    "apple watch offline music player",
     "flac player mac",
-    "lossless music player macos",
-    "local music player mac"
+    "lossless music player macos"
   ],
-  "heroHeadline": "A beautiful home for the music you own",
-  "heroSubhead": "Drop in your FLAC, ALAC, AAC, or MP3 files and Flaccy turns them into a fast, gorgeous library — gapless playback, synced lyrics, and Last.fm scrobbling on iPhone, Apple Watch, Mac, and Linux. No streaming subscription, no upload, no account.",
+  "heroHeadline": "Play the music you own, at full quality",
+  "heroSubhead": "Flaccy plays your FLAC, ALAC, WAV, AIFF, MP3 and AAC files exactly as they were mastered — gapless, with synced lyrics, Last.fm scrobbling and an Apple Watch app that works without your phone. No account, no ads, and your files never leave your device.",
   "accentColor": "#FF4D6D",
   "highlights": [
-    "Import via USB or the Files app — messy folders are identified and cleaned up automatically",
-    "Gapless playback that honors your albums, with a queue that survives relaunches",
-    "Every play scrobbled to Last.fm — even offline, with automatic retry",
-    "A native Liquid Glass Mac app — point it at a folder and your files appear instantly"
+    "Codec, bit depth and sample rate on every track, from CD quality to Hi-Res",
+    "Gapless playback, synced lyrics and a queue that survives relaunches",
+    "Every play scrobbled to Last.fm, even offline",
+    "A standalone Apple Watch app, a native Mac app and a free Linux app"
   ],
   "features": [
     {
-      "title": "Your Library, Organized",
-      "body": "Albums, artists, songs, and playlists with search, sorting, and stunning artwork. Scene releases and messy folder names are identified and cleaned up automatically on import, and the first scan reports every stage with live counts instead of leaving you at a spinner.",
+      "title": "See exactly what you're hearing",
+      "body": "Every album and track wears its codec, bit depth and sample rate, from AAC 16/44.1 to FLAC 24/96, and a Lossless filter shows what is worth a good pair of headphones.",
+      "glyph": "♯"
+    },
+    {
+      "title": "Your library, organized",
+      "body": "Bring music in from the Files app, a USB drive, a NAS or any folder, and Flaccy keeps your folder structure. Messy filenames and scene releases are cleaned up automatically with AI cleanup (included in the trial and in Lifetime), duplicate songs are listed once, and you can swap any cover for your own.",
       "glyph": "▤"
     },
     {
-      "title": "Gapless, As Intended",
-      "body": "Albums play the way they were mastered — no gaps, no hiccups between tracks. Your queue persists across launches, so the music picks up exactly where you left it.",
+      "title": "Gapless, as albums were made",
+      "body": "Albums flow track to track with zero silence — exact for FLAC, ALAC, WAV and AIFF. The queue survives relaunches, so the music picks up where you left it.",
       "glyph": "∞"
     },
     {
-      "title": "Made for Listening",
-      "body": "Synced lyrics with tap-to-seek and a full-window Now Playing screen — on Mac, album art, lyrics, and your queue sit side by side over an ambient, palette-tinted backdrop. AirPlay, a sleep timer, Lock Screen and Dynamic Island controls, and full light and dark mode throughout.",
+      "title": "Lyrics that follow every word",
+      "body": "Synced lyrics with tap-to-seek, from your own .lrc files or looked up automatically. Plus AirPlay, a sleep timer, Lock Screen and Dynamic Island controls, and a Now Playing screen worth looking at, in light or dark.",
       "glyph": "♪"
     },
     {
-      "title": "Scrobble Everything",
-      "body": "Sign in with Last.fm and every play is scrobbled — even offline, with automatic retry. Loved tracks, listening charts, and artist bios matched to your library.",
+      "title": "Scrobble everything",
+      "body": "Sign in with Last.fm and every play is scrobbled, even offline, with automatic retry. Listening charts, artist bios, a wantlist for the records you're hunting and smart playlists made from your own listening.",
       "glyph": "↻"
     },
     {
       "title": "Year in Music",
-      "body": "Your listening year as shareable story cards and a poster — top artists, albums, and the numbers behind them, rendered beautifully from your own plays.",
+      "body": "Your listening year as shareable story cards and a poster: top artists, albums and the numbers behind them, rendered from your own plays.",
       "glyph": "✶"
     },
     {
-      "title": "Honest About Audio",
-      "body": "The built-in Listening Guide explains what actually reaches your ears — Bluetooth codecs, why lossless can't reach AirPods, and when FLAC is worth it. No snake oil.",
-      "glyph": "◈"
-    },
-    {
       "title": "Phone-free on Apple Watch",
-      "body": "Sync albums to your watch and play them offline — gapless, shuffle, repeat — no iPhone in your pocket.",
+      "body": "Sync albums to your wrist and play them offline: gapless, shuffle, repeat and AirPods controls, with storage-smart sync that knows what fits. No iPhone in your pocket.",
       "glyph": "◔"
     },
     {
-      "title": "See what you're playing",
-      "body": "Codec, bit depth, and sample rate on every track — honesty down to the file.",
-      "glyph": "♯"
+      "title": "Honest about audio",
+      "body": "The built-in Listening Guide explains what actually reaches your ears: Bluetooth codecs, why lossless can't reach AirPods, and when FLAC is worth it. No snake oil.",
+      "glyph": "◈"
+    },
+    {
+      "title": "Private by design",
+      "body": "No account, no ads and nothing uploaded: your files stay on your device. AI cleanup, when you use it, sends file names and tags, never audio, and Last.fm is entirely optional.",
+      "glyph": "⚿"
+    },
+    {
+      "title": "Made for iPhone Duo",
+      "body": "On the inner display the library sits beside Now Playing, lyrics and artwork take their own panes, and every screen ends at the fold. On the outer display it is a regular, fast iPhone player.",
+      "glyph": "▯"
     },
     {
       "title": "Flaccy for Mac",
-      "body": "A native Liquid Glass Mac app, built for the desk, that wears the color of your music — the whole window takes on an ambient palette pulled from the album you're playing. Watch a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, browse keyboard-first, and export full-resolution Year in Music posters. On the Mac App Store now.",
+      "body": "A native Liquid Glass Mac app that wears the colour of your music. Watch a folder and new files appear instantly, control playback from the menu bar player and your media keys, sort a multi-column song list, browse keyboard-first and export full-resolution Year in Music posters. Available on the Mac App Store.",
       "glyph": "⌘"
     },
     {
       "title": "Flaccy for Linux",
-      "body": "A native GTK4 app for the penguin at your desk, and one of the best-looking music players on Linux: an adaptive shell reflows from a phone-width drawer to a full desktop layout, and an adaptive theme engine tints the whole app with the dominant color of whatever's playing — ambient gradient backdrops, glass cards, a glowing now-playing pulse, and a full-window Now Playing that slides synced lyrics and your queue in beside the cover. Gapless GStreamer playback, media keys via MPRIS, Last.fm scrobbling, tap-to-seek synced lyrics, and listening stats, in light or dark. Free and open (1.8.0). Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
+      "body": "A native GTK4 app that tints itself with the colour of whatever is playing, with gapless GStreamer playback, MPRIS media keys, Last.fm scrobbling, synced lyrics and listening stats, in light or dark. Free and open source. Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
       "glyph": "🐧"
     }
   ],
   "howItWorks": [
     {
       "step": "Import",
-      "body": "Copy music over USB or pick files in the Files app. Flaccy shows you exactly what it is doing while it indexes — files found, tags read, albums built — and identifies and cleans up messy folder names and scene releases automatically. After that it opens straight into your library."
+      "body": "Pick files or whole folders in the Files app, copy over USB, or connect a NAS. Flaccy shows what it is doing while it indexes, then opens straight into your library. Try it right away with the free sample album."
     },
     {
       "step": "Listen",
-      "body": "Browse albums, artists, songs, and playlists, then play gaplessly with synced lyrics, ambient artwork, AirPlay, and full playback controls on the Lock Screen and in the Dynamic Island."
+      "body": "Browse albums, artists, songs and playlists, then play gaplessly with synced lyrics, AirPlay and full controls on the Lock Screen and in the Dynamic Island."
     },
     {
       "step": "Scrobble",
-      "body": "Sign in with Last.fm once and every play is scrobbled — even offline. Watch your charts grow and unwrap your Year in Music."
+      "body": "Sign in with Last.fm once and every play is counted, even offline. Watch your charts grow and unwrap your Year in Music."
     }
   ],
   "faq": [
     {
       "q": "What audio formats does Flaccy play?",
-      "a": "FLAC, ALAC, AAC, M4A, MP3, WAV, AIFF, and CAF — with gapless playback across all of them."
+      "a": "FLAC, ALAC, WAV, AIFF, MP3, AAC, M4A and CAF. Playback is gapless for all of them, but only lossless files (FLAC, ALAC, WAV, AIFF) are sample-exact at the seams: MP3 and AAC carry encoder padding that iOS does not strip, so a lossy rip of a segued album can click where the lossless one does not. DSD is not supported."
     },
     {
-      "q": "Do I need a streaming subscription or an account?",
-      "a": "No. Flaccy plays files you already own, stored on your iPhone. There is no upload, no account, and no subscription required. A Last.fm account is optional, only for scrobbling."
+      "q": "Do I need an account or a streaming subscription?",
+      "a": "No. Flaccy plays files you already own. There is no account, no upload and no ads. A Last.fm account is optional, only for scrobbling. AI cleanup sends file names and tags, never audio, to identify messy albums."
+    },
+    {
+      "q": "How much does Flaccy cost?",
+      "a": "Free to download, with a 7-day free trial that starts the first time you play your own music. After that, keep everything with a one-time Lifetime purchase ($12.99), or choose the yearly plan ($7.99 a year, renews until you cancel). The iPhone app (with Apple Watch) and the Mac app are separate purchases. Flaccy for Linux is free and open source."
     },
     {
       "q": "How do I get my music into Flaccy?",
-      "a": "Two ways: copy files over USB from a computer, or import them through the Files app. Messy folder names and scene releases are identified and cleaned up automatically."
+      "a": "Pick files or whole folders in the Files app, copy them over USB, or connect a NAS through Files and import from there. Folders keep their structure, so compilations and multi-disc albums stay together. Messy folder names and scene releases are identified and cleaned up automatically."
     },
     {
       "q": "Does Flaccy scrobble to Last.fm?",
-      "a": "Yes. Sign in with your Last.fm account and every play is scrobbled — even when you're offline, with automatic retry once you're back online. You also get loved tracks, listening charts, and artist bios matched to your library."
+      "a": "Yes. Sign in with your Last.fm account and every play is scrobbled, even offline, with automatic retry once you're back online. You also get loved tracks, listening charts and artist bios matched to your library."
     },
     {
       "q": "Is there an Apple Watch app?",
-      "a": "Yes — a true standalone player. Sync albums from your iPhone, then play them offline from your wrist with gapless playback, shuffle, repeat, and AirPods controls. No iPhone required."
+      "a": "Yes, a true standalone player. Sync albums from your iPhone, then play them offline from your wrist with gapless playback, shuffle, repeat and AirPods controls. No iPhone required."
     },
     {
       "q": "Is lossless audio worth it on iPhone?",
-      "a": "It depends on how you listen — and Flaccy is honest about it. The built-in Listening Guide explains Bluetooth codecs, why lossless can't reach AirPods, when FLAC is genuinely worth it, and what blind tests really show."
+      "a": "It depends on how you listen, and Flaccy is honest about it. The built-in Listening Guide explains Bluetooth codecs, why lossless can't reach AirPods, when FLAC is genuinely worth it and what blind tests really show."
+    },
+    {
+      "q": "Does it work on iPhone Duo?",
+      "a": "Yes. On the inner display the library sits beside Now Playing, lyrics and artwork get their own panes, and layouts end at the fold. On the outer display it behaves like a regular iPhone."
     },
     {
       "q": "Is there a Mac app?",
-      "a": "Yes — Flaccy for Mac is a native Liquid Glass app for macOS, on the Mac App Store now, and the whole window takes on an ambient color pulled from the album you're playing. Point it at a folder and new files appear instantly, control playback from the menu bar mini player and your media keys, sort a multi-column song list, and export full-resolution Year in Music posters. It's a separate one-time purchase from the iOS app."
+      "a": "Yes. Flaccy for Mac is a native Liquid Glass app on the Mac App Store. Point it at a folder and new files appear instantly, control playback from the menu bar player and your media keys, sort a multi-column song list and export full-resolution Year in Music posters. It is a separate purchase from the iOS app."
     },
     {
       "q": "Is there a Linux app?",
-      "a": "Yes — Flaccy for Linux is a native GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, and synced lyrics. The window reflows from a narrow drawer layout to a full desktop shell; full-window Now Playing sets synced lyrics and your queue beside the cover; and the adaptive theme engine retints the whole app with the color of whatever you're playing (or pick from seven curated palettes). It is free and open (1.8.0): install with a single command (see the Flaccy for Linux section) or from the AUR with yay -S flaccy-bin."
+      "a": "Yes. Flaccy for Linux is a free, open source GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling and synced lyrics, with an adaptive theme that retints the whole app with the colour of whatever you're playing. Install it with the one-line command in the Flaccy for Linux section or from the AUR with yay -S flaccy-bin."
     }
   ],
   "screenshotCaptions": {
+    "iphone": [
+      "Your whole collection in one place, every file wearing its quality badge.",
+      "Now Playing with the codec, bit depth and sample rate in plain sight.",
+      "Synced lyrics that follow the song. Tap any line to jump to it.",
+      "Smart playlists built from your own listening: Heavy Rotation, Crate Dig, On Repeat, Rediscover.",
+      "Last.fm scrobbling with offline retry, and charts for every period.",
+      "Year in Music: story cards and a poster of your listening year.",
+      "Apple Watch: sync albums and play them offline, no iPhone needed.",
+      "A queue that survives relaunches, reordered with a drag.",
+      "The wantlist: new releases and the albums you're hunting.",
+      "Light or dark, following your system or your choice."
+    ],
     "mac": [
-      "Now Playing on Mac: artwork, synced lyrics, and your queue side by side — bring in any one, two, or all three, in light or dark.",
-      "Your albums in a fast, resizable grid — the whole window tinted by what's playing.",
-      "Artist pages with every album, plus play, shuffle, and a station a click away.",
-      "A multi-column song list — sort by codec, quality, plays, or date added.",
-      "Playlists that mix your whole library — play or shuffle in a click."
+      "Your whole collection in a native Liquid Glass library, every file wearing its quality badge.",
+      "Now Playing: artwork, synced lyrics and the queue side by side.",
+      "Up Next always at hand, in the inspector beside your library.",
+      "A multi-column song list with codec, quality, plays and loved, sorted your way.",
+      "Last.fm scrobbling with offline retry, and charts for every period.",
+      "Year in Music: story cards and a poster you can export at full resolution.",
+      "Light or dark, following your system or your choice."
     ],
     "linux": [
       "Your whole library, tinted live by the album that's playing — Made For You shelves and gapless playback.",
@@ -143,11 +174,49 @@
       "The queue — history, now playing, and a reorderable Up Next — glowing in the current accent.",
       "Synced lyrics that follow the music, the live line lit in your accent. Click any line to seek.",
       "A year of listening: streak heatmap, listening clock, and top charts, drawn in your color.",
-      "The wantlist tracks albums you’re hunting — gaps, upgrades, and fresh discoveries.",
+      "The wantlist tracks albums you're hunting — gaps, upgrades, and fresh discoveries.",
       "Light or dark — plus an accent that adapts to your music, or seven curated themes to choose from."
     ]
   },
   "ctaLine": "Your music deserves a better player.",
-  "pricingNote": "Free to try with a 7-day free trial, then a $9.99 one-time purchase — no subscription, no account, no upload. The iOS app (with Apple Watch) and the Mac app are separate purchases, $9.99 each. Flaccy for Mac is on the Mac App Store now. Flaccy for Linux is free and open.",
-  "lifestyle": []
+  "pricingNote": "Free to try for 7 days, then a one-time Lifetime purchase or a yearly plan. No account, no ads, nothing uploaded. The iPhone app (with Apple Watch) and the Mac app are separate purchases; Flaccy for Linux is free and open source.",
+  "pricing": {
+    "heading": "Free to try. Own it once.",
+    "free": {
+      "title": "Free trial",
+      "price": "7 days",
+      "items": [
+        "Everything unlocked, counted from the first time you play your own music",
+        "A free sample album to hear Flaccy in seconds",
+        "No account, no ads"
+      ]
+    },
+    "premium": {
+      "title": "Flaccy Lifetime",
+      "price": "$12.99",
+      "items": [
+        "Your library, gapless playback, synced lyrics and Last.fm scrobbling",
+        "AI cleanup, Year in Music, smart playlists and the wantlist",
+        "Apple Watch app included on iPhone; one purchase, no subscription"
+      ]
+    },
+    "tiers": [
+      {
+        "name": "Lifetime",
+        "price": "$12.99",
+        "amount": 12.99,
+        "note": "One payment"
+      },
+      {
+        "name": "Yearly",
+        "price": "$7.99",
+        "amount": 7.99,
+        "period": "year",
+        "note": "Renews until canceled"
+      }
+    ],
+    "footnote": "US prices shown; your local price appears in the App Store. The iPhone app (with Apple Watch) and the Mac app are separate purchases. Flaccy for Linux is free and open source."
+  },
+  "lifestyle": [],
+  "macAppStoreUrl": "https://apps.apple.com/us/app/id6789594504"
 }
