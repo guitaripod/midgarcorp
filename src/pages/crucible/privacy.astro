@@ -1,0 +1,110 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const accent = '#F97316';
+const seoTitle = 'Crucible Privacy Policy';
+const metaDescription =
+  'Crucible has no analytics, no ads, no tracking and no accounts. It talks only to plex.tv and the Plex server you choose; Crucible Pro purchases are checked through RevenueCat.';
+
+const sections = [
+  {
+    title: 'What Crucible is',
+    body: 'Crucible is a Plex client for iPhone and Apple TV made by Midgar Oy. It runs on your device and talks to two things only: plex.tv, to sign you in and find your servers, and the Plex Media Server you choose.',
+  },
+  {
+    title: 'What we collect',
+    body: 'Nothing. Midgar Oy runs no server for Crucible, receives none of your data and has no accounts of its own. There are no ads, no analytics and no tracking SDKs.',
+  },
+  {
+    title: 'Your Plex account',
+    body: 'You sign in with Plex’s own sign-in flow. Your Plex token is stored in the Keychain on your device and sent only to plex.tv and to your own servers. Plex’s privacy policy applies to your Plex account.',
+  },
+  {
+    title: 'Your library and viewing history',
+    body: 'Titles, artwork, watch history and the statistics built from it come from your Plex server and stay on your device. A Year in Review poster is drawn on your device and leaves it only if you share it.',
+  },
+  {
+    title: 'Downloads',
+    body: 'Offline downloads are saved on your iPhone and are not sent anywhere.',
+  },
+  {
+    title: 'Purchases',
+    body: 'Crucible Pro is sold through the App Store. Apple processes the payment; we never see your payment details or your Apple Account. We use RevenueCat to check and restore your Crucible Pro purchase: RevenueCat receives a random app user ID and your purchase history for this app, and handles it under its own privacy policy at https://www.revenuecat.com/privacy.',
+  },
+  {
+    title: 'Diagnostics',
+    body: 'A diagnostic log is kept on your device. It leaves your device only if you export and share it yourself.',
+  },
+  {
+    title: 'Children',
+    body: 'Crucible is not directed at children and does not knowingly collect information from anyone.',
+  },
+  {
+    title: 'Changes and contact',
+    body: 'If this policy changes, the new version appears here with its date. Questions go to https://github.com/guitaripod/Crucible/issues. Last updated 12 October 2026.',
+  },
+];
+---
+
+<BaseLayout title={seoTitle} description={metaDescription}>
+  <div style={`--accent:${accent}`}>
+    <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/crucible" class="hover:text-paper-green dark:hover:text-term-green">
+            crucible
+          </a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">privacy</li>
+      </ol>
+    </nav>
+
+    <header class="py-10 sm:py-14">
+      <p class="prompt-line mb-5">cat crucible/PRIVACY.md</p>
+      <h1
+        class="mb-3 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+      >
+        Crucible Privacy Policy
+      </h1>
+      <p class="text-xs text-paper-faint dark:text-term-faint">Effective October 12, 2026</p>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
+        The short version: <span class="font-semibold text-paper-text dark:text-term-text"
+          >Crucible has no accounts of its own and no tracking.</span
+        > It talks only to plex.tv and your Plex server, and RevenueCat checks your Crucible Pro purchase.
+      </p>
+    </header>
+
+    <section class="border-t border-paper-border pb-12 pt-10 dark:border-term-border">
+      <div class="grid max-w-3xl gap-5">
+        {
+          sections.map((s) => (
+            <div class="term-frame p-5 sm:p-6">
+              <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
+                {s.title}
+              </h2>
+              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-8 text-xs text-paper-faint dark:text-term-faint">
+        <a href="/crucible" class="hover:text-paper-green dark:hover:text-term-green"
+          >← back to Crucible</a
+        >
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: var(--accent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+</style>

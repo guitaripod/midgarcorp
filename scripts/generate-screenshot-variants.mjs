@@ -54,6 +54,14 @@ async function main() {
     }
   }
 
+  const landingDir = path.join(ROOT, 'src', 'data', 'landing');
+  for (const file of fs.readdirSync(landingDir).filter((name) => name.endsWith('.json'))) {
+    const hero = JSON.parse(fs.readFileSync(path.join(landingDir, file), 'utf8')).heroImage;
+    if (!hero || !hero.src.endsWith('.webp')) continue;
+    const widths = await writeVariants(hero.src, hero.w, WIDTHS, file.replace(/\.json$/, ''));
+    if (widths.length) manifest[hero.src] = widths;
+  }
+
   for (const app of facts.apps) {
     const icon = app.iconLocal;
     if (!icon || !icon.endsWith('.webp')) continue;

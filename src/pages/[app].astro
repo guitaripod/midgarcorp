@@ -43,7 +43,7 @@ const site = 'https://midgarcorp.cc';
 const canonical = `${site}/${app.slug}/`;
 // Bump OG_REV when card artwork changes so social scrapers refetch (the image
 // path is otherwise stable and gets cached hard by unfurlers).
-const OG_REV = '8';
+const OG_REV = '9';
 const ogImage = `/og/${app.slug}.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
@@ -96,6 +96,15 @@ const HERO_FRAME: Record<string, { class: string; heights: [number, number] }> =
   iphone: { class: 'h-[420px] sm:h-[500px]', heights: [420, 500] },
   ipad: { class: 'h-[400px] sm:h-[470px]', heights: [400, 470] },
 };
+const heroImage = c.heroImage;
+const heroImageSrcset = heroImage
+  ? [
+      ...((screenshotVariants as Record<string, number[]>)[heroImage.src] ?? []).map(
+        (wide) => `${screenshotUrl(heroImage.src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`
+      ),
+      `${screenshotUrl(heroImage.src)} ${heroImage.w}w`,
+    ].join(', ')
+  : undefined;
 const heroFrame = HERO_FRAME[heroDevice] ?? {
   class: 'h-[230px] sm:h-[300px]',
   heights: [230, 300] as [number, number],
@@ -118,6 +127,7 @@ const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
 const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : undefined);
 
 const privacyOverrides: Record<string, string> = {
+  crucible: 'https://midgarcorp.cc/crucible/privacy',
   embr: 'https://embr.guitaripod.workers.dev/legal/privacy',
   solarbeam: 'https://midgarcorp.cc/solarbeam/privacy',
   tailscode: 'https://midgarcorp.cc/tailscode/privacy',
@@ -266,7 +276,10 @@ const sectionPrompt = (cmd: string) => cmd;
 
     <!-- Hero -->
     <header
-      class="flex flex-col gap-8 py-8 sm:py-14 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-7"
+      class:list={[
+        'flex flex-col gap-8 py-8 sm:py-14 lg:grid lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-7',
+        heroImage ? 'lg:grid-cols-[0.9fr_1.1fr]' : 'lg:grid-cols-[1.05fr_0.95fr]',
+      ]}
     >
       <div class="lg:col-start-1 lg:row-start-1">
         <p class="prompt-line mb-5 hidden sm:block">
@@ -338,7 +351,7 @@ const sectionPrompt = (cmd: string) => cmd;
                 href="#install"
                 class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
               >
-                Put it on your iPhone ↓
+                {c.installCta ?? 'Put it on your iPhone ↓'}
               </a>
             )
           }
@@ -357,7 +370,30 @@ const sectionPrompt = (cmd: string) => cmd;
 
       <!-- hero screenshot -->
       {
-        (c.video || heroShot) && (
+        heroImage && (
+          <div class="relative flex justify-center lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:items-center lg:justify-end">
+            <div
+              class="pointer-events-none absolute inset-0 -z-10"
+              style="background:radial-gradient(closest-side, color-mix(in srgb, var(--accent) 20%, transparent), transparent)"
+              aria-hidden="true"
+            />
+            <img
+              src={screenshotUrl(heroImage.src)}
+              srcset={heroImageSrcset}
+              sizes="(min-width: 1024px) 520px, 100vw"
+              width={heroImage.w}
+              height={heroImage.h}
+              alt={heroImage.alt}
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              class="block h-auto w-full max-w-[560px] lg:max-w-none"
+            />
+          </div>
+        )
+      }
+      {
+        !heroImage && (c.video || heroShot) && (
           <div class="flex justify-center lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:items-center lg:justify-end">
             <div class={`device-glow ${heroHeightClass}`} style={`--accent:${accent}`}>
               {c.video ? (
@@ -745,9 +781,11 @@ const sectionPrompt = (cmd: string) => cmd;
             app.version && (
               <span>
                 v{app.version}
-                {app.minimumOsVersion
-                  ? ` · requires ${minimumOsName} ${app.minimumOsVersion}+`
-                  : ''}
+                {c.requires
+                  ? ` · requires ${c.requires}`
+                  : app.minimumOsVersion
+                    ? ` · requires ${minimumOsName} ${app.minimumOsVersion}+`
+                    : ''}
               </span>
             )
           }
