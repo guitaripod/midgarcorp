@@ -43,7 +43,7 @@ const site = 'https://midgarcorp.cc';
 const canonical = `${site}/${app.slug}/`;
 // Bump OG_REV when card artwork changes so social scrapers refetch (the image
 // path is otherwise stable and gets cached hard by unfurlers).
-const OG_REV = '9';
+const OG_REV = '10';
 const ogImage = `/og/${app.slug}.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
@@ -655,52 +655,53 @@ const sectionPrompt = (cmd: string) => cmd;
     {c.webbLive && <WebbLive accent={accent} />}
 
     <!-- How it works -->
-    <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-      <p class="prompt-line mb-3">{sectionPrompt(`man ${app.slug}`)}</p>
-      <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        How <span class="accent-text">{app.shortName}</span> works
-      </h2>
-      <ol class="grid gap-5 sm:grid-cols-3">
-        {
-          c.howItWorks.map((step, i) => (
-            <li class="term-frame relative flex flex-col gap-2 p-5">
-              <span
-                class="accent-text font-mono text-sm font-bold"
-                aria-hidden="true"
-              >{`0${i + 1}`}</span>
-              <h3 class="text-base font-bold text-paper-text dark:text-term-text">{step.step}</h3>
-              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-                {step.body}
-              </p>
-            </li>
-          ))
-        }
-      </ol>
-    </section>
+    {
+      c.howItWorks?.length ? (
+        <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+          <p class="prompt-line mb-3">{sectionPrompt(`man ${app.slug}`)}</p>
+          <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+            How <span class="accent-text">{app.shortName}</span> works
+          </h2>
+          <ol class="grid gap-5 sm:grid-cols-3">
+            {c.howItWorks.map((step, i) => (
+              <li class="term-frame relative flex flex-col gap-2 p-5">
+                <span
+                  class="accent-text font-mono text-sm font-bold"
+                  aria-hidden="true"
+                >{`0${i + 1}`}</span>
+                <h3 class="text-base font-bold text-paper-text dark:text-term-text">{step.step}</h3>
+                <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                  {step.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : null
+    }
 
     <!-- About (full store description) -->
-    <section
-      class:list={[
-        'border-t border-paper-border py-12 dark:border-term-border sm:py-16',
-        { hidden: c.hideAbout },
-      ]}
-    >
-      <p class="prompt-line mb-3">{sectionPrompt(`less ${app.slug}/README`)}</p>
-      <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        About {app.shortName}
-      </h2>
-      <div class="max-w-2xl space-y-3 font-sans">
-        {
-          descBlocks.map(({ line, isHeading }) =>
-            isHeading ? (
-              <h3 class="accent-text pt-3 text-xs font-bold uppercase tracking-[0.16em]">{line}</h3>
-            ) : (
-              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{line}</p>
-            )
-          )
-        }
-      </div>
-    </section>
+    {
+      !c.hideAbout ? (
+        <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
+          <p class="prompt-line mb-3">{sectionPrompt(`less ${app.slug}/README`)}</p>
+          <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+            About {app.shortName}
+          </h2>
+          <div class="max-w-2xl space-y-3 font-sans">
+            {descBlocks.map(({ line, isHeading }) =>
+              isHeading ? (
+                <h3 class="accent-text pt-3 text-xs font-bold uppercase tracking-[0.16em]">
+                  {line}
+                </h3>
+              ) : (
+                <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{line}</p>
+              )
+            )}
+          </div>
+        </section>
+      ) : null
+    }
 
     <!-- FAQ -->
     <section

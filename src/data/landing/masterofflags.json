@@ -1,138 +1,155 @@
 {
-  "seoTitle": "Master of Flags — Free Flag Quiz for iPhone, iPad and Mac",
-  "metaDescription": "Learn every country flag and capital with a no-ads, no-subscription quiz on iPhone, iPad and Mac. Daily Challenge, streaks, capitals mode and a 250-flag encyclopedia. Free forever — start today.",
+  "seoTitle": "Master of Flags: Free Flag Quiz for iPhone, Mac and Apple TV",
+  "metaDescription": "A free flag and capitals quiz with no ads and no subscription. Daily Challenge, streaks, a 250-flag encyclopedia, Apple Watch and Couch Mode on Apple TV.",
   "accentColor": "#EF4444",
   "keywords": [
     "flag quiz app",
     "learn country flags",
-    "world geography quiz",
-    "flag game no ads",
-    "country flag trivia game",
-    "daily flag challenge",
     "world capitals quiz",
+    "geography quiz app",
+    "flag game no ads",
+    "daily flag challenge",
     "memorize country flags",
-    "geography study app for students",
-    "flag quiz for mac"
+    "flag quiz for mac",
+    "flag quiz apple tv",
+    "spaced repetition flags"
   ],
   "heroHeadline": "Learn every flag on Earth",
-  "heroSubhead": "A geography quiz that respects you: no ads, no subscription, no account. Flags and capitals across all six regions, free forever, on iPhone, iPad and Mac. If you want more, Pro is one purchase you own for life — on every device you own.",
+  "heroSubhead": "A flag and capitals quiz that respects you: no ads, no subscription, no account. A wrong answer shows the right flag, its capital and what to look for. Free on iPhone, iPad, Mac, Apple TV and Apple Watch.",
   "highlights": [
-    "No ads. No subscription. No account.",
-    "iPhone, iPad and Mac — one purchase covers all three",
-    "250 flags and territories, with capitals"
+    "No ads, no subscription, no account",
+    "Wrong answers teach the right flag, its capital and what to look for",
+    "A ten-question Daily Challenge with a streak that forgives",
+    "One optional Pro purchase covers iPhone, iPad, Mac and Apple TV"
   ],
   "features": [
     {
-      "title": "Flags and capitals",
-      "body": "Two ways to play: name the flag, or match the capital. Europe, Asia, Africa, the Americas, Oceania and the whole world. Every region and both modes stay free.",
+      "title": "Wrong answers teach",
+      "body": "Miss a flag and the tiles show the right one, its capital and what to look for. Right answers move on by themselves, and nothing ever blocks the next flag.",
       "glyph": "◈"
     },
     {
-      "title": "Now on the Mac",
-      "body": "A real Mac app, not a phone app in a box: a resizable window, a proper sidebar and menu bar, and answers on the number keys so both hands stay on the keyboard. Everything works offline.",
+      "title": "Flags and capitals, six regions",
+      "body": "Name the flag or match the capital across Europe, Asia, Africa, the Americas, Oceania and the whole world. Every region and both modes are free.",
       "glyph": "▣"
     },
     {
-      "title": "Daily Challenge",
-      "body": "Ten questions, once a day, the same set for everyone. Shareable results, and an archive of every day you have played.",
+      "title": "A Daily Challenge with a fair streak",
+      "body": "Ten flags, once a day, the same set for everyone, with a result you can share as a picture. Seven of ten keeps your streak, freezes cover a skipped day and a 48-hour repair window forgives a broken run.",
       "glyph": "◉"
     },
     {
-      "title": "Streaks that forgive",
-      "body": "Build a daily streak. Streak freezes mean one busy day won't erase your run.",
-      "glyph": "✦"
-    },
-    {
-      "title": "Flag Encyclopedia",
-      "body": "Browse roughly 250 flags and territories with capitals, country facts and the story behind each flag. Free to read, anytime.",
+      "title": "Learn, the flag encyclopedia",
+      "body": "About 250 flags and territories with capitals, facts and the story behind each flag. Search by nickname or native name, so Holland and Deutschland both work, and look-alike flags are one tap away.",
       "glyph": "⬡"
     },
     {
+      "title": "Every Apple screen",
+      "body": "A real Mac app with a sidebar, menu bar and keyboard shortcuts. The full game on Apple TV, with Couch Mode for two to four players. Flash questions and your Daily streak on Apple Watch, and widgets for the Home Screen, Lock Screen and StandBy.",
+      "glyph": "✦"
+    },
+    {
       "title": "Pro: drill what you miss",
-      "body": "Smart Review schedules the flags you got wrong with spaced repetition. Similar Flags drills the lookalikes — Chad and Romania, Indonesia and Monaco. Hard Mode deals eight flags instead of three. Pro is a Universal Purchase, so buying it once covers iPhone, iPad and Mac.",
+      "body": "Smart Review brings back the flags you miss on a spaced schedule. Similar Flags drills the look-alikes, Chad and Romania, Indonesia and Monaco. Hard Mode, full statistics, Daily Archive replay and five streak freezes a month round it out.",
       "glyph": "▲"
-    },
-    {
-      "title": "Progress you can see",
-      "body": "XP, levels, per-region accuracy, plus Game Center leaderboards and achievements. The full Statistics dashboard is part of Pro.",
-      "glyph": "✹"
     }
   ],
-  "howItWorks": [
-    {
-      "step": "Pick a region and a mode",
-      "body": "Choose a continent or the whole world, then guess flags or match capitals. Start right away, no account."
+  "howItWorks": [],
+  "pricing": {
+    "heading": "Free to play. Pro is one purchase.",
+    "free": {
+      "title": "Free forever",
+      "price": "$0",
+      "items": [
+        "Flags and capitals in all six regions",
+        "The Daily Challenge, streaks and one freeze a month",
+        "Learn, the 250-flag encyclopedia",
+        "Game Center leaderboards and 33 achievements"
+      ]
     },
-    {
-      "step": "Play daily",
-      "body": "Take the ten-question Daily Challenge, keep your streak alive, and share your score."
+    "premium": {
+      "title": "Master of Flags Pro",
+      "price": "$6.99 once",
+      "items": [
+        "Smart Review and Similar Flags drills",
+        "Hard Mode and full statistics",
+        "Daily Archive replay and five streak freezes a month",
+        "One purchase on iPhone, iPad, Mac and Apple TV, shared with your family"
+      ]
     },
-    {
-      "step": "Master it",
-      "body": "Unlock Pro to let Smart Review resurface the ones you miss, and to get harder rounds and full statistics."
-    }
-  ],
+    "tiers": [
+      {
+        "name": "Pro",
+        "price": "$6.99",
+        "amount": 6.99,
+        "note": "once, never renews"
+      }
+    ],
+    "footnote": "US price shown; your local price appears in the App Store. There is no subscription. If you bought Master of Flags when it was a paid app, Pro is already yours: tap Restore Purchases."
+  },
   "faq": [
     {
       "q": "Is Master of Flags really free?",
-      "a": "Yes. Both quiz modes, all six regions, the Daily Challenge, streaks, leaderboards and the full encyclopedia are free, with no ads and no account. You can play forever without paying."
+      "a": "Yes. Both quiz modes, all six regions, the Daily Challenge, streaks, the encyclopedia and Game Center are free, with no ads and no account. Pro is optional."
     },
     {
-      "q": "What does Pro unlock and how much is it?",
-      "a": "Pro is a single $4.99 one-time purchase. It adds Hard Mode (eight flags a round instead of three), Smart Review with spaced repetition, the Similar Flags drill for lookalike flags, replay of any past Daily Challenge, a full Statistics dashboard, and five streak freezes a month instead of one. Pro is a Universal Purchase: buy it once and it is unlocked on your iPhone, iPad and Mac. There is no subscription and no second tier."
+      "q": "What does Pro unlock, and what does it cost?",
+      "a": "Pro is a one-time $6.99 purchase. It adds Hard Mode, Smart Review, Similar Flags, full statistics, replay of any past Daily Challenge and five streak freezes a month instead of one. There is no subscription."
     },
     {
-      "q": "Are there any ads or subscriptions?",
-      "a": "No. There are no banner ads, no video ads, and no recurring charges. The only optional payment is the one-time Pro unlock."
+      "q": "Do I pay again on another device, or for my family?",
+      "a": "No. Pro is a Universal Purchase across iPhone, iPad, Mac and Apple TV, and Family Sharing lets your family use it too. If it does not appear on a device, tap Restore Purchases."
     },
     {
-      "q": "Does Master of Flags work offline?",
-      "a": "Yes. The quiz and encyclopedia run on your device. You only need a connection for Game Center leaderboards and achievements."
+      "q": "I bought the app years ago when it was paid. Do I pay again?",
+      "a": "No. Everyone who bought it during the paid era gets Pro automatically, free, forever. Tap Restore Purchases on a new device to bring it back."
     },
     {
       "q": "What happens to my data?",
-      "a": "Your data stays on your device. Nothing is collected and nothing is tracked."
-    },
-    {
-      "q": "I bought the app years ago when it was paid. Do I have to pay again?",
-      "a": "No. Early buyers are grandfathered into Pro automatically, free, forever. Tap Restore Purchases to bring it back on any new device."
+      "a": "Nothing is collected: no accounts, analytics, ads or tracking. Your progress, streak and bookmarks can follow you across your devices through your own iCloud account. The flags and encyclopedia are bundled with the app, and only Game Center and purchases need a connection."
     },
     {
       "q": "Which devices and languages are supported?",
-      "a": "iPhone and iPad running iOS or iPadOS 17.4 or later, and Mac running macOS 26 or later. The whole app — not just the App Store page — is translated into English, Spanish, German, French, Italian, Portuguese, Japanese, Korean, and Simplified and Traditional Chinese."
-    },
-    {
-      "q": "How many flags can I learn?",
-      "a": "Roughly 250 flags and territories, each with its capital and country details in the encyclopedia."
-    },
-    {
-      "q": "I already own Pro on my iPhone. Do I pay again on the Mac?",
-      "a": "No. Master of Flags is a Universal Purchase, so Pro bought on iPhone or iPad is already unlocked on the Mac. If it does not appear, use Restore Purchases."
+      "a": "iPhone and iPad with iOS 18 or later, Mac with macOS 26 or later, Apple TV with tvOS 18 or later and Apple Watch with watchOS 11 or later. The app is translated into English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, and Simplified and Traditional Chinese."
     }
   ],
   "screenshotCaptions": {
     "iphone": [
-      "Guess the flag, pick a region",
-      "The ten-question Daily Challenge",
-      "Share your daily streak result",
-      "Browse the 250-flag encyclopedia",
-      "Country details and capitals",
-      "Pro: Hard Mode and statistics",
-      "Master of Flags on iPhone",
-      "Master of Flags on iPhone"
+      "A wrong answer shows the right flag and its capital",
+      "The Daily Challenge result and your streak",
+      "A country page: capital, population, language and more",
+      "Your level, regions and accuracy",
+      "Train: Smart Review and Similar Flags",
+      "Hard Mode deals eight flags a round",
+      "Search by nickname: Holland finds the Netherlands",
+      "Pro, one purchase for every device"
     ],
     "ipad": [
-      "Flag quiz on the bigger screen",
-      "Daily Challenge and streaks",
-      "Encyclopedia and country facts"
+      "A wrong answer shows the right flag and its capital",
+      "The Daily Challenge and your week",
+      "A country page: capital, population, language and more",
+      "Your level, regions and accuracy",
+      "Train: Smart Review and Similar Flags",
+      "Hard Mode deals eight flags a round",
+      "Territories and UN status, labelled",
+      "Pro, one purchase for every device"
     ],
     "mac": [
-      "Play in a real Mac window",
-      "Every flag, every capital, offline",
-      "The Daily Challenge and your streak",
-      "Pro: one purchase, every device"
+      "Play in a real Mac window with a sidebar",
+      "The Daily Challenge, your week and the archive",
+      "Learn: the encyclopedia with search and region filters",
+      "Statistics and your toughest countries",
+      "Train: Smart Review and Similar Flags"
+    ],
+    "tv": [
+      "Home: pick up where you left off",
+      "The Daily Challenge on the big screen",
+      "Learn, the flag encyclopedia",
+      "Couch Mode: two to four players, no timers",
+      "Pass the remote, one flag at a time",
+      "The final table"
     ]
   },
   "ctaLine": "Start learning the world's flags, free.",
-  "pricingNote": "Free to play with no ads or subscription on iPhone, iPad and Mac. An optional one-time $4.99 Pro purchase unlocks Hard Mode, Smart Review, Similar Flags, Daily Challenge replays, Statistics and extra streak freezes — once, across every device you own."
+  "pricingNote": "Free to play with no ads or subscription. Pro is a one-time $6.99 purchase for iPhone, iPad, Mac and Apple TV, shared with your family."
 }

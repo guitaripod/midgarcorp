@@ -134,22 +134,22 @@ var appEnhancements = map[int]struct {
 	},
 	6661019277: {
 		ID:           "dream-eater",
-		Tagline:      "ML-Powered Dream Journaling",
-		PrimaryColor: "#6366F1",
+		Tagline:      "Voice Dream Journal",
+		PrimaryColor: "#8B7CF6",
 		Features: []string{
-			"Dream pattern analysis",
-			"AI-powered insights",
-			"Private & secure journaling",
+			"Voice capture that works offline",
+			"The real moon and sky on every dream",
+			"Readings that ask, not tell",
 		},
 	},
 	1523538855: {
 		ID:           "master-of-inventory",
-		Tagline:      "Professional Inventory Management",
+		Tagline:      "Warranty and Claim Tracker",
 		PrimaryColor: "#10B981",
 		Features: []string{
-			"Barcode scanning",
-			"Multi-location tracking",
-			"Detailed analytics",
+			"Warranty and return reminders",
+			"Receipt scanning on your device",
+			"One-tap claim pack",
 		},
 	},
 	1484270248: {
@@ -159,7 +159,7 @@ var appEnhancements = map[int]struct {
 		Features: []string{
 			"Flags and capitals, six regions",
 			"Daily Challenge and streaks",
-			"250-flag encyclopedia",
+			"iPhone, iPad, Mac, Apple TV and Watch",
 		},
 	},
 	6751730339: {

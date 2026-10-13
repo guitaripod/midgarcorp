@@ -12,25 +12,49 @@
             "src": "/screenshots/dreameater/iphone-1.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Dreameater Interpret"
+            "label": "Say It"
           },
           {
             "src": "/screenshots/dreameater/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Dreameater Home"
+            "label": "From Your Words"
           },
           {
             "src": "/screenshots/dreameater/iphone-3.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Dreameater Journal"
+            "label": "Reading That Asks"
           },
           {
             "src": "/screenshots/dreameater/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Dreameater Stats"
+            "label": "It Happened Under"
+          },
+          {
+            "src": "/screenshots/dreameater/iphone-5.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Every Dream Kept"
+          },
+          {
+            "src": "/screenshots/dreameater/iphone-6.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Keeps Coming Back"
+          },
+          {
+            "src": "/screenshots/dreameater/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Made For 3Am"
+          },
+          {
+            "src": "/screenshots/dreameater/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Private By Design"
           }
         ],
         "ipad": [
@@ -38,32 +62,56 @@
             "src": "/screenshots/dreameater/ipad-1.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Dreameater Interpret"
+            "label": "Say It"
           },
           {
             "src": "/screenshots/dreameater/ipad-2.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Dreameater Home"
+            "label": "From Your Words"
           },
           {
             "src": "/screenshots/dreameater/ipad-3.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Dreameater Journal"
+            "label": "Reading That Asks"
           },
           {
             "src": "/screenshots/dreameater/ipad-4.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Dreameater Stats"
+            "label": "It Happened Under"
+          },
+          {
+            "src": "/screenshots/dreameater/ipad-5.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Every Dream Kept"
+          },
+          {
+            "src": "/screenshots/dreameater/ipad-6.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Keeps Coming Back"
+          },
+          {
+            "src": "/screenshots/dreameater/ipad-7.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Made For 3Am"
+          },
+          {
+            "src": "/screenshots/dreameater/ipad-8.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Private By Design"
           }
         ]
       },
-      "name": "Dream Eater: AI Dream Decoder",
-      "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-ai-dream-decoder/id6661019277",
-      "description": "You wake at 3 a.m. with a dream still vivid. Type it into Dream Eater and within seconds you get a thoughtful reading of what it might mean, plus a piece of dream art generated from your own words. Your first reading is free.\n\nDECODE THE MEANING\nDescribe your dream in your own words and receive an AI-powered interpretation: the key symbols, the emotional undercurrents, and what your subconscious might be working through. A built-in symbol dictionary helps you go deeper on recurring images.\n\nDREAM ART YOU CAN SHARE\nEvery analyzed dream comes with a unique image generated from your dream's own imagery. Save it, share it, or keep it as the cover of that night's entry.\n\nA JOURNAL BUILT FOR 3AM\nCapture dreams fast, while they are still fresh. Big type, minimal taps, and no account setup standing between you and the half-remembered. Writing in your journal is always free.\n\nPATTERNS OVER TIME\nMoods, themes, and recurring symbols surface across weeks of entries, so you can see what your sleeping mind keeps returning to.\n\nMOON PHASES\nEach entry records the moon phase from that night, and lunar info is always on hand if you like tracking your dreams against the sky.\n\nTRY PREMIUM FREE FOR 7 DAYS\nStart a 7-day free trial on the annual plan and analyze unlimited dreams. Cancel anytime during the trial and pay nothing.\n\nOR PAY PER DREAM\nPrefer no subscription right now? Buy credit packs of 5, 15, 50, or 100 dream analyses. Credits never expire.\n\nDream Eater is for entertainment and self-reflection. It is not a medical, psychological, or therapeutic tool.\n\nPrivacy: no account required; dreams stay on your device and iCloud.\n\nAvailable in English, Spanish, and Chinese.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://mako.midgarcorp.cc/privacy/dreameater",
-      "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
+      "name": "Dream Eater: Dream Interpreter",
+      "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-dream-interpreter/id6661019277",
+      "description": "You wake at 3 a.m. with a dream still vivid. Say it out loud or type it, and Dream Eater keeps it safe, with the real moon and sky of that night beside it.\n\nTHE JOURNAL IS FREE, FOREVER\nVoice capture that works offline and turns your words into text on your iPhone. Drafts that survive a crash. A calendar, search, tags, favorites, export. No account, no sign-up, nothing standing between you and the half-remembered.\n\nA READING IN YOUR OWN WORDS\nAsk for a reading and get a reflection, not a verdict. It quotes your dream back to you, asks open questions, and names the tradition when one reads an image a certain way (Jungian, Gestalt, folk). It never claims a symbol has one fixed meaning, and it never claims to know what will happen.\n\nTHE MOON AND THE SKY\nEvery dream is stamped with the moon phase and the Moon's sign from that night, computed on your iPhone. Add your birth details if you like, and see your chart and what is passing through it. Astrology here is a reflective lens, not evidence about your life, and it is optional.\n\nPATTERNS THAT ARE TRUE\nSee your streak, your tones and feelings, the themes that keep coming back, and when you dream. If you ask whether the moon matters, the app tells you honestly how many nights it takes to say anything, and shows what chance alone would give you.\n\nART MADE FROM YOUR DREAM\nTurn a dream into a picture in one of six styles, from soft dreamscape to ink wash to collage. Save it, or share a card with the dream's title and the moon.\n\nBUILT FOR THE MIDDLE OF THE NIGHT\nA Record button on the Lock Screen and in Control Center, a moon widget, a Bedside theme that keeps the light low. Large text, VoiceOver and Reduce Motion are supported throughout.\n\nPRIVATE BY DESIGN\nYour dreams, recordings, transcripts, tags and birth details stay on your device. When you ask for a reading, the dream text goes to our server and on to Google's Gemini model to write it, and our server keeps no dream text afterward. You choose whether readings are on, and you can delete everything from Settings.\n\nFREE, PLUS, OR PAY AS YOU GO\nThree readings a week are free. Plus unlocks unlimited readings, dream art in six styles, follow-up questions and your sky. Start with a 7-day free trial on the annual plan, or skip subscriptions and buy credits that never expire.\n\nDream Eater is for reflection and entertainment. It is not medical, psychological or therapeutic advice. If you are struggling, support is one tap away in Settings, Help, Crisis resources.\n\nAvailable in English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, and Simplified and Traditional Chinese.\n\nPlus is an auto-renewing subscription, monthly or annual, with a 7-day free trial on the annual plan for new subscribers. The price is shown in the app before you subscribe. Payment is charged to your Apple Account at confirmation, and the subscription renews automatically unless canceled at least 24 hours before the end of the period. Manage or cancel in Settings, Apple Account, Subscriptions. A lifetime purchase is also available.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://mako.midgarcorp.cc/privacy/dreameater",
+      "releaseNotes": "Dream Eater 2.0 is rebuilt from the ground up.\n\nCapture\nSpeak or type a dream in seconds. Voice works offline and is turned into text on your iPhone. Drafts survive a crash or a phone call. Record from the Lock Screen, Control Center or the Action Button.\n\nReadings\nA reading is now a reflection in your own words: it quotes your dream, asks open questions and names the tradition behind an interpretation instead of claiming one fixed meaning. Ask follow-up questions, look at a dream through a traditions or sky lens, and see what your words connect to in earlier dreams. You decide whether readings are on, and our server keeps no dream text.\n\nThe moon and sky\nEvery dream is stamped with the real moon phase and sign, computed on your iPhone. Add your birth details to see your chart. A moon calendar, a Sky tab and a moon widget for the Home Screen and Lock Screen. Astrology is optional and never says what will happen.\n\nPatterns\nYour streak, tones and feelings, recurring themes and when you dream, with honest statistics that show what chance alone would give you.\n\nDream art\nSix art styles, made from a short scene from your dream, never your raw text. Share a card with the title, the art and the moon.\n\nJournal\nSearch with filters and tokens, a calendar, Recently Deleted, export of everything, App Lock with Face ID, and Delete all data.\n\nFree and Plus\nThe journal stays free forever, with three free readings a week. Plus unlocks unlimited readings, art, follow-ups and your sky.\n\nYour existing dreams and art move over automatically, and a backup of your old data is kept for 30 days. New look, new icon, a Bedside theme for the night, iPad layouts, iPhone Duo support, and better accessibility everywhere.",
       "category": "Lifestyle",
       "genres": [
         "Lifestyle",
@@ -72,15 +120,23 @@
       "price": "Free",
       "rating": 5,
       "ratingCount": 2,
-      "version": "1.3.1",
+      "version": "1.3.8",
       "releaseDate": "2024-09-18T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-18T21:20:52Z",
+      "currentVersionReleaseDate": "2026-10-10T18:17:36Z",
       "minimumOsVersion": "18.0",
-      "contentRating": "17+",
+      "contentRating": "12+",
       "languages": [
         "EN",
+        "FR",
+        "DE",
+        "IT",
+        "JA",
+        "KO",
+        "PL",
+        "PT",
         "ZH",
-        "ES"
+        "ES",
+        "ZH"
       ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
@@ -209,14 +265,18 @@
         "iPadAir11M4-iPadAir11M4",
         "iPadAir11M4Cellular-iPadAir11M4Cellular",
         "iPadAir13M4-iPadAir13M4",
-        "iPadAir13M4Cellular-iPadAir13M4Cellular"
+        "iPadAir13M4Cellular-iPadAir13M4Cellular",
+        "iPhone18Pro-iPhone18Pro",
+        "iPhone18ProMax-iPhone18ProMax",
+        "iPhoneDuo-iPhoneDuo"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.DreamEater",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/60/57/bb/6057bb97-7606-c4ad-f23c-a707f2c6ddb8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": null,
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2f/3c/d3/2f3cd33c-2777-8866-a0e3-ad3c01fc5402/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "promotionalText": "Write or speak last night's dream. Get a reflection in your own words, with the real moon beside it. The journal is free forever.",
+      "marketingUrl": "https://midgarcorp.cc/dreameater",
       "supportUrl": "https://x.com/prblemslver",
-      "keywords": "meaning,interpretation,analysis,symbols,dictionary,diary,lucid,sleep,subconscious,moon,art,vision",
+      "keywords": "interpretation,interpreter,decoder,dictionary,symbols,lucid,nightmare,sleep,lunar,astrology,sky,ai",
       "iconLocal": "/screenshots/dreameater/icon.webp",
       "platforms": [
         "iPhone",
@@ -1100,37 +1160,49 @@
             "src": "/screenshots/masterofflags/iphone-1.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Screen 1"
+            "label": "Play Wrong"
           },
           {
             "src": "/screenshots/masterofflags/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Screen 2"
+            "label": "Daily Result"
           },
           {
             "src": "/screenshots/masterofflags/iphone-3.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Screen 3"
+            "label": "Learn Detail"
           },
           {
             "src": "/screenshots/masterofflags/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Screen 4"
+            "label": "You Stats"
           },
           {
             "src": "/screenshots/masterofflags/iphone-5.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Screen 5"
+            "label": "Train"
           },
           {
             "src": "/screenshots/masterofflags/iphone-6.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Screen 6"
+            "label": "Play Hard"
+          },
+          {
+            "src": "/screenshots/masterofflags/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Learn Search"
+          },
+          {
+            "src": "/screenshots/masterofflags/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Paywall"
           }
         ],
         "ipad": [
@@ -1138,26 +1210,126 @@
             "src": "/screenshots/masterofflags/ipad-1.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Screen 1"
+            "label": "Play Wrong"
           },
           {
             "src": "/screenshots/masterofflags/ipad-2.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Screen 2"
+            "label": "Daily Played"
           },
           {
             "src": "/screenshots/masterofflags/ipad-3.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Screen 3"
+            "label": "Learn Detail"
+          },
+          {
+            "src": "/screenshots/masterofflags/ipad-4.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "You Stats"
+          },
+          {
+            "src": "/screenshots/masterofflags/ipad-5.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Train"
+          },
+          {
+            "src": "/screenshots/masterofflags/ipad-6.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Play Hard"
+          },
+          {
+            "src": "/screenshots/masterofflags/ipad-7.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Learn Territory"
+          },
+          {
+            "src": "/screenshots/masterofflags/ipad-8.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Paywall"
+          }
+        ],
+        "mac": [
+          {
+            "src": "/screenshots/masterofflags/mac-1.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Play Wrong"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-2.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Daily Played"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-3.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Learn Detail"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-4.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "You Stats"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-5.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Train"
+          }
+        ],
+        "tv": [
+          {
+            "src": "/screenshots/masterofflags/tv-1.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Home"
+          },
+          {
+            "src": "/screenshots/masterofflags/tv-2.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Daily"
+          },
+          {
+            "src": "/screenshots/masterofflags/tv-3.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Learn"
+          },
+          {
+            "src": "/screenshots/masterofflags/tv-4.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Couch Setup"
+          },
+          {
+            "src": "/screenshots/masterofflags/tv-5.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Couch Play"
+          },
+          {
+            "src": "/screenshots/masterofflags/tv-6.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Couch Results"
           }
         ]
       },
       "name": "Master of Flags: World Quiz",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "description": "Master of Flags is now FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no \"weekly trial\", no account. Play free forever, and if you want more, Pro is a single one-time purchase. Pay once, own it for life.\n\nPLAY FREE\n• Flag quiz across Europe, Asia, Africa, the Americas and the world\n• Daily Challenge — ten flags, once a day, shareable results\n• Daily streaks with streak freezes so one busy day doesn't erase your run\n• XP, levels and per-region progress\n• Game Center leaderboards and achievements\n• Flag Encyclopedia — browse roughly 250 flags and territories with details about each country, completely free\n\nGO PRO — ONE PURCHASE, YOURS FOREVER\n• Hard Mode: eight flags per round instead of three\n• Review Mistakes: drill exactly the flags you got wrong\n• Statistics: levels, streaks and progress across every region\n• 5 streak freezes per month instead of 1\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nThe quiz rewards consistency, and the Encyclopedia doubles as a study reference for geography, capitals and country facts. Perfect for students, travelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app: you are a founder. Everything Pro unlocks is yours automatically, free, forever. Thank you for seven years.",
-      "releaseNotes": "Added a More Apps section so you can discover our other apps. Plus small fixes and improvements.",
+      "description": "Master of Flags is FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no\n\"weekly trial\", no account. Play free forever, and if you want more, Pro is\na single one-time purchase. Pay once, own it for life.\n\nNEW IN 4.0, ON EVERY APPLE SCREEN\n• Rebuilt for iPhone, iPad, Mac, Apple TV and Apple Watch, with widgets and Lock Screen\n• Wrong answers teach: the right flag, its capital and what to look for\n• Couch Mode on Apple TV: 2 to 4 players, one remote, no timers\n• Flash on Apple Watch, your streak on your watch face\n• Learn finds any country by nickname or native name, labels territories and shows look-alike flags\n• Game Center: weekly points, region leaderboards, 33 achievements, daily challenges\n• One Pro purchase for iPhone, iPad, Mac and Apple TV, shared with your family\n\nPLAY FREE\n• Flag and capitals quiz across Europe, Asia, Africa, the Americas, Oceania and the world\n• Daily Challenge, ten flags, once a day, a shareable result picture\n• Daily streaks with streak freezes, and a 48-hour streak repair when life happens\n• Browse your full Daily Challenge history in the archive\n• XP, levels and a level for every region\n• Game Center leaderboards and achievements\n• Learn, the flag encyclopedia: the story behind each flag, what the\n  colors and symbols mean, country shapes, neighbors, languages, currencies\n  and a short history. Completely free, completely offline\n\nGO PRO: ONE PURCHASE, YOURS FOREVER\n• Smart Review: real spaced repetition that resurfaces exactly the flags and\n  capitals you miss, on the day you're about to forget them\n• Similar Flags: drill the lookalikes, such as Chad vs Romania, Indonesia vs Monaco,\n  the Nordic crosses, plus packs built from your own mix-ups\n• Hard Mode: eight flags per round instead of three\n• Daily Archive: replay every daily you missed\n• Statistics: accuracy, mastery and your toughest countries\n• 5 streak freezes per month instead of 1\n• Family Sharing: one purchase for your whole family\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nSpaced repetition is how memory actually works. Master of Flags schedules\nyour reviews so flags stick for good. The Encyclopedia doubles as a study\nreference for geography, capitals and country facts. Perfect for students,\ntravelers, quiz-night heroes and the incurably curious.\n\nYour data stays on your device. Nothing is collected, nothing is tracked.\n\nA note to everyone who bought Master of Flags when it was a paid app:\nyou are a founder. Everything Pro unlocks is yours automatically, free,\nforever. Thank you for seven years.",
+      "releaseNotes": "Master of Flags 4.0 is rebuilt for every Apple screen.\n\nPlay\n• Wrong answers now show the right flag, its capital and what to look for, right on the tiles. Right answers move on by themselves.\n• A passive session strip and recap show how today is going. Nothing ever blocks the next flag.\n• Hard Mode, level-ups and a gentler first launch.\n\nDaily\n• Daily Challenge with an honest streak: seven of ten keeps it, freezes cover days you skip, frozen days are marked.\n• Share your result as a picture, never a tracking link.\n• Resume a run where you left it.\n\nLearn\n• Find any country by nickname or native name: USA, Holland, Deutschland.\n• Territories, UN status and population years are labelled. Look-alike flags are one tap away. Bookmarks sync with iCloud.\n\nEverywhere\n• New on Apple TV: the full game on the big screen, and Couch Mode for 2 to 4 players with one remote.\n• New on Apple Watch: Flash questions and your Daily streak on the wrist and on watch faces.\n• Home Screen, Lock Screen, StandBy and Control Center widgets for your Daily.\n• Game Center grows: weekly points, region leaderboards, 33 achievements, activities and challenges. Your ranks live in You.\n• Your progress, streak and bookmarks follow you across devices through iCloud. Nothing is collected by the app.\n• One Pro purchase unlocks Hard Mode, Smart Review, Similar Flags, full statistics, Daily Archive replay and 5 streak freezes a month on iPhone, iPad, Mac and Apple TV, and Family Sharing shares it with your family.",
       "category": "Education",
       "genres": [
         "Education",
@@ -1168,15 +1340,26 @@
       "price": "Free",
       "rating": 4.6,
       "ratingCount": 5,
-      "version": "2.3.1",
+      "version": "4.0.1",
       "releaseDate": "2019-10-21T07:00:00Z",
-      "currentVersionReleaseDate": "2026-06-24T11:25:06Z",
-      "minimumOsVersion": "17.4",
+      "currentVersionReleaseDate": "2026-10-12T22:26:32Z",
+      "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
-        "EN"
+        "EN",
+        "FR",
+        "DE",
+        "IT",
+        "JA",
+        "KO",
+        "PL",
+        "PT",
+        "ZH",
+        "ES",
+        "ZH"
       ],
       "supportedDevices": [
+        "MacDesktop-MacDesktop",
         "iPhone5s-iPhone5s",
         "iPadAir-iPadAir",
         "iPadAirCellular-iPadAirCellular",
@@ -1218,6 +1401,7 @@
         "iPad834-iPad834",
         "iPad856-iPad856",
         "iPad878-iPad878",
+        "Watch4-Watch4",
         "iPadMini5-iPadMini5",
         "iPadMini5Cellular-iPadMini5Cellular",
         "iPadAir3-iPadAir3",
@@ -1303,18 +1487,24 @@
         "iPadAir11M4-iPadAir11M4",
         "iPadAir11M4Cellular-iPadAir11M4Cellular",
         "iPadAir13M4-iPadAir13M4",
-        "iPadAir13M4Cellular-iPadAir13M4Cellular"
+        "iPadAir13M4Cellular-iPadAir13M4Cellular",
+        "iPhone18Pro-iPhone18Pro",
+        "iPhone18ProMax-iPhone18ProMax",
+        "iPhoneDuo-iPhoneDuo"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.knowtheflag",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c7/b1/9c/c7b19c18-19b6-9288-c046-59ac810a1386/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0b/68/68/0b6868cd-1d2a-9b46-c483-49881121effe/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "promotionalText": "Remastered for iPhone, iPad, Mac, Apple TV and Apple Watch. Free to play, no ads, one-time Pro that your family can share.",
       "marketingUrl": null,
       "supportUrl": "https://twitter.com/prblemslver",
-      "keywords": "country,guess,game,trivia,map,states,europe,flashcard,study,memorize,atlas,national,city,asia,africa",
+      "keywords": "atlas,country,africa,europe,asia,trivia,guess,map,states,daily,kids,memorize,city,offline,nations",
       "iconLocal": "/screenshots/masterofflags/icon.webp",
       "platforms": [
         "iPhone",
-        "iPad"
+        "iPad",
+        "Apple TV",
+        "Mac"
       ]
     },
     {
@@ -1327,36 +1517,66 @@
         "iphone": [
           {
             "src": "/screenshots/masterofinventory/iphone-1.webp",
-            "w": 1242,
-            "h": 2688,
-            "label": "Iphonexsmaxhome"
+            "w": 1290,
+            "h": 2796,
+            "label": "Home"
           },
           {
             "src": "/screenshots/masterofinventory/iphone-2.webp",
-            "w": 1242,
-            "h": 2688,
-            "label": "Iphonexsmaxadd"
+            "w": 1290,
+            "h": 2796,
+            "label": "Items"
+          },
+          {
+            "src": "/screenshots/masterofinventory/iphone-3.webp",
+            "w": 1290,
+            "h": 2796,
+            "label": "Detail"
+          },
+          {
+            "src": "/screenshots/masterofinventory/iphone-4.webp",
+            "w": 1290,
+            "h": 2796,
+            "label": "Soon"
+          },
+          {
+            "src": "/screenshots/masterofinventory/iphone-5.webp",
+            "w": 1290,
+            "h": 2796,
+            "label": "Add"
+          },
+          {
+            "src": "/screenshots/masterofinventory/iphone-6.webp",
+            "w": 1290,
+            "h": 2796,
+            "label": "Paywall"
           }
         ],
         "ipad": [
           {
             "src": "/screenshots/masterofinventory/ipad-1.webp",
             "w": 1600,
-            "h": 2134,
-            "label": "Ipadpro3Rdhome"
+            "h": 2133,
+            "label": "Items"
           },
           {
             "src": "/screenshots/masterofinventory/ipad-2.webp",
             "w": 1600,
-            "h": 2134,
-            "label": "Ipadpro3Rdadd"
+            "h": 2133,
+            "label": "Soon"
+          },
+          {
+            "src": "/screenshots/masterofinventory/ipad-3.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Paywall"
           }
         ]
       },
       "name": "Master of Inventory: Warranty",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-inventory-warranty/id1523538855",
-      "description": "Disaster doesn't wait for you to find the receipt. Photograph, value, and receipt-back everything you own now — so an insurance claim, a warranty, or a return is one tap away, not a frantic search.\n\nMaster of Inventory turns your belongings into a documented record that actually holds up: every item with a photo, purchase price, date, and scanned receipt, plus warranty and return deadlines tracked for you. Built for the household that wants to be ready before a fire, theft, flood, or move — not after.\n\nBUILT FOR INSURANCE CLAIMS\n• Photograph each item with its purchase price and date\n• Attach scanned receipts as proof of ownership and value\n• Produce a clear, defensible record of what you own and what it's worth\n• Organize room by room and by your own custom categories\n\nNEVER MISS A WARRANTY OR REFUND\n• Track warranty expirations and get ahead of them\n• Watch online-return windows so refunds don't slip away\n• Keep receipts and coverage details together with each item\n• Stop losing real money to deadlines you forgot\n\nCAPTURE IN SECONDS\n• Built-in document scanner for clean receipt copies\n• Snap item and receipt photos for complete records\n• Search and filter your whole catalog instantly\n• Share an item or receipt in a couple of taps\n\nPRIVATE BY DESIGN\n• Stored locally with Apple's Core Data\n• Optional iCloud sync across your iPhone, iPad, and Mac\n• No third-party servers, no data mining — just your records, yours alone\n\nWHO IT'S FOR\n• Homeowners and renters documenting belongings for insurance\n• Anyone tracking warranties and purchase dates\n• Collectors cataloging valuables\n• Small businesses keeping an asset record\n• People mid-move who need an inventory fast\n\nStart with the things that matter most — your most valuable items, your newest purchases, anything still under warranty — and build from there. Five minutes today can save a claim, a refund, and a lot of stress later.\n\nDocument what you own. Be ready before you need to be.",
-      "releaseNotes": "Polished and refreshed.\n\nThis release tightens the foundation under the hood so future updates land faster and the app stays fast and reliable as your inventory grows. We've smoothed rough edges across capturing items, scanning receipts, and iCloud sync.\n\nHave a feature request or hit a snag? Reach out — your feedback shapes what comes next, and we read every message.\n\nThank you for keeping your belongings documented and ready.",
+      "description": "Disaster doesn't wait for you to find the receipt. Photograph, value, and receipt-back everything you own now — so an insurance claim, a warranty, or a return is one tap away, not a frantic search.\n\nMaster of Inventory turns your belongings into a documented record that actually holds up: every item with a photo, purchase price, date, and scanned receipt, plus warranty and return deadlines tracked for you — now with reminders before they expire.\n\nFree to start. Document up to 15 items with every core feature. Go Pro for unlimited items and insurance-ready exports — or grab the one-time Lifetime unlock. Bought this app back when it was paid up front? Pro is yours forever, free. Thank you for believing early.\n\nNEVER MISS A WARRANTY OR REFUND\n- Reminders before each warranty expires and before each return window closes\n- Warranty countdowns on every item at a glance\n- Keep receipts and coverage details together with each item\n\nBUILT FOR INSURANCE CLAIMS\n- Photograph each item with its purchase price and date\n- Attach scanned receipts as proof of ownership and value\n- Export a clear, defensible PDF report of what you own and what it's worth (Pro)\n- CSV spreadsheet export for your own records (Pro)\n\nCAPTURE IN SECONDS\n- Built-in document scanner for clean receipt copies\n- Snap item photos for complete records\n- Search and filter your whole catalog instantly\n\nPRIVATE BY DESIGN\n- No account. No sign-up. No company server.\n- Your inventory lives on your device and in your own iCloud\n- We can't see your data, sell your data, or lose your data\n\nWHO IT'S FOR\n- Homeowners and renters documenting belongings for insurance\n- Anyone tracking warranties, return windows, and purchase dates\n- Collectors cataloging valuables\n- People mid-move who need an inventory fast\n\nStart with the things that matter most — your most valuable items, your newest purchases, anything still under warranty — and build from there. Five minutes today can save a claim, a refund, and a lot of stress later.\n\nDocument what you own. Be ready before you need to be.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://mako.midgarcorp.cc/privacy/inventory",
+      "releaseNotes": "Master of Inventory 3.0: rebuilt around the two things that cost you money, warranties and return windows.\n• New Home: your protected value, what needs attention and your free-item progress at a glance.\n• Soon: a timeline of every warranty ending and return window closing.\n• Reminders before a warranty ends or a return window closes, at the time of day you choose.\n• Item details with coverage rings, multi-page receipts, serial numbers, locations and a record-strength meter.\n• Receipt scanning on your device: the price and date are read for you, and Live Text reads serial numbers.\n• Burst capture: photograph several items in a row now and fill in the details later.\n• Colour and icon categories, grid and list views, sorting, and select-many with bulk actions.\n• Search by name, brand, serial number, store or notes, plus Spotlight, Siri and Shortcuts actions.\n• One-tap claim pack with the receipt, photos and serial number, plus PDF report, CSV and full backups (Pro).\n• Optional Face ID lock for your inventory.\n• A redesigned Pro screen and welcome tour, a sidebar on iPad, and Finnish, Swedish, Norwegian, Danish and Dutch translations.",
       "category": "Utilities",
       "genres": [
         "Utilities",
@@ -1365,13 +1585,23 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.0.2",
+      "version": "2.0.2",
       "releaseDate": "2021-02-14T08:00:00Z",
-      "currentVersionReleaseDate": "2026-06-09T09:03:03Z",
-      "minimumOsVersion": "14.0",
+      "currentVersionReleaseDate": "2026-09-28T19:46:31Z",
+      "minimumOsVersion": "17.0",
       "contentRating": "4+",
       "languages": [
-        "EN"
+        "EN",
+        "FR",
+        "DE",
+        "IT",
+        "JA",
+        "KO",
+        "PL",
+        "PT",
+        "ZH",
+        "ES",
+        "ZH"
       ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
@@ -1500,14 +1730,18 @@
         "iPadAir11M4-iPadAir11M4",
         "iPadAir11M4Cellular-iPadAir11M4Cellular",
         "iPadAir13M4-iPadAir13M4",
-        "iPadAir13M4Cellular-iPadAir13M4Cellular"
+        "iPadAir13M4Cellular-iPadAir13M4Cellular",
+        "iPhone18Pro-iPhone18Pro",
+        "iPhone18ProMax-iPhone18ProMax",
+        "iPhoneDuo-iPhoneDuo"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.inventory",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/af/35/08/af350831-9cab-37c6-dcc3-28dc5aa1cfcb/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/03/da/7e/03da7e96-4a6c-616e-04a8-92a4f7277a4e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "promotionalText": "",
       "marketingUrl": null,
       "supportUrl": "https://twitter.com/ziademarcus",
-      "keywords": "home,valuables,belongings,asset,catalog,moving,household,document,deadline,collection,organizer,room",
+      "keywords": "tracker,insurance,claim,return,belongings,organizer,serial,catalog,moving,appliance,valuables,scan",
       "iconLocal": "/screenshots/masterofinventory/icon.webp",
       "platforms": [
         "iPhone",
