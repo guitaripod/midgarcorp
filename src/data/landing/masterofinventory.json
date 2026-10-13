@@ -45,7 +45,7 @@
     },
     {
       "title": "Claim pack and exports",
-      "body": "One tap bundles the receipt, photos and serial number for a claim. Export a PDF report or a CSV spreadsheet for your insurer or your own files.",
+      "body": "One tap bundles the receipt, photos and serial number for a claim. Pro adds a whole-inventory PDF report and a CSV spreadsheet for your insurer or your own files, and full backups are free.",
       "glyph": "⊹"
     },
     {
@@ -64,6 +64,7 @@
         "Up to 15 items with every core feature",
         "Warranty and return reminders",
         "Receipt scanning, serial numbers and burst capture",
+        "The one-tap claim pack and full backups",
         "No account, no ads"
       ]
     },
@@ -72,7 +73,7 @@
       "price": "$4.99/mo · $29.99/yr · $59.99 once",
       "items": [
         "Unlimited items",
-        "Insurance-ready PDF report and CSV export",
+        "Whole-inventory PDF report and CSV export",
         "Free forever if you bought the app when it was paid"
       ]
     },
@@ -103,7 +104,7 @@
   "faq": [
     {
       "q": "How much does Master of Inventory cost?",
-      "a": "It is free for up to 15 items with every core feature. Pro removes the limit and adds the PDF and CSV exports: $4.99 a month, $29.99 a year with a 7-day free trial, or $59.99 once. Apple handles refunds and cancellations."
+      "a": "It is free for up to 15 items with every core feature. Pro removes the limit and adds the whole-inventory PDF report and CSV export: $4.99 a month, $29.99 a year with a 7-day free trial, or $59.99 once. Apple handles refunds and cancellations."
     },
     {
       "q": "Where is my data, and is it private?",
@@ -115,7 +116,7 @@
     },
     {
       "q": "Can I hand my insurer a report?",
-      "a": "Yes. Pro exports a PDF report and a CSV spreadsheet, and a claim pack bundles one item's receipt, photos and serial number in a tap."
+      "a": "Yes. Pro exports a whole-inventory PDF report and a CSV spreadsheet. The claim pack, which bundles one item's receipt, photos and serial number in a tap, is free, and so are full backups."
     },
     {
       "q": "Does it remind me about warranties and returns?",
