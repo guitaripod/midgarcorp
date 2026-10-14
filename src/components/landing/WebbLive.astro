@@ -204,7 +204,7 @@ const launchIso = status?.launchIso ?? '';
     color: color-mix(in srgb, var(--accent), #000 42%);
   }
   :global(.dark) .accent-text {
-    color: var(--accent);
+    color: color-mix(in srgb, var(--accent), #fff 24%);
     text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
   }
   .webb-visit.is-live {

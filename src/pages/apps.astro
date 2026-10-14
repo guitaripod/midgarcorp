@@ -100,7 +100,7 @@ const structuredData = {
                 most work:{' '}
                 <a
                   href={leader.landingHref}
-                  class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
+                  class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors underline decoration-dotted underline-offset-2"
                 >
                   {leader.app.name}
                 </a>
@@ -128,7 +128,10 @@ const structuredData = {
 
   {
     appHeroes.length > 0 && (
-      <section class="mb-14 sm:mb-20">
+      <section class="mb-14 sm:mb-20" aria-labelledby="apps-featured">
+        <h2 id="apps-featured" class="sr-only">
+          Most worked-on apps
+        </h2>
         <div class="space-y-16 sm:space-y-24">
           {appHeroes.map((entry, index) => (
             <AppFlagship entry={entry} flip={index % 2 === 1} eager={index === 0} />
@@ -140,7 +143,7 @@ const structuredData = {
 
   <section>
     <div class="flex items-baseline justify-between gap-4 mb-6">
-      <p class="prompt-line">ls ~/apps --all</p>
+      <h2 class="prompt-line font-normal">ls ~/apps --all</h2>
       <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">
         {appRest.length} more
       </span>

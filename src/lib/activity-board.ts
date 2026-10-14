@@ -173,9 +173,9 @@ function renderLanguages(languages: ActivitySnapshot['languages'], windowLabel: 
 
 function statTile(value: string, label: string, accent = false): string {
   return `
-    <div>
-      <div class="text-xl sm:text-2xl font-bold tracking-tight ${accent ? 'phosphor' : text}">${value}</div>
-      <div class="text-[11px] ${muted} mt-0.5 whitespace-nowrap">${label}</div>
+    <div class="flex flex-col">
+      <dt class="order-2 text-[11px] ${muted} mt-0.5 whitespace-nowrap">${label}</dt>
+      <dd class="order-1 text-xl sm:text-2xl font-bold tracking-tight ${accent ? 'phosphor' : text}">${value}</dd>
     </div>`;
 }
 

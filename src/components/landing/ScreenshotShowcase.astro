@@ -93,7 +93,11 @@ const panelCss = multi
     {
       devices.map((device, di) => (
         <div data-panel={device} class="device-panel">
-          <ul class="no-scrollbar flex snap-x snap-mandatory items-start gap-5 overflow-x-auto pb-4">
+          <ul
+            class="no-scrollbar flex snap-x snap-mandatory items-start gap-5 overflow-x-auto pb-4"
+            tabindex="0"
+            aria-label={`${app.shortName} screenshots, scroll sideways`}
+          >
             {app.screenshots[device].map((shot, i) => (
               <li class="flex shrink-0 snap-start flex-col items-center gap-3">
                 <button

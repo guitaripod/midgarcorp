@@ -560,7 +560,10 @@ const sectionPrompt = (cmd: string) => cmd;
                   <div class="flex min-w-0 flex-col gap-2">
                     {step.code.map((line) => (
                       <div class="flex min-w-0 items-center justify-between gap-3 rounded-md border border-paper-border bg-paper-raised px-3 py-2.5 font-mono text-xs dark:border-term-border dark:bg-term-raised sm:text-[0.8rem]">
-                        <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text">
+                        <code
+                          class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text"
+                          tabindex="0"
+                        >
                           <span class="accent-text">$</span> {line}
                         </code>
                         <button
@@ -935,7 +938,7 @@ const sectionPrompt = (cmd: string) => cmd;
     color: color-mix(in srgb, var(--accent), #000 42%);
   }
   :global(.dark) .accent-text {
-    color: var(--accent);
+    color: color-mix(in srgb, var(--accent), #fff 24%);
     text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
   }
   .hero-icon {

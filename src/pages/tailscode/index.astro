@@ -733,7 +733,12 @@ const clients = [
         Every frame is the built-in demo: what you see before wiring a single server. Scroll the
         rail; tap a screen for the full-resolution picture.
       </SectionHead>
-      <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-3">
+      <div
+        class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-3"
+        tabindex="0"
+        role="group"
+        aria-label="iPhone screenshots, scroll sideways"
+      >
         {
           phoneShots.map((s) => (
             <ShotFigure
@@ -1283,7 +1288,7 @@ const clients = [
     color: color-mix(in srgb, var(--accent), #000 42%);
   }
   :global(.dark) .accent-text {
-    color: var(--accent);
+    color: color-mix(in srgb, var(--accent), #fff 24%);
     text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
   }
   .hero-icon {
@@ -1294,7 +1299,7 @@ const clients = [
     border-color: color-mix(in srgb, var(--accent) 55%, transparent);
   }
   :global(.dark) .accent-btn {
-    color: var(--accent);
+    color: color-mix(in srgb, var(--accent), #fff 24%);
     border-color: color-mix(in srgb, var(--accent) 45%, transparent);
   }
   .accent-btn:hover {

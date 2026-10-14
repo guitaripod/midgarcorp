@@ -416,7 +416,7 @@ const withCode = (text: string) =>
             aria-controls="unrager-downloads-popover"
           >
             <strong id="install-count" class="accent-text font-semibold tabular-nums">—</strong>
-            <span class="border-b border-dotted border-current opacity-90">downloads</span>
+            <span class="border-b border-dotted border-current">downloads</span>
           </button>
           <div
             id="unrager-downloads-popover"
@@ -533,7 +533,10 @@ const withCode = (text: string) =>
                   <div class="flex flex-col gap-2">
                     {step.code.map((line) => (
                       <div class="flex items-center justify-between gap-3 rounded-md border border-paper-border bg-paper-raised px-3 py-2.5 font-mono text-sm dark:border-term-border dark:bg-term-raised">
-                        <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text">
+                        <code
+                          class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text"
+                          tabindex="0"
+                        >
                           <span class="accent-text">$</span> {line.prompt}
                         </code>
                         <button
@@ -707,7 +710,10 @@ const withCode = (text: string) =>
                   <div class="flex min-w-0 flex-col gap-2">
                     {step.code.map((line) => (
                       <div class="flex min-w-0 items-center justify-between gap-3 rounded-md border border-paper-border bg-paper-raised px-3 py-2.5 font-mono text-xs dark:border-term-border dark:bg-term-raised sm:text-[0.8rem]">
-                        <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text">
+                        <code
+                          class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text"
+                          tabindex="0"
+                        >
                           <span class="accent-text">$</span> {line}
                         </code>
                         <button
@@ -1048,7 +1054,7 @@ const withCode = (text: string) =>
     color: color-mix(in srgb, var(--accent), #000 42%);
   }
   :global(.dark) .accent-text {
-    color: var(--accent);
+    color: color-mix(in srgb, var(--accent), #fff 24%);
     text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
   }
   .accent-btn {

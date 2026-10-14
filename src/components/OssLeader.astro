@@ -65,15 +65,18 @@ const linkClass =
     {project.category}
   </p>
 
-  <dl class="grid grid-cols-2 gap-x-5 mb-5">
+  <div class="grid grid-cols-2 gap-x-5 mb-5" role="group" aria-label="Work behind it">
     {
       numbers.map((entry) => (
         <div>
-          <dd class="text-3xl sm:text-4xl font-bold tracking-tight tabular-nums text-paper-text dark:text-term-text">
+          <p class="text-3xl sm:text-4xl font-bold tracking-tight tabular-nums text-paper-text dark:text-term-text">
             {entry.value.toLocaleString('en-US')}
-          </dd>
-          <dt class="text-xs text-paper-muted dark:text-term-muted mt-1 mb-2">{entry.label}</dt>
-          <div class="h-1.5 rounded-sm overflow-hidden bg-paper-raised dark:bg-term-raised">
+          </p>
+          <p class="text-xs text-paper-muted dark:text-term-muted mt-1 mb-2">{entry.label}</p>
+          <div
+            class="h-1.5 rounded-sm overflow-hidden bg-paper-raised dark:bg-term-raised"
+            aria-hidden="true"
+          >
             <div
               class={`h-full rounded-sm ${
                 entry.tone === 'green'
@@ -86,7 +89,7 @@ const linkClass =
         </div>
       ))
     }
-  </dl>
+  </div>
 
   <p class="text-sm text-paper-muted dark:text-term-muted leading-relaxed mb-5 flex-1">
     {project.description}
