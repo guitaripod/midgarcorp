@@ -58,7 +58,7 @@ const OVERRIDES = {
     // card, link to the repo (the Linux app) instead.
     homepageUrl: null,
     description:
-      'A lossless music player with gapless playback and Last.fm scrobbling — a native GTK4/libadwaita desktop app.',
+      'A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling — a native GTK4/libadwaita desktop app.',
   },
   // Tagged `tui` on GitHub but runs as a one-shot CLI (`image-collage a.png …`).
   'image-collage': { form: 'cli' },
