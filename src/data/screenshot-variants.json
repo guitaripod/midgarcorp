@@ -575,134 +575,6 @@
     480,
     960
   ],
-  "/screenshots/tailscode/phone-lock.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-approval.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-board.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-diff.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-question.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-costs.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-limits.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-effort.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-delegate.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-13.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-14.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-15.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-13.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-14.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-15.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-live.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-approve.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-diff.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-month.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-chat.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-split.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-light-chat.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-light-split.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-light-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/sync-03-both.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-dark-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-light-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-dark-viewer.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-light-viewer.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-dark-chat.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-dark-split.webp": [
-    480,
-    960
-  ],
   "/screenshots/crucible/iphone-1.webp": [
     480,
     960
@@ -847,6 +719,14 @@
     480,
     960
   ],
+  "/screenshots/flaccy/mac-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/mac-9.webp": [
+    480,
+    960
+  ],
   "/screenshots/flaccy/linux-1.webp": [
     480,
     960
@@ -888,6 +768,134 @@
     960
   ],
   "/screenshots/flaccy/linux-11.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-lock.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-approval.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-board.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-diff.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-question.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-costs.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-limits.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-effort.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-delegate.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-13.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-14.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-dark-15.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-13.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-14.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/suomi-light-15.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-live.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-approve.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-diff.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-month.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-chat.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-split.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-studio.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-light-chat.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-light-split.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-light-studio.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/sync-03-both.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-studio.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-light-studio.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-viewer.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-light-viewer.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-chat.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-split.webp": [
     480,
     960
   ],
@@ -960,17 +968,17 @@
     144,
     216
   ],
-  "/screenshots/tailscode/icon.webp": [
-    72,
-    144,
-    216
-  ],
   "/screenshots/crucible/icon.webp": [
     72,
     144,
     216
   ],
   "/screenshots/flaccy/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/tailscode/icon.webp": [
     72,
     144,
     216

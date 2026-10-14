@@ -2948,49 +2948,49 @@
             "src": "/screenshots/flaccy/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Now Playing"
+            "label": "Equalizer"
           },
           {
             "src": "/screenshots/flaccy/iphone-3.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Lyrics"
+            "label": "Now Playing"
           },
           {
             "src": "/screenshots/flaccy/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Playlists"
+            "label": "Lyrics"
           },
           {
             "src": "/screenshots/flaccy/iphone-5.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Recap"
+            "label": "Playlists"
           },
           {
             "src": "/screenshots/flaccy/iphone-6.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Year in Music"
+            "label": "Recap"
           },
           {
             "src": "/screenshots/flaccy/iphone-7.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Apple Watch"
+            "label": "Year in Music"
           },
           {
             "src": "/screenshots/flaccy/iphone-8.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Up Next"
+            "label": "Apple Watch"
           },
           {
             "src": "/screenshots/flaccy/iphone-9.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Wantlist"
+            "label": "Precision EQ"
           },
           {
             "src": "/screenshots/flaccy/iphone-10.webp",
@@ -3010,34 +3010,46 @@
             "src": "/screenshots/flaccy/mac-2.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Now Playing"
+            "label": "Equalizer"
           },
           {
             "src": "/screenshots/flaccy/mac-3.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Up Next"
+            "label": "Now Playing"
           },
           {
             "src": "/screenshots/flaccy/mac-4.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Songs"
+            "label": "Up Next"
           },
           {
             "src": "/screenshots/flaccy/mac-5.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Recap"
+            "label": "Songs"
           },
           {
             "src": "/screenshots/flaccy/mac-6.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Year in Music"
+            "label": "Recap"
           },
           {
             "src": "/screenshots/flaccy/mac-7.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Precision EQ"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-8.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Year in Music"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-9.webp",
             "w": 1920,
             "h": 1200,
             "label": "Light mode"
@@ -3135,9 +3147,9 @@
       ],
       "ogShot": {
         "src": "/screenshots/flaccy/og-hero.webp",
-        "w": 723,
+        "w": 724,
         "h": 1500,
-        "label": "Library",
+        "label": "Equalizer",
         "framed": true
       }
     },

@@ -209,7 +209,7 @@ var appEnhancements = map[int]struct {
 		PrimaryColor: "#FF4D6D",
 		Features: []string{
 			"Gapless FLAC playback with quality badges",
-			"AI-organized library, no manual tagging",
+			"A real equalizer with a setting per output",
 			"Last.fm scrobbling, charts & Year in Music",
 		},
 		Platforms: []string{"iPhone", "Apple Watch", "Mac"},
