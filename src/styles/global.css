@@ -299,3 +299,7 @@
     transparent 3px
   );
 }
+
+.astro-code span[style*='#768390'] {
+  color: #8b949e !important;
+}
