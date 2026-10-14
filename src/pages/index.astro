@@ -2,7 +2,6 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import AppCard from '@components/AppCard.astro';
 import OpenSourceCard from '@components/OpenSourceCard.astro';
-import LinuxAppCard from '@components/LinuxAppCard.astro';
 import LinuxShowcaseCard from '@components/LinuxShowcaseCard.astro';
 import MatrixRain from '@components/MatrixRain.astro';
 import ActivityBoard from '@components/ActivityBoard.astro';
@@ -11,7 +10,7 @@ import { calculateReadingTime } from '@utils/reading-time';
 import appsData from '../data/apps.json';
 import careerData from '../data/career.json';
 import { appEntries } from '@data/apps';
-import { LINUX_NOW, LINUX_SHOWCASE, featuredLinuxApps, linuxStats } from '@data/linux';
+import { LINUX_NOW, LINUX_SHOWCASE, linuxApps, linuxStats } from '@data/linux';
 import { landingSlugs } from '@data/landing';
 import { ossProjects, ossStats } from '@data/oss';
 import activity from '../data/github-activity.json';
@@ -29,7 +28,9 @@ const postsWithReadingTime = posts.map((post) => ({
 const featuredApps = appEntries.filter((entry) => entry.shots.length > 0).slice(0, 3);
 const featuredAppSlugs = new Set(featuredApps.map((entry) => entry.slug));
 
-const featuredLinux = featuredLinuxApps(3, [...featuredAppSlugs].filter(Boolean) as string[]);
+const featuredLinux = linuxApps
+  .filter((app) => app.id in LINUX_SHOWCASE && !featuredAppSlugs.has(app.id))
+  .slice(0, 3);
 
 const shownIds = new Set([...featuredAppSlugs, ...featuredLinux.map((app) => app.id)]);
 const featuredOpenSource = ossProjects
@@ -229,15 +230,7 @@ const engagements = careerData.entries.slice(0, 3);
       </a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      {
-        featuredLinux.map((app) =>
-          app.id in LINUX_SHOWCASE ? (
-            <LinuxShowcaseCard app={app} now={LINUX_NOW} />
-          ) : (
-            <LinuxAppCard app={app} now={LINUX_NOW} />
-          )
-        )
-      }
+      {featuredLinux.map((app) => <LinuxShowcaseCard app={app} now={LINUX_NOW} />)}
     </div>
   </section>
 
