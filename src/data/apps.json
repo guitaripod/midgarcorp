@@ -12,7 +12,7 @@
         "Apple TV",
         "Vision Pro"
       ],
-      "category": "Photo \u0026 Video",
+      "category": "Photo & Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam-james-webb-images/id6705124497",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/60/c0/bb/60c0bb43-dfc5-fa64-8cb1-8b3c0e3543c6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
@@ -53,7 +53,7 @@
         "iPhone",
         "iPad"
       ],
-      "category": "Food \u0026 Drink",
+      "category": "Food & Drink",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/double-kick-menu-translator/id6736581403",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/03/57/a2/0357a2b1-dac4-3871-5c25-9b7f87e3431d/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
@@ -89,7 +89,7 @@
     {
       "id": "dream-eater",
       "name": "Dream Eater: Dream Interpreter",
-      "tagline": "ML-Powered Dream Journaling",
+      "tagline": "Voice Dream Journal",
       "description": "You wake at 3 a. m.",
       "platforms": [
         "iPhone",
@@ -99,18 +99,18 @@
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-dream-interpreter/id6661019277",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b8/20/c5/b820c527-7151-0d96-64cd-bed53c165c7d/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#6366F1",
+      "primaryColor": "#8B7CF6",
       "features": [
-        "Dream pattern analysis",
-        "AI-powered insights",
-        "Private \u0026 secure journaling"
+        "Voice capture that works offline",
+        "The real moon and sky on every dream",
+        "Readings that ask, not tell"
       ],
       "releaseDate": "2024-09-18T07:00:00Z"
     },
     {
       "id": "master-of-inventory",
       "name": "Master of Inventory: Warranty",
-      "tagline": "Professional Inventory Management",
+      "tagline": "Warranty and Claim Tracker",
       "description": "Disaster doesn't wait for you to find the receipt. Photograph, value, and receipt-back everything you own now — so an insurance claim, a warranty, or a return is one tap away, not a frantic search.",
       "platforms": [
         "iPhone",
@@ -122,16 +122,16 @@
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/03/da/7e/03da7e96-4a6c-616e-04a8-92a4f7277a4e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#10B981",
       "features": [
-        "Barcode scanning",
-        "Multi-location tracking",
-        "Detailed analytics"
+        "Warranty and return reminders",
+        "Receipt scanning on your device",
+        "One-tap claim pack"
       ],
       "releaseDate": "2021-02-14T08:00:00Z"
     },
     {
       "id": "master-of-flags",
       "name": "Master of Flags: World Quiz",
-      "tagline": "Learn Flags \u0026 Capitals",
+      "tagline": "Learn Flags & Capitals",
       "description": "Master of Flags is FREE. No ads.",
       "platforms": [
         "Mac"
@@ -144,7 +144,7 @@
       "features": [
         "Flags and capitals, six regions",
         "Daily Challenge and streaks",
-        "250-flag encyclopedia"
+        "iPhone, iPad, Mac, Apple TV and Watch"
       ],
       "releaseDate": "2019-10-21T07:00:00Z"
     },
@@ -178,7 +178,7 @@
         "iPhone",
         "iPad"
       ],
-      "category": "Photo \u0026 Video",
+      "category": "Photo & Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4a/30/0a/4a300a74-7885-7894-40cc-a77e32b27b37/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
@@ -205,8 +205,8 @@
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9b/cf/47/9bcf47f5-c888-89b6-d9cc-cdc31d112c80/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#9147FF",
       "features": [
-        "Native player with PiP \u0026 background audio",
-        "Real-time chat with 7TV, BTTV \u0026 FFZ emotes",
+        "Native player with PiP & background audio",
+        "Real-time chat with 7TV, BTTV & FFZ emotes",
         "Browse as a guest, sign in for Following"
       ],
       "releaseDate": "2026-07-06T07:00:00Z"
@@ -225,7 +225,7 @@
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/27/00/2a/27002a72-cfb0-6eb6-1c6e-586a3012d706/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#546BFF",
       "features": [
-        "Drive Claude Code \u0026 opencode from your phone",
+        "Drive Claude Code & opencode from your phone",
         "Point-to-point over your own Tailscale network",
         "Watch the turn land on your Lock Screen"
       ],
@@ -254,21 +254,21 @@
     },
     {
       "id": "helia",
-      "name": "Helia: UV Index \u0026 Sun Safety",
+      "name": "Helia: UV Index & Sun Safety",
       "tagline": "The Honest Solar Coach",
       "description": "Helia is the honest solar coach. Most sun apps either push you to maximize a tan or just show a raw UV number.",
       "platforms": [
         "iPhone"
       ],
-      "category": "Health \u0026 Fitness",
+      "category": "Health & Fitness",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/helia-uv-index-sun-safety/id6785542220",
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/5a/b0/39/5ab0397c-823d-32c9-e938-15d8045ea4b5/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
       "primaryColor": "#F5A623",
       "features": [
         "A live sunburn budget tuned to your skin",
-        "Real-time local UV \u0026 a safe-exposure timer",
-        "Circadian, vitamin-D \u0026 mood coaching"
+        "Real-time local UV & a safe-exposure timer",
+        "Circadian, vitamin-D & mood coaching"
       ],
       "releaseDate": "2026-07-21T07:00:00Z"
     },
@@ -289,15 +289,15 @@
       "primaryColor": "#FF4D6D",
       "features": [
         "Gapless FLAC playback with quality badges",
-        "AI-organized library, no manual tagging",
-        "Last.fm scrobbling, charts \u0026 Year in Music"
+        "A real equalizer with a setting per output",
+        "Last.fm scrobbling, charts & Year in Music"
       ],
       "releaseDate": "2026-07-09T07:00:00Z"
     },
     {
       "id": "payday",
-      "name": "Pay Day: E-Invoice \u0026 Peppol",
-      "tagline": "Peppol \u0026 Factur-X Invoices on iPhone",
+      "name": "Pay Day: E-Invoice & Peppol",
+      "tagline": "Peppol & Factur-X Invoices on iPhone",
       "description": "Most invoice apps make a pretty PDF. Pay Day makes one your tax authority's system can actually read.",
       "platforms": [
         "iPhone",

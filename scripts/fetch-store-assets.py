@@ -97,6 +97,10 @@ PINNED_DESCRIPTIONS = {"solarbeam"}
 # own convention is a bare screenshot with the caption in HTML underneath. ASC
 # also has no visionOS bucket here, so a re-fetch would drop those shots.
 PINNED_SCREENSHOTS = {"solarbeam", "tailscode", "pixiepocket"}
+# Slugs whose remade UI is still in review: the page follows the newest submitted
+# version of every platform (its screenshots, description and keywords) instead of
+# the version the storefront serves today.
+NEWEST_VERSION = {"dreameater", "masterofflags", "masterofinventory"}
 # Cap the stored webp width per device class (display never exceeds this @2x).
 WIDTH_CAP = {"iphone": 1290, "ipad": 1600, "tv": 1920, "mac": 1920}
 
@@ -179,8 +183,13 @@ def label_from_filename(name, idx):
     return pretty.title() if pretty else f"Screen {idx + 1}"
 
 
-def collect_versions(track_id):
-    """Return {platform: versionRecord} choosing live state, else newest."""
+def collect_versions(track_id, newest=False):
+    """Return {platform: versionRecord} choosing live state, else newest.
+
+    With `newest` the live-state preference is dropped and the most recently
+    created version of each platform wins, so a remake that is still in review
+    is what the page shows.
+    """
     data = asc_get(
         f"/v1/apps/{track_id}/appStoreVersions?limit=30"
         "&fields[appStoreVersions]=versionString,appStoreState,platform,createdDate"
@@ -190,7 +199,8 @@ def collect_versions(track_id):
     for v in data:
         plat = v["attributes"]["platform"]
         cur = by_plat.get(plat)
-        score = (rank.get(v["attributes"]["appStoreState"], 0), v["attributes"].get("createdDate") or "")
+        score = (0 if newest else rank.get(v["attributes"]["appStoreState"], 0),
+                 v["attributes"].get("createdDate") or "")
         if cur is None or score > cur["_score"]:
             v["_score"] = score
             by_plat[plat] = v
@@ -231,7 +241,7 @@ def process_app(app):
     os.makedirs(out_dir, exist_ok=True)
     tmp = os.path.join(out_dir, "_tmp.png")
 
-    by_plat = collect_versions(track_id)
+    by_plat = collect_versions(track_id, newest=slug in NEWEST_VERSION)
     print("  versions:", {p: f"{v['attributes']['versionString']}/{v['attributes']['appStoreState']}" for p, v in by_plat.items()})
 
     # Merge screenshot buckets across the chosen platform versions.
@@ -335,6 +345,11 @@ def process_app(app):
             "sellerName": "Midgar Oy",
             "icon": None,
         })
+
+    if slug in NEWEST_VERSION:
+        fact["description"] = (loc_attrs.get("description") or fact.get("description") or "").strip()
+        fact["releaseNotes"] = (loc_attrs.get("whatsNew") or "").strip()
+        fact["promotionalText"] = (loc_attrs.get("promotionalText") or "").strip()
 
     fact["marketingUrl"] = loc_attrs.get("marketingUrl")
     fact["supportUrl"] = loc_attrs.get("supportUrl")

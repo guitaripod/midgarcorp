@@ -1,10 +1,13 @@
 {
   "seoTitle": "Flaccy — Lossless FLAC Player for iPhone, Apple Watch and Mac",
-  "metaDescription": "Play the music you own at full quality. Flaccy handles FLAC, ALAC, WAV, AIFF, MP3 and AAC with gapless playback, synced lyrics, Last.fm scrobbling and a standalone Apple Watch app. No account, no ads, nothing uploaded. Free to try.",
+  "metaDescription": "Play the music you own at full quality, with a real equalizer. Flaccy handles FLAC, ALAC, WAV, AIFF, MP3 and AAC with gapless playback, synced lyrics, Last.fm scrobbling and a standalone Apple Watch app. No account, no ads, nothing uploaded. Free to try.",
   "keywords": [
     "flac player iphone",
     "lossless music player ios",
     "hi-res music player iphone",
+    "iphone equalizer music player",
+    "parametric equalizer iphone",
+    "autoeq iphone",
     "local music player iphone",
     "gapless music player",
     "alac player ios",
@@ -13,15 +16,16 @@
     "synced lyrics music player",
     "apple watch offline music player",
     "flac player mac",
-    "lossless music player macos"
+    "lossless music player macos",
+    "mac music player equalizer"
   ],
   "heroHeadline": "Play the music you own, at full quality",
-  "heroSubhead": "Flaccy plays your FLAC, ALAC, WAV, AIFF, MP3 and AAC files exactly as they were mastered — gapless, with synced lyrics, Last.fm scrobbling and an Apple Watch app that works without your phone. No account, no ads, and your files never leave your device.",
+  "heroSubhead": "Flaccy plays your FLAC, ALAC, WAV, AIFF, MP3 and AAC files exactly as they were mastered — gapless, with a real equalizer, synced lyrics, Last.fm scrobbling and an Apple Watch app that works without your phone. No account, no ads, and your files never leave your device.",
   "accentColor": "#FF4D6D",
   "highlights": [
     "Codec, bit depth and sample rate on every track, from CD quality to Hi-Res",
-    "Gapless playback, synced lyrics and a queue that survives relaunches",
-    "Every play scrobbled to Last.fm, even offline",
+    "A real equalizer: drag the curve, import AutoEq profiles, give every output its own setting",
+    "Gapless playback, synced lyrics and every play scrobbled to Last.fm, even offline",
     "A standalone Apple Watch app, a native Mac app and a free Linux app"
   ],
   "features": [
@@ -29,6 +33,11 @@
       "title": "See exactly what you're hearing",
       "body": "Every album and track wears its codec, bit depth and sample rate, from AAC 16/44.1 to FLAC 24/96, and a Lossless filter shows what is worth a good pair of headphones.",
       "glyph": "♯"
+    },
+    {
+      "title": "A real equalizer",
+      "body": "Drag the curve and hear it change, or switch to Advanced for up to ten bands with bells, shelves, filters and adjustable Q. Sixteen presets, your own saved profiles, and import of Equalizer APO and AutoEq text to tune for your headphones. Every output remembers its own setting, so AirPods, a wired DAC and the speaker each sound right. Automatic headroom keeps boosts from clipping, Hold to compare is level-matched so louder never wins, and gapless playback stays intact. On iPhone, Mac and Linux.",
+      "glyph": "≋"
     },
     {
       "title": "Your library, organized",
@@ -77,12 +86,12 @@
     },
     {
       "title": "Flaccy for Mac",
-      "body": "A native Liquid Glass Mac app that wears the colour of your music. Watch a folder and new files appear instantly, control playback from the menu bar player and your media keys, sort a multi-column song list, browse keyboard-first and export full-resolution Year in Music posters. Available on the Mac App Store.",
+      "body": "A native Liquid Glass Mac app that wears the colour of your music, with the equalizer in its own window beside your library (⌥⌘E). Watch a folder and new files appear instantly, control playback from the menu bar player and your media keys, sort a multi-column song list, browse keyboard-first and export full-resolution Year in Music posters. Available on the Mac App Store.",
       "glyph": "⌘"
     },
     {
       "title": "Flaccy for Linux",
-      "body": "A native GTK4 app that tints itself with the colour of whatever is playing, with gapless GStreamer playback, MPRIS media keys, Last.fm scrobbling, synced lyrics and listening stats, in light or dark. Free and open source. Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
+      "body": "A native GTK4 app that tints itself with the colour of whatever is playing, with gapless GStreamer playback, MPRIS media keys, Last.fm scrobbling, synced lyrics, listening stats and the same equalizer, in light or dark. Free and open source. Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
       "glyph": "🐧"
     }
   ],
@@ -104,6 +113,10 @@
     {
       "q": "What audio formats does Flaccy play?",
       "a": "FLAC, ALAC, WAV, AIFF, MP3, AAC, M4A and CAF. Playback is gapless for all of them, but only lossless files (FLAC, ALAC, WAV, AIFF) are sample-exact at the seams: MP3 and AAC carry encoder padding that iOS does not strip, so a lossy rip of a segued album can click where the lossless one does not. DSD is not supported."
+    },
+    {
+      "q": "Does Flaccy have an equalizer?",
+      "a": "Yes, on iPhone, Mac and Linux. Drag the curve in Simple mode, or switch to Advanced for up to ten bands with bells, shelves, high-pass and low-pass filters and adjustable Q. It ships with sixteen presets, saves your own, and imports Equalizer APO and AutoEq profile text so you can tune for your headphones. Each output (AirPods, a wired DAC, the speaker) keeps its own setting and switches when you do. Automatic headroom prevents clipping, and Hold to compare is level-matched so louder never sounds better. With the equalizer off or flat the signal passes through untouched, and gapless playback is unaffected. The Apple Watch app plays through the system and has no equalizer."
     },
     {
       "q": "Do I need an account or a streaming subscription?",
@@ -139,34 +152,38 @@
     },
     {
       "q": "Is there a Linux app?",
-      "a": "Yes. Flaccy for Linux is a free, open source GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling and synced lyrics, with an adaptive theme that retints the whole app with the colour of whatever you're playing. Install it with the one-line command in the Flaccy for Linux section or from the AUR with yay -S flaccy-bin."
+      "a": "Yes. Flaccy for Linux is a free, open source GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, synced lyrics and a full equalizer, with an adaptive theme that retints the whole app with the colour of whatever you're playing. Install it with the one-line command in the Flaccy for Linux section or from the AUR with yay -S flaccy-bin."
     }
   ],
   "screenshotCaptions": {
     "iphone": [
       "Your whole collection in one place, every file wearing its quality badge.",
-      "Now Playing with the codec, bit depth and sample rate in plain sight.",
+      "The equalizer: drag the curve and hear it change, with a live spectrum behind it.",
+      "Now Playing with the codec, bit depth and sample rate in plain sight, and the equalizer one tap away.",
       "Synced lyrics that follow the song. Tap any line to jump to it.",
       "Smart playlists built from your own listening: Heavy Rotation, Crate Dig, On Repeat, Rediscover.",
       "Last.fm scrobbling with offline retry, and charts for every period.",
       "Year in Music: story cards and a poster of your listening year.",
       "Apple Watch: sync albums and play them offline, no iPhone needed.",
-      "A queue that survives relaunches, reordered with a drag.",
-      "The wantlist: new releases and the albums you're hunting.",
+      "Advanced mode: up to ten bands, AutoEq import, and a profile for every output.",
       "Light or dark, following your system or your choice."
     ],
     "mac": [
       "Your whole collection in a native Liquid Glass library, every file wearing its quality badge.",
+      "The equalizer in its own window beside your library: drag the curve, watch the spectrum move.",
       "Now Playing: artwork, synced lyrics and the queue side by side.",
       "Up Next always at hand, in the inspector beside your library.",
       "A multi-column song list with codec, quality, plays and loved, sorted your way.",
       "Last.fm scrobbling with offline retry, and charts for every period.",
+      "Advanced mode: bells, shelves and filters with a table of every band, one profile per output.",
       "Year in Music: story cards and a poster you can export at full resolution.",
       "Light or dark, following your system or your choice."
     ],
     "linux": [
       "Your whole library, tinted live by the album that's playing — Made For You shelves and gapless playback.",
       "Now Playing: art, synced lyrics, and the queue side by side over a blurred, accent-washed cover — bring in any one, two, or all three.",
+      "The equalizer: drag the curve, watch the live spectrum move, and hold Compare to hear the difference at the same level.",
+      "Advanced mode: up to ten bells, shelves and filters in a table, one profile per output.",
       "Album pages awash in the cover's own color, with year, genre, and quality badges added automatically.",
       "Every song with codec, quality, plays, and a Loved filter.",
       "Artist pages with bios, genre chips, and similar artists pulled from your own library.",

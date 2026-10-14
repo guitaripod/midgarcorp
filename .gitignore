@@ -38,3 +38,4 @@ dev.log
 
 # wrangler local secrets
 .dev.vars
+__pycache__/

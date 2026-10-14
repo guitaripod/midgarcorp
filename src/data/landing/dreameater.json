@@ -1,118 +1,157 @@
 {
-  "seoTitle": "Dream Eater — AI Dream Interpretation & Journal",
-  "metaDescription": "Type a dream, get an AI reading of its symbols and emotions plus dream art in seconds. A private 3 a.m. journal for iPhone and iPad. First reading free.",
+  "seoTitle": "Dream Eater: Voice Dream Journal with Moon and Sky",
+  "metaDescription": "Speak or type last night's dream, get a reading that asks instead of tells, and see the real moon beside it. The journal is free forever. For iPhone and iPad.",
   "keywords": [
-    "dream interpretation app",
-    "ai dream analysis",
     "dream journal app",
-    "what does my dream mean",
-    "dream symbol dictionary",
-    "dream meaning decoder",
-    "record dreams iphone",
-    "dream art generator",
-    "subconscious dream reading",
-    "private dream diary",
+    "voice dream journal",
+    "dream interpretation app",
+    "dream diary iphone",
     "moon phase dream journal",
-    "dream pattern tracker"
+    "lucid dream journal",
+    "dream art generator",
+    "nightmare journal",
+    "dream pattern tracker",
+    "astrology dream journal",
+    "private dream journal"
   ],
-  "heroHeadline": "Decode the dream you just woke from",
-  "heroSubhead": "Type a dream while it is still vivid and get a reading of its symbols and emotions in seconds, plus a piece of art made from your own words. Your first reading is free.",
-  "accentColor": "#6366F1",
+  "heroHeadline": "Say the dream before it fades",
+  "heroSubhead": "A voice-first dream journal for iPhone and iPad. Speak it or type it, keep it with the real moon and sky of that night, and ask for a reading that asks questions instead of handing you a verdict. The journal is free forever.",
+  "accentColor": "#8B7CF6",
   "highlights": [
-    "First dream reading free, journaling always free",
-    "Dreams stay on your device and your iCloud",
-    "No account or sign-up to start writing"
+    "Voice capture that works offline, from the Lock Screen or Action Button",
+    "The real moon phase and sign stamped on every dream",
+    "Journal free forever, three free readings a week",
+    "Dreams stay on your iPhone, no account"
   ],
   "features": [
     {
-      "title": "Symbol-Level Readings",
-      "body": "Describe a dream in your own words and get back the key symbols, the emotional undercurrents, and what your subconscious might be working through. A built-in symbol dictionary lets you go deeper on recurring images.",
-      "glyph": "◈"
-    },
-    {
-      "title": "Art From Your Words",
-      "body": "Every analyzed dream comes with an image generated from its own imagery. Save it, share it, or keep it as the cover of that night's entry.",
-      "glyph": "✦"
-    },
-    {
-      "title": "Built For 3 A.M.",
-      "body": "Big type, minimal taps, and no setup between you and the half-remembered. Capture dreams before they fade, and writing in your journal is always free.",
+      "title": "Say it before it fades",
+      "body": "Speak or type in seconds. Voice is turned into text on your iPhone and works offline, drafts survive a crash or a phone call, and a Bedside theme keeps the light low. Start recording from the Lock Screen, Control Center or the Action Button.",
       "glyph": "◉"
     },
     {
-      "title": "Patterns Over Time",
-      "body": "Moods, themes, and recurring symbols surface across weeks of entries, so you can see what your sleeping mind keeps returning to.",
-      "glyph": "▰"
+      "title": "A reading that asks, not tells",
+      "body": "It quotes your own words back, asks open questions and names the tradition when one reads an image a certain way: Jungian, Gestalt, folk. It never says a symbol has one fixed meaning and never predicts anything. Ask follow-up questions when you want to go further.",
+      "glyph": "◈"
     },
     {
-      "title": "Moon Phases",
-      "body": "Each entry records the moon phase from that night, with lunar info on hand if you like tracking your dreams against the sky.",
+      "title": "Painted from your words",
+      "body": "Six art styles, from soft dreamscape to ink wash to collage, made from a short scene of the dream and never your raw text. Save the picture or share a card with the title and the moon.",
+      "glyph": "✦"
+    },
+    {
+      "title": "The sky it happened under",
+      "body": "Every dream is stamped with the moon phase and the Moon's sign, worked out on your iPhone, with a moon calendar and a moon widget for the Home and Lock Screen. Add birth details to see your chart. Astrology is optional and never a forecast.",
       "glyph": "⬡"
     },
     {
-      "title": "Private By Default",
-      "body": "No account is required, and your dreams stay on your device and iCloud. Nothing is published or shared unless you choose to share it.",
+      "title": "Patterns that are honest",
+      "body": "Your streak, tones and feelings, the themes that keep coming back and when you dream. Ask whether the moon matters and the app shows how many nights it takes to say anything, next to what chance alone would give you.",
+      "glyph": "▰"
+    },
+    {
+      "title": "Private, and yours to take",
+      "body": "Dreams, recordings, transcripts, tags and birth details stay on your iPhone. Lock the journal with Face ID or a passcode, export everything as Markdown and JSON, recover deletions for 30 days, or delete all data when you want it gone.",
       "glyph": "❖"
     }
   ],
-  "howItWorks": [
-    {
-      "step": "Type",
-      "body": "Write down the dream in your own words while it is still fresh, no account needed."
+  "howItWorks": [],
+  "pricing": {
+    "heading": "The journal is free. Readings are optional.",
+    "free": {
+      "title": "Free forever",
+      "price": "$0",
+      "items": [
+        "Voice and typed capture, drafts, calendar, search, tags and favorites",
+        "Export, App Lock, Recently Deleted and Delete all data",
+        "Three readings a week",
+        "No account, no ads"
+      ]
     },
-    {
-      "step": "Decode",
-      "body": "Get an AI reading of the symbols and emotions, with an image generated from your dream."
+    "premium": {
+      "title": "Dream Eater Plus",
+      "price": "$4.99/mo · $29.99/yr · $249.99 once",
+      "items": [
+        "Unlimited readings",
+        "Dream art in six styles",
+        "Follow-up questions",
+        "Your sky, with birth details and chart"
+      ]
     },
-    {
-      "step": "Revisit",
-      "body": "Keep your entries in a private journal and watch recurring themes and symbols emerge over time."
-    }
-  ],
+    "tiers": [
+      {
+        "name": "Monthly",
+        "price": "$4.99",
+        "amount": 4.99,
+        "period": "P1M",
+        "note": "per month, auto-renewing"
+      },
+      {
+        "name": "Annual",
+        "price": "$29.99",
+        "amount": 29.99,
+        "period": "P1Y",
+        "note": "per year, 7-day free trial"
+      },
+      {
+        "name": "Lifetime",
+        "price": "$249.99",
+        "amount": 249.99,
+        "note": "once, never renews"
+      }
+    ],
+    "footnote": "US prices shown; your local price appears in the App Store. Subscriptions renew automatically until you cancel in your Apple Account settings. Prefer no subscription? Credit packs of 5, 15, 50 or 100 ($2.99, $7.99, $24.99, $39.99) never expire and pay for dream art and follow-up questions, one credit each."
+  },
   "faq": [
     {
-      "q": "How much does Dream Eater cost?",
-      "a": "The app is free to download, and your first dream reading plus unlimited journaling are free. After that you can subscribe to Premium for unlimited analyses or buy dream credit packs instead."
-    },
-    {
-      "q": "Is there a free trial?",
-      "a": "Yes. The annual Premium plan starts with a 7-day free trial that analyzes unlimited dreams. Cancel anytime during the trial and you pay nothing."
-    },
-    {
-      "q": "Can I pay without a subscription?",
-      "a": "Yes. If you prefer not to subscribe, you can buy credit packs of 5, 15, 50, or 100 dream analyses. Credits never expire."
+      "q": "What is free and what costs money?",
+      "a": "The journal is free forever, including voice capture, search, export and App Lock, and every week includes three free readings. Plus adds unlimited readings, dream art, follow-up questions and your sky. The annual plan starts with a 7-day free trial, and Apple handles refunds and cancellations."
     },
     {
       "q": "Are my dreams private?",
-      "a": "No account is required to start, and your dreams stay on your device and your iCloud. An image is shared only if you choose to share it."
+      "a": "Dreams, recordings, transcripts, tags and birth details stay on your iPhone. A dream leaves the phone only when you ask for a reading, art or a follow-up. You can turn readings off, and Delete all data in Settings removes everything."
     },
     {
-      "q": "What devices does it run on?",
-      "a": "Dream Eater runs on iPhone and iPad with iOS 18 or later, and it is available in English, Spanish, and Chinese."
+      "q": "Does it sync between my devices?",
+      "a": "Not in version 2.0. Dreams live on the device they were written on and are included in your device backup."
+    },
+    {
+      "q": "What happens to the dreams I wrote in version 1?",
+      "a": "They move over automatically, along with your art, and a backup of the old data is kept for 30 days."
     },
     {
       "q": "Is this a medical or therapy tool?",
-      "a": "No. Dream Eater is for entertainment and self-reflection. It is not a medical, psychological, or therapeutic tool."
+      "a": "No. Dream Eater is for reflection and entertainment, and its readings offer perspectives rather than facts. If you are struggling, crisis resources are one tap away in Settings, under Help."
     },
     {
-      "q": "How do refunds work?",
-      "a": "Purchases and subscriptions are handled by Apple. You can request a refund through Apple and manage or cancel a subscription anytime in your App Store account settings."
+      "q": "Which devices and languages does it support?",
+      "a": "iPhone and iPad with iOS 26 or later, in English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, and Simplified and Traditional Chinese."
     }
   ],
   "screenshotCaptions": {
     "iphone": [
-      "AI reading of your dream",
-      "Home screen with tonight's quote",
-      "Your private dream journal",
-      "Patterns, moods, and symbols"
+      "Voice or text, offline, with drafts kept safe",
+      "Six art styles, painted from a short scene of your dream",
+      "A reading that quotes you and asks open questions",
+      "The real moon and sign of the night, plus your sky",
+      "Search, a calendar and a mark for every dream",
+      "Patterns shown beside what chance alone would give you",
+      "Record from the Lock Screen, with a Bedside theme",
+      "App Lock, export and delete, all in Settings"
     ],
     "ipad": [
-      "AI reading of your dream",
-      "Home screen with tonight's quote",
-      "Your private dream journal",
-      "Patterns, moods, and symbols"
+      "Voice or text, offline, with drafts kept safe",
+      "Six art styles, painted from a short scene of your dream",
+      "A reading that quotes you and asks open questions",
+      "The real moon and sign of the night, plus your sky",
+      "Search, a calendar and a mark for every dream",
+      "Patterns shown beside what chance alone would give you",
+      "Record from the Lock Screen, with a Bedside theme",
+      "App Lock, export and delete, all in Settings"
     ]
   },
-  "ctaLine": "Your first reading is free. Type tonight's dream and see what it means.",
-  "pricingNote": "Free to download with your first reading free; unlimited analyses via a Premium subscription (7-day free trial on the annual plan) or one-time credit packs that never expire."
+  "trustNote": "When you ask for a reading, the dream text goes to our server and on to Google's Gemini model to write it, and our server keeps no dream text afterward. Art is made from a short scene summary, never your raw words. Everything else stays on your iPhone. There is no account and no telemetry setting, because there is no telemetry.",
+  "hideAbout": true,
+  "ctaLine": "Catch tonight's dream before it fades.",
+  "pricingNote": "The journal is free forever with three free readings a week. Plus is $4.99 a month, $29.99 a year with a 7-day free trial, or $249.99 once."
 }

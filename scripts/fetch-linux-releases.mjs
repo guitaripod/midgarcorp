@@ -75,7 +75,7 @@ const OVERRIDES = {
     // card, link to the repo (the Linux app) instead.
     homepageUrl: null,
     description:
-      'A lossless music player with gapless playback and Last.fm scrobbling — a native GTK4/libadwaita desktop app.',
+      'A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling — a native GTK4/libadwaita desktop app.',
   },
   tailscode: {
     lang: 'swift',
