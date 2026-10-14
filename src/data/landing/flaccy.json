@@ -36,7 +36,7 @@
     },
     {
       "title": "A real equalizer",
-      "body": "Drag the curve and hear it change, or switch to Advanced for up to ten bands with bells, shelves, filters and adjustable Q. Sixteen presets, your own saved profiles, and import of Equalizer APO and AutoEq text to tune for your headphones. Every output remembers its own setting, so AirPods, a wired DAC and the speaker each sound right. Automatic headroom keeps boosts from clipping, Hold to compare is level-matched so louder never wins, and gapless playback stays intact.",
+      "body": "Drag the curve and hear it change, or switch to Advanced for up to ten bands with bells, shelves, filters and adjustable Q. Sixteen presets, your own saved profiles, and import of Equalizer APO and AutoEq text to tune for your headphones. Every output remembers its own setting, so AirPods, a wired DAC and the speaker each sound right. Automatic headroom keeps boosts from clipping, Hold to compare is level-matched so louder never wins, and gapless playback stays intact. On iPhone, Mac and Linux.",
       "glyph": "≋"
     },
     {
@@ -91,7 +91,7 @@
     },
     {
       "title": "Flaccy for Linux",
-      "body": "A native GTK4 app that tints itself with the colour of whatever is playing, with gapless GStreamer playback, MPRIS media keys, Last.fm scrobbling, synced lyrics and listening stats, in light or dark. Free and open source. Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
+      "body": "A native GTK4 app that tints itself with the colour of whatever is playing, with gapless GStreamer playback, MPRIS media keys, Last.fm scrobbling, synced lyrics, listening stats and the same equalizer, in light or dark. Free and open source. Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
       "glyph": "🐧"
     }
   ],
@@ -116,7 +116,7 @@
     },
     {
       "q": "Does Flaccy have an equalizer?",
-      "a": "Yes, on iPhone and Mac. Drag the curve in Simple mode, or switch to Advanced for up to ten bands with bells, shelves, high-pass and low-pass filters and adjustable Q. It ships with sixteen presets, saves your own, and imports Equalizer APO and AutoEq profile text so you can tune for your headphones. Each output (AirPods, a wired DAC, the speaker) keeps its own setting and switches when you do. Automatic headroom prevents clipping, and Hold to compare is level-matched so louder never sounds better. With the equalizer off or flat the signal passes through untouched, and gapless playback is unaffected. The Apple Watch app plays through the system and has no equalizer."
+      "a": "Yes, on iPhone, Mac and Linux. Drag the curve in Simple mode, or switch to Advanced for up to ten bands with bells, shelves, high-pass and low-pass filters and adjustable Q. It ships with sixteen presets, saves your own, and imports Equalizer APO and AutoEq profile text so you can tune for your headphones. Each output (AirPods, a wired DAC, the speaker) keeps its own setting and switches when you do. Automatic headroom prevents clipping, and Hold to compare is level-matched so louder never sounds better. With the equalizer off or flat the signal passes through untouched, and gapless playback is unaffected. The Apple Watch app plays through the system and has no equalizer."
     },
     {
       "q": "Do I need an account or a streaming subscription?",
@@ -152,7 +152,7 @@
     },
     {
       "q": "Is there a Linux app?",
-      "a": "Yes. Flaccy for Linux is a free, open source GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling and synced lyrics, with an adaptive theme that retints the whole app with the colour of whatever you're playing. Install it with the one-line command in the Flaccy for Linux section or from the AUR with yay -S flaccy-bin."
+      "a": "Yes. Flaccy for Linux is a free, open source GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, synced lyrics and a full equalizer, with an adaptive theme that retints the whole app with the colour of whatever you're playing. Install it with the one-line command in the Flaccy for Linux section or from the AUR with yay -S flaccy-bin."
     }
   ],
   "screenshotCaptions": {
@@ -182,6 +182,8 @@
     "linux": [
       "Your whole library, tinted live by the album that's playing — Made For You shelves and gapless playback.",
       "Now Playing: art, synced lyrics, and the queue side by side over a blurred, accent-washed cover — bring in any one, two, or all three.",
+      "The equalizer: drag the curve, watch the live spectrum move, and hold Compare to hear the difference at the same level.",
+      "Advanced mode: up to ten bells, shelves and filters in a table, one profile per output.",
       "Album pages awash in the cover's own color, with year, genre, and quality badges added automatically.",
       "Every song with codec, quality, plays, and a Loved filter.",
       "Artist pages with bios, genre chips, and similar artists pulled from your own library.",
