@@ -1,0 +1,23 @@
+---
+export interface Props {
+  label: string;
+  value: string | number;
+}
+
+const { label, value } = Astro.props;
+const hasViz = Astro.slots.has('default');
+---
+
+<div class="flex flex-col">
+  <dt class="order-2 text-xs text-paper-muted dark:text-term-muted mt-1">{label}</dt>
+  <dd class="order-1 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
+    {value}
+  </dd>
+  {
+    hasViz && (
+      <dd class="order-3 mt-3">
+        <slot />
+      </dd>
+    )
+  }
+</div>

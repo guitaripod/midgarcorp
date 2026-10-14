@@ -1,31 +1,36 @@
 ---
-import type { LinuxApp } from '@data/linux';
-import { linuxMax } from '@data/linux';
-import { barFraction } from '../lib/linux-insights';
+import { barFraction } from '../lib/work';
 
 export interface Props {
-  app: LinuxApp;
+  commits: number;
+  releases?: number;
+  maxCommits: number;
+  maxReleases?: number;
 }
 
-const { app } = Astro.props;
+const { commits, releases, maxCommits, maxReleases = 1 } = Astro.props;
 
 const rows = [
   {
     label: 'commits',
-    value: app.commitCount,
-    fill: barFraction(app.commitCount, linuxMax.commits),
+    value: commits,
+    fill: barFraction(commits, maxCommits),
     bar: 'bg-paper-green dark:bg-term-green',
   },
-  {
-    label: 'releases',
-    value: app.releaseCount,
-    fill: barFraction(app.releaseCount, linuxMax.releases),
-    bar: 'bg-paper-amber dark:bg-term-amber',
-  },
+  ...(releases === undefined
+    ? []
+    : [
+        {
+          label: 'releases',
+          value: releases,
+          fill: barFraction(releases, maxReleases),
+          bar: 'bg-paper-amber dark:bg-term-amber',
+        },
+      ]),
 ];
 ---
 
-<dl class="grid grid-cols-2 gap-x-4">
+<dl class:list={['grid gap-x-4', rows.length > 1 ? 'grid-cols-2' : 'grid-cols-1']}>
   {
     rows.map((row) => (
       <div>

@@ -1,0 +1,46 @@
+---
+import type { OssProject } from '@data/oss';
+import { FRESHNESS_STYLE, ageLabel, freshness, languageColor } from '../lib/work';
+
+export interface Props {
+  project: OssProject;
+  now: Date;
+}
+
+const { project, now } = Astro.props;
+const style = FRESHNESS_STYLE[freshness(project.updatedAt ?? null, now)];
+const commits = project.commitCount ?? 0;
+const releases = project.releaseCount ?? 0;
+---
+
+<li
+  id={project.id}
+  class="scroll-mt-24 py-3 border-b last:border-b-0 border-paper-border dark:border-term-border"
+>
+  <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+    <a
+      href={project.githubUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-bold text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
+    >
+      {project.name}
+    </a>
+    <span class="inline-flex items-center gap-1.5 text-xs text-paper-muted dark:text-term-faint">
+      <span
+        class="inline-block w-2 h-2 rounded-full"
+        style={`background:${languageColor(project.language)}`}
+        aria-hidden="true"></span>
+      {project.language}
+    </span>
+    <span class="inline-flex items-center gap-1.5 text-xs" title="Last push to the repository">
+      <span class={`inline-block w-1.5 h-1.5 rounded-full ${style.dot}`} aria-hidden="true"></span>
+      <span class={style.text}>{ageLabel(project.updatedAt ?? null, now)}</span>
+    </span>
+    <span class="text-xs text-paper-muted dark:text-term-faint tabular-nums">
+      {commits} commits · {releases}
+      {releases === 1 ? 'release' : 'releases'}
+    </span>
+  </div>
+  <p class="text-sm text-paper-muted dark:text-term-muted mt-1">{project.description}</p>
+</li>

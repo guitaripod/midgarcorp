@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-06-11T23:05:49+02:00",
-  "totalRepos": 134,
+  "lastUpdated": "2026-10-14T18:15:55+03:00",
+  "totalRepos": 171,
   "projects": [
     {
       "id": "omnichat",
@@ -8,7 +8,7 @@
       "description": "3rd place T3 Cloneathon Champion",
       "language": "TypeScript",
       "platforms": [],
-      "stars": 56,
+      "stars": 57,
       "githubUrl": "https://github.com/guitaripod/omnichat",
       "category": "AI \u0026 Agents",
       "highlights": [
@@ -47,7 +47,7 @@
         "Chat",
         "CLI"
       ],
-      "updatedAt": "2025-10-01T21:34:50Z",
+      "updatedAt": "2026-07-20T16:17:33Z",
       "createdAt": "2024-10-25T06:26:58Z",
       "topics": [
         "chat",
@@ -57,9 +57,63 @@
         "package",
         "swift"
       ],
-      "commitCount": 131,
+      "commitCount": 136,
       "releaseCount": 7,
       "homepageUrl": "https://guitaripod.github.io/Swollama/"
+    },
+    {
+      "id": "tailscode",
+      "name": "Tailscode",
+      "description": "Your AI agents, anywhere",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 14,
+      "githubUrl": "https://github.com/guitaripod/Tailscode",
+      "category": "Apps",
+      "highlights": [
+        "AI-powered",
+        "Ai-agents",
+        "Claude-code"
+      ],
+      "updatedAt": "2026-10-14T00:45:06Z",
+      "createdAt": "2026-07-06T22:42:43Z",
+      "topics": [
+        "ai-agents",
+        "claude-code",
+        "gtk4",
+        "ios",
+        "linux",
+        "opencode",
+        "swift",
+        "macos",
+        "tailscale"
+      ],
+      "commitCount": 1135,
+      "releaseCount": 46,
+      "homepageUrl": "https://midgarcorp.cc/tailscode"
+    },
+    {
+      "id": "unrager",
+      "name": "unrager",
+      "description": "Take the rage out of your x.com timeline",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 14,
+      "githubUrl": "https://github.com/guitaripod/unrager",
+      "category": "AI \u0026 Agents",
+      "highlights": [],
+      "updatedAt": "2026-10-13T16:14:14Z",
+      "createdAt": "2026-04-12T07:37:15Z",
+      "topics": [],
+      "commitCount": 670,
+      "releaseCount": 66,
+      "homepageUrl": "https://midgarcorp.cc/unrager"
     },
     {
       "id": "live-preview-demo",
@@ -78,6 +132,34 @@
       "topics": [],
       "commitCount": 12,
       "releaseCount": 0
+    },
+    {
+      "id": "openaikit",
+      "name": "OpenAIKit",
+      "description": "A comprehensive Swift SDK for the OpenAI API.",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 13,
+      "githubUrl": "https://github.com/guitaripod/OpenAIKit",
+      "category": "Swift Packages",
+      "highlights": [
+        "AI",
+        "OpenAI",
+        "SDK"
+      ],
+      "updatedAt": "2025-07-12T12:41:31Z",
+      "createdAt": "2025-06-25T20:08:29Z",
+      "topics": [
+        "ai",
+        "openai",
+        "sdk",
+        "swift"
+      ],
+      "commitCount": 70,
+      "releaseCount": 9,
+      "homepageUrl": "https://guitaripod.github.io/OpenAIKit/"
     },
     {
       "id": "geminikit",
@@ -99,34 +181,6 @@
       "homepageUrl": "https://guitaripod.github.io/GeminiKit/"
     },
     {
-      "id": "openaikit",
-      "name": "OpenAIKit",
-      "description": "A comprehensive Swift SDK for the OpenAI API.",
-      "language": "Swift",
-      "platforms": [
-        "macOS"
-      ],
-      "stars": 12,
-      "githubUrl": "https://github.com/guitaripod/OpenAIKit",
-      "category": "Swift Packages",
-      "highlights": [
-        "AI",
-        "OpenAI",
-        "SDK"
-      ],
-      "updatedAt": "2025-07-12T12:41:31Z",
-      "createdAt": "2025-06-25T20:08:29Z",
-      "topics": [
-        "ai",
-        "openai",
-        "sdk",
-        "swift"
-      ],
-      "commitCount": 70,
-      "releaseCount": 9,
-      "homepageUrl": "https://guitaripod.github.io/OpenAIKit/"
-    },
-    {
       "id": "flyr",
       "name": "flyr",
       "description": "Search Google Flights from the terminal",
@@ -136,16 +190,47 @@
         "Linux",
         "Windows"
       ],
-      "stars": 9,
+      "stars": 11,
       "githubUrl": "https://github.com/guitaripod/flyr",
       "category": "CLI Tools",
       "highlights": [],
-      "updatedAt": "2026-03-31T12:48:10Z",
+      "updatedAt": "2026-09-26T19:46:27Z",
       "createdAt": "2026-02-16T17:36:16Z",
       "topics": [],
-      "commitCount": 42,
-      "releaseCount": 10,
+      "commitCount": 49,
+      "releaseCount": 12,
       "homepageUrl": "https://crates.io/crates/flyr-cli"
+    },
+    {
+      "id": "songlink-cli",
+      "name": "songlink-cli",
+      "description": "Convert music URLs \u0026 download tracks",
+      "language": "Go",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 9,
+      "githubUrl": "https://github.com/guitaripod/songlink-cli",
+      "category": "CLI Tools",
+      "highlights": [
+        "CLI",
+        "Go",
+        "macOS"
+      ],
+      "updatedAt": "2026-06-09T14:00:07Z",
+      "createdAt": "2022-09-01T17:50:57Z",
+      "topics": [
+        "cli",
+        "go",
+        "macos",
+        "linux",
+        "music",
+        "windows"
+      ],
+      "commitCount": 63,
+      "releaseCount": 13
     },
     {
       "id": "weavex",
@@ -178,35 +263,33 @@
       "releaseCount": 8
     },
     {
-      "id": "songlink-cli",
-      "name": "songlink-cli",
-      "description": "Convert music URLs \u0026 download tracks",
-      "language": "Go",
-      "platforms": [
-        "macOS",
-        "Linux",
-        "Windows"
-      ],
+      "id": "wwdc-sessions",
+      "name": "wwdc-sessions",
+      "description": "Agent-native knowledge base of Apple WWDC sessions (2014-2026, Tech Talks, Meet with Apple): clean transcripts, structured metadata, code, and sosumi.ai/DocC doc links. Generated from Apple's public feeds.",
+      "language": "Python",
+      "platforms": [],
       "stars": 7,
-      "githubUrl": "https://github.com/guitaripod/songlink-cli",
-      "category": "CLI Tools",
+      "githubUrl": "https://github.com/guitaripod/wwdc-sessions",
+      "category": "AI \u0026 Agents",
       "highlights": [
-        "CLI",
-        "Go",
-        "macOS"
+        "AI-powered",
+        "Agent-native",
+        "Ai-agents"
       ],
-      "updatedAt": "2026-06-09T14:00:07Z",
-      "createdAt": "2022-09-01T17:50:57Z",
+      "updatedAt": "2026-10-14T12:44:59Z",
+      "createdAt": "2026-06-09T08:14:49Z",
       "topics": [
-        "cli",
-        "go",
-        "macos",
-        "linux",
-        "music",
-        "windows"
+        "agent-native",
+        "ai-agents",
+        "apple",
+        "llms-txt",
+        "mcp",
+        "swift",
+        "transcripts",
+        "wwdc"
       ],
-      "commitCount": 63,
-      "releaseCount": 13
+      "commitCount": 74,
+      "releaseCount": 0
     },
     {
       "id": "goscrapequotes",
@@ -294,28 +377,23 @@
       "homepageUrl": "https://guitaripod.github.io/xAIKit/"
     },
     {
-      "id": "unrager",
-      "name": "unrager",
-      "description": "A browser extension that takes the rage out of your x.com timeline, judged by a local model",
-      "language": "Rust",
+      "id": "flaccy",
+      "name": "flaccy",
+      "description": "A multi-platform music player",
+      "language": "Swift",
       "platforms": [
-        "macOS",
-        "Linux",
-        "Windows"
+        "macOS"
       ],
       "stars": 4,
-      "githubUrl": "https://github.com/guitaripod/unrager",
-      "category": "CLI Tools",
-      "highlights": [
-        "Local LLMs",
-        "TUI"
-      ],
-      "updatedAt": "2026-05-29T06:58:26Z",
-      "createdAt": "2026-04-12T07:37:15Z",
+      "githubUrl": "https://github.com/guitaripod/flaccy",
+      "category": "Apps",
+      "highlights": [],
+      "updatedAt": "2026-10-14T11:28:25Z",
+      "createdAt": "2026-04-01T16:40:33Z",
       "topics": [],
-      "commitCount": 396,
-      "releaseCount": 48,
-      "homepageUrl": "https://midgarcorp.cc/unrager"
+      "commitCount": 311,
+      "releaseCount": 33,
+      "homepageUrl": "https://midgarcorp.cc/flaccy"
     },
     {
       "id": "deepseekkit",
@@ -343,6 +421,95 @@
       "commitCount": 39,
       "releaseCount": 2,
       "homepageUrl": "https://guitaripod.github.io/DeepSeekKit/"
+    },
+    {
+      "id": "pixie",
+      "name": "pixie",
+      "description": "Image Generation Platform",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 3,
+      "githubUrl": "https://github.com/guitaripod/pixie",
+      "category": "Apps",
+      "highlights": [
+        "Cloudflare Workers",
+        "Android",
+        "Backend"
+      ],
+      "updatedAt": "2026-10-13T19:11:50Z",
+      "createdAt": "2025-07-20T16:30:01Z",
+      "topics": [
+        "android",
+        "backend",
+        "cli",
+        "cloudflare",
+        "ios",
+        "kotlin",
+        "oauth",
+        "openapi",
+        "rust",
+        "swift"
+      ],
+      "commitCount": 537,
+      "releaseCount": 4
+    },
+    {
+      "id": "pokedex-llm-benchmark",
+      "name": "pokedex-llm-benchmark",
+      "description": "Pokedex benchmark for LLMs",
+      "language": "JavaScript",
+      "platforms": [],
+      "stars": 3,
+      "githubUrl": "https://github.com/guitaripod/pokedex-llm-benchmark",
+      "category": "Other Projects",
+      "highlights": [
+        "Cloudflare Workers",
+        "Ai-evaluation",
+        "Cloudflare"
+      ],
+      "updatedAt": "2026-09-13T06:45:56Z",
+      "createdAt": "2026-07-21T22:18:39Z",
+      "topics": [
+        "ai-evaluation",
+        "cloudflare",
+        "coding-benchmark",
+        "llm-benchmark",
+        "pokeapi",
+        "pokedex"
+      ],
+      "commitCount": 27,
+      "releaseCount": 4
+    },
+    {
+      "id": "remoteplay-display",
+      "name": "remoteplay-display",
+      "description": "Routes Steam Remote Play sessions to a dummy HDMI",
+      "language": "Python",
+      "platforms": [],
+      "stars": 3,
+      "githubUrl": "https://github.com/guitaripod/remoteplay-display",
+      "category": "Linux \u0026 System",
+      "highlights": [
+        "Kde",
+        "Kscreen",
+        "Linux-gaming"
+      ],
+      "updatedAt": "2026-08-28T12:34:21Z",
+      "createdAt": "2026-07-26T22:17:02Z",
+      "topics": [
+        "kde",
+        "kscreen",
+        "linux-gaming",
+        "plasma",
+        "steam",
+        "steam-deck",
+        "steam-remote-play",
+        "wayland"
+      ],
+      "commitCount": 16,
+      "releaseCount": 2
     },
     {
       "id": "lastfm-rs",
@@ -453,36 +620,21 @@
       "releaseCount": 2
     },
     {
-      "id": "pixie",
-      "name": "pixie",
-      "description": "Image Generation Platform",
+      "id": "psybeam",
+      "name": "psybeam",
+      "description": "Real-time voice-to-voice travel interpreter for iOS",
       "language": "Swift",
       "platforms": [
-        "macOS"
+        "iOS"
       ],
       "stars": 2,
-      "githubUrl": "https://github.com/guitaripod/pixie",
+      "githubUrl": "https://github.com/guitaripod/psybeam",
       "category": "Apps",
-      "highlights": [
-        "Cloudflare Workers",
-        "Android",
-        "Backend"
-      ],
-      "updatedAt": "2026-06-11T14:26:02Z",
-      "createdAt": "2025-07-20T16:30:01Z",
-      "topics": [
-        "android",
-        "backend",
-        "cli",
-        "cloudflare",
-        "ios",
-        "kotlin",
-        "oauth",
-        "openapi",
-        "rust",
-        "swift"
-      ],
-      "commitCount": 594,
+      "highlights": [],
+      "updatedAt": "2026-10-13T18:13:36Z",
+      "createdAt": "2026-06-07T14:20:48Z",
+      "topics": [],
+      "commitCount": 60,
       "releaseCount": 3
     },
     {
@@ -503,16 +655,67 @@
         "Rust",
         "SDK"
       ],
-      "updatedAt": "2026-05-30T11:42:23Z",
+      "updatedAt": "2026-10-04T19:51:56Z",
       "createdAt": "2025-07-08T13:17:55Z",
       "topics": [
         "nasa",
         "rust",
         "sdk"
       ],
-      "commitCount": 62,
-      "releaseCount": 5,
+      "commitCount": 69,
+      "releaseCount": 6,
       "homepageUrl": "https://guitaripod.github.io/nasa-rs/"
+    },
+    {
+      "id": "recview",
+      "name": "recview",
+      "description": "GPU-accelerated review window for screen recordings",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/recview",
+      "category": "Apps",
+      "highlights": [
+        "Ffmpeg",
+        "Gtk4",
+        "Libadwaita"
+      ],
+      "updatedAt": "2026-08-09T18:05:31Z",
+      "createdAt": "2026-08-07T12:26:51Z",
+      "topics": [
+        "ffmpeg",
+        "gtk4",
+        "libadwaita",
+        "linux",
+        "mpv",
+        "rust",
+        "screen-recording",
+        "video-editing",
+        "wayland"
+      ],
+      "commitCount": 11,
+      "releaseCount": 2,
+      "homepageUrl": "https://midgarcorp.cc/recview"
+    },
+    {
+      "id": "ps3catalog",
+      "name": "ps3catalog",
+      "description": "Browse the entire PS3 Games catalogue",
+      "language": "JavaScript",
+      "platforms": [],
+      "stars": 2,
+      "githubUrl": "https://github.com/guitaripod/ps3catalog",
+      "category": "Other Projects",
+      "highlights": [],
+      "updatedAt": "2026-07-30T17:15:23Z",
+      "createdAt": "2026-07-30T12:03:44Z",
+      "topics": [],
+      "commitCount": 16,
+      "releaseCount": 2
     },
     {
       "id": "scribe",
@@ -636,7 +839,7 @@
     {
       "id": "moodlint",
       "name": "MoodLint",
-      "description": "Tired of messy PR titles? Want to enforce a consistent style across your team? MoodLint is here to rescue your git workflow",
+      "description": "Validates the mood, prefix, and overall structure of your PR titles",
       "language": "Go",
       "platforms": [
         "macOS",
@@ -699,94 +902,6 @@
       "releaseCount": 0
     },
     {
-      "id": "wwdc-sessions",
-      "name": "wwdc-sessions",
-      "description": "Agent-native knowledge base of Apple WWDC sessions (2014-2026, Tech Talks, Meet with Apple): clean transcripts, structured metadata, code, and sosumi.ai/DocC doc links. Generated from Apple's public feeds.",
-      "language": "Python",
-      "platforms": [],
-      "stars": 1,
-      "githubUrl": "https://github.com/guitaripod/wwdc-sessions",
-      "category": "AI \u0026 Agents",
-      "highlights": [
-        "AI-powered",
-        "Agent-native",
-        "Ai-agents"
-      ],
-      "updatedAt": "2026-06-11T19:54:39Z",
-      "createdAt": "2026-06-09T08:14:49Z",
-      "topics": [
-        "agent-native",
-        "ai-agents",
-        "apple",
-        "llms-txt",
-        "mcp",
-        "swift",
-        "transcripts",
-        "wwdc"
-      ],
-      "commitCount": 8,
-      "releaseCount": 0
-    },
-    {
-      "id": "psybeam",
-      "name": "psybeam",
-      "description": "Real-time voice-to-voice travel interpreter for iOS",
-      "language": "Swift",
-      "platforms": [
-        "iOS"
-      ],
-      "stars": 1,
-      "githubUrl": "https://github.com/guitaripod/psybeam",
-      "category": "Apps",
-      "highlights": [],
-      "updatedAt": "2026-06-10T18:46:38Z",
-      "createdAt": "2026-06-07T14:20:48Z",
-      "topics": [],
-      "commitCount": 24,
-      "releaseCount": 1
-    },
-    {
-      "id": "flaccy",
-      "name": "flaccy",
-      "description": "A FLAC music player for iOS with AI-powered library management",
-      "language": "Swift",
-      "platforms": [
-        "iOS"
-      ],
-      "stars": 1,
-      "githubUrl": "https://github.com/guitaripod/flaccy",
-      "category": "Apps",
-      "highlights": [
-        "AI-powered"
-      ],
-      "updatedAt": "2026-05-23T12:45:27Z",
-      "createdAt": "2026-04-01T16:40:33Z",
-      "topics": [],
-      "commitCount": 39,
-      "releaseCount": 1
-    },
-    {
-      "id": "anvil",
-      "name": "anvil",
-      "description": "iOS qBittorrent client. UIKit, cross-compiled from Linux to iOS",
-      "language": "Swift",
-      "platforms": [
-        "iOS",
-        "Linux"
-      ],
-      "stars": 1,
-      "githubUrl": "https://github.com/guitaripod/anvil",
-      "category": "Apps",
-      "highlights": [
-        "Cross-platform"
-      ],
-      "updatedAt": "2026-05-16T20:11:29Z",
-      "createdAt": "2026-05-16T20:07:38Z",
-      "topics": [],
-      "commitCount": 9,
-      "releaseCount": 1
-    },
-    {
       "id": "crucible",
       "name": "Crucible",
       "description": "A personal Plex client for iOS, built entirely on Arch Linux.",
@@ -803,7 +918,7 @@
         "Uikit",
         "Xtool"
       ],
-      "updatedAt": "2026-03-21T19:58:43Z",
+      "updatedAt": "2026-10-14T10:15:10Z",
       "createdAt": "2026-03-07T11:40:17Z",
       "topics": [
         "swift",
@@ -811,8 +926,216 @@
         "xtool",
         "linux"
       ],
-      "commitCount": 31,
+      "commitCount": 348,
+      "releaseCount": 9,
+      "homepageUrl": "https://midgarcorp.cc/crucible/"
+    },
+    {
+      "id": "omp-bridge",
+      "name": "omp-bridge",
+      "description": "Oh My Pi as structured HTTP sessions, on claude-bridge's wire protocol",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/omp-bridge",
+      "category": "AI \u0026 Agents",
+      "highlights": [],
+      "updatedAt": "2026-10-10T12:02:48Z",
+      "createdAt": "2026-08-25T09:58:50Z",
+      "topics": [],
+      "commitCount": 48,
+      "releaseCount": 13
+    },
+    {
+      "id": "claude-bridge",
+      "name": "claude-bridge",
+      "description": "Claude Code subscription as structured HTTP sessions",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/claude-bridge",
+      "category": "AI \u0026 Agents",
+      "highlights": [],
+      "updatedAt": "2026-10-10T12:02:44Z",
+      "createdAt": "2026-07-07T16:01:00Z",
+      "topics": [],
+      "commitCount": 147,
+      "releaseCount": 33
+    },
+    {
+      "id": "delegate",
+      "name": "delegate",
+      "description": "Tiered task dispatcher: packets in, verified patches out",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/delegate",
+      "category": "AI \u0026 Agents",
+      "highlights": [],
+      "updatedAt": "2026-10-03T09:47:53Z",
+      "createdAt": "2026-09-04T20:00:12Z",
+      "topics": [],
+      "commitCount": 10,
+      "releaseCount": 2
+    },
+    {
+      "id": "mbench",
+      "name": "mbench",
+      "description": "Local LLM benchmarking utility",
+      "language": "HTML",
+      "platforms": [],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/mbench",
+      "category": "AI \u0026 Agents",
+      "highlights": [
+        "Local LLMs",
+        "Benchmark",
+        "Leaderboard"
+      ],
+      "updatedAt": "2026-09-25T10:52:28Z",
+      "createdAt": "2026-09-11T08:17:01Z",
+      "topics": [
+        "benchmark",
+        "leaderboard",
+        "llama-cpp",
+        "llama-swap",
+        "llm",
+        "local-llm",
+        "sglang",
+        "vllm"
+      ],
+      "commitCount": 107,
+      "releaseCount": 11,
+      "homepageUrl": "https://guitaripod.github.io/mbench/"
+    },
+    {
+      "id": "yoink",
+      "name": "yoink",
+      "description": "A YouTube thumbnail toolbar",
+      "language": "Python",
+      "platforms": [],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/yoink",
+      "category": "Other Projects",
+      "highlights": [
+        "Chrome-extension",
+        "Manifest-v3",
+        "Native-messaging"
+      ],
+      "updatedAt": "2026-08-11T13:09:51Z",
+      "createdAt": "2026-07-20T12:48:19Z",
+      "topics": [
+        "chrome-extension",
+        "manifest-v3",
+        "native-messaging",
+        "youtube",
+        "yt-dlp"
+      ],
+      "commitCount": 13,
+      "releaseCount": 6,
+      "homepageUrl": "https://midgarcorp.cc/yoink"
+    },
+    {
+      "id": "imago",
+      "name": "imago",
+      "description": "Agent-native Instagram profile archive",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/imago",
+      "category": "CLI Tools",
+      "highlights": [
+        "AI-powered"
+      ],
+      "updatedAt": "2026-07-19T19:20:17Z",
+      "createdAt": "2026-07-19T07:25:03Z",
+      "topics": [],
+      "commitCount": 21,
+      "releaseCount": 5,
+      "homepageUrl": "https://midgarcorp.cc/imago"
+    },
+    {
+      "id": "anvil",
+      "name": "anvil",
+      "description": "iOS qBittorrent client. UIKit, cross-compiled from Linux to iOS",
+      "language": "Swift",
+      "platforms": [
+        "iOS",
+        "Linux"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/anvil",
+      "category": "Apps",
+      "highlights": [
+        "Cross-platform"
+      ],
+      "updatedAt": "2026-07-18T21:38:19Z",
+      "createdAt": "2026-05-16T20:07:38Z",
+      "topics": [],
+      "commitCount": 10,
       "releaseCount": 1
+    },
+    {
+      "id": "emojipick",
+      "name": "emojipick",
+      "description": "A fast emoji picker for KDE Plasma Wayland",
+      "language": "Rust",
+      "platforms": [
+        "Linux"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/emojipick",
+      "category": "Apps",
+      "highlights": [
+        "Emoji",
+        "Emoji-picker",
+        "Gtk4"
+      ],
+      "updatedAt": "2026-07-15T07:42:37Z",
+      "createdAt": "2026-07-13T09:08:52Z",
+      "topics": [
+        "emoji",
+        "emoji-picker",
+        "gtk4",
+        "kde",
+        "plasma",
+        "rust",
+        "wayland",
+        "kglobalaccel"
+      ],
+      "commitCount": 12,
+      "releaseCount": 1
+    },
+    {
+      "id": "starcraftkit",
+      "name": "StarCraftKit",
+      "description": "Swift SDK for StarCraft 2 Pro scene data",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 1,
+      "githubUrl": "https://github.com/guitaripod/StarCraftKit",
+      "category": "Swift Packages",
+      "highlights": [],
+      "updatedAt": "2026-06-28T09:41:37Z",
+      "createdAt": "2024-02-25T16:47:08Z",
+      "topics": [],
+      "commitCount": 126,
+      "releaseCount": 11,
+      "homepageUrl": "https://guitaripod.github.io/StarCraftKit/"
     },
     {
       "id": "sora-engine",
@@ -924,25 +1247,6 @@
       "homepageUrl": "https://crates.io/crates/image-collage"
     },
     {
-      "id": "starcraftkit",
-      "name": "StarCraftKit",
-      "description": "Swift SDK for StarCraft 2 Pro scene data",
-      "language": "Swift",
-      "platforms": [
-        "macOS"
-      ],
-      "stars": 1,
-      "githubUrl": "https://github.com/guitaripod/StarCraftKit",
-      "category": "Swift Packages",
-      "highlights": [],
-      "updatedAt": "2025-07-12T12:44:37Z",
-      "createdAt": "2024-02-25T16:47:08Z",
-      "topics": [],
-      "commitCount": 124,
-      "releaseCount": 11,
-      "homepageUrl": "https://guitaripod.github.io/StarCraftKit/"
-    },
-    {
       "id": "speedrun-cli",
       "name": "speedrun-cli",
       "description": "CLI client for speedrun.com",
@@ -1001,6 +1305,23 @@
       "homepageUrl": "https://guitaripod.github.io/VimTerminalKit/"
     },
     {
+      "id": "midgarcorp",
+      "name": "midgarcorp",
+      "description": "Personal website ",
+      "language": "Astro",
+      "platforms": [],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/midgarcorp",
+      "category": "Other Projects",
+      "highlights": [],
+      "updatedAt": "2026-10-14T15:05:54Z",
+      "createdAt": "2025-06-05T17:16:02Z",
+      "topics": [],
+      "commitCount": 475,
+      "releaseCount": 1,
+      "homepageUrl": "https://midgarcorp.cc"
+    },
+    {
       "id": "appofthedead",
       "name": "appofthedead",
       "description": "Learn afterlife beliefs from around the world",
@@ -1012,28 +1333,331 @@
       "githubUrl": "https://github.com/guitaripod/appofthedead",
       "category": "Apps",
       "highlights": [],
-      "updatedAt": "2026-06-11T15:13:52Z",
+      "updatedAt": "2026-10-13T18:46:55Z",
       "createdAt": "2025-06-02T20:56:21Z",
       "topics": [],
-      "commitCount": 192,
+      "commitCount": 241,
+      "releaseCount": 4
+    },
+    {
+      "id": "embr",
+      "name": "embr",
+      "description": "Native UIKit iOS Twitch client — EventSub chat, native AVPlayer HLS via Cloudflare Worker.",
+      "language": "Swift",
+      "platforms": [
+        "iOS"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/embr",
+      "category": "Apps",
+      "highlights": [
+        "Cloudflare Workers"
+      ],
+      "updatedAt": "2026-10-13T18:26:28Z",
+      "createdAt": "2026-05-31T06:34:54Z",
+      "topics": [],
+      "commitCount": 135,
       "releaseCount": 2
     },
     {
-      "id": "midgarcorp",
-      "name": "midgarcorp",
-      "description": "Personal website ",
-      "language": "Astro",
+      "id": "payday",
+      "name": "PayDay",
+      "description": "EU e-invoicing app (Factur-X / EN 16931 / Peppol)",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/PayDay",
+      "category": "Apps",
+      "highlights": [],
+      "updatedAt": "2026-10-13T18:19:43Z",
+      "createdAt": "2026-06-13T16:53:00Z",
+      "topics": [],
+      "commitCount": 57,
+      "releaseCount": 2
+    },
+    {
+      "id": "mako",
+      "name": "mako",
+      "description": "Midgar's shared multi-tenant AI-credits backend",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/mako",
+      "category": "AI \u0026 Agents",
+      "highlights": [
+        "AI-powered"
+      ],
+      "updatedAt": "2026-10-11T20:38:39Z",
+      "createdAt": "2026-07-05T05:23:36Z",
+      "topics": [],
+      "commitCount": 180,
+      "releaseCount": 0
+    },
+    {
+      "id": "codingagentkit",
+      "name": "CodingAgentKit",
+      "description": "Swift package for driving opencode, Claude Code and Oh My Pi over HTTP + SSE",
+      "language": "Swift",
+      "platforms": [
+        "macOS"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/CodingAgentKit",
+      "category": "Swift Packages",
+      "highlights": [],
+      "updatedAt": "2026-10-11T10:19:03Z",
+      "createdAt": "2026-07-06T17:43:06Z",
+      "topics": [],
+      "commitCount": 188,
+      "releaseCount": 33
+    },
+    {
+      "id": "twitch-chat-speed",
+      "name": "twitch-chat-speed",
+      "description": "Chromium extension that lets you choose how fast Twitch chat moves",
+      "language": "JavaScript",
       "platforms": [],
       "stars": 0,
-      "githubUrl": "https://github.com/guitaripod/midgarcorp",
+      "githubUrl": "https://github.com/guitaripod/twitch-chat-speed",
       "category": "Other Projects",
       "highlights": [],
-      "updatedAt": "2026-05-29T12:34:34Z",
-      "createdAt": "2025-06-05T17:16:02Z",
+      "updatedAt": "2026-10-04T19:16:42Z",
+      "createdAt": "2026-10-04T18:40:19Z",
       "topics": [],
-      "commitCount": 221,
+      "commitCount": 6,
+      "releaseCount": 2
+    },
+    {
+      "id": "buildvm",
+      "name": "buildvm",
+      "description": "Agent-native iOS App Store builds from a stable-macOS VM",
+      "language": "Shell",
+      "platforms": [
+        "iOS"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/buildvm",
+      "category": "Other Projects",
+      "highlights": [
+        "AI-powered"
+      ],
+      "updatedAt": "2026-10-03T12:48:22Z",
+      "createdAt": "2026-07-03T18:38:33Z",
+      "topics": [],
+      "commitCount": 8,
+      "releaseCount": 2
+    },
+    {
+      "id": "grokipedia-redirect",
+      "name": "grokipedia-redirect",
+      "description": "Browser extension that redirects Wikipedia articles to Grokipedia",
+      "language": "JavaScript",
+      "platforms": [],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/grokipedia-redirect",
+      "category": "Other Projects",
+      "highlights": [
+        "Browser-extension",
+        "Chrome-extension",
+        "Firefox-extension"
+      ],
+      "updatedAt": "2026-10-01T08:38:21Z",
+      "createdAt": "2026-10-01T08:38:05Z",
+      "topics": [
+        "browser-extension",
+        "chrome-extension",
+        "firefox-extension",
+        "grokipedia",
+        "wikipedia"
+      ],
+      "commitCount": 1,
       "releaseCount": 1,
-      "homepageUrl": "https://midgarcorp.cc"
+      "homepageUrl": "https://grokipedia.com"
+    },
+    {
+      "id": "datashard",
+      "name": "datashard",
+      "description": "Offline Cyberpunk 2077 text reader for iOS",
+      "language": "Swift",
+      "platforms": [
+        "iOS"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/datashard",
+      "category": "Apps",
+      "highlights": [],
+      "updatedAt": "2026-09-20T08:33:27Z",
+      "createdAt": "2026-09-19T16:56:16Z",
+      "topics": [],
+      "commitCount": 7,
+      "releaseCount": 2
+    },
+    {
+      "id": "cp2077-db",
+      "name": "cp2077-db",
+      "description": "Every readable string in Cyberpunk 2077 as one SQLite dataset",
+      "language": "Python",
+      "platforms": [],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/cp2077-db",
+      "category": "Other Projects",
+      "highlights": [],
+      "updatedAt": "2026-09-19T23:56:07Z",
+      "createdAt": "2026-09-19T16:56:23Z",
+      "topics": [],
+      "commitCount": 10,
+      "releaseCount": 2
+    },
+    {
+      "id": "jc4-fov",
+      "name": "jc4-fov",
+      "description": "Field of view mod for Just Cause 4",
+      "language": "C",
+      "platforms": [],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/jc4-fov",
+      "category": "Other Projects",
+      "highlights": [],
+      "updatedAt": "2026-09-15T21:46:31Z",
+      "createdAt": "2026-09-15T19:34:11Z",
+      "topics": [],
+      "commitCount": 10,
+      "releaseCount": 2,
+      "homepageUrl": "https://www.nexusmods.com/justcause4/mods/29"
+    },
+    {
+      "id": "cp2077-fov-always-120",
+      "name": "cp2077-fov-always-120",
+      "description": "Cyberpunk 2077 FOV 120 always mod",
+      "language": "Lua",
+      "platforms": [],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/cp2077-fov-always-120",
+      "category": "Other Projects",
+      "highlights": [],
+      "updatedAt": "2026-08-30T23:34:23Z",
+      "createdAt": "2026-08-30T22:07:05Z",
+      "topics": [],
+      "commitCount": 7,
+      "releaseCount": 1,
+      "homepageUrl": "https://www.nexusmods.com/cyberpunk2077/mods/33330"
+    },
+    {
+      "id": "tonight",
+      "name": "tonight",
+      "description": "A decision engine for your Steam library",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/tonight",
+      "category": "Linux \u0026 System",
+      "highlights": [
+        "Axum",
+        "Recommendation-engine",
+        "Rust"
+      ],
+      "updatedAt": "2026-08-18T18:20:42Z",
+      "createdAt": "2026-08-18T16:33:24Z",
+      "topics": [
+        "axum",
+        "recommendation-engine",
+        "rust",
+        "self-hosted",
+        "sqlite",
+        "steam",
+        "steam-library"
+      ],
+      "commitCount": 4,
+      "releaseCount": 2
+    },
+    {
+      "id": "tokenmaxxing",
+      "name": "tokenmaxxing",
+      "description": "Native LLM usage dashboards for KDE and macOS",
+      "language": "Rust",
+      "platforms": [
+        "Linux"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/tokenmaxxing",
+      "category": "Apps",
+      "highlights": [
+        "AI-powered"
+      ],
+      "updatedAt": "2026-08-16T19:17:40Z",
+      "createdAt": "2026-07-11T07:51:20Z",
+      "topics": [],
+      "commitCount": 15,
+      "releaseCount": 3
+    },
+    {
+      "id": "circadia",
+      "name": "circadia",
+      "description": "Melanopic-aware color temperature daemon for KDE Plasma Wayland",
+      "language": "Rust",
+      "platforms": [
+        "Linux"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/circadia",
+      "category": "Linux \u0026 System",
+      "highlights": [],
+      "updatedAt": "2026-08-04T23:42:55Z",
+      "createdAt": "2026-03-09T20:12:27Z",
+      "topics": [],
+      "commitCount": 12,
+      "releaseCount": 1
+    },
+    {
+      "id": "emusync",
+      "name": "emusync",
+      "description": "Cross-machine emulation save, mod, and shader cache sync over SSH",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/emusync",
+      "category": "Linux \u0026 System",
+      "highlights": [],
+      "updatedAt": "2026-08-01T05:27:05Z",
+      "createdAt": "2026-03-21T09:32:56Z",
+      "topics": [],
+      "commitCount": 14,
+      "releaseCount": 3
+    },
+    {
+      "id": "kontu",
+      "name": "kontu",
+      "description": "Quality-gated Finnish house-hunting utility",
+      "language": "Rust",
+      "platforms": [
+        "macOS",
+        "Linux",
+        "Windows"
+      ],
+      "stars": 0,
+      "githubUrl": "https://github.com/guitaripod/kontu",
+      "category": "CLI Tools",
+      "highlights": [],
+      "updatedAt": "2026-06-30T14:25:12Z",
+      "createdAt": "2026-06-25T05:24:15Z",
+      "topics": [],
+      "commitCount": 95,
+      "releaseCount": 1,
+      "homepageUrl": "https://kontu.guitaripod.workers.dev/kontu"
     },
     {
       "id": "rawdog.ml.nvim",
@@ -1059,7 +1683,7 @@
       "platforms": [],
       "stars": 0,
       "githubUrl": "https://github.com/guitaripod/ThemeSwitch",
-      "category": "Other Projects",
+      "category": "Apps",
       "highlights": [
         "Cross-platform"
       ],
@@ -1068,44 +1692,6 @@
       "topics": [],
       "commitCount": 22,
       "releaseCount": 2
-    },
-    {
-      "id": "emusync",
-      "name": "emusync",
-      "description": "Cross-machine emulation save, mod, and shader cache sync over SSH",
-      "language": "Rust",
-      "platforms": [
-        "macOS",
-        "Linux",
-        "Windows"
-      ],
-      "stars": 0,
-      "githubUrl": "https://github.com/guitaripod/emusync",
-      "category": "CLI Tools",
-      "highlights": [],
-      "updatedAt": "2026-04-04T07:54:56Z",
-      "createdAt": "2026-03-21T09:32:56Z",
-      "topics": [],
-      "commitCount": 13,
-      "releaseCount": 3
-    },
-    {
-      "id": "circadia",
-      "name": "circadia",
-      "description": "Melanopic-aware color temperature daemon for KDE Plasma Wayland",
-      "language": "Rust",
-      "platforms": [
-        "Linux"
-      ],
-      "stars": 0,
-      "githubUrl": "https://github.com/guitaripod/circadia",
-      "category": "Rust Projects",
-      "highlights": [],
-      "updatedAt": "2026-03-09T20:14:04Z",
-      "createdAt": "2026-03-09T20:12:27Z",
-      "topics": [],
-      "commitCount": 10,
-      "releaseCount": 1
     },
     {
       "id": "mediaforge",
@@ -1119,7 +1705,7 @@
       ],
       "stars": 0,
       "githubUrl": "https://github.com/guitaripod/mediaforge",
-      "category": "Rust Projects",
+      "category": "Linux \u0026 System",
       "highlights": [],
       "updatedAt": "2026-03-07T19:14:43Z",
       "createdAt": "2026-03-05T09:05:39Z",
@@ -1193,7 +1779,7 @@
     {
       "id": "reposort",
       "name": "reposort",
-      "description": "RepoSort is a command-line tool written in Go that organizes repositories into language-specific directories. It is designed to help developers maintain a clean workspace by automatically sorting repositories based on the programming language they are primarily written in.",
+      "description": "A command-line tool written in Go that organizes repositories",
       "language": "Go",
       "platforms": [
         "macOS",
@@ -1297,7 +1883,7 @@
       ],
       "stars": 0,
       "githubUrl": "https://github.com/guitaripod/fluxxxer",
-      "category": "Go Projects",
+      "category": "Apps",
       "highlights": [],
       "updatedAt": "2025-07-12T12:41:10Z",
       "createdAt": "2024-11-24T05:39:07Z",

@@ -27,12 +27,14 @@ func PreBuild() error {
 	fmt.Println("Refreshing snapshots and generating OG images...")
 	for _, script := range []string{
 		"scripts/fetch-github-activity.mjs",
+		"scripts/fetch-app-work.mjs",
 		"scripts/fetch-webb-live.mjs",
 		"scripts/generate-screenshot-variants.mjs",
 		"scripts/generate-main-og-image.js",
 		"scripts/generate-apps-og-grid.js",
 		"scripts/generate-app-og.js",
 		"scripts/generate-linux-og.js",
+		"scripts/generate-page-og.js",
 		"scripts/generate-recview-og.js",
 	} {
 		cmd := exec.Command("node", script)

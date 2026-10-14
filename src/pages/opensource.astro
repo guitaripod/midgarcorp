@@ -1,53 +1,160 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import OpenSourceCard from '@components/OpenSourceCard.astro';
-import openSourceData from '../data/opensource.json';
+import OssLeader from '@components/OssLeader.astro';
+import OssRow from '@components/OssRow.astro';
+import ShareBar from '@components/ShareBar.astro';
+import StatCell from '@components/StatCell.astro';
 import { landingSlugs } from '@data/landing';
+import { OSS_LEADERS, OSS_NOW, ossProjects, ossSections, ossStats } from '@data/oss';
+import { languageColor } from '../lib/work';
 
-const projects = openSourceData.projects;
-const totalStars = projects.reduce((sum, project) => sum + project.stars, 0);
+const now = OSS_NOW;
+const leaders = ossProjects.slice(0, OSS_LEADERS);
+const mostShipped = [...ossProjects].sort(
+  (a, b) => (b.releaseCount ?? 0) - (a.releaseCount ?? 0)
+)[0];
+const shippers = ossProjects.filter((project) => (project.releaseCount ?? 0) > 0).length;
+const languages = ossStats.languages
+  .map((language) => ({
+    label: language,
+    count: ossProjects.filter((project) => project.language === language).length,
+  }))
+  .sort((a, b) => b.count - a.count)
+  .slice(0, 6)
+  .map((entry) => ({
+    ...entry,
+    fraction: entry.count / ossProjects.length,
+    color: languageColor(entry.label),
+  }));
 
 const pageTitle = 'Open Source | guitaripod';
-const pageDescription = `${projects.length} shipped open-source projects — AI agents, CLI tools, Swift packages, SDKs, and apps in Swift, Rust, Go, and TypeScript.`;
+const pageDescription = `${ossStats.repos} shipped open-source projects with ${ossStats.commits.toLocaleString('en-US')} commits and ${ossStats.releases} releases — apps, AI agents, Linux tools, CLIs and Swift packages, ordered by the work behind them.`;
 
-const byStars = (a: (typeof projects)[number], b: (typeof projects)[number]) => b.stars - a.stars;
-
-const namedCategories = [
-  { category: 'AI & Agents', command: 'ls oss/ai-agents' },
-  { category: 'CLI Tools', command: 'ls oss/cli-tools' },
-  { category: 'Swift Packages', command: 'ls oss/swift-packages' },
-  { category: 'Apps', command: 'ls oss/apps' },
-  { category: 'SDKs & Libraries', command: 'ls oss/sdks' },
-];
-
-const namedSet = new Set(namedCategories.map((entry) => entry.category));
-
-const sections = [
-  ...namedCategories.map((entry) => ({
-    title: entry.category,
-    command: entry.command,
-    projects: projects.filter((project) => project.category === entry.category).sort(byStars),
-  })),
-  {
-    title: 'Misc',
-    command: 'ls oss/misc',
-    projects: projects.filter((project) => !namedSet.has(project.category)).sort(byStars),
-  },
-].filter((section) => section.projects.length > 0);
+const plural = (count: number, noun: string): string => `${count} ${noun}${count === 1 ? '' : 's'}`;
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <header class="pt-10 sm:pt-14 mb-10 sm:mb-14">
+<BaseLayout title={pageTitle} description={pageDescription} image="/og/opensource.png">
+  <header class="pt-10 sm:pt-14 mb-8 sm:mb-10">
     <p class="prompt-line mb-4">gh repo list guitaripod --limit 100</p>
     <h1
       class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-paper-text dark:text-term-text"
     >
-      Open Source
+      Open <span class="phosphor">Source</span>
     </h1>
-    <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-2xl">
-      {projects.length} shipped projects · {totalStars} stars · Swift, Rust, Go, TypeScript
+    <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-3xl leading-relaxed">
+      {ossStats.repos} shipped projects with {ossStats.commits.toLocaleString('en-US')} commits and {
+        ossStats.releases
+      } tagged releases. Ordered by the work behind each one, not by stars.
     </p>
   </header>
+
+  <section class="mb-12 sm:mb-16">
+    <div class="term-frame p-5 sm:p-6">
+      <p class="prompt-line mb-5">oss --stats</p>
+      <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-7">
+        <StatCell label="repos_shipped" value={ossStats.repos}>
+          <p class="text-[11px] text-paper-muted dark:text-term-muted">
+            <span class="text-paper-green dark:text-term-green">{shippers}</span> cut at least one release
+          </p>
+        </StatCell>
+        <StatCell label="commits" value={ossStats.commits.toLocaleString('en-US')}>
+          <p class="text-[11px] text-paper-muted dark:text-term-muted">
+            most work:
+            <a
+              href={`#${leaders[0].id}`}
+              class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
+            >
+              {leaders[0].name}
+            </a>
+            <span class="text-paper-green dark:text-term-green">
+              {` ${(leaders[0].commitCount ?? 0).toLocaleString('en-US')}`}
+            </span>
+          </p>
+        </StatCell>
+        <StatCell label="releases_cut" value={ossStats.releases}>
+          <p class="text-[11px] text-paper-muted dark:text-term-muted">
+            most shipped:
+            <a
+              href={`#${mostShipped.id}`}
+              class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
+            >
+              {mostShipped.name}
+            </a>
+          </p>
+        </StatCell>
+        <StatCell label="languages" value={ossStats.languages.length}>
+          <ShareBar
+            items={languages}
+            summary={languages.map((l) => `${l.count} ${l.label}`).join(', ')}
+          />
+        </StatCell>
+      </dl>
+    </div>
+  </section>
+
+  <section class="mb-14 sm:mb-20">
+    <div class="flex items-baseline justify-between gap-4 mb-2">
+      <p class="prompt-line">sort --by=work | head -{leaders.length}</p>
+      <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">
+        commits and releases decide
+      </span>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text mb-6">
+      Most work
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      {
+        leaders.map((project, index) => (
+          <OssLeader
+            project={project}
+            rank={index + 1}
+            now={now}
+            landingSlug={landingSlugs.includes(project.id) ? project.id : undefined}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    ossSections.map((section) => (
+      <section class="mb-12 sm:mb-16">
+        <div class="flex items-baseline justify-between gap-4 mb-2">
+          <p class="prompt-line">{section.command}</p>
+          <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">
+            {`${plural(section.totals.repos, 'repo')} · ${plural(section.totals.commits, 'commit')} · ${plural(section.totals.releases, 'release')}`}
+          </span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text mb-1">
+          {section.title}
+        </h2>
+        <p class="text-sm text-paper-muted dark:text-term-muted mb-6 max-w-2xl">{section.blurb}</p>
+        <div class="space-y-6">
+          {section.featured.length > 0 && (
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {section.featured.map((project) => (
+                <OpenSourceCard
+                  project={project}
+                  landingSlug={landingSlugs.includes(project.id) ? project.id : undefined}
+                />
+              ))}
+            </div>
+          )}
+          {section.compact.length > 0 && (
+            <div>
+              <p class="term-label mb-3">smaller and older</p>
+              <ul class="term-frame px-4 sm:px-5">
+                {section.compact.map((project) => (
+                  <OssRow project={project} now={now} />
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+    ))
+  }
 
   <section class="mb-12 sm:mb-16">
     <div class="term-frame p-4 sm:p-6">
@@ -61,28 +168,6 @@ const sections = [
       />
     </div>
   </section>
-
-  {
-    sections.map((section) => (
-      <section class="mb-12 sm:mb-16">
-        <div class="flex items-baseline justify-between gap-4 mb-6">
-          <p class="prompt-line">{section.command}</p>
-          <span class="text-xs text-paper-faint dark:text-term-faint whitespace-nowrap">
-            {section.projects.length} repos
-          </span>
-        </div>
-        <h2 class="sr-only">{section.title}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {section.projects.map((project) => (
-            <OpenSourceCard
-              project={project}
-              landingSlug={landingSlugs.includes(project.id) ? project.id : undefined}
-            />
-          ))}
-        </div>
-      </section>
-    ))
-  }
 
   <section class="mt-12 sm:mt-16">
     <div class="term-frame p-6 sm:p-8">

@@ -2,29 +2,19 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import AppCard from '@components/AppCard.astro';
 import OpenSourceCard from '@components/OpenSourceCard.astro';
-import CLIAppCard from '@components/CLIAppCard.astro';
 import LinuxAppCard from '@components/LinuxAppCard.astro';
+import LinuxShowcaseCard from '@components/LinuxShowcaseCard.astro';
 import MatrixRain from '@components/MatrixRain.astro';
 import ActivityBoard from '@components/ActivityBoard.astro';
 import { getCollection } from 'astro:content';
 import { calculateReadingTime } from '@utils/reading-time';
 import appsData from '../data/apps.json';
-import openSourceData from '../data/opensource.json';
 import careerData from '../data/career.json';
-import { landingApps } from '@data/landing';
-import { featuredLinuxApps, linuxStats } from '@data/linux';
+import { appEntries } from '@data/apps';
+import { LINUX_NOW, LINUX_SHOWCASE, featuredLinuxApps, linuxStats } from '@data/linux';
+import { landingSlugs } from '@data/landing';
+import { ossProjects, ossStats } from '@data/oss';
 import activity from '../data/github-activity.json';
-
-const landingByTrack = new Map(landingApps.map((a) => [String(a.trackId), a]));
-const trackIdFor = (appStoreUrl: string): string | undefined => appStoreUrl.match(/id(\d+)/)?.[1];
-const landingHrefFor = (appStoreUrl: string): string | undefined => {
-  const la = landingByTrack.get(trackIdFor(appStoreUrl) ?? '');
-  return la ? `/${la.slug}` : undefined;
-};
-const cardApp = (app: (typeof appsData.apps)[number]) => {
-  const la = landingByTrack.get(trackIdFor(app.appStoreUrl) ?? '');
-  return la ? { ...app, price: la.price, icon: la.iconLocal ?? app.icon } : app;
-};
 
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -36,38 +26,22 @@ const postsWithReadingTime = posts.map((post) => ({
   readingTime: calculateReadingTime(post.body),
 }));
 
-const featuredApps = [...appsData.apps]
-  .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
-  .slice(0, 2);
+const featuredApps = appEntries.filter((entry) => entry.shots.length > 0).slice(0, 3);
+const featuredAppSlugs = new Set(featuredApps.map((entry) => entry.slug));
 
-const cliTools = openSourceData.projects
-  .filter((project) => project.category === 'CLI Tools')
-  .sort((a, b) => b.stars - a.stars);
-const featuredCLIPicks = ['flyr', 'unrager'];
-const featuredCLITools = [
-  ...featuredCLIPicks.map((id) => cliTools.find((tool) => tool.id === id)).filter(Boolean),
-  ...cliTools.filter((tool) => !featuredCLIPicks.includes(tool.id)),
-].slice(0, 2);
+const featuredLinux = featuredLinuxApps(3, [...featuredAppSlugs].filter(Boolean) as string[]);
 
-const featuredCLIIds = new Set(featuredCLITools.map((tool) => tool.id));
-const featuredLinux = featuredLinuxApps(3, [...featuredCLIIds]);
-const featuredOpenSource = openSourceData.projects
-  .filter((project) => !featuredCLIIds.has(project.id))
+const shownIds = new Set([...featuredAppSlugs, ...featuredLinux.map((app) => app.id)]);
+const featuredOpenSource = ossProjects
+  .filter((project) => !shownIds.has(project.id.toLowerCase()))
   .slice(0, 6);
 
-const totalStars = openSourceData.projects.reduce((sum, project) => sum + project.stars, 0);
-const totalReleases = openSourceData.projects.reduce(
-  (sum, project) => sum + (project.releaseCount ?? 0),
-  0
-);
-const languageCount = new Set(
-  openSourceData.projects.map((project) => project.language).filter(Boolean)
-).size;
+const languageCount = ossStats.languages.length;
 const stats = [
   { key: 'apps_live', value: String(appsData.apps.length) },
-  { key: 'oss_repos', value: String(openSourceData.projects.length) },
-  { key: 'releases_cut', value: totalReleases.toLocaleString('en-US') },
-  { key: 'github_stars', value: totalStars.toLocaleString('en-US') },
+  { key: 'oss_repos', value: String(ossStats.repos) },
+  { key: 'commits', value: ossStats.commits.toLocaleString('en-US') },
+  { key: 'releases_cut', value: ossStats.releases.toLocaleString('en-US') },
   { key: 'contributions_365d', value: activity.totals.contributionsYear.toLocaleString('en-US') },
   { key: 'languages', value: String(languageCount) },
 ];
@@ -77,7 +51,7 @@ const engagements = careerData.entries.slice(0, 3);
 
 <BaseLayout
   title="Midgar Corp — guitaripod"
-  description={`Independent engineer. Seven years shipping production iOS, backend, and AI for category-leading consumer products. ${appsData.apps.length} apps live on the App Store, ${openSourceData.projects.length} open-source projects.`}
+  description={`Independent engineer. Seven years shipping production iOS, backend, and AI for category-leading consumer products. ${appsData.apps.length} apps live on the App Store, ${ossStats.repos} open-source projects with ${ossStats.commits.toLocaleString('en-US')} commits.`}
 >
   <!-- Hero: live GitHub activity board -->
   <section class="relative pt-10 sm:pt-14 pb-10">
@@ -211,7 +185,7 @@ const engagements = careerData.entries.slice(0, 3);
   <section class="mb-16">
     <div class="flex items-baseline justify-between mb-6">
       <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
-        <span class="text-paper-green dark:text-term-green">~/apps</span> · latest releases
+        <span class="text-paper-green dark:text-term-green">~/apps</span> · most worked-on
       </h2>
       <a
         href="/apps"
@@ -220,10 +194,19 @@ const engagements = careerData.entries.slice(0, 3);
         ls apps/ →
       </a>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {
-        featuredApps.map((app) => (
-          <AppCard app={cardApp(app)} landingHref={landingHrefFor(app.appStoreUrl)} />
+        featuredApps.map((entry) => (
+          <AppCard
+            app={entry.app}
+            landingHref={entry.landingHref}
+            openSource={entry.openSource}
+            githubUrl={entry.githubUrl}
+            shots={entry.shots}
+            device={entry.device}
+            commits={entry.work?.commitCount}
+            version={entry.version}
+          />
         ))
       }
     </div>
@@ -234,7 +217,8 @@ const engagements = careerData.entries.slice(0, 3);
     <div class="flex items-baseline justify-between mb-6">
       <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
         <span class="text-paper-green dark:text-term-green">~/linux</span> · apps &amp; tools ·
-        <span class="text-paper-amber dark:text-term-amber">{linuxStats.releaseCount} releases</span
+        <span class="text-paper-amber dark:text-term-amber"
+          >{linuxStats.commitCount.toLocaleString('en-US')} commits</span
         >
       </h2>
       <a
@@ -245,25 +229,15 @@ const engagements = careerData.entries.slice(0, 3);
       </a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      {featuredLinux.map((app) => <LinuxAppCard app={app} />)}
-    </div>
-  </section>
-
-  <!-- CLI Tools -->
-  <section class="mb-16">
-    <div class="flex items-baseline justify-between mb-6">
-      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
-        <span class="text-paper-green dark:text-term-green">~/cli</span> · tools for the terminal
-      </h2>
-      <a
-        href="/cli-tools"
-        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-      >
-        ls cli/ →
-      </a>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {featuredCLITools.map((tool) => <CLIAppCard project={tool} />)}
+      {
+        featuredLinux.map((app) =>
+          app.id in LINUX_SHOWCASE ? (
+            <LinuxShowcaseCard app={app} now={LINUX_NOW} />
+          ) : (
+            <LinuxAppCard app={app} now={LINUX_NOW} />
+          )
+        )
+      }
     </div>
   </section>
 
@@ -271,7 +245,7 @@ const engagements = careerData.entries.slice(0, 3);
   <section class="mb-16">
     <div class="flex items-baseline justify-between mb-6">
       <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
-        <span class="text-paper-green dark:text-term-green">~/oss</span> · open source
+        <span class="text-paper-green dark:text-term-green">~/oss</span> · open source, by work
       </h2>
       <a
         href="/opensource"
@@ -281,7 +255,14 @@ const engagements = careerData.entries.slice(0, 3);
       </a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      {featuredOpenSource.map((project) => <OpenSourceCard project={project} />)}
+      {
+        featuredOpenSource.map((project) => (
+          <OpenSourceCard
+            project={project}
+            landingSlug={landingSlugs.includes(project.id) ? project.id : undefined}
+          />
+        ))
+      }
     </div>
   </section>
 

@@ -1,5 +1,5 @@
 ---
-import type { LinuxApp } from '@data/linux';
+import { linuxMax, type LinuxApp } from '@data/linux';
 import {
   FORM_GLYPHS,
   FRESHNESS_STYLE,
@@ -8,7 +8,7 @@ import {
   languageColor,
 } from '../lib/linux-insights';
 import LinuxInstall from './LinuxInstall.astro';
-import LinuxWeight from './LinuxWeight.astro';
+import WorkWeight from './WorkWeight.astro';
 
 export interface Props {
   app: LinuxApp;
@@ -89,7 +89,12 @@ const linkClass =
     </p>
 
     <div class="mb-4">
-      <LinuxWeight app={app} />
+      <WorkWeight
+        commits={app.commitCount}
+        releases={app.releaseCount}
+        maxCommits={linuxMax.commits}
+        maxReleases={linuxMax.releases}
+      />
     </div>
 
     <div class="mt-auto">

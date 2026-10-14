@@ -1,66 +1,39 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import AppCard from '@components/AppCard.astro';
-import appsData from '../data/apps.json';
-import { landingApps } from '@data/landing';
+import AppFlagship from '@components/AppFlagship.astro';
+import ShareBar from '@components/ShareBar.astro';
+import StatCell from '@components/StatCell.astro';
+import { appEntries, appHeroes, appRest, appStats } from '@data/apps';
 
 const pageTitle = 'Apple Platform Apps | guitaripod';
+const { storeCount } = appStats;
+const cards = appEntries;
 
-const landingByTrack = new Map(landingApps.map((a) => [String(a.trackId), a]));
-const trackIdFor = (appStoreUrl: string): string | undefined => appStoreUrl.match(/id(\d+)/)?.[1];
+const leader = [...appEntries].sort(
+  (a, b) => (b.work?.commitCount ?? 0) - (a.work?.commitCount ?? 0)
+)[0];
+const freeCount = appEntries.filter((entry) => entry.app.price === 'Free').length;
+const platformShare = appStats.platforms
+  .map((platform) => ({
+    label: platform,
+    count: appEntries.filter((entry) => entry.app.platforms.includes(platform)).length,
+  }))
+  .sort((a, b) => b.count - a.count)
+  .map((entry) => ({ ...entry, fraction: entry.count / appEntries.length }));
+const platformBars = [
+  'bg-paper-green dark:bg-term-green',
+  'bg-paper-amber dark:bg-term-amber',
+  'bg-paper-greendim dark:bg-term-greendim',
+  'bg-paper-border2 dark:bg-term-border2',
+  'bg-paper-muted dark:bg-term-muted',
+];
+const platformItems = platformShare.map((entry, index) => ({
+  ...entry,
+  barClass: platformBars[index % platformBars.length],
+}));
 
-// App Store apps are tracked dynamically from iTunes (apps.json).
-const storeApps = [...appsData.apps].sort(
-  (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
-);
-const storeCount = storeApps.length;
-const storeTrackIds = new Set(storeApps.map((app) => trackIdFor(app.appStoreUrl)));
-
-// Prefer the curated landing price (source of truth) over the auto-fetched
-// iTunes price, which lags a few hours behind an App Store Connect price change,
-// and the self-hosted icon over the remote artwork, which is a 512px original
-// for an 80px slot and skips the corner-mask repair the landing assets get.
-const storeCards = storeApps.map((app) => {
-  const id = trackIdFor(app.appStoreUrl);
-  const la = id ? landingByTrack.get(id) : undefined;
-  return {
-    app: la ? { ...app, price: la.price, icon: la.iconLocal ?? app.icon } : app,
-    landingHref: la ? `/${la.slug}/` : undefined,
-    openSource: la?.openSource === true,
-    githubUrl: la?.githubUrl,
-  };
-});
-
-// Open-source apps come from the landing config so the grid stays dynamic:
-// flag a landing app `openSource` and it appears here automatically. An app
-// that also ships on the App Store is already covered by its store card.
-const osCards = landingApps
-  .filter((a) => a.openSource && !storeTrackIds.has(String(a.trackId)))
-  .map((a) => ({
-    app: {
-      id: a.slug,
-      name: a.shortName,
-      tagline: a.content.heroHeadline,
-      description: a.description,
-      platforms: a.platforms,
-      category: a.category ?? 'App',
-      price: a.price,
-      appStoreUrl: a.githubUrl ?? '',
-      icon: a.iconLocal ?? a.icon ?? '',
-      primaryColor: a.primaryColor,
-      features: a.content.highlights ?? [],
-      releaseDate: a.releaseDate,
-    },
-    landingHref: `/${a.slug}/`,
-    openSource: true,
-    githubUrl: a.githubUrl,
-  }));
-
-const cards = [...storeCards, ...osCards].sort(
-  (a, b) => new Date(b.app.releaseDate ?? 0).getTime() - new Date(a.app.releaseDate ?? 0).getTime()
-);
-
-const ogDescription = `${storeCount} apps live on the App Store — iPhone, iPad, Mac, and Apple TV — plus open-source builds. ML-powered consumer products, developer tools, and education apps, designed and shipped solo.`;
+const ogDescription = `${storeCount} apps live on the App Store — iPhone, iPad, Mac, and Apple TV — plus open-source builds. ${appStats.commits.toLocaleString('en-US')} commits across ML-powered consumer products, developer tools, and education apps, designed and shipped solo.`;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -91,8 +64,8 @@ const structuredData = {
 ---
 
 <BaseLayout title={pageTitle} description={ogDescription} image="/og-apps-grid.png">
-  <header class="pt-12 sm:pt-16 mb-10 sm:mb-12">
-    <p class="prompt-line mb-4">ls ~/apps --sort=released</p>
+  <header class="pt-12 sm:pt-16 mb-8 sm:mb-10">
+    <p class="prompt-line mb-4">ls ~/apps --sort=work</p>
     <h1
       class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-paper-text dark:text-term-text"
     >
@@ -106,20 +79,84 @@ const structuredData = {
       generation to a 4K window on the cosmos.
     </p>
     <p class="text-sm sm:text-base text-paper-faint dark:text-term-faint max-w-2xl">
-      Designed, built, and shipped solo after seven years of engineering at scale. Open source where
-      it makes sense. Always shipping.
+      Designed, built, and shipped solo after seven years of engineering at scale. Ordered by the
+      work behind each app. Open source where it makes sense.
     </p>
   </header>
 
+  <section class="mb-14 sm:mb-20">
+    <div class="term-frame p-5 sm:p-6">
+      <p class="prompt-line mb-5">apps --stats</p>
+      <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-7">
+        <StatCell label="apps_shipped" value={appEntries.length}>
+          <p class="text-[11px] text-paper-muted dark:text-term-muted">
+            <span class="text-paper-green dark:text-term-green">{storeCount}</span> on the App Store
+          </p>
+        </StatCell>
+        <StatCell label="commits_across_apps" value={appStats.commits.toLocaleString('en-US')}>
+          {
+            leader?.work && (
+              <p class="text-[11px] text-paper-muted dark:text-term-muted">
+                most work:{' '}
+                <a
+                  href={leader.landingHref}
+                  class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
+                >
+                  {leader.app.name}
+                </a>
+                <span class="text-paper-green dark:text-term-green">
+                  {` ${leader.work.commitCount.toLocaleString('en-US')}`}
+                </span>
+              </p>
+            )
+          }
+        </StatCell>
+        <StatCell label="platforms" value={platformItems.length}>
+          <ShareBar
+            items={platformItems}
+            summary={platformItems.map((p) => `${p.count} ${p.label}`).join(', ')}
+          />
+        </StatCell>
+        <StatCell label="free_to_download" value={freeCount}>
+          <p class="text-[11px] text-paper-muted dark:text-term-muted">
+            no ads, no tracking in the apps that say so
+          </p>
+        </StatCell>
+      </dl>
+    </div>
+  </section>
+
+  {
+    appHeroes.length > 0 && (
+      <section class="mb-14 sm:mb-20">
+        <div class="space-y-16 sm:space-y-24">
+          {appHeroes.map((entry, index) => (
+            <AppFlagship entry={entry} flip={index % 2 === 1} eager={index === 0} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
   <section>
+    <div class="flex items-baseline justify-between gap-4 mb-6">
+      <p class="prompt-line">ls ~/apps --all</p>
+      <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">
+        {appRest.length} more
+      </span>
+    </div>
     <div class="apps-grid grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
       {
-        cards.map((c) => (
+        appRest.map((entry) => (
           <AppCard
-            app={c.app}
-            landingHref={c.landingHref}
-            openSource={c.openSource}
-            githubUrl={c.githubUrl}
+            app={entry.app}
+            landingHref={entry.landingHref}
+            openSource={entry.openSource}
+            githubUrl={entry.githubUrl}
+            shots={entry.shots}
+            device={entry.device}
+            commits={entry.work?.commitCount}
+            version={entry.version}
           />
         ))
       }

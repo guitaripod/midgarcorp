@@ -1,0 +1,90 @@
+---
+import type { Screenshot } from '@data/landing';
+import DeviceFrame from './landing/DeviceFrame.astro';
+
+export interface Props {
+  shots: Screenshot[];
+  device: string;
+  name: string;
+  accent: string;
+  size: 'card' | 'hero';
+  eager?: boolean;
+}
+
+const { shots, device, name, accent, size, eager = false } = Astro.props;
+
+const landscape = device !== 'iphone' && device !== 'ipad';
+const orientation = landscape ? 'landscape' : 'portrait';
+
+const shotHeight = {
+  card: { portrait: 'h-[220px] sm:h-[260px]', landscape: 'h-[110px] sm:h-[150px]' },
+  hero: { portrait: 'h-[320px] sm:h-[360px]', landscape: 'h-[200px] sm:h-[260px]' },
+};
+const cropHeight = {
+  card: { portrait: 'h-[168px] sm:h-[190px]', landscape: 'h-[130px] sm:h-[170px]' },
+  hero: { portrait: 'h-[340px] sm:h-[380px]', landscape: 'h-[240px] sm:h-[300px]' },
+};
+const sizeHints = {
+  card: { portrait: [220, 260], landscape: [110, 150] },
+  hero: { portrait: [320, 360], landscape: [200, 260] },
+};
+const heights = sizeHints[size][orientation] as [number, number];
+
+const hiddenOnPhone = (index: number): boolean =>
+  size === 'hero' && !landscape ? index === 2 : landscape && index === 1;
+---
+
+<div
+  class={`app-shots relative overflow-hidden ${cropHeight[size][orientation]}`}
+  style={`--accent: ${accent}`}
+>
+  <div class="relative z-10 flex h-full items-start justify-center gap-2 sm:gap-3 pt-4">
+    {
+      shots.map((shot, index) => (
+        <div
+          class:list={[
+            'shot',
+            shotHeight[size][orientation],
+            hiddenOnPhone(index) && 'hidden sm:block',
+            size === 'hero' && !landscape && index === 1 && 'sm:-translate-y-3',
+            size === 'hero' && !landscape && index === 2 && 'sm:translate-y-2',
+          ]}
+        >
+          <DeviceFrame
+            device={device}
+            src={shot.src}
+            w={shot.w}
+            h={shot.h}
+            alt={`${name} on ${device}: ${shot.label}`}
+            eager={eager && index === 0}
+            heights={heights}
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .app-shots::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 70% 80% at 50% 0%,
+      color-mix(in srgb, var(--accent) 30%, transparent),
+      transparent 72%
+    );
+  }
+
+  .shot {
+    flex: 0 0 auto;
+    transition: transform 0.5s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shot {
+      transition: none;
+    }
+  }
+</style>

@@ -84,6 +84,7 @@ const structuredData = {
   {
     linuxSections.map((section, sectionIndex) => (
       <LinuxSection
+        id={section.theme === 'tools' ? 'command-line' : section.theme}
         command={section.command}
         title={section.title}
         blurb={section.blurb}

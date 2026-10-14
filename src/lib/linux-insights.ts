@@ -1,19 +1,15 @@
 import type { LinuxApp, LinuxForm } from '../data/linux';
+import { DAY_MS } from './work';
 
-const DAY_MS = 86_400_000;
-
-export const LANGUAGE_COLORS: Record<string, string> = {
-  Rust: '#CE422B',
-  Go: '#00ADD8',
-  'C++': '#F34B7D',
-  Swift: '#F05138',
-  Python: '#3572A5',
-};
-
-const FALLBACK_LANGUAGE_COLOR = '#7d8590';
-
-export const languageColor = (language: string): string =>
-  LANGUAGE_COLORS[language] ?? FALLBACK_LANGUAGE_COLOR;
+export {
+  FRESHNESS_STYLE,
+  LANGUAGE_COLORS,
+  ageLabel,
+  barFraction,
+  freshness,
+  languageColor,
+  type Freshness,
+} from './work';
 
 export const FORM_ORDER: LinuxForm[] = ['gui', 'daemon', 'tui', 'cli'];
 
@@ -30,13 +26,6 @@ export const FORM_GLYPHS: Record<LinuxForm, string> = {
   gui: '[app]',
   daemon: '[svc]',
 };
-
-/// A bar's fill as a share of the largest value, on a square-root scale so one giant repo
-/// does not flatten everything else, with a floor so any non-zero value stays visible.
-export function barFraction(value: number, max: number): number {
-  if (value <= 0 || max <= 0) return 0;
-  return Math.max(0.04, Math.min(1, Math.sqrt(value / max)));
-}
 
 export interface Share {
   key: string;
@@ -64,48 +53,6 @@ export function formShare(apps: LinuxApp[]): Share[] {
       (form) => [form, apps.filter((app) => app.form === form).length] as [string, number]
     )
   );
-}
-
-export type Freshness = 'fresh' | 'steady' | 'quiet';
-
-const FRESH_DAYS = 90;
-const STEADY_DAYS = 365;
-
-const daysSince = (iso: string, now: Date): number =>
-  Math.max(0, Math.floor((now.getTime() - new Date(iso).getTime()) / DAY_MS));
-
-export function freshness(iso: string | null, now: Date): Freshness {
-  if (!iso) return 'quiet';
-  const days = daysSince(iso, now);
-  if (days <= FRESH_DAYS) return 'fresh';
-  return days <= STEADY_DAYS ? 'steady' : 'quiet';
-}
-
-export const FRESHNESS_STYLE: Record<Freshness, { dot: string; text: string; title: string }> = {
-  fresh: {
-    dot: 'bg-paper-green dark:bg-term-green',
-    text: 'text-paper-green dark:text-term-green',
-    title: 'Released in the last 90 days',
-  },
-  steady: {
-    dot: 'bg-paper-amber dark:bg-term-amber',
-    text: 'text-paper-amber dark:text-term-amber',
-    title: 'Released in the last year',
-  },
-  quiet: {
-    dot: 'bg-paper-border2 dark:bg-term-border2',
-    text: 'text-paper-muted dark:text-term-faint',
-    title: 'No release in over a year',
-  },
-};
-
-export function ageLabel(iso: string | null, now: Date): string {
-  if (!iso) return 'no releases';
-  const days = daysSince(iso, now);
-  if (days < 1) return 'today';
-  if (days < 30) return `${days}d ago`;
-  if (days < 365) return `${Math.floor(days / 30.44)} mo ago`;
-  return `${Math.floor(days / 365.25)} yr ago`;
 }
 
 export function releasesSince(apps: LinuxApp[], days: number, now: Date): number {

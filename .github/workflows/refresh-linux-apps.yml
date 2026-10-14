@@ -57,7 +57,7 @@ jobs:
           node scripts/fetch-linux-releases.mjs
           node scripts/generate-linux-og.js
           # opensource.json was refreshed only to drive discovery; the /opensource
-          # and /cli-tools pages regenerate it themselves at deploy, so keep this
+          # page regenerate it themselves at deploy, so keep this
           # PR focused on the Linux data.
           git checkout -- src/data/opensource.json
 

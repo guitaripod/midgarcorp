@@ -1,0 +1,167 @@
+---
+import { cleanAppStoreDescription } from '@utils/app-description';
+import { appMax, type AppEntry } from '@data/apps';
+import AppShots from './AppShots.astro';
+import WorkWeight from './WorkWeight.astro';
+
+export interface Props {
+  entry: AppEntry;
+  flip?: boolean;
+  eager?: boolean;
+}
+
+const { entry, flip = false, eager = false } = Astro.props;
+const { app, work, version, shots, device } = entry;
+
+const description = cleanAppStoreDescription(app.description);
+const onStore = app.appStoreUrl.includes('apps.apple.com');
+const linkClass =
+  'text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
+---
+
+<article
+  id={entry.slug ?? app.id}
+  class="grid lg:grid-cols-12 gap-6 lg:gap-10 items-center scroll-mt-24"
+  style={`--accent: ${app.primaryColor}`}
+>
+  <div class:list={['lg:col-span-6 min-w-0', flip && 'lg:order-2']}>
+    {
+      device && (
+        <AppShots
+          shots={shots}
+          device={device}
+          name={app.name}
+          accent={app.primaryColor}
+          size="hero"
+          eager={eager}
+        />
+      )
+    }
+  </div>
+
+  <div class:list={['lg:col-span-6 min-w-0', flip && 'lg:order-1']}>
+    <div class="flex items-center gap-4 mb-4">
+      <img
+        src={app.icon}
+        alt={`${app.name} icon`}
+        width="72"
+        height="72"
+        class="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-xl border border-paper-border dark:border-term-border flex-shrink-0"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="min-w-0">
+        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight">
+          {
+            entry.landingHref ? (
+              <a
+                href={entry.landingHref}
+                class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
+              >
+                {app.name}
+              </a>
+            ) : (
+              <span class="text-paper-text dark:text-term-text">{app.name}</span>
+            )
+          }
+        </h3>
+        <p class="text-sm text-paper-muted dark:text-term-muted">{app.tagline}</p>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4 text-xs">
+      <span class="text-paper-greendim dark:text-term-greendim">[{app.category}]</span>
+      <span class="font-semibold text-paper-amber dark:text-term-amber">{app.price}</span>
+      {
+        entry.openSource && (
+          <span class="text-paper-greendim dark:text-term-greendim">open source</span>
+        )
+      }
+      {
+        app.platforms.map((platform) => (
+          <span class="px-1.5 py-0.5 text-paper-muted dark:text-term-faint border border-paper-border dark:border-term-border rounded-sm">
+            {platform}
+          </span>
+        ))
+      }
+    </div>
+
+    <p
+      class="text-sm sm:text-base text-paper-muted dark:text-term-muted leading-relaxed mb-4 line-clamp-4 font-sans"
+    >
+      {description}
+    </p>
+
+    <ul class="space-y-1 mb-5">
+      {
+        app.features.slice(0, 3).map((feature) => (
+          <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+            <span
+              class="text-paper-greendim dark:text-term-greendim flex-shrink-0"
+              aria-hidden="true"
+            >
+              ▸
+            </span>
+            <span>{feature}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      work && work.commitCount > 0 && (
+        <div class="mb-5 flex items-end gap-4">
+          <div class="flex-1">
+            <WorkWeight
+              commits={work.commitCount}
+              releases={work.releaseCount}
+              maxCommits={appMax.commits}
+              maxReleases={appMax.releases}
+            />
+          </div>
+          {version && (
+            <span class="text-xs text-paper-green dark:text-term-green font-semibold whitespace-nowrap pb-px">
+              v{version}
+            </span>
+          )}
+        </div>
+      )
+    }
+
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+      {
+        entry.landingHref && (
+          <a
+            href={entry.landingHref}
+            class="inline-flex items-center gap-2 px-4 py-2 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm font-bold hover:opacity-90 transition-opacity"
+          >
+            see the app →
+          </a>
+        )
+      }
+      {
+        onStore && (
+          <a href={app.appStoreUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+            app store ↗
+          </a>
+        )
+      }
+      {
+        entry.openSource && entry.githubUrl && (
+          <a href={entry.githubUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+            github ↗
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

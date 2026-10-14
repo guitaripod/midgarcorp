@@ -1,0 +1,45 @@
+---
+export interface ShareItem {
+  label: string;
+  count: number;
+  fraction: number;
+  color?: string;
+  barClass?: string;
+}
+
+export interface Props {
+  items: ShareItem[];
+  summary: string;
+}
+
+const { items, summary } = Astro.props;
+---
+
+<div
+  class="flex h-1.5 gap-px rounded-sm overflow-hidden bg-paper-raised dark:bg-term-raised"
+  role="img"
+  aria-label={summary}
+>
+  {
+    items.map((item) => (
+      <span
+        class={`h-full ${item.barClass ?? ''}`}
+        style={`width:${item.fraction * 100}%;${item.color ? `background:${item.color}` : ''}`}
+      />
+    ))
+  }
+</div>
+<p class="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 text-[11px] text-paper-muted dark:text-term-muted">
+  {
+    items.map((item) => (
+      <span class="inline-flex items-center gap-1.5">
+        <span
+          class={`w-1.5 h-1.5 rounded-full ${item.barClass ?? ''}`}
+          style={item.color ? `background:${item.color}` : undefined}
+          aria-hidden="true"
+        />
+        {item.count} {item.label}
+      </span>
+    ))
+  }
+</p>

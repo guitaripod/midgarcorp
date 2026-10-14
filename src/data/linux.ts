@@ -1,3 +1,4 @@
+import { workScore } from '../lib/work';
 import linuxData from './linux-apps.json';
 
 export interface LinuxInstallChannel {
@@ -50,27 +51,10 @@ const FORM_LABELS: Record<LinuxForm, string> = {
   daemon: 'Daemon',
 };
 
-const DAY_MS = 86_400_000;
-
-/// Builds the ranking from how much work an app represents: commits and releases carry the
-/// weight, stars barely count, and a release in the last year earns a small recency bonus.
-const SCORE_WEIGHTS = { commits: 2, releases: 2.5, stars: 0.4 };
-const RECENCY_BONUS: { withinDays: number; bonus: number }[] = [
-  { withinDays: 90, bonus: 1.5 },
-  { withinDays: 365, bonus: 0.75 },
-];
-
 export const LINUX_NOW = new Date();
 
 export function linuxScore(app: LinuxApp, now: Date = LINUX_NOW): number {
-  const base =
-    SCORE_WEIGHTS.commits * Math.log(1 + app.commitCount) +
-    SCORE_WEIGHTS.releases * Math.log(1 + app.releaseCount) +
-    SCORE_WEIGHTS.stars * Math.log(1 + app.stars);
-  if (!app.latestReleaseDate) return base;
-  const age = (now.getTime() - new Date(app.latestReleaseDate).getTime()) / DAY_MS;
-  const recent = RECENCY_BONUS.find((tier) => age <= tier.withinDays);
-  return base + (recent?.bonus ?? 0);
+  return workScore({ ...app, latestDate: app.latestReleaseDate }, now);
 }
 
 type RawLinuxApp = Omit<LinuxApp, 'formLabel'>;

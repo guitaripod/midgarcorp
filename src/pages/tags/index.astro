@@ -15,8 +15,13 @@ const tagCounts = posts.reduce(
 );
 
 const tags = Object.entries(tagCounts)
-  .sort(([, a], [, b]) => b - a)
+  .sort(([tagA, a], [tagB, b]) => b - a || tagA.localeCompare(tagB))
   .map(([tag, count]) => ({ tag, count }));
+
+const repeated = tags.filter(({ count }) => count > 1);
+const once = tags.filter(({ count }) => count === 1);
+const chipClass =
+  'group term-frame term-frame-hover flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base';
 ---
 
 <BaseLayout searchable={false} title="Tags | guitaripod" description="Browse all blog post tags">
@@ -26,23 +31,44 @@ const tags = Object.entries(tagCounts)
       Tags
     </h1>
 
+    <p class="text-sm text-paper-muted dark:text-term-muted mb-6 max-w-2xl">
+      {tags.length} tags across {posts.length} posts. The ones that appear more than once come first.
+    </p>
+
     {
       tags.length > 0 ? (
-        <div class="flex flex-wrap gap-2 sm:gap-3">
-          {tags.map(({ tag, count }) => (
-            <a
-              href={`/tags/${tag}`}
-              class="group term-frame term-frame-hover flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base"
-            >
-              <span class="font-medium text-paper-greendim dark:text-term-greendim group-hover:text-paper-green dark:group-hover:text-term-green transition-colors">
-                #{tag}
-              </span>
-              <span class="text-xs sm:text-sm text-paper-muted dark:text-term-muted">
-                ({count})
-              </span>
-            </a>
-          ))}
-        </div>
+        <>
+          <div class="flex flex-wrap gap-2 sm:gap-3">
+            {repeated.map(({ tag, count }) => (
+              <a href={`/tags/${tag}`} class={chipClass}>
+                <span class="font-medium text-paper-greendim dark:text-term-greendim group-hover:text-paper-green dark:group-hover:text-term-green transition-colors">
+                  #{tag}
+                </span>
+                <span class="text-xs sm:text-sm text-paper-muted dark:text-term-muted">
+                  ({count})
+                </span>
+              </a>
+            ))}
+          </div>
+
+          {once.length > 0 && (
+            <details class="mt-8 group/once">
+              <summary class="cursor-pointer select-none text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors">
+                {once.length} tags used once
+              </summary>
+              <div class="flex flex-wrap gap-2 mt-4">
+                {once.map(({ tag }) => (
+                  <a
+                    href={`/tags/${tag}`}
+                    class="term-frame term-frame-hover px-2.5 py-1 text-xs text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green transition-colors"
+                  >
+                    #{tag}
+                  </a>
+                ))}
+              </div>
+            </details>
+          )}
+        </>
       ) : (
         <p class="text-paper-muted dark:text-term-muted">No tags found yet.</p>
       )

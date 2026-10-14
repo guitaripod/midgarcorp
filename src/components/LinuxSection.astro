@@ -4,12 +4,13 @@ export interface Props {
   title: string;
   blurb: string;
   aside?: string;
+  id?: string;
 }
 
-const { command, title, blurb, aside } = Astro.props;
+const { command, title, blurb, aside, id } = Astro.props;
 ---
 
-<section class="mb-14 sm:mb-20">
+<section id={id} class="mb-14 sm:mb-20 scroll-mt-20">
   <div class="flex items-baseline justify-between gap-4 mb-2">
     <p class="prompt-line">{command}</p>
     {

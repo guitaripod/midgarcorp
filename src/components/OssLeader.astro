@@ -1,0 +1,114 @@
+---
+import { ossMax, type OssProject } from '@data/oss';
+import { FRESHNESS_STYLE, ageLabel, barFraction, freshness, languageColor } from '../lib/work';
+
+export interface Props {
+  project: OssProject;
+  rank: number;
+  now: Date;
+  landingSlug?: string;
+}
+
+const { project, rank, now, landingSlug } = Astro.props;
+
+const commits = project.commitCount ?? 0;
+const releases = project.releaseCount ?? 0;
+const style = FRESHNESS_STYLE[freshness(project.updatedAt ?? null, now)];
+const accent = languageColor(project.language);
+const numbers = [
+  { label: 'commits', value: commits, fill: barFraction(commits, ossMax.commits), tone: 'green' },
+  {
+    label: 'releases',
+    value: releases,
+    fill: barFraction(releases, ossMax.releases),
+    tone: 'amber',
+  },
+];
+const linkClass =
+  'text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
+---
+
+<article
+  id={project.id}
+  class="group scroll-mt-24 term-frame term-frame-hover relative overflow-hidden p-5 sm:p-6 flex flex-col"
+>
+  <span
+    class="absolute inset-x-0 top-0 h-0.5 opacity-80"
+    style={`background:${accent}`}
+    aria-hidden="true"></span>
+
+  <div class="flex items-baseline justify-between gap-3 mb-4">
+    <p class="text-xs text-paper-muted dark:text-term-faint">#{rank} by work</p>
+    <span class="inline-flex items-center gap-1.5 text-xs" title="Last push to the repository">
+      <span class={`w-1.5 h-1.5 rounded-full ${style.dot}`} aria-hidden="true"></span>
+      <span class={style.text}>{ageLabel(project.updatedAt ?? null, now)}</span>
+    </span>
+  </div>
+
+  <h3 class="text-2xl font-bold tracking-tight mb-1">
+    <a
+      href={project.githubUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors"
+    >
+      {project.name}
+    </a>
+  </h3>
+  <p class="inline-flex items-center gap-1.5 text-xs text-paper-muted dark:text-term-faint mb-5">
+    <span
+      class="inline-block w-2 h-2 rounded-full"
+      style={`background:${accent}`}
+      aria-hidden="true"></span>
+    {project.language}
+    <span class="text-paper-faint dark:text-term-faint">·</span>
+    {project.category}
+  </p>
+
+  <dl class="grid grid-cols-2 gap-x-5 mb-5">
+    {
+      numbers.map((entry) => (
+        <div>
+          <dd class="text-3xl sm:text-4xl font-bold tracking-tight tabular-nums text-paper-text dark:text-term-text">
+            {entry.value.toLocaleString('en-US')}
+          </dd>
+          <dt class="text-xs text-paper-muted dark:text-term-muted mt-1 mb-2">{entry.label}</dt>
+          <div class="h-1.5 rounded-sm overflow-hidden bg-paper-raised dark:bg-term-raised">
+            <div
+              class={`h-full rounded-sm ${
+                entry.tone === 'green'
+                  ? 'bg-paper-green dark:bg-term-green'
+                  : 'bg-paper-amber dark:bg-term-amber'
+              }`}
+              style={`width:${entry.fill * 100}%`}
+            />
+          </div>
+        </div>
+      ))
+    }
+  </dl>
+
+  <p class="text-sm text-paper-muted dark:text-term-muted leading-relaxed mb-5 flex-1">
+    {project.description}
+  </p>
+
+  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
+    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+      source ↗
+    </a>
+    {
+      landingSlug && (
+        <a href={`/${landingSlug}`} class={linkClass}>
+          page →
+        </a>
+      )
+    }
+    {
+      project.homepageUrl && (
+        <a href={project.homepageUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+          docs ↗
+        </a>
+      )
+    }
+  </div>
+</article>

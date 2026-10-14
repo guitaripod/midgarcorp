@@ -1,4 +1,8 @@
 ---
+import { ossMax } from '@data/oss';
+import { languageColor as colorFor } from '../lib/work';
+import WorkWeight from './WorkWeight.astro';
+
 export interface Props {
   project: {
     id: string;
@@ -19,31 +23,23 @@ export interface Props {
 
 const { project, landingSlug } = Astro.props;
 
-const languageColors: Record<string, string> = {
-  Go: '#00ADD8',
-  Swift: '#FA7343',
-  Rust: '#CE422B',
-  TypeScript: '#3178C6',
-  Python: '#3572A5',
-  Astro: '#FF5D01',
-  Lua: '#5B5BD6',
-  'C++': '#F34B7D',
-};
-
 const categoryGlyphs: Record<string, string> = {
   'AI & Agents': '[ai]',
   'CLI Tools': '[cli]',
   'Swift Packages': '[pkg]',
   Apps: '[app]',
   'SDKs & Libraries': '[sdk]',
+  'Linux & System': '[sys]',
 };
 
 const glyph = categoryGlyphs[project.category] ?? '[src]';
-const languageColor = languageColors[project.language] ?? '#9198a1';
-const releaseCount = project.releaseCount ?? 0;
+const languageColor = colorFor(project.language);
 ---
 
-<article class="group term-frame term-frame-hover p-4 sm:p-5 flex flex-col">
+<article
+  id={project.id}
+  class="group scroll-mt-24 term-frame term-frame-hover p-4 sm:p-5 flex flex-col"
+>
   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="block flex-1">
     <div class="flex items-baseline justify-between gap-3 mb-2">
       <div class="flex items-baseline gap-2 min-w-0">
@@ -60,11 +56,6 @@ const releaseCount = project.releaseCount ?? 0;
             <span class="text-paper-amber dark:text-term-amber">★ {project.stars}</span>
           )
         }
-        {
-          releaseCount > 0 && (
-            <span class="text-paper-muted dark:text-term-muted">r{releaseCount}</span>
-          )
-        }
       </div>
     </div>
 
@@ -74,6 +65,15 @@ const releaseCount = project.releaseCount ?? 0;
       {project.description}
     </p>
   </a>
+
+  <div class="mt-3">
+    <WorkWeight
+      commits={project.commitCount ?? 0}
+      releases={project.releaseCount ?? 0}
+      maxCommits={ossMax.commits}
+      maxReleases={ossMax.releases}
+    />
+  </div>
 
   <div
     class="flex items-center justify-between gap-3 mt-3 pt-3 border-t border-paper-border dark:border-term-border text-xs"
