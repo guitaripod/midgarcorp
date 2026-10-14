@@ -62,6 +62,13 @@ const OVERRIDES = {
   },
   // Tagged `tui` on GitHub but runs as a one-shot CLI (`image-collage a.png …`).
   'image-collage': { form: 'cli' },
+  // GitHub's blurb dropped "terminal client" and the form heuristic then reads it as a plain CLI;
+  // `unrager` with no arguments opens the TUI, the subcommands are the CLI.
+  unrager: {
+    form: 'tui',
+    description:
+      'Takes the rage out of your x.com timeline with a model on your own computer: a terminal client, a CLI and a browser extension.',
+  },
   // The wayland/kde topics belong to the rec capture script; the review window
   // itself is a plain GTK4 app that runs on any desktop.
   recview: { note: 'GTK4 / libadwaita' },
@@ -192,12 +199,19 @@ async function repoMeta(repo) {
   };
 }
 
-async function releaseCount(repo) {
+/// Publish dates (ISO, oldest first) of every non-draft release; the /linux ship
+/// log plots them and the release count is their length.
+async function releaseDates(repo) {
   try {
-    const out = await gh(['api', `repos/${OWNER}/${repo}/releases?per_page=100`, '--jq', 'length']);
-    return Number(out.trim()) || 0;
+    const out = await gh([
+      'api',
+      `repos/${OWNER}/${repo}/releases?per_page=100`,
+      '--jq',
+      '[.[] | select(.draft | not) | .published_at] | sort',
+    ]);
+    return JSON.parse(out);
   } catch {
-    return 0;
+    return [];
   }
 }
 
@@ -414,10 +428,8 @@ async function buildRecord(id, brewByFormula, aur) {
     return null;
   }
 
-  const [release, relCount] = await Promise.all([
-    latestRelease(repo.name),
-    releaseCount(repo.name),
-  ]);
+  const [release, dates] = await Promise.all([latestRelease(repo.name), releaseDates(repo.name)]);
+  const relCount = dates.length;
   if (relCount === 0) return null;
 
   const form = ov.form ?? deriveForm(repo.description, repo.topics);
@@ -460,6 +472,7 @@ async function buildRecord(id, brewByFormula, aur) {
     description,
     stars: repo.stars,
     releaseCount: relCount,
+    releaseDates: dates,
     githubUrl: repo.githubUrl,
     homepageUrl: 'homepageUrl' in ov ? ov.homepageUrl : repo.homepageUrl,
     topics: repo.topics,

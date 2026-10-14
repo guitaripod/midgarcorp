@@ -1,0 +1,181 @@
+---
+import type { LinuxApp, LinuxForm } from '@data/linux';
+import {
+  FORM_NOUNS,
+  formShare,
+  languageColor,
+  languageShare,
+  monthlyTotals,
+  releasesSince,
+} from '../lib/linux-insights';
+
+export interface Props {
+  apps: LinuxApp[];
+  now: Date;
+}
+
+const { apps, now } = Astro.props;
+
+const formBars: Record<string, string> = {
+  gui: 'bg-paper-green dark:bg-term-green',
+  daemon: 'bg-paper-amber dark:bg-term-amber',
+  tui: 'bg-paper-greendim dark:bg-term-greendim',
+  cli: 'bg-paper-border2 dark:bg-term-border2',
+};
+
+const forms = formShare(apps);
+const languages = languageShare(apps);
+const releaseCount = apps.reduce((sum, app) => sum + app.releaseCount, 0);
+const recentReleases = releasesSince(apps, 90, now);
+const months = monthlyTotals(apps, 12, now);
+const peak = Math.max(1, ...months.map((month) => month.count));
+const starCount = apps.reduce((sum, app) => sum + app.stars, 0);
+const starLeader = [...apps].sort((a, b) => b.stars - a.stars)[0];
+
+const BAR_W = 8;
+const BAR_GAP = 3;
+const BAR_H = 28;
+const sparkWidth = months.length * (BAR_W + BAR_GAP) - BAR_GAP;
+const bars = months.map((month, index) => ({
+  x: index * (BAR_W + BAR_GAP),
+  height: month.count === 0 ? 2 : Math.max(4, Math.round((month.count / peak) * BAR_H)),
+  label: `${month.key} · ${month.count} ${month.count === 1 ? 'release' : 'releases'}`,
+}));
+---
+
+<div class="term-frame p-5 sm:p-6">
+  <p class="prompt-line mb-5">linux --stats</p>
+  <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-7">
+    <div class="flex flex-col">
+      <dt class="order-2 text-xs text-paper-muted dark:text-term-muted mt-1">apps_and_tools</dt>
+      <dd class="order-1 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        {apps.length}
+      </dd>
+      <dd class="order-3 mt-3">
+        <div
+          class="flex h-1.5 gap-px rounded-sm overflow-hidden bg-paper-raised dark:bg-term-raised"
+          role="img"
+          aria-label={forms.map((f) => `${f.count} ${FORM_NOUNS[f.key as LinuxForm]}`).join(', ')}
+        >
+          {
+            forms.map((form) => (
+              <span
+                class={`h-full ${formBars[form.key]}`}
+                style={`width:${form.fraction * 100}%`}
+              />
+            ))
+          }
+        </div>
+        <p
+          class="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 text-[11px] text-paper-muted dark:text-term-muted"
+        >
+          {
+            forms.map((form) => (
+              <span class="inline-flex items-center gap-1.5">
+                <span class={`w-1.5 h-1.5 rounded-full ${formBars[form.key]}`} aria-hidden="true" />
+                {form.count} {FORM_NOUNS[form.key as LinuxForm]}
+              </span>
+            ))
+          }
+        </p>
+      </dd>
+    </div>
+
+    <div class="flex flex-col">
+      <dt class="order-2 text-xs text-paper-muted dark:text-term-muted mt-1">releases_shipped</dt>
+      <dd class="order-1 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        {releaseCount}
+      </dd>
+      <dd class="order-3 mt-3">
+        <svg
+          viewBox={`0 0 ${sparkWidth} ${BAR_H}`}
+          class="block w-full max-w-[11rem] h-7 text-paper-green dark:text-term-green"
+          role="img"
+          aria-label="Releases per month over the last 12 months"
+        >
+          {
+            bars.map((bar) => (
+              <rect
+                x={bar.x}
+                y={BAR_H - bar.height}
+                width={BAR_W}
+                height={bar.height}
+                rx="1.5"
+                fill="currentColor"
+                opacity={bar.height <= 2 ? 0.25 : 1}
+              >
+                <title>{bar.label}</title>
+              </rect>
+            ))
+          }
+        </svg>
+        <p class="mt-2 text-[11px] text-paper-muted dark:text-term-muted">
+          <span class="text-paper-amber dark:text-term-amber">{recentReleases}</span> in the last 90
+          days
+        </p>
+      </dd>
+    </div>
+
+    <div class="flex flex-col">
+      <dt class="order-2 text-xs text-paper-muted dark:text-term-muted mt-1">github_stars</dt>
+      <dd class="order-1 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        {starCount}
+      </dd>
+      {
+        starLeader && starLeader.stars > 0 && (
+          <dd class="order-3 mt-3 text-[11px] text-paper-muted dark:text-term-muted">
+            most starred:{' '}
+            <a
+              href={starLeader.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
+            >
+              {starLeader.name}
+            </a>
+            <span class="text-paper-amber dark:text-term-amber"> ★ {starLeader.stars}</span>
+          </dd>
+        )
+      }
+    </div>
+
+    <div class="flex flex-col">
+      <dt class="order-2 text-xs text-paper-muted dark:text-term-muted mt-1">languages</dt>
+      <dd class="order-1 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
+        {languages.length}
+      </dd>
+      <dd class="order-3 mt-3">
+        <div
+          class="flex h-1.5 gap-px rounded-sm overflow-hidden bg-paper-raised dark:bg-term-raised"
+          role="img"
+          aria-label={languages.map((l) => `${l.count} ${l.key}`).join(', ')}
+        >
+          {
+            languages.map((language) => (
+              <span
+                class="h-full"
+                style={`width:${language.fraction * 100}%;background:${languageColor(language.key)}`}
+              />
+            ))
+          }
+        </div>
+        <p
+          class="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 text-[11px] text-paper-muted dark:text-term-muted"
+        >
+          {
+            languages.map((language) => (
+              <span class="inline-flex items-center gap-1.5">
+                <span
+                  class="w-1.5 h-1.5 rounded-full"
+                  style={`background:${languageColor(language.key)}`}
+                  aria-hidden="true"
+                />
+                {language.count} {language.key}
+              </span>
+            ))
+          }
+        </p>
+      </dd>
+    </div>
+  </dl>
+</div>

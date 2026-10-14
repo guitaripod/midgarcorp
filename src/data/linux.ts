@@ -25,6 +25,7 @@ export interface LinuxApp {
   description: string;
   stars: number;
   releaseCount: number;
+  releaseDates: string[];
   githubUrl: string;
   homepageUrl: string | null;
   topics: string[];
@@ -66,33 +67,92 @@ export const linuxApps: LinuxApp[] = (linuxData.apps as RawLinuxApp[])
       a.id.localeCompare(b.id)
   );
 
-export interface LinuxGroupSection {
-  key: LinuxGroup;
-  title: string;
-  command: string;
-  blurb: string;
-  apps: LinuxApp[];
+export interface LinuxShot {
+  src: string;
+  w: number;
+  h: number;
+  alt: string;
+  widths: number[];
 }
 
-const GROUP_ORDER: { key: LinuxGroup; title: string; command: string; blurb: string }[] = [
-  {
-    key: 'desktop',
-    title: 'Desktop & daemons',
-    command: 'ls ~/linux/desktop',
-    blurb: 'Native GTK/KDE apps and background services built for the Linux desktop.',
-  },
-  {
-    key: 'bin',
-    title: 'Command-line',
-    command: 'ls ~/linux/bin',
-    blurb: 'Single-binary tools for the terminal — install and run.',
-  },
-];
+export interface LinuxShowcase {
+  blurb: string;
+  accent: string;
+  shot: LinuxShot;
+  more: LinuxShot[];
+}
 
-export const linuxGroups: LinuxGroupSection[] = GROUP_ORDER.map((g) => ({
-  ...g,
-  apps: linuxApps.filter((app) => app.group === g.key),
-})).filter((section) => section.apps.length > 0);
+/// Apps with real window screenshots get a flagship row; every other app falls
+/// through to the filterable bench, so a newly discovered tool needs no entry here.
+/// `widths` lists the `@<width>.webp` variants that exist next to each file.
+export const LINUX_SHOWCASE: Record<string, LinuxShowcase> = {
+  flaccy: {
+    blurb:
+      'A lossless music player with gapless playback and Last.fm scrobbling, as a native GTK4 / libadwaita app: library, synced lyrics, queue, playlists and listening stats.',
+    accent: '#a78bfa',
+    shot: {
+      src: '/screenshots/flaccy/linux-1.webp',
+      w: 1920,
+      h: 1080,
+      alt: 'flaccy on Linux: the album library in a dark libadwaita window',
+      widths: [480, 960],
+    },
+    more: [
+      {
+        src: '/screenshots/flaccy/linux-2.webp',
+        w: 1920,
+        h: 1080,
+        alt: 'flaccy on Linux: Now Playing with synced lyrics and the queue',
+        widths: [480, 960],
+      },
+      {
+        src: '/screenshots/flaccy/linux-9.webp',
+        w: 1920,
+        h: 1080,
+        alt: 'flaccy on Linux: listening stats with a play heatmap',
+        widths: [480, 960],
+      },
+    ],
+  },
+  emojipick: {
+    blurb:
+      'A fast emoji picker for KDE Plasma Wayland: search by name or :shortcode:, category tabs, recents ranked by use, skin tones and auto-paste into the window you came from.',
+    accent: '#f5b82e',
+    shot: {
+      src: '/screenshots/linux/emojipick.webp',
+      w: 1216,
+      h: 912,
+      alt: 'emojipick on KDE Plasma: the search box, category tabs and a grid of emoji',
+      widths: [480, 960],
+    },
+    more: [],
+  },
+  recview: {
+    blurb:
+      'A GPU-accelerated review window for screen recordings: scrub a filmstrip timeline, trim, crop, export or discard. GTK4, libmpv and NVENC.',
+    accent: '#3584e4',
+    shot: {
+      src: '/screenshots/linux/recview.webp',
+      w: 1080,
+      h: 800,
+      alt: 'recview reviewing a clip: filmstrip timeline with a waveform, trim handles and export controls',
+      widths: [480, 960],
+    },
+    more: [],
+  },
+};
+
+/// `srcset` for a shot: its `@<width>.webp` variants plus the original.
+export function shotSrcset(shot: LinuxShot): string {
+  const variants = shot.widths.map(
+    (width) => `${shot.src.replace(/\.webp$/, `@${width}.webp`)} ${width}w`
+  );
+  return [...variants, `${shot.src} ${shot.w}w`].join(', ');
+}
+
+export const linuxFlagships: LinuxApp[] = linuxApps.filter((app) => app.id in LINUX_SHOWCASE);
+
+export const linuxBench: LinuxApp[] = linuxApps.filter((app) => !(app.id in LINUX_SHOWCASE));
 
 function orderedLanguages(): string[] {
   const counts = new Map<string, number>();

@@ -1,37 +1,51 @@
 ---
 import type { LinuxApp } from '@data/linux';
+import {
+  FORM_GLYPHS,
+  FRESHNESS_STYLE,
+  ageLabel,
+  freshness,
+  languageColor,
+} from '../lib/linux-insights';
+import LinuxInstall from './LinuxInstall.astro';
 
 export interface Props {
   app: LinuxApp;
+  now?: Date;
 }
 
-const { app } = Astro.props;
+const { app, now = new Date() } = Astro.props;
 
-const languageAccents: Record<string, string> = {
-  Rust: '#CE422B',
-  Go: '#00ADD8',
-  'C++': '#F34B7D',
-};
-const accent = languageAccents[app.language] ?? '#7d8590';
-
-const formGlyphs: Record<string, string> = {
-  cli: '[cli]',
-  tui: '[tui]',
-  gui: '[app]',
-  daemon: '[svc]',
-};
-const glyph = formGlyphs[app.form] ?? '[bin]';
-
+const accent = languageColor(app.language);
+const status = freshness(app.latestReleaseDate, now);
+const style = FRESHNESS_STYLE[status];
 const targetUrl = app.homepageUrl ?? app.githubUrl;
 const releaseStamp = app.latestReleaseDate ? app.latestReleaseDate.slice(0, 7) : null;
-const altChannels = app.install.all.slice(1);
+const updatedAt = app.latestReleaseDate ? new Date(app.latestReleaseDate).getTime() : 0;
+const linkClass =
+  'text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
 ---
 
-<article class="linux-card group h-full term-frame term-frame-hover overflow-hidden flex flex-col">
+<article
+  class="linux-card group h-full term-frame term-frame-hover overflow-hidden flex flex-col relative"
+  data-linux-card
+  data-name={app.name.toLowerCase()}
+  data-form={app.form}
+  data-lang={app.language}
+  data-updated={updatedAt}
+  data-releases={app.releaseCount}
+  data-stars={app.stars}
+>
+  <span
+    class="absolute inset-x-0 top-0 h-0.5 opacity-70 group-hover:opacity-100 transition-opacity"
+    style={`background:${accent}`}
+    aria-hidden="true"></span>
   <div class="p-4 sm:p-5 flex flex-col flex-1">
     <div class="flex items-start justify-between gap-3 mb-2">
       <div class="flex items-baseline gap-2 min-w-0">
-        <span class="text-xs text-paper-muted dark:text-term-faint flex-shrink-0">{glyph}</span>
+        <span class="text-xs text-paper-muted dark:text-term-faint flex-shrink-0"
+          >{FORM_GLYPHS[app.form]}</span
+        >
         <h3
           class="text-base sm:text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors truncate"
         >
@@ -68,13 +82,17 @@ const altChannels = app.install.all.slice(1);
       </span>
       <span class="text-paper-faint dark:text-term-faint">·</span>
       <span class="text-paper-muted dark:text-term-muted">{app.formLabel}</span>
+      <span class="text-paper-faint dark:text-term-faint">·</span>
+      <span class="inline-flex items-center gap-1.5" title={style.title}>
+        <span class={`inline-block w-1.5 h-1.5 rounded-full ${style.dot}`} aria-hidden="true"
+        ></span>
+        <span class={style.text}>{ageLabel(app.latestReleaseDate, now)}</span>
+      </span>
       {
-        app.releaseCount > 0 && (
+        app.releaseCount > 1 && (
           <>
             <span class="text-paper-faint dark:text-term-faint">·</span>
-            <span class="text-paper-muted dark:text-term-muted">
-              {app.releaseCount} {app.releaseCount === 1 ? 'release' : 'releases'}
-            </span>
+            <span class="text-paper-muted dark:text-term-muted">{app.releaseCount} releases</span>
           </>
         )
       }
@@ -85,82 +103,38 @@ const altChannels = app.install.all.slice(1);
     </p>
 
     <div class="mt-auto">
-      <div class="rounded-sm overflow-hidden border border-term-border bg-term-bg">
-        <div
-          class="flex items-center justify-between gap-2 px-3 py-1.5 bg-term-panel border-b border-term-border"
-        >
-          <span class="text-xs text-term-faint">install · {app.install.primary.label}</span>
-          <button
-            type="button"
-            class="copy-btn text-xs text-term-faint hover:text-term-green transition-colors"
-            data-copy={app.install.primary.command}
-            aria-label={`Copy install command for ${app.name}`}
-          >
-            copy
-          </button>
-        </div>
-        <div class="p-3 text-xs">
-          <p class="text-term-text break-all">
-            <span class="text-term-green select-none">$ </span>{app.install.primary.command}
-          </p>
-        </div>
-      </div>
+      <LinuxInstall name={app.name} channels={app.install.all} />
 
       {
-        (altChannels.length > 0 || app.note) && (
-          <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2 text-xs">
-            {app.note && <span class="text-paper-amber dark:text-term-amber">⚠ {app.note}</span>}
-            {altChannels.length > 0 && (
-              <>
-                {app.note && <span class="text-paper-faint dark:text-term-faint">·</span>}
-                <span class="text-paper-faint dark:text-term-faint">also:</span>
-                {altChannels.map((channel) => (
-                  <span class="text-paper-muted dark:text-term-muted">{channel.label}</span>
-                ))}
-              </>
-            )}
-          </div>
+        app.note && (
+          <p class="mt-2 text-xs text-paper-muted dark:text-term-muted">
+            <span class="text-paper-amber dark:text-term-amber" aria-hidden="true">
+              ◆
+            </span>
+            {app.note}
+          </p>
         )
       }
 
       <div
         class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 pt-3 border-t border-paper-border dark:border-term-border text-xs"
       >
-        <a
-          href={app.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-        >
+        <a href={app.githubUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
           source ↗
         </a>
         {
           app.homepageUrl && (
-            <a
-              href={app.homepageUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-            >
+            <a href={app.homepageUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
               docs ↗
             </a>
           )
         }
-        <a
-          href={app.latestReleaseUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-        >
+        <a href={app.latestReleaseUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
           releases{releaseStamp ? ` · ${releaseStamp}` : ''} ↗
         </a>
         {
           app.hasLinuxBinary && app.linuxBinaryUrl && (
-            <a
-              href={app.linuxBinaryUrl}
-              rel="noopener noreferrer"
-              class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-            >
+            <a href={app.linuxBinaryUrl} rel="noopener noreferrer" class={linkClass}>
               download x86_64 ↓
             </a>
           )
@@ -169,27 +143,6 @@ const altChannels = app.install.all.slice(1);
     </div>
   </div>
 </article>
-
-<script>
-  document.addEventListener('click', async (event) => {
-    const button = (event.target as HTMLElement)?.closest('.copy-btn');
-    if (!(button instanceof HTMLButtonElement)) return;
-    const command = button.dataset.copy;
-    if (!command) return;
-    try {
-      await navigator.clipboard.writeText(command);
-      const original = button.textContent;
-      button.textContent = 'copied ✓';
-      button.classList.add('text-term-green');
-      window.setTimeout(() => {
-        button.textContent = original;
-        button.classList.remove('text-term-green');
-      }, 1400);
-    } catch {
-      /* clipboard unavailable — no-op */
-    }
-  });
-</script>
 
 <style>
   .line-clamp-2 {

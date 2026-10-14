@@ -1,0 +1,24 @@
+---
+export interface Props {
+  command: string;
+  title: string;
+  blurb: string;
+  aside?: string;
+}
+
+const { command, title, blurb, aside } = Astro.props;
+---
+
+<section class="mb-14 sm:mb-20">
+  <div class="flex items-baseline justify-between gap-4 mb-2">
+    <p class="prompt-line">{command}</p>
+    {
+      aside && (
+        <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">{aside}</span>
+      )
+    }
+  </div>
+  <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text mb-1">{title}</h2>
+  <p class="text-sm text-paper-muted dark:text-term-muted mb-6 sm:mb-8 max-w-2xl">{blurb}</p>
+  <slot />
+</section>

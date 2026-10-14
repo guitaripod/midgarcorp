@@ -1,5 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { linuxApps, linuxGroups, linuxStats, featuredLinuxApps } from '../../src/data/linux';
+import fs from 'node:fs';
+import path from 'node:path';
+import {
+  linuxApps,
+  linuxBench,
+  linuxFlagships,
+  linuxStats,
+  featuredLinuxApps,
+  LINUX_SHOWCASE,
+  shotSrcset,
+} from '../../src/data/linux';
 
 describe('linux data module', () => {
   it('exposes at least one Linux app', () => {
@@ -50,10 +60,51 @@ describe('linux data module', () => {
     }
   });
 
-  it('partitions apps into non-overlapping groups covering the whole set', () => {
-    const grouped = linuxGroups.flatMap((section) => section.apps.map((app) => app.id));
-    expect(new Set(grouped).size).toBe(grouped.length);
-    expect(grouped.sort()).toEqual(linuxApps.map((a) => a.id).sort());
+  it('splits apps into flagships and the bench without overlap or loss', () => {
+    const split = [...linuxFlagships, ...linuxBench].map((app) => app.id);
+    expect(new Set(split).size).toBe(split.length);
+    expect(split.sort()).toEqual(linuxApps.map((a) => a.id).sort());
+  });
+
+  it('records a release date for every release it counts', () => {
+    for (const app of linuxApps) {
+      expect(app.releaseDates.length, `${app.id} dates`).toBe(app.releaseCount);
+      for (const date of app.releaseDates) {
+        expect(Number.isNaN(new Date(date).getTime()), `${app.id} ${date}`).toBe(false);
+      }
+      if (app.latestReleaseDate) {
+        expect(app.releaseDates, `${app.id} latest`).toContain(app.latestReleaseDate);
+      }
+    }
+  });
+
+  it('only features apps that are on the page and have their screenshots on disk', () => {
+    const ids = new Set(linuxApps.map((a) => a.id));
+    const onDisk = (src: string) => fs.existsSync(path.join(process.cwd(), 'public', src));
+    for (const [id, showcase] of Object.entries(LINUX_SHOWCASE)) {
+      expect(ids.has(id), `${id} is in linux-apps.json`).toBe(true);
+      for (const shot of [showcase.shot, ...showcase.more]) {
+        expect(onDisk(shot.src), shot.src).toBe(true);
+        for (const width of shot.widths) {
+          expect(
+            onDisk(shot.src.replace(/\.webp$/, `@${width}.webp`)),
+            `${shot.src}@${width}`
+          ).toBe(true);
+        }
+        expect(shot.alt.length).toBeGreaterThan(10);
+      }
+    }
+  });
+
+  it('builds a srcset from the variants plus the original', () => {
+    const srcset = shotSrcset({
+      src: '/a/b.webp',
+      w: 1920,
+      h: 1080,
+      alt: 'x',
+      widths: [480, 960],
+    });
+    expect(srcset).toBe('/a/b@480.webp 480w, /a/b@960.webp 960w, /a/b.webp 1920w');
   });
 
   it('keeps stats consistent with the app list', () => {

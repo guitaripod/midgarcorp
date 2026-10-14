@@ -1,0 +1,87 @@
+---
+import type { LinuxInstallChannel } from '@data/linux';
+
+export interface Props {
+  name: string;
+  channels: LinuxInstallChannel[];
+  large?: boolean;
+}
+
+const { name, channels, large = false } = Astro.props;
+---
+
+<div
+  class="linux-install rounded-sm overflow-hidden border border-term-border bg-term-bg"
+  data-install
+>
+  <div
+    class="flex items-center justify-between gap-2 px-3 py-1.5 bg-term-panel border-b border-term-border"
+  >
+    <div
+      class="flex flex-wrap items-center gap-x-1 gap-y-0.5 min-w-0"
+      role="group"
+      aria-label={`Install channels for ${name}`}
+    >
+      <span class="text-xs text-term-faint mr-1.5 select-none">install</span>
+      {
+        channels.map((channel, index) => (
+          <button
+            type="button"
+            class="install-tab"
+            data-install-tab={channel.channel}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            {channel.label}
+          </button>
+        ))
+      }
+    </div>
+    <button
+      type="button"
+      class="copy-btn text-xs text-term-faint hover:text-term-green transition-colors flex-shrink-0"
+      aria-label={`Copy install command for ${name}`}
+    >
+      copy
+    </button>
+  </div>
+  <div class:list={['text-term-text', large ? 'p-3.5 text-[13px]' : 'p-3 text-xs']}>
+    {
+      channels.map((channel, index) => (
+        <p
+          class="break-all"
+          data-command={channel.command}
+          data-install-cmd={channel.channel}
+          hidden={index !== 0}
+        >
+          <span class="text-term-green select-none">$ </span>
+          {channel.command}
+        </p>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  import { initLinuxInstall } from '../lib/linux-install';
+
+  initLinuxInstall();
+</script>
+
+<style>
+  .install-tab {
+    @apply text-xs px-1.5 py-0.5 rounded-sm text-term-faint border border-transparent transition-colors;
+  }
+
+  .install-tab:hover {
+    @apply text-term-text;
+  }
+
+  .install-tab[aria-pressed='true'] {
+    @apply text-term-green border-term-border2 bg-term-bg;
+  }
+
+  .install-tab:focus-visible,
+  .copy-btn:focus-visible {
+    @apply outline outline-1 outline-term-green;
+  }
+</style>

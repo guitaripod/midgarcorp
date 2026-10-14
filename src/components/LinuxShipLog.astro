@@ -1,0 +1,139 @@
+---
+import type { LinuxApp } from '@data/linux';
+import { FRESHNESS_STYLE, ageLabel, freshness, heatLevel, shipLog } from '../lib/linux-insights';
+
+export interface Props {
+  apps: LinuxApp[];
+  now: Date;
+}
+
+const { apps, now } = Astro.props;
+
+const STEP = 12;
+const CELL = 10;
+const MONTH_NAMES = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+const log = shipLog(apps, now);
+const trackWidth = log.months.length * STEP - (STEP - CELL);
+const yearLabels = log.years.filter(
+  (year, position) => position > 0 || (log.years[1]?.index ?? Infinity) - year.index >= 3
+);
+
+/// "Oct 2026" from a `YYYY-MM` key.
+const monthLabel = (key: string): string => {
+  const [year, month] = key.split('-');
+  return `${MONTH_NAMES[Number(month) - 1]} ${year}`;
+};
+
+const cellTitle = (key: string, count: number): string =>
+  `${monthLabel(key)} · ${count} ${count === 1 ? 'release' : 'releases'}`;
+
+const legendLevels = [0, 1, 2, 3, 4];
+---
+
+<div class="term-frame p-4 sm:p-5">
+  <div class="overflow-x-auto" data-ship-scroll>
+    <div class="min-w-[600px]">
+      <div class="flex items-end gap-3 mb-1.5" aria-hidden="true">
+        <div class="w-28 sm:w-36 flex-shrink-0"></div>
+        <div class="relative flex-1 h-4 min-w-0">
+          {
+            yearLabels.map((year) => (
+              <span
+                class="absolute bottom-0 text-[10px] leading-none text-paper-muted dark:text-term-faint"
+                style={`left:${((year.index * STEP) / trackWidth) * 100}%`}
+              >
+                {year.label}
+              </span>
+            ))
+          }
+        </div>
+        <div class="w-16 sm:w-20 flex-shrink-0"></div>
+      </div>
+
+      <ul class="space-y-[3px]">
+        {
+          log.rows.map(({ app, counts }) => {
+            const style = FRESHNESS_STYLE[freshness(app.latestReleaseDate, now)];
+            return (
+              <li class="flex items-center gap-3 group">
+                <span class="sticky left-0 z-10 w-28 sm:w-36 flex-shrink-0 truncate pr-2 bg-paper-panel dark:bg-term-panel text-xs text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors">
+                  {app.name}
+                </span>
+                <svg
+                  viewBox={`0 0 ${trackWidth} ${CELL}`}
+                  class="block flex-1 min-w-0"
+                  role="img"
+                  aria-label={`${app.name}: ${app.releaseCount} releases, latest ${app.latestVersion ? `v${app.latestVersion} ` : ''}${ageLabel(app.latestReleaseDate, now)}`}
+                >
+                  {counts.map((count, index) => (
+                    <rect
+                      x={index * STEP}
+                      y="0"
+                      width={CELL}
+                      height={CELL}
+                      rx="2"
+                      class={`act-c act-c${heatLevel(count)}`}
+                    >
+                      {count > 0 && (
+                        <title>{`${app.name} · ${cellTitle(log.months[index], count)}`}</title>
+                      )}
+                    </rect>
+                  ))}
+                </svg>
+                <span
+                  class={`w-16 sm:w-20 flex-shrink-0 text-right text-[11px] whitespace-nowrap ${style.text}`}
+                >
+                  {ageLabel(app.latestReleaseDate, now)}
+                </span>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-4 pt-3 border-t border-paper-border dark:border-term-border text-[11px] text-paper-muted dark:text-term-muted"
+  >
+    <p>One square per month. Darker means more releases that month.</p>
+    <p class="inline-flex items-center gap-1.5" aria-hidden="true">
+      fewer
+      <svg viewBox={`0 0 ${5 * STEP - 2} ${CELL}`} class="h-2.5 w-auto">
+        {
+          legendLevels.map((level) => (
+            <rect
+              x={level * STEP}
+              y="0"
+              width={CELL}
+              height={CELL}
+              rx="2"
+              class={`act-c act-c${level}`}
+            />
+          ))
+        }
+      </svg>
+      more
+    </p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-ship-scroll]').forEach((scroller) => {
+    scroller.scrollLeft = scroller.scrollWidth;
+  });
+</script>
