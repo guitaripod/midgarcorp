@@ -1,54 +1,26 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import LinuxAppCard from '@components/LinuxAppCard.astro';
+import LinuxAppRow from '@components/LinuxAppRow.astro';
 import LinuxFlagship from '@components/LinuxFlagship.astro';
 import LinuxInstallAll from '@components/LinuxInstallAll.astro';
-import LinuxShipLog from '@components/LinuxShipLog.astro';
 import LinuxSection from '@components/LinuxSection.astro';
+import LinuxShipLog from '@components/LinuxShipLog.astro';
+import LinuxShowcaseCard from '@components/LinuxShowcaseCard.astro';
 import LinuxStats from '@components/LinuxStats.astro';
-import {
-  LINUX_SHOWCASE,
-  linuxApps,
-  linuxBench,
-  linuxFlagships,
-  linuxStats,
-  type LinuxForm,
-} from '@data/linux';
-import { FORM_NOUNS, FORM_ORDER, languageColor } from '../lib/linux-insights';
+import { LINUX_NOW, LINUX_SHOWCASE, linuxApps, linuxSections, linuxStats } from '@data/linux';
 
 const pageTitle = 'Linux Apps & Tools | guitaripod';
-const now = new Date();
+const now = LINUX_NOW;
 
 const langList =
   linuxStats.languages.length > 1
     ? `${linuxStats.languages.slice(0, -1).join(', ')} and ${linuxStats.languages.at(-1)}`
     : linuxStats.languages.join('');
 
-const ogDescription = `${linuxStats.appCount} Linux apps and command-line tools — ${linuxStats.releaseCount} releases shipped in ${langList}. GTK desktop apps, a Wayland daemon, and single-binary CLIs, installable via cargo, Homebrew, and the AUR.`;
+const ogDescription = `${linuxStats.appCount} Linux apps and tools — ${linuxStats.commitCount} commits and ${linuxStats.releaseCount} releases in ${langList}. GTK4 desktop apps, the servers and benchmarks behind a local-AI setup, Plasma and Steam utilities, and single-binary CLIs, installable via cargo, Homebrew, the AUR and install scripts.`;
 
-const benchByRecency = [...linuxBench].sort(
-  (a, b) =>
-    (b.latestReleaseDate ?? '').localeCompare(a.latestReleaseDate ?? '') || a.id.localeCompare(b.id)
-);
-
-const benchForms = FORM_ORDER.map((form) => ({
-  form,
-  count: linuxBench.filter((app) => app.form === form).length,
-})).filter((entry) => entry.count > 0);
-
-const benchLanguages = linuxStats.languages
-  .map((language) => ({
-    language,
-    count: linuxBench.filter((app) => app.language === language).length,
-  }))
-  .filter((entry) => entry.count > 0);
-
-const sortOptions = [
-  { value: 'recent', label: 'latest release' },
-  { value: 'releases', label: 'most releases' },
-  { value: 'stars', label: 'most stars' },
-  { value: 'name', label: 'name' },
-];
+const plural = (count: number, noun: string): string => `${count} ${noun}${count === 1 ? '' : 's'}`;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -89,17 +61,19 @@ const structuredData = {
     <p
       class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-3xl mb-3 leading-relaxed"
     >
-      {linuxStats.appCount} open-source apps and command-line tools built for Linux, with {
-        linuxStats.releaseCount
-      } tagged releases across {langList}. Native GTK desktop apps, a Wayland color-temperature
-      daemon, a system-tray toggle — and a deep bench of single-binary CLIs.
+      {linuxStats.appCount} open-source apps and tools built on and for Linux, with {
+        linuxStats.commitCount
+      } commits and {linuxStats.releaseCount} tagged releases across {langList}. Native GTK4 desktop
+      apps, the servers and benchmarks behind a local-AI setup, Plasma and Steam utilities — and a
+      deep bench of single-binary CLIs.
     </p>
     <p class="text-sm sm:text-base text-paper-muted dark:text-term-faint max-w-2xl">
-      Every one is installable in a single command — <span
-        class="text-paper-text dark:text-term-text">cargo</span
+      Ordered by the work behind each one, not by stars: commits and releases decide the order.
+      Installable in a single command — <span class="text-paper-text dark:text-term-text"
+        >cargo</span
       >, <span class="text-paper-text dark:text-term-text">brew</span>, the <span
         class="text-paper-text dark:text-term-text">AUR</span
-      >, or from source. All developed and released from Arch Linux.
+      >, an install script, or from source. All developed and released from Arch Linux.
     </p>
   </header>
 
@@ -108,140 +82,66 @@ const structuredData = {
   </section>
 
   {
-    linuxFlagships.length > 0 && (
+    linuxSections.map((section, sectionIndex) => (
       <LinuxSection
-        command="ls ~/linux/desktop"
-        title="Desktop apps"
-        blurb="Native GTK and KDE Plasma apps, shown running."
-        aside={`${linuxFlagships.length} ${linuxFlagships.length === 1 ? 'app' : 'apps'}`}
+        command={section.command}
+        title={section.title}
+        blurb={section.blurb}
+        aside={`${plural(section.totals.apps, 'tool')} · ${plural(section.totals.commits, 'commit')} · ${plural(section.totals.releases, 'release')}`}
       >
-        <div class="space-y-16 sm:space-y-24">
-          {linuxFlagships.map((app, index) => (
-            <LinuxFlagship app={app} now={now} flip={index % 2 === 1} eager={index === 0} />
-          ))}
+        <div class="space-y-12 sm:space-y-16">
+          {section.heroes.length > 0 && (
+            <div class="space-y-16 sm:space-y-24">
+              {section.heroes.map((app, index) => (
+                <LinuxFlagship
+                  app={app}
+                  now={now}
+                  flip={index % 2 === 1}
+                  eager={sectionIndex === 0 && index === 0}
+                />
+              ))}
+            </div>
+          )}
+
+          {section.showcase.length > 0 && (
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {section.showcase.map((app) => (
+                <LinuxShowcaseCard app={app} now={now} />
+              ))}
+            </div>
+          )}
+
+          {section.featured.length > 0 && (
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+              {section.featured.map((app) => (
+                <LinuxAppCard app={app} now={now} />
+              ))}
+            </div>
+          )}
+
+          {section.compact.length > 0 && (
+            <div>
+              <p class="term-label mb-3">smaller and older</p>
+              <ul class="term-frame px-4 sm:px-5">
+                {section.compact.map((app) => (
+                  <LinuxAppRow app={app} now={now} />
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </LinuxSection>
-    )
+    ))
   }
 
   <LinuxSection
     command="git tag --sort=-creatordate"
     title="Release log"
     blurb="Every tagged release across all tools, month by month. What shipped most recently is on top."
-    aside={`${linuxStats.releaseCount} releases`}
+    aside={plural(linuxStats.releaseCount, 'release')}
   >
     <LinuxShipLog apps={linuxApps} now={now} />
   </LinuxSection>
-
-  {
-    benchByRecency.length > 0 && (
-      <LinuxSection
-        command="ls ~/linux/bin"
-        title="The bench"
-        blurb="Command-line tools, small desktop utilities and daemons. Filter by kind or language, sort by what shipped last."
-        aside={`${benchByRecency.length} entries`}
-      >
-        <div data-bench>
-          <div data-bench-controls hidden class="mb-6">
-            <div class="flex flex-wrap items-center gap-x-8 gap-y-3">
-              <div
-                class="flex flex-wrap items-center gap-1.5"
-                role="group"
-                aria-label="Filter by kind"
-              >
-                <span class="term-label mr-1">kind</span>
-                <button
-                  type="button"
-                  class="chip"
-                  data-filter-kind="form"
-                  data-filter-value="all"
-                  aria-pressed="true"
-                >
-                  all {benchByRecency.length}
-                </button>
-                {benchForms.map(({ form, count }) => (
-                  <button
-                    type="button"
-                    class="chip"
-                    data-filter-kind="form"
-                    data-filter-value={form}
-                    aria-pressed="false"
-                  >
-                    {FORM_NOUNS[form as LinuxForm]} {count}
-                  </button>
-                ))}
-              </div>
-
-              <div
-                class="flex flex-wrap items-center gap-1.5"
-                role="group"
-                aria-label="Filter by language"
-              >
-                <span class="term-label mr-1">language</span>
-                <button
-                  type="button"
-                  class="chip"
-                  data-filter-kind="lang"
-                  data-filter-value="all"
-                  aria-pressed="true"
-                >
-                  all
-                </button>
-                {benchLanguages.map(({ language, count }) => (
-                  <button
-                    type="button"
-                    class="chip"
-                    data-filter-kind="lang"
-                    data-filter-value={language}
-                    aria-pressed="false"
-                  >
-                    <span
-                      class="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
-                      style={`background:${languageColor(language)}`}
-                      aria-hidden="true"
-                    />
-                    {language} {count}
-                  </button>
-                ))}
-              </div>
-
-              <label class="inline-flex items-center gap-2 sm:ml-auto">
-                <span class="term-label">sort</span>
-                <select data-bench-sort class="sort-select">
-                  {sortOptions.map((option) => (
-                    <option value={option.value}>{option.label}</option>
-                  ))}
-                </select>
-              </label>
-            </div>
-            <p
-              data-bench-count
-              aria-live="polite"
-              class="mt-3 text-[11px] text-paper-muted dark:text-term-faint"
-            >
-              showing {benchByRecency.length} of {benchByRecency.length}
-            </p>
-          </div>
-
-          <div
-            data-bench-grid
-            class="linux-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6"
-          >
-            {benchByRecency.map((app) => (
-              <LinuxAppCard app={app} now={now} />
-            ))}
-          </div>
-          <p
-            data-bench-empty
-            hidden
-            class="term-frame p-6 text-sm text-paper-muted dark:text-term-muted"
-          >
-            Nothing matches both filters. Clear one of them.
-          </p>
-        </div>
-      </LinuxSection>
-    )
-  }
 
   <LinuxSection
     command="install --all"
@@ -286,12 +186,6 @@ const structuredData = {
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </BaseLayout>
 
-<script>
-  import { initLinuxBench } from '../lib/linux-bench';
-
-  initLinuxBench();
-</script>
-
 <style>
   @keyframes fadeIn {
     from {
@@ -304,52 +198,9 @@ const structuredData = {
     }
   }
 
-  .chip {
-    @apply inline-flex items-center text-xs px-2.5 py-1 rounded-sm border border-paper-border dark:border-term-border text-paper-muted dark:text-term-muted bg-paper-panel dark:bg-term-panel transition-colors;
-  }
-
-  .chip:hover {
-    @apply border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text;
-  }
-
-  .chip[aria-pressed='true'] {
-    @apply border-paper-green dark:border-term-green text-paper-green dark:text-term-green;
-  }
-
-  .chip:focus-visible,
-  .sort-select:focus-visible {
-    @apply outline outline-1 outline-paper-green dark:outline-term-green;
-  }
-
-  .sort-select {
-    @apply text-xs px-2 py-1 rounded-sm border border-paper-border dark:border-term-border bg-paper-panel dark:bg-term-panel text-paper-text dark:text-term-text;
-  }
-
-  .linux-grid > :global([data-linux-card][hidden]) {
-    display: none;
-  }
-
   @media (prefers-reduced-motion: no-preference) {
-    .linux-grid > :global(*) {
+    :global(.linux-card) {
       animation: fadeIn 0.45s ease-out both;
-    }
-    .linux-grid > :global(*:nth-child(2)) {
-      animation-delay: 0.04s;
-    }
-    .linux-grid > :global(*:nth-child(3)) {
-      animation-delay: 0.08s;
-    }
-    .linux-grid > :global(*:nth-child(4)) {
-      animation-delay: 0.12s;
-    }
-    .linux-grid > :global(*:nth-child(5)) {
-      animation-delay: 0.16s;
-    }
-    .linux-grid > :global(*:nth-child(6)) {
-      animation-delay: 0.2s;
-    }
-    .linux-grid > :global(*:nth-child(n + 7)) {
-      animation-delay: 0.24s;
     }
   }
 </style>

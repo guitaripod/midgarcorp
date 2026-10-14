@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import type { LinuxApp } from '../../src/data/linux';
-import { linuxApps } from '../../src/data/linux';
+import { linuxApps, linuxScore, partitionSection } from '../../src/data/linux';
 import {
   ageLabel,
+  barFraction,
   channelBundles,
   formShare,
   freshness,
@@ -23,10 +24,12 @@ function fakeApp(overrides: Partial<LinuxApp>): LinuxApp {
     name: 'x',
     form: 'cli',
     group: 'bin',
+    theme: 'tools',
     lang: 'rust',
     language: 'Rust',
     description: 'd',
     stars: 0,
+    commitCount: 0,
     releaseCount: 0,
     releaseDates: [],
     githubUrl: 'https://github.com/guitaripod/x',
@@ -193,5 +196,76 @@ describe('channel bundles', () => {
         bundle.channel
       ).toBe(true);
     }
+  });
+});
+
+describe('score and tiers', () => {
+  it('lets commits and releases outweigh stars', () => {
+    const worked = fakeApp({
+      commitCount: 300,
+      releaseCount: 30,
+      stars: 0,
+      latestReleaseDate: '2025-01-01T00:00:00Z',
+    });
+    const starred = fakeApp({
+      commitCount: 5,
+      releaseCount: 1,
+      stars: 60,
+      latestReleaseDate: '2025-01-01T00:00:00Z',
+    });
+    expect(linuxScore(worked, NOW)).toBeGreaterThan(linuxScore(starred, NOW));
+  });
+
+  it('adds a recency bonus that shrinks with age', () => {
+    const base = { commitCount: 20, releaseCount: 3 };
+    const fresh = linuxScore(fakeApp({ ...base, latestReleaseDate: '2026-10-01T00:00:00Z' }), NOW);
+    const year = linuxScore(fakeApp({ ...base, latestReleaseDate: '2026-02-01T00:00:00Z' }), NOW);
+    const old = linuxScore(fakeApp({ ...base, latestReleaseDate: '2022-02-01T00:00:00Z' }), NOW);
+    expect(fresh).toBeGreaterThan(year);
+    expect(year).toBeGreaterThan(old);
+  });
+
+  it('shows an app with a screenshot big only when it also carries weight', () => {
+    const heavy = fakeApp({
+      id: 'tailscode',
+      theme: 'desktop',
+      commitCount: 480,
+      releaseCount: 46,
+      latestReleaseDate: '2026-10-13T00:00:00Z',
+    });
+    const light = fakeApp({
+      id: 'emojipick',
+      theme: 'desktop',
+      commitCount: 12,
+      releaseCount: 1,
+      latestReleaseDate: '2026-07-13T00:00:00Z',
+    });
+    const plain = fakeApp({
+      id: 'plain-heavy',
+      theme: 'desktop',
+      commitCount: 90,
+      releaseCount: 12,
+      latestReleaseDate: '2026-10-01T00:00:00Z',
+    });
+    const tiny = fakeApp({
+      id: 'plain-tiny',
+      theme: 'desktop',
+      commitCount: 3,
+      releaseCount: 1,
+      latestReleaseDate: '2024-01-01T00:00:00Z',
+    });
+    const section = partitionSection('desktop', [heavy, plain, light, tiny], NOW);
+    expect(section.heroes.map((a) => a.id)).toEqual(['tailscode']);
+    expect(section.showcase.map((a) => a.id)).toEqual(['emojipick']);
+    expect(section.featured.map((a) => a.id)).toEqual(['plain-heavy']);
+    expect(section.compact.map((a) => a.id)).toEqual(['plain-tiny']);
+    expect(section.totals).toEqual({ apps: 4, commits: 585, releases: 60 });
+  });
+
+  it('scales bars on a square root with a visible floor', () => {
+    expect(barFraction(0, 100)).toBe(0);
+    expect(barFraction(100, 100)).toBe(1);
+    expect(barFraction(25, 100)).toBeCloseTo(0.5, 6);
+    expect(barFraction(1, 10000)).toBe(0.04);
   });
 });

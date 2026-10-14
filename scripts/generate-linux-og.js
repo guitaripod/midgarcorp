@@ -11,11 +11,18 @@ const linuxData = JSON.parse(
   await fs.readFile(path.join(ROOT, 'src/data/linux-apps.json'), 'utf-8')
 );
 
-// linux-apps.json is already lead-first with live release counts and languages.
+/// The same weighting as `linuxScore` in src/data/linux.ts without the recency bonus:
+/// commits and releases carry the weight, stars barely count.
+const workScore = (app) =>
+  2 * Math.log(1 + (app.commitCount ?? 0)) +
+  2.5 * Math.log(1 + (app.releaseCount ?? 0)) +
+  0.4 * Math.log(1 + (app.stars ?? 0));
+
 const apps = linuxData.apps;
 const releaseCount = apps.reduce((sum, app) => sum + (app.releaseCount ?? 0), 0);
+const commitCount = apps.reduce((sum, app) => sum + (app.commitCount ?? 0), 0);
 const languages = [...new Set(apps.map((app) => app.language))];
-const topApps = apps.slice(0, 6);
+const topApps = [...apps].sort((a, b) => workScore(b) - workScore(a)).slice(0, 6);
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const mono = "ui-monospace, 'DejaVu Sans Mono', Menlo, Monaco, 'Courier New', monospace";
@@ -27,7 +34,7 @@ const rows = topApps
     const y = 292 + i * 46;
     const name = esc(app.id).padEnd(18, ' ');
     const version = `v${esc(app.latestVersion ?? '?')}`.padEnd(12, ' ');
-    const releases = `${app.releaseCount} ${app.releaseCount === 1 ? 'release' : 'releases'}`;
+    const releases = `${app.commitCount} commits · ${app.releaseCount} ${app.releaseCount === 1 ? 'release' : 'releases'}`;
     return `<text x="80" y="${y}" xml:space="preserve"><tspan class="green">$ </tspan><tspan class="name">${name}</tspan><tspan class="ver">${version}</tspan><tspan class="dim">${releases}</tspan></text>`;
   })
   .join('\n      ');
@@ -54,14 +61,12 @@ const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http
   <circle cx="118" cy="64" r="7" fill="#33ff66"/>
   <text x="150" y="71" class="chrome">guitaripod@midgar: ~/linux</text>
 
-  <text x="80" y="150" class="prompt"><tspan class="green">$ </tspan>ls ~/linux --sort=releases</text>
+  <text x="80" y="150" class="prompt"><tspan class="green">$ </tspan>ls ~/linux --sort=work</text>
   <text x="78" y="222" xml:space="preserve"><tspan class="title-accent">Linux</tspan><tspan class="title"> Apps &amp; Tools</tspan></text>
 
   ${rows}
 
-  <text x="80" y="562" class="stats">${apps.length} apps · ${releaseCount} releases · ${esc(
-    languages.join(' · ')
-  )} · by guitaripod</text>
+  <text x="80" y="566" class="stats">${apps.length} apps · ${commitCount} commits · ${releaseCount} releases · ${languages.length} languages</text>
 </svg>`;
 
 try {

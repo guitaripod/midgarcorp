@@ -17,7 +17,10 @@
  *                   in opensource.json).
  *   EXCLUDE       — a false positive the rule let through (backend/library/etc).
  *   OVERRIDES     — correct a wrong auto-derived field for one repo.
- *   LEAD          — pin flagship apps to the top.
+ *   SCOPES        — for a repo that also ships iOS/macOS/browser code, the paths and
+ *                   release tags that belong to the Linux build, so its commit and
+ *                   release counts measure the Linux work and not the whole repo.
+ *   THEMES        — move an app to another page group than the one derived.
  * The weekly refresh workflow regenerates opensource.json first, so newly-shipped
  * Rust/Go/C++ tools are discovered automatically and land in a reviewable PR.
  *
@@ -42,7 +45,21 @@ const CRATES_UA = 'midgarcorp-linux-page (guitaripod@gmail.com)';
 // ---------------------------------------------------------------------------
 
 /** Repos to force onto the page that the auto-rule can't discover on its own. */
-const FORCE_INCLUDE = ['flaccy', 'emojipick', 'recview'];
+const FORCE_INCLUDE = [
+  'tailscode',
+  'flaccy',
+  'unrager',
+  'claude-bridge',
+  'omp-bridge',
+  'mbench',
+  'delegate',
+  'tokenmaxxing',
+  'recview',
+  'emojipick',
+  'remoteplay-display',
+  'imago',
+  'tonight',
+];
 
 /** False positives to drop (a backend/library the rule let through). */
 const EXCLUDE = new Set([]);
@@ -60,6 +77,99 @@ const OVERRIDES = {
     description:
       'A lossless music player with gapless playback and Last.fm scrobbling — a native GTK4/libadwaita desktop app.',
   },
+  tailscode: {
+    lang: 'swift',
+    form: 'gui',
+    note: 'GTK 4.12+ / libadwaita 1.4+',
+    description:
+      'Your AI agents, anywhere: a native GTK4 client for Claude Code, Oh My Pi and opencode running on your own machines, over your own tailnet.',
+    linuxAssetMatchesTag: true,
+    versionFromAsset: true,
+    source: {
+      label: 'from source',
+      command:
+        'git clone https://github.com/guitaripod/Tailscode && cd Tailscode && TAILSCODE_KIT_REMOTE=1 scripts/package-linux.sh build',
+    },
+  },
+  tokenmaxxing: {
+    lang: 'rust',
+    form: 'gui',
+    note: 'KDE Plasma 6 / GTK4',
+    description:
+      'Usage dashboards for your LLM subscriptions: live quota, local history and a value-for-money readout, as a KDE tray app.',
+    source: {
+      label: 'from source',
+      command:
+        'git clone https://github.com/guitaripod/tokenmaxxing && cd tokenmaxxing/tokenmaxxing-kde && bash resources/install.sh',
+    },
+  },
+  'claude-bridge': {
+    lang: 'swift',
+    form: 'daemon',
+    description:
+      'Runs Claude Code headlessly and serves it as structured HTTP sessions with streaming, subagents, spend and git, as a systemd user service.',
+    install: [
+      {
+        channel: 'script',
+        label: 'install script',
+        command:
+          'curl -fsSL https://raw.githubusercontent.com/guitaripod/claude-bridge/master/install.sh | bash',
+      },
+    ],
+  },
+  'omp-bridge': {
+    lang: 'swift',
+    form: 'daemon',
+    description:
+      'Puts an Oh My Pi coding agent on your tailnet: the claude-bridge wire protocol over HTTP and SSE, as a systemd user service.',
+    install: [
+      {
+        channel: 'script',
+        label: 'install script',
+        command:
+          'curl -fsSL https://raw.githubusercontent.com/guitaripod/omp-bridge/master/install.sh | bash',
+      },
+    ],
+  },
+  mbench: {
+    lang: 'python',
+    form: 'cli',
+    description:
+      'Ranks the models your own GPU runs: speed and answer quality for everything llama-swap serves, built into one leaderboard page.',
+    install: [
+      {
+        channel: 'uv',
+        label: 'uv',
+        command: 'uv tool install git+https://github.com/guitaripod/mbench',
+      },
+    ],
+  },
+  'remoteplay-display': {
+    lang: 'python',
+    form: 'daemon',
+    note: 'KDE Plasma 6 / Wayland',
+    install: [
+      {
+        channel: 'script',
+        label: 'install script',
+        command:
+          'git clone https://github.com/guitaripod/remoteplay-display && cd remoteplay-display && ./install.sh',
+      },
+    ],
+  },
+  tonight: {
+    form: 'daemon',
+    description:
+      'A decision engine for your Steam library: three questions, three cards, one game. Single binary, no account.',
+    install: [
+      {
+        channel: 'script',
+        label: 'install script',
+        command:
+          'curl -fsSL https://github.com/guitaripod/tonight/releases/latest/download/install.sh | sh',
+      },
+    ],
+  },
   // Tagged `tui` on GitHub but runs as a one-shot CLI (`image-collage a.png …`).
   'image-collage': { form: 'cli' },
   // GitHub's blurb dropped "terminal client" and the form heuristic then reads it as a plain CLI;
@@ -74,15 +184,31 @@ const OVERRIDES = {
   recview: { note: 'GTK4 / libadwaita' },
 };
 
-/** Flagship apps pinned to the top regardless of release count. */
-const LEAD = ['flaccy', 'emojipick', 'recview'];
+/**
+ * Repos that also ship Apple or browser code: only the Linux paths' commits and the
+ * Linux releases' tags count, so the totals describe the Linux work.
+ */
+const SCOPES = {
+  tailscode: { paths: ['TailscodeLinux', 'packaging'] },
+  flaccy: { paths: ['linux'], tag: /^linux-v/ },
+  unrager: { paths: ['src', 'crates'] },
+  tokenmaxxing: { paths: ['tokenmaxxing-kde'] },
+};
+
+/** Page group for an app whose derived group is wrong. */
+const THEMES = {
+  delegate: 'agents',
+  mbench: 'agents',
+  'omp-bridge': 'agents',
+  tonight: 'tools',
+};
 
 // ---------------------------------------------------------------------------
 // Discovery rule
 // ---------------------------------------------------------------------------
 
 const LANG_OF = { Rust: 'rust', Go: 'go', 'C++': 'cpp' };
-const LANG_LABELS = { rust: 'Rust', go: 'Go', cpp: 'C++' };
+const LANG_LABELS = { rust: 'Rust', go: 'Go', cpp: 'C++', swift: 'Swift', python: 'Python' };
 /** opensource.json categories that are libraries, not runnable apps. */
 const SDK_CATEGORIES = new Set(['SDKs & Libraries', 'Swift Packages']);
 /** Deployed-web-app homepages (a Worker/Pages/Vercel/Netlify app isn't a Linux app). */
@@ -126,6 +252,17 @@ function deriveNote(description, topics) {
   return null;
 }
 
+const AI_RE = /\b(llms?|claude|gpt|opencode|oh my pi|local model|model on your)\b/i;
+const SYSTEM_RE = /\b(kde|kwin|plasma|wayland|steam|emulat\w*|dummy|systemd)\b/i;
+
+/// Page group: desktop apps, local-AI and agent tooling, system utilities, or plain command-line tools.
+function deriveTheme(form, description) {
+  if (form === 'gui') return 'desktop';
+  if (AI_RE.test(description ?? '')) return 'agents';
+  if (form === 'daemon' || SYSTEM_RE.test(description ?? '')) return 'system';
+  return 'tools';
+}
+
 // ---------------------------------------------------------------------------
 // Version + homepage helpers
 // ---------------------------------------------------------------------------
@@ -148,6 +285,11 @@ function cleanHomepage(url) {
 function semver(tag) {
   const match = String(tag ?? '').match(/\d+\.\d+\.\d+(?:[-.][\w.]+)?/);
   return match ? match[0] : (tag ?? '').replace(/^v/, '') || null;
+}
+
+/// First dotted number in a tag or file name, so a two-part release like `v1.77` still compares.
+function looseVersion(text) {
+  return String(text ?? '').match(/\d+(?:\.\d+)+/)?.[0] ?? null;
 }
 
 function versionKey(v) {
@@ -199,15 +341,14 @@ async function repoMeta(repo) {
   };
 }
 
-/// Publish dates (ISO, oldest first) of every non-draft release; the /linux ship
-/// log plots them and the release count is their length.
-async function releaseDates(repo) {
+/// Every non-draft release of a repo, oldest first, with the assets the page links to.
+async function releaseList(repo) {
   try {
     const out = await gh([
       'api',
       `repos/${OWNER}/${repo}/releases?per_page=100`,
       '--jq',
-      '[.[] | select(.draft | not) | .published_at] | sort',
+      '[.[] | select(.draft | not) | {tag: .tag_name, date: .published_at, url: .html_url, prerelease, assets: [.assets[] | {name, url: .browser_download_url}]}] | sort_by(.date)',
     ]);
     return JSON.parse(out);
   } catch {
@@ -215,18 +356,58 @@ async function releaseDates(repo) {
   }
 }
 
-async function latestRelease(repo) {
+/// The release the card advertises: the newest stable one, or with `matchTag` the newest whose
+/// Linux tarball carries the release's own version, since a release can be an iOS or Mac build
+/// that merely inherits the previous Linux tarball.
+function pickLatestRelease(releases, matchTag) {
+  const stable = releases.filter((r) => !r.prerelease);
+  const pool = stable.length > 0 ? stable : releases;
+  const candidates = matchTag
+    ? pool.filter((r) =>
+        r.assets.some(
+          (a) =>
+            LINUX_ASSET.test(a.name) &&
+            !CHECKSUM_ASSET.test(a.name) &&
+            looseVersion(a.name) === looseVersion(r.tag)
+        )
+      )
+    : pool;
+  return candidates.at(-1) ?? null;
+}
+
+/// Commits on the default branch: the last page number of a one-commit-per-page listing.
+async function totalCommits(repo) {
   try {
-    const out = await gh([
-      'api',
-      `repos/${OWNER}/${repo}/releases/latest`,
-      '--jq',
-      '{tag: .tag_name, date: .published_at, url: .html_url, assets: [.assets[] | {name, url: .browser_download_url}]}',
-    ]);
-    return JSON.parse(out);
+    const out = await gh(['api', '-i', `repos/${OWNER}/${repo}/commits?per_page=1`]);
+    const last = out.match(/[?&]page=(\d+)>; rel="last"/);
+    return last ? Number(last[1]) : 1;
   } catch {
-    return null;
+    return 0;
   }
+}
+
+/// Distinct commits touching any of `paths`, so a monorepo's Linux client is not credited
+/// with the iOS app's history.
+async function pathCommits(repo, paths) {
+  const shas = new Set();
+  for (const p of paths) {
+    try {
+      const out = await gh([
+        'api',
+        '--paginate',
+        `repos/${OWNER}/${repo}/commits?path=${encodeURIComponent(p)}&per_page=100`,
+        '--jq',
+        '.[].sha',
+      ]);
+      out
+        .split('\n')
+        .filter(Boolean)
+        .forEach((sha) => shas.add(sha));
+    } catch {
+      continue;
+    }
+  }
+  return shas.size;
 }
 
 /**
@@ -345,8 +526,8 @@ async function aurPackages() {
  * guitaripod rename several modules 404 or serve a stale major, so brew/AUR/
  * source are the honest paths.
  */
-function buildInstall(lang, githubUrl, name, resolvedCrate, brewCmd, aurPkg) {
-  const all = [];
+function buildInstall(lang, githubUrl, name, resolvedCrate, brewCmd, aurPkg, ov) {
+  const all = [...(ov.install ?? [])];
 
   if (lang === 'rust' && resolvedCrate) {
     all.push({
@@ -358,7 +539,9 @@ function buildInstall(lang, githubUrl, name, resolvedCrate, brewCmd, aurPkg) {
   if (brewCmd) all.push({ channel: 'homebrew', label: 'Homebrew', command: brewCmd });
   if (aurPkg) all.push({ channel: 'aur', label: 'AUR', command: `yay -S ${aurPkg}` });
 
-  if (lang === 'rust') {
+  if (ov.source) {
+    all.push({ channel: 'source', ...ov.source });
+  } else if (lang === 'rust') {
     all.push({
       channel: 'source',
       label: 'from source',
@@ -420,6 +603,7 @@ async function buildRecord(id, brewByFormula, aur) {
   }
 
   const ov = OVERRIDES[id] ?? {};
+  const scope = SCOPES[id] ?? {};
   const lang = ov.lang ?? LANG_OF[repo.language];
   if (!lang) {
     console.warn(
@@ -428,13 +612,21 @@ async function buildRecord(id, brewByFormula, aur) {
     return null;
   }
 
-  const [release, dates] = await Promise.all([latestRelease(repo.name), releaseDates(repo.name)]);
+  const allReleases = await releaseList(repo.name);
+  const releases = scope.tag ? allReleases.filter((r) => scope.tag.test(r.tag)) : allReleases;
+  const dates = releases.map((r) => r.date);
   const relCount = dates.length;
   if (relCount === 0) return null;
+  const release = pickLatestRelease(releases, ov.linuxAssetMatchesTag);
+
+  const commitCount = scope.paths
+    ? await pathCommits(repo.name, scope.paths)
+    : await totalCommits(repo.name);
 
   const form = ov.form ?? deriveForm(repo.description, repo.topics);
   const note = 'note' in ov ? ov.note : deriveNote(repo.description, repo.topics);
   const description = ov.description ?? repo.description;
+  const theme = THEMES[id] ?? deriveTheme(form, description);
 
   let resolvedCrate = null;
   let crateVer = null;
@@ -447,7 +639,10 @@ async function buildRecord(id, brewByFormula, aur) {
   }
 
   const brewCmd = brewByFormula.get(id) ?? null;
-  const aurPkg = [...aur.keys()].find((p) => p === id || p === `${id}-bin`) ?? null;
+  const aurPkg =
+    [...aur.keys()].find(
+      (p) => p.toLowerCase() === id.toLowerCase() || p.toLowerCase() === `${id.toLowerCase()}-bin`
+    ) ?? null;
   const aurVer = aurPkg ? aur.get(aurPkg) : null;
 
   const linuxAssets = (release?.assets ?? []).filter(
@@ -455,22 +650,30 @@ async function buildRecord(id, brewByFormula, aur) {
   );
   const x64Asset = linuxAssets.find((a) => X64_ASSET.test(a.name)) ?? null;
 
-  const install = buildInstall(lang, repo.githubUrl, repo.name, resolvedCrate, brewCmd, aurPkg);
-  const latestVersion = maxVersion(semver(release?.tag), crateVer, aurVer);
+  const install = buildInstall(lang, repo.githubUrl, repo.name, resolvedCrate, brewCmd, aurPkg, ov);
+  if (!install.primary) {
+    console.warn(`::warning:: "${id}" has no install channel — add OVERRIDES.install. Skipping.`);
+    return null;
+  }
+  const latestVersion = ov.versionFromAsset
+    ? looseVersion(x64Asset?.name ?? release?.tag)
+    : maxVersion(semver(release?.tag), crateVer, aurVer);
 
   console.log(
-    `✓ ${id.padEnd(20)} ${form.padEnd(7)} v${latestVersion ?? '?'}  (${relCount} rel)  ${install.primary.command}`
+    `✓ ${id.padEnd(20)} ${form.padEnd(7)} ${theme.padEnd(8)} v${latestVersion ?? '?'}  (${relCount} rel, ${commitCount} commits)  ${install.primary.command}`
   );
 
   return {
     id,
     name: repo.name,
     form,
+    theme,
     group: groupFor(form),
     lang,
     language: LANG_LABELS[lang] ?? repo.language,
     description,
     stars: repo.stars,
+    commitCount,
     releaseCount: relCount,
     releaseDates: dates,
     githubUrl: repo.githubUrl,
@@ -498,17 +701,7 @@ async function main() {
     if (record) records.push(record);
   }
 
-  const leadRank = (id) => {
-    const i = LEAD.indexOf(id);
-    return i === -1 ? Number.MAX_SAFE_INTEGER : i;
-  };
-  records.sort(
-    (a, b) =>
-      leadRank(a.id) - leadRank(b.id) ||
-      b.releaseCount - a.releaseCount ||
-      b.stars - a.stars ||
-      a.id.localeCompare(b.id)
-  );
+  records.sort((a, b) => a.id.localeCompare(b.id));
 
   const out = {
     generated:

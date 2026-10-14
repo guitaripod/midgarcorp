@@ -8,6 +8,7 @@ import {
   languageColor,
 } from '../lib/linux-insights';
 import LinuxInstall from './LinuxInstall.astro';
+import LinuxWeight from './LinuxWeight.astro';
 
 export interface Props {
   app: LinuxApp;
@@ -28,7 +29,7 @@ const linkClass =
 
 <article
   id={app.id}
-  class="flagship group grid lg:grid-cols-12 gap-6 lg:gap-10 items-center"
+  class="flagship group grid scroll-mt-24 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
   style={`--accent: ${showcase.accent}`}
 >
   <div class:list={['lg:col-span-7', flip && 'lg:order-2']}>
@@ -110,15 +111,15 @@ const linkClass =
           <span class="text-paper-amber dark:text-term-amber whitespace-nowrap">★ {app.stars}</span>
         )
       }
-      <span>
-        {app.releaseCount}
-        {app.releaseCount === 1 ? ' release' : ' releases'}
-      </span>
     </div>
 
     <p class="text-sm sm:text-base text-paper-muted dark:text-term-muted leading-relaxed mb-4">
       {showcase.blurb}
     </p>
+
+    <div class="mb-4">
+      <LinuxWeight app={app} />
+    </div>
 
     {
       app.note && (

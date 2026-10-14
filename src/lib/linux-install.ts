@@ -13,12 +13,13 @@ function selectInstallTab(tab: HTMLElement): void {
   });
 }
 
-/// Copies the command currently shown in the button's install widget and flashes the label.
+/// Copies the command a button points at: its own `data-copy`, or the one currently shown
+/// in its install widget. Flashes the label once the clipboard accepts it.
 async function copyInstallCommand(button: HTMLButtonElement): Promise<void> {
   const shown = button
     .closest('[data-install]')
     ?.querySelector<HTMLElement>('[data-command]:not([hidden])');
-  const command = shown?.dataset.command;
+  const command = button.dataset.copy ?? shown?.dataset.command;
   if (!command) return;
   try {
     await navigator.clipboard.writeText(command);
@@ -34,10 +35,14 @@ async function copyInstallCommand(button: HTMLButtonElement): Promise<void> {
   }, COPIED_MS);
 }
 
-/// Wires every install widget on the page with one delegated click handler: channel
-/// tabs swap the shown command and copy buttons copy it. Lives apart from the bench
-/// so the homepage cards get the same behaviour without loading the filters.
+let wired = false;
+
+/// Wires every install widget on the page with one delegated click handler: channel tabs
+/// swap the shown command and copy buttons copy it. Safe to call from every component that
+/// renders a widget; the listener is added once.
 export function initLinuxInstall(): void {
+  if (wired) return;
+  wired = true;
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement | null;
     const tab = target?.closest<HTMLElement>('[data-install-tab]');

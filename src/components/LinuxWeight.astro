@@ -1,0 +1,44 @@
+---
+import type { LinuxApp } from '@data/linux';
+import { linuxMax } from '@data/linux';
+import { barFraction } from '../lib/linux-insights';
+
+export interface Props {
+  app: LinuxApp;
+}
+
+const { app } = Astro.props;
+
+const rows = [
+  {
+    label: 'commits',
+    value: app.commitCount,
+    fill: barFraction(app.commitCount, linuxMax.commits),
+    bar: 'bg-paper-green dark:bg-term-green',
+  },
+  {
+    label: 'releases',
+    value: app.releaseCount,
+    fill: barFraction(app.releaseCount, linuxMax.releases),
+    bar: 'bg-paper-amber dark:bg-term-amber',
+  },
+];
+---
+
+<dl class="grid grid-cols-2 gap-x-4">
+  {
+    rows.map((row) => (
+      <div>
+        <div class="flex items-baseline justify-between text-[11px] leading-none mb-1.5">
+          <dt class="text-paper-muted dark:text-term-faint">{row.label}</dt>
+          <dd class="font-semibold text-paper-text dark:text-term-text tabular-nums">
+            {row.value}
+          </dd>
+        </div>
+        <div class="h-1 rounded-sm overflow-hidden bg-paper-raised dark:bg-term-raised">
+          <div class={`h-full rounded-sm ${row.bar}`} style={`width:${row.fill * 100}%`} />
+        </div>
+      </div>
+    ))
+  }
+</dl>

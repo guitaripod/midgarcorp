@@ -8,6 +8,7 @@ import {
   languageColor,
 } from '../lib/linux-insights';
 import LinuxInstall from './LinuxInstall.astro';
+import LinuxWeight from './LinuxWeight.astro';
 
 export interface Props {
   app: LinuxApp;
@@ -21,20 +22,13 @@ const status = freshness(app.latestReleaseDate, now);
 const style = FRESHNESS_STYLE[status];
 const targetUrl = app.homepageUrl ?? app.githubUrl;
 const releaseStamp = app.latestReleaseDate ? app.latestReleaseDate.slice(0, 7) : null;
-const updatedAt = app.latestReleaseDate ? new Date(app.latestReleaseDate).getTime() : 0;
 const linkClass =
   'text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
 ---
 
 <article
-  class="linux-card group h-full term-frame term-frame-hover overflow-hidden flex flex-col relative"
-  data-linux-card
-  data-name={app.name.toLowerCase()}
-  data-form={app.form}
-  data-lang={app.language}
-  data-updated={updatedAt}
-  data-releases={app.releaseCount}
-  data-stars={app.stars}
+  id={app.id}
+  class="linux-card scroll-mt-24 group h-full term-frame term-frame-hover overflow-hidden flex flex-col relative"
 >
   <span
     class="absolute inset-x-0 top-0 h-0.5 opacity-70 group-hover:opacity-100 transition-opacity"
@@ -88,19 +82,15 @@ const linkClass =
         ></span>
         <span class={style.text}>{ageLabel(app.latestReleaseDate, now)}</span>
       </span>
-      {
-        app.releaseCount > 1 && (
-          <>
-            <span class="text-paper-faint dark:text-term-faint">·</span>
-            <span class="text-paper-muted dark:text-term-muted">{app.releaseCount} releases</span>
-          </>
-        )
-      }
     </div>
 
     <p class="text-sm text-paper-muted dark:text-term-muted leading-relaxed line-clamp-2 mb-4">
       {app.description}
     </p>
+
+    <div class="mb-4">
+      <LinuxWeight app={app} />
+    </div>
 
     <div class="mt-auto">
       <LinuxInstall name={app.name} channels={app.install.all} />

@@ -1,82 +1,237 @@
 {
   "generated": "scripts/fetch-linux-releases.mjs — auto-discovered, live from GitHub / crates.io / AUR",
-  "count": 20,
+  "count": 29,
   "apps": [
     {
-      "id": "flaccy",
-      "name": "flaccy",
-      "form": "gui",
-      "group": "desktop",
-      "lang": "rust",
-      "language": "Rust",
-      "description": "A lossless music player with gapless playback and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
-      "stars": 4,
-      "releaseCount": 33,
+      "id": "apod-cli",
+      "name": "apod-cli",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "go",
+      "language": "Go",
+      "description": "A command-line tool to browse the NASA Astronomy Picture of the Day archive.",
+      "stars": 6,
+      "commitCount": 39,
+      "releaseCount": 2,
       "releaseDates": [
-        "2026-04-01T17:56:03Z",
-        "2026-07-10T13:46:58Z",
-        "2026-07-10T13:57:33Z",
-        "2026-07-10T18:22:52Z",
-        "2026-07-11T08:03:03Z",
-        "2026-07-11T08:14:43Z",
-        "2026-07-11T10:00:07Z",
-        "2026-07-11T12:05:49Z",
-        "2026-07-11T18:08:52Z",
-        "2026-07-11T19:27:38Z",
-        "2026-07-13T16:57:48Z",
-        "2026-07-13T17:36:09Z",
-        "2026-07-13T17:54:29Z",
-        "2026-07-13T19:07:03Z",
-        "2026-07-15T15:28:54Z",
-        "2026-07-16T09:13:44Z",
-        "2026-07-17T19:06:40Z",
-        "2026-07-17T20:32:11Z",
-        "2026-07-18T08:28:30Z",
-        "2026-08-12T20:39:11Z",
-        "2026-08-12T20:57:49Z",
-        "2026-08-12T21:50:52Z",
-        "2026-08-17T22:25:02Z",
-        "2026-08-29T17:45:36Z",
-        "2026-08-29T18:03:25Z",
-        "2026-09-20T13:20:14Z",
-        "2026-09-23T05:05:54Z",
-        "2026-09-25T21:53:07Z",
-        "2026-09-25T22:06:03Z",
-        "2026-10-02T15:55:55Z",
-        "2026-10-03T09:49:09Z",
-        "2026-10-09T13:57:08Z",
-        "2026-10-14T11:06:10Z"
+        "2023-02-13T18:47:07Z",
+        "2023-02-21T14:10:14Z"
       ],
-      "githubUrl": "https://github.com/guitaripod/flaccy",
+      "githubUrl": "https://github.com/guitaripod/apod-cli",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.18.0",
-      "latestReleaseDate": "2026-10-14T11:06:10Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.18.0",
+      "latestVersion": "0.1.4",
+      "latestReleaseDate": "2023-02-21T14:10:14Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/apod-cli/releases/tag/v0.1.4",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.18.0/flaccy-linux-x86_64.tar.gz",
-      "note": "GTK4 / libadwaita",
+      "linuxBinaryUrl": "https://github.com/guitaripod/apod-cli/releases/download/v0.1.4/apod-cli_0.1.4_linux_amd64.tar.gz",
+      "note": null,
       "install": {
         "primary": {
-          "channel": "crates.io",
-          "label": "crates.io",
-          "command": "cargo install flaccy"
+          "channel": "homebrew",
+          "label": "Homebrew",
+          "command": "brew install guitaripod/apod-cli/apod-cli"
         },
         "all": [
           {
-            "channel": "crates.io",
-            "label": "crates.io",
-            "command": "cargo install flaccy"
-          },
-          {
-            "channel": "aur",
-            "label": "AUR",
-            "command": "yay -S flaccy-bin"
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/apod-cli/apod-cli"
           },
           {
             "channel": "source",
             "label": "from source",
-            "command": "cargo install --git https://github.com/guitaripod/flaccy"
+            "command": "git clone https://github.com/guitaripod/apod-cli && cd apod-cli && go build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chatgpt-gtk4",
+      "name": "chatgpt-gtk4",
+      "form": "gui",
+      "theme": "desktop",
+      "group": "desktop",
+      "lang": "go",
+      "language": "Go",
+      "description": "Native GTK4 ChatGPT client using the official Go SDK",
+      "stars": 0,
+      "commitCount": 11,
+      "releaseCount": 1,
+      "releaseDates": [
+        "2024-12-18T16:46:51Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/chatgpt-gtk4",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.0.1-alpha",
+      "latestReleaseDate": "2024-12-18T16:46:51Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/chatgpt-gtk4/releases/tag/v0.0.1-alpha",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": "Requires GTK4",
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "git clone https://github.com/guitaripod/chatgpt-gtk4 && cd chatgpt-gtk4 && go build"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/chatgpt-gtk4 && cd chatgpt-gtk4 && go build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circadia",
+      "name": "circadia",
+      "form": "daemon",
+      "theme": "system",
+      "group": "desktop",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Melanopic-aware color temperature daemon for KDE Plasma Wayland",
+      "stars": 0,
+      "commitCount": 12,
+      "releaseCount": 1,
+      "releaseDates": [
+        "2026-03-09T20:12:41Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/circadia",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "1.0.0",
+      "latestReleaseDate": "2026-03-09T20:12:41Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/circadia/releases/tag/1.0.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": "KDE Plasma / Wayland",
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "cargo install --git https://github.com/guitaripod/circadia"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/circadia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claude-bridge",
+      "name": "claude-bridge",
+      "form": "daemon",
+      "theme": "agents",
+      "group": "desktop",
+      "lang": "swift",
+      "language": "Swift",
+      "description": "Runs Claude Code headlessly and serves it as structured HTTP sessions with streaming, subagents, spend and git, as a systemd user service.",
+      "stars": 1,
+      "commitCount": 147,
+      "releaseCount": 33,
+      "releaseDates": [
+        "2026-07-29T19:43:51Z",
+        "2026-08-03T17:45:11Z",
+        "2026-08-08T02:56:57Z",
+        "2026-08-11T10:26:04Z",
+        "2026-08-11T10:26:04Z",
+        "2026-08-19T09:53:39Z",
+        "2026-08-19T09:53:39Z",
+        "2026-08-19T09:53:40Z",
+        "2026-08-19T09:53:40Z",
+        "2026-09-24T23:12:10Z",
+        "2026-09-24T23:12:11Z",
+        "2026-09-24T23:12:13Z",
+        "2026-09-24T23:12:14Z",
+        "2026-09-24T23:12:15Z",
+        "2026-09-24T23:12:16Z",
+        "2026-09-24T23:12:17Z",
+        "2026-09-24T23:12:18Z",
+        "2026-09-24T23:12:19Z",
+        "2026-09-24T23:12:20Z",
+        "2026-09-24T23:12:21Z",
+        "2026-09-24T23:12:22Z",
+        "2026-09-24T23:12:23Z",
+        "2026-09-24T23:12:24Z",
+        "2026-09-24T23:12:25Z",
+        "2026-09-24T23:12:26Z",
+        "2026-09-24T23:12:27Z",
+        "2026-09-24T23:12:28Z",
+        "2026-09-24T23:12:29Z",
+        "2026-09-25T19:24:39Z",
+        "2026-09-25T19:24:40Z",
+        "2026-10-05T13:01:48Z",
+        "2026-10-10T12:02:45Z",
+        "2026-10-10T12:02:46Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/claude-bridge",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "1.14.0",
+      "latestReleaseDate": "2026-10-10T12:02:46Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.14.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "script",
+          "label": "install script",
+          "command": "curl -fsSL https://raw.githubusercontent.com/guitaripod/claude-bridge/master/install.sh | bash"
+        },
+        "all": [
+          {
+            "channel": "script",
+            "label": "install script",
+            "command": "curl -fsSL https://raw.githubusercontent.com/guitaripod/claude-bridge/master/install.sh | bash"
+          }
+        ]
+      }
+    },
+    {
+      "id": "delegate",
+      "name": "delegate",
+      "form": "cli",
+      "theme": "agents",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Tiered task dispatcher: packets in, verified patches out",
+      "stars": 1,
+      "commitCount": 10,
+      "releaseCount": 2,
+      "releaseDates": [
+        "2026-09-24T23:12:45Z",
+        "2026-10-03T09:47:54Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/delegate",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.4.0",
+      "latestReleaseDate": "2026-10-03T09:47:54Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/delegate/releases/tag/v0.4.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "cargo install --git https://github.com/guitaripod/delegate"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/delegate"
           }
         ]
       }
@@ -85,11 +240,13 @@
       "id": "emojipick",
       "name": "emojipick",
       "form": "gui",
+      "theme": "desktop",
       "group": "desktop",
       "lang": "rust",
       "language": "Rust",
       "description": "A fast emoji picker for KDE Plasma Wayland",
       "stars": 1,
+      "commitCount": 12,
       "releaseCount": 1,
       "releaseDates": [
         "2026-07-13T09:09:20Z"
@@ -138,14 +295,589 @@
       }
     },
     {
+      "id": "emusync",
+      "name": "emusync",
+      "form": "cli",
+      "theme": "system",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Cross-machine emulation save, mod, and shader cache sync over SSH",
+      "stars": 0,
+      "commitCount": 14,
+      "releaseCount": 2,
+      "releaseDates": [
+        "2026-03-21T13:51:35Z",
+        "2026-04-04T07:55:03Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/emusync",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.1.2",
+      "latestReleaseDate": "2026-04-04T07:55:03Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/emusync/releases/tag/0.1.2",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "cargo install --git https://github.com/guitaripod/emusync"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/emusync"
+          }
+        ]
+      }
+    },
+    {
+      "id": "flaccy",
+      "name": "flaccy",
+      "form": "gui",
+      "theme": "desktop",
+      "group": "desktop",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "A lossless music player with gapless playback and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
+      "stars": 4,
+      "commitCount": 93,
+      "releaseCount": 30,
+      "releaseDates": [
+        "2026-07-10T13:46:58Z",
+        "2026-07-10T13:57:33Z",
+        "2026-07-10T18:22:52Z",
+        "2026-07-11T08:03:03Z",
+        "2026-07-11T08:14:43Z",
+        "2026-07-11T10:00:07Z",
+        "2026-07-11T12:05:49Z",
+        "2026-07-11T18:08:52Z",
+        "2026-07-11T19:27:38Z",
+        "2026-07-13T16:57:48Z",
+        "2026-07-13T17:36:09Z",
+        "2026-07-13T17:54:29Z",
+        "2026-07-13T19:07:03Z",
+        "2026-07-15T15:28:54Z",
+        "2026-07-16T09:13:44Z",
+        "2026-07-17T19:06:40Z",
+        "2026-07-17T20:32:11Z",
+        "2026-07-18T08:28:30Z",
+        "2026-08-12T20:39:11Z",
+        "2026-08-12T20:57:49Z",
+        "2026-08-12T21:50:52Z",
+        "2026-08-17T22:25:02Z",
+        "2026-08-29T17:45:36Z",
+        "2026-08-29T18:03:25Z",
+        "2026-09-20T13:20:14Z",
+        "2026-09-23T05:05:54Z",
+        "2026-09-25T21:53:07Z",
+        "2026-09-25T22:06:03Z",
+        "2026-10-02T15:55:55Z",
+        "2026-10-14T11:06:10Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/flaccy",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "1.18.0",
+      "latestReleaseDate": "2026-10-14T11:06:10Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.18.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.18.0/flaccy-linux-x86_64.tar.gz",
+      "note": "GTK4 / libadwaita",
+      "install": {
+        "primary": {
+          "channel": "crates.io",
+          "label": "crates.io",
+          "command": "cargo install flaccy"
+        },
+        "all": [
+          {
+            "channel": "crates.io",
+            "label": "crates.io",
+            "command": "cargo install flaccy"
+          },
+          {
+            "channel": "aur",
+            "label": "AUR",
+            "command": "yay -S flaccy-bin"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/flaccy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fluxxxer",
+      "name": "fluxxxer",
+      "form": "gui",
+      "theme": "desktop",
+      "group": "desktop",
+      "lang": "go",
+      "language": "Go",
+      "description": "a native gtk4 Linux image generator built with Go",
+      "stars": 0,
+      "commitCount": 19,
+      "releaseCount": 3,
+      "releaseDates": [
+        "2024-11-24T07:41:36Z",
+        "2024-11-25T06:13:18Z",
+        "2025-04-03T09:14:26Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/fluxxxer",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "2.0.0",
+      "latestReleaseDate": "2025-04-03T09:14:26Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/fluxxxer/releases/tag/v2.0.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": "Requires GTK4",
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "git clone https://github.com/guitaripod/fluxxxer && cd fluxxxer && go build"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/fluxxxer && cd fluxxxer && go build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "flyr",
+      "name": "flyr",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Search Google Flights from the terminal",
+      "stars": 11,
+      "commitCount": 49,
+      "releaseCount": 12,
+      "releaseDates": [
+        "2026-02-16T18:46:43Z",
+        "2026-02-16T19:46:32Z",
+        "2026-02-17T10:05:11Z",
+        "2026-02-17T10:26:23Z",
+        "2026-02-17T10:28:26Z",
+        "2026-02-18T15:58:25Z",
+        "2026-02-18T16:13:58Z",
+        "2026-02-18T17:24:46Z",
+        "2026-02-18T18:31:23Z",
+        "2026-03-31T12:48:14Z",
+        "2026-09-26T18:17:06Z",
+        "2026-09-26T19:46:28Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/flyr",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "1.7.0",
+      "latestReleaseDate": "2026-09-26T19:46:28Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/flyr/releases/tag/v1.7.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "crates.io",
+          "label": "crates.io",
+          "command": "cargo install flyr-cli"
+        },
+        "all": [
+          {
+            "channel": "crates.io",
+            "label": "crates.io",
+            "command": "cargo install flyr-cli"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/flyr"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gh-export",
+      "name": "gh-export",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Export all GitHub repositories from a user account",
+      "stars": 2,
+      "commitCount": 24,
+      "releaseCount": 1,
+      "releaseDates": [
+        "2025-07-18T09:30:56Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/gh-export",
+      "homepageUrl": null,
+      "topics": [
+        "exporter",
+        "github",
+        "rust"
+      ],
+      "latestVersion": "1.0.0",
+      "latestReleaseDate": "2025-07-18T09:30:56Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/gh-export/releases/tag/1.0.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/gh-export/releases/download/1.0.0/gh-export-linux-amd64.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "crates.io",
+          "label": "crates.io",
+          "command": "cargo install gh-export"
+        },
+        "all": [
+          {
+            "channel": "crates.io",
+            "label": "crates.io",
+            "command": "cargo install gh-export"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/gh-export"
+          }
+        ]
+      }
+    },
+    {
+      "id": "image-collage",
+      "name": "image-collage",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Create 2x2 image collages in the terminal",
+      "stars": 1,
+      "commitCount": 18,
+      "releaseCount": 1,
+      "releaseDates": [
+        "2025-08-17T12:24:57Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/image-collage",
+      "homepageUrl": null,
+      "topics": [
+        "cli",
+        "collage",
+        "image",
+        "rust",
+        "tui"
+      ],
+      "latestVersion": "1.0.0",
+      "latestReleaseDate": "2025-08-17T12:24:57Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/image-collage/releases/tag/1.0.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/image-collage/releases/download/1.0.0/image-collage-1.0.0-x86_64-unknown-linux-gnu.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "crates.io",
+          "label": "crates.io",
+          "command": "cargo install image-collage"
+        },
+        "all": [
+          {
+            "channel": "crates.io",
+            "label": "crates.io",
+            "command": "cargo install image-collage"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/image-collage"
+          }
+        ]
+      }
+    },
+    {
+      "id": "imago",
+      "name": "imago",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Agent-native Instagram profile archive",
+      "stars": 1,
+      "commitCount": 21,
+      "releaseCount": 5,
+      "releaseDates": [
+        "2026-07-19T12:52:54Z",
+        "2026-07-19T13:25:49Z",
+        "2026-07-19T13:48:22Z",
+        "2026-07-19T18:34:14Z",
+        "2026-07-19T19:20:08Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/imago",
+      "homepageUrl": "https://midgarcorp.cc/imago",
+      "topics": [],
+      "latestVersion": "0.1.4",
+      "latestReleaseDate": "2026-07-19T19:20:08Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/imago/releases/tag/v0.1.4",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/imago/releases/download/v0.1.4/imago-x86_64-unknown-linux-gnu.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "aur",
+          "label": "AUR",
+          "command": "yay -S imago"
+        },
+        "all": [
+          {
+            "channel": "aur",
+            "label": "AUR",
+            "command": "yay -S imago"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/imago"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mbench",
+      "name": "mbench",
+      "form": "cli",
+      "theme": "agents",
+      "group": "bin",
+      "lang": "python",
+      "language": "Python",
+      "description": "Ranks the models your own GPU runs: speed and answer quality for everything llama-swap serves, built into one leaderboard page.",
+      "stars": 1,
+      "commitCount": 107,
+      "releaseCount": 11,
+      "releaseDates": [
+        "2026-09-12T19:21:36Z",
+        "2026-09-12T19:57:04Z",
+        "2026-09-15T08:05:07Z",
+        "2026-09-15T08:05:18Z",
+        "2026-09-15T08:05:19Z",
+        "2026-09-15T08:13:06Z",
+        "2026-09-23T17:20:54Z",
+        "2026-09-23T17:40:51Z",
+        "2026-09-23T20:00:00Z",
+        "2026-09-24T07:45:00Z",
+        "2026-09-24T15:02:51Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/mbench",
+      "homepageUrl": "https://guitaripod.github.io/mbench/",
+      "topics": [
+        "benchmark",
+        "leaderboard",
+        "llama-cpp",
+        "llama-swap",
+        "llm",
+        "local-llm",
+        "sglang",
+        "vllm"
+      ],
+      "latestVersion": "1.6.4",
+      "latestReleaseDate": "2026-09-24T15:02:51Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/mbench/releases/tag/1.6.4",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "uv",
+          "label": "uv",
+          "command": "uv tool install git+https://github.com/guitaripod/mbench"
+        },
+        "all": [
+          {
+            "channel": "uv",
+            "label": "uv",
+            "command": "uv tool install git+https://github.com/guitaripod/mbench"
+          }
+        ]
+      }
+    },
+    {
+      "id": "moodlint",
+      "name": "MoodLint",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "go",
+      "language": "Go",
+      "description": "Validates the mood, prefix, and overall structure of your PR titles",
+      "stars": 2,
+      "commitCount": 16,
+      "releaseCount": 5,
+      "releaseDates": [
+        "2023-09-03T12:02:59Z",
+        "2023-09-03T12:10:44Z",
+        "2023-09-03T12:15:10Z",
+        "2023-09-03T12:43:19Z",
+        "2023-09-03T12:44:35Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/MoodLint",
+      "homepageUrl": null,
+      "topics": [
+        "github-actions",
+        "go",
+        "linting",
+        "tidy"
+      ],
+      "latestVersion": "0.0.3",
+      "latestReleaseDate": "2023-09-03T12:15:10Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/MoodLint/releases/tag/v0.0.3",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "git clone https://github.com/guitaripod/MoodLint && cd MoodLint && go build"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/MoodLint && cd MoodLint && go build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "omp-bridge",
+      "name": "omp-bridge",
+      "form": "daemon",
+      "theme": "agents",
+      "group": "desktop",
+      "lang": "swift",
+      "language": "Swift",
+      "description": "Puts an Oh My Pi coding agent on your tailnet: the claude-bridge wire protocol over HTTP and SSE, as a systemd user service.",
+      "stars": 1,
+      "commitCount": 48,
+      "releaseCount": 13,
+      "releaseDates": [
+        "2026-08-25T16:26:57Z",
+        "2026-09-04T16:15:43Z",
+        "2026-09-24T23:12:31Z",
+        "2026-09-24T23:12:32Z",
+        "2026-09-24T23:12:33Z",
+        "2026-09-24T23:12:34Z",
+        "2026-09-24T23:12:35Z",
+        "2026-09-24T23:12:36Z",
+        "2026-09-24T23:12:37Z",
+        "2026-09-24T23:12:38Z",
+        "2026-09-25T19:24:47Z",
+        "2026-09-25T19:24:48Z",
+        "2026-10-10T12:02:49Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/omp-bridge",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.8.0",
+      "latestReleaseDate": "2026-10-10T12:02:49Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/omp-bridge/releases/tag/v0.8.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "script",
+          "label": "install script",
+          "command": "curl -fsSL https://raw.githubusercontent.com/guitaripod/omp-bridge/master/install.sh | bash"
+        },
+        "all": [
+          {
+            "channel": "script",
+            "label": "install script",
+            "command": "curl -fsSL https://raw.githubusercontent.com/guitaripod/omp-bridge/master/install.sh | bash"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pomme",
+      "name": "Pomme",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "go",
+      "language": "Go",
+      "description": "App Store Connect CLI tool built with Go.",
+      "stars": 3,
+      "commitCount": 56,
+      "releaseCount": 3,
+      "releaseDates": [
+        "2025-04-01T16:05:19Z",
+        "2025-04-01T16:13:58Z",
+        "2025-07-01T21:22:33Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/Pomme",
+      "homepageUrl": "https://guitaripod.github.io/Pomme/",
+      "topics": [
+        "appstore",
+        "appstoreconnect",
+        "cli",
+        "go"
+      ],
+      "latestVersion": "2.0.0",
+      "latestReleaseDate": "2025-07-01T21:22:33Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/Pomme/releases/tag/2.0.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/Pomme/releases/download/2.0.0/Pomme_Linux_x86_64.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "homebrew",
+          "label": "Homebrew",
+          "command": "brew install guitaripod/tap/pomme"
+        },
+        "all": [
+          {
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/tap/pomme"
+          },
+          {
+            "channel": "aur",
+            "label": "AUR",
+            "command": "yay -S pomme"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/Pomme && cd Pomme && go build"
+          }
+        ]
+      }
+    },
+    {
       "id": "recview",
       "name": "recview",
       "form": "gui",
+      "theme": "desktop",
       "group": "desktop",
       "lang": "rust",
       "language": "Rust",
       "description": "GPU-accelerated review window for screen recordings",
       "stars": 2,
+      "commitCount": 11,
       "releaseCount": 2,
       "releaseDates": [
         "2026-08-09T13:26:08Z",
@@ -191,14 +923,491 @@
       }
     },
     {
+      "id": "remoteplay-display",
+      "name": "remoteplay-display",
+      "form": "daemon",
+      "theme": "system",
+      "group": "desktop",
+      "lang": "python",
+      "language": "Python",
+      "description": "Routes Steam Remote Play sessions to a dummy HDMI",
+      "stars": 3,
+      "commitCount": 16,
+      "releaseCount": 2,
+      "releaseDates": [
+        "2026-07-26T22:19:58Z",
+        "2026-07-27T10:34:30Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/remoteplay-display",
+      "homepageUrl": null,
+      "topics": [
+        "kde",
+        "kscreen",
+        "linux-gaming",
+        "plasma",
+        "steam",
+        "steam-deck",
+        "steam-remote-play",
+        "wayland"
+      ],
+      "latestVersion": "1.1.0",
+      "latestReleaseDate": "2026-07-27T10:34:30Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/remoteplay-display/releases/tag/1.1.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": "KDE Plasma 6 / Wayland",
+      "install": {
+        "primary": {
+          "channel": "script",
+          "label": "install script",
+          "command": "git clone https://github.com/guitaripod/remoteplay-display && cd remoteplay-display && ./install.sh"
+        },
+        "all": [
+          {
+            "channel": "script",
+            "label": "install script",
+            "command": "git clone https://github.com/guitaripod/remoteplay-display && cd remoteplay-display && ./install.sh"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reposort",
+      "name": "reposort",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "go",
+      "language": "Go",
+      "description": "A command-line tool written in Go that organizes repositories",
+      "stars": 0,
+      "commitCount": 7,
+      "releaseCount": 2,
+      "releaseDates": [
+        "2024-03-09T15:35:48Z",
+        "2024-03-09T15:52:29Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/reposort",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.0.2-alpha",
+      "latestReleaseDate": "2024-03-09T15:52:29Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/reposort/releases/tag/v0.0.2-alpha",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "git clone https://github.com/guitaripod/reposort && cd reposort && go build"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/reposort && cd reposort && go build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "songlink-cli",
+      "name": "songlink-cli",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "go",
+      "language": "Go",
+      "description": "Convert music URLs & download tracks",
+      "stars": 9,
+      "commitCount": 63,
+      "releaseCount": 13,
+      "releaseDates": [
+        "2022-09-03T14:27:33Z",
+        "2022-09-10T09:34:39Z",
+        "2023-01-05T18:27:36Z",
+        "2023-02-18T19:04:26Z",
+        "2023-02-19T17:33:12Z",
+        "2023-04-01T18:23:19Z",
+        "2024-04-12T02:43:16Z",
+        "2025-03-28T22:54:05Z",
+        "2025-04-18T10:06:47Z",
+        "2025-07-18T19:18:18Z",
+        "2025-07-18T19:30:55Z",
+        "2025-09-24T18:43:45Z",
+        "2026-06-09T13:26:42Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/songlink-cli",
+      "homepageUrl": null,
+      "topics": [
+        "cli",
+        "go",
+        "linux",
+        "macos",
+        "music",
+        "windows"
+      ],
+      "latestVersion": "3.2.2",
+      "latestReleaseDate": "2026-06-09T13:26:42Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/songlink-cli/releases/tag/3.2.2",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/songlink-cli/releases/download/3.2.2/songlink-cli_Linux_x86_64.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "homebrew",
+          "label": "Homebrew",
+          "command": "brew install guitaripod/songlink-cli/songlink-cli"
+        },
+        "all": [
+          {
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/songlink-cli/songlink-cli"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/songlink-cli && cd songlink-cli && go build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "songlink-cli-rust",
+      "name": "songlink-cli-rust",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "A Song.link CLI app written in Rust. Paste a music service URL, the app generates a Song.link URL blazingly fast and copies it to your clipboard even more blazingly fast.",
+      "stars": 3,
+      "commitCount": 4,
+      "releaseCount": 2,
+      "releaseDates": [
+        "2022-09-04T12:07:50Z",
+        "2022-09-09T21:20:10Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/songlink-cli-rust",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.0.2",
+      "latestReleaseDate": "2022-09-09T21:20:10Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/songlink-cli-rust/releases/tag/v0.0.2",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "cargo install --git https://github.com/guitaripod/songlink-cli-rust"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/songlink-cli-rust"
+          }
+        ]
+      }
+    },
+    {
+      "id": "speedrun-cli",
+      "name": "speedrun-cli",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "go",
+      "language": "Go",
+      "description": "CLI client for speedrun.com",
+      "stars": 1,
+      "commitCount": 28,
+      "releaseCount": 7,
+      "releaseDates": [
+        "2025-05-22T19:10:37Z",
+        "2025-05-22T21:01:40Z",
+        "2025-05-31T20:22:52Z",
+        "2025-06-05T16:03:48Z",
+        "2025-06-14T15:56:54Z",
+        "2025-06-17T07:39:54Z",
+        "2025-06-17T07:49:20Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/speedrun-cli",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "1.4.1",
+      "latestReleaseDate": "2025-06-17T07:49:20Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/speedrun-cli/releases/tag/1.4.1",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/speedrun-cli/releases/download/1.4.1/speedrun-cli_Linux_x86_64.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "homebrew",
+          "label": "Homebrew",
+          "command": "brew install guitaripod/tap/speedrun-cli"
+        },
+        "all": [
+          {
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/tap/speedrun-cli"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/speedrun-cli && cd speedrun-cli && go build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tailscode",
+      "name": "Tailscode",
+      "form": "gui",
+      "theme": "desktop",
+      "group": "desktop",
+      "lang": "swift",
+      "language": "Swift",
+      "description": "Your AI agents, anywhere: a native GTK4 client for Claude Code, Oh My Pi and opencode running on your own machines, over your own tailnet.",
+      "stars": 14,
+      "commitCount": 481,
+      "releaseCount": 46,
+      "releaseDates": [
+        "2026-07-29T19:44:13Z",
+        "2026-08-03T17:50:52Z",
+        "2026-08-11T10:26:25Z",
+        "2026-08-11T10:47:26Z",
+        "2026-08-11T17:23:21Z",
+        "2026-08-14T12:45:51Z",
+        "2026-08-20T04:18:33Z",
+        "2026-08-24T09:56:57Z",
+        "2026-08-25T16:22:40Z",
+        "2026-08-28T14:30:36Z",
+        "2026-08-30T12:41:45Z",
+        "2026-09-04T16:15:27Z",
+        "2026-09-05T06:50:32Z",
+        "2026-09-05T19:21:12Z",
+        "2026-09-07T10:18:39Z",
+        "2026-09-07T11:34:50Z",
+        "2026-09-08T07:28:59Z",
+        "2026-09-08T11:24:52Z",
+        "2026-09-10T23:11:23Z",
+        "2026-09-11T12:25:59Z",
+        "2026-09-11T18:36:44Z",
+        "2026-09-16T16:31:45Z",
+        "2026-09-16T20:25:57Z",
+        "2026-09-20T16:19:02Z",
+        "2026-09-20T21:36:38Z",
+        "2026-09-21T14:43:59Z",
+        "2026-09-21T15:12:25Z",
+        "2026-09-21T19:50:36Z",
+        "2026-09-23T11:55:23Z",
+        "2026-09-23T17:56:23Z",
+        "2026-09-23T21:04:42Z",
+        "2026-09-23T21:46:07Z",
+        "2026-09-24T00:31:38Z",
+        "2026-09-24T13:11:40Z",
+        "2026-09-24T17:20:14Z",
+        "2026-10-03T09:49:13Z",
+        "2026-10-03T10:21:30Z",
+        "2026-10-04T14:43:37Z",
+        "2026-10-05T13:26:09Z",
+        "2026-10-05T14:53:12Z",
+        "2026-10-10T16:52:40Z",
+        "2026-10-10T23:36:31Z",
+        "2026-10-11T05:21:29Z",
+        "2026-10-11T14:30:08Z",
+        "2026-10-13T00:28:47Z",
+        "2026-10-13T19:53:56Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/Tailscode",
+      "homepageUrl": "https://midgarcorp.cc/tailscode",
+      "topics": [
+        "ai-agents",
+        "claude-code",
+        "gtk4",
+        "ios",
+        "linux",
+        "macos",
+        "opencode",
+        "swift",
+        "tailscale"
+      ],
+      "latestVersion": "1.76",
+      "latestReleaseDate": "2026-10-13T00:28:47Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/Tailscode/releases/tag/v1.76",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/Tailscode/releases/download/v1.76/tailscode-1.76-linux-x86_64.tar.gz",
+      "note": "GTK 4.12+ / libadwaita 1.4+",
+      "install": {
+        "primary": {
+          "channel": "aur",
+          "label": "AUR",
+          "command": "yay -S tailscode"
+        },
+        "all": [
+          {
+            "channel": "aur",
+            "label": "AUR",
+            "command": "yay -S tailscode"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/Tailscode && cd Tailscode && TAILSCODE_KIT_REMOTE=1 scripts/package-linux.sh build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "themeswitch",
+      "name": "ThemeSwitch",
+      "form": "gui",
+      "theme": "desktop",
+      "group": "desktop",
+      "lang": "cpp",
+      "language": "C++",
+      "description": "Cross-platform system tray application for toggling dark/light mode",
+      "stars": 0,
+      "commitCount": 22,
+      "releaseCount": 2,
+      "releaseDates": [
+        "2025-08-04T22:16:04Z",
+        "2025-08-05T20:34:15Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/ThemeSwitch",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.0.2",
+      "latestReleaseDate": "2025-08-05T20:34:15Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/ThemeSwitch/releases/tag/0.0.2",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "build",
+          "command": "git clone https://github.com/guitaripod/ThemeSwitch && cd ThemeSwitch && cmake -B build && cmake --build build"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "build",
+            "command": "git clone https://github.com/guitaripod/ThemeSwitch && cd ThemeSwitch && cmake -B build && cmake --build build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tokenmaxxing",
+      "name": "tokenmaxxing",
+      "form": "gui",
+      "theme": "desktop",
+      "group": "desktop",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Usage dashboards for your LLM subscriptions: live quota, local history and a value-for-money readout, as a KDE tray app.",
+      "stars": 0,
+      "commitCount": 12,
+      "releaseCount": 3,
+      "releaseDates": [
+        "2026-07-11T08:19:38Z",
+        "2026-07-16T09:28:50Z",
+        "2026-08-16T19:17:57Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/tokenmaxxing",
+      "homepageUrl": null,
+      "topics": [],
+      "latestVersion": "0.3.0",
+      "latestReleaseDate": "2026-08-16T19:17:57Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/tokenmaxxing/releases/tag/0.3.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": "KDE Plasma 6 / GTK4",
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "git clone https://github.com/guitaripod/tokenmaxxing && cd tokenmaxxing/tokenmaxxing-kde && bash resources/install.sh"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/tokenmaxxing && cd tokenmaxxing/tokenmaxxing-kde && bash resources/install.sh"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tonight",
+      "name": "tonight",
+      "form": "daemon",
+      "theme": "tools",
+      "group": "desktop",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "A decision engine for your Steam library: three questions, three cards, one game. Single binary, no account.",
+      "stars": 0,
+      "commitCount": 4,
+      "releaseCount": 2,
+      "releaseDates": [
+        "2026-08-18T16:33:43Z",
+        "2026-08-18T17:14:07Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/tonight",
+      "homepageUrl": null,
+      "topics": [
+        "axum",
+        "recommendation-engine",
+        "rust",
+        "self-hosted",
+        "sqlite",
+        "steam",
+        "steam-library"
+      ],
+      "latestVersion": "0.1.2",
+      "latestReleaseDate": "2026-08-18T17:14:07Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/tonight/releases/tag/0.1.2",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/tonight/releases/download/0.1.2/tonight-linux-x86_64",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "script",
+          "label": "install script",
+          "command": "curl -fsSL https://github.com/guitaripod/tonight/releases/latest/download/install.sh | sh"
+        },
+        "all": [
+          {
+            "channel": "script",
+            "label": "install script",
+            "command": "curl -fsSL https://github.com/guitaripod/tonight/releases/latest/download/install.sh | sh"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/tonight"
+          }
+        ]
+      }
+    },
+    {
       "id": "unrager",
       "name": "unrager",
       "form": "tui",
+      "theme": "agents",
       "group": "bin",
       "lang": "rust",
       "language": "Rust",
       "description": "Takes the rage out of your x.com timeline with a model on your own computer: a terminal client, a CLI and a browser extension.",
       "stars": 14,
+      "commitCount": 335,
       "releaseCount": 66,
       "releaseDates": [
         "2026-04-12T09:06:40Z",
@@ -298,128 +1507,16 @@
       }
     },
     {
-      "id": "songlink-cli",
-      "name": "songlink-cli",
-      "form": "cli",
-      "group": "bin",
-      "lang": "go",
-      "language": "Go",
-      "description": "Convert music URLs & download tracks",
-      "stars": 9,
-      "releaseCount": 13,
-      "releaseDates": [
-        "2022-09-03T14:27:33Z",
-        "2022-09-10T09:34:39Z",
-        "2023-01-05T18:27:36Z",
-        "2023-02-18T19:04:26Z",
-        "2023-02-19T17:33:12Z",
-        "2023-04-01T18:23:19Z",
-        "2024-04-12T02:43:16Z",
-        "2025-03-28T22:54:05Z",
-        "2025-04-18T10:06:47Z",
-        "2025-07-18T19:18:18Z",
-        "2025-07-18T19:30:55Z",
-        "2025-09-24T18:43:45Z",
-        "2026-06-09T13:26:42Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/songlink-cli",
-      "homepageUrl": null,
-      "topics": [
-        "cli",
-        "go",
-        "linux",
-        "macos",
-        "music",
-        "windows"
-      ],
-      "latestVersion": "3.2.2",
-      "latestReleaseDate": "2026-06-09T13:26:42Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/songlink-cli/releases/tag/3.2.2",
-      "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/songlink-cli/releases/download/3.2.2/songlink-cli_Linux_x86_64.tar.gz",
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "homebrew",
-          "label": "Homebrew",
-          "command": "brew install guitaripod/songlink-cli/songlink-cli"
-        },
-        "all": [
-          {
-            "channel": "homebrew",
-            "label": "Homebrew",
-            "command": "brew install guitaripod/songlink-cli/songlink-cli"
-          },
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "git clone https://github.com/guitaripod/songlink-cli && cd songlink-cli && go build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "flyr",
-      "name": "flyr",
-      "form": "cli",
-      "group": "bin",
-      "lang": "rust",
-      "language": "Rust",
-      "description": "Search Google Flights from the terminal",
-      "stars": 11,
-      "releaseCount": 12,
-      "releaseDates": [
-        "2026-02-16T18:46:43Z",
-        "2026-02-16T19:46:32Z",
-        "2026-02-17T10:05:11Z",
-        "2026-02-17T10:26:23Z",
-        "2026-02-17T10:28:26Z",
-        "2026-02-18T15:58:25Z",
-        "2026-02-18T16:13:58Z",
-        "2026-02-18T17:24:46Z",
-        "2026-02-18T18:31:23Z",
-        "2026-03-31T12:48:14Z",
-        "2026-09-26T18:17:06Z",
-        "2026-09-26T19:46:28Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/flyr",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "1.7.0",
-      "latestReleaseDate": "2026-09-26T19:46:28Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/flyr/releases/tag/v1.7.0",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "crates.io",
-          "label": "crates.io",
-          "command": "cargo install flyr-cli"
-        },
-        "all": [
-          {
-            "channel": "crates.io",
-            "label": "crates.io",
-            "command": "cargo install flyr-cli"
-          },
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "cargo install --git https://github.com/guitaripod/flyr"
-          }
-        ]
-      }
-    },
-    {
       "id": "weavex",
       "name": "Weavex",
       "form": "cli",
+      "theme": "agents",
       "group": "bin",
       "lang": "rust",
       "language": "Rust",
       "description": "Autonomous research agent powered by local LLMs",
       "stars": 9,
+      "commitCount": 49,
       "releaseCount": 8,
       "releaseDates": [
         "2025-09-26T10:02:43Z",
@@ -462,556 +1559,6 @@
             "channel": "source",
             "label": "from source",
             "command": "cargo install --git https://github.com/guitaripod/Weavex"
-          }
-        ]
-      }
-    },
-    {
-      "id": "speedrun-cli",
-      "name": "speedrun-cli",
-      "form": "cli",
-      "group": "bin",
-      "lang": "go",
-      "language": "Go",
-      "description": "CLI client for speedrun.com",
-      "stars": 1,
-      "releaseCount": 7,
-      "releaseDates": [
-        "2025-05-22T19:10:37Z",
-        "2025-05-22T21:01:40Z",
-        "2025-05-31T20:22:52Z",
-        "2025-06-05T16:03:48Z",
-        "2025-06-14T15:56:54Z",
-        "2025-06-17T07:39:54Z",
-        "2025-06-17T07:49:20Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/speedrun-cli",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "1.4.1",
-      "latestReleaseDate": "2025-06-17T07:49:20Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/speedrun-cli/releases/tag/1.4.1",
-      "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/speedrun-cli/releases/download/1.4.1/speedrun-cli_Linux_x86_64.tar.gz",
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "homebrew",
-          "label": "Homebrew",
-          "command": "brew install guitaripod/tap/speedrun-cli"
-        },
-        "all": [
-          {
-            "channel": "homebrew",
-            "label": "Homebrew",
-            "command": "brew install guitaripod/tap/speedrun-cli"
-          },
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "git clone https://github.com/guitaripod/speedrun-cli && cd speedrun-cli && go build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "moodlint",
-      "name": "MoodLint",
-      "form": "cli",
-      "group": "bin",
-      "lang": "go",
-      "language": "Go",
-      "description": "Validates the mood, prefix, and overall structure of your PR titles",
-      "stars": 2,
-      "releaseCount": 5,
-      "releaseDates": [
-        "2023-09-03T12:02:59Z",
-        "2023-09-03T12:10:44Z",
-        "2023-09-03T12:15:10Z",
-        "2023-09-03T12:43:19Z",
-        "2023-09-03T12:44:35Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/MoodLint",
-      "homepageUrl": null,
-      "topics": [
-        "github-actions",
-        "go",
-        "linting",
-        "tidy"
-      ],
-      "latestVersion": "0.0.3",
-      "latestReleaseDate": "2023-09-03T12:15:10Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/MoodLint/releases/tag/v0.0.3",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "git clone https://github.com/guitaripod/MoodLint && cd MoodLint && go build"
-        },
-        "all": [
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "git clone https://github.com/guitaripod/MoodLint && cd MoodLint && go build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "pomme",
-      "name": "Pomme",
-      "form": "cli",
-      "group": "bin",
-      "lang": "go",
-      "language": "Go",
-      "description": "App Store Connect CLI tool built with Go.",
-      "stars": 3,
-      "releaseCount": 3,
-      "releaseDates": [
-        "2025-04-01T16:05:19Z",
-        "2025-04-01T16:13:58Z",
-        "2025-07-01T21:22:33Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/Pomme",
-      "homepageUrl": "https://guitaripod.github.io/Pomme/",
-      "topics": [
-        "appstore",
-        "appstoreconnect",
-        "cli",
-        "go"
-      ],
-      "latestVersion": "2.0.0",
-      "latestReleaseDate": "2025-07-01T21:22:33Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/Pomme/releases/tag/2.0.0",
-      "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/Pomme/releases/download/2.0.0/Pomme_Linux_x86_64.tar.gz",
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "homebrew",
-          "label": "Homebrew",
-          "command": "brew install guitaripod/tap/pomme"
-        },
-        "all": [
-          {
-            "channel": "homebrew",
-            "label": "Homebrew",
-            "command": "brew install guitaripod/tap/pomme"
-          },
-          {
-            "channel": "aur",
-            "label": "AUR",
-            "command": "yay -S pomme"
-          },
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "git clone https://github.com/guitaripod/Pomme && cd Pomme && go build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "fluxxxer",
-      "name": "fluxxxer",
-      "form": "gui",
-      "group": "desktop",
-      "lang": "go",
-      "language": "Go",
-      "description": "a native gtk4 Linux image generator built with Go",
-      "stars": 0,
-      "releaseCount": 3,
-      "releaseDates": [
-        "2024-11-24T07:41:36Z",
-        "2024-11-25T06:13:18Z",
-        "2025-04-03T09:14:26Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/fluxxxer",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "2.0.0",
-      "latestReleaseDate": "2025-04-03T09:14:26Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/fluxxxer/releases/tag/v2.0.0",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": "Requires GTK4",
-      "install": {
-        "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "git clone https://github.com/guitaripod/fluxxxer && cd fluxxxer && go build"
-        },
-        "all": [
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "git clone https://github.com/guitaripod/fluxxxer && cd fluxxxer && go build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "apod-cli",
-      "name": "apod-cli",
-      "form": "cli",
-      "group": "bin",
-      "lang": "go",
-      "language": "Go",
-      "description": "A command-line tool to browse the NASA Astronomy Picture of the Day archive.",
-      "stars": 6,
-      "releaseCount": 2,
-      "releaseDates": [
-        "2023-02-13T18:47:07Z",
-        "2023-02-21T14:10:14Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/apod-cli",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "0.1.4",
-      "latestReleaseDate": "2023-02-21T14:10:14Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/apod-cli/releases/tag/v0.1.4",
-      "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/apod-cli/releases/download/v0.1.4/apod-cli_0.1.4_linux_amd64.tar.gz",
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "homebrew",
-          "label": "Homebrew",
-          "command": "brew install guitaripod/apod-cli/apod-cli"
-        },
-        "all": [
-          {
-            "channel": "homebrew",
-            "label": "Homebrew",
-            "command": "brew install guitaripod/apod-cli/apod-cli"
-          },
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "git clone https://github.com/guitaripod/apod-cli && cd apod-cli && go build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "songlink-cli-rust",
-      "name": "songlink-cli-rust",
-      "form": "cli",
-      "group": "bin",
-      "lang": "rust",
-      "language": "Rust",
-      "description": "A Song.link CLI app written in Rust. Paste a music service URL, the app generates a Song.link URL blazingly fast and copies it to your clipboard even more blazingly fast.",
-      "stars": 3,
-      "releaseCount": 2,
-      "releaseDates": [
-        "2022-09-04T12:07:50Z",
-        "2022-09-09T21:20:10Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/songlink-cli-rust",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "0.0.2",
-      "latestReleaseDate": "2022-09-09T21:20:10Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/songlink-cli-rust/releases/tag/v0.0.2",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "cargo install --git https://github.com/guitaripod/songlink-cli-rust"
-        },
-        "all": [
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "cargo install --git https://github.com/guitaripod/songlink-cli-rust"
-          }
-        ]
-      }
-    },
-    {
-      "id": "emusync",
-      "name": "emusync",
-      "form": "cli",
-      "group": "bin",
-      "lang": "rust",
-      "language": "Rust",
-      "description": "Cross-machine emulation save, mod, and shader cache sync over SSH",
-      "stars": 0,
-      "releaseCount": 2,
-      "releaseDates": [
-        "2026-03-21T13:51:35Z",
-        "2026-04-04T07:55:03Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/emusync",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "0.1.2",
-      "latestReleaseDate": "2026-04-04T07:55:03Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/emusync/releases/tag/0.1.2",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "cargo install --git https://github.com/guitaripod/emusync"
-        },
-        "all": [
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "cargo install --git https://github.com/guitaripod/emusync"
-          }
-        ]
-      }
-    },
-    {
-      "id": "reposort",
-      "name": "reposort",
-      "form": "cli",
-      "group": "bin",
-      "lang": "go",
-      "language": "Go",
-      "description": "A command-line tool written in Go that organizes repositories",
-      "stars": 0,
-      "releaseCount": 2,
-      "releaseDates": [
-        "2024-03-09T15:35:48Z",
-        "2024-03-09T15:52:29Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/reposort",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "0.0.2-alpha",
-      "latestReleaseDate": "2024-03-09T15:52:29Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/reposort/releases/tag/v0.0.2-alpha",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "git clone https://github.com/guitaripod/reposort && cd reposort && go build"
-        },
-        "all": [
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "git clone https://github.com/guitaripod/reposort && cd reposort && go build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "themeswitch",
-      "name": "ThemeSwitch",
-      "form": "gui",
-      "group": "desktop",
-      "lang": "cpp",
-      "language": "C++",
-      "description": "Cross-platform system tray application for toggling dark/light mode",
-      "stars": 0,
-      "releaseCount": 2,
-      "releaseDates": [
-        "2025-08-04T22:16:04Z",
-        "2025-08-05T20:34:15Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/ThemeSwitch",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "0.0.2",
-      "latestReleaseDate": "2025-08-05T20:34:15Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/ThemeSwitch/releases/tag/0.0.2",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "source",
-          "label": "build",
-          "command": "git clone https://github.com/guitaripod/ThemeSwitch && cd ThemeSwitch && cmake -B build && cmake --build build"
-        },
-        "all": [
-          {
-            "channel": "source",
-            "label": "build",
-            "command": "git clone https://github.com/guitaripod/ThemeSwitch && cd ThemeSwitch && cmake -B build && cmake --build build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "gh-export",
-      "name": "gh-export",
-      "form": "cli",
-      "group": "bin",
-      "lang": "rust",
-      "language": "Rust",
-      "description": "Export all GitHub repositories from a user account",
-      "stars": 2,
-      "releaseCount": 1,
-      "releaseDates": [
-        "2025-07-18T09:30:56Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/gh-export",
-      "homepageUrl": null,
-      "topics": [
-        "exporter",
-        "github",
-        "rust"
-      ],
-      "latestVersion": "1.0.0",
-      "latestReleaseDate": "2025-07-18T09:30:56Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/gh-export/releases/tag/1.0.0",
-      "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/gh-export/releases/download/1.0.0/gh-export-linux-amd64.tar.gz",
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "crates.io",
-          "label": "crates.io",
-          "command": "cargo install gh-export"
-        },
-        "all": [
-          {
-            "channel": "crates.io",
-            "label": "crates.io",
-            "command": "cargo install gh-export"
-          },
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "cargo install --git https://github.com/guitaripod/gh-export"
-          }
-        ]
-      }
-    },
-    {
-      "id": "image-collage",
-      "name": "image-collage",
-      "form": "cli",
-      "group": "bin",
-      "lang": "rust",
-      "language": "Rust",
-      "description": "Create 2x2 image collages in the terminal",
-      "stars": 1,
-      "releaseCount": 1,
-      "releaseDates": [
-        "2025-08-17T12:24:57Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/image-collage",
-      "homepageUrl": null,
-      "topics": [
-        "cli",
-        "collage",
-        "image",
-        "rust",
-        "tui"
-      ],
-      "latestVersion": "1.0.0",
-      "latestReleaseDate": "2025-08-17T12:24:57Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/image-collage/releases/tag/1.0.0",
-      "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/image-collage/releases/download/1.0.0/image-collage-1.0.0-x86_64-unknown-linux-gnu.tar.gz",
-      "note": null,
-      "install": {
-        "primary": {
-          "channel": "crates.io",
-          "label": "crates.io",
-          "command": "cargo install image-collage"
-        },
-        "all": [
-          {
-            "channel": "crates.io",
-            "label": "crates.io",
-            "command": "cargo install image-collage"
-          },
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "cargo install --git https://github.com/guitaripod/image-collage"
-          }
-        ]
-      }
-    },
-    {
-      "id": "chatgpt-gtk4",
-      "name": "chatgpt-gtk4",
-      "form": "gui",
-      "group": "desktop",
-      "lang": "go",
-      "language": "Go",
-      "description": "Native GTK4 ChatGPT client using the official Go SDK",
-      "stars": 0,
-      "releaseCount": 1,
-      "releaseDates": [
-        "2024-12-18T16:46:51Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/chatgpt-gtk4",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "0.0.1-alpha",
-      "latestReleaseDate": "2024-12-18T16:46:51Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/chatgpt-gtk4/releases/tag/v0.0.1-alpha",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": "Requires GTK4",
-      "install": {
-        "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "git clone https://github.com/guitaripod/chatgpt-gtk4 && cd chatgpt-gtk4 && go build"
-        },
-        "all": [
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "git clone https://github.com/guitaripod/chatgpt-gtk4 && cd chatgpt-gtk4 && go build"
-          }
-        ]
-      }
-    },
-    {
-      "id": "circadia",
-      "name": "circadia",
-      "form": "daemon",
-      "group": "desktop",
-      "lang": "rust",
-      "language": "Rust",
-      "description": "Melanopic-aware color temperature daemon for KDE Plasma Wayland",
-      "stars": 0,
-      "releaseCount": 1,
-      "releaseDates": [
-        "2026-03-09T20:12:41Z"
-      ],
-      "githubUrl": "https://github.com/guitaripod/circadia",
-      "homepageUrl": null,
-      "topics": [],
-      "latestVersion": "1.0.0",
-      "latestReleaseDate": "2026-03-09T20:12:41Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/circadia/releases/tag/1.0.0",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
-      "note": "KDE Plasma / Wayland",
-      "install": {
-        "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "cargo install --git https://github.com/guitaripod/circadia"
-        },
-        "all": [
-          {
-            "channel": "source",
-            "label": "from source",
-            "command": "cargo install --git https://github.com/guitaripod/circadia"
           }
         ]
       }

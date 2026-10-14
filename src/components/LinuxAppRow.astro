@@ -1,0 +1,90 @@
+---
+import type { LinuxApp } from '@data/linux';
+import {
+  FORM_GLYPHS,
+  FRESHNESS_STYLE,
+  ageLabel,
+  freshness,
+  languageColor,
+} from '../lib/linux-insights';
+
+export interface Props {
+  app: LinuxApp;
+  now: Date;
+}
+
+const { app, now } = Astro.props;
+const style = FRESHNESS_STYLE[freshness(app.latestReleaseDate, now)];
+const targetUrl = app.homepageUrl ?? app.githubUrl;
+const linkClass =
+  'text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
+---
+
+<li
+  id={app.id}
+  class="group scroll-mt-24 py-3.5 border-b last:border-b-0 border-paper-border dark:border-term-border"
+>
+  <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+    <span class="text-xs text-paper-muted dark:text-term-faint">{FORM_GLYPHS[app.form]}</span>
+    <a
+      href={targetUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-bold text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
+    >
+      {app.name}
+    </a>
+    {
+      app.latestVersion && (
+        <span class="text-xs text-paper-green dark:text-term-green font-semibold">
+          v{app.latestVersion}
+        </span>
+      )
+    }
+    <span class="inline-flex items-center gap-1.5 text-xs" title={style.title}>
+      <span class={`inline-block w-1.5 h-1.5 rounded-full ${style.dot}`} aria-hidden="true"></span>
+      <span class={style.text}>{ageLabel(app.latestReleaseDate, now)}</span>
+    </span>
+    <span class="inline-flex items-center gap-1.5 text-xs text-paper-muted dark:text-term-faint">
+      <span
+        class="inline-block w-2 h-2 rounded-full"
+        style={`background:${languageColor(app.language)}`}
+        aria-hidden="true"></span>
+      {app.language}
+    </span>
+    <span class="text-xs text-paper-muted dark:text-term-faint tabular-nums">
+      {app.commitCount} commits · {app.releaseCount}
+      {app.releaseCount === 1 ? 'release' : 'releases'}
+    </span>
+  </div>
+  <p class="text-sm text-paper-muted dark:text-term-muted mt-1">{app.description}</p>
+  <div class="flex items-center gap-3 mt-2 text-xs">
+    <code
+      class="min-w-0 break-all rounded-sm border border-term-border bg-term-bg px-2 py-1 text-term-text"
+    >
+      <span class="text-term-green select-none">$ </span>{app.install.primary.command}
+    </code>
+    <button
+      type="button"
+      class="copy-btn flex-shrink-0 text-paper-muted dark:text-term-faint hover:text-paper-green dark:hover:text-term-green transition-colors"
+      data-copy={app.install.primary.command}
+      aria-label={`Copy install command for ${app.name}`}
+    >
+      copy
+    </button>
+    <a
+      href={app.githubUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={`flex-shrink-0 ${linkClass}`}
+    >
+      source ↗
+    </a>
+  </div>
+</li>
+
+<script>
+  import { initLinuxInstall } from '../lib/linux-install';
+
+  initLinuxInstall();
+</script>

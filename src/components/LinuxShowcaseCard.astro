@@ -1,0 +1,166 @@
+---
+import { LINUX_SHOWCASE, shotSrcset, type LinuxApp } from '@data/linux';
+import {
+  FORM_GLYPHS,
+  FRESHNESS_STYLE,
+  ageLabel,
+  freshness,
+  languageColor,
+} from '../lib/linux-insights';
+import LinuxInstall from './LinuxInstall.astro';
+import LinuxWeight from './LinuxWeight.astro';
+
+export interface Props {
+  app: LinuxApp;
+  now: Date;
+}
+
+const { app, now } = Astro.props;
+const showcase = LINUX_SHOWCASE[app.id];
+const style = FRESHNESS_STYLE[freshness(app.latestReleaseDate, now)];
+const targetUrl = app.homepageUrl ?? app.githubUrl;
+const releaseStamp = app.latestReleaseDate ? app.latestReleaseDate.slice(0, 7) : null;
+const linkClass =
+  'text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
+---
+
+<article
+  id={app.id}
+  class="showcase-card scroll-mt-24 group h-full term-frame term-frame-hover overflow-hidden flex flex-col"
+  style={`--accent: ${showcase.accent}`}
+>
+  <div class="showcase-shot">
+    <img
+      src={showcase.shot.src}
+      srcset={shotSrcset(showcase.shot)}
+      sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+      alt={showcase.shot.alt}
+      width={showcase.shot.w}
+      height={showcase.shot.h}
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="p-4 sm:p-5 flex flex-col flex-1">
+    <div class="flex items-start justify-between gap-3 mb-2">
+      <div class="flex items-baseline gap-2 min-w-0">
+        <span class="text-xs text-paper-muted dark:text-term-faint flex-shrink-0"
+          >{FORM_GLYPHS[app.form]}</span
+        >
+        <h3
+          class="text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors truncate"
+        >
+          <a href={targetUrl} target="_blank" rel="noopener noreferrer">{app.name}</a>
+        </h3>
+      </div>
+      {
+        app.latestVersion && (
+          <span class="text-xs text-paper-green dark:text-term-green font-semibold whitespace-nowrap">
+            v{app.latestVersion}
+          </span>
+        )
+      }
+    </div>
+
+    <div
+      class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3 text-xs text-paper-muted dark:text-term-faint"
+    >
+      <span class="inline-flex items-center gap-1.5">
+        <span
+          class="inline-block w-2 h-2 rounded-full"
+          style={`background:${languageColor(app.language)}`}
+          aria-hidden="true"></span>
+        {app.language}
+      </span>
+      <span class="text-paper-faint dark:text-term-faint">·</span>
+      <span class="inline-flex items-center gap-1.5" title={style.title}>
+        <span class={`inline-block w-1.5 h-1.5 rounded-full ${style.dot}`} aria-hidden="true"
+        ></span>
+        <span class={style.text}>{ageLabel(app.latestReleaseDate, now)}</span>
+      </span>
+      {
+        app.note && (
+          <>
+            <span class="text-paper-faint dark:text-term-faint">·</span>
+            <span>
+              <span class="text-paper-amber dark:text-term-amber" aria-hidden="true">
+                ◆
+              </span>{' '}
+              {app.note}
+            </span>
+          </>
+        )
+      }
+    </div>
+
+    <p class="text-sm text-paper-muted dark:text-term-muted leading-relaxed mb-4">
+      {showcase.blurb}
+    </p>
+
+    <div class="mb-4">
+      <LinuxWeight app={app} />
+    </div>
+
+    <div class="mt-auto">
+      <LinuxInstall name={app.name} channels={app.install.all} />
+
+      <div
+        class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 pt-3 border-t border-paper-border dark:border-term-border text-xs"
+      >
+        <a href={app.githubUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+          source ↗
+        </a>
+        {
+          app.homepageUrl && (
+            <a href={app.homepageUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+              docs ↗
+            </a>
+          )
+        }
+        <a href={app.latestReleaseUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+          releases{releaseStamp ? ` · ${releaseStamp}` : ''} ↗
+        </a>
+        {
+          app.hasLinuxBinary && app.linuxBinaryUrl && (
+            <a href={app.linuxBinaryUrl} rel="noopener noreferrer" class={linkClass}>
+              download x86_64 ↓
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .showcase-shot {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: radial-gradient(
+      circle at 50% 0%,
+      color-mix(in srgb, var(--accent) 26%, transparent),
+      transparent 70%
+    );
+    border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+  }
+
+  .showcase-shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.5s ease;
+  }
+
+  .showcase-card:hover .showcase-shot img {
+    transform: scale(1.025);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .showcase-shot img {
+      transition: none;
+    }
+  }
+</style>

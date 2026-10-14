@@ -6,6 +6,8 @@ export const LANGUAGE_COLORS: Record<string, string> = {
   Rust: '#CE422B',
   Go: '#00ADD8',
   'C++': '#F34B7D',
+  Swift: '#F05138',
+  Python: '#3572A5',
 };
 
 const FALLBACK_LANGUAGE_COLOR = '#7d8590';
@@ -28,6 +30,13 @@ export const FORM_GLYPHS: Record<LinuxForm, string> = {
   gui: '[app]',
   daemon: '[svc]',
 };
+
+/// A bar's fill as a share of the largest value, on a square-root scale so one giant repo
+/// does not flatten everything else, with a floor so any non-zero value stays visible.
+export function barFraction(value: number, max: number): number {
+  if (value <= 0 || max <= 0) return 0;
+  return Math.max(0.04, Math.min(1, Math.sqrt(value / max)));
+}
 
 export interface Share {
   key: string;

@@ -29,8 +29,8 @@ const releaseCount = apps.reduce((sum, app) => sum + app.releaseCount, 0);
 const recentReleases = releasesSince(apps, 90, now);
 const months = monthlyTotals(apps, 12, now);
 const peak = Math.max(1, ...months.map((month) => month.count));
-const starCount = apps.reduce((sum, app) => sum + app.stars, 0);
-const starLeader = [...apps].sort((a, b) => b.stars - a.stars)[0];
+const commitCount = apps.reduce((sum, app) => sum + app.commitCount, 0);
+const commitLeader = [...apps].sort((a, b) => b.commitCount - a.commitCount)[0];
 
 const BAR_W = 8;
 const BAR_GAP = 3;
@@ -117,23 +117,23 @@ const bars = months.map((month, index) => ({
     </div>
 
     <div class="flex flex-col">
-      <dt class="order-2 text-xs text-paper-muted dark:text-term-muted mt-1">github_stars</dt>
+      <dt class="order-2 text-xs text-paper-muted dark:text-term-muted mt-1">commits_on_linux</dt>
       <dd class="order-1 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
-        {starCount}
+        {commitCount}
       </dd>
       {
-        starLeader && starLeader.stars > 0 && (
+        commitLeader && commitLeader.commitCount > 0 && (
           <dd class="order-3 mt-3 text-[11px] text-paper-muted dark:text-term-muted">
-            most starred:{' '}
+            most work:{' '}
             <a
-              href={starLeader.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`#${commitLeader.id}`}
               class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
             >
-              {starLeader.name}
+              {commitLeader.name}
             </a>
-            <span class="text-paper-amber dark:text-term-amber"> ★ {starLeader.stars}</span>
+            <span class="text-paper-green dark:text-term-green">
+              {` ${commitLeader.commitCount}`}
+            </span>
           </dd>
         )
       }

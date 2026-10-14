@@ -3,10 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   linuxApps,
-  linuxBench,
-  linuxFlagships,
+  linuxSections,
   linuxStats,
   featuredLinuxApps,
+  linuxScore,
   LINUX_SHOWCASE,
   shotSrcset,
 } from '../../src/data/linux';
@@ -60,10 +60,29 @@ describe('linux data module', () => {
     }
   });
 
-  it('splits apps into flagships and the bench without overlap or loss', () => {
-    const split = [...linuxFlagships, ...linuxBench].map((app) => app.id);
-    expect(new Set(split).size).toBe(split.length);
-    expect(split.sort()).toEqual(linuxApps.map((a) => a.id).sort());
+  it('places every app in exactly one section and one tier', () => {
+    const placed = linuxSections.flatMap((section) =>
+      [section.heroes, section.showcase, section.featured, section.compact].flat()
+    );
+    const ids = placed.map((app) => app.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids.sort()).toEqual(linuxApps.map((a) => a.id).sort());
+    for (const section of linuxSections) {
+      const apps = [section.heroes, section.showcase, section.featured, section.compact].flat();
+      expect(
+        apps.every((app) => app.theme === section.theme),
+        section.theme
+      ).toBe(true);
+      expect(section.totals.apps).toBe(apps.length);
+    }
+  });
+
+  it('gives every app a valid theme, a commit count and a release history', () => {
+    for (const app of linuxApps) {
+      expect(['desktop', 'agents', 'system', 'tools'], app.id).toContain(app.theme);
+      expect(app.commitCount, `${app.id} commits`).toBeGreaterThan(0);
+      expect(app.releaseCount, `${app.id} releases`).toBeGreaterThan(0);
+    }
   });
 
   it('records a release date for every release it counts', () => {
@@ -113,20 +132,38 @@ describe('linux data module', () => {
     expect(linuxStats.starCount).toBe(linuxApps.reduce((sum, a) => sum + a.stars, 0));
     expect(linuxStats.languages.length).toBeGreaterThan(0);
     for (const lang of linuxStats.languages) {
-      expect(['Rust', 'Go', 'C++']).toContain(lang);
+      expect(['Rust', 'Go', 'C++', 'Swift', 'Python']).toContain(lang);
     }
+    expect(linuxStats.commitCount).toBe(linuxApps.reduce((sum, a) => sum + a.commitCount, 0));
   });
 
-  it('leads with the flagship desktop apps', () => {
-    expect(linuxApps[0]?.id).toBe('flaccy');
-    expect(linuxApps[1]?.id).toBe('emojipick');
-    expect(linuxApps[2]?.id).toBe('recview');
+  it('orders apps by the work behind them: commits and releases, stars barely count', () => {
+    for (let i = 1; i < linuxApps.length; i++) {
+      expect(
+        linuxScore(linuxApps[i - 1]),
+        `${linuxApps[i - 1].id} before ${linuxApps[i].id}`
+      ).toBeGreaterThanOrEqual(linuxScore(linuxApps[i]));
+    }
+    const top = linuxApps.slice(0, 2).map((app) => app.id);
+    expect(top).toContain('tailscode');
+    expect(top).toContain('unrager');
   });
 
   it('discovers shipped tools while excluding SDKs and web apps', () => {
     const ids = new Set(linuxApps.map((a) => a.id));
     // Auto-discovered Rust/Go/C++ tools that ship releases.
-    for (const id of ['themeswitch', 'circadia', 'flyr', 'unrager', 'recview']) {
+    for (const id of [
+      'themeswitch',
+      'circadia',
+      'flyr',
+      'unrager',
+      'recview',
+      'tailscode',
+      'claude-bridge',
+      'mbench',
+      'tokenmaxxing',
+      'imago',
+    ]) {
       expect(ids.has(id), `expected ${id} on /linux`).toBe(true);
     }
     // Libraries and web apps must never be discovered.
@@ -135,23 +172,10 @@ describe('linux data module', () => {
     }
   });
 
-  it('sorts the non-lead apps by release count, then stars', () => {
-    const lead = new Set(['flaccy', 'emojipick', 'recview']);
-    const tail = linuxApps.filter((app) => !lead.has(app.id));
-    for (let i = 1; i < tail.length; i++) {
-      const prev = tail[i - 1];
-      const curr = tail[i];
-      const ordered =
-        prev.releaseCount > curr.releaseCount ||
-        (prev.releaseCount === curr.releaseCount && prev.stars >= curr.stars);
-      expect(ordered, `${prev.id} before ${curr.id}`).toBe(true);
-    }
-  });
-
-  it('features the lead apps first on the homepage teaser', () => {
+  it('features the highest-scoring apps first on the homepage teaser', () => {
     const featured = featuredLinuxApps(3);
     expect(featured.length).toBeLessThanOrEqual(3);
     expect(featured).toEqual(linuxApps.slice(0, featured.length));
-    expect(featured[0]?.id).toBe('flaccy');
+    expect(featuredLinuxApps(2, [linuxApps[0].id]).map((a) => a.id)).not.toContain(linuxApps[0].id);
   });
 });
