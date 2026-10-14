@@ -11,11 +11,13 @@ const { command, title, blurb, aside, id } = Astro.props;
 ---
 
 <section id={id} class="mb-14 sm:mb-20 scroll-mt-20">
-  <div class="flex items-baseline justify-between gap-4 mb-2">
+  <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 mb-2">
     <p class="prompt-line">{command}</p>
     {
       aside && (
-        <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">{aside}</span>
+        <span class="text-xs text-paper-muted dark:text-term-faint sm:whitespace-nowrap">
+          {aside}
+        </span>
       )
     }
   </div>

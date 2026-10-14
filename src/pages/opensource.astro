@@ -3,6 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import OpenSourceCard from '@components/OpenSourceCard.astro';
 import OssLeader from '@components/OssLeader.astro';
 import OssRow from '@components/OssRow.astro';
+import PageSection from '@components/PageSection.astro';
 import ShareBar from '@components/ShareBar.astro';
 import StatCell from '@components/StatCell.astro';
 import { landingSlugs } from '@data/landing';
@@ -93,16 +94,11 @@ const plural = (count: number, noun: string): string => `${count} ${noun}${count
     </div>
   </section>
 
-  <section class="mb-14 sm:mb-20">
-    <div class="flex items-baseline justify-between gap-4 mb-2">
-      <p class="prompt-line">sort --by=work | head -{leaders.length}</p>
-      <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">
-        commits and releases decide
-      </span>
-    </div>
-    <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text mb-6">
-      Most work
-    </h2>
+  <PageSection
+    command={`sort --by=work | head -${leaders.length}`}
+    title="Most work"
+    blurb="Commits and releases decide the order."
+  >
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
       {
         leaders.map((project, index) => (
@@ -115,21 +111,17 @@ const plural = (count: number, noun: string): string => `${count} ${noun}${count
         ))
       }
     </div>
-  </section>
+  </PageSection>
 
   {
     ossSections.map((section) => (
-      <section class="mb-12 sm:mb-16">
-        <div class="flex items-baseline justify-between gap-4 mb-2">
-          <p class="prompt-line">{section.command}</p>
-          <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">
-            {`${plural(section.totals.repos, 'repo')} · ${plural(section.totals.commits, 'commit')} · ${plural(section.totals.releases, 'release')}`}
-          </span>
-        </div>
-        <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text mb-1">
-          {section.title}
-        </h2>
-        <p class="text-sm text-paper-muted dark:text-term-muted mb-6 max-w-2xl">{section.blurb}</p>
+      <PageSection
+        id={section.command.replace('ls oss/', '')}
+        command={section.command}
+        title={section.title}
+        blurb={section.blurb}
+        aside={`${plural(section.totals.repos, 'repo')} · ${plural(section.totals.commits, 'commit')} · ${plural(section.totals.releases, 'release')}`}
+      >
         <div class="space-y-6">
           {section.featured.length > 0 && (
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -142,17 +134,19 @@ const plural = (count: number, noun: string): string => `${count} ${noun}${count
             </div>
           )}
           {section.compact.length > 0 && (
-            <div>
-              <p class="term-label mb-3">smaller and older</p>
+            <details open={section.compact.length <= 4} class="group/compact">
+              <summary class="term-label mb-3 cursor-pointer select-none hover:text-paper-green dark:hover:text-term-green transition-colors">
+                smaller and older · {section.compact.length}
+              </summary>
               <ul class="term-frame px-4 sm:px-5">
                 {section.compact.map((project) => (
                   <OssRow project={project} now={now} />
                 ))}
               </ul>
-            </div>
+            </details>
           )}
         </div>
-      </section>
+      </PageSection>
     ))
   }
 

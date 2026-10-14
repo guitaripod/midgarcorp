@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AppCard from '@components/AppCard.astro';
 import CareerTimeline from '@components/CareerTimeline.astro';
+import { appEntries, appStats } from '@data/apps';
+import { ossStats } from '@data/oss';
+import careerData from '../data/career.json';
 
 const title = 'Engineering Services | guitaripod';
 const description =
@@ -10,6 +14,10 @@ const capabilities = [
   {
     glyph: '[01]',
     name: 'Native iOS & SDK',
+    proof: [
+      { label: 'the apps', href: '/apps' },
+      { label: 'Swift packages', href: '/opensource#swift-packages' },
+    ],
     summary:
       'Swift, SwiftUI, UIKit, AVFoundation, HealthKit, Live Activities, Widgets. SDK architecture for consumer and enterprise.',
     bullets: [
@@ -21,6 +29,10 @@ const capabilities = [
   {
     glyph: '[02]',
     name: 'AI integration',
+    proof: [
+      { label: 'Tailscode', href: '/tailscode' },
+      { label: 'unrager', href: '/unrager' },
+    ],
     summary:
       'Multi-provider LLM abstractions, agentic workers, on-device ML, MCP servers, and production AI pipelines.',
     bullets: [
@@ -32,6 +44,10 @@ const capabilities = [
   {
     glyph: '[03]',
     name: 'Backend & infrastructure',
+    proof: [
+      { label: 'agent servers', href: '/linux#agents' },
+      { label: 'open source', href: '/opensource' },
+    ],
     summary:
       'Python/FastAPI, Go, Rust, TypeScript. Supabase / Postgres, GCP Cloud Run, Docker, GitHub Actions, Xcode Cloud.',
     bullets: [
@@ -48,6 +64,16 @@ const consultingFeatures = [
   'AI integration strategy',
 ];
 
+const proofApps = appEntries.filter((entry) => entry.shots.length > 0).slice(0, 3);
+const iconWall = appEntries.slice(0, 10);
+const proofRows = [
+  { value: String(appStats.total), label: 'apps shipped solo' },
+  { value: appStats.commits.toLocaleString('en-US'), label: 'commits across the apps' },
+  { value: ossStats.commits.toLocaleString('en-US'), label: 'open-source commits' },
+  { value: String(ossStats.releases), label: 'tagged releases' },
+];
+const summary = careerData.summary;
+
 const dedicatedFeatures = [
   'Full-time, sole or shared focus',
   'Direct Slack / async communication',
@@ -58,49 +84,96 @@ const dedicatedFeatures = [
 <BaseLayout title={title} description={description} image="/og/services.png">
   <!-- Hero -->
   <section class="relative pt-12 sm:pt-20 pb-12">
-    <div class="max-w-3xl">
-      <p class="prompt-line mb-4">man guitaripod</p>
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+      <div class="lg:col-span-7">
+        <p class="prompt-line mb-4">man guitaripod</p>
 
-      <h1
-        class="text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-[1.05] tracking-tight text-paper-text dark:text-term-text"
-      >
-        Engineer who <span class="phosphor">ships systems</span>, not just code.
-      </h1>
-
-      <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted mb-4 leading-relaxed">
-        Seven years shipping production iOS, full-stack, and AI across wearable health,
-        cybersecurity, AI, creator economy, and software consulting. End-to-end engagements,
-        ground-up architecture, or embedded on your team.
-      </p>
-
-      <p
-        class="inline-flex items-center gap-2 text-xs text-paper-greendim dark:text-term-greendim mb-8"
-      >
-        <span class="relative flex w-1.5 h-1.5">
-          <span
-            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-paper-green dark:bg-term-green opacity-75"
-          ></span>
-          <span
-            class="relative inline-flex rounded-full h-1.5 w-1.5 bg-paper-green dark:bg-term-green"
-          ></span>
-        </span>
-        STATUS: available — open to new engagements
-      </p>
-
-      <div class="flex flex-wrap gap-3">
-        <a
-          href="#book"
-          class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-[1.05] tracking-tight text-paper-text dark:text-term-text"
         >
-          ./schedule-call
-        </a>
-        <a
-          href="#engagements"
-          class="inline-flex items-center gap-2 px-5 py-2.5 border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text rounded-sm text-sm font-semibold hover:border-paper-green dark:hover:border-term-green hover:text-paper-green dark:hover:text-term-green transition-colors"
+          Engineer who <span class="phosphor">ships systems</span>, not just code.
+        </h1>
+
+        <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted mb-4 leading-relaxed">
+          Seven years shipping production iOS, full-stack, and AI across wearable health,
+          cybersecurity, AI, creator economy, and software consulting. End-to-end engagements,
+          ground-up architecture, or embedded on your team.
+        </p>
+
+        <p
+          class="inline-flex items-center gap-2 text-xs text-paper-greendim dark:text-term-greendim mb-8"
         >
-          ./selected-engagements
-        </a>
+          <span class="relative flex w-1.5 h-1.5">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-paper-green dark:bg-term-green opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-1.5 w-1.5 bg-paper-green dark:bg-term-green"
+            ></span>
+          </span>
+          STATUS: available — open to new engagements
+        </p>
+
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="#book"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+          >
+            ./schedule-call
+          </a>
+          <a
+            href="#proof"
+            class="inline-flex items-center gap-2 px-5 py-2.5 border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text rounded-sm text-sm font-semibold hover:border-paper-green dark:hover:border-term-green hover:text-paper-green dark:hover:text-term-green transition-colors"
+          >
+            ./see-the-work
+          </a>
+          <a
+            href="#engagements"
+            class="inline-flex items-center gap-2 px-5 py-2.5 text-paper-muted dark:text-term-muted rounded-sm text-sm font-semibold hover:text-paper-green dark:hover:text-term-green transition-colors"
+          >
+            ./selected-engagements
+          </a>
+        </div>
       </div>
+
+      <aside class="lg:col-span-5" aria-label="Shipped work in numbers">
+        <div class="term-frame p-5 sm:p-6">
+          <p class="prompt-line mb-5">shipped --solo</p>
+          <ul class="grid grid-cols-5 gap-2 mb-6" aria-hidden="true">
+            {
+              iconWall.map((entry) => (
+                <li>
+                  <img
+                    src={entry.app.icon}
+                    alt=""
+                    width="64"
+                    height="64"
+                    class="w-full h-auto rounded-lg border border-paper-border dark:border-term-border"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+              ))
+            }
+          </ul>
+          <dl class="space-y-3">
+            {
+              proofRows.map((row) => (
+                <div class="flex items-baseline justify-between gap-4 border-b border-paper-border dark:border-term-border pb-3 last:border-b-0 last:pb-0">
+                  <dt class="text-xs text-paper-muted dark:text-term-muted">{row.label}</dt>
+                  <dd class="text-2xl font-bold tabular-nums text-paper-text dark:text-term-text">
+                    {row.value}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+          <p class="mt-5 text-[11px] text-paper-muted dark:text-term-faint">
+            Plus {summary.totalCommits}
+            {summary.totalCommitsLabel} across {summary.industries} industries in client work.
+          </p>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -130,7 +203,7 @@ const dedicatedFeatures = [
             <p class="text-sm text-paper-muted dark:text-term-muted mb-4 leading-relaxed">
               {capability.summary}
             </p>
-            <ul class="text-xs text-paper-faint dark:text-term-faint space-y-1.5">
+            <ul class="text-xs text-paper-faint dark:text-term-faint space-y-1.5 mb-4">
               {capability.bullets.map((bullet) => (
                 <li class="flex gap-2">
                   <span class="text-paper-greendim dark:text-term-greendim" aria-hidden="true">
@@ -140,10 +213,62 @@ const dedicatedFeatures = [
                 </li>
               ))}
             </ul>
+            <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs pt-3 border-t border-paper-border dark:border-term-border">
+              <span class="text-paper-faint dark:text-term-faint">see it:</span>
+              {capability.proof.map((link) => (
+                <a
+                  href={link.href}
+                  class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+                >
+                  {link.label} →
+                </a>
+              ))}
+            </p>
           </div>
         ))
       }
     </div>
+  </section>
+
+  <!-- Proof -->
+  <section id="proof" class="mb-16 scroll-mt-20">
+    <div class="mb-6">
+      <p class="prompt-line mb-3">ls ~/apps --sort=work | head -3</p>
+      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text mb-2">
+        Proof: products I built and shipped alone
+      </h2>
+      <p class="text-sm text-paper-muted dark:text-term-muted max-w-2xl">
+        Design, code, backend, release. The three with the most work behind them, with real commit
+        counts from the repos.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      {
+        proofApps.map((entry) => (
+          <AppCard
+            app={entry.app}
+            landingHref={entry.landingHref}
+            openSource={entry.openSource}
+            githubUrl={entry.githubUrl}
+            shots={entry.shots}
+            device={entry.device}
+            commits={entry.work?.commitCount}
+            version={entry.version}
+          />
+        ))
+      }
+    </div>
+    <p class="text-sm text-paper-faint dark:text-term-faint mt-6">
+      All {appStats.total} apps on <a
+        href="/apps"
+        class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+        >the apps page</a
+      >, the code on <a
+        href="/opensource"
+        class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+        >open source</a
+      >.
+    </p>
   </section>
 
   <!-- Selected Engagements -->

@@ -4,7 +4,7 @@ import LinuxAppCard from '@components/LinuxAppCard.astro';
 import LinuxAppRow from '@components/LinuxAppRow.astro';
 import LinuxFlagship from '@components/LinuxFlagship.astro';
 import LinuxInstallAll from '@components/LinuxInstallAll.astro';
-import LinuxSection from '@components/LinuxSection.astro';
+import PageSection from '@components/PageSection.astro';
 import LinuxShipLog from '@components/LinuxShipLog.astro';
 import LinuxShowcaseCard from '@components/LinuxShowcaseCard.astro';
 import LinuxStats from '@components/LinuxStats.astro';
@@ -83,7 +83,7 @@ const structuredData = {
 
   {
     linuxSections.map((section, sectionIndex) => (
-      <LinuxSection
+      <PageSection
         id={section.theme === 'tools' ? 'command-line' : section.theme}
         command={section.command}
         title={section.title}
@@ -131,26 +131,26 @@ const structuredData = {
             </div>
           )}
         </div>
-      </LinuxSection>
+      </PageSection>
     ))
   }
 
-  <LinuxSection
+  <PageSection
     command="git tag --sort=-creatordate"
     title="Release log"
     blurb="Every tagged release across all tools, month by month. What shipped most recently is on top."
     aside={plural(linuxStats.releaseCount, 'release')}
   >
     <LinuxShipLog apps={linuxApps} now={now} />
-  </LinuxSection>
+  </PageSection>
 
-  <LinuxSection
+  <PageSection
     command="install --all"
     title="Install the lot"
     blurb="One command per package manager covering every tool published there, built from each tool's own install line."
   >
     <LinuxInstallAll apps={linuxApps} />
-  </LinuxSection>
+  </PageSection>
 
   <section class="mt-12 sm:mt-16 mb-12">
     <div class="term-frame p-6 sm:p-8">
