@@ -246,10 +246,11 @@
       "language": "Rust",
       "description": "A fast emoji picker for KDE Plasma Wayland",
       "stars": 1,
-      "commitCount": 12,
-      "releaseCount": 1,
+      "commitCount": 14,
+      "releaseCount": 2,
       "releaseDates": [
-        "2026-07-13T09:09:20Z"
+        "2026-07-13T09:09:20Z",
+        "2026-10-14T16:16:30Z"
       ],
       "githubUrl": "https://github.com/guitaripod/emojipick",
       "homepageUrl": null,
@@ -263,9 +264,9 @@
         "rust",
         "wayland"
       ],
-      "latestVersion": "0.1.5",
-      "latestReleaseDate": "2026-07-13T09:09:20Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/emojipick/releases/tag/v0.1.0",
+      "latestVersion": "0.1.6",
+      "latestReleaseDate": "2026-10-14T16:16:30Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/emojipick/releases/tag/v0.1.6",
       "hasLinuxBinary": false,
       "linuxBinaryUrl": null,
       "note": "KDE Plasma / Wayland",
@@ -343,9 +344,9 @@
       "lang": "rust",
       "language": "Rust",
       "description": "A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
-      "stars": 4,
-      "commitCount": 93,
-      "releaseCount": 30,
+      "stars": 5,
+      "commitCount": 94,
+      "releaseCount": 31,
       "releaseDates": [
         "2026-07-10T13:46:58Z",
         "2026-07-10T13:57:33Z",
@@ -376,16 +377,17 @@
         "2026-09-25T21:53:07Z",
         "2026-09-25T22:06:03Z",
         "2026-10-02T15:55:55Z",
-        "2026-10-14T11:06:10Z"
+        "2026-10-14T11:06:10Z",
+        "2026-10-14T22:11:12Z"
       ],
       "githubUrl": "https://github.com/guitaripod/flaccy",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.18.0",
-      "latestReleaseDate": "2026-10-14T11:06:10Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.18.0",
+      "latestVersion": "1.18.1",
+      "latestReleaseDate": "2026-10-14T22:11:12Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.18.1",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.18.0/flaccy-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.18.1/flaccy-linux-x86_64.tar.gz",
       "note": "GTK4 / libadwaita",
       "install": {
         "primary": {
@@ -664,8 +666,8 @@
       "language": "Python",
       "description": "Ranks the models your own GPU runs: speed and answer quality for everything llama-swap serves, built into one leaderboard page.",
       "stars": 1,
-      "commitCount": 107,
-      "releaseCount": 11,
+      "commitCount": 112,
+      "releaseCount": 13,
       "releaseDates": [
         "2026-09-12T19:21:36Z",
         "2026-09-12T19:57:04Z",
@@ -677,7 +679,9 @@
         "2026-09-23T17:40:51Z",
         "2026-09-23T20:00:00Z",
         "2026-09-24T07:45:00Z",
-        "2026-09-24T15:02:51Z"
+        "2026-09-24T15:02:51Z",
+        "2026-10-15T21:15:47Z",
+        "2026-10-15T21:35:51Z"
       ],
       "githubUrl": "https://github.com/guitaripod/mbench",
       "homepageUrl": "https://guitaripod.github.io/mbench/",
@@ -691,9 +695,9 @@
         "sglang",
         "vllm"
       ],
-      "latestVersion": "1.6.4",
-      "latestReleaseDate": "2026-09-24T15:02:51Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/mbench/releases/tag/1.6.4",
+      "latestVersion": "1.7.1",
+      "latestReleaseDate": "2026-10-15T21:35:51Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/mbench/releases/tag/1.7.1",
       "hasLinuxBinary": false,
       "linuxBinaryUrl": null,
       "note": null,
