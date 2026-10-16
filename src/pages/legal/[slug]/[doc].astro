@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { legalPages, type LegalPage } from '@utils/legal';
+
+export function getStaticPaths() {
+  return legalPages().map((page) => ({
+    params: { slug: page.slug, doc: page.doc },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props as { page: LegalPage };
+const title = `${page.name} ${page.label}`;
+---
+
+<BaseLayout title={title} description={`${page.label} for ${page.name}.`}>
+  <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/legal" class="hover:text-paper-green dark:hover:text-term-green">legal</a></li>
+      <li aria-hidden="true">/</li>
+      <li class="text-paper-muted dark:text-term-muted" aria-current="page">
+        {page.slug}/{page.doc}
+      </li>
+    </ol>
+  </nav>
+
+  <article
+    class="prose prose-neutral dark:prose-invert mx-auto max-w-none py-10 sm:py-14"
+    set:html={page.html}
+  />
+</BaseLayout>

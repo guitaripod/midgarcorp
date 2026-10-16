@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "./ct prebuild && astro build && ./ct postbuild",
+    "build": "node scripts/sync-aasa.mjs && ./ct prebuild && astro build && ./ct postbuild",
     "build:debug": "astro build && node scripts/postbuild.js && ls -la dist/",
     "preview": "astro preview",
     "test": "vitest",

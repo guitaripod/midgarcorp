@@ -1,0 +1,52 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { legalApps, LEGAL_LABELS } from '@utils/legal';
+
+const apps = legalApps();
+---
+
+<BaseLayout title="Legal" description="Privacy policies and terms of use for Midgar apps.">
+  <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+      <li aria-hidden="true">/</li>
+      <li class="text-paper-muted dark:text-term-muted" aria-current="page">legal</li>
+    </ol>
+  </nav>
+
+  <header class="py-10 sm:py-14">
+    <h1
+      class="mb-3 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+    >
+      Legal
+    </h1>
+    <p class="max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
+      Privacy policies and terms of use for each Midgar app.
+    </p>
+  </header>
+
+  <ul class="grid max-w-3xl gap-4 pb-16">
+    {
+      apps.map((app) => (
+        <li class="term-frame p-5 sm:p-6">
+          <h2 class="mb-2 text-base font-semibold text-paper-text dark:text-term-text">
+            {app.name}
+          </h2>
+          <p class="text-sm leading-relaxed">
+            {app.docs.map((doc, index) => (
+              <>
+                {index > 0 && <span aria-hidden="true"> · </span>}
+                <a
+                  href={`/legal/${app.slug}/${doc}`}
+                  class="text-paper-green underline decoration-dotted underline-offset-2 dark:text-term-green"
+                >
+                  {LEGAL_LABELS[doc]}
+                </a>
+              </>
+            ))}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
