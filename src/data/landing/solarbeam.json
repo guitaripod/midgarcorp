@@ -59,14 +59,14 @@
   "pricing": {
     "heading": "Free, and then optional",
     "free": {
-      "title": "Free forever",
+      "title": "Free",
       "price": "$0",
       "items": [
         "Today's NASA Picture of the Day, plus a rolling 30-day archive",
         "The near-Earth asteroid tracker and its charts — never gated",
         "The \"Where Is Webb\" telescope dashboard",
         "The first 60 images of the curated Webb gallery",
-        "3 AI-generated fact sets, for the life of the install"
+        "3 AI-generated fact sets in total, not per day"
       ]
     },
     "premium": {
@@ -135,7 +135,7 @@
     },
     {
       "q": "What do I get for free versus Premium?",
-      "a": "Free covers today's picture, the near-Earth asteroid tracker, the \"Where Is Webb\" dashboard, the first 60 images of the curated Webb gallery, a rolling 30-day archive of past pictures, and 3 AI-generated fact sets for the life of the install. Premium unlocks the complete Webb gallery, 4K wallpapers and full-resolution downloads, Ambient Mode, the full Picture of the Day archive, Spatial Scenes on Vision Pro, and unlimited AI facts. Asteroid tracking is never gated."
+      "a": "Free covers today's picture, the near-Earth asteroid tracker, the \"Where Is Webb\" dashboard, the first 60 images of the curated Webb gallery, a rolling 30-day archive of past pictures, and 3 AI-generated fact sets in total. Premium unlocks the complete Webb gallery, 4K wallpapers and full-resolution downloads, Ambient Mode, the full Picture of the Day archive, Spatial Scenes on Vision Pro, and unlimited AI facts. Asteroid tracking is never gated."
     },
     {
       "q": "Is there a subscription or in-app purchase?",

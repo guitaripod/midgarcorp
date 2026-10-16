@@ -314,6 +314,27 @@
         "Real EN 16931 VAT engine"
       ],
       "releaseDate": "2026-07-14T07:00:00Z"
+    },
+    {
+      "id": "crucible",
+      "name": "Crucible for Plex",
+      "tagline": "Plex, Done Right on iPhone and Apple TV",
+      "description": "Crucible is a native client for your Plex Media Server on iPhone and Apple TV. It is built to feel like part of the system: the system player, native menus and context menus, Liquid Glass on the newest software, and a library that opens exactly where you left off.",
+      "platforms": [
+        "iPhone",
+        "Apple TV"
+      ],
+      "category": "Entertainment",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/crucible-for-plex/id6822066419",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/db/64/1d/db641d20-e06c-5e3f-59ac-b83b7153c333/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#F97316",
+      "features": [
+        "A Resume-first Home on iPhone and Apple TV",
+        "Skip Intro, offline downloads and a Year in Review",
+        "Open source, with a built-in demo to try first"
+      ],
+      "releaseDate": "2026-10-15T07:00:00Z"
     }
   ]
 }

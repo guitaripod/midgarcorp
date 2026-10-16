@@ -2771,7 +2771,7 @@
     },
     {
       "slug": "crucible",
-      "trackId": 0,
+      "trackId": 6822066419,
       "shortName": "Crucible",
       "status": "live",
       "primaryColor": "#F97316",
@@ -2907,17 +2907,17 @@
         ]
       },
       "name": "Crucible: Plex Client",
-      "appStoreUrl": "https://github.com/guitaripod/Crucible/releases/latest",
-      "description": "Crucible is a fast, native Plex client for iPhone and Apple TV — and a love letter to building iOS apps without a Mac. The iPhone app is Swift 6 and programmatic UIKit, cross-compiled on Arch Linux and deployed straight to an iPhone over USB. No Xcode, no storyboards, no macOS anywhere in the loop. The Apple TV app runs on the same engine and is built with Xcode.\n\nEVERYTHING IN ITS PLACE\nHome opens on a Resume hero for whatever you were watching, then Continue Watching, Up Next, your week in watch time, and Recently Added. Library grids have filter chips for Unwatched and In Progress, genre and sort, unwatched badges, an A–Z scrubber, and raw folder browsing for unindexed content. Search groups results by type with a Top Result.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits straight from Plex markers, Picture-in-Picture with background audio, lock screen and Control Center controls, and Up Next that rolls the next episode as the credits start. Direct play when your device can handle the file, automatic HLS transcoding when it can't.\n\nMADE FOR THE COUCH\nOn Apple TV a cinematic Home follows focus, every library gets its own tab, the system player carries Skip Intro and Skip Credits as native actions with an Up Next card, and long-pressing any card opens a native context menu. Liquid Glass controls on tvOS 26, the classic look with the same layout on older systems, and a Top Shelf extension for Continue Watching and Up Next.\n\nTAKE IT OFFLINE\nOn iPhone, download movies, whole seasons, or single episodes at the quality you pick — Original, High, Medium, Low, or Data Saver. Background transfers keep going when the app is closed and resume after interruptions, downloads stay Wi-Fi-only unless you allow cellular, and a dedicated Downloads tab shows a storage summary, the live queue, and everything ready to watch — with one-tap cleanup of watched titles. A season sheet downloads all, unwatched, or the next three episodes, and can keep the next episodes downloaded as you watch. A Live Activity tracks live progress on the Lock Screen and in the Dynamic Island — a WidgetKit extension compiled and signed on Arch Linux via xtool — while downloads run in the background, auto-resume from where they left off, and ping you when they finish. Offline playback runs through the same player — Skip Intro/Credits, resume, Picture-in-Picture, background audio, and lock screen controls all work with no network.\n\nKNOW YOUR VIEWING\nThe You tab shows your server and connection status, Watch History grouped by day, and a Year-in-Review dashboard: watch time, streaks, an activity heatmap, top shows, and a shareable card built from your own Plex history.\n\nGO DEEPER\nCast and crew, More Like This recommendations, subtitle and audio track selection, and adjustable playback speed. Hand a title off between your devices and find what you've watched in Spotlight.\n\nOPEN SOURCE, BUILT ON LINUX\nCrucible is free and open source under the GPL-3.0 license, with one third-party dependency, GRDB, for the statistics store — everything else is pure Apple frameworks. Read the code, file an issue, or build it yourself.",
+      "appStoreUrl": "https://apps.apple.com/us/app/crucible-for-plex/id6822066419",
+      "description": "Crucible is a native client for your Plex Media Server on iPhone and Apple TV. It is built to feel like part of the system: the system player, native menus and context menus, Liquid Glass on the newest software, and a library that opens exactly where you left off.\n\nPICK UP WHERE YOU LEFT OFF\nHome opens on a Resume hero, then Continue Watching, Up Next and Recently Added. Library grids have filters for Unwatched and In Progress, genre and sort, an A–Z scrubber and folder browsing for unindexed content. Search groups results by type with a Top Result.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits from Plex markers, audio and subtitle menus, adjustable speed, lock screen controls and Up Next that rolls the next episode as the credits start. On iPhone: Picture-in-Picture and background audio. Direct play when your device can handle the file, automatic transcoding when it can't.\n\nMADE FOR THE COUCH\nThe Apple TV app is built for the Siri Remote: a cinematic Home that follows focus, one tab per library, native context menus, search, and Top Shelf with Continue Watching and Up Next. Liquid Glass on tvOS 26.\n\nTAKE IT OFFLINE\nOn iPhone, download movies, seasons or single episodes in the quality you pick. Transfers continue in the background, stay on Wi-Fi by default and show a Live Activity on the Lock Screen and in the Dynamic Island. Offline playback uses the same player.\n\nKNOW YOUR VIEWING\nWatch History grouped by day, Statistics with streaks, heatmaps, binges and taste built from your own Plex history, and a Year in Review poster you can share.\n\nFREE TO USE, CRUCIBLE PRO TO GO FURTHER\nBrowsing, search and playback are free on iPhone and Apple TV, and so is the Statistics view for the last week. Crucible Pro unlocks unlimited offline downloads, the full Statistics screen with every range and library filter, the Year in Review poster and Top Shelf. Pay once for lifetime access, or subscribe yearly with a 14-day free trial. One purchase covers iPhone and Apple TV, and Family Sharing is on.\n\nTRY IT WITHOUT A SERVER\nNo Plex server yet? Choose Try the demo on the welcome screen to explore a fictional library with everything unlocked, guided by a short tour.\n\nPRIVATE BY DESIGN\nNo account with us, no ads, no analytics. Crucible talks only to plex.tv and the server you choose.\n\nOPEN SOURCE\nCrucible is free software under GPL-3.0: https://github.com/guitaripod/Crucible\n\nCrucible needs a Plex Media Server. Plex requires a Plex Pass or Remote Watch Pass to stream from your server away from home. Crucible is an independent app and is not made by, endorsed by or affiliated with Plex, Inc. Plex is a trademark of Plex, Inc.",
       "category": "Entertainment",
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "2.1.0",
-      "releaseDate": "2026-03-21T19:58:59Z",
-      "currentVersionReleaseDate": "2026-10-12T19:25:12Z",
+      "version": "2.1.1",
+      "releaseDate": "2026-10-15T07:00:00Z",
+      "currentVersionReleaseDate": "2026-10-16T03:11:53Z",
       "minimumOsVersion": "17.0",
-      "sellerName": "guitaripod",
+      "sellerName": "Midgar Oy",
       "icon": "/screenshots/crucible/icon.webp",
       "iconLocal": "/screenshots/crucible/icon.webp",
       "supportUrl": "https://github.com/guitaripod/Crucible/issues",
@@ -2928,7 +2928,20 @@
       "platforms": [
         "iPhone",
         "Apple TV"
-      ]
+      ],
+      "releaseNotes": "Fixes for Crucible Pro and search.\n\n- The Crucible Pro screen now lets you choose either plan: tapping the yearly plan selects it, with its free trial and renewal terms\n- Search keeps its results in step with the text: going back to a shorter search no longer swaps in the results of the longer one\n- An episode's top search result now names the episode as well as its show\n- In the demo, the Crucible Pro offer at the end of the tour waits until you are done typing instead of covering the search keyboard, and demo search lists the best match first",
+      "promotionalText": "Your library, native on iPhone and Apple TV: a Resume-first Home, the system player, offline downloads and a Year in Review. No server? Try the built-in demo.",
+      "genres": [
+        "Entertainment",
+        "Photo & Video"
+      ],
+      "contentRating": "4+",
+      "languages": [
+        "EN"
+      ],
+      "bundleId": "com.guitaripod.crucible",
+      "marketingUrl": "https://midgarcorp.cc/crucible",
+      "keywords": "media server,player,streaming,tv,library,downloads,statistics,skip intro,watch history,offline"
     },
     {
       "slug": "flaccy",
