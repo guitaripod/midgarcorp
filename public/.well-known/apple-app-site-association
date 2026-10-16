@@ -12,6 +12,14 @@
       },
       {
         "appIDs": [
+          "P4DQK6SRKR.com.guitaripod.crucible"
+        ],
+        "paths": [
+          "/crucible/*"
+        ]
+      },
+      {
+        "appIDs": [
           "P4DQK6SRKR.com.marcusziade.doublekick"
         ],
         "paths": [

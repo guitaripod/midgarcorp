@@ -16,6 +16,21 @@
       }
     },
     {
+      "slug": "crucible",
+      "name": "Crucible for Plex",
+      "stage": "maintain",
+      "asc_app_ids": [
+        "6822066419"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
       "slug": "double-kick",
       "name": "Double Kick: Menu Translator",
       "stage": "maintain",
