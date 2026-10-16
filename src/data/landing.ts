@@ -135,6 +135,7 @@ export interface LandingContent {
   bannerDevice?: string;
   hideAbout?: boolean;
   install?: Install;
+  installLast?: boolean;
   macAppStoreUrl?: string;
   heroImage?: HeroImage;
   installCta?: string;

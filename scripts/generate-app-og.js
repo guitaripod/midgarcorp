@@ -349,11 +349,13 @@ async function generate(app) {
   }
   ctx.font = `bold 21px ${MONO}`;
   ctx.fillStyle = GREEN;
-  const verb = app.openSource
-    ? 'build it from source on GitHub'
-    : app.status === 'review'
-      ? 'coming soon to the App Store'
-      : 'download on the App Store';
+  const onStore = app.trackId > 0 && app.status !== 'review';
+  const verb =
+    app.openSource && !onStore
+      ? 'build it from source on GitHub'
+      : app.status === 'review'
+        ? 'coming soon to the App Store'
+        : 'download on the App Store';
   ctx.fillText('$ ', padX, promptY);
   ctx.fillStyle = TEXT;
   ctx.fillText(verb, padX + ctx.measureText('$ ').width, promptY);

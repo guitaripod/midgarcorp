@@ -225,6 +225,17 @@ var appEnhancements = map[int]struct {
 		},
 		Platforms: []string{"iPhone"},
 	},
+	6822066419: {
+		ID:           "crucible",
+		Tagline:      "Plex, Done Right on iPhone and Apple TV",
+		PrimaryColor: "#F97316",
+		Features: []string{
+			"A Resume-first Home on iPhone and Apple TV",
+			"Skip Intro, offline downloads and a Year in Review",
+			"Open source, with a built-in demo to try first",
+		},
+		Platforms: []string{"iPhone", "Apple TV"},
+	},
 	6791660932: {
 		ID:           "tailscode",
 		Tagline:      "The Remote for Your Coding Agents",
