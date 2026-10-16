@@ -160,7 +160,7 @@ describe('linux data module', () => {
       'recview',
       'tailscode',
       'claude-bridge',
-      'mbench',
+      'blackwall',
       'tokenmaxxing',
       'imago',
     ]) {

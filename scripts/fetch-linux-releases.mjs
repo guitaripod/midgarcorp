@@ -51,7 +51,7 @@ const FORCE_INCLUDE = [
   'unrager',
   'claude-bridge',
   'omp-bridge',
-  'mbench',
+  'blackwall',
   'delegate',
   'tokenmaxxing',
   'recview',
@@ -131,16 +131,16 @@ const OVERRIDES = {
       },
     ],
   },
-  mbench: {
+  blackwall: {
     lang: 'python',
     form: 'cli',
     description:
-      'Ranks the models your own GPU runs: speed and answer quality for everything llama-swap serves, built into one leaderboard page.',
+      'Ranks open models on one NVIDIA RTX PRO 6000 Blackwell: speed and answer quality for everything llama-swap serves, built into one leaderboard you can follow.',
     install: [
       {
         channel: 'uv',
         label: 'uv',
-        command: 'uv tool install git+https://github.com/guitaripod/mbench',
+        command: 'uv tool install git+https://github.com/guitaripod/blackwall',
       },
     ],
   },
@@ -198,7 +198,7 @@ const SCOPES = {
 /** Page group for an app whose derived group is wrong. */
 const THEMES = {
   delegate: 'agents',
-  mbench: 'agents',
+  blackwall: 'agents',
   'omp-bridge': 'agents',
   tonight: 'tools',
 };

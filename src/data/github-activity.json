@@ -1,151 +1,11 @@
 {
-  "generatedAt": "2026-09-11T16:08:56.479Z",
+  "generatedAt": "2026-10-16T22:34:48.593Z",
   "login": "guitaripod",
   "profileUrl": "https://github.com/guitaripod",
   "windowDays": 168,
   "focusWindow": 7,
-  "lastPush": "2026-09-11T16:00:14Z",
+  "lastPush": "2026-10-16T22:34:28Z",
   "calendar": [
-    {
-      "date": "2026-03-28",
-      "count": 11
-    },
-    {
-      "date": "2026-03-29",
-      "count": 9
-    },
-    {
-      "date": "2026-03-30",
-      "count": 9
-    },
-    {
-      "date": "2026-03-31",
-      "count": 7
-    },
-    {
-      "date": "2026-04-01",
-      "count": 29
-    },
-    {
-      "date": "2026-04-02",
-      "count": 19
-    },
-    {
-      "date": "2026-04-03",
-      "count": 22
-    },
-    {
-      "date": "2026-04-04",
-      "count": 11
-    },
-    {
-      "date": "2026-04-05",
-      "count": 6
-    },
-    {
-      "date": "2026-04-06",
-      "count": 4
-    },
-    {
-      "date": "2026-04-07",
-      "count": 13
-    },
-    {
-      "date": "2026-04-08",
-      "count": 19
-    },
-    {
-      "date": "2026-04-09",
-      "count": 7
-    },
-    {
-      "date": "2026-04-10",
-      "count": 17
-    },
-    {
-      "date": "2026-04-11",
-      "count": 47
-    },
-    {
-      "date": "2026-04-12",
-      "count": 54
-    },
-    {
-      "date": "2026-04-13",
-      "count": 43
-    },
-    {
-      "date": "2026-04-14",
-      "count": 54
-    },
-    {
-      "date": "2026-04-15",
-      "count": 20
-    },
-    {
-      "date": "2026-04-16",
-      "count": 46
-    },
-    {
-      "date": "2026-04-17",
-      "count": 49
-    },
-    {
-      "date": "2026-04-18",
-      "count": 16
-    },
-    {
-      "date": "2026-04-19",
-      "count": 29
-    },
-    {
-      "date": "2026-04-20",
-      "count": 28
-    },
-    {
-      "date": "2026-04-21",
-      "count": 76
-    },
-    {
-      "date": "2026-04-22",
-      "count": 41
-    },
-    {
-      "date": "2026-04-23",
-      "count": 20
-    },
-    {
-      "date": "2026-04-24",
-      "count": 8
-    },
-    {
-      "date": "2026-04-25",
-      "count": 14
-    },
-    {
-      "date": "2026-04-26",
-      "count": 15
-    },
-    {
-      "date": "2026-04-27",
-      "count": 18
-    },
-    {
-      "date": "2026-04-28",
-      "count": 17
-    },
-    {
-      "date": "2026-04-29",
-      "count": 25
-    },
-    {
-      "date": "2026-04-30",
-      "count": 18
-    },
-    {
-      "date": "2026-05-01",
-      "count": 5
-    },
     {
       "date": "2026-05-02",
       "count": 8
@@ -184,7 +44,7 @@
     },
     {
       "date": "2026-05-11",
-      "count": 15
+      "count": 17
     },
     {
       "date": "2026-05-12",
@@ -252,15 +112,15 @@
     },
     {
       "date": "2026-05-28",
-      "count": 6
+      "count": 12
     },
     {
       "date": "2026-05-29",
-      "count": 8
+      "count": 11
     },
     {
       "date": "2026-05-30",
-      "count": 7
+      "count": 10
     },
     {
       "date": "2026-05-31",
@@ -280,11 +140,11 @@
     },
     {
       "date": "2026-06-04",
-      "count": 23
+      "count": 35
     },
     {
       "date": "2026-06-05",
-      "count": 10
+      "count": 12
     },
     {
       "date": "2026-06-06",
@@ -292,35 +152,35 @@
     },
     {
       "date": "2026-06-07",
-      "count": 45
+      "count": 59
     },
     {
       "date": "2026-06-08",
-      "count": 19
-    },
-    {
-      "date": "2026-06-09",
-      "count": 42
-    },
-    {
-      "date": "2026-06-10",
-      "count": 67
-    },
-    {
-      "date": "2026-06-11",
       "count": 22
     },
     {
+      "date": "2026-06-09",
+      "count": 52
+    },
+    {
+      "date": "2026-06-10",
+      "count": 84
+    },
+    {
+      "date": "2026-06-11",
+      "count": 29
+    },
+    {
       "date": "2026-06-12",
-      "count": 20
+      "count": 26
     },
     {
       "date": "2026-06-13",
-      "count": 38
+      "count": 46
     },
     {
       "date": "2026-06-14",
-      "count": 24
+      "count": 30
     },
     {
       "date": "2026-06-15",
@@ -328,23 +188,23 @@
     },
     {
       "date": "2026-06-16",
-      "count": 4
+      "count": 6
     },
     {
       "date": "2026-06-17",
-      "count": 9
+      "count": 11
     },
     {
       "date": "2026-06-18",
-      "count": 14
+      "count": 19
     },
     {
       "date": "2026-06-19",
-      "count": 40
+      "count": 44
     },
     {
       "date": "2026-06-20",
-      "count": 21
+      "count": 29
     },
     {
       "date": "2026-06-21",
@@ -352,31 +212,31 @@
     },
     {
       "date": "2026-06-22",
-      "count": 11
+      "count": 18
     },
     {
       "date": "2026-06-23",
-      "count": 7
+      "count": 12
     },
     {
       "date": "2026-06-24",
-      "count": 29
+      "count": 33
     },
     {
       "date": "2026-06-25",
-      "count": 17
+      "count": 21
     },
     {
       "date": "2026-06-26",
-      "count": 82
+      "count": 91
     },
     {
       "date": "2026-06-27",
-      "count": 73
+      "count": 93
     },
     {
       "date": "2026-06-28",
-      "count": 34
+      "count": 43
     },
     {
       "date": "2026-06-29",
@@ -388,79 +248,79 @@
     },
     {
       "date": "2026-07-01",
-      "count": 60
+      "count": 0
     },
     {
       "date": "2026-07-02",
-      "count": 35
+      "count": 42
     },
     {
       "date": "2026-07-03",
-      "count": 88
+      "count": 131
     },
     {
       "date": "2026-07-04",
-      "count": 30
+      "count": 54
     },
     {
       "date": "2026-07-05",
-      "count": 69
+      "count": 109
     },
     {
       "date": "2026-07-06",
-      "count": 11
+      "count": 29
     },
     {
       "date": "2026-07-07",
-      "count": 41
+      "count": 46
     },
     {
       "date": "2026-07-08",
-      "count": 28
+      "count": 25
     },
     {
       "date": "2026-07-09",
-      "count": 10
+      "count": 13
     },
     {
       "date": "2026-07-10",
-      "count": 95
+      "count": 124
     },
     {
       "date": "2026-07-11",
-      "count": 48
+      "count": 88
     },
     {
       "date": "2026-07-12",
-      "count": 8
+      "count": 13
     },
     {
       "date": "2026-07-13",
-      "count": 17
+      "count": 26
     },
     {
       "date": "2026-07-14",
-      "count": 10
+      "count": 14
     },
     {
       "date": "2026-07-15",
-      "count": 18
+      "count": 30
     },
     {
       "date": "2026-07-16",
-      "count": 68
+      "count": 72
     },
     {
       "date": "2026-07-17",
-      "count": 28
+      "count": 30
     },
     {
       "date": "2026-07-18",
-      "count": 28
+      "count": 30
     },
     {
       "date": "2026-07-19",
-      "count": 38
+      "count": 46
     },
     {
       "date": "2026-07-20",
@@ -468,11 +328,11 @@
     },
     {
       "date": "2026-07-21",
-      "count": 14
+      "count": 17
     },
     {
       "date": "2026-07-22",
-      "count": 17
+      "count": 13
     },
     {
       "date": "2026-07-23",
@@ -480,7 +340,7 @@
     },
     {
       "date": "2026-07-24",
-      "count": 31
+      "count": 29
     },
     {
       "date": "2026-07-25",
@@ -492,31 +352,31 @@
     },
     {
       "date": "2026-07-27",
-      "count": 30
+      "count": 35
     },
     {
       "date": "2026-07-28",
-      "count": 39
+      "count": 42
     },
     {
       "date": "2026-07-29",
-      "count": 105
+      "count": 125
     },
     {
       "date": "2026-07-30",
-      "count": 26
+      "count": 34
     },
     {
       "date": "2026-07-31",
-      "count": 15
+      "count": 12
     },
     {
       "date": "2026-08-01",
-      "count": 32
+      "count": 34
     },
     {
       "date": "2026-08-02",
-      "count": 69
+      "count": 78
     },
     {
       "date": "2026-08-03",
@@ -528,7 +388,7 @@
     },
     {
       "date": "2026-08-05",
-      "count": 8
+      "count": 14
     },
     {
       "date": "2026-08-06",
@@ -540,27 +400,27 @@
     },
     {
       "date": "2026-08-08",
-      "count": 56
+      "count": 65
     },
     {
       "date": "2026-08-09",
-      "count": 52
+      "count": 54
     },
     {
       "date": "2026-08-10",
-      "count": 33
+      "count": 36
     },
     {
       "date": "2026-08-11",
-      "count": 53
+      "count": 60
     },
     {
       "date": "2026-08-12",
-      "count": 26
+      "count": 30
     },
     {
       "date": "2026-08-13",
-      "count": 24
+      "count": 28
     },
     {
       "date": "2026-08-14",
@@ -580,7 +440,7 @@
     },
     {
       "date": "2026-08-18",
-      "count": 19
+      "count": 20
     },
     {
       "date": "2026-08-19",
@@ -592,19 +452,19 @@
     },
     {
       "date": "2026-08-21",
-      "count": 42
+      "count": 50
     },
     {
       "date": "2026-08-22",
-      "count": 19
+      "count": 51
     },
     {
       "date": "2026-08-23",
-      "count": 66
+      "count": 67
     },
     {
       "date": "2026-08-24",
-      "count": 12
+      "count": 15
     },
     {
       "date": "2026-08-25",
@@ -616,15 +476,15 @@
     },
     {
       "date": "2026-08-27",
-      "count": 18
+      "count": 19
     },
     {
       "date": "2026-08-28",
-      "count": 31
+      "count": 34
     },
     {
       "date": "2026-08-29",
-      "count": 37
+      "count": 58
     },
     {
       "date": "2026-08-30",
@@ -640,7 +500,7 @@
     },
     {
       "date": "2026-09-02",
-      "count": 12
+      "count": 13
     },
     {
       "date": "2026-09-03",
@@ -648,15 +508,15 @@
     },
     {
       "date": "2026-09-04",
-      "count": 41
+      "count": 53
     },
     {
       "date": "2026-09-05",
-      "count": 35
+      "count": 37
     },
     {
       "date": "2026-09-06",
-      "count": 12
+      "count": 13
     },
     {
       "date": "2026-09-07",
@@ -664,11 +524,11 @@
     },
     {
       "date": "2026-09-08",
-      "count": 14
+      "count": 38
     },
     {
       "date": "2026-09-09",
-      "count": 11
+      "count": 14
     },
     {
       "date": "2026-09-10",
@@ -676,18 +536,158 @@
     },
     {
       "date": "2026-09-11",
+      "count": 53
+    },
+    {
+      "date": "2026-09-12",
+      "count": 16
+    },
+    {
+      "date": "2026-09-13",
+      "count": 7
+    },
+    {
+      "date": "2026-09-14",
+      "count": 34
+    },
+    {
+      "date": "2026-09-15",
+      "count": 27
+    },
+    {
+      "date": "2026-09-16",
+      "count": 27
+    },
+    {
+      "date": "2026-09-17",
+      "count": 10
+    },
+    {
+      "date": "2026-09-18",
+      "count": 7
+    },
+    {
+      "date": "2026-09-19",
+      "count": 20
+    },
+    {
+      "date": "2026-09-20",
       "count": 30
+    },
+    {
+      "date": "2026-09-21",
+      "count": 17
+    },
+    {
+      "date": "2026-09-22",
+      "count": 12
+    },
+    {
+      "date": "2026-09-23",
+      "count": 58
+    },
+    {
+      "date": "2026-09-24",
+      "count": 80
+    },
+    {
+      "date": "2026-09-25",
+      "count": 118
+    },
+    {
+      "date": "2026-09-26",
+      "count": 40
+    },
+    {
+      "date": "2026-09-27",
+      "count": 44
+    },
+    {
+      "date": "2026-09-28",
+      "count": 2
+    },
+    {
+      "date": "2026-09-29",
+      "count": 3
+    },
+    {
+      "date": "2026-09-30",
+      "count": 7
+    },
+    {
+      "date": "2026-10-01",
+      "count": 5
+    },
+    {
+      "date": "2026-10-02",
+      "count": 158
+    },
+    {
+      "date": "2026-10-03",
+      "count": 74
+    },
+    {
+      "date": "2026-10-04",
+      "count": 27
+    },
+    {
+      "date": "2026-10-05",
+      "count": 142
+    },
+    {
+      "date": "2026-10-06",
+      "count": 36
+    },
+    {
+      "date": "2026-10-07",
+      "count": 0
+    },
+    {
+      "date": "2026-10-08",
+      "count": 8
+    },
+    {
+      "date": "2026-10-09",
+      "count": 78
+    },
+    {
+      "date": "2026-10-10",
+      "count": 159
+    },
+    {
+      "date": "2026-10-11",
+      "count": 585
+    },
+    {
+      "date": "2026-10-12",
+      "count": 348
+    },
+    {
+      "date": "2026-10-13",
+      "count": 147
+    },
+    {
+      "date": "2026-10-14",
+      "count": 61
+    },
+    {
+      "date": "2026-10-15",
+      "count": 12
+    },
+    {
+      "date": "2026-10-16",
+      "count": 689
     }
   ],
   "totals": {
-    "contributions7d": 112,
-    "contributions30d": 612,
-    "contributionsWindow": 3834,
-    "contributionsYear": 6076,
-    "activeRepos7d": 7,
-    "activeRepos30d": 19,
-    "streak": 88,
-    "longestStreak": 88
+    "contributions7d": 2001,
+    "contributions30d": 2977,
+    "contributionsWindow": 6678,
+    "contributionsYear": 9481,
+    "activeRepos7d": 22,
+    "activeRepos30d": 29,
+    "streak": 9,
+    "longestStreak": 97
   },
   "repos": [
     {
@@ -700,202 +700,154 @@
         "name": "Swift",
         "color": "#F05138"
       },
-      "stars": 8,
+      "stars": 14,
       "isFork": false,
-      "pushedAt": "2026-09-11T12:01:30Z",
-      "commits7d": 61,
-      "commits30d": 324,
-      "commitsWindow": 707,
+      "pushedAt": "2026-10-16T21:40:36Z",
+      "commits7d": 273,
+      "commits30d": 488,
+      "commitsWindow": 1217,
       "spark": [
-        23,
+        2,
+        17,
+        11,
+        6,
         13,
-        7,
+        32,
+        19,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        6,
         11,
-        3,
-        3,
-        20,
-        3,
-        58,
         9,
-        7,
+        47,
+        33,
         0,
         2,
-        20,
-        5,
-        5,
-        5,
-        2,
-        6,
-        6,
+        4,
+        96,
+        59,
+        21,
+        10,
         3,
-        18,
-        5,
-        5,
-        11,
-        8,
-        5,
-        9
+        0,
+        84
       ],
       "release": {
-        "tag": "v1.43",
-        "url": "https://github.com/guitaripod/Tailscode/releases/tag/v1.43",
-        "publishedAt": "2026-09-11T12:25:59Z",
+        "tag": "v1.78",
+        "url": "https://github.com/guitaripod/Tailscode/releases/tag/v1.78",
+        "publishedAt": "2026-10-16T11:06:41Z",
         "prerelease": false
       }
     },
     {
-      "name": "claude-bridge",
-      "fullName": "guitaripod/claude-bridge",
-      "url": "https://github.com/guitaripod/claude-bridge",
-      "homepageUrl": null,
-      "description": "Claude Code subscription as structured HTTP sessions ",
+      "name": "Crucible",
+      "fullName": "guitaripod/Crucible",
+      "url": "https://github.com/guitaripod/Crucible",
+      "homepageUrl": "https://midgarcorp.cc/crucible/",
+      "description": "A personal Plex client for iOS, built entirely on Arch Linux.",
       "language": {
         "name": "Swift",
         "color": "#F05138"
       },
-      "stars": 1,
+      "stars": 2,
       "isFork": false,
-      "pushedAt": "2026-09-11T11:58:49Z",
-      "commits7d": 11,
-      "commits30d": 33,
-      "commitsWindow": 124,
+      "pushedAt": "2026-10-16T12:34:34Z",
+      "commits7d": 210,
+      "commits30d": 266,
+      "commitsWindow": 325,
       "spark": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         1,
-        1,
         0,
         0,
+        0,
+        0,
+        53,
+        0,
+        0,
+        0,
+        0,
+        0,
+        150,
+        31,
+        17,
         2,
         0,
-        1,
-        4,
-        5,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        2,
-        0,
-        0,
-        0,
-        2,
-        2,
-        4,
-        0,
-        2,
-        2,
-        0,
-        1
+        10
       ],
       "release": {
-        "tag": "1.5.3",
-        "url": "https://github.com/guitaripod/claude-bridge/releases/tag/1.5.3",
-        "publishedAt": "2026-08-19T09:53:40Z",
+        "tag": "2.1.0",
+        "url": "https://github.com/guitaripod/Crucible/releases/tag/2.1.0",
+        "publishedAt": "2026-10-12T19:25:12Z",
         "prerelease": false
       }
     },
     {
-      "name": "CodingAgentKit",
-      "fullName": "guitaripod/CodingAgentKit",
-      "url": "https://github.com/guitaripod/CodingAgentKit",
-      "homepageUrl": null,
-      "description": "Swift package for driving opencode and Claude Code over HTTP",
+      "name": "flaccy",
+      "fullName": "guitaripod/flaccy",
+      "url": "https://github.com/guitaripod/flaccy",
+      "homepageUrl": "https://midgarcorp.cc/flaccy",
+      "description": "A multi-platform music player",
       "language": {
         "name": "Swift",
         "color": "#F05138"
       },
-      "stars": 0,
+      "stars": 5,
       "isFork": false,
-      "pushedAt": "2026-09-11T11:58:44Z",
-      "commits7d": 11,
-      "commits30d": 46,
-      "commitsWindow": 157,
+      "pushedAt": "2026-10-16T19:30:58Z",
+      "commits7d": 52,
+      "commits30d": 77,
+      "commitsWindow": 300,
       "spark": [
+        0,
+        2,
+        0,
+        0,
+        4,
+        0,
+        5,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
         4,
         1,
         1,
-        2,
         6,
-        0,
-        1,
-        0,
+        6,
+        10,
         2,
-        0,
-        2,
-        0,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        3,
-        5,
-        3,
-        0,
-        1,
-        1,
-        0,
-        1
+        26
       ],
       "release": {
-        "tag": "0.27.0",
-        "url": "https://github.com/guitaripod/CodingAgentKit/releases/tag/0.27.0",
-        "publishedAt": "2026-09-08T11:24:59Z",
+        "tag": "linux-v1.18.1",
+        "url": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.18.1",
+        "publishedAt": "2026-10-14T22:11:12Z",
         "prerelease": false
       }
-    },
-    {
-      "name": "mbench",
-      "fullName": "guitaripod/mbench",
-      "url": "https://github.com/guitaripod/mbench",
-      "homepageUrl": null,
-      "description": "Benchmark the local LLMs behind llama-swap and rank them on one leaderboard",
-      "language": {
-        "name": "Python",
-        "color": "#3572A5"
-      },
-      "stars": 0,
-      "isFork": false,
-      "pushedAt": "2026-09-11T08:17:06Z",
-      "commits7d": 7,
-      "commits30d": 7,
-      "commitsWindow": 7,
-      "spark": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        7
-      ],
-      "release": null
     },
     {
       "name": "midgarcorp",
@@ -909,46 +861,46 @@
       },
       "stars": 0,
       "isFork": false,
-      "pushedAt": "2026-09-11T16:00:14Z",
-      "commits7d": 5,
-      "commits30d": 21,
-      "commitsWindow": 167,
+      "pushedAt": "2026-10-16T19:57:17Z",
+      "commits7d": 47,
+      "commits30d": 71,
+      "commitsWindow": 239,
       "spark": [
         0,
         0,
-        1,
-        0,
-        0,
-        0,
-        2,
-        4,
-        1,
         2,
         0,
         0,
-        0,
+        1,
+        2,
+        1,
         3,
+        0,
+        0,
+        1,
+        1,
+        2,
+        0,
+        0,
+        11,
+        0,
+        0,
+        0,
+        0,
+        11,
+        5,
         3,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        5
+        7,
+        10,
+        1,
+        10
       ],
       "release": null
     },
     {
-      "name": "omp-bridge",
-      "fullName": "guitaripod/omp-bridge",
-      "url": "https://github.com/guitaripod/omp-bridge",
+      "name": "MidgarKit",
+      "fullName": "guitaripod/MidgarKit",
+      "url": "https://github.com/guitaripod/MidgarKit",
       "homepageUrl": null,
       "description": "",
       "language": {
@@ -957,10 +909,10 @@
       },
       "stars": 0,
       "isFork": false,
-      "pushedAt": "2026-09-05T18:55:06Z",
-      "commits7d": 5,
-      "commits30d": 35,
-      "commitsWindow": 35,
+      "pushedAt": "2026-10-16T09:51:00Z",
+      "commits7d": 23,
+      "commits30d": 23,
+      "commitsWindow": 28,
       "spark": [
         0,
         0,
@@ -972,48 +924,96 @@
         0,
         0,
         0,
-        7,
-        0,
-        12,
-        5,
-        0,
-        0,
-        0,
-        0,
-        3,
-        1,
-        2,
-        5,
         0,
         0,
         0,
         0,
         0,
-        0
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        19,
+        0,
+        0,
+        4
       ],
       "release": {
-        "tag": "v0.5.1",
-        "url": "https://github.com/guitaripod/omp-bridge/releases/tag/v0.5.1",
-        "publishedAt": "2026-09-04T16:15:43Z",
+        "tag": "3.1.2",
+        "url": "https://github.com/guitaripod/MidgarKit/releases/tag/3.1.2",
+        "publishedAt": "2026-10-13T20:30:54Z",
         "prerelease": false
       }
     },
     {
-      "name": "delegate",
-      "fullName": "guitaripod/delegate",
-      "url": "https://github.com/guitaripod/delegate",
+      "name": "voice-bridge",
+      "fullName": "guitaripod/voice-bridge",
+      "url": "https://github.com/guitaripod/voice-bridge",
       "homepageUrl": null,
-      "description": "Tiered task dispatcher: packets in, verified patches out",
+      "description": "Voice gateway for Tailscode: talk to your coding agent over your own tailnet, with the voice model running on your own NVIDIA GPU",
+      "language": {
+        "name": "Swift",
+        "color": "#F05138"
+      },
+      "stars": 0,
+      "isFork": false,
+      "pushedAt": "2026-10-16T17:13:09Z",
+      "commits7d": 21,
+      "commits30d": 21,
+      "commitsWindow": 21,
+      "spark": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        21
+      ],
+      "release": null
+    },
+    {
+      "name": "gpulens",
+      "fullName": "guitaripod/gpulens",
+      "url": "https://github.com/guitaripod/gpulens",
+      "homepageUrl": null,
+      "description": "GPU monitor, in plain language. NVIDIA Linux native TUI with an optional local-LLM helper.",
       "language": {
         "name": "Rust",
         "color": "#dea584"
       },
       "stars": 0,
       "isFork": false,
-      "pushedAt": "2026-09-05T20:32:44Z",
-      "commits7d": 2,
-      "commits30d": 8,
-      "commitsWindow": 8,
+      "pushedAt": "2026-10-16T21:02:16Z",
+      "commits7d": 20,
+      "commits30d": 20,
+      "commitsWindow": 20,
       "spark": [
         0,
         0,
@@ -1035,14 +1035,67 @@
         0,
         0,
         0,
-        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        20
+      ],
+      "release": {
+        "tag": "0.1.0",
+        "url": "https://github.com/guitaripod/gpulens/releases/tag/0.1.0",
+        "publishedAt": "2026-10-16T21:03:40Z",
+        "prerelease": false
+      }
+    },
+    {
+      "name": "mako",
+      "fullName": "guitaripod/mako",
+      "url": "https://github.com/guitaripod/mako",
+      "homepageUrl": null,
+      "description": "Midgar's shared multi-tenant AI-credits backend",
+      "language": {
+        "name": "Rust",
+        "color": "#dea584"
+      },
+      "stars": 0,
+      "isFork": false,
+      "pushedAt": "2026-10-16T20:46:43Z",
+      "commits7d": 20,
+      "commits30d": 30,
+      "commitsWindow": 81,
+      "spark": [
+        0,
+        0,
+        0,
+        0,
+        0,
         2,
+        2,
+        6,
         0,
         0,
         0,
         0,
         0,
-        0
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        13,
+        0,
+        0,
+        0,
+        0,
+        7
       ],
       "release": null
     }
@@ -1051,26 +1104,20 @@
     {
       "name": "Swift",
       "color": "#F05138",
-      "commits": 88,
-      "share": 0.8627450980392157
-    },
-    {
-      "name": "Python",
-      "color": "#3572A5",
-      "commits": 7,
-      "share": 0.06862745098039216
+      "commits": 579,
+      "share": 0.8693693693693694
     },
     {
       "name": "Astro",
       "color": "#ff5a03",
-      "commits": 5,
-      "share": 0.049019607843137254
+      "commits": 47,
+      "share": 0.07057057057057058
     },
     {
       "name": "Rust",
       "color": "#dea584",
-      "commits": 2,
-      "share": 0.0196078431372549
+      "commits": 40,
+      "share": 0.06006006006006006
     }
   ]
 }
