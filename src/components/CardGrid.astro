@@ -1,0 +1,14 @@
+---
+export interface Props {
+  md?: 1 | 2 | 3;
+  lg?: 1 | 2 | 3;
+}
+
+const { md = 2, lg = 3 } = Astro.props;
+---
+
+<div class="card-grid">
+  <div class="card-grid__track" style={`--cols-md:${md};--cols-lg:${lg}`}>
+    <slot />
+  </div>
+</div>

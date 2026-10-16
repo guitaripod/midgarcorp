@@ -183,6 +183,56 @@
   }
 }
 
+:root {
+  --shell-max: 72rem;
+  --shell-gutter: clamp(1rem, 0.4rem + 2.2vw, 2.5rem);
+  --flow-gap: clamp(3rem, 2rem + 3vw, 5rem);
+  --card-gap: 1rem;
+}
+
+body[data-shell='wide'] {
+  --shell-max: 96rem;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding-inline: var(--shell-gutter);
+}
+
+.flow > * + * {
+  margin-top: var(--flow-gap);
+}
+
+.defer-paint {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 40rem;
+}
+
+.card-grid {
+  container: card-grid / inline-size;
+}
+
+.card-grid__track {
+  display: grid;
+  grid-template-columns: repeat(var(--cols-sm, 1), minmax(0, 1fr));
+  gap: var(--card-gap);
+}
+
+@container card-grid (min-width: 40rem) {
+  .card-grid__track {
+    --card-gap: 1.5rem;
+    grid-template-columns: repeat(var(--cols-md, 1), minmax(0, 1fr));
+  }
+}
+
+@container card-grid (min-width: 69rem) {
+  .card-grid__track {
+    grid-template-columns: repeat(var(--cols-lg, 1), minmax(0, 1fr));
+  }
+}
+
 .cursor-blink::after {
   content: '▌';
   margin-left: 0.08em;
@@ -216,7 +266,7 @@
 }
 
 .act-heatmap {
-  max-height: 7.5rem;
+  max-height: 10rem;
 }
 
 .act-hm-label {

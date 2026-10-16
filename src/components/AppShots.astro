@@ -36,6 +36,7 @@ const hiddenOnPhone = (index: number): boolean =>
 
 <div
   class={`app-shots relative overflow-hidden ${cropHeight[size][orientation]}`}
+  data-orientation={orientation}
   style={`--accent: ${accent}`}
 >
   <div class="relative z-10 flex h-full items-start justify-center gap-2 sm:gap-3 pt-4">

@@ -5,6 +5,8 @@ import OpenSourceCard from '@components/OpenSourceCard.astro';
 import LinuxShowcaseCard from '@components/LinuxShowcaseCard.astro';
 import MatrixRain from '@components/MatrixRain.astro';
 import ActivityBoard from '@components/ActivityBoard.astro';
+import CardGrid from '@components/CardGrid.astro';
+import SectionHead from '@components/SectionHead.astro';
 import { getCollection } from 'astro:content';
 import { calculateReadingTime } from '@utils/reading-time';
 import appsData from '../data/apps.json';
@@ -51,6 +53,7 @@ const engagements = careerData.entries.slice(0, 3);
 ---
 
 <BaseLayout
+  width="wide"
   title="Midgar Corp — guitaripod"
   description={`Independent engineer. Seven years shipping production iOS, backend, and AI for category-leading consumer products. ${appsData.apps.length} apps live on the App Store, ${ossStats.repos} open-source projects with ${ossStats.commits.toLocaleString('en-US')} commits.`}
 >
@@ -77,230 +80,191 @@ const engagements = careerData.entries.slice(0, 3);
     </div>
   </section>
 
-  <!-- Who -->
-  <section id="whoami" class="mb-16 scroll-mt-20">
-    <div
-      class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 border-t border-paper-border dark:border-term-border pt-8"
-    >
-      <div class="max-w-2xl">
-        <p class="prompt-line mb-3">whoami --long</p>
-        <h2
-          class="text-2xl sm:text-4xl font-bold tracking-tight leading-tight text-paper-text dark:text-term-text mb-3"
-        >
-          Engineer who <span class="phosphor">ships.</span>
-        </h2>
-        <p class="text-sm sm:text-base text-paper-muted dark:text-term-muted leading-relaxed">
-          Seven years shipping production software for category-leading consumer products. Now
-          building my own, for Linux, Apple, the web and the terminal.
-        </p>
-      </div>
+  <div class="flow">
+    <!-- Who -->
+    <section id="whoami" class="scroll-mt-20">
+      <div
+        class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 border-t border-paper-border dark:border-term-border pt-8"
+      >
+        <div class="max-w-2xl">
+          <p class="prompt-line mb-3">whoami --long</p>
+          <h2
+            class="text-2xl sm:text-4xl font-bold tracking-tight leading-tight text-paper-text dark:text-term-text mb-3"
+          >
+            Engineer who <span class="phosphor">ships.</span>
+          </h2>
+          <p class="text-sm sm:text-base text-paper-muted dark:text-term-muted leading-relaxed">
+            Seven years shipping production software for category-leading consumer products. Now
+            building my own, for Linux, Apple, the web and the terminal.
+          </p>
+        </div>
 
-      <div class="flex flex-col items-start lg:items-end gap-4 flex-shrink-0">
-        <p
-          class="inline-flex items-center gap-2 text-xs text-paper-greendim dark:text-term-greendim"
-        >
-          <span class="relative flex w-1.5 h-1.5">
-            <span
-              class="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-paper-green dark:bg-term-green opacity-75"
-            ></span>
-            <span
-              class="relative inline-flex rounded-full h-1.5 w-1.5 bg-paper-green dark:bg-term-green"
-            ></span>
-          </span>
-          STATUS: available — open to new engagements
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a
-            href="/services"
-            class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+        <div class="flex flex-col items-start lg:items-end gap-4 flex-shrink-0">
+          <p
+            class="inline-flex items-center gap-2 text-xs text-paper-greendim dark:text-term-greendim"
           >
-            ./work-with-me
-          </a>
-          <a
-            href="/apps"
-            class="inline-flex items-center gap-2 px-5 py-2.5 border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text rounded-sm text-sm font-semibold hover:border-paper-green dark:hover:border-term-green hover:text-paper-green dark:hover:text-term-green transition-colors"
-          >
-            ./see-the-work
-          </a>
+            <span class="relative flex w-1.5 h-1.5">
+              <span
+                class="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-paper-green dark:bg-term-green opacity-75"
+              ></span>
+              <span
+                class="relative inline-flex rounded-full h-1.5 w-1.5 bg-paper-green dark:bg-term-green"
+              ></span>
+            </span>
+            STATUS: available — open to new engagements
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/services"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+            >
+              ./work-with-me
+            </a>
+            <a
+              href="/apps"
+              class="inline-flex items-center gap-2 px-5 py-2.5 border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text rounded-sm text-sm font-semibold hover:border-paper-green dark:hover:border-term-green hover:text-paper-green dark:hover:text-term-green transition-colors"
+            >
+              ./see-the-work
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Stats -->
-  <section class="mb-16 -mt-8">
-    <div class="term-frame p-5 sm:p-6">
-      <p class="prompt-line mb-4">midgar --stats</p>
-      <dl class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-4">
-        {
-          stats.map((stat) => (
-            <div>
-              <dd class="text-2xl sm:text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
-                {stat.value}
-              </dd>
-              <dt class="text-xs text-paper-muted dark:text-term-muted mt-1">{stat.key}</dt>
-            </div>
-          ))
-        }
-      </dl>
-    </div>
-  </section>
-
-  <!-- Selected Engagements -->
-  <section class="mb-16">
-    <a href="/services#engagements" class="group block term-frame term-frame-hover p-5 sm:p-6">
-      <div class="flex items-center justify-between mb-5">
-        <p class="prompt-line">git log --employers --oneline</p>
-        <span class="text-xs text-paper-greendim dark:text-term-greendim"> full timeline → </span>
+      <div class="term-frame p-5 sm:p-6 mt-10">
+        <p class="prompt-line mb-4">midgar --stats</p>
+        <dl class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-4">
+          {
+            stats.map((stat) => (
+              <div class="flex flex-col-reverse justify-end">
+                <dt class="text-xs text-paper-muted dark:text-term-muted mt-1">{stat.key}</dt>
+                <dd class="text-2xl sm:text-3xl font-bold tracking-tight text-paper-text dark:text-term-text">
+                  {stat.value}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
       </div>
+    </section>
 
-      <ul class="space-y-3">
+    <!-- Selected Engagements -->
+    <section>
+      <a href="/services#engagements" class="group block term-frame term-frame-hover p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-5">
+          <p class="prompt-line">git log --employers --oneline</p>
+          <span class="text-xs text-paper-greendim dark:text-term-greendim"> full timeline → </span>
+        </div>
+
+        <ul class="space-y-3">
+          {
+            engagements.map((entry) => (
+              <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 text-sm">
+                <span class="text-paper-amber dark:text-term-amber whitespace-nowrap sm:w-44 shrink-0">
+                  {entry.dateRange.replace(' — ', '→')}
+                </span>
+                <span class="text-paper-text dark:text-term-text font-semibold">
+                  {entry.headline}
+                </span>
+                <span class="text-paper-muted dark:text-term-muted">{entry.role}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <p class="mt-5 text-sm text-paper-muted dark:text-term-muted leading-relaxed">
+          From a multi-billion-dollar wearable health platform to a NASDAQ-listed cybersecurity
+          company to an AI-native health startup — engineering services shipped to category-leading
+          consumer products.
+        </p>
+      </a>
+    </section>
+
+    <!-- Featured Apps -->
+    <section class="defer-paint">
+      <SectionHead path="~/apps" href="/apps" cta="ls apps/">most worked-on</SectionHead>
+      <CardGrid md={1} lg={3}>
         {
-          engagements.map((entry) => (
-            <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 text-sm">
-              <span class="text-paper-amber dark:text-term-amber whitespace-nowrap sm:w-44 shrink-0">
-                {entry.dateRange.replace(' — ', '→')}
-              </span>
-              <span class="text-paper-text dark:text-term-text font-semibold">
-                {entry.headline}
-              </span>
-              <span class="text-paper-muted dark:text-term-muted">{entry.role}</span>
-            </li>
+          featuredApps.map((entry) => (
+            <AppCard
+              app={entry.app}
+              landingHref={entry.landingHref}
+              openSource={entry.openSource}
+              githubUrl={entry.githubUrl}
+              shots={entry.shots}
+              device={entry.device}
+              commits={entry.work?.commitCount}
+              version={entry.version}
+            />
           ))
         }
-      </ul>
+      </CardGrid>
+    </section>
 
-      <p class="mt-5 text-sm text-paper-muted dark:text-term-muted leading-relaxed">
-        From a multi-billion-dollar wearable health platform to a NASDAQ-listed cybersecurity
-        company to an AI-native health startup — engineering services shipped to category-leading
-        consumer products.
-      </p>
-    </a>
-  </section>
-
-  <!-- Featured Apps -->
-  <section class="mb-16">
-    <div class="flex items-baseline justify-between mb-6">
-      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
-        <span class="text-paper-green dark:text-term-green">~/apps</span> · most worked-on
-      </h2>
-      <a
-        href="/apps"
-        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-      >
-        ls apps/ →
-      </a>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      {
-        featuredApps.map((entry) => (
-          <AppCard
-            app={entry.app}
-            landingHref={entry.landingHref}
-            openSource={entry.openSource}
-            githubUrl={entry.githubUrl}
-            shots={entry.shots}
-            device={entry.device}
-            commits={entry.work?.commitCount}
-            version={entry.version}
-          />
-        ))
-      }
-    </div>
-  </section>
-
-  <!-- Linux Apps -->
-  <section class="mb-16">
-    <div class="flex items-baseline justify-between mb-6">
-      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
-        <span class="text-paper-green dark:text-term-green">~/linux</span> · apps &amp; tools ·
+    <!-- Linux Apps -->
+    <section class="defer-paint">
+      <SectionHead path="~/linux" href="/linux" cta="ls linux/">
+        apps &amp; tools ·
         <span class="text-paper-amber dark:text-term-amber"
           >{linuxStats.commitCount.toLocaleString('en-US')} commits</span
         >
-      </h2>
-      <a
-        href="/linux"
-        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-      >
-        ls linux/ →
-      </a>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      {featuredLinux.map((app) => <LinuxShowcaseCard app={app} now={LINUX_NOW} />)}
-    </div>
-  </section>
+      </SectionHead>
+      <CardGrid md={1} lg={3}>
+        {featuredLinux.map((app) => <LinuxShowcaseCard app={app} now={LINUX_NOW} />)}
+      </CardGrid>
+    </section>
 
-  <!-- Open Source -->
-  <section class="mb-16">
-    <div class="flex items-baseline justify-between mb-6">
-      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
-        <span class="text-paper-green dark:text-term-green">~/oss</span> · open source, by work
-      </h2>
-      <a
-        href="/opensource"
-        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-      >
-        ls oss/ →
-      </a>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      {
-        featuredOpenSource.map((project) => (
-          <OpenSourceCard
-            project={project}
-            landingSlug={landingSlugs.includes(project.id) ? project.id : undefined}
-          />
-        ))
-      }
-    </div>
-  </section>
+    <!-- Open Source -->
+    <section class="defer-paint">
+      <SectionHead path="~/oss" href="/opensource" cta="ls oss/">open source, by work</SectionHead>
+      <CardGrid md={2} lg={3}>
+        {
+          featuredOpenSource.map((project) => (
+            <OpenSourceCard
+              project={project}
+              landingSlug={landingSlugs.includes(project.id) ? project.id : undefined}
+            />
+          ))
+        }
+      </CardGrid>
+    </section>
 
-  <!-- Recent Posts -->
-  <section class="mb-16">
-    <div class="flex items-baseline justify-between mb-6">
-      <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
-        <span class="text-paper-green dark:text-term-green">~/blog</span> · recent writing
-      </h2>
-      <a
-        href="/archive"
-        class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-      >
-        ls blog/ →
-      </a>
-    </div>
+    <!-- Recent Posts -->
+    <section class="defer-paint">
+      <SectionHead path="~/blog" href="/archive" cta="ls blog/">recent writing</SectionHead>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-      {
-        postsWithReadingTime.map((post) => {
-          const formattedDate = post.data.pubDate.toISOString().slice(0, 10);
+      <CardGrid md={2} lg={2}>
+        {
+          postsWithReadingTime.map((post) => {
+            const formattedDate = post.data.pubDate.toISOString().slice(0, 10);
 
-          return (
-            <article class="group term-frame term-frame-hover p-4 sm:p-5">
-              <a href={`/blog/${post.slug}`} class="block">
-                <h3 class="text-base sm:text-lg font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors mb-2">
-                  {post.data.title}
-                </h3>
-                <p class="text-sm text-paper-muted dark:text-term-muted mb-3 line-clamp-2 font-sans">
-                  {post.data.description}
-                </p>
-                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-paper-faint dark:text-term-faint">
-                  <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
-                  <span>{post.readingTime} min</span>
-                  {post.data.tags.length > 0 && (
-                    <span class="flex flex-wrap gap-2">
-                      {post.data.tags.slice(0, 3).map((tag) => (
-                        <span class="text-paper-greendim dark:text-term-greendim">#{tag}</span>
-                      ))}
-                    </span>
-                  )}
-                </div>
-              </a>
-            </article>
-          );
-        })
-      }
-    </div>
-  </section>
+            return (
+              <article class="group term-frame term-frame-hover p-4 sm:p-5">
+                <a href={`/blog/${post.slug}`} class="block">
+                  <h3 class="text-base sm:text-lg font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors mb-2">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-sm text-paper-muted dark:text-term-muted mb-3 line-clamp-2 font-sans">
+                    {post.data.description}
+                  </p>
+                  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-paper-faint dark:text-term-faint">
+                    <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+                    <span>{post.readingTime} min</span>
+                    {post.data.tags.length > 0 && (
+                      <span class="flex flex-wrap gap-2">
+                        {post.data.tags.slice(0, 3).map((tag) => (
+                          <span class="text-paper-greendim dark:text-term-greendim">#{tag}</span>
+                        ))}
+                      </span>
+                    )}
+                  </div>
+                </a>
+              </article>
+            );
+          })
+        }
+      </CardGrid>
+    </section>
+  </div>
 </BaseLayout>
 
 <style>
