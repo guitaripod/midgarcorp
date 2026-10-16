@@ -1,4 +1,4 @@
-import portfolio from '../../../../registry/generated/portfolio.json';
+import portfolio from '../generated/portfolio.json';
 
 export const LEGAL_DOCUMENTS = ['privacy', 'terms'] as const;
 

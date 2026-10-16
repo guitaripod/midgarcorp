@@ -1,0 +1,245 @@
+{
+  "apps": [
+    {
+      "slug": "app-of-the-dead",
+      "name": "App of the Dead: Religions",
+      "stage": "grow",
+      "asc_app_ids": [
+        "6746733380"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "double-kick",
+      "name": "Double Kick: Menu Translator",
+      "stage": "maintain",
+      "asc_app_ids": [
+        "6736581403"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "dream-eater",
+      "name": "Dream Eater: AI Dream Decoder",
+      "stage": "maintain",
+      "asc_app_ids": [
+        "6661019277"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "embr",
+      "name": "Embr — Live Streams",
+      "stage": "grow",
+      "asc_app_ids": [
+        "6784940198"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "flaccy",
+      "name": "Flaccy: Lossless FLAC Player",
+      "stage": "core",
+      "asc_app_ids": [
+        "6787493695",
+        "6789594504"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "helia",
+      "name": "Helia: UV Index & Sun Safety",
+      "stage": "grow",
+      "asc_app_ids": [
+        "6785542220"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "living-dex",
+      "name": "Living Dex: Animal Identifier",
+      "stage": "decide",
+      "asc_app_ids": [
+        "6787688416"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "master-of-flags",
+      "name": "Master of Flags: World Quiz",
+      "stage": "core",
+      "asc_app_ids": [
+        "1484270248"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "master-of-inventory",
+      "name": "Master of Inventory: Warranty",
+      "stage": "grow",
+      "asc_app_ids": [
+        "1523538855"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "pay-day",
+      "name": "Pay Day: E-Invoice & Peppol",
+      "stage": "grow",
+      "asc_app_ids": [
+        "6779927672"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "pixiepocket",
+      "name": "PixiePocket: AI Image Maker",
+      "stage": "grow",
+      "asc_app_ids": [
+        "6751730339"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "psybeam",
+      "name": "Psybeam: Live Translator",
+      "stage": "maintain",
+      "asc_app_ids": [
+        "6777952645"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "psywave",
+      "name": "Psywave: AI Playlist Maker",
+      "stage": "maintain",
+      "asc_app_ids": [
+        "6727000827"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "sforesight",
+      "name": "SForesight: SF Symbols Search",
+      "stage": "decide",
+      "asc_app_ids": [
+        "6736438070"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "solar-beam",
+      "name": "Solar Beam",
+      "stage": "core",
+      "asc_app_ids": [
+        "6705124497"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    },
+    {
+      "slug": "tailscode",
+      "name": "Tailscode: Coding Agent Remote",
+      "stage": "core",
+      "asc_app_ids": [
+        "6791660932"
+      ],
+      "policy": {
+        "review_reply": "propose",
+        "social_post": "propose",
+        "metadata_edit": "propose",
+        "price_change": "manual-only",
+        "release": "manual-only"
+      }
+    }
+  ]
+}

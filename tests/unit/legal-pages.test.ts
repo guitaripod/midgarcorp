@@ -2,10 +2,11 @@ import { describe, it, expect } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { legalApps, legalPages, legalPagesFrom, parseLegalKey } from '../../src/utils/legal';
-import portfolio from '../../../../registry/generated/portfolio.json';
+import portfolio from '../../src/generated/portfolio.json';
 
 const siteRoot = resolve(process.cwd());
 const dist = `${siteRoot}/dist/`;
+const siteAasa = resolve(siteRoot, 'public/.well-known/apple-app-site-association');
 const registryAasa = resolve(siteRoot, '../../registry/generated/apple-app-site-association');
 
 const EXPECTED_PAGES = [
@@ -77,10 +78,17 @@ describe('legal build output', () => {
     expect(existsSync(`${dist}legal/index.html`)).toBe(true);
   });
 
-  it('serves the AASA file byte for byte from the registry', () => {
+  it('serves the AASA file byte for byte from public/.well-known', () => {
     const built = readFileSync(`${dist}.well-known/apple-app-site-association`);
-    expect(built.equals(readFileSync(registryAasa))).toBe(true);
+    expect(built.equals(readFileSync(siteAasa))).toBe(true);
   });
+
+  it.skipIf(!existsSync(registryAasa))(
+    'keeps the public AASA file equal to the registry copy in a monorepo checkout',
+    () => {
+      expect(readFileSync(siteAasa).equals(readFileSync(registryAasa))).toBe(true);
+    }
+  );
 
   it('serves the AASA file as application/json without a redirect', () => {
     const headers = readFileSync(`${dist}_headers`, 'utf8');

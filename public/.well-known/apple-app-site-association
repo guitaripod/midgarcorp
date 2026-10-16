@@ -1,0 +1,136 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.marcusziade.aotd"
+        ],
+        "paths": [
+          "/app-of-the-dead/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.marcusziade.doublekick"
+        ],
+        "paths": [
+          "/double-kick/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.marcusziade.DreamEater"
+        ],
+        "paths": [
+          "/dream-eater/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.guitaripod.embr"
+        ],
+        "paths": [
+          "/embr/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.midgarcorp.flaccy",
+          "P4DQK6SRKR.com.midgarcorp.flaccy.mac"
+        ],
+        "paths": [
+          "/flaccy/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.guitaripod.helia"
+        ],
+        "paths": [
+          "/helia/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.guitaripod.livingdex"
+        ],
+        "paths": [
+          "/living-dex/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.marcusziade.knowtheflag"
+        ],
+        "paths": [
+          "/master-of-flags/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.marcusziade.inventory"
+        ],
+        "paths": [
+          "/master-of-inventory/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.guitaripod.payday"
+        ],
+        "paths": [
+          "/pay-day/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.guitaripod.Pixie"
+        ],
+        "paths": [
+          "/pixiepocket/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.guitaripod.psybeam"
+        ],
+        "paths": [
+          "/psybeam/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.marcusziade.psywave"
+        ],
+        "paths": [
+          "/psywave/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.marcusziade.sforesight"
+        ],
+        "paths": [
+          "/sforesight/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.marcusziade.solarbeam"
+        ],
+        "paths": [
+          "/solar-beam/*"
+        ]
+      },
+      {
+        "appIDs": [
+          "P4DQK6SRKR.com.guitaripod.tailscode"
+        ],
+        "paths": [
+          "/tailscode/*"
+        ]
+      }
+    ]
+  }
+}

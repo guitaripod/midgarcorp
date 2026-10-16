@@ -39,6 +39,3 @@ dev.log
 # wrangler local secrets
 .dev.vars
 __pycache__/
-
-# AASA copied from registry/generated at build time
-public/.well-known/apple-app-site-association
