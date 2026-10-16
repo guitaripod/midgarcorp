@@ -11,6 +11,7 @@ const registryAasa = resolve(siteRoot, '../../registry/generated/apple-app-site-
 
 const EXPECTED_PAGES = [
   'flaccy/privacy',
+  'helia/privacy',
   'living-dex/privacy',
   'living-dex/terms',
   'master-of-inventory/privacy',

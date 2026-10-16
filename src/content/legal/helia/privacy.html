@@ -1,0 +1,75 @@
+<h1>Helia Privacy Policy</h1>
+<p><em>Last updated: October 2026</em></p>
+<p>Helia is a sun coach: it uses your location, the local UV index and, if you allow it, your Apple Health data to tell you when and for how long to be in the sun. It has no analytics, no advertising and no tracking. Your sun history, your health data and your questions to the coach stay on your iPhone. This policy explains exactly what is stored, what leaves your device, and who receives it.</p>
+<h2>In short</h2>
+<ul>
+<li>Your sun sessions, mood and supplement logs, skin profile and Apple Health data are stored on your device. We never receive them.</li>
+<li>The AI coach is a language model that runs on your iPhone. What you ask it and what it answers never leave the device.</li>
+<li>Your coordinates go to Apple's WeatherKit to get the UV index and cloud cover for where you are. That is the only place your location is sent.</li>
+<li>Our servers hold an anonymous account with no name or email address, and the push tokens that let a sun session appear on your Lock Screen.</li>
+<li>No advertising, no tracking, no analytics software, no sale of data.</li>
+</ul>
+<h2>Who we are</h2>
+<p>Helia is published by Midgar Oy, a company in Finland. For the information described under Our servers, Purchases and More apps below, Midgar Oy is the controller. You can reach us at <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a>.</p>
+<h2>What the app stores on your device</h2>
+<p>Everything Helia knows about your sun habits is kept in the app's private storage on your device, and in a storage area shared only with Helia's own widget extension. It is not uploaded to us. It includes:</p>
+<ul>
+<li>your sun sessions: start and end time, duration, UV index, UV dose, whether you used sunscreen and how often you reapplied, the place where the session happened (latitude and longitude), the route if the session recorded one, and any note you wrote;</li>
+<li>burn events you log, with their severity, body area and note;</li>
+<li>daily totals, your mood and energy entries, and your supplement entries;</li>
+<li>your profile and skin settings, such as skin type, daily goals and reminder times;</li>
+<li>a short activity log and a crash log, described under Help and diagnostics.</li>
+</ul>
+<h2>Location</h2>
+<p>Helia asks to use your location while you use the app, to work out the sun's position, the local UV index and sunrise and sunset. You can also allow "Always" so that Helia can notice when you head outside (it uses iOS's visit and significant-location-change monitoring for that), keep measuring your UV dose while a session runs with the phone in your pocket, and log your sun automatically. This is optional and you can change it in iOS Settings at any time. Helia asks for location to a precision of about one hundred metres, and for finer precision only while a session is running.</p>
+<p>Your coordinates are sent to Apple's WeatherKit service to fetch the UV index, cloud cover and rain forecast for where you are. Apple processes this under its own terms. Helia does not send your location to us, and does not look up a place name for it.</p>
+<p>If you do not allow location, Helia uses a rough position that it works out on your device from your time zone. It is used for the same sun and weather calculations and is marked as approximate in the app.</p>
+<h2>Apple Health</h2>
+<p>If you allow it, Helia reads your time in daylight, steps, sleep and state of mind from Apple Health to build your daily light plan, and writes your sun sessions back as time in daylight and UV exposure, and the state of mind you log. You choose each of these in the Health permission screen and can change them in the Health app. The Health data stays on your device and in Apple Health. It is not sent to us or to anyone else. Resetting Helia does not delete anything from Apple Health, because that data belongs to you and lives outside the app.</p>
+<h2>Motion, camera and microphone</h2>
+<ul>
+<li><strong>Motion:</strong> Helia reads whether you are walking, sitting or driving from your device's motion data, on the device, to tell real sun exposure from time indoors or in a car.</li>
+<li><strong>Camera:</strong> the camera is used to estimate your skin type from a photo of your face and to read sunscreen and supplement labels. Both are analysed on your device with Apple's Vision framework. The app does not save the pictures and does not upload them.</li>
+<li><strong>Microphone and speech:</strong> if you dictate a question or a log entry, Helia uses Apple's speech recognition and the microphone only while you dictate. Helia asks iOS to recognise your speech on the device whenever your device and language support it. Where they do not, iOS may send the audio to Apple, which then handles it under its own terms.</li>
+</ul>
+<h2>The AI coach</h2>
+<p>The coach that answers your questions about sun, vitamin D and skin is a language model that runs on your iPhone's own chip. No question or answer is sent to us or to any AI provider, and it works without a connection once the model is on your device.</p>
+<p>The first time you use the coach, Helia downloads the model files from Hugging Face (Hugging Face, Inc., United States). The download request reaches Hugging Face's servers like any web request, so Hugging Face sees your IP address and which model files were requested. Helia sends no account, no token and no information about you with it. The model files are public.</p>
+<h2>Our servers</h2>
+<p>Helia uses two small services that we run on Cloudflare.</p>
+<p><strong>Anonymous account.</strong> The first time it needs one, Helia creates an anonymous account with no name or email address. For that it sends our server a token from Apple's DeviceCheck, which our server uses to confirm that the request comes from a genuine Apple device, and a random identifier that Helia generates on your device and keeps in your Keychain. The account record holds that random identifier, a random account ID, a hash of the account's access key, the date it was created and the starting balance of the credit ledger that every Midgar app account carries. The record is used to recognise your device when it talks to our servers and to link your purchase to it. It cannot be traced to you without your device.</p>
+<p><strong>Sun session notifications.</strong> Helia can show a sun session on your Lock Screen and in the Dynamic Island, and can start one for you while the app is in the background. For this, iOS gives Helia push tokens, and Helia sends them to our server together with your anonymous account ID, a label saying whether the token is for development or production, and a time stamp. When Helia asks our server to start a session while it is in the background, it also sends the start time and the figures the Lock Screen shows: the verdict, the minutes of useful sun left, the estimated vitamin D range, how much of your skin is exposed, and whether you are in shade or in strict protection mode. Our server passes these to Apple's push service and does not keep a copy. Apple delivers them to your device.</p>
+<p>Both services run on Cloudflare, which may keep standard request logs such as your IP address for a limited time. We do not store your location, your Health data, your sun history or your coach conversations on these servers.</p>
+<h2>Purchases and RevenueCat</h2>
+<p>Helia Pro is sold as a monthly or yearly subscription and as a one-time lifetime purchase through Apple In-App Purchase. Apple handles payment and billing, and we never receive your card details or your Apple Account details.</p>
+<p>Purchases in Helia run through RevenueCat (RevenueCat, Inc., United States). The RevenueCat software in the app sends RevenueCat your Apple transaction records (which product, price, dates and subscription status, and your App Store country), your anonymous Helia account ID once it exists, and standard technical information such as the app and iOS version and your IP address. It receives no name, no email address and no health or location data. RevenueCat uses this to confirm whether Helia Pro is active. It processes the data on our behalf and under its own privacy policy at <a href="https://www.revenuecat.com/privacy">revenuecat.com/privacy</a>. Because it is based in the United States, the information may be processed there.</p>
+<h2>Game Center</h2>
+<p>If you are signed in to Game Center, Helia reports your achievement progress and four consistency scores to Apple: your current daylight streak, the days outside this month, your morning-light weeks and your sun-safe days. These are counts of habits. They do not include UV dose, locations or health readings. Apple shows them in Game Center under its own terms and your Game Center settings. You can turn Game Center off in iOS Settings.</p>
+<h2>Apple Weather attribution</h2>
+<p>The Weather data in Helia comes from Apple Weather. The app loads Apple's logo and legal page for it from Apple's servers.</p>
+<h2>More apps</h2>
+<p>Settings has a card that shows our other apps. When it appears, at most once a day, the app downloads the list from a catalogue service we run on Cloudflare, and the app names, icons and details from Apple's servers, using your App Store country. When you open the Midgar screen from the card, the app also sends the catalogue service a small anonymous event when an app is shown, tapped or opened: the kind of event, which app, the bundle identifier of Helia, where in the app it happened, and your App Store country. It carries no identifier for you or your device. Whether another Midgar app is installed on your device is checked on the device and is not sent anywhere. Like any web service, Cloudflare may keep standard request logs, such as your IP address, for a limited time.</p>
+<h2>Reminders and notifications</h2>
+<p>Helia's reminders and warnings are notifications scheduled on your device. No server of ours sends them, and you can turn them off in the app or in iOS Settings. The Lock Screen sun session described under Our servers is the only notification that arrives through Apple's push service.</p>
+<h2>Help and diagnostics</h2>
+<p>Helia keeps a short activity log and, if the app crashes, a crash log, in its private storage on your device. They are never sent automatically. In Settings you can export a diagnostics file, which contains the app and iOS version, permission and Live Activity states, your anonymous account ID and the latest log lines, with access keys, tokens and email addresses removed. You choose where it goes through the iOS share sheet; nothing is sent unless you send it. If you have chosen in iOS to share analytics with app developers, Apple may give us anonymous crash and usage reports, which contain nothing we can link to you.</p>
+<h2>What we don't do</h2>
+<p>We do not sell your data, show advertising, or use third-party tracking or advertising identifiers. The app does not ask for tracking permission and contains no advertising or analytics software. We do not use your data to train AI models. Your Health data is shared with no one. Your location goes only to Apple's WeatherKit.</p>
+<h2>How long we keep data</h2>
+<ul>
+<li>Your sun history, mood and supplement logs, and settings: only on your device, until you use Start over or Delete account in Settings, or delete the app.</li>
+<li>Anonymous account record: until you delete your account in Settings.</li>
+<li>Push tokens: kept for as long as Apple's push service accepts them. A start token that Apple reports as no longer valid is deleted when it is next used. The other tokens have no expiry date today, so ask us to erase them at any time.</li>
+<li>Purchase records at Apple and RevenueCat: kept under their policies.</li>
+<li>More apps events: anonymous counts, kept as long as they are useful for measuring our own promotion.</li>
+</ul>
+<h2>Deleting your data</h2>
+<p>In Settings, "Start over" erases your sun history, profile and settings on your device. "Delete account" removes your anonymous account and its credit ledger from our server, then erases your sun history, profile and settings on your device and returns the app to its first launch. If the server cannot be reached, nothing is erased and you can try again. The push tokens described under Our servers are stored against the same anonymous account ID but are not removed by this button. Because the account record is gone, they can no longer be linked to an account, and if you want them erased email us at <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a> and we will do it. Data in Apple Health is yours and is managed in the Health app. Deleting the app or your account does not cancel a subscription: manage or cancel it in iOS Settings under your Apple Account, then Subscriptions. If you want the purchase records that RevenueCat holds erased, contact us and we will ask RevenueCat to do it.</p>
+<h2>Your rights</h2>
+<p>Because we keep very little information about you, most requests are answered by the controls above. Where privacy law, such as the GDPR, gives you rights to access, correct, erase, restrict or move information about you, or to object to its use, contact us and we will help. We process the anonymous account and push tokens to provide the app's features, purchases to provide and support what you buy, and the anonymous More apps counts in our legitimate interest in measuring our own promotion. You may complain to your local data protection authority; in Finland that is the Office of the Data Protection Ombudsman (tietosuoja.fi).</p>
+<h2>Children</h2>
+<p>Helia is not directed at children. The app tells you at first launch that you must be 17 or older to use it, and we do not knowingly collect personal information from children.</p>
+<h2>Changes</h2>
+<p>If this policy changes we will publish the new version here with a new date, and mention material changes in the app's release notes.</p>
+<h2>Contact</h2>
+<p>For any questions, contact <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a>.</p>
