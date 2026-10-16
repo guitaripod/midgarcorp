@@ -51,15 +51,12 @@ const phone = (role: string) => ({
 const STUDIO = {
   mac: faces('mac-dark-studio', 'mac-light-studio', 1920, 1200),
   phoneFinished: faces('suomi-dark-14', 'suomi-light-14', 1320, 2868),
-  linux: faces('desk-dark-studio', 'desk-light-studio', 1920, 1080),
-  videoPhone: faces('suomi-dark-15', 'suomi-light-15', 1320, 2868),
-  viewer: faces('mac-dark-viewer', 'mac-light-viewer', 1920, 1200),
 };
 
-/// Where the rebuilt Studio can be had today. It is the one place the page names a release,
-/// so it is the one line to change when the Apple builds carry it.
+/// The one line that names a release: FLUX 3 Klein and the live preview ship in 1.78, so it says where
+/// they are today. Delete it once App Review has cleared the Apple builds.
 const studioAvailability =
-  'On the Mac and Linux the Studio rises as a sheet inside the Tailscode window, the conversation dimmed behind it, and closing it never stops a render; on the phone it is a full-screen modal. It is in iOS 1.75 and Linux 1.76, and in builds from source. The Mac App Store build that is live today is 1.65, which predates it; Mac 1.76 is waiting for App Review.';
+  'FLUX 3 Klein, editing from several pictures and the live preview arrive with 1.78: on Linux today, on the iPhone and the Mac when App Review clears it.';
 
 const hero = {
   desk: faces('desk-dark-chat', 'desk-light-chat', 1920, 1080),
@@ -112,9 +109,8 @@ const deskShots = [
 
 const studioBullets = [
   'The machine’s own sketch fills the stage while it paints, when it sends one, and a progress line runs along the stage’s foot.',
-  'On the phone, under a finished picture: Save, Share, Copy, Again, Edit this. Animate this waits in its menu.',
   'The shelf is the machine’s own output folder, newest first, with the words, seed and steps read back from the files.',
-  'Enhance has a language model of yours write the paragraph; Continue it picks up where a finished clip ends.',
+  'Enhance has a language model of yours write the paragraph; an edit can work from several pictures at once; Continue it picks up where a finished clip ends.',
 ];
 
 const lockBullets = [
@@ -846,7 +842,7 @@ const clients = [
             title="A picture is something you ask for in words"
           >
             Describe it and your own machine paints it: ComfyUI behind Tailscale, Qwen-Image for
-            quality, FLUX.2 Klein for speed. A clip is the same sentence with a longer verb,
+            quality, FLUX 3 Klein for speed. A clip is the same sentence with a longer verb,
             rendered by LTX from words or from a first frame. Nothing leaves your tailnet.
           </SectionHead>
         </div>
@@ -867,72 +863,33 @@ const clients = [
         </div>
       </div>
 
-      <div class="grid gap-4">
+      <div class={`${rail} lg:grid-cols-12`}>
         <ShotFigure
           dark={STUDIO.mac.dark}
           light={STUDIO.mac.light}
           w={STUDIO.mac.w}
           h={STUDIO.mac.h}
           alt="The Studio on the Mac: a finished picture on the stage with its verbs under it, the machine's shelf at the right and the brief docked below"
-          sizes="(min-width: 1024px) 760px, 100vw"
-          class="lg:mx-auto lg:max-w-[760px]"
+          sizes="(min-width: 1024px) 760px, 80vw"
+          class={`${railItem} w-[80vw] lg:w-auto lg:col-span-9 lg:self-center`}
         >
           <span class="accent-text mr-1 font-semibold">Mac</span> — Image and video are one sheet inside
-          the Tailscode window, the conversation dimmed behind it; closing it never stops a render.
+          the Tailscode window, the conversation dimmed behind it; closing it never stops a render. Linux
+          has the same sheet.
         </ShotFigure>
-
-        <div class={`${rail} lg:grid-cols-12`}>
-          <ShotFigure
-            dark={STUDIO.phoneFinished.dark}
-            light={STUDIO.phoneFinished.light}
-            w={STUDIO.phoneFinished.w}
-            h={STUDIO.phoneFinished.h}
-            alt="The Studio on iPhone with a finished picture and its verbs"
-            sizes="(min-width: 1024px) 175px, 170px"
-            variant="phone"
-            class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
-          >
-            <span class="accent-text mr-1 font-semibold">iPhone</span> — done: the verbs sit under the
-            picture.
-          </ShotFigure>
-          <ShotFigure
-            dark={STUDIO.linux.dark}
-            light={STUDIO.linux.light}
-            w={STUDIO.linux.w}
-            h={STUDIO.linux.h}
-            alt="The Studio on Linux: a finished picture with its verbs under it, the machine pill above and the shelf rail at the right"
-            sizes="(min-width: 1024px) 720px, 80vw"
-            class={`${railItem} w-[80vw] lg:w-auto lg:col-span-8 lg:self-center`}
-          >
-            <span class="accent-text mr-1 font-semibold">Linux</span> — the same sheet: brief, stage
-            and shelf, the machine named above.
-          </ShotFigure>
-          <ShotFigure
-            dark={STUDIO.videoPhone.dark}
-            light={STUDIO.videoPhone.light}
-            w={STUDIO.videoPhone.w}
-            h={STUDIO.videoPhone.h}
-            alt="The video screen on iPhone: the second pass of a render with the sketch on the stage"
-            sizes="(min-width: 1024px) 175px, 170px"
-            variant="phone"
-            class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
-          >
-            <span class="accent-text mr-1 font-semibold">iPhone</span> — a clip is a screen of its own,
-            the machine’s sketch on the stage while it renders.
-          </ShotFigure>
-          <ShotFigure
-            dark={STUDIO.viewer.dark}
-            light={STUDIO.viewer.light}
-            w={STUDIO.viewer.w}
-            h={STUDIO.viewer.h}
-            alt="The picture viewer on the Mac, risen as a second sheet over the Studio: the finished lighthouse at 1728 by 1152"
-            sizes="(min-width: 1024px) 544px, 80vw"
-            class={`${railItem} w-[80vw] lg:w-auto lg:col-span-6 lg:col-start-4 lg:self-center`}
-          >
-            <span class="accent-text mr-1 font-semibold">Mac</span> — the picture viewer rises as a sheet
-            of the same kind, stacked over the Studio when opened from it.
-          </ShotFigure>
-        </div>
+        <ShotFigure
+          dark={STUDIO.phoneFinished.dark}
+          light={STUDIO.phoneFinished.light}
+          w={STUDIO.phoneFinished.w}
+          h={STUDIO.phoneFinished.h}
+          alt="The Studio on iPhone with a finished picture and its verbs"
+          sizes="(min-width: 1024px) 260px, 170px"
+          variant="phone"
+          class={`${railItem} w-[170px] lg:w-auto lg:col-span-3`}
+        >
+          <span class="accent-text mr-1 font-semibold">iPhone</span> — done: the verbs sit under the
+          picture.
+        </ShotFigure>
       </div>
     </section>
 

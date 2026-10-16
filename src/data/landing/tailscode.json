@@ -166,7 +166,11 @@
     },
     {
       "q": "Where do pictures and clips get made?",
-      "a": "On a machine of yours running ComfyUI, reached over your tailnet: Qwen-Image or FLUX.2 Klein for pictures, LTX for clips. Tailscode is the brief, the stage and the shelf; the files stay in the machine's own output folder, and nothing leaves your tailnet."
+      "a": "On a machine of yours running ComfyUI, reached over your tailnet: Qwen-Image or FLUX 3 Klein for pictures, LTX for clips. Tailscode is the brief, the stage and the shelf; the files stay in the machine's own output folder, and nothing leaves your tailnet."
+    },
+    {
+      "q": "Can I watch the app my agent is building?",
+      "a": "Yes, with a Mac. A Mac running previewd, a small host that runs next to Xcode, builds the app on a simulator of its own and streams the screen; Tailscode draws it beside the conversation, keeps the last good picture under the compiler’s first error when a build fails, and hands that error to the agent in one tap. On Linux the pointer operates the app, and the Compare, Inspect, Quality, Matrix and Rewind lenses are built; the iPhone and the Mac show the picture."
     },
     {
       "q": "Is it really open source?",
