@@ -10,6 +10,7 @@ export interface Props {
   app: {
     id: string;
     name: string;
+    displayName?: string;
     tagline: string;
     description: string;
     platforms: string[];
@@ -41,6 +42,8 @@ const {
   version,
 } = Astro.props;
 const description = cleanAppStoreDescription(app.description);
+const title = app.displayName ?? app.name;
+const hasMedia = device !== null && shots.length > 0;
 const releaseStamp = app.releaseDate ? app.releaseDate.slice(0, 7) : null;
 const onStore = app.appStoreUrl.includes('apps.apple.com');
 const primaryHref = onStore ? app.appStoreUrl : (githubUrl ?? app.appStoreUrl);
@@ -56,146 +59,151 @@ const iconSrcset = iconVariants.length
   : undefined;
 ---
 
-<article class="app-card group relative term-frame term-frame-hover overflow-hidden flex flex-col">
+<article class="app-card group relative term-frame term-frame-hover overflow-hidden">
   <span
     class="absolute inset-y-0 left-0 w-0.5 opacity-60"
     style={`background-color: ${app.primaryColor}`}
     aria-hidden="true"></span>
 
-  {
-    device && shots.length > 0 && (
-      <AppShots
-        shots={shots}
-        device={device}
-        name={app.name}
-        accent={app.primaryColor}
-        size="card"
-      />
-    )
-  }
-
-  <div class="flex flex-col flex-1 p-4 sm:p-6">
-    <div class="flex items-start gap-3 sm:gap-4">
-      <img
-        src={app.icon}
-        srcset={iconSrcset}
-        sizes={iconSrcset ? '(min-width: 640px) 80px, 64px' : undefined}
-        alt={`${app.name} icon`}
-        width="512"
-        height="512"
-        class="w-16 h-16 sm:w-20 sm:h-20 rounded-lg border border-paper-border dark:border-term-border flex-shrink-0"
-        loading="lazy"
-        decoding="async"
-      />
-
-      <div class="flex-1 min-w-0">
-        <h3
-          class="text-base sm:text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors mb-1 truncate"
-        >
-          {
-            landingHref ? (
-              <a href={landingHref} class="after:absolute after:inset-0 after:content-['']">
-                {app.name}
-              </a>
-            ) : (
-              app.name
-            )
-          }
-        </h3>
-        <p class="text-xs sm:text-sm text-paper-muted dark:text-term-muted mb-2 line-clamp-2">
-          {app.tagline}
-        </p>
-        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
-          <span class="text-paper-greendim dark:text-term-greendim">[{app.category}]</span>
-          <span class="font-semibold text-paper-amber dark:text-term-amber">{app.price}</span>
-          {
-            openSource && (
-              <span class="text-paper-greendim dark:text-term-greendim">open source</span>
-            )
-          }
-          {
-            releaseStamp && (
-              <span class="text-paper-faint dark:text-term-faint hidden sm:inline">
-                released {releaseStamp}
-              </span>
-            )
-          }
-        </div>
-      </div>
-    </div>
-
-    <p
-      class="mt-3 sm:mt-4 text-xs sm:text-sm text-paper-muted dark:text-term-muted leading-relaxed line-clamp-3 font-sans"
-    >
-      {description}
-    </p>
-
-    <div class="mt-3 sm:mt-4">
-      <h4 class="term-label mb-1.5 sm:mb-2">features</h4>
-      <ul class="space-y-0.5 sm:space-y-1">
-        {
-          app.features.slice(0, 3).map((feature) => (
-            <li class="flex items-start gap-2 text-xs sm:text-sm text-paper-text dark:text-term-text">
-              <span
-                class="text-paper-greendim dark:text-term-greendim flex-shrink-0"
-                aria-hidden="true"
-              >
-                ▸
-              </span>
-              <span class="line-clamp-1">{feature}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-
+  <div class:list={['app-card__layout', hasMedia && 'app-card__layout--media']}>
     {
-      commits !== undefined && commits > 0 && (
-        <div class="mt-4 flex items-end gap-4">
-          <div class="flex-1">
-            <WorkWeight commits={commits} maxCommits={appMax.commits} />
-          </div>
-          {version && (
-            <span class="text-xs text-paper-green dark:text-term-green font-semibold whitespace-nowrap pb-px">
-              v{version}
-            </span>
-          )}
+      hasMedia && device && (
+        <div class="app-card__media">
+          <AppShots
+            shots={shots}
+            device={device}
+            name={app.name}
+            accent={app.primaryColor}
+            size="card"
+          />
         </div>
       )
     }
 
-    <div class="mt-auto pt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-      <div class="flex flex-wrap gap-2">
-        {
-          app.platforms.map((platform) => (
-            <span class="px-1.5 py-0.5 text-xs text-paper-faint dark:text-term-faint border border-paper-border dark:border-term-border rounded-sm">
-              {platform}
-            </span>
-          ))
-        }
+    <div class="app-card__body">
+      <div class="app-card__head">
+        <img
+          src={app.icon}
+          srcset={iconSrcset}
+          sizes={iconSrcset ? '(min-width: 640px) 80px, 64px' : undefined}
+          alt={`${app.name} icon`}
+          width="512"
+          height="512"
+          class="app-card__icon rounded-lg border border-paper-border dark:border-term-border"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <div class="flex-1 min-w-0">
+          <h3
+            class="text-base sm:text-lg font-bold text-balance line-clamp-2 text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors mb-1"
+            title={app.name}
+          >
+            {
+              landingHref ? (
+                <a href={landingHref} class="after:absolute after:inset-0 after:content-['']">
+                  {title}
+                </a>
+              ) : (
+                title
+              )
+            }
+          </h3>
+          <p class="text-xs sm:text-sm text-paper-muted dark:text-term-muted mb-2 line-clamp-2">
+            {app.tagline}
+          </p>
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+            <span class="text-paper-greendim dark:text-term-greendim">[{app.category}]</span>
+            <span class="font-semibold text-paper-amber dark:text-term-amber">{app.price}</span>
+            {
+              openSource && (
+                <span class="text-paper-greendim dark:text-term-greendim">open source</span>
+              )
+            }
+            {
+              releaseStamp && (
+                <span class="text-paper-faint dark:text-term-faint hidden sm:inline">
+                  released {releaseStamp}
+                </span>
+              )
+            }
+          </div>
+        </div>
       </div>
 
-      <div class="flex items-center gap-3 w-full sm:w-auto">
-        {
-          sourceHref && (
-            <a
-              href={sourceHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="relative z-10 inline-flex items-center gap-1 px-1 py-2 text-xs sm:text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors whitespace-nowrap"
-            >
-              github ↗
-            </a>
-          )
-        }
-        <a
-          href={primaryHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="relative z-10 inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity flex-1 sm:flex-none"
-        >
-          {primaryLabel}
-        </a>
+      <p
+        class="app-card__desc mt-3 sm:mt-4 text-xs sm:text-sm text-paper-muted dark:text-term-muted leading-relaxed font-sans"
+      >
+        {description}
+      </p>
+
+      <div class="mt-3 sm:mt-4">
+        <h4 class="term-label mb-1.5 sm:mb-2">features</h4>
+        <ul class="space-y-0.5 sm:space-y-1">
+          {
+            app.features.slice(0, 3).map((feature) => (
+              <li class="flex items-start gap-2 text-xs sm:text-sm text-paper-text dark:text-term-text">
+                <span
+                  class="text-paper-greendim dark:text-term-greendim flex-shrink-0"
+                  aria-hidden="true"
+                >
+                  ▸
+                </span>
+                <span class="line-clamp-2">{feature}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      {
+        commits !== undefined && commits > 0 && (
+          <div class="mt-4 flex items-end gap-4">
+            <div class="flex-1">
+              <WorkWeight commits={commits} maxCommits={appMax.commits} />
+            </div>
+            {version && (
+              <span class="text-xs text-paper-green dark:text-term-green font-semibold whitespace-nowrap pb-px">
+                v{version}
+              </span>
+            )}
+          </div>
+        )
+      }
+
+      <div class="app-card__foot">
+        <div class="app-card__platforms">
+          {
+            app.platforms.map((platform) => (
+              <span class="px-1.5 py-0.5 text-xs text-paper-faint dark:text-term-faint border border-paper-border dark:border-term-border rounded-sm">
+                {platform}
+              </span>
+            ))
+          }
+        </div>
+
+        <div class="app-card__actions">
+          {
+            sourceHref && (
+              <a
+                href={sourceHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="relative z-10 inline-flex items-center gap-1 px-1 py-2 text-xs sm:text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors whitespace-nowrap"
+              >
+                github ↗
+              </a>
+            )
+          }
+          <a
+            href={primaryHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="app-card__cta relative z-10 inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity whitespace-nowrap"
+          >
+            {primaryLabel}
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -203,13 +211,126 @@ const iconSrcset = iconVariants.length
 
 <style>
   .app-card {
-    container-type: inline-size;
+    container: app / inline-size;
+    display: flex;
+    flex-direction: column;
   }
 
-  @container (max-width: 400px) {
-    .app-card img {
-      width: 56px;
-      height: 56px;
+  .app-card__layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app-card__layout--media {
+    grid-template-rows: auto 1fr;
+  }
+
+  .app-card__body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(1rem, 5cqi, 1.75rem);
+  }
+
+  .app-card__head {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(0.75rem, 3cqi, 1rem);
+  }
+
+  .app-card__icon {
+    flex-shrink: 0;
+    width: clamp(3.5rem, 17cqi, 5rem);
+    height: clamp(3.5rem, 17cqi, 5rem);
+  }
+
+  .app-card__media :global(.app-shots[data-orientation='portrait'] .shot) {
+    height: min(260px, calc((100cqi - 2.5rem) * 0.72));
+  }
+
+  .app-card__desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .app-card__foot {
+    margin-top: auto;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .app-card__platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .app-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.75rem;
+  }
+
+  .app-card__cta {
+    flex: 1 1 auto;
+  }
+
+  @container app (min-width: 30rem) {
+    .app-card__foot {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .app-card__actions {
+      margin-left: auto;
+    }
+
+    .app-card__cta {
+      flex: none;
+    }
+  }
+
+  @container app (min-width: 56rem) {
+    .app-card__layout--media {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      grid-template-rows: none;
+    }
+
+    .app-card__media {
+      position: relative;
+      min-height: 22rem;
+      border-right: 1px solid rgba(128, 128, 128, 0.25);
+    }
+
+    .app-card__media :global(.app-shots) {
+      position: absolute;
+      inset: 0;
+      height: auto;
+    }
+
+    .app-card__media :global(.app-shots > div) {
+      align-items: center;
+      padding-top: 0;
+    }
+
+    .app-card__media :global(.app-shots[data-orientation='portrait'] .shot) {
+      height: min(86%, 26cqi);
+    }
+
+    .app-card__media :global(.app-shots[data-orientation='landscape'] .shot) {
+      height: min(60%, 11cqi);
+    }
+
+    .app-card__desc {
+      -webkit-line-clamp: 4;
     }
   }
 </style>

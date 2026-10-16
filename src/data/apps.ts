@@ -16,6 +16,7 @@ export interface AppWork {
 export interface AppCardData {
   id: string;
   name: string;
+  displayName?: string;
   tagline: string;
   description: string;
   platforms: string[];
@@ -87,7 +88,12 @@ function storeEntry(app: StoreApp, now: Date): AppEntry {
   const id = trackIdFor(app.appStoreUrl);
   const landing = id ? landingByTrack.get(id) : undefined;
   const card = landing
-    ? { ...app, price: landing.price, icon: landing.iconLocal ?? app.icon }
+    ? {
+        ...app,
+        displayName: landing.shortName,
+        price: landing.price,
+        icon: landing.iconLocal ?? app.icon,
+      }
     : app;
   return entryFor(card, landing, now);
 }
@@ -98,6 +104,7 @@ function landingEntry(landing: LandingApp, now: Date): AppEntry {
     {
       id: landing.slug,
       name: landing.shortName,
+      displayName: landing.shortName,
       tagline: landing.content.heroHeadline,
       description: landing.description,
       platforms: landing.platforms,

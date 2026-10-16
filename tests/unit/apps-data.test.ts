@@ -27,6 +27,15 @@ describe('apps data', () => {
     }
   });
 
+  it('titles every landed app card with its short brand name, not the store listing name', () => {
+    const landed = appEntries.filter((entry) => entry.slug);
+    expect(landed.length).toBeGreaterThan(0);
+    for (const entry of landed) {
+      expect(entry.app.displayName, entry.slug).toBeTruthy();
+      expect(entry.app.name, entry.slug).toContain(entry.app.displayName as string);
+    }
+  });
+
   it('only tracks work for apps that have a landing page', () => {
     for (const slug of Object.keys(appWork)) {
       expect(landingSlugs, slug).toContain(slug);

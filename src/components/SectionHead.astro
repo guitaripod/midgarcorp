@@ -1,0 +1,21 @@
+---
+export interface Props {
+  path: string;
+  href: string;
+  cta: string;
+}
+
+const { path, href, cta } = Astro.props;
+---
+
+<div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 mb-6">
+  <h2 class="min-w-0 text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text">
+    <span class="text-paper-green dark:text-term-green">{path}</span> · <slot />
+  </h2>
+  <a
+    href={href}
+    class="text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors whitespace-nowrap"
+  >
+    {cta} →
+  </a>
+</div>

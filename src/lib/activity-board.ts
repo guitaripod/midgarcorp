@@ -273,7 +273,7 @@ function renderBench(data: ActivitySnapshot, now: Date): string {
         <p class="prompt-line truncate">ls ~/bench --sort=commits</p>
         <span class="text-[11px] ${faint} whitespace-nowrap">${num(active)} active · ${data.focusWindow}d</span>
       </div>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-8">${cells}</ul>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-8">${cells}</ul>
     </div>`;
 }
 
@@ -295,10 +295,8 @@ export function renderActivityBoard(data: ActivitySnapshot, now: Date): string {
       }
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-      <div class="lg:col-span-7 min-w-0">
-        ${renderFocus(data, now)}
-        <div class="mt-8">${renderBench(data, now)}</div>
-      </div>
+      <div class="lg:col-span-7 min-w-0">${renderFocus(data, now)}</div>
       <div class="lg:col-span-5 min-w-0">${renderCalendarPanel(data, now)}</div>
+      <div class="lg:col-span-12 min-w-0">${renderBench(data, now)}</div>
     </div>`;
 }

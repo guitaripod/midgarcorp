@@ -26,118 +26,145 @@ const linkClass =
 
 <article
   id={app.id}
-  class="showcase-card scroll-mt-24 group h-full term-frame term-frame-hover overflow-hidden flex flex-col"
+  class="showcase-card scroll-mt-24 group h-full term-frame term-frame-hover overflow-hidden"
   style={`--accent: ${showcase.accent}`}
 >
-  <div class="showcase-shot">
-    <img
-      src={showcase.shot.src}
-      srcset={shotSrcset(showcase.shot)}
-      sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
-      alt={showcase.shot.alt}
-      width={showcase.shot.w}
-      height={showcase.shot.h}
-      loading="lazy"
-      decoding="async"
-    />
-  </div>
-  <div class="p-4 sm:p-5 flex flex-col flex-1">
-    <div class="flex items-start justify-between gap-3 mb-2">
-      <div class="flex items-baseline gap-2 min-w-0">
-        <span class="text-xs text-paper-muted dark:text-term-faint flex-shrink-0"
-          >{FORM_GLYPHS[app.form]}</span
-        >
-        <h3
-          class="text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors truncate"
-        >
-          <a href={targetUrl} target="_blank" rel="noopener noreferrer">{app.name}</a>
-        </h3>
-      </div>
-      {
-        app.latestVersion && (
-          <span class="text-xs text-paper-green dark:text-term-green font-semibold whitespace-nowrap">
-            v{app.latestVersion}
-          </span>
-        )
-      }
-    </div>
-
-    <div
-      class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3 text-xs text-paper-muted dark:text-term-faint"
-    >
-      <span class="inline-flex items-center gap-1.5">
-        <span
-          class="inline-block w-2 h-2 rounded-full"
-          style={`background:${languageColor(app.language)}`}
-          aria-hidden="true"></span>
-        {app.language}
-      </span>
-      <span class="text-paper-faint dark:text-term-faint">·</span>
-      <span class="inline-flex items-center gap-1.5" title={style.title}>
-        <span class={`inline-block w-1.5 h-1.5 rounded-full ${style.dot}`} aria-hidden="true"
-        ></span>
-        <span class={style.text}>{ageLabel(app.latestReleaseDate, now)}</span>
-      </span>
-      {
-        app.note && (
-          <>
-            <span class="text-paper-faint dark:text-term-faint">·</span>
-            <span>
-              <span class="text-paper-amber dark:text-term-amber" aria-hidden="true">
-                ◆
-              </span>{' '}
-              {app.note}
-            </span>
-          </>
-        )
-      }
-    </div>
-
-    <p class="text-sm text-paper-muted dark:text-term-muted leading-relaxed mb-4">
-      {showcase.blurb}
-    </p>
-
-    <div class="mb-4">
-      <WorkWeight
-        commits={app.commitCount}
-        releases={app.releaseCount}
-        maxCommits={linuxMax.commits}
-        maxReleases={linuxMax.releases}
+  <div class="showcase-layout">
+    <div class="showcase-shot">
+      <img
+        src={showcase.shot.src}
+        srcset={shotSrcset(showcase.shot)}
+        sizes="(min-width: 1100px) min(33vw, 480px), (min-width: 640px) 45vw, 100vw"
+        alt={showcase.shot.alt}
+        width={showcase.shot.w}
+        height={showcase.shot.h}
+        loading="lazy"
+        decoding="async"
       />
     </div>
-
-    <div class="mt-auto">
-      <LinuxInstall name={app.name} channels={app.install.all} />
+    <div class="showcase-body">
+      <div class="flex items-start justify-between gap-3 mb-2">
+        <div class="flex items-baseline gap-2 min-w-0">
+          <span class="text-xs text-paper-muted dark:text-term-faint flex-shrink-0"
+            >{FORM_GLYPHS[app.form]}</span
+          >
+          <h3
+            class="text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors truncate"
+          >
+            <a href={targetUrl} target="_blank" rel="noopener noreferrer">{app.name}</a>
+          </h3>
+        </div>
+        {
+          app.latestVersion && (
+            <span class="text-xs text-paper-green dark:text-term-green font-semibold whitespace-nowrap">
+              v{app.latestVersion}
+            </span>
+          )
+        }
+      </div>
 
       <div
-        class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 pt-3 border-t border-paper-border dark:border-term-border text-xs"
+        class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-3 text-xs text-paper-muted dark:text-term-faint"
       >
-        <a href={app.githubUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
-          source ↗
-        </a>
+        <span class="inline-flex items-center gap-1.5">
+          <span
+            class="inline-block w-2 h-2 rounded-full"
+            style={`background:${languageColor(app.language)}`}
+            aria-hidden="true"></span>
+          {app.language}
+        </span>
+        <span class="text-paper-faint dark:text-term-faint">·</span>
+        <span class="inline-flex items-center gap-1.5" title={style.title}>
+          <span class={`inline-block w-1.5 h-1.5 rounded-full ${style.dot}`} aria-hidden="true"
+          ></span>
+          <span class={style.text}>{ageLabel(app.latestReleaseDate, now)}</span>
+        </span>
         {
-          app.homepageUrl && (
-            <a href={app.homepageUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
-              docs ↗
-            </a>
+          app.note && (
+            <>
+              <span class="text-paper-faint dark:text-term-faint">·</span>
+              <span>
+                <span class="text-paper-amber dark:text-term-amber" aria-hidden="true">
+                  ◆
+                </span>{' '}
+                {app.note}
+              </span>
+            </>
           )
         }
-        <a href={app.latestReleaseUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
-          releases{releaseStamp ? ` · ${releaseStamp}` : ''} ↗
-        </a>
-        {
-          app.hasLinuxBinary && app.linuxBinaryUrl && (
-            <a href={app.linuxBinaryUrl} rel="noopener noreferrer" class={linkClass}>
-              download x86_64 ↓
-            </a>
-          )
-        }
+      </div>
+
+      <p class="text-sm text-paper-muted dark:text-term-muted leading-relaxed mb-4">
+        {showcase.blurb}
+      </p>
+
+      <div class="mb-4">
+        <WorkWeight
+          commits={app.commitCount}
+          releases={app.releaseCount}
+          maxCommits={linuxMax.commits}
+          maxReleases={linuxMax.releases}
+        />
+      </div>
+
+      <div class="mt-auto">
+        <LinuxInstall name={app.name} channels={app.install.all} />
+
+        <div
+          class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 pt-3 border-t border-paper-border dark:border-term-border text-xs"
+        >
+          <a href={app.githubUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+            source ↗
+          </a>
+          {
+            app.homepageUrl && (
+              <a href={app.homepageUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+                docs ↗
+              </a>
+            )
+          }
+          <a
+            href={app.latestReleaseUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={linkClass}
+          >
+            releases{releaseStamp ? ` · ${releaseStamp}` : ''} ↗
+          </a>
+          {
+            app.hasLinuxBinary && app.linuxBinaryUrl && (
+              <a href={app.linuxBinaryUrl} rel="noopener noreferrer" class={linkClass}>
+                download x86_64 ↓
+              </a>
+            )
+          }
+        </div>
       </div>
     </div>
   </div>
 </article>
 
 <style>
+  .showcase-card {
+    container: showcase / inline-size;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .showcase-layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+  }
+
+  .showcase-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(1rem, 5cqi, 1.5rem);
+  }
+
   .showcase-shot {
     position: relative;
     aspect-ratio: 4 / 3;
@@ -161,6 +188,25 @@ const linkClass =
 
   .showcase-card:hover .showcase-shot img {
     transform: scale(1.025);
+  }
+
+  @container showcase (min-width: 56rem) {
+    .showcase-layout {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      grid-template-rows: none;
+    }
+
+    .showcase-shot {
+      aspect-ratio: auto;
+      min-height: 22rem;
+      border-bottom: 0;
+      border-right: 1px solid rgba(128, 128, 128, 0.25);
+    }
+
+    .showcase-shot img {
+      position: absolute;
+      inset: 0;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
