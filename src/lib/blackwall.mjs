@@ -12,6 +12,8 @@ export const SITE_URL = 'https://guitaripod.github.io/blackwall/';
 /**
  * @typedef {{ knowledge: number | null, math: number | null, code: number | null, longContext: number | null, tools: number | null }} Groups
  * @typedef {{ id: string, name: string, setup: string, index: number, lo: number, hi: number, groups: Groups, decode: number | null, wh: number | null, finished: string | null }} Model
+ * @typedef {{ name: string, index: number, lo: number, hi: number }} Ranked
+ * @typedef {Ranked & { id: string, decode: number | null }} Timed
  * @typedef {{ id: string, name: string, setup: string, scored: number, groups: number, task: string | null, done: number | null, total: number | null }} LiveModel
  * @typedef {{ fetched: string, generated: string | null, suite: string | null, effort: string, version: string | null, hardware: { gpu: string, vramGb: number } | null, models: Model[], live: LiveModel[] }} Snapshot
  */
@@ -108,7 +110,7 @@ export function summarize(board, effort = 'max', now = new Date()) {
 
 /**
  * A board is worth publishing on the page only with a real ranking in it.
- * @param {{ models?: Model[] } | null | undefined} snapshot
+ * @param {{ models?: { index: number }[] } | null | undefined} snapshot
  */
 export function isUsable(snapshot) {
   return Boolean(snapshot?.models?.length >= 2 && snapshot.models.every((m) => m.index > 0));
@@ -128,7 +130,7 @@ export function frontier(points) {
 
 /**
  * The sentence under the headline: who leads, and whether the runner-up is inside the margin.
- * @param {Model[]} models
+ * @param {Ranked[]} models
  */
 export function verdict(models) {
   const [first, second] = models;
@@ -158,7 +160,7 @@ function niceTicks(low, high, count) {
 /**
  * Lays quality against decode speed into a `width` x `height` box. Returns every dot with its
  * interval whisker, the staircase through the frontier, and axis ticks, all in box coordinates.
- * @param {Model[]} models
+ * @param {Timed[]} models
  * @param {{ width: number, height: number, pad?: { l: number, r: number, t: number, b: number } }} box
  */
 export function wallLayout(models, { width, height, pad = { l: 44, r: 16, t: 14, b: 34 } }) {
