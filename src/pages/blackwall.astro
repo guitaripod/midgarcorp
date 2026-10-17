@@ -1,0 +1,807 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import FeatureGrid from '@components/landing/FeatureGrid.astro';
+import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import SectionHead from '@components/SectionHead.astro';
+import snapshot from '@data/blackwall.json';
+import { SITE_URL, isUsable, verdict, wallLayout } from '../lib/blackwall.mjs';
+
+const site = 'https://midgarcorp.cc';
+const canonical = `${site}/blackwall/`;
+const ogImage = '/og/blackwall.png';
+const accent = '#76b900';
+
+const seoTitle = 'Blackwall: open models, ranked on one RTX PRO 6000';
+const metaDescription =
+  'Ranks open models on one NVIDIA RTX PRO 6000 Blackwell: speed and answer quality measured the same way each time, shown with 95% intervals and rank ranges on a live leaderboard.';
+
+const githubUrl = 'https://github.com/guitaripod/blackwall';
+const releasesUrl = `${githubUrl}/releases`;
+const feedUrl = `${SITE_URL}feed.xml`;
+const dataUrl = `${SITE_URL}board.json`;
+
+const ready = isUsable(snapshot);
+const models = ready ? snapshot.models : [];
+const live = ready ? snapshot.live : [];
+const wall = ready ? wallLayout(models, { width: 560, height: 360 }) : null;
+const call = verdict(models);
+const fastest = [...models].filter((m) => m.decode != null).sort((a, b) => b.decode - a.decode)[0];
+const leanest = [...models].filter((m) => m.wh != null).sort((a, b) => a.wh - b.wh)[0];
+const summary = call
+  ? [
+      `leads at ${call.index.toFixed(1)} quality${
+        call.tied && call.runnerUp ? `, with ${call.runnerUp} inside its margin of error` : ''
+      }.`,
+      fastest ? `${fastest.name} is the fastest at ${fastest.decode} tok/s.` : '',
+      leanest
+        ? `${leanest.name} spends the least energy per correct answer, ${leanest.wh?.toFixed(2)} Wh.`
+        : '',
+    ]
+      .filter(Boolean)
+      .join(' ')
+  : '';
+const vramGb = snapshot.hardware?.vramGb ?? 96;
+const gpuName = snapshot.hardware?.gpu ?? 'RTX PRO 6000 Blackwell';
+
+const groupColumns = [
+  { key: 'knowledge', label: 'Know' },
+  { key: 'math', label: 'Math' },
+  { key: 'code', label: 'Code' },
+  { key: 'longContext', label: 'Long' },
+  { key: 'tools', label: 'Tools' },
+] as const;
+
+const groupOf = (m: { groups: object }, key: string): number | null =>
+  (m.groups as Record<string, number | null>)[key];
+
+const best: Record<string, number> = Object.fromEntries(
+  groupColumns.map(({ key }) => [key, Math.max(...models.map((m) => groupOf(m, key) ?? 0))])
+);
+
+const taskLabels: Record<string, string> = {
+  speed: 'speed',
+  supergpqa: 'SuperGPQA',
+  math: 'math',
+  lcb: 'LiveCodeBench',
+  mrcr: 'MRCR',
+  graphwalks: 'Graphwalks',
+  tools: 'tool use',
+};
+
+const liveStatus = (m: {
+  scored: number;
+  groups: number;
+  task: string | null;
+  done: number | null;
+  total: number | null;
+}) => {
+  const where =
+    m.task && m.done != null && m.total != null
+      ? `, ${taskLabels[m.task] ?? m.task} ${m.done}/${m.total}`
+      : '';
+  return `running now, ${m.scored} of ${m.groups} groups scored${where}`;
+};
+
+const one = (value: number) => value.toFixed(1);
+const margin = (m: { lo: number; hi: number }) => ((m.hi - m.lo) / 2).toFixed(1);
+const when = (iso: string | null) =>
+  iso
+    ? new Date(iso).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        timeZone: 'UTC',
+      })
+    : '';
+
+const heroHighlights = [
+  'One command per model; a run survives a closed terminal and resumes from its last saved answer',
+  'A rank is a range: two scores inside each other’s interval are shown as a tie',
+  'Weigh the five quality groups your own way and watch the board re-rank',
+  'Pinned datasets, seeded subsets and a fingerprint of the exact server command',
+];
+
+const features = [
+  {
+    title: 'One card, so numbers compare',
+    body: 'Ninety-six gigabytes is a different place from a 24 GB gaming card: a 120B fits at MXFP4 and a 27B fits at half a million tokens of context. Every speed and energy figure comes off the same hardware, and each row names its card, driver and server build.',
+    glyph: '▣',
+  },
+  {
+    title: 'A rank is a range',
+    body: 'The rank badge is the span each model lands in across 1,600 simulated reruns of the quality index, so #1-2 means a tie, not a winner. The headline only says "leads" when the lead survives the noise.',
+    glyph: '≈',
+  },
+  {
+    title: 'Weigh it your way',
+    body: 'The index averages knowledge, math, code, long context and tool use equally. Five sliders and presets change that, the board and the chart move as you drag, and your rank always sits next to the default one.',
+    glyph: '⚖',
+  },
+  {
+    title: 'Every row opens into a profile',
+    body: 'Strengths and gaps, the scores inside each task, how often answers were cut off, the data checks and the command behind the run. Pin up to four models for a head-to-head that calls a difference only when its interval clears zero.',
+    glyph: '▤',
+  },
+  {
+    title: 'Runs you can walk away from',
+    body: 'The worker is a systemd user unit. It saves every answer, gives way when something else needs the GPU, and continues after a crash. A run in progress sits at the foot of the board as a provisional row with the span its index can still land in.',
+    glyph: '⏵',
+  },
+  {
+    title: 'Follow it however you like',
+    body: 'An Atom feed with one entry per finished run, a board.json whose keys are only ever added, and an address that carries the whole view, so a link shares exactly what you were looking at.',
+    glyph: '⇄',
+  },
+];
+
+const tasks = [
+  {
+    label: 'Speed',
+    detail:
+      '1 up to 32 requests at once, first-token wait and decode speed from 1k to 250k-token prompts, GPU power. Greedy decoding, streamed timings, nvidia-smi.',
+  },
+  {
+    label: 'SuperGPQA',
+    detail:
+      '521 graduate-level questions with ten options, spread over its 13 disciplines. Scored on the final Answer line.',
+  },
+  {
+    label: 'AIME + HMMT 2026',
+    detail:
+      '63 problems, two samples each, a 64k-token budget. The last boxed answer, compared symbolically with Math-Verify.',
+  },
+  {
+    label: 'LiveCodeBench v6',
+    detail:
+      '101 problems from January to April 2025. Hidden tests run in a network-less Docker container.',
+  },
+  {
+    label: 'MRCR, 8 needles',
+    detail:
+      '60 conversations at 16k, 32k, 64k and 128k tokens. OpenAI’s grade: the requested prefix, then the difflib ratio.',
+  },
+  {
+    label: 'Graphwalks',
+    detail: '48 graphs from 8k to 64k tokens. F1 of the node set on the last line.',
+  },
+  {
+    label: 'Tool use',
+    detail:
+      '38 episodes, three runs each, against a simulated workspace. Scored on the workspace’s end state and the reply, not the exact calls.',
+  },
+];
+
+const trust = [
+  [
+    'Fixed inputs',
+    'Datasets are pinned by sha256, question subsets use fixed seeds, and every run records the harness, the suite version and a fingerprint of the launch command.',
+  ],
+  [
+    'Intervals, not point scores',
+    'Every task carries a 95% interval and the index bootstraps the questions of every task. blackwall compare pairs two runs question by question.',
+  ],
+  [
+    'A dead server is not a bad score',
+    'When the server stops answering the run stops and says why, with the kernel’s Xid line if there is one, instead of recording silence as wrong answers.',
+  ],
+  [
+    'Nothing quietly skipped',
+    'A prompt that does not fit the context scores zero instead of disappearing, and the board names the task it cost.',
+  ],
+  [
+    'Cost as well as speed',
+    'Energy is integrated across the quality tasks and divided by correct answers, so a fast but wasteful model is visible.',
+  ],
+  [
+    'Saturation is flagged',
+    'When a task is not separating the models, all near the ceiling or apart by less than the noise, the board marks it.',
+  ],
+];
+
+const faq = [
+  {
+    q: 'Do I need an RTX PRO 6000?',
+    a: 'No. It runs on any NVIDIA GPU llama-swap can serve. The board labels every row with the card and driver it came from and never compares speed, peak throughput or energy across cards. The ranking here is one card’s numbers; a different card, quantization or server setting will move them.',
+  },
+  {
+    q: 'What does it need?',
+    a: 'Linux with systemd user units, an NVIDIA GPU, llama-swap in front of SGLang, llama.cpp or vLLM, Docker for grading LiveCodeBench, Python 3.12 with uv, and about 1 GB of disk for the pinned datasets.',
+  },
+  {
+    q: 'How long does a run take?',
+    a: 'A full run at medium effort takes three to six hours in the background. --quick takes 45 to 90 minutes and is ranked as provisional; --smoke is a pipeline check and is never ranked.',
+  },
+  {
+    q: 'Why does a tie show as a tie?',
+    a: 'Because it is one. With a few hundred questions per task two scores a couple of points apart are inside each other’s noise, so the page shows the range of ranks a model lands in when the benchmark is rerun, and the headline says "leads" only when the lead holds.',
+  },
+  {
+    q: 'Which servers work?',
+    a: 'SGLang and llama.cpp are the tested servers. vLLM speaks the same API and has a model on the board, but it does not report how many requests it takes at once, so Blackwall sends four.',
+  },
+  {
+    q: 'Can I trust the LiveCodeBench column?',
+    a: 'Read it as an upper bound. LiveCodeBench has published nothing newer than April 2025, so models trained after mid-2025 may have seen its problems. blackwall sources checks for newer releases and for pinned files that moved.',
+  },
+  {
+    q: 'Can I publish a board of my own?',
+    a: 'Yes. blackwall export --out site --site-url https://you.example/bench/ writes the page, the data and the feed. The database is the record; everything else is a projection of it.',
+  },
+  {
+    q: 'Is it affiliated with NVIDIA?',
+    a: 'No. Blackwall is an independent project and is not affiliated with or endorsed by NVIDIA or CD PROJEKT RED. NVIDIA, RTX and Blackwell are trademarks of NVIDIA Corporation.',
+  },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Blackwall',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Linux',
+  description: metaDescription,
+  url: canonical,
+  downloadUrl: releasesUrl,
+  ...(snapshot.version ? { softwareVersion: snapshot.version } : {}),
+  license: 'https://www.gnu.org/licenses/gpl-3.0.html',
+  author: {
+    '@type': 'Person',
+    name: 'guitaripod',
+    url: site,
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+};
+---
+
+<BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <div class="bw py-8 sm:py-12">
+    <header class="mb-12 sm:mb-16">
+      <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <div>
+          <p class="prompt-line mb-4">blackwall run gpt-oss-120b</p>
+          <h1
+            class="mb-4 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-5xl"
+          >
+            <span class="glitch bw-ink" data-text="blackwall">blackwall</span>
+            <span
+              class="mt-1 block text-xl font-normal text-paper-muted dark:text-term-muted sm:text-2xl"
+            >
+              open models, ranked on one card
+            </span>
+          </h1>
+          <p class="mb-6 max-w-xl text-base text-paper-muted dark:text-term-muted sm:text-lg">
+            Each model is loaded through llama-swap and measured for speed and answer quality the
+            same way every time, on one NVIDIA {gpuName} with {vramGb} GB of memory. One leaderboard
+            comes out, with an honest margin on every number.
+          </p>
+          <ul class="mb-8 grid max-w-xl gap-2">
+            {
+              heroHighlights.map((h) => (
+                <li class="flex gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="bw-ink" aria-hidden="true">
+                    ▸
+                  </span>
+                  {h}
+                </li>
+              ))
+            }
+          </ul>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href={SITE_URL}
+              class="bw-button inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border transition-colors"
+            >
+              Live leaderboard ↗
+            </a>
+            <a
+              href={githubUrl}
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text hover:border-paper-green dark:hover:border-term-green transition-colors"
+            >
+              Source ↗
+            </a>
+            <a
+              href="/linux"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-semibold text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green transition-colors"
+            >
+              All Linux apps
+            </a>
+          </div>
+        </div>
+
+        {
+          wall && (
+            <figure class="term-frame p-4 sm:p-5">
+              <figcaption class="prompt-line mb-3 text-xs sm:text-sm">
+                the wall · quality against decode speed
+              </figcaption>
+              <svg
+                viewBox={`0 0 ${wall.width} ${wall.height}`}
+                class="block h-auto w-full"
+                role="img"
+                aria-label={`Quality index against decode speed for ${wall.timedCount} models. ${wall.wallCount} sit on the wall, the line through the models nothing else beats on both axes.`}
+              >
+                {wall.yTicks.map((t) => (
+                  <g>
+                    <line
+                      x1={wall.pad.l}
+                      x2={wall.width - wall.pad.r}
+                      y1={t.y}
+                      y2={t.y}
+                      class="bw-grid"
+                    />
+                    <text x={wall.pad.l - 8} y={t.y + 4} text-anchor="end" class="bw-tick">
+                      {t.value}
+                    </text>
+                  </g>
+                ))}
+                {wall.xTicks.map((t) => (
+                  <g>
+                    <line
+                      x1={t.x}
+                      x2={t.x}
+                      y1={wall.pad.t}
+                      y2={wall.height - wall.pad.b}
+                      class="bw-grid"
+                    />
+                    <text
+                      x={t.x}
+                      y={wall.height - wall.pad.b + 18}
+                      text-anchor="middle"
+                      class="bw-tick"
+                    >
+                      {t.value}
+                    </text>
+                  </g>
+                ))}
+                <path d={wall.area} class="bw-area" />
+                <path d={wall.path} class="bw-wall" fill="none" />
+                {wall.dots.map((d) => (
+                  <g>
+                    <title>{d.name}</title>
+                    <line x1={d.x} x2={d.x} y1={d.y1} y2={d.y2} class="bw-whisker" />
+                    <line x1={d.x - 3} x2={d.x + 3} y1={d.y1} y2={d.y1} class="bw-whisker" />
+                    <line x1={d.x - 3} x2={d.x + 3} y1={d.y2} y2={d.y2} class="bw-whisker" />
+                    <circle
+                      cx={d.x}
+                      cy={d.y}
+                      r={d.leader ? 6.5 : 5}
+                      class={d.wall ? 'bw-dot-wall' : 'bw-dot'}
+                    />
+                  </g>
+                ))}
+                {wall.dots
+                  .filter((d) => d.wall)
+                  .map((d) => (
+                    <text
+                      x={d.x > wall.width * 0.72 ? d.x - 10 : d.x + 10}
+                      y={d.y - 10}
+                      text-anchor={d.x > wall.width * 0.72 ? 'end' : 'start'}
+                      class="bw-label"
+                    >
+                      {d.name}
+                    </text>
+                  ))}
+                <text
+                  x={wall.width - wall.pad.r}
+                  y={wall.pad.t + 12}
+                  text-anchor="end"
+                  class="bw-better"
+                >
+                  better ↗
+                </text>
+                <text x={wall.width / 2} y={wall.height - 2} text-anchor="middle" class="bw-axis">
+                  decode speed, one request (tok/s)
+                </text>
+                <text
+                  transform={`translate(11 ${(wall.pad.t + wall.height - wall.pad.b) / 2}) rotate(-90)`}
+                  text-anchor="middle"
+                  class="bw-axis"
+                >
+                  quality index
+                </text>
+              </svg>
+              <p class="mt-3 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+                The green line is the wall: nothing here is both faster and smarter than a model on
+                it. Whiskers are 95% intervals.
+              </p>
+            </figure>
+          )
+        }
+      </div>
+    </header>
+
+    {
+      ready && call && (
+        <section class="mb-12 sm:mb-16">
+          <SectionHead path="~/blackwall" href={SITE_URL} cta="open the live board">
+            the board right now
+          </SectionHead>
+          <p class="mb-4 max-w-3xl text-sm text-paper-muted dark:text-term-muted sm:text-base">
+            <span class="font-semibold text-paper-text dark:text-term-text">{call.leader}</span>{' '}
+            {summary}
+          </p>
+          <div class="term-frame overflow-x-auto">
+            <table class="w-full border-collapse sm:min-w-[34rem] text-left text-sm tabular-nums">
+              <caption class="sr-only">
+                Open models ranked by quality index at max effort on one {gpuName}
+              </caption>
+              <thead>
+                <tr class="border-b border-paper-border text-xs text-paper-muted dark:border-term-border dark:text-term-muted">
+                  <th scope="col" class="w-10 py-2 pl-4 font-normal">
+                    #
+                  </th>
+                  <th scope="col" class="py-2 pr-3 font-normal">
+                    Model
+                  </th>
+                  <th scope="col" class="w-32 py-2 pr-3 font-normal sm:w-56">
+                    Quality, ±95%
+                  </th>
+                  {groupColumns.map((g) => (
+                    <th scope="col" class="hidden py-2 pr-3 text-right font-normal lg:table-cell">
+                      {g.label}
+                    </th>
+                  ))}
+                  <th scope="col" class="py-2 pr-3 text-right font-normal">
+                    tok/s
+                  </th>
+                  <th scope="col" class="hidden py-2 pr-4 text-right font-normal sm:table-cell">
+                    Wh/correct
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {models.map((m, i) => (
+                  <tr class="border-b border-paper-border last:border-b-0 dark:border-term-border">
+                    <td class="py-3 pl-4 text-paper-muted dark:text-term-muted">{i + 1}</td>
+                    <td class="py-3 pr-3">
+                      <span class="block font-semibold text-paper-text dark:text-term-text">
+                        {m.name}
+                      </span>
+                      <span class="block text-xs text-paper-muted dark:text-term-muted">
+                        {m.setup}
+                      </span>
+                    </td>
+                    <td class="py-3 pr-3">
+                      <span class="flex items-center gap-2">
+                        <span
+                          class="bw-track"
+                          role="img"
+                          aria-label={`${one(m.index)} out of 100, interval ${one(m.lo)} to ${one(m.hi)}`}
+                        >
+                          <span
+                            class:list={['bw-bar', i === 0 ? 'bw-bar-lead' : '']}
+                            style={`width:${m.index}%`}
+                          />
+                          <span class="bw-range" style={`left:${m.lo}%;width:${m.hi - m.lo}%`} />
+                        </span>
+                        <span class="font-semibold text-paper-text dark:text-term-text">
+                          {one(m.index)}
+                        </span>
+                        <span class="hidden text-xs text-paper-muted dark:text-term-muted sm:inline">
+                          ±{margin(m)}
+                        </span>
+                      </span>
+                    </td>
+                    {groupColumns.map((g) => {
+                      const value = groupOf(m, g.key);
+                      return (
+                        <td
+                          class:list={[
+                            'hidden py-3 pr-3 text-right lg:table-cell',
+                            value != null && value === best[g.key]
+                              ? 'bw-ink font-semibold'
+                              : 'text-paper-muted dark:text-term-muted',
+                          ]}
+                        >
+                          {value != null ? one(value) : '·'}
+                        </td>
+                      );
+                    })}
+                    <td class="py-3 pr-3 text-right text-paper-text dark:text-term-text">
+                      {m.decode ?? '·'}
+                    </td>
+                    <td class="hidden py-3 pr-4 text-right text-paper-muted dark:text-term-muted sm:table-cell">
+                      {m.wh != null ? m.wh.toFixed(2) : '·'}
+                    </td>
+                  </tr>
+                ))}
+                {live.map((m) => (
+                  <tr class="bw-live">
+                    <td class="py-3 pl-4 text-paper-muted dark:text-term-muted">·</td>
+                    <td class="py-3 pr-3">
+                      <span class="block font-semibold text-paper-text dark:text-term-text">
+                        {m.name}
+                      </span>
+                      <span class="block text-xs text-paper-muted dark:text-term-muted">
+                        {m.setup}
+                      </span>
+                    </td>
+                    <td class="py-3 pr-3 text-xs text-paper-amber dark:text-term-amber">
+                      {liveStatus(m)}
+                    </td>
+                    <td class="hidden lg:table-cell" colspan="5" />
+                    <td />
+                    <td class="hidden sm:table-cell" />
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-3 text-xs text-paper-muted dark:text-term-muted">
+            Max effort, suite {snapshot.suite}, one {gpuName}. A snapshot of the live board from{' '}
+            {when(snapshot.generated)}, refreshed with every deploy. Open the live page for rank
+            ranges, the weights lab, profiles and compare.
+          </p>
+        </section>
+      )
+    }
+
+    <section class="mb-12 sm:mb-16">
+      <a href={SITE_URL} class="block" aria-label="Open the live Blackwall leaderboard">
+        <img
+          src="/blackwall/board.webp"
+          srcset="/blackwall/board@960.webp 960w, /blackwall/board.webp 1600w"
+          sizes="(min-width: 72rem) 72rem, 100vw"
+          width="1600"
+          height="1219"
+          loading="lazy"
+          decoding="async"
+          class="w-full rounded-sm border border-paper-border transition-colors hover:border-paper-green dark:border-term-border dark:hover:border-term-green"
+          alt="The live Blackwall page: the wall, quality against speed with the frontier drawn through the models nothing else beats, and the board beneath it with a rank range, a 95% interval and per-group scores on every row."
+        />
+      </a>
+      <p class="mt-3 text-xs text-paper-muted dark:text-term-muted">
+        The live page. Rank badges show the range each model lands in when the benchmark is rerun,
+        hatched rows are runs still in progress.
+      </p>
+    </section>
+
+    <section class="mb-12 sm:mb-16">
+      <div class="term-frame p-5 sm:p-6 overflow-x-auto">
+        <p class="prompt-line mb-3 text-xs sm:text-sm">install + first run</p>
+        <pre
+          class="text-xs sm:text-sm leading-relaxed text-paper-text dark:text-term-text whitespace-pre-wrap"><code>uv tool install git+https://github.com/guitaripod/blackwall
+
+blackwall doctor gpt-oss-120b      # loads it and checks tokens, tool calls and a 16k prompt
+blackwall run gpt-oss-120b         # detached; closing the terminal only detaches you
+blackwall wait                     # follow it, however often it gives way to other GPU work
+blackwall ls --effort max          # ranked table in the terminal
+blackwall board --open             # the leaderboard page
+blackwall compare a b              # which differences between two models are real</code></pre>
+      </div>
+    </section>
+
+    <section class="mb-12 sm:mb-16">
+      <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        Why Blackwall
+      </h2>
+      <FeatureGrid features={features} accent={accent} />
+    </section>
+
+    <section class="mb-12 sm:mb-16">
+      <h2 class="mb-4 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        What a run measures
+      </h2>
+      <div class="term-frame space-y-2 p-5 text-sm text-paper-muted dark:text-term-muted sm:p-6">
+        {
+          tasks.map((t) => (
+            <p>
+              <span class="font-semibold text-paper-text dark:text-term-text">{t.label}:</span>{' '}
+              {t.detail}
+            </p>
+          ))
+        }
+        <p class="pt-2">
+          <span class="font-semibold text-paper-text dark:text-term-text">The index:</span> the equal-weight
+          mean of five groups, knowledge, math, code, long context (MRCR and Graphwalks) and tool use.
+          It appears once every task has run. Each reasoning effort is ranked on its own.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12 sm:mb-16">
+      <h2 class="mb-4 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        Numbers you can trust
+      </h2>
+      <div class="grid gap-3 sm:grid-cols-2">
+        {
+          trust.map(([title, body]) => (
+            <div class="term-frame p-4 sm:p-5">
+              <h3 class="mb-1 text-sm font-bold text-paper-text dark:text-term-text">
+                <span class="bw-ink" aria-hidden="true">
+                  ▸
+                </span>{' '}
+                {title}
+              </h3>
+              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mb-12 sm:mb-16">
+      <h2 class="mb-4 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        Follow the board
+      </h2>
+      <div class="term-frame space-y-2 p-5 text-sm text-paper-muted dark:text-term-muted sm:p-6">
+        <p>
+          <a href={feedUrl} class="bw-link font-semibold">feed.xml</a>: one Atom entry per finished
+          run, marked new best or debut.
+        </p>
+        <p>
+          <a href={dataUrl} class="bw-link font-semibold">board.json</a>: every number on the page,
+          plus the history of all finished runs, under a schema whose keys are only ever added.
+        </p>
+        <p>
+          <a href={releasesUrl} class="bw-link font-semibold">Releases</a>: what changed in
+          Blackwall itself. A change to how scores are computed bumps the suite version, so old and
+          new results are never ranked together.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">FAQ</h2>
+      <FaqAccordion faq={faq} accent={accent} />
+    </section>
+
+    <p class="mt-10 text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+      Blackwall is an independent project and is not affiliated with or endorsed by NVIDIA or CD
+      PROJEKT RED. NVIDIA, RTX and Blackwell are trademarks of NVIDIA Corporation. GPL-3.0.
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .bw {
+    --bw: #5d9300;
+    --bw-ink: #3f6b00;
+    --bw-cyan: #006f9b;
+    --bw-red: #c4153c;
+    --bw-grid: rgb(7 54 66 / 0.12);
+  }
+  :global(.dark) .bw {
+    --bw: #76b900;
+    --bw-ink: #a3e635;
+    --bw-cyan: #19d3ff;
+    --bw-red: #ff2d55;
+    --bw-grid: rgb(230 237 243 / 0.08);
+  }
+  .bw-ink {
+    color: var(--bw-ink);
+  }
+  .bw-link {
+    color: var(--bw-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .bw-button {
+    color: var(--bw-ink);
+    border-color: var(--bw);
+  }
+  .bw-button:hover {
+    background: color-mix(in srgb, var(--bw) 14%, transparent);
+  }
+  .glitch {
+    position: relative;
+    display: inline-block;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+  :global(.dark) .glitch::before,
+  :global(.dark) .glitch::after {
+    mix-blend-mode: screen;
+  }
+  .glitch::before {
+    color: var(--bw-cyan);
+    clip-path: inset(18% 0 66% 0);
+    transform: translateX(-0.04em);
+  }
+  .glitch::after {
+    color: var(--bw-red);
+    clip-path: inset(70% 0 14% 0);
+    transform: translateX(0.05em);
+  }
+  .bw-grid {
+    stroke: var(--bw-grid);
+    stroke-width: 1;
+  }
+  .bw-tick {
+    font-size: 11px;
+    fill: currentColor;
+    opacity: 0.6;
+  }
+  .bw-axis {
+    font-size: 11px;
+    fill: currentColor;
+    opacity: 0.6;
+  }
+  .bw-better {
+    font-size: 11px;
+    fill: var(--bw-ink);
+  }
+  .bw-area {
+    fill: color-mix(in srgb, var(--bw) 12%, transparent);
+  }
+  .bw-wall {
+    stroke: var(--bw);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+  }
+  :global(.dark) .bw-wall {
+    filter: drop-shadow(0 0 5px color-mix(in srgb, var(--bw) 70%, transparent));
+  }
+  .bw-whisker {
+    stroke: currentColor;
+    stroke-width: 1.25;
+    opacity: 0.55;
+  }
+  .bw-dot {
+    fill: transparent;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    opacity: 0.75;
+  }
+  .bw-dot-wall {
+    fill: var(--bw);
+    stroke: var(--bw-ink);
+    stroke-width: 1.5;
+  }
+  .bw-label {
+    font-size: 12px;
+    font-weight: 600;
+    fill: currentColor;
+  }
+  .bw-track {
+    position: relative;
+    display: block;
+    flex: 1;
+    height: 6px;
+    background: color-mix(in srgb, currentColor 14%, transparent);
+  }
+  .bw-bar {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: color-mix(in srgb, var(--bw) 62%, transparent);
+  }
+  .bw-bar-lead {
+    background: var(--bw);
+  }
+  .bw-range {
+    position: absolute;
+    top: -3px;
+    bottom: -3px;
+    border-left: 1px solid currentColor;
+    border-right: 1px solid currentColor;
+    opacity: 0.7;
+  }
+  .bw-range::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 1px solid currentColor;
+  }
+  .bw-live {
+    background: repeating-linear-gradient(
+      135deg,
+      color-mix(in srgb, #ffb000 10%, transparent) 0 8px,
+      transparent 8px 16px
+    );
+  }
+</style>

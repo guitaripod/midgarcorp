@@ -2,7 +2,7 @@ export type SearchKind = 'app' | 'post' | 'tool' | 'page';
 
 export const SEARCH_KINDS: readonly SearchKind[] = ['app', 'post', 'tool', 'page'];
 
-const TOOL_PATHS = new Set(['/imago', '/yoink', '/unrager', '/recview', '/linux']);
+const TOOL_PATHS = new Set(['/imago', '/yoink', '/unrager', '/recview', '/linux', '/blackwall']);
 
 /** Buckets a pathname into the kind of result the search palette groups and filters by. */
 export function searchKind(pathname: string, appSlugs: readonly string[]): SearchKind {

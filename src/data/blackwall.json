@@ -1,0 +1,133 @@
+{
+  "fetched": "2026-10-17T16:04:20.075Z",
+  "generated": "2026-10-17T15:54:23.988Z",
+  "suite": "full/v1",
+  "effort": "max",
+  "version": "2.1.0",
+  "hardware": {
+    "gpu": "RTX PRO 6000 Blackwell",
+    "vramGb": 96
+  },
+  "models": [
+    {
+      "id": "pennyroyal",
+      "name": "Qwen 3.8 27B",
+      "setup": "SGLang · DFlash2 · 524K",
+      "index": 81,
+      "lo": 78.2,
+      "hi": 83.6,
+      "groups": {
+        "knowledge": 61.2,
+        "math": 81,
+        "code": 76.2,
+        "longContext": 86.4,
+        "tools": 100
+      },
+      "decode": 157,
+      "wh": 2.667,
+      "finished": "2026-09-12T14:09:42.509Z"
+    },
+    {
+      "id": "nemotron-3.5-super-vl-120b-nvfp4",
+      "name": "Nemotron 3.5 Super VL 120B",
+      "setup": "vLLM · NVFP4 · MTP",
+      "index": 79.2,
+      "lo": 76.7,
+      "hi": 81.7,
+      "groups": {
+        "knowledge": 61.2,
+        "math": 88.9,
+        "code": 83.2,
+        "longContext": 65.5,
+        "tools": 97.4
+      },
+      "decode": 187,
+      "wh": 3.179,
+      "finished": "2026-10-17T04:50:18.950Z"
+    },
+    {
+      "id": "sglang-muse30b",
+      "name": "Muse Glimmer 30B",
+      "setup": "SGLang · FP8 · DFlash2 · 128K",
+      "index": 71.6,
+      "lo": 68.4,
+      "hi": 74.7,
+      "groups": {
+        "knowledge": 57.8,
+        "math": 84.1,
+        "code": 62.4,
+        "longContext": 56.4,
+        "tools": 97.4
+      },
+      "decode": 143,
+      "wh": 2.733,
+      "finished": "2026-09-13T12:31:47.022Z"
+    },
+    {
+      "id": "sglang-gptoss120b",
+      "name": "GPT-OSS 120B",
+      "setup": "SGLang · MXFP4 · DFlash · 128K",
+      "index": 71.2,
+      "lo": 68.5,
+      "hi": 73.9,
+      "groups": {
+        "knowledge": 51.4,
+        "math": 87.3,
+        "code": 83.2,
+        "longContext": 37.7,
+        "tools": 96.5
+      },
+      "decode": 206,
+      "wh": 5.989,
+      "finished": "2026-09-12T12:02:43.113Z"
+    },
+    {
+      "id": "kolibri-1-gguf",
+      "name": "Kolibri 1 78B-A3B",
+      "setup": "llama.cpp · Q5_K_M · 160k",
+      "index": 67.7,
+      "lo": 64.5,
+      "hi": 70.9,
+      "groups": {
+        "knowledge": 46.4,
+        "math": 86.5,
+        "code": 78.2,
+        "longContext": 33.5,
+        "tools": 93.9
+      },
+      "decode": 172,
+      "wh": 12.003,
+      "finished": "2026-10-10T02:48:15.254Z"
+    },
+    {
+      "id": "mimo-v2.6-distill-9b-gguf",
+      "name": "MiMo-V2.6 Distill Qwen 9B",
+      "setup": "llama.cpp · Q5_K_M · 262k",
+      "index": 50,
+      "lo": 46.2,
+      "hi": 53.8,
+      "groups": {
+        "knowledge": 39.7,
+        "math": 41.3,
+        "code": 35.6,
+        "longContext": 55.2,
+        "tools": 78.1
+      },
+      "decode": 164,
+      "wh": 17.917,
+      "finished": "2026-09-25T10:26:48.922Z"
+    }
+  ],
+  "live": [
+    {
+      "id": "nemotron-3.5-bolt-74b-a9b-24gb-gguf",
+      "name": "Nemotron 3.5 Bolt 74B-A9B",
+      "setup": "llama.cpp · IQ2 24GB · DFlash",
+      "scored": 4,
+      "groups": 5,
+      "task": "lcb",
+      "done": 80,
+      "total": 101
+    }
+  ]
+}

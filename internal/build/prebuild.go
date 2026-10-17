@@ -29,6 +29,7 @@ func PreBuild() error {
 		"scripts/fetch-github-activity.mjs",
 		"scripts/fetch-app-work.mjs",
 		"scripts/fetch-webb-live.mjs",
+		"scripts/fetch-blackwall.mjs",
 		"scripts/generate-screenshot-variants.mjs",
 		"scripts/generate-main-og-image.js",
 		"scripts/generate-apps-og-grid.js",
@@ -36,6 +37,7 @@ func PreBuild() error {
 		"scripts/generate-linux-og.js",
 		"scripts/generate-page-og.js",
 		"scripts/generate-recview-og.js",
+		"scripts/generate-blackwall-og.js",
 	} {
 		cmd := exec.Command("node", script)
 		cmd.Stdout = nil // Hide output since it's handled by the script

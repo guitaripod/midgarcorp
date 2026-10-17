@@ -134,6 +134,7 @@ const OVERRIDES = {
   blackwall: {
     lang: 'python',
     form: 'cli',
+    homepageUrl: 'https://midgarcorp.cc/blackwall/',
     description:
       'Ranks open models on one NVIDIA RTX PRO 6000 Blackwell: speed and answer quality for everything llama-swap serves, built into one leaderboard you can follow.',
     install: [

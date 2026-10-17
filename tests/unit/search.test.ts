@@ -14,6 +14,7 @@ describe('searchKind', () => {
     expect(searchKind('/blog/building-clis-in-go/', apps)).toBe('post');
     expect(searchKind('/imago', apps)).toBe('tool');
     expect(searchKind('/linux/', apps)).toBe('tool');
+    expect(searchKind('/blackwall', apps)).toBe('tool');
     expect(searchKind('/solarbeam/', apps)).toBe('app');
     expect(searchKind('/crucible', apps)).toBe('app');
     expect(searchKind('/links', apps)).toBe('page');
