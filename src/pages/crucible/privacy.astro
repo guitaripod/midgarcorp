@@ -4,12 +4,12 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 const accent = '#F97316';
 const seoTitle = 'Crucible Privacy Policy';
 const metaDescription =
-  'Crucible has no analytics, no ads, no tracking and no accounts. It talks only to plex.tv and the Plex server you choose; Crucible Pro purchases are checked through RevenueCat.';
+  'Crucible has no analytics, no ads, no tracking and no accounts. It talks only to plex.tv, the Plex server you choose and, if you opt in, Tailscale; Crucible Pro purchases are checked through RevenueCat.';
 
 const sections = [
   {
     title: 'What Crucible is',
-    body: 'Crucible is a Plex client for iPhone and Apple TV made by Midgar Oy. It runs on your device and talks to two things only: plex.tv, to sign you in and find your servers, and the Plex Media Server you choose.',
+    body: 'Crucible is a Plex client for iPhone and Apple TV made by Midgar Oy. It runs on your device and talks to plex.tv, to sign you in and find your servers, and to the Plex Media Server you choose. If you are on a Tailscale network it may also ask the computers on that network which one is your server, and only if you opt in does it talk to api.tailscale.com.',
   },
   {
     title: 'What we collect',
@@ -18,6 +18,10 @@ const sections = [
   {
     title: 'Your Plex account',
     body: 'You sign in with Plex’s own sign-in flow. Your Plex token is stored in the Keychain on your device and sent only to plex.tv and to your own servers. Plex’s privacy policy applies to your Plex account.',
+  },
+  {
+    title: 'Your Tailscale token (optional)',
+    body: 'If a server cannot be found on your Tailscale network by name, you may give Crucible a Tailscale API access token so it can read your device list. The token is stored in the Keychain on your device, sent only to api.tailscale.com, and can be removed at any time in Settings, Server, Tailscale Search.',
   },
   {
     title: 'Your library and viewing history',
@@ -45,7 +49,7 @@ const sections = [
   },
   {
     title: 'Changes and contact',
-    body: 'If this policy changes, the new version appears here with its date. Questions go to https://github.com/guitaripod/Crucible/issues. Last updated 12 October 2026.',
+    body: 'If this policy changes, the new version appears here with its date. Questions go to https://github.com/guitaripod/Crucible/issues. Last updated 17 October 2026.',
   },
 ];
 ---
