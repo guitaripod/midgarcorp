@@ -60,7 +60,7 @@ var categoryOverrides = map[string]string{
 	"claude-bridge":      "AI & Agents",
 	"omp-bridge":         "AI & Agents",
 	"delegate":           "AI & Agents",
-	"mbench":             "AI & Agents",
+	"blackwall":          "AI & Agents",
 	"mako":               "AI & Agents",
 	"swollama":           "Swift Packages",
 	"pixie":              "Apps",

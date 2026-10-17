@@ -151,15 +151,15 @@ export const LINUX_SHOWCASE: Record<string, LinuxShowcase> = {
     },
     more: [],
   },
-  mbench: {
+  blackwall: {
     blurb:
-      'Ranks the models your own GPU runs. One command per model loads it through llama-swap, measures speed and answer quality the same way each time, and rebuilds a leaderboard page: quality against speed, 95% intervals, scores per task.',
-    accent: '#7c9cff',
+      'Ranks open models on one NVIDIA RTX PRO 6000 Blackwell. One command per model loads it through llama-swap, measures speed and answer quality the same way each time, and rebuilds a leaderboard you can follow: quality against speed, 95% intervals, scores per task.',
+    accent: '#76b900',
     shot: {
-      src: '/screenshots/linux/mbench.webp',
+      src: '/screenshots/linux/blackwall.webp',
       w: 2000,
       h: 1333,
-      alt: 'The mbench leaderboard page: a table of models with quality, decode speed and per-task scores',
+      alt: 'The Blackwall leaderboard: a table of models on one RTX PRO 6000 with quality, decode speed and per-task scores',
       widths: [480, 960, 1440],
     },
     more: [],
