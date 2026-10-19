@@ -57,8 +57,8 @@
       "language": "Python",
       "description": "Ranks open models on one NVIDIA RTX PRO 6000 Blackwell: speed and answer quality for everything llama-swap serves, built into one leaderboard you can follow.",
       "stars": 1,
-      "commitCount": 119,
-      "releaseCount": 15,
+      "commitCount": 129,
+      "releaseCount": 19,
       "releaseDates": [
         "2026-09-12T19:21:36Z",
         "2026-09-12T19:57:04Z",
@@ -74,7 +74,11 @@
         "2026-10-15T21:15:47Z",
         "2026-10-15T21:35:51Z",
         "2026-10-16T21:27:18Z",
-        "2026-10-16T22:01:51Z"
+        "2026-10-16T22:01:51Z",
+        "2026-10-17T08:34:58Z",
+        "2026-10-17T13:45:45Z",
+        "2026-10-17T15:55:47Z",
+        "2026-10-17T16:34:00Z"
       ],
       "githubUrl": "https://github.com/guitaripod/blackwall",
       "homepageUrl": "https://midgarcorp.cc/blackwall/",
@@ -91,9 +95,9 @@
         "sglang",
         "vllm"
       ],
-      "latestVersion": "2.0.1",
-      "latestReleaseDate": "2026-10-16T22:01:51Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/blackwall/releases/tag/2.0.1",
+      "latestVersion": "2.2.0",
+      "latestReleaseDate": "2026-10-17T16:34:00Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/blackwall/releases/tag/2.2.0",
       "hasLinuxBinary": false,
       "linuxBinaryUrl": null,
       "note": null,
@@ -409,9 +413,9 @@
       "lang": "rust",
       "language": "Rust",
       "description": "A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
-      "stars": 5,
-      "commitCount": 102,
-      "releaseCount": 31,
+      "stars": 6,
+      "commitCount": 121,
+      "releaseCount": 34,
       "releaseDates": [
         "2026-07-10T13:46:58Z",
         "2026-07-10T13:57:33Z",
@@ -443,16 +447,19 @@
         "2026-09-25T22:06:03Z",
         "2026-10-02T15:55:55Z",
         "2026-10-14T11:06:10Z",
-        "2026-10-14T22:11:12Z"
+        "2026-10-14T22:11:12Z",
+        "2026-10-17T00:13:26Z",
+        "2026-10-17T02:23:37Z",
+        "2026-10-17T12:02:07Z"
       ],
       "githubUrl": "https://github.com/guitaripod/flaccy",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.18.1",
-      "latestReleaseDate": "2026-10-14T22:11:12Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.18.1",
+      "latestVersion": "1.21.0",
+      "latestReleaseDate": "2026-10-17T12:02:07Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.21.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.18.1/flaccy-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.21.0/flaccy-linux-x86_64.tar.gz",
       "note": "GTK4 / libadwaita",
       "install": {
         "primary": {
@@ -633,10 +640,12 @@
       "language": "Rust",
       "description": "GPU monitor, in plain language. NVIDIA Linux native TUI with an optional local-LLM helper.",
       "stars": 0,
-      "commitCount": 21,
-      "releaseCount": 1,
+      "commitCount": 24,
+      "releaseCount": 3,
       "releaseDates": [
-        "2026-10-16T21:03:40Z"
+        "2026-10-16T21:03:40Z",
+        "2026-10-18T09:32:26Z",
+        "2026-10-18T10:31:09Z"
       ],
       "githubUrl": "https://github.com/guitaripod/gpulens",
       "homepageUrl": null,
@@ -649,11 +658,11 @@
         "rust",
         "tui"
       ],
-      "latestVersion": "0.1.0",
-      "latestReleaseDate": "2026-10-16T21:03:40Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/gpulens/releases/tag/0.1.0",
+      "latestVersion": "0.1.2",
+      "latestReleaseDate": "2026-10-18T10:31:09Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/gpulens/releases/tag/0.1.2",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/gpulens/releases/download/0.1.0/gpulens-0.1.0-x86_64-linux.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/gpulens/releases/download/0.1.2/gpulens-0.1.2-x86_64-linux.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -900,11 +909,16 @@
       "note": null,
       "install": {
         "primary": {
-          "channel": "aur",
-          "label": "AUR",
-          "command": "yay -S pomme"
+          "channel": "homebrew",
+          "label": "Homebrew",
+          "command": "brew install guitaripod/tap/pomme"
         },
         "all": [
+          {
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/tap/pomme"
+          },
           {
             "channel": "aur",
             "label": "AUR",
@@ -1197,11 +1211,16 @@
       "note": null,
       "install": {
         "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "git clone https://github.com/guitaripod/speedrun-cli && cd speedrun-cli && go build"
+          "channel": "homebrew",
+          "label": "Homebrew",
+          "command": "brew install guitaripod/tap/speedrun-cli"
         },
         "all": [
+          {
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/tap/speedrun-cli"
+          },
           {
             "channel": "source",
             "label": "from source",
@@ -1220,7 +1239,7 @@
       "language": "Swift",
       "description": "Your AI agents, anywhere: a native GTK4 client for Claude Code, Oh My Pi and opencode running on your own machines, over your own tailnet.",
       "stars": 14,
-      "commitCount": 512,
+      "commitCount": 533,
       "releaseCount": 47,
       "releaseDates": [
         "2026-07-29T19:44:13Z",
