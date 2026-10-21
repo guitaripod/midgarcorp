@@ -85,7 +85,7 @@
   "howItWorks": [
     {
       "step": "Run an agent server",
-      "body": "On the machine where you code: opencode serve, claude-bridge in front of Claude Code, or omp-bridge in front of Oh My Pi. All three are open source and take minutes to set up."
+      "body": "On the machine where you code, run claude-bridge's one-line installer: it downloads a prebuilt program (no Swift or git), starts it as a service and ends with a QR code. Prefer opencode or Oh My Pi? opencode serve and omp-bridge work the same way. All three are open source."
     },
     {
       "step": "Join the same tailnet",
@@ -93,7 +93,7 @@
     },
     {
       "step": "Connect and go",
-      "body": "Paste an address or let Tailscode discover your servers. Send a prompt from the phone, follow it on the Lock Screen, sit down at the desktop and the same session is already there."
+      "body": "Scan the QR code the installer printed, open its link, or let Tailscode discover your servers. Send a prompt from the phone, follow it on the Lock Screen, sit down at the desktop and the same session is already there."
     }
   ],
   "pricing": {
