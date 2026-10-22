@@ -14,6 +14,7 @@ const EXPECTED_PAGES = [
   'helia/privacy',
   'living-dex/privacy',
   'living-dex/terms',
+  'master-of-flags/privacy',
   'master-of-inventory/privacy',
   'pay-day/privacy',
   'pay-day/terms',
