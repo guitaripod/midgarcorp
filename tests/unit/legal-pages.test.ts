@@ -10,6 +10,7 @@ const siteAasa = resolve(siteRoot, 'public/.well-known/apple-app-site-associatio
 const registryAasa = resolve(siteRoot, '../../registry/generated/apple-app-site-association');
 
 const EXPECTED_PAGES = [
+  'app-of-the-dead/privacy',
   'embr/privacy',
   'embr/terms',
   'flaccy/privacy',
