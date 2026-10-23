@@ -1,19 +1,43 @@
 <h1>Double Kick Privacy Policy</h1>
-<p><em>Last updated: June 2026</em></p>
-<p>Double Kick is designed to collect as little as possible. This policy explains what is processed and why.</p>
+<p><em>Last updated: 23 October 2026</em></p>
+<p>Double Kick turns a photo of a menu into a translated, explained list of dishes and drinks. It has no sign-up, no advertising and no tracking. Your scan history and taste preferences stay on your device. What reaches Midgar's servers is the photo the AI needs to read the menu, an anonymous identity that keeps your credit balance, an anonymous Midgar ID, and what is needed to recognise your purchases.</p>
+<h2>In short</h2>
+<ul>
+<li>The menu photo you scan is sent to our server and on to Google Gemini to read and translate the items. It is used only to make your result.</li>
+<li>The app keeps two anonymous identifiers: an account key for your credit balance, and a Midgar ID that also works in Midgar's other apps. Neither holds a name, email address or other detail about you.</li>
+<li>Credit packs are bought through Apple. RevenueCat verifies them, and our server keeps the record of what you bought.</li>
+<li>Your scan history, favorites and taste preferences are stored on your device and are never uploaded.</li>
+<li>The app does not ask for your location. Nothing is used for advertising or tracking, nothing is sold, and no data is given to third parties for their own use.</li>
+</ul>
+<h2>Who we are</h2>
+<p>Double Kick is published by Midgar Oy, a company in Finland, which is the controller of the information described here. You can reach us at <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a>.</p>
 <h2>AI processing</h2>
-<p>To provide the app's core feature, photos of the menus you scan are sent to Google Gemini to read and translate the items. This data is processed only to produce your result and is not used to train AI models. Our AI providers handle it under their own privacy and security commitments that protect it to a standard comparable to this policy, and are permitted to use it only to return your result.</p>
+<p>To provide the app's core feature, the photo of the menu you scan, taken with the camera or chosen from your library, is sent over an encrypted connection to our server at api.midgarcorp.cc, which passes it to Google Gemini together with our own instructions to read and translate the items. The photo is processed only to produce your result and is not used to train AI models. Our AI provider handles the request under its own privacy and security commitments and is permitted to use it only to return your result. Our server does not keep your photo or the translated result. It keeps a record of each scan's cost against your anonymous account (when it happened and how many credits it used), which is deleted with the account. The photo is re-encoded before it is sent, so location and other camera metadata are not included.</p>
 <h2>Identity</h2>
-<p>Double Kick works without an account. On first launch we create an anonymous, device-based identity used only to track your credit balance. You may optionally Sign in with Apple to sync your balance across devices, in which case we receive only the identifier Apple provides.</p>
+<p>Double Kick works without a sign-up. On first launch we create an anonymous, device-based account used to hold your credit balance. It holds no name, email address or phone number. The app does not offer Sign in with Apple. When you delete your account in Profile, this account, your credit balance and the records linked to it are deleted from our server.</p>
+<h2>The anonymous Midgar ID</h2>
+<p>The app also asks our server for an anonymous Midgar ID: a random identifier, and a random secret that proves the ID is yours. The server keeps the ID, a hash of the secret and the date it was created. The app keeps both in your iCloud Keychain, so the same ID follows you across your own devices and across Midgar's other apps. When the ID is created or joined the app may ask Apple's App Attest service to confirm that the request comes from a genuine copy of the app; we receive Apple's attestation and nothing about you. The ID is sent as a sign-in token with the request that shows, on the Midgar universe screen, which Midgar apps you already use. It is not removed by Delete Account in Double Kick, because your other Midgar apps share it. To have it deleted, email <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a>.</p>
 <h2>Purchases</h2>
-<p>Credit packs are sold through Apple In-App Purchase and validated via RevenueCat. We receive purchase records (which pack and a transaction identifier) to credit your balance. We never receive your payment-card details.</p>
-
+<p>Credit packs are sold through Apple In-App Purchase and validated via RevenueCat. RevenueCat receives the purchase receipt from Apple, an anonymous identifier that it generates and your IP address, and it does not receive your name or email address. We receive purchase records (which pack and a transaction identifier) to credit your balance. We never receive your payment-card details.</p>
 <h2>On-device data</h2>
-<p>Content you create in the app — such as results, history, and transcripts — is stored on your device and is not uploaded to us.</p>
-
-
-
+<p>Content you create in the app, such as the translated menus in your history, your favorites and your taste preferences, is stored on your device and is not uploaded to us. The menu photo itself is not kept in the history. If you take a photo with the camera and allow it, the app saves that photo to your Photos library. A diagnostic log is written on the device too, recording errors, the app version and device model, never the contents of a menu or any token. It leaves your device only if you choose to share it.</p>
+<h2>More Apps</h2>
+<p>Profile has a Midgar universe card that opens a view of Midgar's other apps. It fetches the app list from midgar-catalog.guitaripod.workers.dev and asks Apple's public iTunes lookup service for current icons, prices and ratings; your App Store country code is sent so prices are correct for your region. It reports which app tiles were displayed and which were tapped to api.midgarcorp.cc. That report contains no identifier of any kind and not your Midgar ID: only the event, the promoted app's App Store id, your App Store country code, where in the app the screen was opened, and the app's name, version and platform. Our server stores a running total per day, event, app and platform, so there is no per-person or per-device record. This is product-interaction data, used only to decide which of our apps to promote, never for advertising or tracking. The Midgar ID is sent as a sign-in token only with the separate request that lists which Midgar apps you already use.</p>
+<p>Midgar's server runs on Cloudflare, which may keep standard request logs such as your IP address for a limited time. We do not use them for anything else.</p>
+<h2>Children</h2>
+<p>The app is not directed at children under 13 and does not knowingly collect information from them. It contains no advertising and no user-to-user communication.</p>
 <h2>What we don't do</h2>
-<p>We do not sell your data, show advertising inside the app, or use third-party tracking or advertising identifiers.</p>
-<h2>Your choices</h2>
-<p>You can delete the app at any time to remove on-device data. For any questions, contact <a href="https://x.com/prblemslver">@prblemslver</a>.</p>
+<p>We do not sell your data, show advertising inside the app, use advertising identifiers, run third-party analytics or crash-reporting software, or ask for tracking permission. We do not use your data to train AI models.</p>
+<h2>How long we keep data</h2>
+<ul>
+<li>Your scan history, favorites, taste preferences and the log: only on your device, until you delete the app or your account.</li>
+<li>Your anonymous account, its credit balance and the cost records of your scans: until you delete your account in Profile.</li>
+<li>The Midgar ID record: until you ask us to delete it.</li>
+<li>RevenueCat's records of your purchases: kept by RevenueCat under its own policy. Apple's records of your purchases: kept by Apple.</li>
+</ul>
+<h2>Your choices and rights</h2>
+<p>You can delete your account in Profile at any time, which removes your anonymous account and everything saved on the device. Deleting the app alone removes the on-device data but not the server-side account. Where privacy law such as the GDPR gives you rights to access, correct, delete, restrict or move information, or to object to its use, contact us at <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a> and we will help. We process this information to provide the translations and purchases you ask for. Processing takes place in the European Union and the United States, by Cloudflare as our hosting provider, by Google as our AI provider and by RevenueCat. You may complain to your local data protection authority; in Finland that is the Office of the Data Protection Ombudsman (tietosuoja.fi).</p>
+<h2>Changes</h2>
+<p>If this policy changes we will publish the new version here with a new date, and mention material changes in the app's release notes.</p>
+<h2>Contact</h2>
+<p>For any questions, contact <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a>.</p>
