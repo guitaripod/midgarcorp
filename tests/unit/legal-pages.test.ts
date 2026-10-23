@@ -26,6 +26,7 @@ const EXPECTED_PAGES = [
   'psywave/privacy',
   'dream-eater/privacy',
   'double-kick/privacy',
+  'sforesight/privacy',
 ].sort();
 
 describe('legal content', () => {
