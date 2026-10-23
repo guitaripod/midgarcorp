@@ -1,0 +1,60 @@
+---
+import { duoCombo } from '@data/duo';
+
+export interface Props {
+  slug: string;
+  name: string;
+  accent: string;
+  sectionClass?: string;
+}
+
+const {
+  slug,
+  name,
+  accent,
+  sectionClass = 'border-t border-paper-border py-12 dark:border-term-border sm:py-16',
+} = Astro.props;
+const combo = duoCombo(slug);
+---
+
+{
+  combo && (
+    <section id="iphone-duo" class={`scroll-mt-20 ${sectionClass}`} style={`--accent:${accent}`}>
+      <p class="prompt-line mb-3">{`./${slug} --iphone-duo`}</p>
+      <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+        {name}{' '}<span class="accent-text">on iPhone Duo</span>
+      </h2>
+      <figure class="relative mx-auto max-w-[880px]">
+        <div
+          class="pointer-events-none absolute inset-0 -z-10"
+          style="background:radial-gradient(closest-side, color-mix(in srgb, var(--accent) 20%, transparent), transparent)"
+          aria-hidden="true"
+        />
+        <img
+          src={combo.src}
+          srcset={combo.srcset}
+          sizes="(min-width: 960px) 880px, 100vw"
+          width={combo.w}
+          height={combo.h}
+          alt={`${name} on iPhone Duo: the outer display in front of the open inner display`}
+          loading="lazy"
+          decoding="async"
+          class="block h-auto w-full"
+        />
+        <figcaption class="mt-2 text-center text-xs text-paper-muted dark:text-term-muted">
+          Both displays of iPhone Duo: the outer display in front, the open inner display behind.
+        </figcaption>
+      </figure>
+    </section>
+  )
+}
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: color-mix(in srgb, var(--accent), #fff 24%);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+</style>
