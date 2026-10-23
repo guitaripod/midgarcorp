@@ -10,6 +10,7 @@ import PricingTable from '@components/landing/PricingTable.astro';
 import WebbLive from '@components/landing/WebbLive.astro';
 import AppIcon from '@components/landing/AppIcon.astro';
 import InstallGuide from '@components/landing/InstallGuide.astro';
+import DuoCombo from '@components/landing/DuoCombo.astro';
 import {
   landingApps,
   DEVICE_LABELS,
@@ -508,6 +509,8 @@ const sectionPrompt = (cmd: string) => cmd;
         </section>
       )
     }
+
+    <DuoCombo slug={app.slug} name={app.shortName} accent={accent} />
 
     {
       install && !c.installLast && (

@@ -8,6 +8,7 @@ import PricingTable from '@components/landing/PricingTable.astro';
 import AppIcon from '@components/landing/AppIcon.astro';
 import SectionHead from '@components/landing/SectionHead.astro';
 import ShotFigure from '@components/landing/ShotFigure.astro';
+import DuoCombo from '@components/landing/DuoCombo.astro';
 import { landingApps, screenshotUrl, type LandingApp } from '@data/landing';
 
 export const prerender = true;
@@ -753,6 +754,8 @@ const clients = [
         }
       </div>
     </section>
+
+    <DuoCombo slug="tailscode" name={app.shortName} accent={accent} sectionClass={section} />
 
     <section id="money" class={section}>
       <div class="grid items-start gap-x-10 gap-y-8 lg:grid-cols-12">
