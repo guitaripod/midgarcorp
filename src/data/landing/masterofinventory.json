@@ -108,7 +108,7 @@
     },
     {
       "q": "Where is my data, and is it private?",
-      "a": "Your records live on your device and sync through your own iCloud account when you are signed in. There is no account and no server of ours that holds your inventory. Only anonymous purchase and usage counts leave your phone, never your items, photos or receipts."
+      "a": "Your records live on your device and sync through your own iCloud account when you are signed in. There is no account and no server of ours that holds your inventory. Only a random Midgar ID, your Pro purchase records and anonymous usage counts leave your phone, never your items, photos or receipts."
     },
     {
       "q": "Does it work offline?",
