@@ -1,15 +1,30 @@
 <h1>Dream Eater Privacy Policy</h1>
-<p><em>Last updated: October 2026</em></p>
+<p><em>Last updated: 23 October 2026</em></p>
 <p>Dream Eater is a private dream journal. This policy explains what stays on your device, what leaves it, who handles it and how to delete it.</p>
+<h2>In short</h2>
+<ul>
+<li>Your dreams, voice recordings, journal, birth details and sky data stay on your device. A dream's text leaves it only when you ask for a reading or a follow-up question about one, and a short scene summary only when you ask for art.</li>
+<li>The app keeps two anonymous identifiers, an account key for your credit balance and a Midgar ID that also works in Midgar's other apps. Neither holds your name or email address.</li>
+<li>Requests to Midgar's servers for readings, art, credits and your Midgar ID go through Midgar's gateway at api.midgarcorp.cc.</li>
+<li>Nothing is sold, and there is no advertising inside the app and no tracking.</li>
+</ul>
+<h2>Who we are</h2>
+<p>Dream Eater is published by Midgar Oy, a company in Finland, which is the controller of the information described here. You can reach us at <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a>.</p>
 <h2>What stays on your device</h2>
-<p>Your dreams, voice recordings, transcripts, journal, tags, birth details and the sky data worked out from them are stored on your device and are not uploaded to us.</p>
+<p>Your dreams, voice recordings, transcripts, journal, tags, birth details and the sky data worked out from them are stored on your device and are not uploaded to us. Speech is turned into text on your device. A diagnostic log is written there too, recording events and errors such as counts and error codes, never the text of a dream, a title, a reading or your birth details. It is not uploaded to us unless you choose to send it with a message to support, after the app has shown you exactly what goes with it.</p>
+<p>When an update changes how the journal is stored, the app copies your journal into the new storage and keeps the old copy on your device for 30 days, in case the update needs to be undone, and then removes it. Delete all data removes it at once.</p>
 <h2>Readings</h2>
-<p>Only when you ask for a reading, the dream text, the options you chose for it and short summaries of earlier dreams you had read are sent to Dream Eater's server, which passes them to Google's Gemini model to write the reading. Our server keeps no dream text, prompt or reading afterwards: it passes the request on, returns the answer to your device and forgets it. You can withdraw your permission for readings at any time in Settings, then Privacy, and everything else keeps working.</p>
+<p>Only when you ask for a reading, the dream text, the options you chose for it and short summaries of earlier dreams you had read are sent to Dream Eater's server through Midgar's gateway at api.midgarcorp.cc, which passes them to Google's Gemini model to write the reading. A follow-up question about a reading sends your question and the earlier turns of that conversation the same way. Our server keeps no dream text, prompt or reading afterwards: it passes the request on, returns the answer to your device and forgets it. You can withdraw your permission for readings at any time in Settings, then Privacy, and everything else keeps working.</p>
 <h2>Art</h2>
 <p>Art is made from a short scene summary, not from your dream text. The summary goes through our server to Google's image model, and the image is returned to your device and is not stored on our server.</p>
+<h2>Identity</h2>
+<p>Dream Eater works without an account. On first launch we create an anonymous account used to hold your credit balance and to recognise your subscription. It holds no name, email address or phone number.</p>
+<h2>The anonymous Midgar ID</h2>
+<p>The app also asks our server for an anonymous Midgar ID: a random identifier, and a random secret that proves the ID is yours. The server keeps the ID, a hash of the secret and the date it was created. The app keeps both in your iCloud Keychain, so the same ID follows you across your own devices and across Midgar's other apps. When the app creates or joins the ID it may ask Apple's App Attest service to confirm that the request comes from a genuine copy of the app; we keep the identifier of the attested key with the ID and receive nothing else about you. The ID is sent with requests to our server as a sign-in token, so that our server can link it to your anonymous account, and on the More Apps screen it shows which Midgar apps you already use. It is not removed by Delete all data in Dream Eater, because your other Midgar apps share it. To have it deleted, email <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a>.</p>
 <h2>What our server keeps</h2>
 <ul>
 <li>An anonymous identifier and key for your device. There is no name and no email address.</li>
+<li>The Midgar ID, a hash of its secret, the date it was created and the identifier of its App Attest key.</li>
 <li>Your credit balance and the ledger of credits granted, used and bought.</li>
 <li>Counters for your weekly free readings.</li>
 <li>The Apple Ads attribution verdict, if you installed the app after tapping one of our ads (see Advertising measurement below).</li>
@@ -21,16 +36,29 @@
 <li><strong>Google (Gemini)</strong>: writes readings and paints art from the text described above.</li>
 <li><strong>RevenueCat</strong>: processes purchases and tells our server whether you have the subscription.</li>
 <li><strong>Apple</strong>: StoreKit for purchases, and Apple Ads attribution that tells us which ad campaign an install came from.</li>
-<li><strong>Cloudflare</strong>: hosts our server.</li>
+<li><strong>Cloudflare</strong>: hosts our server and the gateway. It may keep standard request logs, such as your IP address, for a limited time. We do not use them for anything else.</li>
 </ul>
 <p>Google handles the text sent for a reading or for art under its own terms and privacy policy. Under its terms for the paid Gemini API, Google does not use those prompts and responses to improve its products, and it keeps a log of them for a limited time solely to detect abuse. We do not use your dreams to train AI models, and nothing is sold or shared for advertising.</p>
+<h2>More Apps</h2>
+<p>Settings has a Midgar card that opens a view of Midgar's other apps. It fetches the app list from midgar-catalog.guitaripod.workers.dev and asks Apple's public iTunes lookup service for current icons, prices and ratings; your App Store country code is sent so prices are correct for your region. It asks your device, without any network call, which of Midgar's other apps are installed, so that it does not suggest an app you already have; that list is not sent anywhere. With your Midgar ID as the sign-in token it asks our identity service and ledger which Midgar apps you use and what you own in them, to show them under Your Midgar; this only displays information and grants nothing. Dream Eater does not report which cards were shown or tapped.</p>
 <h2>Advertising measurement</h2>
 <p>We may promote Dream Eater with ads on the App Store. If you installed the app after tapping one of those ads, Apple tells our server which campaign, ad group, and search keyword produced the install, and the country the App Store served it in, never who you are. Apple's App Store attribution includes no advertising identifier and no device identifier, which is why it requires no tracking permission. We keep those campaign details alongside your anonymous identity purely to see which ads pay for themselves, we receive nothing that could recognise you in any other app or website, and we never share it.</p>
 <h2>Deleting your data</h2>
-<p>In the app, open Settings, then Privacy, then Delete all data. This removes the dreams and everything else stored on your device, and deletes your server identity, credit ledger and weekly counters. It cannot be undone, and it does not cancel a subscription: manage or cancel that in iOS Settings under your Apple Account, then Subscriptions. Purchase records held by Apple and RevenueCat are kept under their own policies.</p>
+<p>In the app, open Settings, then Privacy, then Delete all data. This removes the dreams and everything else stored on your device, including the copy of your journal an earlier version kept, and deletes your server identity, credit ledger and weekly counters. It does not remove the Midgar ID, which Midgar's other apps share; email <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a> to have it deleted. It cannot be undone, and it does not cancel a subscription: manage or cancel that in iOS Settings under your Apple Account, then Subscriptions. Purchase records held by Apple and RevenueCat are kept under their own policies.</p>
+<h2>How long we keep data</h2>
+<ul>
+<li>Your dreams, recordings, journal, birth details and the log: only on your device, until you delete the app or use Delete all data.</li>
+<li>Your anonymous account, its credit balance and usage records: until you use Delete all data.</li>
+<li>The Midgar ID record: until you ask us to delete it.</li>
+<li>RevenueCat's records of your purchases: kept by RevenueCat under its own policy. Apple's records of your purchases: kept by Apple.</li>
+</ul>
+<h2>Your rights</h2>
+<p>Where privacy law such as the GDPR gives you rights to access, correct, delete, restrict or move information, or to object to its use, contact us at <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a> and we will help. We process this information to provide the readings, art, credits and purchases you ask for. Processing takes place in the European Union and the United States, by Cloudflare as our hosting provider, by Google as our AI provider and by RevenueCat. You may complain to your local data protection authority; in Finland that is the Office of the Data Protection Ombudsman (tietosuoja.fi).</p>
 <h2>Children</h2>
 <p>Dream Eater is not directed at children under 13, and we do not knowingly collect data from them.</p>
 <h2>What we don't do</h2>
 <p>We do not sell your data, show advertising inside the app, or use third-party tracking or advertising identifiers.</p>
+<h2>Changes</h2>
+<p>If this policy changes we will publish the new version here with a new date, and mention material changes in the app's release notes.</p>
 <h2>Contact</h2>
 <p>For any questions, contact <a href="mailto:support@midgarcorp.cc">support@midgarcorp.cc</a>.</p>
