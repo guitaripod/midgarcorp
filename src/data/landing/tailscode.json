@@ -1,6 +1,6 @@
 {
   "seoTitle": "Tailscode: Claude Code, opencode & Oh My Pi on your Lock Screen",
-  "metaDescription": "Claude Code, opencode and Oh My Pi on your Lock Screen. Approve, read diffs, price every turn. iPhone, iPad, Mac, Linux. No relay, no account, no analytics.",
+  "metaDescription": "Claude Code, opencode and Oh My Pi on your Lock Screen. Approve, read diffs, price every turn. iPhone, iPad, Mac, Linux. No relay, no sign-in, no tracking.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
@@ -33,7 +33,7 @@
     "Live Activity per conversation on the Lock Screen",
     "Approve, answer and read the diff from the phone",
     "Every turn priced, every month totalled",
-    "Free, open source, no relay, no account"
+    "Free, open source, no relay, no sign-in"
   ],
   "features": [
     {
@@ -142,7 +142,7 @@
     },
     {
       "q": "Is my code sent anywhere?",
-      "a": "Not by Tailscode. Prompts, answers, diffs and files travel between your devices and your machines over your own Tailscale network. There is no Tailscode server and no account system, the app's privacy manifest declares zero collected data types, and the source is public. Your agent still talks to its own model provider the way it always did; that part is between you and them. One optional exception: if your claude-bridge holds an Apple push key, Lock Screen updates ride Apple's push service and carry the conversation's title, its phase and tool counts."
+      "a": "Not by Tailscode. Prompts, answers, diffs and files travel between your devices and your machines over your own Tailscale network, and never reach us. There is no Tailscode server between them and nothing to sign in to. The App Store apps do keep a random Midgar ID, report your Pro or tip purchase to our ledger and send anonymous More Apps counts; none of it is used for tracking, and the Linux app and the direct Mac build collect nothing. The privacy policy lists every row, and the source is public. Your agent still talks to its own model provider the way it always did; that part is between you and them. One optional exception: if your claude-bridge holds an Apple push key, Lock Screen updates ride Apple's push service and carry the conversation's title, its phase and tool counts."
     },
     {
       "q": "Does it work without Tailscale?",

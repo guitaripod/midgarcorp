@@ -313,7 +313,7 @@ const clients = [
 
         <ul class="mb-6 flex flex-wrap gap-2" aria-label="What Tailscode does not have">
           {
-            ['No relay', 'No account', 'No analytics', 'GPL-3.0'].map((fact) => (
+            ['No relay', 'No sign-in', 'No tracking', 'GPL-3.0'].map((fact) => (
               <li>
                 <a
                   href="#trust"
@@ -462,9 +462,9 @@ const clients = [
     <section id="trust" class={section}>
       <div class="grid items-center gap-x-10 gap-y-8 lg:grid-cols-12">
         <div class="lg:col-span-5">
-          <SectionHead prompt="tailscode --trust" title="Nothing leaves your tailnet">
-            Your phone talks to your machine, and nothing else is in the picture. Three facts you
-            can check, and a licence that lets you.
+          <SectionHead prompt="tailscode --trust" title="Your code stays on your tailnet">
+            Your phone talks to your machine, and your chats and code go nowhere else. Three facts
+            you can check, and a licence that lets you.
           </SectionHead>
           <ul
             class="mb-6 grid grid-cols-3 gap-px overflow-hidden rounded-sm border border-paper-border bg-paper-border text-center dark:border-term-border dark:bg-term-border"
@@ -472,8 +472,8 @@ const clients = [
             {
               [
                 ['No relay', 'no Tailscode server sits between you and the machine'],
-                ['No account', 'nothing to sign up for, nothing to leak'],
-                ['No analytics', 'zero collected data types in the privacy manifest'],
+                ['No sign-in', 'nothing to sign up for, nothing to leak'],
+                ['Your code stays home', 'chats and code never reach us'],
               ].map(([head, body]) => (
                 <li class="bg-paper-panel px-3 py-4 dark:bg-term-panel">
                   <p class="accent-text text-sm font-bold">{head}</p>
@@ -686,7 +686,9 @@ const clients = [
             cannot reach each other directly, and Tailscode adds no hop of its own. Your agent still
             talks to its own model provider. And a claude-bridge that holds an Apple push key sends
             Lock Screen updates through Apple's push service, carrying the conversation's title, its
-            phase and tool counts. Read the
+            phase and tool counts. The App Store apps also keep a random Midgar ID for your Pro and
+            tip purchases and send anonymous More Apps counts, none of it near your chats or code.
+            Read the
             <a
               href="/tailscode/privacy"
               class="underline decoration-dotted underline-offset-2 hover:text-paper-green dark:hover:text-term-green"

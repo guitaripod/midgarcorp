@@ -4,47 +4,136 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 const accent = '#546BFF';
 const seoTitle = 'Tailscode Privacy Policy';
 const metaDescription =
-  'Tailscode sends no analytics, ads or tracking. Your chats and code travel only between your device and machines you own; Midgar keeps an anonymous ID and your purchase records so Pro follows you.';
-const sections = [
+  'Your chats, prompts, code and files never reach us. The App Store apps keep a random Midgar ID, report purchases and send anonymous More Apps counts. Nothing is used for tracking, and the Linux app and the direct Mac build collect nothing.';
+
+type Section = {
+  title: string;
+  paragraphs?: string[];
+  items?: string[];
+};
+
+const collected = [
   {
-    title: 'Your chats and code stay yours',
-    body: 'Your chats and code travel directly between your device and machines you own, over your own WireGuard-encrypted Tailscale network. We never see them, and nothing about them is ever sent to a server we operate.',
+    type: 'User ID',
+    detail: 'Linked to you · App Functionality',
+    body: 'The Midgar ID: a random identifier with no name, email address or other detail about you. It is sent to api.midgarcorp.cc as a sign-in token for the purchase ledger and for the Your Midgar card in Settings, and it travels with each purchase as Apple’s app account token.',
   },
   {
-    title: 'Tailscale API token',
-    body: 'The optional Tailscale API token, used for server discovery, is stored in the Keychain and sent only to api.tailscale.com to list your own devices.',
+    type: 'Device ID',
+    detail: 'Linked to you · App Functionality',
+    body: 'The App Attest key id: Apple’s per-app, per-device key, which proves a request comes from a genuine copy of Tailscode. It is stored with the Midgar ID when the ID is created or joined. Tailscode reads no advertising identifier and no vendor identifier.',
   },
   {
-    title: 'Server passwords',
-    body: 'Server passwords are stored in the Keychain and sent only to the servers you configure.',
+    type: 'Purchase History',
+    detail: 'Linked to you · App Functionality',
+    body: 'The signed App Store transactions for Pro and for the tips, reported to the Midgar ledger at api.midgarcorp.cc together with your Midgar ID. Apple’s own server notifications for Tailscode reach the same ledger. There is no RevenueCat or other purchase SDK in the app.',
   },
   {
-    title: 'Live Activity push tokens',
-    body: 'Live Activity push tokens are registered only with your own claude-bridge server, which sends updates through Apple’s push service.',
+    type: 'Product Interaction',
+    detail: 'Not linked to you · Analytics',
+    body: 'Anonymous counts from MidgarKit: the Your Midgar and More Apps screens opened, which app tiles were shown and tapped, and a purchase event with the product id. They are sent to api.midgarcorp.cc with no Midgar ID, no device id and no other identifier, and our server stores only a running total per day, event, app and platform.',
+  },
+];
+
+const sections: Section[] = [
+  {
+    title: 'Who we are',
+    paragraphs: [
+      'Tailscode is published by Midgar Oy, a company in Finland, which is the controller of the information described on this page. You can reach us at support@midgarcorp.cc.',
+    ],
   },
   {
-    title: 'The anonymous Midgar ID',
-    body: 'The first time the app starts, it asks our server at api.midgarcorp.cc for an anonymous Midgar ID: a random identifier, and a random secret that proves the ID is yours. The server keeps the ID, a hash of the secret and the date it was created. The app keeps the ID and the secret in your iCloud Keychain, so the same ID follows you across your own devices and across Midgar’s other apps. There is no name, email address, phone number, location or device name in it. When the app creates or joins the ID it may ask Apple’s App Attest service to confirm that the request comes from a genuine copy of the app; our server then keeps that key’s identifier with the ID, and receives nothing else about you or your device. The ID is used to tie your purchases to you and, in Settings, to show which Midgar apps you already use. It is never sent with your chats, code, servers or tokens.',
+    title: 'What we never collect',
+    paragraphs: [
+      'Your conversations, prompts, answers, diffs, code and files travel directly between your device and the machines you run, over your own WireGuard-encrypted Tailscale network. They never reach us, and we run no server that sits between you and your machines.',
+    ],
+    items: [
+      'No chats, prompts, code, files, pictures or clips.',
+      'No server addresses, passwords or API keys: they stay in the Keychain on your device and are sent only to the servers you configure.',
+      'No location, contacts, browsing or search history, health data or financial information.',
+      'No diagnostics: the log stays on your device (see Diagnostics below). The app never starts MetricKit collection and contains no third-party analytics or crash-reporting software.',
+    ],
+  },
+  {
+    title: 'No tracking, no advertising',
+    paragraphs: [
+      'Nothing Tailscode collects is used to track you, to show advertising or to build a profile of you, and nothing is sold or shared with a data broker. The app does not ask for tracking permission, its privacy manifest declares no tracking and no tracking domains, and it has no advertising.',
+    ],
+  },
+  {
+    title: 'Which copies collect',
+    paragraphs: [
+      'The App Store apps, the iPhone and iPad app and the Mac App Store app (and their TestFlight builds), create the Midgar ID, the App Attest key and the purchase reports above, because they sell Pro and the tips. The widget and the notification extensions hold no Midgar ID and send nothing.',
+      'The Linux app and the direct Mac build, which is not on the App Store, collect nothing. They sell nothing, create no Midgar ID and start none of Midgar’s services.',
+    ],
+  },
+  {
+    title: 'The Midgar ID and App Attest',
+    paragraphs: [
+      'The first time an App Store copy starts, it asks our server at api.midgarcorp.cc for a Midgar ID: a random identifier, and a random secret that proves the ID is yours. The server keeps the ID, a hash of the secret and the date it was created. The app keeps the ID and the secret in your iCloud Keychain, so the same ID follows you across your own devices and across Midgar’s other apps.',
+      'When the ID is created or joined, the app asks Apple’s App Attest service to confirm that the request comes from a genuine copy of Tailscode. We receive Apple’s attestation and keep its key id with the Midgar ID, and learn nothing else about you or your device. The ID is never sent with your conversations, code or files.',
+    ],
   },
   {
     title: 'Purchases',
-    body: 'Pro and the tips are sold through Apple In-App Purchase. Apple handles payment and billing, and we never receive your card details or your Apple Account details. When you buy or restore, the app sends Midgar’s purchase ledger at api.midgarcorp.cc the signed transaction record Apple has already issued (which product, the price, the dates, whether it was refunded, the order identifiers and your App Store country) together with your Midgar ID, and Apple’s own notifications about the purchase reach the same ledger. The ledger keeps these records so that Pro is recognised on all your devices and so that Midgar can keep its financial records, for as long as those records must be kept. Whether Pro is unlocked is decided on your device by Apple’s StoreKit; when our servers cannot be reached, a purchase still completes and Pro still unlocks.',
+    paragraphs: [
+      'Pro and the tips are bought through Apple In-App Purchase. Apple handles payment and billing, and we never receive your card details or your Apple Account details. When you buy or restore, the app sends the Midgar ledger the signed transaction record Apple has already issued (which product, the price, the dates, whether it was refunded, the order identifiers and your App Store country) together with your Midgar ID. The ledger keeps these records so that Pro is recognised on your iPhone, iPad and Mac, and so that Midgar can keep its financial records for as long as the law requires.',
+      'If our servers cannot be reached, StoreKit alone decides, so a purchase still completes and Pro still unlocks.',
+    ],
   },
   {
-    title: 'More apps',
-    body: 'Settings shows Midgar’s other apps. Only when that card is shown, the app downloads the list from a catalogue service we run on Cloudflare and reports which app tiles were displayed and which were tapped to api.midgarcorp.cc: the kind of event, which app, this app’s bundle identifier and your App Store country. That report carries no identifier of any kind and not your Midgar ID, and our server keeps only a running total per day, event, app and platform. The Midgar ID is sent as a sign-in token only with the separate request that lists which Midgar apps you already use.',
+    title: 'Your Midgar and More Apps',
+    paragraphs: [
+      'Settings has a screen that shows what you own in Midgar’s other apps and suggests our other apps. Opening it downloads the app list from a catalogue service we run on Cloudflare, and the artwork and current prices from Apple’s servers; your App Store country is sent so prices are right for your region. The Midgar ID is sent as a sign-in token only with the request that lists which Midgar apps you already use.',
+      'The app also reports which tiles were shown and tapped, as the anonymous counts described above. That report carries no identifier of any kind and not your Midgar ID. Like any web service, Cloudflare may keep standard request logs, such as your IP address, for a limited time. We use them for nothing else.',
+    ],
   },
   {
-    title: 'No analytics, ads or tracking',
-    body: 'There are no analytics or advertising SDKs and no tracking: nothing is used to follow you across other companies’ apps or websites, and the app asks for no tracking permission. Like any web service, Cloudflare, which hosts our servers, may keep standard request logs such as your IP address for a limited time.',
+    title: 'Your servers and your network',
+    paragraphs: [
+      'Server passwords are stored in the Keychain and sent only to the servers you configure. The optional Tailscale API token, used for server discovery, is stored in the Keychain and sent only to api.tailscale.com to list your own devices.',
+      'Your agent still talks to its own model provider the way it always did; that part is between you and them. If you enter your own keys to read usage or quota from Ollama or DeepSeek, or to use Google’s services, the app calls those providers directly from your device. We do not see those requests or the keys. If you use Game Center trophies, Apple keeps them under Apple’s policy.',
+    ],
+  },
+  {
+    title: 'Push notifications and Live Activities',
+    paragraphs: [
+      'Live Activity push tokens are registered only with your own claude-bridge server. If that server holds an Apple push key, it sends Lock Screen updates through Apple’s push notification service (APNs), carrying the conversation’s title, its phase and tool counts. Nothing about this passes through Midgar.',
+      'When a turn ends while the app is closed, the notification is raised on your device after a background request answered by your own server over your tailnet, not through Midgar or Apple.',
+    ],
   },
   {
     title: 'Diagnostics',
-    body: 'A diagnostic log file stays on-device; it leaves your device only if you export and share it yourself.',
+    paragraphs: [
+      'A diagnostic log file, tailscode.log, stays on your device. It leaves only if you export it, share it or mail the diagnostic summary yourself. Read it first: nothing is sent unless you send it. If you have chosen in iOS to share analytics with app developers, Apple may give us anonymous crash and usage reports, which contain nothing we can link to you.',
+    ],
+  },
+  {
+    title: 'How long we keep data',
+    items: [
+      'Your conversations, code and files: not kept by us at all. They live on your machines and in your device’s own storage.',
+      'The Midgar ID record, its App Attest key id and your purchase records at Midgar: until you ask us to delete them.',
+      'Purchase records at Apple: kept under Apple’s policies.',
+      'The anonymous More Apps and purchase counts: kept as running totals, as long as they are useful for measuring our own promotion. They are not linked to you, so they cannot be deleted per person.',
+    ],
   },
   {
     title: 'Deleting your data',
-    body: 'Deleting the app removes everything it stores on your device. To have the Midgar ID and the purchase records tied to it deleted from our servers, email the address below; Apple’s own records of your purchases stay with Apple.',
+    paragraphs: [
+      'Delete the app to remove everything stored on that device. The Midgar ID itself is kept in your iCloud Keychain, so it can outlive the app. To have your Midgar ID and the purchase records tied to it erased from our server, email support@midgarcorp.cc, tell us the app and the approximate date of your first purchase, and we will help you do it. We delete the server records, but we cannot change Apple’s own records, and we cannot refund a purchase: do that through Apple.',
+    ],
+  },
+  {
+    title: 'Your rights',
+    paragraphs: [
+      'Where privacy law, such as the GDPR, gives you rights to access, correct, erase, restrict or move information about you, or to object to its use, contact us and we will help. We process the Midgar ID, the App Attest key id and the purchase records to provide, account for and support the purchases you make and to recognise Pro on your devices, and the anonymous counts in our legitimate interest in measuring our own promotion. Processing takes place in the European Union and the United States, by Cloudflare as our hosting provider. You may complain to your local data protection authority; in Finland that is the Office of the Data Protection Ombudsman (tietosuoja.fi).',
+    ],
+  },
+  {
+    title: 'Children',
+    paragraphs: [
+      'Tailscode is a tool for developers and is not directed at children. We do not knowingly collect personal information from anyone, including children.',
+    ],
   },
 ];
 ---
@@ -72,16 +161,47 @@ const sections = [
       >
         Tailscode Privacy Policy
       </h1>
-      <p class="text-xs text-paper-faint dark:text-term-faint">Effective October 24, 2026</p>
+      <p class="text-xs text-paper-faint dark:text-term-faint">Last updated: 25 October 2026</p>
       <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
         The short version: <span class="font-semibold text-paper-text dark:text-term-text"
-          >your chats and code never touch our servers.</span
-        > Midgar keeps only an anonymous ID and the record of what you bought, so Pro follows you
-        to your other devices.
+          >your chats, prompts, code and files never reach us.</span
+        > They travel between your device and machines you own. The App Store apps keep one random Midgar
+        ID, report your purchases and send anonymous More Apps counts. Nothing is used for tracking,
+        and the Linux app and the direct Mac build collect nothing.
       </p>
     </header>
 
-    <section class="border-t border-paper-border pb-12 pt-10 dark:border-term-border">
+    <section class="border-t border-paper-border pb-4 pt-10 dark:border-term-border">
+      <div class="max-w-3xl">
+        <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
+          What the App Store apps collect
+        </h2>
+        <p class="mb-5 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+          This is everything, row for row, as declared in the app’s privacy manifest and on its App
+          Store privacy label. Each item goes to api.midgarcorp.cc, Midgar’s own service, or to
+          Apple. Nothing goes to an advertiser or to a third-party analytics company.
+        </p>
+        <div class="grid gap-5">
+          {
+            collected.map((row) => (
+              <div class="term-frame p-5 sm:p-6">
+                <h3 class="mb-1 text-sm font-bold text-paper-text dark:text-term-text">
+                  {row.type}
+                </h3>
+                <p class="accent-text mb-2 text-[11px] font-semibold uppercase tracking-[0.12em]">
+                  {row.detail}
+                </p>
+                <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                  {row.body}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-12 pt-5">
       <div class="grid max-w-3xl gap-5">
         {
           sections.map((s) => (
@@ -89,7 +209,18 @@ const sections = [
               <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
                 {s.title}
               </h2>
-              <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{s.body}</p>
+              {s.paragraphs?.map((p) => (
+                <p class="mb-3 text-sm leading-relaxed text-paper-muted last:mb-0 dark:text-term-muted">
+                  {p}
+                </p>
+              ))}
+              {s.items && (
+                <ul class="list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                  {s.items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))
         }
@@ -104,10 +235,11 @@ const sections = [
         <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
           Questions about this policy? Email
           <a
-            href="mailto:guitaripod@gmail.com"
+            href="mailto:support@midgarcorp.cc"
             class="text-paper-green underline decoration-dotted underline-offset-2 dark:text-term-green"
-            >guitaripod@gmail.com</a
-          >. Any changes to this policy will be posted on this page.
+            >support@midgarcorp.cc</a
+          >. If this policy changes we will publish the new version here with a new date, and
+          mention material changes in the app’s release notes.
         </p>
       </div>
       <p class="mt-8 text-xs text-paper-faint dark:text-term-faint">

@@ -86,8 +86,20 @@ describe('Tailscode landing page', () => {
 
   it('puts the trust claim and the Lock Screen first', () => {
     expect(copy.heroHeadline).toMatch(/Lock Screen/);
-    for (const fact of ['No relay', 'No account', 'No analytics', 'GPL-3.0']) {
+    for (const fact of ['No relay', 'No sign-in', 'No tracking', 'GPL-3.0']) {
       expect(page).toContain(fact);
+    }
+  });
+
+  it('makes no privacy claim the App Privacy label contradicts', () => {
+    const policy = fs.readFileSync(
+      path.join(ROOT, 'src', 'pages', 'tailscode', 'privacy.astro'),
+      'utf8'
+    );
+    const all = JSON.stringify(copy) + page + policy;
+    expect(all).not.toMatch(/collects nothing\.|zero collected|no analytics|no account/i);
+    for (const row of ['User ID', 'Device ID', 'Purchase History', 'Product Interaction']) {
+      expect(policy).toContain(row);
     }
   });
 
