@@ -24,6 +24,7 @@
   "accentColor": "#FF4D6D",
   "highlights": [
     "Codec, bit depth and sample rate on every track, from CD quality to Hi-Res",
+    "A Home that picks up where you left off, with mixes made from your own listening",
     "A real equalizer: drag the curve, import AutoEq profiles, give every output its own setting",
     "Gapless playback, synced lyrics and every play scrobbled to Last.fm, even offline",
     "A standalone Apple Watch app, a native Mac app and a free Linux app"
@@ -33,6 +34,11 @@
       "title": "See exactly what you're hearing",
       "body": "Every album and track wears its codec, bit depth and sample rate, from AAC 16/44.1 to FLAC 24/96, and a Lossless filter shows what is worth a good pair of headphones.",
       "glyph": "♯"
+    },
+    {
+      "title": "A Home that picks up where you left off",
+      "body": "Flaccy opens on Home: the album you were in, ready to resume, a row of what you played lately, mixes and Library Radio built from your own listening, what's new in your library, and what you were playing on this day in earlier years. Arrange or hide any of it. Everything is worked out on your device from your own library and history, on iPhone, Mac and Linux.",
+      "glyph": "⌂"
     },
     {
       "title": "A real equalizer",
