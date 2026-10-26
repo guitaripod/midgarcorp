@@ -227,14 +227,14 @@ var appEnhancements = map[int]struct {
 	},
 	6822066419: {
 		ID:           "crucible",
-		Tagline:      "Plex, Done Right on iPhone and Apple TV",
+		Tagline:      "Plex, Done Right on iPhone, iPad and Apple TV",
 		PrimaryColor: "#F97316",
 		Features: []string{
-			"A Resume-first Home on iPhone and Apple TV",
+			"A Resume-first Home on iPhone, iPad and Apple TV",
 			"Skip Intro, offline downloads and a Year in Review",
 			"Open source, with a built-in demo to try first",
 		},
-		Platforms: []string{"iPhone", "Apple TV"},
+		Platforms: []string{"iPhone", "iPad", "Apple TV"},
 	},
 	6791660932: {
 		ID:           "tailscode",

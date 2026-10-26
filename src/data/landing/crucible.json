@@ -1,6 +1,6 @@
 {
-  "seoTitle": "Crucible for Plex — a native Plex client for iPhone and Apple TV",
-  "metaDescription": "Crucible is a free, open-source Plex client for iPhone and Apple TV on the App Store: a Resume-first Home, Skip Intro, offline downloads, a Liquid Glass tvOS app with native menus, a Year in Review dashboard and a built-in demo. Optional Crucible Pro, once or yearly.",
+  "seoTitle": "Crucible for Plex: a native Plex client for iPhone, iPad and Apple TV",
+  "metaDescription": "Crucible is a free, open-source Plex client for iPhone, iPad and Apple TV on the App Store: a Resume-first Home, Skip Intro, playback that keeps your place, offline downloads, an iPad app with windows and keyboard shortcuts, a Liquid Glass tvOS app, a Year in Review dashboard and a built-in demo. Optional Crucible Pro, once or yearly.",
   "accentColor": "#F97316",
   "keywords": [
     "crucible for plex",
@@ -30,15 +30,24 @@
     "plex top shelf",
     "plex liquid glass",
     "native plex player apple tv",
-    "open source plex apple tv"
+    "open source plex apple tv",
+    "plex ipad app",
+    "plex client ipad",
+    "native plex player ipad",
+    "plex ipad multiple windows",
+    "plex ipad keyboard shortcuts",
+    "plex resume where you left off",
+    "plex still watching"
   ],
-  "heroHeadline": "Plex, done right on iPhone and Apple TV",
-  "heroSubhead": "A fast, native Plex client for iPhone and a Liquid Glass living-room app for Apple TV, on one engine: a Resume-first Home, Skip Intro, a Year in Review of your viewing and menus that look like the system's own. Free on the App Store, open source, and there is a built-in demo if you have no server to hand.",
+  "heroHeadline": "Plex, done right on iPhone, iPad and Apple TV",
+  "heroSubhead": "A fast, native Plex client for iPhone and iPad and a Liquid Glass living-room app for Apple TV, on one engine: a Resume-first Home, Skip Intro, playback that keeps your place through sleep and breaks, a Year in Review of your viewing and menus that look like the system's own. Free on the App Store, open source, and there is a built-in demo if you have no server to hand.",
   "highlights": [
-    "Free on the App Store for iPhone and Apple TV, with an optional Crucible Pro that covers both",
-    "A Resume-first Home on both: Continue Watching and Up Next lead, the artwork does the rest",
+    "Free on the App Store for iPhone, iPad and Apple TV, with an optional Crucible Pro that covers all three",
+    "A Resume-first Home on every device: Continue Watching and Up Next lead, the artwork does the rest",
+    "iPad: a library sidebar, several windows, a menu bar and keyboard shortcuts, with layouts that use a large window",
     "Apple TV: a cinematic Home, the system player, native menus and Top Shelf",
     "iPhone: offline downloads with a Live Activity, Skip Intro, Picture-in-Picture and background audio",
+    "Keeps your place: back at the exact moment you left after sleep, a short rewind after a break, and Still watching? before a season plays on",
     "Open source under GPL-3.0, with no account, ads or analytics: it talks only to plex.tv and your server"
   ],
   "features": [
@@ -48,9 +57,19 @@
       "glyph": "▣"
     },
     {
+      "title": "Made for iPad",
+      "body": "Crucible is one universal app, so the iPad runs the same app with room to spread out. A sidebar lists your libraries, and several windows can be open at once: choose Open in New Window on a title, or drag its card to the edge of the screen. A menu bar and keyboard shortcuts cover the rest (Space plays, S skips the intro or credits, N plays the next episode, Command-F searches), artwork lifts under the pointer, and rails, grids and detail pages use the room a large window gives them. One Crucible Pro purchase covers iPhone, iPad and Apple TV.",
+      "glyph": "▭"
+    },
+    {
       "title": "A player that respects your time",
       "body": "Skip Intro and Skip Credits from Plex markers — on iPhone as a button with a live progress sweep, automatic with Undo, or off; on Apple TV as native actions on the system player, with an Up Next card that counts down to the next episode. Picture-in-Picture, background audio and lock-screen controls come along on iPhone.",
       "glyph": "◉"
+    },
+    {
+      "title": "Keeps your place",
+      "body": "If the Apple TV sleeps, the app goes to the background or the server drops the stream while you are away, Crucible puts you back at the exact moment you left: it never restarts the episode or skips ahead. Come back after a break and playback backs up a few seconds, more the longer you were gone, so you are back in the scene; Settings can turn that off. After a few episodes in a row without touching the remote, Crucible asks Still watching? before the next one, so a season does not play on while you sleep: off, or after 2, 3 or 5 episodes, 3 by default.",
+      "glyph": "↺"
     },
     {
       "title": "Take it offline",
@@ -74,12 +93,12 @@
     },
     {
       "title": "Know your viewing",
-      "body": "Watch History grouped by day and a Year-in-Review dashboard of watch time, streaks, an activity heatmap, top shows, binges and taste, built from your own Plex history on iPhone and Apple TV. The last week is free; Crucible Pro adds the month, year and all-time views, the library filter and the shareable poster.",
+      "body": "Watch History grouped by day and a Year-in-Review dashboard of watch time, streaks, an activity heatmap, top shows, binges and taste, built from your own Plex history on iPhone, iPad and Apple TV. The last week is free; Crucible Pro adds the month, year and all-time views, the library filter and the shareable poster.",
       "glyph": "◐"
     },
     {
       "title": "Continues across devices",
-      "body": "Watch progress syncs to your server, so Resume picks up where you left off on your phone, your TV or anywhere else you sign in. Handoff and Spotlight carry titles between your Apple devices, and the Apple TV signs in from your phone with a short code and a QR code.",
+      "body": "Watch progress syncs to your server, so Resume picks up where you left off on your phone, your iPad, your TV or anywhere else you sign in. Handoff and Spotlight carry titles between your Apple devices, and the Apple TV signs in from your phone with a short code and a QR code.",
       "glyph": "⊹"
     },
     {
@@ -91,11 +110,11 @@
   "howItWorks": [
     {
       "step": "Get it on the App Store",
-      "body": "Crucible for Plex is one free listing for iPhone and Apple TV. No server yet? Open it and choose Try the demo."
+      "body": "Crucible for Plex is one free listing for iPhone, iPad and Apple TV. No server yet? Open it and choose Try the demo."
     },
     {
       "step": "Sign in to Plex",
-      "body": "Authenticate with Plex over OAuth on iPhone, or with a short code and QR code from your phone on Apple TV. Crucible discovers your servers and picks the best reachable connection automatically."
+      "body": "Authenticate with Plex over OAuth on iPhone and iPad, or with a short code and QR code from your phone on Apple TV. Crucible discovers your servers and picks the best reachable connection automatically."
     },
     {
       "step": "Press play",
@@ -105,19 +124,27 @@
   "faq": [
     {
       "q": "Is Crucible on the App Store?",
-      "a": "Yes. Crucible for Plex is a free download on the App Store, one listing for iPhone and Apple TV. It is also open source under GPL-3.0, so you can build it yourself if you prefer; a build from source is fully unlocked."
+      "a": "Yes. Crucible for Plex is a free download on the App Store, one listing for iPhone, iPad and Apple TV. It is also open source under GPL-3.0, so you can build it yourself if you prefer; a build from source is fully unlocked."
     },
     {
       "q": "What is free, and what is Crucible Pro?",
-      "a": "Browsing, search and playback are free on iPhone and Apple TV, with Skip Intro, Skip Credits, Picture-in-Picture on iPhone, the Statistics view for the last week and one download at a time. Crucible Pro unlocks unlimited offline downloads, the full Statistics screen with every range and library filter, the Year in Review poster and Top Shelf on Apple TV. Pay once for lifetime access or subscribe yearly with a 14-day free trial; one purchase covers iPhone and Apple TV, and Family Sharing is on."
+      "a": "Browsing, search and playback are free on iPhone, iPad and Apple TV, with Skip Intro, Skip Credits, Picture-in-Picture on iPhone, the Statistics view for the last week and one download at a time. Crucible Pro unlocks unlimited offline downloads, the full Statistics screen with every range and library filter, the Year in Review poster and Top Shelf on Apple TV. Pay once for lifetime access or subscribe yearly with a 14-day free trial; one purchase covers iPhone, iPad and Apple TV, and Family Sharing is on."
     },
     {
       "q": "Can I try it without a Plex server?",
       "a": "Yes. Choose Try the demo on the welcome screen. It runs a fictional library from inside the app, with no account and no network, and everything is unlocked so you can try playback, search, Statistics and, on iPhone, downloads. A short tour walks you through it, and leaving the demo takes you to the real Plex sign-in."
     },
     {
+      "q": "Is there an iPad app?",
+      "a": "Yes. Crucible is a universal app, so the iPad uses the same App Store listing and the same Crucible Pro purchase as the iPhone. On a large window it uses the room: a sidebar lists your libraries, you can open several windows (Open in New Window on a title, or drag its card to the edge of the screen), a menu bar and keyboard shortcuts cover the common actions (Space plays, S skips the intro or credits, N plays the next episode, Command-F searches), and artwork lifts under the pointer. A narrow window, Split View or Slide Over looks like the phone. It runs on iPadOS 17 or later; the library sidebar needs iPadOS 18 and the menu bar iPadOS 26."
+    },
+    {
       "q": "Is there an Apple TV app?",
       "a": "Yes, in the same App Store listing as the iPhone app. It is built for the Siri Remote on the same engine: a cinematic Home, a tab for every library, search, movie, show and episode pages, the system player with Skip Intro and Skip Credits as native actions and an Up Next card, Watch History, Statistics, a Year in Review card and a Top Shelf extension. It runs on tvOS 17 or later; tvOS 26 on an Apple TV 4K (2nd generation or later) gets Liquid Glass controls, and older systems and boxes get the classic look with the same layout."
+    },
+    {
+      "q": "What happens if playback is interrupted, or I fall asleep?",
+      "a": "Crucible keeps your place. If the Apple TV sleeps, the app goes to the background or the server drops the stream while you are away, it puts you back at the exact moment you left and never restarts the episode or skips ahead. After a break, playback backs up a few seconds (more the longer you were away) so you are back in the scene; you can turn that off in Settings. After a few episodes in a row without touching the remote, Crucible asks Still watching? before it plays the next one. Settings lets you turn that off or ask after 2, 3 or 5 episodes; the default is 3."
     },
     {
       "q": "Do I need Plex Pass?",
@@ -125,7 +152,7 @@
     },
     {
       "q": "What does it need to run?",
-      "a": "An iPhone on iOS 17 or later, or an Apple TV on tvOS 17 or later, and a Plex Media Server you can reach. Crucible talks directly to your server, so a device away from home needs a route to it; it works well over Tailscale."
+      "a": "An iPhone on iOS 17 or later, an iPad on iPadOS 17 or later or an Apple TV on tvOS 17 or later, and a Plex Media Server you can reach. Crucible talks directly to your server, so a device away from home needs a route to it; it works well over Tailscale."
     },
     {
       "q": "Does it support Skip Intro, PiP, and lock-screen controls?",
@@ -161,6 +188,16 @@
       "You — profile and server status, Year in Review, Watch History and settings, in Light",
       "Libraries — choose what appears on Home and counts toward your stats",
       "Player — Skip Intro with a live progress sweep, in landscape"
+    ],
+    "ipad": [
+      "Home: a library sidebar and a Resume hero that grows with the window",
+      "Library: poster grids that add columns as the window grows",
+      "Detail: a 16:9 backdrop, one-tap Play, audio and subtitle menus",
+      "Shows: seasons and episodes with watched state and downloads on every row",
+      "Player: the system player, with Space, S and N for play, skip and the next episode",
+      "Search: results grouped by type with a Top Result, one Command-F away",
+      "Statistics: your year in watch time, streaks and an activity heatmap",
+      "Watch History: every play, day by day, with posters"
     ],
     "tv": [
       "Home — a cinematic hero that follows focus, with Continue Watching and Up Next under it",
@@ -219,7 +256,7 @@
     "guideUrl": "https://github.com/guitaripod/Crucible/blob/master/INSTALL.md"
   },
   "installCta": "Build it from source ↓",
-  "requires": "iOS 17.0+ · tvOS 17.0+",
+  "requires": "iOS 17.0+ · iPadOS 17.0+ · tvOS 17.0+",
   "heroImage": {
     "src": "/screenshots/crucible/hero.webp",
     "w": 1600,
@@ -232,7 +269,7 @@
       "title": "Free",
       "price": "$0",
       "items": [
-        "Browsing, search and playback on iPhone and Apple TV",
+        "Browsing, search and playback on iPhone, iPad and Apple TV",
         "Skip Intro, Skip Credits and Picture-in-Picture",
         "The whole Apple TV app, and Statistics for the last week",
         "One offline download at a time on iPhone",
@@ -247,7 +284,7 @@
         "The full Statistics screen: month, year and all-time, with the library filter",
         "The shareable Year in Review poster on iPhone",
         "Top Shelf on Apple TV: Continue Watching and Up Next on the Home screen",
-        "One purchase covers iPhone and Apple TV, with Family Sharing"
+        "One purchase covers iPhone, iPad and Apple TV, with Family Sharing"
       ]
     },
     "tiers": [
@@ -265,7 +302,7 @@
         "note": "per year, 14-day free trial, auto-renewing"
       }
     ],
-    "footnote": "Prices are US dollars and vary by region. The annual subscription renews automatically until cancelled in your Apple Account settings, at least 24 hours before the end of the period; the lifetime unlock never renews. Both are family-shareable, and either one unlocks Crucible Pro on iPhone and Apple TV. A build from source is always fully unlocked."
+    "footnote": "Prices are US dollars and vary by region. The annual subscription renews automatically until cancelled in your Apple Account settings, at least 24 hours before the end of the period; the lifetime unlock never renews. Both are family-shareable, and either one unlocks Crucible Pro on iPhone, iPad and Apple TV. A build from source is always fully unlocked."
   },
   "trustNote": "Crucible has no account of its own, no ads and no analytics. It talks only to plex.tv and the server you choose; the only third-party service is RevenueCat, which validates purchases.",
   "installLast": true,

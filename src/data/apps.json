@@ -318,10 +318,11 @@
     {
       "id": "crucible",
       "name": "Crucible for Plex",
-      "tagline": "Plex, Done Right on iPhone and Apple TV",
+      "tagline": "Plex, Done Right on iPhone, iPad and Apple TV",
       "description": "Crucible is a native client for your Plex Media Server on iPhone and Apple TV. It is built to feel like part of the system: the system player, native menus and context menus, Liquid Glass on the newest software, and a library that opens exactly where you left off.",
       "platforms": [
         "iPhone",
+        "iPad",
         "Apple TV"
       ],
       "category": "Entertainment",
@@ -330,7 +331,7 @@
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/db/64/1d/db641d20-e06c-5e3f-59ac-b83b7153c333/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#F97316",
       "features": [
-        "A Resume-first Home on iPhone and Apple TV",
+        "A Resume-first Home on iPhone, iPad and Apple TV",
         "Skip Intro, offline downloads and a Year in Review",
         "Open source, with a built-in demo to try first"
       ],
