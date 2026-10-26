@@ -2855,6 +2855,64 @@
             "framed": true
           }
         ],
+        "ipad": [
+          {
+            "src": "/screenshots/crucible/ipad-1.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Home: a library sidebar and a Resume hero that grows with the window",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-2.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Library: poster grids that add columns as the window grows",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-3.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Detail: a 16:9 backdrop, one-tap Play, audio and subtitle menus",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-4.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Shows: seasons and episodes with watched state and downloads on every row",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-5.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Player: the system player, with Space, S and N for play, skip and the next episode",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-6.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Search: results grouped by type with a Top Result, one Command-F away",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-7.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Statistics: your year in watch time, streaks and an activity heatmap",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-8.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Watch History: every play, day by day, with posters",
+            "framed": true
+          }
+        ],
         "tv": [
           {
             "src": "/screenshots/crucible/tv-1.webp",
@@ -2927,6 +2985,7 @@
       "license": "GPL-3.0",
       "platforms": [
         "iPhone",
+        "iPad",
         "Apple TV"
       ],
       "releaseNotes": "Fixes for Crucible Pro and search.\n\n- The Crucible Pro screen now lets you choose either plan: tapping the yearly plan selects it, with its free trial and renewal terms\n- Search keeps its results in step with the text: going back to a shorter search no longer swaps in the results of the longer one\n- An episode's top search result now names the episode as well as its show\n- In the demo, the Crucible Pro offer at the end of the tour waits until you are done typing instead of covering the search keyboard, and demo search lists the best match first",
