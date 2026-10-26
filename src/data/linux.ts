@@ -112,7 +112,7 @@ export const LINUX_SHOWCASE: Record<string, LinuxShowcase> = {
   },
   flaccy: {
     blurb:
-      'A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling, as a native GTK4 / libadwaita app: library, synced lyrics, queue, playlists and listening stats.',
+      'A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling, as a native GTK4 / libadwaita app: library, synced lyrics you can save as a video, queue, playlists and listening stats.',
     accent: '#a78bfa',
     shot: {
       src: '/screenshots/flaccy/linux-1.webp',

@@ -1,6 +1,6 @@
 {
   "seoTitle": "Flaccy — Lossless FLAC Player for iPhone, Apple Watch and Mac",
-  "metaDescription": "Play the music you own at full quality, with a real equalizer. Flaccy handles FLAC, ALAC, WAV, AIFF, MP3 and AAC with gapless playback, synced lyrics, Last.fm scrobbling and a standalone Apple Watch app. No account, no ads, nothing uploaded. Free to try.",
+  "metaDescription": "Play the music you own at full quality, with a real equalizer. Flaccy handles FLAC, ALAC, WAV, AIFF, MP3 and AAC with gapless playback, synced lyrics you can share as a video, Last.fm scrobbling and a standalone Apple Watch app. No account, no ads, nothing uploaded. Free to try.",
   "keywords": [
     "flac player iphone",
     "lossless music player ios",
@@ -17,16 +17,18 @@
     "apple watch offline music player",
     "flac player mac",
     "lossless music player macos",
-    "mac music player equalizer"
+    "mac music player equalizer",
+    "lyrics video maker",
+    "share song lyrics iphone"
   ],
   "heroHeadline": "Play the music you own, at full quality",
-  "heroSubhead": "Flaccy plays your FLAC, ALAC, WAV, AIFF, MP3 and AAC files exactly as they were mastered — gapless, with a real equalizer, synced lyrics, Last.fm scrobbling and an Apple Watch app that works without your phone. No account, no ads, and your files never leave your device.",
+  "heroSubhead": "Flaccy plays your FLAC, ALAC, WAV, AIFF, MP3 and AAC files exactly as they were mastered — gapless, with a real equalizer, synced lyrics you can share as a video, Last.fm scrobbling and an Apple Watch app that works without your phone. No account, no ads, and your files never leave your device.",
   "accentColor": "#FF4D6D",
   "highlights": [
     "Codec, bit depth and sample rate on every track, from CD quality to Hi-Res",
     "A Home that picks up where you left off, with mixes made from your own listening",
     "A real equalizer: drag the curve, import AutoEq profiles, give every output its own setting",
-    "Gapless playback, synced lyrics and every play scrobbled to Last.fm, even offline",
+    "Gapless playback, synced lyrics you can turn into a video, and every play scrobbled to Last.fm, even offline",
     "A standalone Apple Watch app, a native Mac app and a free Linux app"
   ],
   "features": [
@@ -61,8 +63,13 @@
       "glyph": "♪"
     },
     {
+      "title": "Share Lyrics",
+      "body": "Pick the lines you love from a song's synced lyrics and get a short video of them over the song itself, its real audio, or a still image card. Four templates: Spotlight, one big line at a time; Verse, lines scrolling past; Poster, cover art with every line lighting up as it is sung; and Pulse, a turning disc inside a ring of audio-reactive bars. Choose Story, Post, Square or Wide, colours drawn from the cover (Artwork, Vivid, Dark or Light), one of four fonts, and word-by-word fill when the lyrics carry word timing. Up to 30 seconds, and the preview plays the clip's audio. Long-press a line on iPhone, right-click one on Mac or Linux. Video export on Linux needs ffmpeg.",
+      "glyph": "❝"
+    },
+    {
       "title": "Scrobble everything",
-      "body": "Sign in with Last.fm and every play is scrobbled, even offline, with automatic retry. Listening charts, artist bios, a wantlist for the records you're hunting and smart playlists made from your own listening.",
+      "body": "Sign in with Last.fm and every play is scrobbled, even offline, with automatic retry. Your Last.fm listening history syncs into Stats, on every client, next to listening charts, artist bios, a wantlist for the records you're hunting and smart playlists made from your own listening.",
       "glyph": "↻"
     },
     {
@@ -97,7 +104,7 @@
     },
     {
       "title": "Flaccy for Linux",
-      "body": "A native GTK4 app that tints itself with the colour of whatever is playing, with gapless GStreamer playback, MPRIS media keys, Last.fm scrobbling, synced lyrics, listening stats and the same equalizer, in light or dark. Free and open source. Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
+      "body": "A native GTK4 app that tints itself with the colour of whatever is playing, with gapless GStreamer playback, MPRIS media keys, Last.fm scrobbling, synced lyrics you can save as a video, listening stats and the same equalizer, in light or dark. Free and open source. Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
       "glyph": "🐧"
     }
   ],
@@ -159,6 +166,10 @@
     {
       "q": "Is there a Linux app?",
       "a": "Yes. Flaccy for Linux is a free, open source GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, synced lyrics and a full equalizer, with an adaptive theme that retints the whole app with the colour of whatever you're playing. Install it with the one-line command in the Flaccy for Linux section or from the AUR with yay -S flaccy-bin."
+    },
+    {
+      "q": "Can I share song lyrics as a video?",
+      "a": "Yes. Pick lines from a song's synced lyrics and Flaccy makes a short video of them over the song itself, up to 30 seconds with its real audio, or a still image card. Choose a template (Spotlight, Verse, Poster or Pulse), a format (Story 9:16, Post 4:5, Square or Wide 16:9), colours from the cover and a font. On iPhone use the share button beside the lyrics or long-press a line; on Mac the share menu or right-click a line; on Linux right-click a line and choose Save Video. Video export on Linux needs ffmpeg."
     }
   ],
   "screenshotCaptions": {

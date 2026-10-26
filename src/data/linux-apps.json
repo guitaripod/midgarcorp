@@ -408,7 +408,7 @@
       "group": "desktop",
       "lang": "rust",
       "language": "Rust",
-      "description": "A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
+      "description": "A lossless music player with gapless playback, a real equalizer, synced lyrics you can save as a video and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
       "stars": 5,
       "commitCount": 102,
       "releaseCount": 31,
