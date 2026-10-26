@@ -37,7 +37,8 @@
     "plex ipad multiple windows",
     "plex ipad keyboard shortcuts",
     "plex resume where you left off",
-    "plex still watching"
+    "plex still watching",
+    "plex custom skip interval"
   ],
   "heroHeadline": "Plex, done right on iPhone, iPad and Apple TV",
   "heroSubhead": "A fast, native Plex client for iPhone and iPad and a Liquid Glass living-room app for Apple TV, on one engine: a Resume-first Home, Skip Intro, playback that keeps your place through sleep and breaks, a Year in Review of your viewing and menus that look like the system's own. Free on the App Store, open source, and there is a built-in demo if you have no server to hand.",
@@ -63,7 +64,7 @@
     },
     {
       "title": "A player that respects your time",
-      "body": "Skip Intro and Skip Credits from Plex markers — on iPhone as a button with a live progress sweep, automatic with Undo, or off; on Apple TV as native actions on the system player, with an Up Next card that counts down to the next episode. Picture-in-Picture, background audio and lock-screen controls come along on iPhone.",
+      "body": "Skip Intro and Skip Credits from Plex markers — on iPhone as a button with a live progress sweep, automatic with Undo, or off; on Apple TV as native actions on the system player, with an Up Next card that counts down to the next episode. Picture-in-Picture, background audio and lock-screen controls come along on iPhone. On Apple TV you choose how far a click left or right on the remote skips, and whether holding either side rewinds and fast-forwards as usual, jumps 1 to 10 minutes, starts over or plays the next episode; on iPhone the same distances drive the Lock Screen, Control Center and headphone skip buttons.",
       "glyph": "◉"
     },
     {
