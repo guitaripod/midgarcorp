@@ -1,0 +1,394 @@
+{
+  "version": 1,
+  "uniqueness": {
+    "each": "every occurrence is sent",
+    "daily": "once per calendar day per install",
+    "weekly": "once per ISO week per install",
+    "monthly": "once per calendar month per install",
+    "lifetime": "once per install, ever",
+    "per-period": "once per value of its `period` prop per install"
+  },
+  "dimensions": {
+    "placement": ["settings", "entry", "onboarding", "launch", "paywall", "feature", "limit"],
+    "period": ["day", "week", "month"],
+    "outcome": ["started", "purchased", "pending", "cancelled", "failed"],
+    "funnel_step": ["sample_played", "add_music_opened", "library_filled", "import_succeeded", "import_failed", "trial_started"],
+    "storefront": ["ad", "ae", "af", "ag", "ai", "al", "am", "ao", "aq", "ar", "as", "at", "au", "aw", "ax", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bl", "bm", "bn", "bo", "bq", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cd", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cw", "cx", "cy", "cz", "de", "dj", "dk", "dm", "do", "dz", "ec", "ee", "eg", "eh", "er", "es", "et", "fi", "fj", "fk", "fm", "fo", "fr", "ga", "gb", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gm", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gw", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "im", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "me", "mf", "mg", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mv", "mw", "mx", "my", "mz", "na", "nc", "ne", "nf", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "pg", "ph", "pk", "pl", "pm", "pn", "pr", "ps", "pt", "pw", "py", "qa", "re", "ro", "rs", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "ss", "st", "sv", "sx", "sy", "sz", "tc", "td", "tf", "tg", "th", "tj", "tk", "tl", "tm", "tn", "to", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "um", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "za", "zm", "zw"]
+  },
+  "events": [
+    {
+      "name": "app.launch",
+      "purpose": "Cold launches of an app.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": true,
+      "reason": "No MidgarKit or app code records it yet; it stays accepted so the worker's event set does not shrink.",
+      "props": [],
+      "numeric": [],
+      "rollup": []
+    },
+    {
+      "name": "app.active",
+      "purpose": "Daily, weekly and monthly active installs.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "per-period",
+      "cohort": true,
+      "reserved": false,
+      "props": [
+        {
+          "name": "period",
+          "optional": false,
+          "source": "set",
+          "set": "period"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["period"]
+    },
+    {
+      "name": "onboarding.complete",
+      "purpose": "Installs that finished first-run onboarding.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": true,
+      "reason": "Helia marks onboarding complete but only logs it; no code sends the event yet.",
+      "props": [],
+      "numeric": [],
+      "rollup": []
+    },
+    {
+      "name": "paywall.view",
+      "purpose": "How often a paywall is seen, and from where.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "placement",
+          "optional": false,
+          "source": "set",
+          "set": "placement"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["placement"]
+    },
+    {
+      "name": "paywall.purchase",
+      "purpose": "Purchases completed in the app, by product.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "product",
+          "optional": false,
+          "source": "products"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["product"]
+    },
+    {
+      "name": "paywall.checkout",
+      "purpose": "How a started checkout ended, by product, so the drop-off after the paywall is countable.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "outcome",
+          "optional": false,
+          "source": "set",
+          "set": "outcome"
+        },
+        {
+          "name": "product",
+          "optional": false,
+          "source": "products"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["outcome", "product"]
+    },
+    {
+      "name": "funnel.step",
+      "purpose": "First-run steps before a purchase.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "lifetime",
+      "cohort": true,
+      "reserved": false,
+      "props": [
+        {
+          "name": "step",
+          "optional": false,
+          "source": "set",
+          "set": "funnel_step"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["step"]
+    },
+    {
+      "name": "portal_open",
+      "purpose": "The cross-promo portal opened, and from which placement.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "storefront",
+          "optional": true,
+          "source": "set",
+          "set": "storefront"
+        },
+        {
+          "name": "placement",
+          "optional": false,
+          "source": "set",
+          "set": "placement"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["placement"]
+    },
+    {
+      "name": "impression",
+      "purpose": "A promoted app shown in the cross-promo portal.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "appId",
+          "optional": false,
+          "source": "apps"
+        },
+        {
+          "name": "storefront",
+          "optional": true,
+          "source": "set",
+          "set": "storefront"
+        },
+        {
+          "name": "placement",
+          "optional": false,
+          "source": "set",
+          "set": "placement"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["appId", "placement"]
+    },
+    {
+      "name": "tap",
+      "purpose": "A promoted app tapped in the cross-promo portal.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "appId",
+          "optional": false,
+          "source": "apps"
+        },
+        {
+          "name": "storefront",
+          "optional": true,
+          "source": "set",
+          "set": "storefront"
+        },
+        {
+          "name": "placement",
+          "optional": false,
+          "source": "set",
+          "set": "placement"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["appId", "placement"]
+    },
+    {
+      "name": "loaded",
+      "purpose": "A promoted app's store page loaded from the cross-promo portal.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "appId",
+          "optional": false,
+          "source": "apps"
+        },
+        {
+          "name": "storefront",
+          "optional": true,
+          "source": "set",
+          "set": "storefront"
+        },
+        {
+          "name": "placement",
+          "optional": false,
+          "source": "set",
+          "set": "placement"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["appId", "placement"]
+    },
+    {
+      "name": "launch",
+      "purpose": "A promoted app opened from the cross-promo portal.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "appId",
+          "optional": false,
+          "source": "apps"
+        },
+        {
+          "name": "storefront",
+          "optional": true,
+          "source": "set",
+          "set": "storefront"
+        },
+        {
+          "name": "placement",
+          "optional": false,
+          "source": "set",
+          "set": "placement"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["appId", "placement"]
+    },
+    {
+      "name": "overlay",
+      "purpose": "The App Store overlay for a promoted app presented by Midgar.moment.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "appId",
+          "optional": false,
+          "source": "apps"
+        },
+        {
+          "name": "storefront",
+          "optional": true,
+          "source": "set",
+          "set": "storefront"
+        },
+        {
+          "name": "placement",
+          "optional": false,
+          "source": "set",
+          "set": "placement"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["appId", "placement"]
+    },
+    {
+      "name": "metrics.daily",
+      "purpose": "Daily MetricKit performance numbers of an install, for release health.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [],
+      "numeric": [
+        {
+          "name": "coldLaunchMs",
+          "min": 0,
+          "max": 600000,
+          "integer": false
+        },
+        {
+          "name": "hangSecondsPerHour",
+          "min": 0,
+          "max": 3600,
+          "integer": false
+        },
+        {
+          "name": "foregroundSeconds",
+          "min": 0,
+          "max": 604800,
+          "integer": false
+        },
+        {
+          "name": "peakMemoryMB",
+          "min": 0,
+          "max": 1048576,
+          "integer": false
+        }
+      ],
+      "rollup": []
+    },
+    {
+      "name": "metrics.diagnostics",
+      "purpose": "Crash, hang, disk-write and CPU-exception counts from MetricKit diagnostics.",
+      "owner": "marcus",
+      "review": "2027-10-25",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "props": [],
+      "numeric": [
+        {
+          "name": "crashes",
+          "min": 0,
+          "max": 100000,
+          "integer": true
+        },
+        {
+          "name": "hangs",
+          "min": 0,
+          "max": 100000,
+          "integer": true
+        },
+        {
+          "name": "diskWrites",
+          "min": 0,
+          "max": 100000,
+          "integer": true
+        },
+        {
+          "name": "cpuExceptions",
+          "min": 0,
+          "max": 100000,
+          "integer": true
+        }
+      ],
+      "rollup": []
+    }
+  ]
+}

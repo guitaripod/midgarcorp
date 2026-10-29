@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "sources": {
+    "signals": {
+      "database": "midgar-signals",
+      "binding": "SIGNALS_DB"
+    },
+    "ledger": {
+      "database": "midgar-ledger",
+      "binding": "LEDGER_DB"
+    },
+    "mako": {
+      "database": "openai-image-proxy",
+      "binding": "MAKO_DB"
+    },
+    "appstore": {
+      "local": "myyty"
+    }
+  },
+  "metrics": [
+    {
+      "id": "dau",
+      "title": "Daily active installs",
+      "purpose": "How many installs open an app on a day.",
+      "unit": "installs",
+      "source": "signals",
+      "grain": "day",
+      "rollup": "mean",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "Counts installs, not people; one person on two devices counts twice. A week or month reads as the average day.",
+      "kind": "sql",
+      "sql": "SELECT day AS period, app, '' AS dim, SUM(count) AS value FROM daily WHERE event = 'app.active' AND dim = 'day' AND day BETWEEN :since AND :until GROUP BY day, app"
+    },
+    {
+      "id": "wau",
+      "title": "Weekly active installs",
+      "purpose": "How many installs open an app in an ISO week.",
+      "unit": "installs",
+      "source": "signals",
+      "grain": "week",
+      "rollup": "mean",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "Counts installs, not people. Each install reports once per week, so a week still running is a partial count.",
+      "kind": "sql",
+      "sql": "SELECT date(day, '-6 days', 'weekday 1') AS period, app, '' AS dim, SUM(count) AS value FROM daily WHERE event = 'app.active' AND dim = 'week' AND day BETWEEN :since AND :until GROUP BY period, app"
+    },
+    {
+      "id": "mau",
+      "title": "Monthly active installs",
+      "purpose": "How many installs open an app in a calendar month.",
+      "unit": "installs",
+      "source": "signals",
+      "grain": "month",
+      "rollup": "mean",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "Counts installs, not people. A month still running is a partial count.",
+      "kind": "sql",
+      "sql": "SELECT date(day, 'start of month') AS period, app, '' AS dim, SUM(count) AS value FROM daily WHERE event = 'app.active' AND dim = 'month' AND day BETWEEN :since AND :until GROUP BY period, app"
+    },
+    {
+      "id": "new_installs",
+      "title": "New installs",
+      "purpose": "Installs active in the week they were installed, the closest Lifestream gets to downloads that open the app.",
+      "unit": "installs",
+      "source": "signals",
+      "grain": "week",
+      "rollup": "sum",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "Only installs that ran a version with Lifestream and left usage counts on. App Store downloads are the downloads metric.",
+      "kind": "cohort",
+      "cohort": {
+        "week": 0,
+        "measure": "count"
+      }
+    },
+    {
+      "id": "retention_w1",
+      "title": "Week-1 retention",
+      "purpose": "The share of a week's new installs that are active again the next week.",
+      "unit": "ratio",
+      "source": "signals",
+      "grain": "week",
+      "rollup": "mean",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "The period is the install week. A cohort under 5 installs is hidden, and the latest cohort has no week 1 yet.",
+      "kind": "cohort",
+      "cohort": {
+        "week": 1,
+        "measure": "share"
+      }
+    },
+    {
+      "id": "retention_w4",
+      "title": "Week-4 retention",
+      "purpose": "The share of a week's new installs still active four weeks later.",
+      "unit": "ratio",
+      "source": "signals",
+      "grain": "week",
+      "rollup": "mean",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "The period is the install week. A cohort under 5 installs is hidden, and cohorts younger than four weeks have no value.",
+      "kind": "cohort",
+      "cohort": {
+        "week": 4,
+        "measure": "share"
+      }
+    },
+    {
+      "id": "paywall_views",
+      "title": "Paywall views",
+      "purpose": "How often a paywall is seen, by placement.",
+      "unit": "views",
+      "source": "signals",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "Each install counts once per day per placement.",
+      "kind": "sql",
+      "sql": "SELECT day AS period, app, dim, SUM(count) AS value FROM daily WHERE event = 'paywall.view' AND day BETWEEN :since AND :until GROUP BY day, app, dim"
+    },
+    {
+      "id": "checkouts",
+      "title": "Checkouts",
+      "purpose": "What happened when a paywall's buy button was pressed, by outcome.",
+      "unit": "checkouts",
+      "source": "signals",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "The outcome is the app's view of the purchase; the ledger's purchases are the record of what Apple charged.",
+      "kind": "sql",
+      "sql": "SELECT day AS period, app,\n  CASE WHEN instr(dim, '|') > 0 THEN substr(dim, 1, instr(dim, '|') - 1) ELSE dim END AS dim,\n  SUM(count) AS value FROM daily\nWHERE event = 'paywall.checkout' AND day BETWEEN :since AND :until GROUP BY period, app, 3"
+    },
+    {
+      "id": "paywall_purchases",
+      "title": "Paywall purchases",
+      "purpose": "Checkouts that ended in a purchase.",
+      "unit": "checkouts",
+      "source": "signals",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "The app's view of the purchase.",
+      "kind": "sql",
+      "sql": "SELECT day AS period, app, '' AS dim, SUM(count) AS value FROM daily WHERE event = 'paywall.checkout' AND (dim = 'purchased' OR dim LIKE 'purchased|%') AND day BETWEEN :since AND :until GROUP BY day, app"
+    },
+    {
+      "id": "paywall_conversion",
+      "title": "Paywall conversion",
+      "purpose": "Purchases per paywall view.",
+      "unit": "ratio",
+      "source": "derived",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "Views are once per install per day per placement, so this is purchases per paywall day rather than per showing.",
+      "kind": "ratio",
+      "ratio": [
+        "paywall_purchases",
+        "paywall_views"
+      ]
+    },
+    {
+      "id": "funnel_steps",
+      "title": "First-run steps",
+      "purpose": "How many installs reach each first-run step, once per install.",
+      "unit": "installs",
+      "source": "signals",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "Each install reports a step once in its life, on the day it first reaches it.",
+      "kind": "sql",
+      "sql": "SELECT day AS period, app, dim, SUM(count) AS value FROM daily WHERE event = 'funnel.step' AND day BETWEEN :since AND :until GROUP BY day, app, dim"
+    },
+    {
+      "id": "portal_impressions",
+      "title": "Portal impressions",
+      "purpose": "How often the cross-promotion portal or a contextual overlay shows another Midgar app, by target app and placement.",
+      "unit": "impressions",
+      "source": "signals",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "Counts showings, not installs.",
+      "kind": "sql",
+      "sql": "SELECT day AS period, app, dim, SUM(count) AS value FROM daily WHERE event IN ('impression', 'overlay') AND day BETWEEN :since AND :until GROUP BY day, app, dim"
+    },
+    {
+      "id": "portal_taps",
+      "title": "Portal taps",
+      "purpose": "Taps on another Midgar app in the portal, by target app and placement.",
+      "unit": "taps",
+      "source": "signals",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "A tap opens the App Store page; the install, if any, is the downloads metric's campaign.",
+      "kind": "sql",
+      "sql": "SELECT day AS period, app, dim, SUM(count) AS value FROM daily WHERE event = 'tap' AND day BETWEEN :since AND :until GROUP BY day, app, dim"
+    },
+    {
+      "id": "sales",
+      "title": "Sales",
+      "purpose": "App Store sale events as Apple notifies them, by kind.",
+      "unit": "events",
+      "source": "ledger",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "Production only. Kinds are INITIAL_PURCHASE, RENEWAL, NON_RENEWING_PURCHASE, REFUND and REVOCATION as the ledger maps them.",
+      "kind": "sql",
+      "sql": "SELECT date(event_at / 1000, 'unixepoch') AS period, slug AS app, kind AS dim, COUNT(*) AS value FROM sale_events WHERE environment = 'Production' AND date(event_at / 1000, 'unixepoch') BETWEEN :since AND :until GROUP BY period, app, dim"
+    },
+    {
+      "id": "refunds",
+      "title": "Refunds",
+      "purpose": "Purchases Apple refunded or revoked.",
+      "unit": "events",
+      "source": "ledger",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "Production only; the day Apple told the ledger, not the day of the purchase.",
+      "kind": "sql",
+      "sql": "SELECT date(event_at / 1000, 'unixepoch') AS period, slug AS app, '' AS dim, COUNT(*) AS value FROM sale_events WHERE environment = 'Production' AND kind IN ('REFUND', 'REVOCATION') AND date(event_at / 1000, 'unixepoch') BETWEEN :since AND :until GROUP BY period, app"
+    },
+    {
+      "id": "active_subscriptions",
+      "title": "Active subscriptions",
+      "purpose": "Subscriptions paid up at the end of each day.",
+      "unit": "subscriptions",
+      "source": "ledger",
+      "grain": "day",
+      "rollup": "last",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "Production only, counted from the transactions the ledger has; a subscription bought before the ledger existed counts from its first renewal the ledger saw.",
+      "kind": "sql",
+      "sql": "WITH RECURSIVE days(d) AS (SELECT :since UNION ALL SELECT date(d, '+1 day') FROM days WHERE d < :until) SELECT d AS period, t.slug AS app, '' AS dim, COUNT(DISTINCT t.original_transaction_id) AS value FROM days JOIN transactions t\n  ON t.environment = 'Production' AND t.type = 'Auto-Renewable Subscription' AND t.revocation_date IS NULL\n  AND t.purchase_date < (unixepoch(d, '+1 day') * 1000) AND t.expires_date >= (unixepoch(d, '+1 day') * 1000)\nGROUP BY d, t.slug"
+    },
+    {
+      "id": "intro_offers",
+      "title": "Introductory offers started",
+      "purpose": "Subscriptions that started on an introductory offer, a free trial in most apps.",
+      "unit": "subscriptions",
+      "source": "ledger",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "Production only. Apple's offer type 1 covers free trials and pay-up-front or pay-as-you-go introductory prices alike.",
+      "kind": "sql",
+      "sql": "SELECT date(purchase_date / 1000, 'unixepoch') AS period, slug AS app, '' AS dim, COUNT(DISTINCT original_transaction_id) AS value FROM transactions WHERE environment = 'Production' AND type = 'Auto-Renewable Subscription' AND offer_type = 1\n  AND transaction_id = original_transaction_id AND date(purchase_date / 1000, 'unixepoch') BETWEEN :since AND :until\nGROUP BY period, app"
+    },
+    {
+      "id": "ai_requests",
+      "title": "AI requests",
+      "purpose": "Chat requests mako served, by model alias.",
+      "unit": "requests",
+      "source": "mako",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "Chat requests only; image generations are not counted here.",
+      "kind": "sql",
+      "sql": "SELECT date(c.created_at) AS period, COALESCE(NULLIF(a.registry_slug, ''), c.app_id) AS app, c.alias AS dim, COUNT(*) AS value FROM chat_requests c LEFT JOIN apps a ON a.app_id = c.app_id WHERE date(c.created_at) BETWEEN :since AND :until GROUP BY period, app, dim"
+    },
+    {
+      "id": "downloads",
+      "title": "Downloads",
+      "purpose": "First-time App Store downloads, from Apple's sales reports.",
+      "unit": "downloads",
+      "source": "appstore",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "Apple's reports arrive a day or two late. Read on the machine that has the myyty warehouse.",
+      "kind": "local",
+      "local": "downloads"
+    },
+    {
+      "id": "proceeds",
+      "title": "Proceeds",
+      "purpose": "What Apple pays out after its commission, from Apple's sales reports.",
+      "unit": "EUR",
+      "source": "appstore",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "Euro proceeds only; myyty keeps every currency apart and never converts, so other currencies are named beside the answer. Apple's reports arrive a day or two late. Read on the machine that has the myyty warehouse.",
+      "kind": "local",
+      "local": "proceeds"
+    }
+  ]
+}
