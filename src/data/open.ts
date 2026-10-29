@@ -48,7 +48,8 @@ export interface OpenApp {
 }
 
 export const GITHUB_ORG = 'https://github.com/guitaripod';
-export const PLATFORM_REPO = `${GITHUB_ORG}/midgar-platform`;
+/** The public mirror of this site, which carries the generated event and metric catalogs. */
+export const SITE_REPO = `${GITHUB_ORG}/midgarcorp`;
 export const KIT_SIGNALS = `${GITHUB_ORG}/MidgarKit/tree/master/Sources/MidgarCore/Signals`;
 export const KIDS_APP_SLUG = 'master-of-flags';
 

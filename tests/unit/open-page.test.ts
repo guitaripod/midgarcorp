@@ -82,9 +82,11 @@ describe('event views', () => {
 });
 
 describe('metric views', () => {
-  it('list every metric of the catalog and flag the published ones', () => {
+  it('list every metric of the catalog but the App Store report ones and flag the published ones', () => {
     const views = metricViews(metrics, ['wau', 'purchases']);
-    expect(views.map((view) => view.id)).toEqual(metrics.metrics.map((metric) => metric.id));
+    expect(views.map((view) => view.id)).toEqual(
+      metrics.metrics.filter((metric) => metric.source !== 'appstore').map((metric) => metric.id)
+    );
     expect(views.find((view) => view.id === 'wau')?.published).toBe(true);
     expect(views.find((view) => view.id === 'dau')?.published).toBe(false);
     expect(views.find((view) => view.id === 'sales')?.published).toBe(false);
@@ -136,13 +138,16 @@ describe('built /open page', () => {
     }
   });
 
-  it.skipIf(!built)('defines every metric of the metrics catalog', () => {
-    const text = mainText('open/index.html');
-    for (const metric of metrics.metrics) {
-      expect(has(text, metric.title), metric.id).toBe(true);
-      expect(has(text, metric.purpose), metric.id).toBe(true);
+  it.skipIf(!built)(
+    'defines every metric of the metrics catalog but the App Store report ones',
+    () => {
+      const text = mainText('open/index.html');
+      for (const metric of metrics.metrics.filter((entry) => entry.source !== 'appstore')) {
+        expect(has(text, metric.title), metric.id).toBe(true);
+        expect(has(text, metric.purpose), metric.id).toBe(true);
+      }
     }
-  });
+  );
 
   it.skipIf(!built)('shows hidden values as "<10" and not as an error', () => {
     const text = mainText('open/index.html');
@@ -169,7 +174,13 @@ describe('built /open page', () => {
     expect(has(text, 'Counts, not people')).toBe(true);
     expect(has(text, 'No identifier leaves a device')).toBe(true);
     expect(has(text, `Anything under ${stats.rules.min_count}`)).toBe(true);
-    expect(has(html(), 'https://github.com/guitaripod/midgar-platform')).toBe(true);
+    expect(
+      has(
+        html(),
+        'https://github.com/guitaripod/midgarcorp/blob/master/src/generated/signals-catalog.json'
+      )
+    ).toBe(true);
+    expect(has(html(), 'github.com/guitaripod/midgar-platform')).toBe(false);
     expect(
       has(html(), 'https://github.com/guitaripod/MidgarKit/tree/master/Sources/MidgarCore/Signals')
     ).toBe(true);

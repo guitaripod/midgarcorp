@@ -12,7 +12,7 @@ import {
   KIT_SIGNALS,
   metrics,
   openAppFor,
-  PLATFORM_REPO,
+  SITE_REPO,
   sample,
   stats,
   statsApps,
@@ -133,7 +133,7 @@ const principles = [
   },
   {
     title: 'The code is open',
-    body: 'Every event is declared in one registry, and the code that sends and adds up the counts is on GitHub.',
+    body: 'Every event and metric is declared in one public registry, and the code on the device that sends the counts is open source.',
   },
 ];
 
@@ -148,27 +148,24 @@ const codeLinks = [
   {
     href: KIT_SIGNALS,
     label: 'MidgarKit, Signals',
-    blurb: 'On the device: what an app sends, the once-per-period rule and the queue.',
+    blurb:
+      'On the device: what an app sends, the once-per-period rule and the queue. Open source under GPL-3.0.',
   },
   {
-    href: `${PLATFORM_REPO}/blob/master/registry/signals.yaml`,
-    label: 'registry/signals.yaml',
-    blurb: 'Every event, prop and allowed value, with its purpose, owner and review date.',
+    href: `${SITE_REPO}/blob/master/src/generated/signals-catalog.json`,
+    label: 'signals-catalog.json',
+    blurb:
+      'Every event, prop and allowed value, with its purpose, generated from the registry the apps are built from.',
   },
   {
-    href: `${PLATFORM_REPO}/blob/master/registry/metrics.yaml`,
-    label: 'registry/metrics.yaml',
+    href: `${SITE_REPO}/blob/master/src/generated/metrics-catalog.json`,
+    label: 'metrics-catalog.json',
     blurb: 'Every metric and the formula behind it.',
   },
   {
-    href: `${PLATFORM_REPO}/tree/master/services/signals`,
-    label: 'services/signals',
-    blurb: 'The worker that checks each count against the registry and adds it to a daily total.',
-  },
-  {
-    href: `${PLATFORM_REPO}/blob/master/docs/lifestream.md`,
-    label: 'docs/lifestream.md',
-    blurb: 'The design and the privacy rules, in prose.',
+    href: statsUrl,
+    label: 'The numbers, as JSON',
+    blurb: 'The same public figures this page shows, for anyone or any agent to read.',
   },
 ];
 
@@ -674,7 +671,7 @@ const link =
 
   <PageSection
     id="code"
-    command="git clone github.com/guitaripod/midgar-platform"
+    command="git clone github.com/guitaripod/midgarkit"
     title="Read the code"
     blurb="The counting is not a black box. These are the places to check it."
   >
@@ -697,16 +694,6 @@ const link =
         ))
       }
     </ul>
-    <p class="mt-6">
-      <a
-        href={PLATFORM_REPO}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
-      >
-        gh browse guitaripod/midgar-platform ↗
-      </a>
-    </p>
     <p class="mt-4 max-w-2xl text-xs text-paper-muted dark:text-term-muted">
       Something looks wrong or unclear? Write to
       <a href="mailto:support@midgarcorp.cc" class={link}>support@midgarcorp.cc</a>.

@@ -132,17 +132,19 @@ export function eventViews(catalog: SignalsCatalog): EventView[] {
   }));
 }
 
-/// Every metric of the metrics catalog, flagged when the public numbers on the page use it.
+/// Every metric of the metrics catalog except the App Store report figures (which come from Apple, not the apps), flagged when the public numbers on the page use it.
 export function metricViews(catalog: MetricsCatalog, publishedIds: string[]): MetricView[] {
   const published = new Set(publishedIds);
-  return catalog.metrics.map((metric) => ({
-    id: metric.id,
-    title: metric.title,
-    purpose: metric.purpose,
-    unit: metric.unit,
-    grain: metric.grain,
-    source: SOURCE_LABELS[metric.source] ?? metric.source,
-    caveat: metric.caveat,
-    published: published.has(metric.id),
-  }));
+  return catalog.metrics
+    .filter((metric) => metric.source !== 'appstore')
+    .map((metric) => ({
+      id: metric.id,
+      title: metric.title,
+      purpose: metric.purpose,
+      unit: metric.unit,
+      grain: metric.grain,
+      source: SOURCE_LABELS[metric.source] ?? metric.source,
+      caveat: metric.caveat,
+      published: published.has(metric.id),
+    }));
 }
