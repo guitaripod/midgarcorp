@@ -18,7 +18,7 @@
   "events": [
     {
       "name": "app.launch",
-      "purpose": "Cold launches of an app.",
+      "purpose": "The app was opened.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -50,7 +50,7 @@
     },
     {
       "name": "onboarding.complete",
-      "purpose": "Installs that finished first-run onboarding.",
+      "purpose": "The first-run introduction was finished.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -63,7 +63,7 @@
     },
     {
       "name": "paywall.view",
-      "purpose": "How often a paywall is seen, and from where.",
+      "purpose": "How often the purchase screen is shown, and from where in the app.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -100,7 +100,7 @@
     },
     {
       "name": "paywall.checkout",
-      "purpose": "How a started checkout ended, by product, so the drop-off after the paywall is countable.",
+      "purpose": "How a purchase you started ended, and for which product.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -143,7 +143,7 @@
     },
     {
       "name": "portal_open",
-      "purpose": "The cross-promo portal opened, and from which placement.",
+      "purpose": "The screen with other Midgar apps was opened, and from where in the app.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -168,7 +168,7 @@
     },
     {
       "name": "impression",
-      "purpose": "A promoted app shown in the cross-promo portal.",
+      "purpose": "Another Midgar app was shown on that screen.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -198,7 +198,7 @@
     },
     {
       "name": "tap",
-      "purpose": "A promoted app tapped in the cross-promo portal.",
+      "purpose": "Another Midgar app was tapped on that screen.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -228,7 +228,7 @@
     },
     {
       "name": "loaded",
-      "purpose": "A promoted app's store page loaded from the cross-promo portal.",
+      "purpose": "The App Store page of another Midgar app finished loading from that screen.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -258,7 +258,7 @@
     },
     {
       "name": "launch",
-      "purpose": "A promoted app opened from the cross-promo portal.",
+      "purpose": "Another Midgar app was opened from that screen.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -288,7 +288,7 @@
     },
     {
       "name": "overlay",
-      "purpose": "The App Store overlay for a promoted app presented by Midgar.moment.",
+      "purpose": "The App Store sheet for another Midgar app was shown at a fitting moment.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -318,7 +318,7 @@
     },
     {
       "name": "metrics.daily",
-      "purpose": "Daily MetricKit performance numbers of an install, for release health.",
+      "purpose": "Daily numbers on how fast the app starts and how much memory it uses, so slow versions get fixed.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
@@ -355,7 +355,7 @@
     },
     {
       "name": "metrics.diagnostics",
-      "purpose": "Crash, hang, disk-write and CPU-exception counts from MetricKit diagnostics.",
+      "purpose": "Counts of crashes, freezes and heavy disk or processor use, so they get fixed.",
       "owner": "marcus",
       "review": "2027-10-25",
       "unique": "each",
