@@ -13,11 +13,12 @@ const windows = [
   { href: '/apps', label: 'apps' },
   { href: '/linux', label: 'linux' },
   { href: '/opensource', label: 'oss' },
+  { href: '/open', label: 'open' },
   { href: '/archive', label: 'blog' },
 ];
 
 const isWindowActive = (href: string) =>
-  href === '/' ? currentPath === '' : currentPath.startsWith(href.slice(1));
+  href === '/' ? currentPath === '' : currentPath.split('/')[0] === href.slice(1);
 
 const tipJarPrefixes = ['blog', 'archive', 'links', 'tags'];
 const showTipJar = tipJarPrefixes.some((prefix) => currentPath.startsWith(prefix));

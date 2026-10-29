@@ -1,0 +1,29 @@
+---
+import { formatCell, formatShare, isHidden, isNumber } from '../../lib/open-stats.mjs';
+import type { Cell } from '@data/open';
+
+export interface Props {
+  cell: Cell | undefined;
+  share?: boolean;
+  minCount: number;
+}
+
+const { cell = null, share = false, minCount } = Astro.props;
+const shown = share ? formatShare(cell) : formatCell(cell);
+---
+
+{
+  isNumber(cell) ? (
+    <span class="tabular-nums">{shown}</span>
+  ) : isHidden(cell) ? (
+    <span class="tabular-nums text-paper-muted dark:text-term-muted">
+      {shown}
+      <span class="sr-only"> (hidden: fewer than {minCount})</span>
+    </span>
+  ) : (
+    <span class="text-paper-faint dark:text-term-faint">
+      <span aria-hidden="true">–</span>
+      <span class="sr-only">not yet</span>
+    </span>
+  )
+}

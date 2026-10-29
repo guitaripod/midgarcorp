@@ -1,6 +1,6 @@
 # midgarcorp.cc
 
-Astro static site (blog, app landing pages, /apps, /linux, /opensource, /blackwall) on Cloudflare Pages. A Go CLI (`ct`) runs pre-build and post-build tasks. It deploys on every push to its mirror and daily.
+Astro static site (blog, app landing pages, /apps, /linux, /opensource, /open, /blackwall) on Cloudflare Pages. A Go CLI (`ct`) runs pre-build and post-build tasks. It deploys on every push to its mirror and daily.
 
 ## Layout
 - `src/content/blog/` MDX posts; schemas in `src/content/config.ts` (required `title`, `description`, `pubDate`; optional `updatedDate`, `image`, `tags`, `draft`, `series`).
@@ -21,6 +21,7 @@ Astro static site (blog, app landing pages, /apps, /linux, /opensource, /blackwa
 - `src/data/landing-live.json`: `ct fetch-appstore` too, from the per-app iTunes lookup; `src/data/landing.ts` overlays it onto `landing-facts.json`.
 - `ct audit-store` fails on structural drift (platform class, category, price) between `landing-facts.json` and the live App Store.
 - `src/data/github-activity.json`: `scripts/fetch-github-activity.mjs` (in `ct prebuild`); live route `src/pages/api/activity.json.ts` uses the Pages `GITHUB_TOKEN` secret. No commit messages, branches or diff sizes on the board. Heatmap classes `.act-c0` to `.act-c4` stay outside `@layer` in `global.css`.
+- `src/data/open-stats.json`: `scripts/fetch-open-stats.mjs` (in `ct prebuild`) writes the body of `https://api.midgarcorp.cc/v1/ops/public/stats` for `/open`; it fails soft and keeps the committed file, and refuses a body of the wrong shape or one still marked as a sample. The committed file is a sample (`rules.note` starts with "SAMPLE DATA", and the page says so) until the first live fetch is committed. `src/generated/signals-catalog.json` and `metrics-catalog.json` are `midgar gen` copies (`site-signals-catalog`, `site-metrics-catalog`) of the registry catalogs, so `/open` builds without the monorepo; never edit them by hand.
 - Other prebuild-generated data: `app-work.json` (`scripts/fetch-app-work.mjs`, add a new app's repo to `APP_REPOS`), `webb-live.json`, `blackwall.json`, `screenshot-variants.json`, `duo-combos.json` (generated manifest). Fetchers fail soft and keep the committed file.
 - `linux-apps.json`: `node scripts/fetch-linux-releases.mjs` (uses `gh`); `.github/workflows/refresh-linux-apps.yml` runs weekly and opens a reviewable PR. `.github/workflows/refresh-store-assets.yml` (weekly, dormant until repo secrets `ASC_KEY_ID`, `ASC_ISSUER_ID`, `ASC_PRIVATE_KEY` are set) opens a PR with the screenshot diff. Both need the repo setting Allow GitHub Actions to create and approve pull requests.
 - Pages compute featured selections from data. Never hardcode project lists.

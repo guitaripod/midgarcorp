@@ -1,0 +1,103 @@
+---
+import { allHidden, sparkline } from '../../lib/open-stats.mjs';
+import type { Cell } from '@data/open';
+
+export interface Props {
+  cells: Cell[];
+  label: string;
+  open?: boolean;
+}
+
+const WIDTH = 240;
+const HEIGHT = 56;
+const TICK = 6;
+
+const { cells, label, open = false } = Astro.props;
+const flat = allHidden(cells);
+const drawing = sparkline(cells, { width: WIDTH, height: HEIGHT });
+const last = drawing.last;
+const lastIsOpen = open && last !== null && last.index === cells.length - 1;
+const before = last && last.index > 0 ? drawing.points[last.index - 1] : undefined;
+const joined = before?.kind === 'value';
+const lastSegment = drawing.paths.length - 1;
+const paths = lastIsOpen
+  ? drawing.paths.map((path, index) =>
+      index === lastSegment ? path.replace(/ L[\d.-]+ [\d.-]+$/, '') : path
+    )
+  : drawing.paths;
+const percent = (value: number, total: number) => `${((value / total) * 100).toFixed(2)}%`;
+---
+
+<div class="relative h-14 w-full" role="img" aria-label={label}>
+  <svg
+    viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+    class="absolute inset-0 h-full w-full overflow-visible"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+  >
+    <line
+      x1="0"
+      x2={WIDTH}
+      y1={drawing.floor}
+      y2={drawing.floor}
+      class="stroke-paper-border dark:stroke-term-border"
+      stroke-width="1"
+      stroke-dasharray={flat ? '3 4' : undefined}
+      vector-effect="non-scaling-stroke"></line>
+    {
+      paths.map((path) => (
+        <path
+          d={path}
+          fill="none"
+          class="stroke-paper-green dark:stroke-term-green"
+          stroke-width="1.75"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          vector-effect="non-scaling-stroke"
+        />
+      ))
+    }
+    {
+      lastIsOpen && joined && before && last && (
+        <line
+          x1={before.x}
+          y1={before.y}
+          x2={last.x}
+          y2={last.y}
+          class="stroke-paper-green dark:stroke-term-green"
+          stroke-width="1.75"
+          stroke-dasharray="3 3"
+          stroke-linecap="round"
+          vector-effect="non-scaling-stroke"
+        />
+      )
+    }
+    {
+      drawing.hidden.map((point) => (
+        <line
+          x1={point.x}
+          x2={point.x}
+          y1={drawing.floor}
+          y2={drawing.floor - TICK}
+          class="stroke-paper-muted dark:stroke-term-muted"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          vector-effect="non-scaling-stroke"
+        />
+      ))
+    }
+  </svg>
+  {
+    last && (
+      <span
+        class={`absolute block h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-paper-green dark:border-term-green ${
+          lastIsOpen
+            ? 'bg-paper-panel dark:bg-term-panel'
+            : 'bg-paper-green dark:bg-term-green dark:shadow-[0_0_8px_rgba(51,255,102,0.6)]'
+        }`}
+        style={`left:${percent(last.x, WIDTH)};top:${percent(last.y, HEIGHT)}`}
+        aria-hidden="true"
+      />
+    )
+  }
+</div>

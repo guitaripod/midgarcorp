@@ -1,0 +1,715 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CardGrid from '@components/CardGrid.astro';
+import PageSection from '@components/PageSection.astro';
+import AppIcon from '@components/landing/AppIcon.astro';
+import MetricCard from '@components/open/MetricCard.astro';
+import Spark from '@components/open/Spark.astro';
+import Value from '@components/open/Value.astro';
+import {
+  events,
+  kidsApp,
+  KIT_SIGNALS,
+  metrics,
+  openAppFor,
+  PLATFORM_REPO,
+  sample,
+  stats,
+  statsApps,
+  statsUrl,
+} from '@data/open';
+import {
+  describeSeries,
+  formatMonth,
+  formatStamp,
+  formatWeek,
+  isNumber,
+  isOpenPeriod,
+  seriesOf,
+} from '../lib/open-stats.mjs';
+
+const pageTitle = 'Midgar in the open | guitaripod';
+const pageDescription =
+  "Midgar's usage numbers in the open: weekly active installs, purchases, retention and more with small numbers hidden, every event the apps send, and the code behind it.";
+
+const minCount = stats.rules.min_count;
+const generatedAt = stats.generated_at;
+const weeks = stats.portfolio.weeks;
+const months = stats.portfolio.months;
+const retention = stats.portfolio.retention;
+const latestWeek = weeks.at(-1)?.period;
+const latestMonth = months.at(-1)?.period;
+const weekIsOpen = latestWeek !== undefined && isOpenPeriod(latestWeek, 'week', generatedAt);
+const monthIsOpen = latestMonth !== undefined && isOpenPeriod(latestMonth, 'month', generatedAt);
+
+const publicTitle = (id: string, fallback: string) =>
+  stats.metrics.find((metric) => metric.id === id)?.title ?? fallback;
+
+const weeklyCards = [
+  {
+    field: 'wau',
+    title: publicTitle('wau', 'Weekly active installs'),
+    blurb: 'Installs that opened an app during the week.',
+  },
+  {
+    field: 'new_installs',
+    title: publicTitle('new_installs', 'New installs'),
+    blurb: 'Installs first seen that week.',
+  },
+  {
+    field: 'purchases',
+    title: publicTitle('purchases', 'Purchases'),
+    blurb: 'Purchases recorded that week.',
+  },
+  {
+    field: 'active_subscriptions',
+    title: publicTitle('active_subscriptions', 'Active subscriptions'),
+    blurb: 'Subscriptions in force that week.',
+  },
+  {
+    field: 'ai_requests',
+    title: publicTitle('ai_requests', 'AI requests'),
+    blurb: 'AI chat requests answered that week.',
+  },
+];
+
+const weeklyColumns = [
+  { field: 'wau', label: 'Active installs' },
+  { field: 'new_installs', label: 'New installs' },
+  { field: 'purchases', label: 'Purchases' },
+  { field: 'refunds', label: 'Refunds' },
+  { field: 'ai_requests', label: 'AI requests' },
+  { field: 'active_subscriptions', label: 'Subscriptions' },
+];
+
+const monthlyColumns = [
+  { field: 'mau', label: 'Active installs' },
+  { field: 'purchases', label: 'Purchases' },
+  { field: 'refunds', label: 'Refunds' },
+  { field: 'ai_requests', label: 'AI requests' },
+  { field: 'active_subscriptions', label: 'Subscriptions' },
+];
+
+const appStats = [
+  { field: 'wau', label: 'Active installs' },
+  { field: 'new_installs', label: 'New installs' },
+  { field: 'purchases', label: 'Purchases' },
+  { field: 'ai_requests', label: 'AI requests' },
+];
+
+const appCards = statsApps.map((slug) => {
+  const series = stats.apps[slug];
+  const sparkField =
+    ['wau', 'ai_requests'].find((field) => seriesOf(series.weeks, field).some(isNumber)) ?? 'wau';
+  const sparkTitle = sparkField === 'wau' ? 'Weekly active installs' : 'AI requests';
+  const lastRow = series.weeks.at(-1);
+  return {
+    app: openAppFor(slug),
+    series,
+    sparkField,
+    sparkTitle,
+    lastRow,
+    open: lastRow !== undefined && isOpenPeriod(lastRow.period, 'week', generatedAt),
+  };
+});
+
+const published = stats.metrics.map((metric) => ({
+  ...metric,
+  purpose: metrics.find((entry) => entry.id === metric.id)?.purpose,
+}));
+
+const principles = [
+  {
+    title: 'Counts, not people',
+    body: 'An app reports that an install was active, never whose. Each install sends a given count once per period, so totals are distinct installs.',
+  },
+  {
+    title: 'No identifier leaves a device',
+    body: 'No user id, device id, Midgar ID or fingerprint rides along with a count, and the server never stores the IP address.',
+  },
+  {
+    title: 'Small numbers are hidden',
+    body: `Anything under ${minCount} shows as <${minCount}, so a figure can never point at a handful of people.`,
+  },
+  {
+    title: 'The code is open',
+    body: 'Every event is declared in one registry, and the code that sends and adds up the counts is on GitHub.',
+  },
+];
+
+const carries = [
+  'which app sent it, by name',
+  'the platform, such as iPhone or Mac',
+  'the app version, as major.minor',
+  'for events marked install week, the ISO week the app was installed, never a day',
+];
+
+const codeLinks = [
+  {
+    href: KIT_SIGNALS,
+    label: 'MidgarKit, Signals',
+    blurb: 'On the device: what an app sends, the once-per-period rule and the queue.',
+  },
+  {
+    href: `${PLATFORM_REPO}/blob/master/registry/signals.yaml`,
+    label: 'registry/signals.yaml',
+    blurb: 'Every event, prop and allowed value, with its purpose, owner and review date.',
+  },
+  {
+    href: `${PLATFORM_REPO}/blob/master/registry/metrics.yaml`,
+    label: 'registry/metrics.yaml',
+    blurb: 'Every metric and the formula behind it.',
+  },
+  {
+    href: `${PLATFORM_REPO}/tree/master/services/signals`,
+    label: 'services/signals',
+    blurb: 'The worker that checks each count against the registry and adds it to a daily total.',
+  },
+  {
+    href: `${PLATFORM_REPO}/blob/master/docs/lifestream.md`,
+    label: 'docs/lifestream.md',
+    blurb: 'The design and the privacy rules, in prose.',
+  },
+];
+
+const tableWrap =
+  'term-frame relative overflow-x-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-paper-green dark:focus-visible:outline-term-green';
+const headCell = 'px-3 py-2 text-xs font-normal text-paper-muted dark:text-term-muted';
+const rowRule = 'border-t border-paper-border dark:border-term-border';
+const chip =
+  'inline-block rounded-sm border border-paper-border dark:border-term-border px-1.5 py-0.5 text-[11px] leading-none text-paper-muted dark:text-term-muted';
+const link =
+  'text-paper-green dark:text-term-green underline decoration-dotted underline-offset-2 hover:opacity-80';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <header class="pt-10 sm:pt-14 mb-8 sm:mb-10">
+    <p class="prompt-line mb-4">curl -s api.midgarcorp.cc/v1/ops/public/stats</p>
+    <h1
+      class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-paper-text dark:text-term-text"
+    >
+      Midgar, <span class="phosphor">in the open</span>
+    </h1>
+    <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-3xl leading-relaxed">
+      Midgar's apps count what happens in them, and this page publishes the counts as they are. The
+      apps count installs, not people. No identifier leaves a device, small numbers are hidden, and
+      the code that counts is open.
+    </p>
+    <p class="mt-4 text-xs text-paper-muted dark:text-term-muted">
+      Updated <time datetime={generatedAt}>{formatStamp(generatedAt)}</time> · weeks start on Monday,
+      UTC ·
+      <a href={statsUrl} class={link} rel="noopener noreferrer">the numbers as JSON</a>
+    </p>
+  </header>
+
+  {
+    sample && (
+      <div
+        role="note"
+        class="term-frame mb-10 !border-paper-amber dark:!border-term-amber p-4 text-sm text-paper-text dark:text-term-text"
+      >
+        <p class="term-label mb-1 !text-paper-amber dark:!text-term-amber">sample numbers</p>
+        <p>{stats.rules.note}</p>
+      </div>
+    )
+  }
+
+  <section class="mb-14 sm:mb-20" aria-labelledby="principles">
+    <h2 id="principles" class="sr-only">How the counting works</h2>
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
+      {
+        principles.map((principle) => (
+          <li class="term-frame p-4 sm:p-5">
+            <h3 class="text-sm font-bold text-paper-text dark:text-term-text mb-2">
+              <span aria-hidden="true" class="text-paper-green dark:text-term-green">
+                &gt;
+              </span>{' '}
+              {principle.title}
+            </h3>
+            <p class="text-sm text-paper-muted dark:text-term-muted leading-relaxed">
+              {principle.body}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <PageSection
+    id="portfolio"
+    command="open stats --portfolio --weeks 12"
+    title="All apps, week by week"
+    blurb={`The last ${weeks.length} weeks, newest on the right. A dashed line and a hollow dot mean the week is still running. A short tick on the baseline means fewer than ${minCount} that week.`}
+  >
+    {
+      weeks.length > 0 ? (
+        <>
+          <CardGrid md={2} lg={3}>
+            {weeklyCards.map((card, index) => (
+              <MetricCard
+                wide={index === 0}
+                title={card.title}
+                blurb={card.blurb}
+                rows={weeks}
+                field={card.field}
+                generatedAt={generatedAt}
+                minCount={minCount}
+              />
+            ))}
+          </CardGrid>
+          <details class="mt-6">
+            <summary class="term-label cursor-pointer select-none hover:text-paper-green dark:hover:text-term-green transition-colors">
+              the same numbers as a table
+            </summary>
+            <div class={`${tableWrap} mt-3`} role="region" aria-label="Weekly numbers" tabindex="0">
+              <table class="w-full min-w-[40rem] text-sm">
+                <caption class="sr-only">
+                  Portfolio numbers for each of the last {weeks.length} weeks
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class={`${headCell} text-left`}>
+                      Week of
+                    </th>
+                    {weeklyColumns.map((column) => (
+                      <th scope="col" class={`${headCell} text-right`}>
+                        {column.label}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[...weeks].reverse().map((row) => (
+                    <tr class={rowRule}>
+                      <th
+                        scope="row"
+                        class="whitespace-nowrap px-3 py-2 text-left font-normal text-paper-text dark:text-term-text"
+                      >
+                        {formatWeek(row.period)}
+                        {isOpenPeriod(row.period, 'week', generatedAt) && (
+                          <span class="ml-1 text-xs text-paper-muted dark:text-term-muted">
+                            so far
+                          </span>
+                        )}
+                      </th>
+                      {weeklyColumns.map((column) => (
+                        <td class="px-3 py-2 text-right">
+                          <Value cell={row[column.field]} minCount={minCount} />
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </>
+      ) : (
+        <p class="term-frame p-4 text-sm text-paper-muted dark:text-term-muted">
+          No weekly numbers yet.
+        </p>
+      )
+    }
+  </PageSection>
+
+  <PageSection
+    id="months"
+    command="open stats --portfolio --months 6"
+    title="Month by month"
+    blurb="Calendar months. The latest one is a partial count until it ends."
+  >
+    {
+      months.length > 0 ? (
+        <div class={tableWrap} role="region" aria-label="Monthly numbers" tabindex="0">
+          <table class="w-full min-w-[34rem] text-sm">
+            <caption class="sr-only">
+              Portfolio numbers for each of the last {months.length} months
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" class={`${headCell} text-left`}>
+                  Month
+                </th>
+                {monthlyColumns.map((column) => (
+                  <th scope="col" class={`${headCell} text-right`}>
+                    {column.label}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[...months].reverse().map((row) => (
+                <tr class={rowRule}>
+                  <th
+                    scope="row"
+                    class="whitespace-nowrap px-3 py-2 text-left font-normal text-paper-text dark:text-term-text"
+                  >
+                    {formatMonth(row.period)}
+                    {isOpenPeriod(row.period, 'month', generatedAt) && (
+                      <span class="ml-1 text-xs text-paper-muted dark:text-term-muted">so far</span>
+                    )}
+                  </th>
+                  {monthlyColumns.map((column) => (
+                    <td class="px-3 py-2 text-right">
+                      <Value cell={row[column.field]} minCount={minCount} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p class="term-frame p-4 text-sm text-paper-muted dark:text-term-muted">
+          No monthly numbers yet.
+        </p>
+      )
+    }
+  </PageSection>
+
+  <PageSection
+    id="retention"
+    command="open stats --retention"
+    title="Do installs come back?"
+    blurb="Each row is the group of installs first seen in one week. Week 1 is the share that opened an app again the next week, week 4 the share still active four weeks later. A dash means the week has not happened yet."
+  >
+    {
+      retention.length > 0 ? (
+        <div
+          class={`${tableWrap} max-w-2xl`}
+          role="region"
+          aria-label="Retention by install week"
+          tabindex="0"
+        >
+          <table class="w-full min-w-[22rem] text-sm">
+            <caption class="sr-only">
+              Share of each install week still active one and four weeks later
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" class={`${headCell} text-left`}>
+                  Installed in the week of
+                </th>
+                <th scope="col" class={`${headCell} text-right`}>
+                  Week 1
+                </th>
+                <th scope="col" class={`${headCell} text-right`}>
+                  Week 4
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...retention].reverse().map((row) => (
+                <tr class={rowRule}>
+                  <th
+                    scope="row"
+                    class="whitespace-nowrap px-3 py-2 text-left font-normal text-paper-text dark:text-term-text"
+                  >
+                    {formatWeek(row.cohort)}
+                  </th>
+                  {[row.w1, row.w4].map((cell) => (
+                    <td class="px-3 py-2">
+                      <div class="flex items-center justify-end gap-3">
+                        {isNumber(cell) && (
+                          <span
+                            class="hidden sm:block h-1.5 w-24 rounded-sm bg-paper-raised dark:bg-term-raised"
+                            aria-hidden="true"
+                          >
+                            <span
+                              class="block h-full rounded-sm bg-paper-green dark:bg-term-green"
+                              style={`width:${Math.min(100, Math.max(0, cell * 100))}%`}
+                            />
+                          </span>
+                        )}
+                        <Value cell={cell} share minCount={minCount} />
+                      </div>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p class="term-frame p-4 text-sm text-paper-muted dark:text-term-muted">
+          No retention numbers yet.
+        </p>
+      )
+    }
+  </PageSection>
+
+  <PageSection
+    id="apps"
+    command="ls apps/ --with-data"
+    title="App by app"
+    blurb={`The apps that have reported counts, the busiest first. The same rule holds for each: under ${minCount} is hidden.`}
+  >
+    {
+      appCards.length > 0 ? (
+        <CardGrid md={2} lg={3}>
+          {appCards.map(({ app, series, sparkField, sparkTitle, lastRow, open }) => (
+            <article class="term-frame p-4 sm:p-5 flex flex-col" id={`app-${app.slug}`}>
+              <header class="flex items-center gap-3">
+                {app.icon && (
+                  <AppIcon
+                    src={app.icon}
+                    width={40}
+                    height={40}
+                    displayWidths={[40]}
+                    class="h-10 w-10 shrink-0 rounded-[0.6rem] border border-paper-border object-cover dark:border-term-border"
+                  />
+                )}
+                <h3 class="min-w-0 text-base font-bold text-paper-text dark:text-term-text">
+                  {app.href ? (
+                    <a
+                      href={app.href}
+                      class="hover:text-paper-green dark:hover:text-term-green transition-colors"
+                    >
+                      {app.name}
+                    </a>
+                  ) : (
+                    app.name
+                  )}
+                </h3>
+              </header>
+              <div class="mt-4">
+                <Spark
+                  cells={seriesOf(series.weeks, sparkField)}
+                  label={describeSeries(sparkTitle, series.weeks, sparkField)}
+                  open={open}
+                />
+                <p class="mt-1 text-xs text-paper-muted dark:text-term-muted">{sparkTitle}</p>
+              </div>
+              <dl class="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
+                {appStats.map((entry) => (
+                  <div>
+                    <dt class="text-xs text-paper-muted dark:text-term-muted">{entry.label}</dt>
+                    <dd class="text-lg font-bold text-paper-text dark:text-term-text">
+                      <Value cell={lastRow?.[entry.field]} minCount={minCount} />
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              {lastRow && (
+                <p class="mt-3 text-xs text-paper-muted dark:text-term-muted">
+                  {`Week of ${formatWeek(lastRow.period)}${open ? ', so far' : ''}`}
+                </p>
+              )}
+            </article>
+          ))}
+        </CardGrid>
+      ) : (
+        <p class="term-frame p-4 text-sm text-paper-muted dark:text-term-muted">
+          No app has reported counts yet.
+        </p>
+      )
+    }
+  </PageSection>
+
+  <PageSection
+    id="measure"
+    command="cat registry/signals.yaml"
+    title="What the apps measure"
+    blurb={`Every event an app can send, generated from the same registry the apps and the server are built from. There are ${events.length}; nothing else can be sent.`}
+  >
+    <div class="mb-6 grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
+      <div class="term-frame p-4 sm:p-5">
+        <h3 class="text-sm font-bold text-paper-text dark:text-term-text mb-2">
+          What every count carries
+        </h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm text-paper-muted dark:text-term-muted">
+          {carries.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="mt-3 text-sm text-paper-muted dark:text-term-muted">
+          The country is read at Cloudflare's edge and kept only in identifier-free data points that
+          Cloudflare deletes after 90 days. The daily totals the numbers above come from hold no
+          country.
+        </p>
+      </div>
+      <div class="term-frame p-4 sm:p-5">
+        <h3 class="text-sm font-bold text-paper-text dark:text-term-text mb-2">
+          A closed vocabulary
+        </h3>
+        <p class="text-sm text-paper-muted dark:text-term-muted leading-relaxed">
+          Each event names its purpose, an owner and a review date, and every prop has a fixed list
+          of allowed values. A value outside the list is stored as <code>other</code>, so free text
+          cannot be sent. The server keeps daily totals, not a log of what each install did.
+        </p>
+      </div>
+    </div>
+
+    <ul class="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2" aria-label="Events">
+      {
+        events.map((event) => (
+          <li class="term-frame p-4 sm:p-5" id={`event-${event.name}`}>
+            <h3 class="flex flex-wrap items-center gap-2">
+              <code class="break-all font-bold text-paper-text dark:text-term-text">
+                {event.name}
+              </code>
+              {event.cohort && <span class={chip}>install week</span>}
+              {event.reserved && <span class={chip}>reserved, not sent yet</span>}
+            </h3>
+            <p class="mt-2 text-sm text-paper-text dark:text-term-text">{event.purpose}</p>
+            <dl class="mt-3 space-y-2 text-xs text-paper-muted dark:text-term-muted">
+              <div>
+                <dt class="term-label !text-[10px]">sent</dt>
+                <dd>{event.sent}</dd>
+              </div>
+              <div>
+                <dt class="term-label !text-[10px]">props</dt>
+                <dd>
+                  {event.props.length === 0 && event.numeric.length === 0 ? (
+                    'none'
+                  ) : (
+                    <dl class="grid grid-cols-[minmax(0,max-content)_minmax(0,1fr)] gap-x-3 gap-y-1.5">
+                      {event.props.map((prop) => (
+                        <>
+                          <dt>
+                            <code class="text-paper-text dark:text-term-text">{prop.name}</code>
+                            {prop.optional && <span class="block text-[10px]">optional</span>}
+                          </dt>
+                          <dd>
+                            <span>{prop.summary}</span>
+                            {prop.values.length > 0 && (
+                              <span class="mt-1 flex flex-wrap gap-1">
+                                {prop.values.map((value) => (
+                                  <code class={`${chip} !text-paper-text dark:!text-term-text`}>
+                                    {value}
+                                  </code>
+                                ))}
+                              </span>
+                            )}
+                          </dd>
+                        </>
+                      ))}
+                      {event.numeric.map((entry) => (
+                        <>
+                          <dt>
+                            <code class="text-paper-text dark:text-term-text">{entry.name}</code>
+                          </dt>
+                          <dd>{entry.summary}</dd>
+                        </>
+                      ))}
+                    </dl>
+                  )}
+                </dd>
+              </div>
+            </dl>
+          </li>
+        ))
+      }
+    </ul>
+
+    <aside class="term-frame mt-6 p-4 sm:p-5" aria-labelledby="kids-note">
+      <h3 id="kids-note" class="text-sm font-bold text-paper-text dark:text-term-text mb-2">
+        <span aria-hidden="true" class="text-paper-green dark:text-term-green">&gt;</span>{' '}
+        {kidsApp.name} sends no usage counts
+      </h3>
+      <p class="text-sm text-paper-muted dark:text-term-muted leading-relaxed">
+        {kidsApp.name} is in Apple's Kids Category, so it sends no usage counts at all and takes no part
+        in the install, activity or retention numbers above. Read its
+        <a href="/legal/master-of-flags/privacy/" class={link}>privacy policy</a>.
+      </p>
+    </aside>
+  </PageSection>
+
+  <PageSection
+    id="definitions"
+    command="cat registry/metrics.yaml"
+    title="How each number is defined"
+    blurb="Every metric has one definition that people, agents and the dashboards share."
+  >
+    {
+      published.length > 0 && (
+        <dl class="term-frame mb-6 divide-y divide-paper-border dark:divide-term-border">
+          {published.map((metric) => (
+            <div class="p-4 sm:p-5" id={`metric-${metric.id}`}>
+              <dt class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span class="font-bold text-paper-text dark:text-term-text">{metric.title}</span>
+                <code class="text-xs text-paper-muted dark:text-term-muted">{metric.id}</code>
+                <span class="text-xs text-paper-muted dark:text-term-muted">in {metric.unit}</span>
+              </dt>
+              <dd class="mt-1 text-sm text-paper-muted dark:text-term-muted leading-relaxed">
+                {metric.purpose && <span>{metric.purpose} </span>}
+                {metric.caveat}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+
+    <details class="group/metrics">
+      <summary
+        class="term-label cursor-pointer select-none hover:text-paper-green dark:hover:text-term-green transition-colors"
+      >
+        every metric Midgar defines · {metrics.length}
+      </summary>
+      <p class="mt-3 mb-3 max-w-2xl text-xs text-paper-muted dark:text-term-muted">
+        These are the working definitions. Midgar's own tools hide a cell under 5 installs; this
+        page is stricter and hides anything under {minCount}.
+      </p>
+      <ul class="term-frame divide-y divide-paper-border dark:divide-term-border">
+        {
+          metrics.map((metric) => (
+            <li class="p-4 sm:p-5">
+              <p class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span class="font-bold text-paper-text dark:text-term-text">{metric.title}</span>
+                <code class="text-xs text-paper-muted dark:text-term-muted">{metric.id}</code>
+                {metric.published && <span class={chip}>on this page</span>}
+              </p>
+              <p class="mt-1 text-sm text-paper-text dark:text-term-text">{metric.purpose}</p>
+              <p class="mt-1 text-xs text-paper-muted dark:text-term-muted">
+                Unit: {metric.unit} · per {metric.grain} · from {metric.source}
+              </p>
+              <p class="mt-1 text-xs text-paper-muted dark:text-term-muted leading-relaxed">
+                {metric.caveat}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </PageSection>
+
+  <PageSection
+    id="code"
+    command="git clone github.com/guitaripod/midgar-platform"
+    title="Read the code"
+    blurb="The counting is not a black box. These are the places to check it."
+  >
+    <ul class="term-frame divide-y divide-paper-border dark:divide-term-border">
+      {
+        codeLinks.map((entry) => (
+          <li>
+            <a
+              href={entry.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-4 sm:p-5 transition-colors hover:bg-paper-raised dark:hover:bg-term-raised"
+            >
+              <span class="font-bold text-paper-green dark:text-term-green">{entry.label} ↗</span>
+              <span class="mt-1 block text-sm text-paper-muted dark:text-term-muted">
+                {entry.blurb}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-6">
+      <a
+        href={PLATFORM_REPO}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+      >
+        gh browse guitaripod/midgar-platform ↗
+      </a>
+    </p>
+    <p class="mt-4 max-w-2xl text-xs text-paper-muted dark:text-term-muted">
+      Something looks wrong or unclear? Write to
+      <a href="mailto:support@midgarcorp.cc" class={link}>support@midgarcorp.cc</a>.
+    </p>
+  </PageSection>
+</BaseLayout>

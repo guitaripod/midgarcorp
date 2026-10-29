@@ -10,12 +10,13 @@ const navItems = [
   { href: '/apps', label: 'apps' },
   { href: '/linux', label: 'linux' },
   { href: '/opensource', label: 'oss' },
+  { href: '/open', label: 'open' },
   { href: '/archive', label: 'blog' },
   { href: '/tags', label: 'tags' },
   { href: '/links', label: 'links' },
 ];
 
-const isItemActive = (href: string) => href !== '/' && currentPath.startsWith(href.slice(1));
+const isItemActive = (href: string) => href !== '/' && currentPath.split('/')[0] === href.slice(1);
 ---
 
 <header

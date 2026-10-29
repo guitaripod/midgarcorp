@@ -227,6 +227,12 @@ body[data-shell='wide'] {
   }
 }
 
+@container card-grid (min-width: 40rem) {
+  .card-grid__wide {
+    grid-column: span 2;
+  }
+}
+
 @container card-grid (min-width: 69rem) {
   .card-grid__track {
     grid-template-columns: repeat(var(--cols-lg, 1), minmax(0, 1fr));
