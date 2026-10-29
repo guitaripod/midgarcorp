@@ -30,6 +30,7 @@ func PreBuild() error {
 		"scripts/fetch-app-work.mjs",
 		"scripts/fetch-webb-live.mjs",
 		"scripts/fetch-blackwall.mjs",
+		"scripts/fetch-open-stats.mjs",
 		"scripts/generate-screenshot-variants.mjs",
 		"scripts/generate-main-og-image.js",
 		"scripts/generate-apps-og-grid.js",

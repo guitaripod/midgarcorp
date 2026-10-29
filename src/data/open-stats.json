@@ -1,0 +1,1187 @@
+{
+  "generated_at": "2026-10-29T12:15:00Z",
+  "rules": {
+    "min_count": 10,
+    "weeks": 12,
+    "months": 6,
+    "note": "SAMPLE DATA for layout only: these numbers are invented and are replaced by the first live fetch of api.midgarcorp.cc/v1/ops/public/stats. Any count under 10 is shown as \"<10\"."
+  },
+  "portfolio": {
+    "weeks": [
+      {
+        "period": "2026-08-10",
+        "wau": "<10",
+        "new_installs": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 96,
+        "active_subscriptions": "<10"
+      },
+      {
+        "period": "2026-08-17",
+        "wau": "<10",
+        "new_installs": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 140,
+        "active_subscriptions": "<10"
+      },
+      {
+        "period": "2026-08-24",
+        "wau": "<10",
+        "new_installs": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 188,
+        "active_subscriptions": "<10"
+      },
+      {
+        "period": "2026-08-31",
+        "wau": "<10",
+        "new_installs": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 171,
+        "active_subscriptions": "<10"
+      },
+      {
+        "period": "2026-09-07",
+        "wau": "<10",
+        "new_installs": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 224,
+        "active_subscriptions": 10
+      },
+      {
+        "period": "2026-09-14",
+        "wau": "<10",
+        "new_installs": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 263,
+        "active_subscriptions": 11
+      },
+      {
+        "period": "2026-09-21",
+        "wau": 11,
+        "new_installs": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 301,
+        "active_subscriptions": 11
+      },
+      {
+        "period": "2026-09-28",
+        "wau": 14,
+        "new_installs": "<10",
+        "purchases": 12,
+        "refunds": "<10",
+        "ai_requests": 289,
+        "active_subscriptions": 13
+      },
+      {
+        "period": "2026-10-05",
+        "wau": 19,
+        "new_installs": 12,
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 342,
+        "active_subscriptions": 14
+      },
+      {
+        "period": "2026-10-12",
+        "wau": 26,
+        "new_installs": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 397,
+        "active_subscriptions": 14
+      },
+      {
+        "period": "2026-10-19",
+        "wau": 31,
+        "new_installs": 15,
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 421,
+        "active_subscriptions": 16
+      },
+      {
+        "period": "2026-10-26",
+        "wau": 38,
+        "new_installs": 18,
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 305,
+        "active_subscriptions": 16
+      }
+    ],
+    "months": [
+      {
+        "period": "2026-05-01",
+        "mau": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": null,
+        "active_subscriptions": "<10"
+      },
+      {
+        "period": "2026-06-01",
+        "mau": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 312,
+        "active_subscriptions": "<10"
+      },
+      {
+        "period": "2026-07-01",
+        "mau": "<10",
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 538,
+        "active_subscriptions": 10
+      },
+      {
+        "period": "2026-08-01",
+        "mau": "<10",
+        "purchases": 12,
+        "refunds": "<10",
+        "ai_requests": 902,
+        "active_subscriptions": 11
+      },
+      {
+        "period": "2026-09-01",
+        "mau": 21,
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 1288,
+        "active_subscriptions": 14
+      },
+      {
+        "period": "2026-10-01",
+        "mau": 44,
+        "purchases": "<10",
+        "refunds": "<10",
+        "ai_requests": 1415,
+        "active_subscriptions": 16
+      }
+    ],
+    "retention": [
+      {
+        "cohort": "2026-08-10",
+        "w1": "<10",
+        "w4": "<10"
+      },
+      {
+        "cohort": "2026-08-17",
+        "w1": "<10",
+        "w4": "<10"
+      },
+      {
+        "cohort": "2026-08-24",
+        "w1": "<10",
+        "w4": "<10"
+      },
+      {
+        "cohort": "2026-08-31",
+        "w1": "<10",
+        "w4": "<10"
+      },
+      {
+        "cohort": "2026-09-07",
+        "w1": "<10",
+        "w4": "<10"
+      },
+      {
+        "cohort": "2026-09-14",
+        "w1": "<10",
+        "w4": "<10"
+      },
+      {
+        "cohort": "2026-09-21",
+        "w1": "<10",
+        "w4": "<10"
+      },
+      {
+        "cohort": "2026-09-28",
+        "w1": "<10",
+        "w4": "<10"
+      },
+      {
+        "cohort": "2026-10-05",
+        "w1": 0.42,
+        "w4": "<10"
+      },
+      {
+        "cohort": "2026-10-12",
+        "w1": "<10",
+        "w4": null
+      },
+      {
+        "cohort": "2026-10-19",
+        "w1": 0.38,
+        "w4": null
+      },
+      {
+        "cohort": "2026-10-26",
+        "w1": null,
+        "w4": null
+      }
+    ]
+  },
+  "apps": {
+    "psywave": {
+      "weeks": [
+        {
+          "period": "2026-08-10",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-17",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-24",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 14,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-31",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 22,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-07",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 31,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-14",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 29,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-21",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 41,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-28",
+          "wau": 10,
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 55,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-05",
+          "wau": 12,
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 62,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-12",
+          "wau": 15,
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 77,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-19",
+          "wau": 17,
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 84,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-26",
+          "wau": 21,
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 61,
+          "active_subscriptions": "<10"
+        }
+      ],
+      "months": [
+        {
+          "period": "2026-05-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-06-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-07-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-01",
+          "mau": 21,
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        }
+      ],
+      "retention": [
+        {
+          "cohort": "2026-08-10",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-17",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-24",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-31",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-07",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-14",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-21",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-28",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-10-05",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-12",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-19",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-26",
+          "w1": null,
+          "w4": null
+        }
+      ]
+    },
+    "dream-eater": {
+      "weeks": [
+        {
+          "period": "2026-08-10",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-17",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-24",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-31",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 11,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-07",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 15,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-14",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 19,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-21",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 24,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-28",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 27,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-05",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 33,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-12",
+          "wau": 11,
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 38,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-19",
+          "wau": 13,
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 40,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-26",
+          "wau": 16,
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": 29,
+          "active_subscriptions": "<10"
+        }
+      ],
+      "months": [
+        {
+          "period": "2026-05-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-06-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-07-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-01",
+          "mau": 16,
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        }
+      ],
+      "retention": [
+        {
+          "cohort": "2026-08-10",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-17",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-24",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-31",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-07",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-14",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-21",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-28",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-10-05",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-12",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-19",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-26",
+          "w1": null,
+          "w4": null
+        }
+      ]
+    },
+    "solar-beam": {
+      "weeks": [
+        {
+          "period": "2026-08-10",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-17",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-24",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-31",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-07",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-14",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-21",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-28",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-05",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-12",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-19",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-26",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        }
+      ],
+      "months": [
+        {
+          "period": "2026-05-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-06-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-07-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        }
+      ],
+      "retention": [
+        {
+          "cohort": "2026-08-10",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-17",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-24",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-31",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-07",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-14",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-21",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-28",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-10-05",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-12",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-19",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-26",
+          "w1": null,
+          "w4": null
+        }
+      ]
+    },
+    "helia": {
+      "weeks": [
+        {
+          "period": "2026-08-10",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-17",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-24",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-31",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-07",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-14",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-21",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-28",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-05",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-12",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-19",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-26",
+          "wau": "<10",
+          "new_installs": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        }
+      ],
+      "months": [
+        {
+          "period": "2026-05-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": null,
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-06-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-07-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-08-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-09-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        },
+        {
+          "period": "2026-10-01",
+          "mau": "<10",
+          "purchases": "<10",
+          "refunds": "<10",
+          "ai_requests": "<10",
+          "active_subscriptions": "<10"
+        }
+      ],
+      "retention": [
+        {
+          "cohort": "2026-08-10",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-17",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-24",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-08-31",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-07",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-14",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-21",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-09-28",
+          "w1": "<10",
+          "w4": "<10"
+        },
+        {
+          "cohort": "2026-10-05",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-12",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-19",
+          "w1": "<10",
+          "w4": null
+        },
+        {
+          "cohort": "2026-10-26",
+          "w1": null,
+          "w4": null
+        }
+      ]
+    }
+  },
+  "metrics": [
+    {
+      "id": "wau",
+      "title": "Weekly active installs",
+      "unit": "installs",
+      "caveat": "Counts installs, not people. Each install reports once per week, so a week still running is a partial count."
+    },
+    {
+      "id": "mau",
+      "title": "Monthly active installs",
+      "unit": "installs",
+      "caveat": "Counts installs, not people. A month still running is a partial count."
+    },
+    {
+      "id": "new_installs",
+      "title": "New installs",
+      "unit": "installs",
+      "caveat": "Only installs that ran a version with usage counts and left them on. App Store downloads are a separate number."
+    },
+    {
+      "id": "purchases",
+      "title": "Purchases",
+      "unit": "purchases",
+      "caveat": "Production purchases as Apple reported them to Midgar's ledger."
+    },
+    {
+      "id": "refunds",
+      "title": "Refunds",
+      "unit": "refunds",
+      "caveat": "The week Apple told Midgar about the refund, not the week of the purchase."
+    },
+    {
+      "id": "ai_requests",
+      "title": "AI requests",
+      "unit": "requests",
+      "caveat": "Chat requests only; image generations are not counted here."
+    },
+    {
+      "id": "active_subscriptions",
+      "title": "Active subscriptions",
+      "unit": "subscriptions",
+      "caveat": "Counted from the transactions the ledger has; a subscription bought before the ledger existed counts from its first renewal."
+    },
+    {
+      "id": "retention_w1",
+      "title": "Week-1 retention",
+      "unit": "share",
+      "caveat": "The latest cohort has no week 1 yet."
+    },
+    {
+      "id": "retention_w4",
+      "title": "Week-4 retention",
+      "unit": "share",
+      "caveat": "Cohorts younger than four weeks have no value."
+    }
+  ]
+}
