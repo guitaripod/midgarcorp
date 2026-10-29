@@ -5,7 +5,7 @@ import signalsCatalog from '../../src/generated/signals-catalog.json';
 import metricsCatalog from '../../src/generated/metrics-catalog.json';
 import stats from '../../src/data/open-stats.json';
 import { landingApps } from '../../src/data/landing';
-import { nameFromSlug, openAppFor, statsApps } from '../../src/data/open';
+import { nameFromSlug, openAppFor, sample, statsApps } from '../../src/data/open';
 import {
   LISTED_VALUES_MAX,
   eventViews,
@@ -165,8 +165,9 @@ describe('built /open page', () => {
     }
   });
 
-  it.skipIf(!built)('says the data is a sample while the committed snapshot is one', () => {
-    expect(has(mainText('open/index.html'), stats.rules.note)).toBe(true);
+  it.skipIf(!built)('says the data is a sample only while the snapshot is one', () => {
+    expect(has(mainText('open/index.html'), 'sample numbers')).toBe(sample);
+    if (sample) expect(has(mainText('open/index.html'), stats.rules.note)).toBe(true);
   });
 
   it.skipIf(!built)('explains the privacy rules and links the open code', () => {

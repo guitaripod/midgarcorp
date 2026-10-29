@@ -186,9 +186,8 @@ describe('shape of the published stats', () => {
     );
   });
 
-  it('keeps the committed snapshot marked as a sample until a live fetch replaces it', () => {
-    expect(isSample(committed)).toBe(true);
-    expect(committed.rules.note).toMatch(/^SAMPLE DATA/);
+  it('marks the committed snapshot as a sample exactly when its note says so', () => {
+    expect(isSample(committed)).toBe(/^SAMPLE DATA/.test(committed.rules.note));
   });
 
   it('keeps the committed snapshot inside its own rules', () => {
