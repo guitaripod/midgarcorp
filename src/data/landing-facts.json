@@ -3178,7 +3178,7 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.79",
+      "version": "1.80",
       "minimumOsVersion": "18.0",
       "bundleId": "com.guitaripod.tailscode",
       "sellerName": "Midgar Oy",
@@ -3403,7 +3403,7 @@
       "openSource": true,
       "githubUrl": "https://github.com/guitaripod/Tailscode",
       "license": "GPL-3.0",
-      "currentVersionReleaseDate": "2026-10-21T00:32:33Z"
+      "currentVersionReleaseDate": "2026-10-30T10:02:45Z"
     }
   ]
 }
