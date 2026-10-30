@@ -92,3 +92,9 @@ export function openAppFor(slug: string, apps: LandingApp[] = landingApps): Open
 
 /// The Kids Category app that sends no usage counts, for the note on the page.
 export const kidsApp = openAppFor(KIDS_APP_SLUG);
+
+/// Apps that send no usage counts at all; any row they have in the stats comes from purchases, never from activity.
+export const NO_USAGE_COUNTS = [KIDS_APP_SLUG, 'crucible'];
+
+/// The apps whose weekly activity the page shows, the busiest first.
+export const activityApps = statsApps.filter((slug) => !NO_USAGE_COUNTS.includes(slug));

@@ -5,7 +5,14 @@ import signalsCatalog from '../../src/generated/signals-catalog.json';
 import metricsCatalog from '../../src/generated/metrics-catalog.json';
 import stats from '../../src/data/open-stats.json';
 import { landingApps } from '../../src/data/landing';
-import { nameFromSlug, openAppFor, sample, statsApps } from '../../src/data/open';
+import {
+  activityApps,
+  NO_USAGE_COUNTS,
+  nameFromSlug,
+  openAppFor,
+  sample,
+  statsApps,
+} from '../../src/data/open';
 import {
   LISTED_VALUES_MAX,
   eventViews,
@@ -156,12 +163,19 @@ describe('built /open page', () => {
     expect(/NaN|undefined|\[object Object\]/.test(text)).toBe(false);
   });
 
-  it.skipIf(!built)('names the apps that have data, with their landing pages', () => {
+  it.skipIf(!built)('names the apps that send counts, with their landing pages', () => {
     const text = mainText('open/index.html');
-    for (const slug of statsApps) {
+    for (const slug of activityApps) {
       const app = openAppFor(slug);
       expect(has(text, app.name), slug).toBe(true);
       if (app.href) expect(has(html(), `href="${app.href}"`), slug).toBe(true);
+    }
+  });
+
+  it.skipIf(!built)('leaves apps that send no counts out of the activity table', () => {
+    for (const slug of NO_USAGE_COUNTS) {
+      expect(activityApps).not.toContain(slug);
+      expect(has(html(), `id="app-${slug}"`), slug).toBe(false);
     }
   });
 
