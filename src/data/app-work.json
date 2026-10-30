@@ -48,13 +48,6 @@
     "latestReleaseDate": "2026-10-09T13:57:02Z",
     "pushedAt": "2026-10-11T20:38:13Z"
   },
-  "sforesight": {
-    "repo": "sforesight",
-    "commitCount": 18,
-    "releaseCount": 0,
-    "latestReleaseDate": null,
-    "pushedAt": "2026-10-13T18:22:12Z"
-  },
   "solarbeam": {
     "repo": "solarbeam",
     "commitCount": 135,

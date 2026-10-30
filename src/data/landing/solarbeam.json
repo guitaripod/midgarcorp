@@ -62,19 +62,19 @@
       "title": "Free",
       "price": "$0",
       "items": [
-        "Today's NASA Picture of the Day, plus a rolling 30-day archive",
+        "Today's NASA Picture of the Day, plus the past week",
         "The near-Earth asteroid tracker and its charts — never gated",
         "The \"Where Is Webb\" telescope dashboard",
-        "The first 60 images of the curated Webb gallery",
-        "3 AI-generated fact sets in total, not per day"
+        "The first 24 images of the curated Webb gallery",
+        "One AI-generated fact set, to try them"
       ]
     },
     "premium": {
       "title": "Solar Beam Premium",
-      "price": "$2.99/mo · $19.99/yr · $49.99 once",
+      "price": "$4.99/mo · $19.99/yr · $39.99 once",
       "items": [
         "The complete curated Webb gallery",
-        "The full Picture of the Day archive, not just 30 days",
+        "The full Picture of the Day archive, every day since 1995",
         "4K wallpapers and full-resolution downloads",
         "Ambient Mode on every device",
         "Spatial Scenes on Vision Pro",
@@ -84,8 +84,8 @@
     "tiers": [
       {
         "name": "Monthly",
-        "price": "$2.99",
-        "amount": 2.99,
+        "price": "$4.99",
+        "amount": 4.99,
         "period": "P1M",
         "note": "per month, auto-renewing"
       },
@@ -98,8 +98,8 @@
       },
       {
         "name": "Lifetime",
-        "price": "$49.99",
-        "amount": 49.99,
+        "price": "$39.99",
+        "amount": 39.99,
         "note": "once, never renews"
       }
     ],
@@ -117,7 +117,7 @@
     },
     {
       "step": "Go deeper, optionally",
-      "body": "Unlock Solar Beam Premium for the complete Webb gallery, 4K wallpapers, Ambient Mode, years of past pictures, and unlimited AI facts — $2.99 a month, $19.99 a year with a 1-week free trial, or $49.99 once for lifetime access."
+      "body": "Unlock Solar Beam Premium for the complete Webb gallery, 4K wallpapers, Ambient Mode, years of past pictures, and unlimited AI facts — $4.99 a month, $19.99 a year with a 1-week free trial, or $39.99 once for lifetime access."
     }
   ],
   "faq": [
@@ -131,15 +131,15 @@
     },
     {
       "q": "How much does Solar Beam cost?",
-      "a": "Solar Beam is free to download, and the daily NASA picture, the asteroid tracker and the \"Where Is Webb\" dashboard are always free. Premium is optional: $2.99 a month, $19.99 a year with a 1-week free trial, or $49.99 once for lifetime access. Subscriptions auto-renew until you cancel in your App Store account; the lifetime unlock never renews. All options are family-shareable and cover every Apple device."
+      "a": "Solar Beam is free to download, and the daily NASA picture, the asteroid tracker and the \"Where Is Webb\" dashboard are always free. Premium is optional: $4.99 a month, $19.99 a year with a 1-week free trial, or $39.99 once for lifetime access. Subscriptions auto-renew until you cancel in your App Store account; the lifetime unlock never renews. All options are family-shareable and cover every Apple device."
     },
     {
       "q": "What do I get for free versus Premium?",
-      "a": "Free covers today's picture, the near-Earth asteroid tracker, the \"Where Is Webb\" dashboard, the first 60 images of the curated Webb gallery, a rolling 30-day archive of past pictures, and 3 AI-generated fact sets in total. Premium unlocks the complete Webb gallery, 4K wallpapers and full-resolution downloads, Ambient Mode, the full Picture of the Day archive, Spatial Scenes on Vision Pro, and unlimited AI facts. Asteroid tracking is never gated."
+      "a": "Free covers today's picture, the near-Earth asteroid tracker, the \"Where Is Webb\" dashboard, the first 24 images of the curated Webb gallery, the past week of pictures, and one AI-generated fact set to try. Premium unlocks the complete Webb gallery, 4K wallpapers and full-resolution downloads, Ambient Mode, the full Picture of the Day archive, Spatial Scenes on Vision Pro, and unlimited AI facts. Asteroid tracking is never gated."
     },
     {
       "q": "Is there a subscription or in-app purchase?",
-      "a": "Only if you want more. The app is free. Premium is $2.99 a month or $19.99 a year with a 1-week free trial — both auto-renewing until cancelled — or a $49.99 one-time lifetime unlock that never renews. Manage or cancel anytime in your App Store account. The daily picture and asteroid tracker stay free either way."
+      "a": "Only if you want more. The app is free. Premium is $4.99 a month or $19.99 a year with a 1-week free trial — both auto-renewing until cancelled — or a $39.99 one-time lifetime unlock that never renews. Manage or cancel anytime in your App Store account. The daily picture and asteroid tracker stay free either way."
     },
     {
       "q": "Where do the images and data come from?",
@@ -151,7 +151,7 @@
     },
     {
       "q": "What does Solar Beam collect about me?",
-      "a": "There's no account and no third-party tracking. The app records purchase history so a Premium unlock can follow you across your devices; it isn't linked to your identity and is never used for tracking. Everything else — the images you browse, what you save — stays on your device. The full policy is linked at the bottom of this page."
+      "a": "There's no account and no third-party tracking. The app records purchase history so a Premium unlock can follow you across your devices; it isn't linked to your identity and is never used for tracking. The app also sends anonymous usage counts, with no identifier, that Midgar publishes at midgarcorp.cc/open. Everything else — the images you browse, what you save — stays on your device. The full policy is linked at the bottom of this page."
     },
     {
       "q": "Does it work without internet?",
@@ -163,7 +163,7 @@
       "The curated Webb gallery on iPhone — Webb is the first tab",
       "Webb’s First Deep Field opens full-width, with 4K download and the full ESA caption",
       "The live “Where Is Webb” status card sits above the gallery",
-      "NASA’s Astronomy Picture of the Day, with the 30-day archive",
+      "NASA’s Astronomy Picture of the Day and its archive",
       "Ambient Mode: a single Webb image full-bleed, with no interface at all",
       "Near-Earth asteroids tracked each day — always free, never gated"
     ],
@@ -200,5 +200,5 @@
     ]
   },
   "ctaLine": "The James Webb Space Telescope, on every screen you own.",
-  "pricingNote": "Free on the App Store — a new NASA picture every day, the asteroid tracker, the \"Where Is Webb\" dashboard, 60 Webb images and a 30-day archive at no cost. Premium — $2.99/month, $19.99/year with a 1-week free trial, or $49.99 once — unlocks the full Webb gallery, 4K wallpapers, Ambient Mode, the complete archive and unlimited AI facts on every device."
+  "pricingNote": "Free on the App Store — a new NASA picture every day, the asteroid tracker, the \"Where Is Webb\" dashboard, 24 Webb images and the past week of pictures at no cost. Premium — $4.99/month, $19.99/year with a 1-week free trial, or $39.99 once — unlocks the full Webb gallery, 4K wallpapers, Ambient Mode, the complete archive and unlimited AI facts on every device."
 }

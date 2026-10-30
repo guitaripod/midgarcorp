@@ -28,7 +28,7 @@ describe('Solar Beam landing copy', () => {
 
   it('states every Premium price, the trial length and auto-renewal', () => {
     const all = copyStrings(solarbeam).join(' ');
-    for (const token of ['$2.99', '$19.99', '$49.99', '1-week free trial', 'auto-renew']) {
+    for (const token of ['$4.99', '$19.99', '$39.99', '1-week free trial', 'auto-renew']) {
       expect(all, `landing copy must disclose ${token}`).toContain(token);
     }
   });
@@ -36,7 +36,7 @@ describe('Solar Beam landing copy', () => {
   it('describes the AI fact allowance as a lifetime total, not a daily one', () => {
     const all = copyStrings(solarbeam).join(' ');
     expect(all).not.toMatch(/3 (AI )?facts? (a|per) day/i);
-    expect(all).toMatch(/3 AI-generated fact sets/);
+    expect(all).toMatch(/one AI-generated fact set/);
   });
 
   it('advertises all five platforms', () => {

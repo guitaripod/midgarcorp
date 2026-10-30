@@ -30,12 +30,12 @@
     },
     {
       "title": "Chat that keeps up",
-      "body": "Real-time chat over Twitch EventSub with replies, badges, cheermotes, and emote autocomplete. Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ are merged into a single stream so messages render exactly as your community uses them.",
+      "body": "Real-time chat over Twitch EventSub with replies, badges, cheermotes, and emote autocomplete. Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ are merged into a single stream so messages render exactly as your community uses them. Past broadcasts replay their chat in sync with the video, so a VOD feels like the live show.",
       "glyph": "◈"
     },
     {
       "title": "Find something to watch",
-      "body": "Browse live channels and top categories, search across the catalog, and open any stream in a tap. A dedicated Following tab keeps your channels close once you sign in.",
+      "body": "Browse live channels and top categories, search across the catalog, and open any stream in a tap. A dedicated Following tab keeps your channels close once you sign in. Star channels to keep them one tap away, show only your favorites in Top, and choose whether Embr opens on Following, Favorites or Top.",
       "glyph": "❖"
     },
     {

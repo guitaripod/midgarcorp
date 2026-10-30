@@ -95,7 +95,7 @@
     },
     {
       "q": "Where is my data stored?",
-      "a": "On your device. Your skin type, location, and health signals stay on the phone; Helia only ever sends what it needs to fetch UV for your area. No tracking, no ad IDs, no selling your data."
+      "a": "On your device. Your skin type, location, and health signals stay on the phone; Helia sends only what it needs: your area to fetch UV, an anonymous account that keeps a Live Activity updating and holds your AI credits, and anonymous usage counts with no identifier. No tracking, no ad IDs, no selling your data."
     },
     {
       "q": "Which platforms does Helia support?",

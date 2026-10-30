@@ -25,26 +25,6 @@
       "releaseDate": "2024-09-29T07:00:00Z"
     },
     {
-      "id": "sforesight",
-      "name": "SForesight: SF Symbols Search",
-      "tagline": "ML-Powered SF Symbol Search",
-      "description": "The symbol you mean, not the symbol you typed. Describe a concept and on-device machine learning finds the right SF Symbol in seconds.",
-      "platforms": [
-        "Mac"
-      ],
-      "category": "Developer Tools",
-      "price": "$9.99",
-      "appStoreUrl": "https://apps.apple.com/us/app/sforesight-sf-symbols-search/id6736438070",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c4/a4/30/c4a4301f-b85b-e12b-e375-2a302b88c86f/AppIcon-0-0-85-220-0-5-0-2x.png/512x512bb.png",
-      "primaryColor": "#3B82F6",
-      "features": [
-        "ML-powered semantic search",
-        "Instant symbol preview",
-        "Export in multiple formats"
-      ],
-      "releaseDate": "2024-10-03T07:00:00Z"
-    },
-    {
       "id": "double-kick",
       "name": "Double Kick: Menu Translator",
       "tagline": "Understand Any Menu, Anywhere",
@@ -90,7 +70,7 @@
       "id": "dream-eater",
       "name": "Dream Eater: Dream Interpreter",
       "tagline": "Voice Dream Journal",
-      "description": "You wake at 3 a. m.",
+      "description": "A voice-first dream journal: speak it before it fades, keep it with the real moon and sky of that night, and ask for a reading that asks questions instead of handing you a verdict.",
       "platforms": [
         "iPhone",
         "iPad"
@@ -132,9 +112,13 @@
       "id": "master-of-flags",
       "name": "Master of Flags: World Quiz",
       "tagline": "Learn Flags & Capitals",
-      "description": "Master of Flags is FREE. No ads.",
+      "description": "A flag and capitals quiz with no ads, no subscription and no account: wrong answers teach the right flag, and a Daily Challenge keeps the habit.",
       "platforms": [
-        "Mac"
+        "iPhone",
+        "iPad",
+        "Mac",
+        "Apple TV",
+        "Apple Watch"
       ],
       "category": "Education",
       "price": "Free",
@@ -184,9 +168,9 @@
       "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4a/30/0a/4a300a74-7885-7894-40cc-a77e32b27b37/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EC4899",
       "features": [
-        "Advanced OpenAI gpt-image-1 integration",
-        "Chat-based interface for natural prompting",
-        "Persistent cloud storage with public galleries"
+        "One-tap edits, from headshots to old-photo restores",
+        "Refine any image by chat",
+        "Pay per image, credits never expire"
       ],
       "releaseDate": "2025-09-19T07:00:00Z"
     },
