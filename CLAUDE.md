@@ -40,7 +40,7 @@ Astro static site (blog, app landing pages, /apps, /linux, /opensource, /open, /
 - `/cli-tools` is retired. Standalone product pages stay out of the nav; set the repo's GitHub homepage to the page.
 
 ## Legal pages and deploys
-- Each app's policy is `src/content/legal/<slug>/privacy.html` (and `terms.html`), served at `midgarcorp.cc/legal/<slug>/privacy/`. The page must say what the shipped app does: a promise that only a future release keeps (a deletion that release adds) waits on a branch until that release ships, as `wt/helia-policy` and `wt/payday-policy` do.
+- Each app's policy is `src/content/legal/<slug>/privacy.html` (and `terms.html`), served at `midgarcorp.cc/legal/<slug>/privacy/`. The page must say what the shipped app does: a promise that only a future release keeps (a deletion that release adds) waits on a branch until that release ships, as the Helia and Pay Day policies did before their releases.
 - `tests/unit/legal-pages.test.ts` reads the built `dist/`: run `npx astro build` before `npx vitest run`.
 - The site deploys from its mirror on every push and daily. Inside the monorepo the nightly job publishes the mirror at 04:30, so a change goes live that night; `midgar sync midgarcorp --push` publishes it now.
 
