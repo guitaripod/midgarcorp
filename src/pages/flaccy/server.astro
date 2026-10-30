@@ -1,0 +1,142 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const accent = '#FF4D6D';
+const seoTitle = 'Set up Flaccy Server';
+const metaDescription =
+  'Share the music on your Mac, Linux box or NAS with Flaccy on your iPhone, and keep playlists, loves and history in sync. Free, open source, over your own Tailscale network.';
+
+const releases = 'https://github.com/guitaripod/flaccy/releases?q=server';
+const docker = 'https://github.com/guitaripod/flaccy/tree/master/linux/server/packaging/docker';
+
+const installs = [
+  {
+    where: 'Mac',
+    how: 'No terminal: open Flaccy for Mac, then Settings › Servers › Share this Mac’s library. It shows the code to scan.',
+  },
+  { where: 'Mac, as a background service', command: 'brew install guitaripod/tap/flaccy-server' },
+  { where: 'Arch Linux', command: 'yay -S flaccy-server-bin' },
+  {
+    where: 'Debian, Ubuntu, Raspberry Pi OS',
+    command: 'sudo apt install ./flaccy-server_*.deb',
+    note: 'with the .deb from the releases page',
+  },
+  {
+    where: 'Fedora',
+    command: 'sudo dnf install ./flaccy-server-*.rpm',
+    note: 'with the .rpm from the releases page',
+  },
+  {
+    where: 'Docker, Unraid, Synology, QNAP',
+    command: 'docker compose up -d',
+    note: 'with the compose file, which includes Tailscale',
+  },
+];
+
+const link =
+  'text-paper-green underline decoration-dotted underline-offset-2 hover:opacity-80 dark:text-term-green';
+---
+
+<BaseLayout title={seoTitle} description={metaDescription}>
+  <div style={`--accent:${accent}`}>
+    <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/flaccy" class="hover:text-paper-green dark:hover:text-term-green">flaccy</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">server</li>
+      </ol>
+    </nav>
+
+    <header class="py-10 sm:py-14">
+      <p class="prompt-line mb-5">flaccy-server setup</p>
+      <h1
+        class="mb-3 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+      >
+        Set up Flaccy Server
+      </h1>
+      <p class="max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
+        Hear the music on this computer on your iPhone, and keep playlists, loves and history in
+        sync. It takes a few minutes, it’s free and open source, and your music never leaves your
+        own network.
+      </p>
+    </header>
+
+    <ol class="grid max-w-3xl gap-5 pb-12">
+      <li class="term-frame p-5 sm:p-6">
+        <h2 class="mb-2 text-base font-bold text-paper-text dark:text-term-text">
+          1. Tailscale on both
+        </h2>
+        <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+          Install <a href="https://tailscale.com/download" class={link}>Tailscale</a> on this computer
+          and on your iPhone, and sign in to the same account. Its free personal plan is enough.
+        </p>
+      </li>
+
+      <li class="term-frame p-5 sm:p-6">
+        <h2 class="mb-3 text-base font-bold text-paper-text dark:text-term-text">
+          2. Install the server
+        </h2>
+        <dl class="grid gap-3 text-sm">
+          {
+            installs.map((item) => (
+              <div>
+                <dt class="font-semibold text-paper-text dark:text-term-text">{item.where}</dt>
+                <dd class="text-paper-muted dark:text-term-muted">
+                  {item.how}
+                  {item.command && (
+                    <code class="mt-1 block overflow-x-auto rounded-sm bg-paper-raised px-3 py-2 text-paper-text dark:bg-term-raised dark:text-term-text">
+                      {item.command}
+                    </code>
+                  )}
+                  {item.note && <span class="mt-1 block text-xs">{item.note}</span>}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="mt-4 text-xs text-paper-muted dark:text-term-muted">
+          Packages: <a href={releases} class={link}>releases</a> · Docker:
+          <a href={docker} class={link}>compose file</a>
+        </p>
+      </li>
+
+      <li class="term-frame p-5 sm:p-6">
+        <h2 class="mb-2 text-base font-bold text-paper-text dark:text-term-text">3. Run setup</h2>
+        <code
+          class="block overflow-x-auto rounded-sm bg-paper-raised px-3 py-2 text-sm text-paper-text dark:bg-term-raised dark:text-term-text"
+        >
+          flaccy-server setup
+        </code>
+        <p class="mt-2 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+          It asks where your music is, starts the server, keeps it running after you log out and
+          shows a code. On a Mac sharing from Flaccy, the code is already on screen.
+        </p>
+      </li>
+
+      <li class="term-frame p-5 sm:p-6">
+        <h2 class="mb-2 text-base font-bold text-paper-text dark:text-term-text">
+          4. Scan it with your iPhone
+        </h2>
+        <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+          In Flaccy, choose <strong>On my computer</strong> when you first open it, or go to Settings
+          › Servers › Add › Flaccy Server, and point the camera at the code. That’s it: your music appears
+          in the library, and nothing needs attention after that. A code works once for ten minutes;
+          <code>flaccy-server enroll</code> makes another.
+        </p>
+      </li>
+    </ol>
+
+    <section class="max-w-3xl border-t border-paper-border pb-16 pt-8 dark:border-term-border">
+      <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+        Playing music from your server is free in every Flaccy. Syncing playlists, loves and history
+        across Apple devices is part of Flaccy Pro; the Linux app is free throughout. Something not
+        working? Run <code>flaccy-server doctor</code> on the computer: it checks Tailscale, the network
+        and the disk and says what to fix.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
