@@ -9,7 +9,7 @@
     "zugferd invoice generator",
     "vat invoice app for freelancers",
     "xrechnung mobile app",
-    "recurring invoice app ios",
+    "belgium peppol e-invoice app",
     "vies vat id validation",
     "estimate and invoice app"
   ],
@@ -44,13 +44,13 @@
       "glyph": "◉"
     },
     {
-      "title": "Recurring & Branded",
-      "body": "Set a recurring invoice once and get paid every month. Add your logo, accent colour, and templates that match your business.",
+      "title": "Your Country's Rules",
+      "body": "The dashboard shows your country's e-invoicing mandate: what is required, from when, and what to set up before it applies to you.",
       "glyph": "▰"
     },
     {
       "title": "AI Helpers, Optional",
-      "body": "Snap a receipt into line items, draft an invoice from a description, or write a payment reminder. A few credits each, never required.",
+      "body": "Snap a receipt into line items, or draft the lines from a rough description. A few credits each, never required.",
       "glyph": "✶"
     }
   ],
@@ -75,7 +75,7 @@
     },
     {
       "q": "What does Pay Day Pro cost?",
-      "a": "Pro is an auto-renewing subscription, monthly or annual; the annual plan includes a 7-day free trial. It unlocks Factur-X e-invoices, Peppol delivery, recurring invoices, branding, and VAT validation. You can cancel anytime in your Apple ID settings."
+      "a": "Pro is an auto-renewing subscription, monthly or annual; the annual plan includes a 7-day free trial. It unlocks Factur-X e-invoices and Peppol delivery; VAT validation and your logo are free. You can cancel anytime in your Apple ID settings."
     },
     {
       "q": "What are credit packs for?",
