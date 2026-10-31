@@ -73,8 +73,8 @@
       "a": "You start with 3 free playlists. After that, choose Psywave Pro for unlimited playlists, or buy a credit pack and pay only for what you make. Credits never expire."
     },
     {
-      "q": "Is there a free trial?",
-      "a": "Yes. The annual Psywave Pro plan includes a 7-day free trial. You can also try the app first with your 3 free playlists before paying anything."
+      "q": "Can I try it before paying?",
+      "a": "Yes. Your first 3 playlists are free, so you hear what Psywave makes before paying anything."
     },
     {
       "q": "Do I need an Apple Music subscription?",
@@ -116,5 +116,5 @@
     ]
   },
   "ctaLine": "Start with 3 free playlists. Describe your first mood now.",
-  "pricingNote": "Free to start with 3 playlists, then either a Psywave Pro subscription for unlimited mixes (7-day trial on the annual plan) or one-time credit packs that never expire."
+  "pricingNote": "Free to start with 3 playlists, then either a Psywave Pro subscription for unlimited mixes or one-time credit packs that never expire."
 }

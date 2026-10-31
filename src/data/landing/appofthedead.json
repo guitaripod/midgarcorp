@@ -72,7 +72,7 @@
   "faq": [
     {
       "q": "How much does App of the Dead cost?",
-      "a": "The full Judaism path is free forever, with no account and no time limit. Premium unlocks all 21 other paths and unlimited Oracle chat: $19.99/year (7-day free trial) or $2.99/month in the US."
+      "a": "The full Judaism path is free forever, with no account and no time limit. Premium unlocks all 21 other paths and unlimited Oracle chat: $19.99/year or $2.99/month in the US."
     },
     {
       "q": "Is there a one-time purchase instead of a subscription?",
@@ -95,8 +95,8 @@
       "a": "App of the Dead runs on iPhone and iPad with iOS 18.2 or later, in both light and dark mode."
     },
     {
-      "q": "Is there a free trial for Premium?",
-      "a": "Yes. The annual plan includes a 7-day free trial. Subscriptions renew automatically through your Apple ID and can be cancelled anytime in Settings; any unused trial is forfeited once you purchase."
+      "q": "Can I try it before paying?",
+      "a": "Yes. The full Judaism path is free forever, so you can learn a whole tradition before deciding. Subscriptions renew automatically through your Apple ID and can be cancelled anytime in Settings."
     },
     {
       "q": "Who is App of the Dead for?",
@@ -119,5 +119,5 @@
     ]
   },
   "ctaLine": "Start the free Judaism path today and explore humanity's greatest mystery.",
-  "pricingNote": "Free to start (full Judaism path, no account); Premium unlocks all paths and unlimited Oracle chat at $19.99/year with a 7-day trial or $2.99/month, with a one-time lifetime option and single-tradition purchases also available."
+  "pricingNote": "Free to start (full Judaism path, no account); Premium unlocks all paths and unlimited Oracle chat at $19.99/year or $2.99/month, with a one-time lifetime option and single-tradition purchases also available."
 }
