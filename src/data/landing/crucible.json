@@ -49,7 +49,7 @@
     "Apple TV: a cinematic Home, the system player, native menus and Top Shelf",
     "iPhone: offline downloads with a Live Activity, Skip Intro, Picture-in-Picture and background audio",
     "Keeps your place: back at the exact moment you left after sleep, a short rewind after a break, and Still watching? before a season plays on",
-    "Open source under GPL-3.0, with no account, ads or analytics: it talks only to plex.tv and your server"
+    "Open source under GPL-3.0, with no sign-up, ads or analytics: it talks to plex.tv, your server and, for Crucible Pro, Midgar's purchase ledger"
   ],
   "features": [
     {
@@ -129,7 +129,7 @@
     },
     {
       "q": "What is free, and what is Crucible Pro?",
-      "a": "Browsing, search and playback are free on iPhone, iPad and Apple TV, with Skip Intro, Skip Credits, Picture-in-Picture on iPhone, the Statistics view for the last week and one download at a time. Crucible Pro unlocks unlimited offline downloads, the full Statistics screen with every range and library filter, the Year in Review poster and Top Shelf on Apple TV. Pay once for lifetime access or subscribe yearly with a 14-day free trial; one purchase covers iPhone, iPad and Apple TV, and Family Sharing is on."
+      "a": "Browsing, search and playback are free on iPhone, iPad and Apple TV, with Skip Intro, Skip Credits, Picture-in-Picture on iPhone, the Statistics view for the last week and one download at a time. Crucible Pro unlocks unlimited offline downloads, the full Statistics screen with every range and library filter, the Year in Review poster and Top Shelf on Apple TV. Pay once for lifetime access or subscribe yearly; one purchase covers iPhone, iPad and Apple TV, and Family Sharing is on."
     },
     {
       "q": "Can I try it without a Plex server?",
@@ -169,7 +169,7 @@
     },
     {
       "q": "Is it really open source?",
-      "a": "Yes: GPL-3.0, with one third-party dependency for the statistics store (GRDB) and pure Apple frameworks for everything else; the App Store build adds RevenueCat for purchases. Read the code, file an issue, or fork it on GitHub."
+      "a": "Yes: GPL-3.0, with one third-party dependency for the statistics store (GRDB) and pure Apple frameworks for everything else; the App Store build adds MidgarKit for purchases. Read the code, file an issue, or fork it on GitHub."
     },
     {
       "q": "Can I build it myself?",
@@ -300,12 +300,12 @@
         "price": "$7.99",
         "amount": 7.99,
         "period": "P1Y",
-        "note": "per year, 14-day free trial, auto-renewing"
+        "note": "per year, auto-renewing"
       }
     ],
     "footnote": "Prices are US dollars and vary by region. The annual subscription renews automatically until cancelled in your Apple Account settings, at least 24 hours before the end of the period; the lifetime unlock never renews. Both are family-shareable, and either one unlocks Crucible Pro on iPhone, iPad and Apple TV. A build from source is always fully unlocked."
   },
-  "trustNote": "Crucible has no account of its own, no ads and no analytics. It talks only to plex.tv and the server you choose; the only third-party service is RevenueCat, which validates purchases.",
+  "trustNote": "Crucible has no sign-up, no ads and no analytics. It talks to plex.tv and the server you choose; Crucible Pro purchases are recorded with an anonymous Midgar ID in Midgar's purchase ledger, and the app contains no third-party SDK.",
   "installLast": true,
   "hideAbout": true
 }

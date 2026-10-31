@@ -4,7 +4,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 const accent = '#F97316';
 const seoTitle = 'Crucible Privacy Policy';
 const metaDescription =
-  'Crucible has no analytics, no ads, no tracking and no accounts. It talks only to plex.tv, the Plex server you choose and, if you opt in, Tailscale; Crucible Pro purchases are checked through RevenueCat.';
+  'Crucible has no analytics, no ads, no tracking and no sign-up. It talks to plex.tv, the Plex server you choose and, if you opt in, Tailscale; Crucible Pro purchases are kept by Midgar with an anonymous Midgar ID.';
 
 const sections = [
   {
@@ -13,7 +13,7 @@ const sections = [
   },
   {
     title: 'What we collect',
-    body: 'Nothing. Midgar Oy runs no server for Crucible, receives none of your data and has no accounts of its own. There are no ads, no analytics and no tracking SDKs. Midgar may publish aggregate statistics built from anonymous counts, such as weekly active installs, which never identify a person; Crucible sends no usage counts, so it adds nothing to them.',
+    body: 'Only what Crucible Pro needs: an anonymous Midgar ID and the records of your Crucible Pro purchases, described under The anonymous Midgar ID and Purchases below. Nothing about your library, your viewing or your Plex account reaches us. There are no ads, no analytics and no tracking SDKs. Midgar may publish aggregate statistics built from anonymous counts, such as weekly active installs, which never identify a person; Crucible sends no usage counts, so it adds nothing to them.',
   },
   {
     title: 'Your Plex account',
@@ -36,8 +36,12 @@ const sections = [
     body: 'Offline downloads are saved on your iPhone and are not sent anywhere.',
   },
   {
+    title: 'The anonymous Midgar ID',
+    body: 'From version 2.4, the first time the app starts it asks Midgar’s server at api.midgarcorp.cc for an anonymous Midgar ID: a random identifier, and a random secret that proves the ID is yours. The server keeps the ID, a hash of the secret and the date it was created. The app keeps both in your iCloud Keychain, so the same ID follows you across your own devices and Midgar’s other apps. There is no name, email address, phone number, location or device name in it. On iPhone the app may ask Apple’s App Attest service to confirm that the request comes from a genuine copy of Crucible; we receive Apple’s attestation and nothing about you. You can have the ID and everything linked to it deleted by writing to support@midgarcorp.cc.',
+  },
+  {
     title: 'Purchases',
-    body: 'Crucible Pro is sold through the App Store. Apple processes the payment; we never see your payment details or your Apple Account. We use RevenueCat to check and restore your Crucible Pro purchase: RevenueCat receives a random app user ID and your purchase history for this app, and handles it under its own privacy policy at https://www.revenuecat.com/privacy.',
+    body: 'Crucible Pro (lifetime or yearly) is sold through the App Store. Apple processes the payment; we never see your payment details or your Apple Account. Apple’s own notifications about Crucible Pro purchases (which product, the price, the dates, whether it renewed, lapsed or was refunded, the order identifiers and your App Store country) reach Midgar’s purchase ledger. From version 2.4, the app also sends the ledger the signed transaction record Apple has already issued, with your Midgar ID, so Crucible Pro is recognised on all your devices; the ledger keeps these records for as long as Apple’s financial records require. Version 2.4 contains no RevenueCat software. Earlier versions check and restore your purchase through RevenueCat (RevenueCat, Inc., United States), which receives a random app user ID and your purchase history for this app under its own privacy policy at https://www.revenuecat.com/privacy.',
   },
   {
     title: 'Diagnostics',
@@ -49,7 +53,7 @@ const sections = [
   },
   {
     title: 'Changes and contact',
-    body: 'If this policy changes, the new version appears here with its date. Questions go to https://github.com/guitaripod/Crucible/issues. Last updated 17 October 2026.',
+    body: 'If this policy changes, the new version appears here with its date. Questions go to https://github.com/guitaripod/Crucible/issues. Last updated 31 October 2026.',
   },
 ];
 ---
@@ -77,11 +81,12 @@ const sections = [
       >
         Crucible Privacy Policy
       </h1>
-      <p class="text-xs text-paper-faint dark:text-term-faint">Effective October 12, 2026</p>
+      <p class="text-xs text-paper-faint dark:text-term-faint">Effective October 31, 2026</p>
       <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
         The short version: <span class="font-semibold text-paper-text dark:text-term-text"
-          >Crucible has no accounts of its own and no tracking.</span
-        > It talks only to plex.tv and your Plex server, and RevenueCat checks your Crucible Pro purchase.
+          >Crucible has no sign-up and no tracking.</span
+        > It talks to plex.tv and your Plex server, and Midgar keeps your Crucible Pro purchase with
+        an anonymous ID.
       </p>
     </header>
 
