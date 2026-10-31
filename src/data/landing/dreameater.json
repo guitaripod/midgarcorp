@@ -91,7 +91,7 @@
         "price": "$29.99",
         "amount": 29.99,
         "period": "P1Y",
-        "note": "per year, 7-day free trial"
+        "note": "per year"
       },
       {
         "name": "Lifetime",
@@ -105,7 +105,7 @@
   "faq": [
     {
       "q": "What is free and what costs money?",
-      "a": "The journal is free forever, including voice capture, search, export and App Lock, and every week includes three free readings. Plus adds unlimited readings, dream art, follow-up questions and your sky. The annual plan starts with a 7-day free trial, and Apple handles refunds and cancellations."
+      "a": "The journal is free forever, including voice capture, search, export and App Lock, and every week includes three free readings. Plus adds unlimited readings, dream art, follow-up questions and your sky. Apple handles refunds and cancellations."
     },
     {
       "q": "Are my dreams private?",
@@ -153,5 +153,5 @@
   "trustNote": "When you ask for a reading, the dream text goes to our server and on to Google's Gemini model to write it, and our server keeps no dream text afterward. Art is made from a short scene summary, never your raw words. Everything else stays on your iPhone. There is no account and no telemetry setting, because there is no telemetry.",
   "hideAbout": true,
   "ctaLine": "Catch tonight's dream before it fades.",
-  "pricingNote": "The journal is free forever with three free readings a week. Plus is $4.99 a month, $29.99 a year with a 7-day free trial, or $249.99 once."
+  "pricingNote": "The journal is free forever with three free readings a week. Plus is $4.99 a month, $29.99 a year, or $249.99 once."
 }
