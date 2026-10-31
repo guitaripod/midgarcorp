@@ -54,10 +54,26 @@ const STUDIO = {
   phoneFinished: faces('suomi-dark-14', 'suomi-light-14', 1320, 2868),
 };
 
-/// The one line that names a release: FLUX 3 Klein and the live preview ship in 1.78, so it says where
-/// they are today. Delete it once App Review has cleared the Apple builds.
-const studioAvailability =
-  'FLUX 3 Klein, editing from several pictures and the live preview arrive with 1.78: on Linux today, on the iPhone and the Mac when App Review clears it.';
+/// The agents section: the board and the wall on the phone, the wall on the iPad, Megatron on the Mac.
+const AGENTS = {
+  padWall: faces('agents-wall-ipad', 'agents-wall-ipad', 2752, 2064),
+  phoneBoard: phone('agents'),
+  phoneWall: phone('wall'),
+  megatron: faces('agents-megatron-mac', 'agents-megatron-mac', 2520, 1600),
+};
+
+const agentBullets = [
+  'Needs you comes first: an approval shows its command, a question its choices, and the answer goes back from the card.',
+  'Peek at any run without leaving your chat: what it is doing now, its last steps and its helpers. Open it, stop it or nudge it.',
+  'The wall puts every agent and sub-agent on a Metal ground, laid out for a phone, a folded iPhone Duo, an iPad or any Mac window. Hold to approve.',
+  'The hour shows, lane by lane, what each agent did while you were away.',
+];
+
+const megatronBullets = [
+  'One head per turn breathes while the agent works; open it for numbered steps, search and replay.',
+  'The agent’s own account: what it said, its plan, the work between, and the result it can honestly claim.',
+  'A party of six models on named servers, one tap apart, and Try with another model on any answer.',
+];
 
 const hero = {
   desk: faces('desk-dark-chat', 'desk-light-chat', 1920, 1080),
@@ -123,7 +139,7 @@ const lockBullets = [
 
 const moneyBullets = [
   'Every conversation priced, every month totalled across your machines, by model, project and tool.',
-  'Each provider’s tightest window and its reset clock, on Home and in a widget: walls first.',
+  'Each provider’s tightest window and its reset clock, on Home and in a widget, with the pace: turns left in the context and a warning before a window runs out.',
   'Always marked an estimate: a subscription bills a flat fee, so the figure is API-equivalent value, never a bill.',
 ];
 
@@ -393,6 +409,98 @@ const clients = [
         />
       </div>
     </header>
+
+    <section id="agents" class={section}>
+      <div class="mb-6 grid items-start gap-x-10 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <SectionHead prompt="tailscode --agents --watch" title="Every agent you run, at once">
+            Every Claude Code, opencode and Oh My Pi session on every machine you own, read into one
+            board: what needs you, what is working, what runs in the background and what the last
+            hour did. Leave the wall up on a spare screen and watch them work.
+          </SectionHead>
+        </div>
+        <div class="lg:col-span-7 lg:pt-9">
+          <ul class="grid gap-2">
+            {
+              agentBullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                    ▸
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class={`${rail} lg:grid-cols-12`}>
+        <ShotFigure
+          dark={AGENTS.padWall.dark}
+          w={AGENTS.padWall.w}
+          h={AGENTS.padWall.h}
+          alt="The agents wall on iPad: two agents at work as large tiles, their sub-agents as small tiles beside them, and the last hour along the foot"
+          sizes="(min-width: 1024px) 700px, 80vw"
+          class={`${railItem} w-[80vw] lg:w-auto lg:col-span-8 lg:self-center`}
+        >
+          <span class="accent-text mr-1 font-semibold">The wall</span> — an iPad left on, every agent and
+          helper in its own tile. The Mac's Agents window opens on the same wall.
+        </ShotFigure>
+        <ShotFigure
+          dark={AGENTS.phoneBoard.dark}
+          w={AGENTS.phoneBoard.w}
+          h={AGENTS.phoneBoard.h}
+          alt="The agents board on iPhone: what needs you with Deny and Approve, what is working and what runs in the background"
+          sizes="(min-width: 1024px) 200px, 170px"
+          variant="phone"
+          class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
+        >
+          <span class="accent-text mr-1 font-semibold">Board</span> — needs you first.
+        </ShotFigure>
+        <ShotFigure
+          dark={AGENTS.phoneWall.dark}
+          w={AGENTS.phoneWall.w}
+          h={AGENTS.phoneWall.h}
+          alt="The agents wall full screen on iPhone, an approval waiting with Hold to approve"
+          sizes="(min-width: 1024px) 200px, 170px"
+          variant="phone"
+          class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
+        >
+          <span class="accent-text mr-1 font-semibold">Watch</span> — the wall in a pocket.
+        </ShotFigure>
+      </div>
+
+      <div class="mt-10 grid items-center gap-x-10 gap-y-6 lg:grid-cols-12">
+        <ShotFigure
+          dark={AGENTS.megatron.dark}
+          w={AGENTS.megatron.w}
+          h={AGENTS.megatron.h}
+          alt="Megatron on the Mac: a turn's head lit by what it is doing, with its numbered steps and the agent's account beside the chat"
+          sizes="(min-width: 1024px) 640px, 92vw"
+          class="lg:col-span-7"
+        >
+          <span class="accent-text mr-1 font-semibold">Megatron</span> — one turn, every step, live.
+        </ShotFigure>
+        <div class="lg:col-span-5">
+          <h3 class="mb-3 text-xl font-bold tracking-tight text-paper-text dark:text-term-text">
+            Every step of a turn, as it happens
+          </h3>
+          <ul class="grid gap-2">
+            {
+              megatronBullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                    ▸
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <section id="lockscreen" class={section}>
       <div class="grid items-start gap-x-10 gap-y-8 lg:grid-cols-12">
@@ -864,7 +972,6 @@ const clients = [
               ))
             }
           </ul>
-          <p class="text-xs text-paper-faint dark:text-term-faint">{studioAvailability}</p>
         </div>
       </div>
 
