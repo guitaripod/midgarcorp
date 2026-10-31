@@ -1,6 +1,6 @@
 {
   "seoTitle": "Tailscode: Claude Code, opencode & Oh My Pi on your Lock Screen",
-  "metaDescription": "Claude Code, opencode and Oh My Pi on your Lock Screen. Approve, read diffs, price every turn. iPhone, iPad, Mac, Linux. No relay, no sign-in, no tracking.",
+  "metaDescription": "Every Claude Code, opencode and Oh My Pi agent on one board and your Lock Screen. Approve, follow every step, price every turn. iPhone, iPad, Mac, Linux.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
@@ -26,13 +26,13 @@
     "tailscode aur",
     "claude code arch linux"
   ],
-  "heroHeadline": "Your coding agents, live on the Lock Screen",
-  "heroSubhead": "Send a prompt to Claude Code, opencode or Oh My Pi, pocket the phone, and watch the turn finish. Approve, answer and read the diff over your own tailnet, from the iPhone, iPad, Mac or Linux.",
+  "heroHeadline": "All your coding agents on one board, live on the Lock Screen",
+  "heroSubhead": "Claude Code, opencode and Oh My Pi on your own computers. See what needs you and what is working, approve from the Lock Screen, follow every step, and leave the wall up to watch them all work. Over your own tailnet, on iPhone, iPad, Mac and Linux.",
   "accentColor": "#546BFF",
   "highlights": [
+    "Every agent on one board, and a wall to leave on",
     "Live Activity per conversation on the Lock Screen",
-    "Approve, answer and read the diff from the phone",
-    "Every turn priced, every month totalled",
+    "Megatron: every step of a turn, live",
     "Free, open source, no relay, no sign-in"
   ],
   "features": [
@@ -47,9 +47,19 @@
       "glyph": "⊹"
     },
     {
-      "title": "Every machine, one board",
-      "body": "All your servers' conversations in one list: live turns first, grouped by project. Subagents open in place inside the turn that spawned them; a compaction is a seam you can read.",
+      "title": "Every agent, one board",
+      "body": "What needs you, what is working, what runs in the background and what the last hour did, across every machine. Peek at a run, open, stop or nudge it, and answer an approval from its card.",
       "glyph": "◈"
+    },
+    {
+      "title": "A wall to leave on",
+      "body": "Every agent and sub-agent on a Metal ground, full screen on a phone, a folded iPhone Duo, an iPad or any Mac window. Effects say what changed; an approval is a hold away.",
+      "glyph": "▦"
+    },
+    {
+      "title": "Megatron, every step live",
+      "body": "A turn's thinking, tool runs and notes become one head that breathes while it works. Open it for numbered steps, search, the agent's own account and a replay, or share it as a poster.",
+      "glyph": "✺"
     },
     {
       "title": "A repository is read, never operated",
@@ -63,13 +73,18 @@
     },
     {
       "title": "Limits before the wall",
-      "body": "Each provider's tightest window and its reset clock on Home and in a widget: Claude plan limits, Grok quotas, Ollama Cloud, DeepSeek balance. The board holds still while you read it.",
+      "body": "Each provider's tightest window and its reset clock on Home and in a widget, with the pace: turns left in the context, a clock when a window will run out before it resets, and one Running low notice. Claude plan limits, Grok quotas, Ollama Cloud, DeepSeek balance.",
       "glyph": "◐"
     },
     {
       "title": "One pill for model and effort",
       "body": "Which model and how hard it thinks are one decision: tap a level or slide to it, pin a pair, swipe to cycle. Ultracode burns a rainbow along the composer's edge.",
       "glyph": "∿"
+    },
+    {
+      "title": "Six models, one party",
+      "body": "Six slots, each a model at an effort on a named server, one tap apart. Carry a chat to another model or machine with a short brief, or branch any answer with Try with another model.",
+      "glyph": "⁂"
     },
     {
       "title": "Three agents, one app",
@@ -151,6 +166,10 @@
     {
       "q": "Which coding agents does it support?",
       "a": "opencode natively, 1.x or 2, with any provider you've configured in it; Claude Code through claude-bridge; and Oh My Pi through omp-bridge. The bridges are open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama."
+    },
+    {
+      "q": "Can I see every agent at once?",
+      "a": "Yes. The agents board lists what needs you, what is working, what runs in the background and what finished in the last hour, for every session on every machine, with each one's helpers and todos. Watch turns it into a full-screen wall to leave on a spare screen, and an approval is a hold away. It is in the free app on the iPhone, iPad, Mac and Linux."
     },
     {
       "q": "Is there a Mac and a Linux client?",
