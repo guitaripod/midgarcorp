@@ -90,7 +90,7 @@
         "price": "$29.99",
         "amount": 29.99,
         "period": "P1Y",
-        "note": "per year, 7-day free trial"
+        "note": "per year"
       },
       {
         "name": "Lifetime",
@@ -104,7 +104,7 @@
   "faq": [
     {
       "q": "How much does Master of Inventory cost?",
-      "a": "It is free for up to 15 items with every core feature. Pro removes the limit and adds the whole-inventory PDF report and CSV export: $4.99 a month, $29.99 a year with a 7-day free trial, or $59.99 once. Apple handles refunds and cancellations."
+      "a": "It is free for up to 15 items with every core feature. Pro removes the limit and adds the whole-inventory PDF report and CSV export: $4.99 a month, $29.99 a year, or $59.99 once. Apple handles refunds and cancellations."
     },
     {
       "q": "Where is my data, and is it private?",
@@ -145,5 +145,5 @@
   "trustNote": "Records stay on your device and sync through your own iCloud account. Receipt text is read on your iPhone. Purchases are handled by Apple and RevenueCat, which see purchase history and anonymous product usage, never your items.",
   "hideAbout": true,
   "ctaLine": "Five minutes today can save a claim and a refund later.",
-  "pricingNote": "Free for 15 items. Pro is $4.99 a month, $29.99 a year with a 7-day free trial, or $59.99 once."
+  "pricingNote": "Free for 15 items. Pro is $4.99 a month, $29.99 a year, or $59.99 once."
 }
