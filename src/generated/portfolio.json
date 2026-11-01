@@ -10,7 +10,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -26,7 +26,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -42,7 +42,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -58,7 +58,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -74,7 +74,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -91,7 +91,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -107,7 +107,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -123,7 +123,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -139,7 +139,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -155,7 +155,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -171,7 +171,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -187,7 +187,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -203,7 +203,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -219,7 +219,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -235,7 +235,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -251,7 +251,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
@@ -267,7 +267,7 @@
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
-        "metadata_edit": "propose",
+        "metadata_edit": "act",
         "price_change": "manual-only",
         "release": "act",
         "submit": "act"
