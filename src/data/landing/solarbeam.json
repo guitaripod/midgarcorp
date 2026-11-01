@@ -94,7 +94,7 @@
         "price": "$19.99",
         "amount": 19.99,
         "period": "P1Y",
-        "note": "per year, 1-week free trial"
+        "note": "per year, auto-renewing"
       },
       {
         "name": "Lifetime",
@@ -117,7 +117,7 @@
     },
     {
       "step": "Go deeper, optionally",
-      "body": "Unlock Solar Beam Premium for the complete Webb gallery, 4K wallpapers, Ambient Mode, years of past pictures, and unlimited AI facts — $4.99 a month, $19.99 a year with a 1-week free trial, or $39.99 once for lifetime access."
+      "body": "Unlock Solar Beam Premium for the complete Webb gallery, 4K wallpapers, Ambient Mode, years of past pictures, and unlimited AI facts — $4.99 a month, $19.99 a year, or $39.99 once for lifetime access."
     }
   ],
   "faq": [
@@ -131,7 +131,7 @@
     },
     {
       "q": "How much does Solar Beam cost?",
-      "a": "Solar Beam is free to download, and the daily NASA picture, the asteroid tracker and the \"Where Is Webb\" dashboard are always free. Premium is optional: $4.99 a month, $19.99 a year with a 1-week free trial, or $39.99 once for lifetime access. Subscriptions auto-renew until you cancel in your App Store account; the lifetime unlock never renews. All options are family-shareable and cover every Apple device."
+      "a": "Solar Beam is free to download, and the daily NASA picture, the asteroid tracker and the \"Where Is Webb\" dashboard are always free. Premium is optional: $4.99 a month, $19.99 a year, or $39.99 once for lifetime access. Subscriptions auto-renew until you cancel in your App Store account; the lifetime unlock never renews. All options are family-shareable and cover every Apple device."
     },
     {
       "q": "What do I get for free versus Premium?",
@@ -139,7 +139,7 @@
     },
     {
       "q": "Is there a subscription or in-app purchase?",
-      "a": "Only if you want more. The app is free. Premium is $4.99 a month or $19.99 a year with a 1-week free trial — both auto-renewing until cancelled — or a $39.99 one-time lifetime unlock that never renews. Manage or cancel anytime in your App Store account. The daily picture and asteroid tracker stay free either way."
+      "a": "Only if you want more. The app is free. Premium is $4.99 a month or $19.99 a year — both auto-renewing until cancelled — or a $39.99 one-time lifetime unlock that never renews. Manage or cancel anytime in your App Store account. The daily picture and asteroid tracker stay free either way."
     },
     {
       "q": "Where do the images and data come from?",
@@ -200,5 +200,5 @@
     ]
   },
   "ctaLine": "The James Webb Space Telescope, on every screen you own.",
-  "pricingNote": "Free on the App Store — a new NASA picture every day, the asteroid tracker, the \"Where Is Webb\" dashboard, 24 Webb images and the past week of pictures at no cost. Premium — $4.99/month, $19.99/year with a 1-week free trial, or $39.99 once — unlocks the full Webb gallery, 4K wallpapers, Ambient Mode, the complete archive and unlimited AI facts on every device."
+  "pricingNote": "Free on the App Store — a new NASA picture every day, the asteroid tracker, the \"Where Is Webb\" dashboard, 24 Webb images and the past week of pictures at no cost. Premium — $4.99/month, $19.99/year, or $39.99 once — unlocks the full Webb gallery, 4K wallpapers, Ambient Mode, the complete archive and unlimited AI facts on every device."
 }

@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import fs from 'node:fs';
+import path from 'node:path';
 import factsData from '../../src/data/landing-facts.json';
 import solarbeam from '../../src/data/landing/solarbeam.json';
 
@@ -26,9 +28,9 @@ describe('Solar Beam landing copy', () => {
     }
   });
 
-  it('states every Premium price, the trial length and auto-renewal', () => {
+  it('states every Premium price and auto-renewal', () => {
     const all = copyStrings(solarbeam).join(' ');
-    for (const token of ['$4.99', '$19.99', '$39.99', '1-week free trial', 'auto-renew']) {
+    for (const token of ['$4.99', '$19.99', '$39.99', 'auto-renew']) {
       expect(all, `landing copy must disclose ${token}`).toContain(token);
     }
   });
@@ -50,5 +52,41 @@ describe('Solar Beam landing copy', () => {
     const all = copyStrings(solarbeam).join(' ');
     expect(all).toContain('CC BY 4.0');
     expect(all).toContain('STScI');
+  });
+});
+
+/// D22: no subscription sells with a free trial. Flaccy's seven days are its own in-app runway, not
+/// a store offer, and its pages say so; every other landing page, store description and terms page
+/// stays silent about trials.
+const TRIAL = /free[- ]trial|free week|[0-9]+[- ]days? free|free for [0-9]+ days|try it free for/i;
+const RUNWAY_APPS = new Set(['flaccy']);
+
+const read = (...parts: string[]) => fs.readFileSync(path.join(process.cwd(), ...parts), 'utf8');
+
+describe('No landing page promises a free trial', () => {
+  it('keeps trials out of every landing copy file', () => {
+    const dir = path.join(process.cwd(), 'src', 'data', 'landing');
+    const offenders = fs
+      .readdirSync(dir)
+      .filter((name) => name.endsWith('.json') && !RUNWAY_APPS.has(name.replace('.json', '')))
+      .filter((name) => TRIAL.test(read('src', 'data', 'landing', name)));
+    expect(offenders).toEqual([]);
+  });
+
+  it('keeps trials out of the store descriptions shown on the pages', () => {
+    const offenders = facts
+      .filter((a) => !RUNWAY_APPS.has(a.slug) && TRIAL.test(a.description))
+      .map((a) => a.slug);
+    expect(offenders).toEqual([]);
+  });
+
+  it('keeps trials out of the subscription terms', () => {
+    const terms = [
+      ['src', 'pages', 'appofthedead', 'terms.astro'],
+      ['src', 'content', 'legal', 'pay-day', 'terms.html'],
+      ['src', 'content', 'legal', 'living-dex', 'terms.html'],
+    ];
+    const offenders = terms.filter((parts) => TRIAL.test(read(...parts))).map((p) => p.join('/'));
+    expect(offenders).toEqual([]);
   });
 });

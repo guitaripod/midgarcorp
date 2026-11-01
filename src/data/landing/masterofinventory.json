@@ -133,13 +133,11 @@
       "Items in a grid or list, filtered by category",
       "An item with coverage rings, receipt and serial number",
       "Soon: warranties ending and returns closing",
-      "Add an item with photos, a receipt and a warranty",
-      "Pro: unlimited items, with a free week on the yearly plan"
+      "Add an item with photos, a receipt and a warranty"
     ],
     "ipad": [
       "Your whole inventory on a bigger screen",
-      "Soon: warranties ending and returns closing",
-      "Pro: unlimited items and exports"
+      "Soon: warranties ending and returns closing"
     ]
   },
   "trustNote": "Records stay on your device and sync through your own iCloud account. Receipt text is read on your iPhone. Purchases are handled by Apple and RevenueCat, which see purchase history and anonymous product usage, never your items.",
