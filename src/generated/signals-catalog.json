@@ -9,7 +9,7 @@
     "per-period": "once per value of its `period` prop per install"
   },
   "dimensions": {
-    "placement": ["settings", "entry", "onboarding", "launch", "paywall", "feature", "limit"],
+    "placement": ["settings", "entry", "onboarding", "launch", "paywall", "feature", "limit", "moment"],
     "period": ["day", "week", "month"],
     "outcome": ["started", "purchased", "pending", "cancelled", "failed"],
     "funnel_step": ["sample_played", "add_music_opened", "library_filled", "import_succeeded", "import_failed", "trial_started"],
