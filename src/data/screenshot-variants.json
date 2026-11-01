@@ -811,23 +811,39 @@
     480,
     960
   ],
-  "/screenshots/tailscode/phone-lock.webp": [
+  "/screenshots/tailscode/phone-agents.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-approval.webp": [
+  "/screenshots/tailscode/phone-wall.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-board.webp": [
+  "/screenshots/tailscode/phone-models.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-diff.webp": [
+  "/screenshots/tailscode/phone-peek.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-question.webp": [
+  "/screenshots/tailscode/phone-setup.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-steer.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-gpu.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-carry.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-party.webp": [
     480,
     960
   ],
@@ -835,15 +851,11 @@
     480,
     960
   ],
+  "/screenshots/tailscode/phone-approval.webp": [
+    480,
+    960
+  ],
   "/screenshots/tailscode/phone-limits.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-effort.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-delegate.webp": [
     480,
     960
   ],
@@ -871,19 +883,19 @@
     480,
     960
   ],
+  "/screenshots/tailscode/ipad-ws-agents.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-wall.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/ipad-ws-hour.webp": [
+    480,
+    960
+  ],
   "/screenshots/tailscode/ipad-ws-live.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-approve.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-diff.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-month.webp": [
     480,
     960
   ],
@@ -931,13 +943,18 @@
     480,
     960
   ],
-  "/screenshots/tailscode/mac-dark-chat.webp": [
+  "/screenshots/tailscode/mac-dark-agents.webp": [
     480,
     960
   ],
   "/screenshots/tailscode/mac-dark-split.webp": [
     480,
     960
+  ],
+  "/screenshots/tailscode/icon.webp": [
+    72,
+    144,
+    216
   ],
   "/screenshots/crucible/hero.webp": [
     480,
@@ -1014,11 +1031,6 @@
     216
   ],
   "/screenshots/flaccy/icon.webp": [
-    72,
-    144,
-    216
-  ],
-  "/screenshots/tailscode/icon.webp": [
     72,
     144,
     216

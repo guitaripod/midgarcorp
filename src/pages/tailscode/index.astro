@@ -23,7 +23,7 @@ const aurUrl = 'https://aur.archlinux.org/packages/tailscode';
 
 const site = 'https://midgarcorp.cc';
 const canonical = `${site}/tailscode/`;
-const OG_REV = '9';
+const OG_REV = '10';
 const ogImage = `/og/tailscode.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
@@ -54,30 +54,12 @@ const STUDIO = {
   phoneFinished: faces('suomi-dark-14', 'suomi-light-14', 1320, 2868),
 };
 
-/// The agents section: the board and the wall on the phone, the wall on the iPad, Megatron on the Mac.
-const AGENTS = {
-  padWall: faces('agents-wall-ipad', 'agents-wall-ipad', 2752, 2064),
-  phoneBoard: phone('agents'),
-  phoneWall: phone('wall'),
-  megatron: faces('agents-megatron-mac', 'agents-megatron-mac', 2520, 1600),
-};
-
-const agentBullets = [
-  'Needs you comes first: an approval shows its command, a question its choices, and the answer goes back from the card.',
-  'Peek at any run without leaving your chat: what it is doing now, its last steps and its helpers. Open it, stop it or nudge it.',
-  'The wall puts every agent and sub-agent on a Metal ground, laid out for a phone, a folded iPhone Duo, an iPad or any Mac window. Hold to approve.',
-  'The hour shows, lane by lane, what each agent did while you were away.',
-];
-
-const megatronBullets = [
-  'One head per turn breathes while the agent works; open it for numbered steps, search and replay.',
-  'The agent’s own account: what it said, its plan, the work between, and the result it can honestly claim.',
-  'A party of six models on named servers, one tap apart, and Try with another model on any answer.',
-];
+/// Megatron on the Mac: one turn's head with its numbered steps and the agent's account beside the chat.
+const megatron = faces('agents-megatron-mac', 'agents-megatron-mac', 2520, 1600);
 
 const hero = {
-  desk: faces('desk-dark-chat', 'desk-light-chat', 1920, 1080),
-  phone: phone('lock'),
+  wall: faces('ipad-ws-wall', 'ipad-ws-wall', 1600, 1200),
+  phone: phone('agents'),
 };
 const syncBoth = faces('sync-03-both', 'sync-03-both', 1920, 1080);
 
@@ -86,13 +68,24 @@ const splitCaption = (text: string) => {
   return at < 0 ? { head: text, body: '' } : { head: text.slice(0, at), body: text.slice(at + 3) };
 };
 
-/// The phone rail, in the store set's order. The costs and limits screens live in the money section.
-const phoneRoles = ['approval', 'board', 'diff', 'question', 'effort', 'delegate'];
+/// The store's ten iPhone panels, in the store's order; each section of the story picks its own by role.
+const phoneRoles = [
+  'agents',
+  'wall',
+  'models',
+  'peek',
+  'setup',
+  'steer',
+  'gpu',
+  'carry',
+  'party',
+  'costs',
+];
 const phoneCaptions = c.screenshotCaptions?.iphone ?? [];
-const phoneShots = phoneRoles.map((role, i) => ({
-  ...phone(role),
-  ...splitCaption(phoneCaptions[i] ?? ''),
-}));
+const phoneShots = Object.fromEntries(
+  phoneRoles.map((role, i) => [role, { ...phone(role), ...splitCaption(phoneCaptions[i] ?? '') }])
+);
+const phonesFor = (...roles: string[]) => roles.map((role) => phoneShots[role]);
 
 const ipadCaptions = c.screenshotCaptions?.ipad ?? [];
 const ipadShots = (app.screenshots.ipad ?? []).map((s, i) => ({
@@ -111,7 +104,7 @@ const deskShots = [
     wide: true,
   },
   {
-    ...faces('mac-dark-chat', 'mac-dark-chat', 1920, 825),
+    ...faces('mac-dark-agents', 'mac-dark-agents', 1920, 1228),
     client: 'Mac',
     caption: deskCaptions[1] ?? '',
     wide: false,
@@ -124,6 +117,27 @@ const deskShots = [
   },
 ];
 
+const agentsBullets = [
+  'Home is one ranked board: a sentence that says who needs you and what is working, then the chats waiting on you, working, pinned and recent.',
+  'The Agents board shows what needs you, what is working, what runs in the background and what finished in the last hour, with approve and answer on each card.',
+  'Watch turns it into a full-screen wall of every agent. Peek at any agent without opening its chat: its step, its last moves, its context.',
+  'The hour shows, lane by lane, what each agent did while you were away.',
+];
+
+const modelsBullets = [
+  'Whatever your agent can run, from cloud models to a local model served by Ollama or llama.cpp on your own machine, picked per chat with its reasoning effort.',
+  'Carry a conversation to another model: the next one gets a short brief of the chat and picks up the thread.',
+  'A party of six favourite models and their effort levels, one tap or one swipe of the model pill away.',
+];
+
+const transcriptBullets = [
+  'Megatron folds a turn’s thinking and tool runs into one head you open to read, search and replay every step.',
+  'The agent’s own account sits beside the steps: what it said, its plan, the work between, and the result it can honestly claim.',
+  'Diffs, commands and their real output inline; syntax-highlighted code with byte-exact copy.',
+  'Queue the next message while a turn runs, edit it before it goes, or stop the turn on the server.',
+  'Send screenshots and photos; every picture the agent hands back lands in a gallery.',
+];
+
 const studioBullets = [
   'The machine’s own sketch fills the stage while it paints, when it sends one, and a progress line runs along the stage’s foot.',
   'The shelf is the machine’s own output folder, newest first, with the words, seed and steps read back from the files.',
@@ -131,15 +145,15 @@ const studioBullets = [
 ];
 
 const lockBullets = [
-  'One Live Activity per conversation: what the agent is doing, for how long, and how many tools it has run.',
-  'An approval request alerts you. A finished turn lingers with its outcome, then leaves on its own.',
-  'Tap it and you land in the exact chat, with the Allow, Always and Deny buttons under the edit.',
+  'A Live Activity on your Lock Screen for a running conversation, one for each with Pro: what it is doing, for how long, and how many tools it has run.',
+  'Notifications say what happened: how long it took, what it changed and the first of what it said. Reply from the Lock Screen to start the next turn.',
+  'An approval shows the exact command and asks for Face ID or your passcode; a question shows its options as buttons. Tap and you land in the exact chat.',
   'When the app is closed, iOS holds the wait and the notification still fires, straight over your tailnet.',
 ];
 
 const moneyBullets = [
   'Every conversation priced, every month totalled across your machines, by model, project and tool.',
-  'Each provider’s tightest window and its reset clock, on Home and in a widget, with the pace: turns left in the context and a warning before a window runs out.',
+  'Plan limits and quotas per provider and account, with the pace and turns left, on Home and in widgets: walls first.',
   'Always marked an estimate: a subscription bills a flat fee, so the figure is API-equivalent value, never a bill.',
 ];
 
@@ -164,6 +178,7 @@ const section = 'border-t border-paper-border py-8 dark:border-term-border sm:py
 const rail =
   'no-scrollbar -mx-4 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-4 pb-3 sm:mx-0 sm:grid sm:overflow-visible sm:px-0 sm:pb-0';
 const railItem = 'shrink-0 snap-center';
+const phoneItem = 'w-[210px] sm:w-full sm:max-w-[300px] sm:justify-self-center';
 const btn =
   'accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors';
 
@@ -264,7 +279,7 @@ const clients = [
   {
     name: 'Mac',
     stack: 'AppKit · Liquid Glass · macOS 26',
-    note: 'The same desk with Apple materials: split panes, the analytics, the git surface, and a global quick-ask key. On the Mac App Store under the same purchase as the iPhone app.',
+    note: 'The same desk with Apple materials: the Agents window and wall, split panes, the analytics, the git surface, and a global quick-ask key. On the Mac App Store under the same purchase as the iPhone app.',
   },
   {
     name: 'Linux',
@@ -387,21 +402,20 @@ const clients = [
 
       <div class="relative mx-auto aspect-[100/71] w-full max-w-[600px] lg:max-w-none">
         <ShotFigure
-          dark={hero.desk.dark}
-          light={hero.desk.light}
-          w={hero.desk.w}
-          h={hero.desk.h}
-          alt="Tailscode for Linux: a conversation in the compact chat, with the sidebar of every machine's chats"
-          sizes="(min-width: 1024px) 600px, 92vw"
+          dark={hero.wall.dark}
+          w={hero.wall.w}
+          h={hero.wall.h}
+          alt="Tailscode on iPad: the wall, every running agent and its helpers full screen, an approval waiting on its card"
+          sizes="(min-width: 1024px) 520px, 80vw"
           variant="hero"
           priority
-          class="absolute right-0 top-[12%] w-[86%]"
+          class="absolute right-0 top-[6%] w-[84%]"
         />
         <ShotFigure
           dark={hero.phone.dark}
           w={hero.phone.w}
           h={hero.phone.h}
-          alt="The iPhone Lock Screen with a Tailscode Live Activity: Dark mode for the settings screen, awaiting your approval"
+          alt="Tailscode on iPhone: the Agents board, two working and one needing you, an approval waiting with the exact command and Approve under it"
           sizes="(min-width: 1024px) 200px, 30vw"
           variant="phone"
           priority
@@ -410,102 +424,151 @@ const clients = [
       </div>
     </header>
 
-    <section id="agents" class={section}>
-      <div class="mb-6 grid items-start gap-x-10 lg:grid-cols-12">
-        <div class="lg:col-span-5">
-          <SectionHead prompt="tailscode --agents --watch" title="Every agent you run, at once">
-            Every Claude Code, opencode and Oh My Pi session on every machine you own, read into one
-            board: what needs you, what is working, what runs in the background and what the last
-            hour did. Leave the wall up on a spare screen and watch them work.
+    <section id="setup" class={section}>
+      <div class="grid items-start gap-x-10 gap-y-8 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <SectionHead prompt="tailscode --setup" title="One line. Then scan.">
+            For Claude Code, one line on the computer you code on installs the bridge and ends with
+            a QR code. Scan it, confirm, and the app has your machine. Three steps, each one checked
+            by the app as you go.
           </SectionHead>
-        </div>
-        <div class="lg:col-span-7 lg:pt-9">
-          <ul class="grid gap-2">
+          <ol class="grid gap-3">
             {
-              agentBullets.map((b) => (
-                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
-                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
-                    ▸
-                  </span>
-                  <span>{b}</span>
+              c.howItWorks.map((step, i) => (
+                <li class="term-frame p-5">
+                  <p class="term-label accent-text mb-2">{String(i + 1).padStart(2, '0')}</p>
+                  <p class="mb-1.5 text-sm font-bold text-paper-text dark:text-term-text">
+                    {step.step}
+                  </p>
+                  <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+                    {step.body}
+                  </p>
                 </li>
               ))
             }
-          </ul>
+          </ol>
         </div>
-      </div>
-
-      <div class={`${rail} lg:grid-cols-12`}>
         <ShotFigure
-          dark={AGENTS.padWall.dark}
-          w={AGENTS.padWall.w}
-          h={AGENTS.padWall.h}
-          alt="The agents wall on iPad: two agents at work as large tiles, their sub-agents as small tiles beside them, and the last hour along the foot"
-          sizes="(min-width: 1024px) 700px, 80vw"
-          class={`${railItem} w-[80vw] lg:w-auto lg:col-span-8 lg:self-center`}
-        >
-          <span class="accent-text mr-1 font-semibold">The wall</span> — an iPad left on, every agent
-          and helper in its own tile. The Mac's Agents window opens on the same wall.
-        </ShotFigure>
-        <ShotFigure
-          dark={AGENTS.phoneBoard.dark}
-          w={AGENTS.phoneBoard.w}
-          h={AGENTS.phoneBoard.h}
-          alt="The agents board on iPhone: what needs you with Deny and Approve, what is working and what runs in the background"
-          sizes="(min-width: 1024px) 200px, 170px"
+          dark={phoneShots.setup.dark}
+          w={phoneShots.setup.w}
+          h={phoneShots.setup.h}
+          alt="Tailscode on iPhone: set-up, the bridge's one-line installer and the QR code to scan, with the tailnet already checked"
+          sizes="(min-width: 1024px) 300px, 60vw"
           variant="phone"
-          class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
+          class="mx-auto w-[62%] max-w-[300px] lg:col-span-5 lg:justify-self-center"
         >
-          <span class="accent-text mr-1 font-semibold">Board</span> — needs you first.
-        </ShotFigure>
-        <ShotFigure
-          dark={AGENTS.phoneWall.dark}
-          w={AGENTS.phoneWall.w}
-          h={AGENTS.phoneWall.h}
-          alt="The agents wall full screen on iPhone, an approval waiting with Hold to approve"
-          sizes="(min-width: 1024px) 200px, 170px"
-          variant="phone"
-          class={`${railItem} w-[170px] lg:w-auto lg:col-span-2`}
-        >
-          <span class="accent-text mr-1 font-semibold">Watch</span> — the wall in a pocket.
+          <span class="accent-text block font-semibold">{phoneShots.setup.head}</span>
+          {phoneShots.setup.body}
         </ShotFigure>
       </div>
+    </section>
 
-      <div class="mt-10 grid items-center gap-x-10 gap-y-6 lg:grid-cols-12">
-        <ShotFigure
-          dark={AGENTS.megatron.dark}
-          w={AGENTS.megatron.w}
-          h={AGENTS.megatron.h}
-          alt="Megatron on the Mac: a turn's head lit by what it is doing, with its numbered steps and the agent's account beside the chat"
-          sizes="(min-width: 1024px) 640px, 92vw"
-          class="lg:col-span-7"
-        >
-          <span class="accent-text mr-1 font-semibold">Megatron</span> — one turn, every step, live.
-        </ShotFigure>
-        <div class="lg:col-span-5">
-          <h3 class="mb-3 text-xl font-bold tracking-tight text-paper-text dark:text-term-text">
-            Every step of a turn, as it happens
-          </h3>
-          <ul class="grid gap-2">
-            {
-              megatronBullets.map((b) => (
-                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
-                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
-                    ▸
-                  </span>
-                  <span>{b}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
+    <section id="agents" class={section}>
+      <SectionHead prompt="tailscode --agents" title="Every agent at a glance">
+        One screen answers who needs you, what is working and what finished, across every machine
+        you connect. Approve and answer on the card; open the chat only when you want to.
+      </SectionHead>
+      <ul class="mb-6 grid gap-2.5">
+        {
+          agentsBullets.map((b) => (
+            <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+              <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                ▸
+              </span>
+              <span>{b}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class={`${rail} sm:grid-cols-4`}>
+        <figure class={`${railItem} ${phoneItem}`}>
+          <div
+            class="overflow-hidden rounded-[1.4rem] border border-paper-border bg-black dark:border-term-border"
+          >
+            <video
+              id="promo-video"
+              class="block w-full"
+              width="608"
+              height="1080"
+              poster={`${shot('promo-poster')}?v=10`}
+              muted
+              loop
+              playsinline
+              controls
+              preload="none"
+              aria-label="Thirty seconds of Tailscode: all your agents on one board, a peek at one of them, a task sent and watched, six models one tap away, a question asked of a machine and the month in numbers"
+            >
+              <source src="/video/tailscode-promo.mp4?v=2" type="video/mp4" />
+              <source src="/video/tailscode-promo.webm?v=2" type="video/webm" />
+            </video>
+          </div>
+          <figcaption
+            class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted"
+          >
+            <span class="accent-text mr-1 font-semibold">30 s</span> — no narration: the board, a peek,
+            a task sent, six models, a question, the month.
+          </figcaption>
+        </figure>
+        {
+          phonesFor('agents', 'wall', 'peek').map((s) => (
+            <ShotFigure
+              dark={s.dark}
+              w={s.w}
+              h={s.h}
+              alt={`Tailscode on iPhone: ${s.head}. ${s.body}`}
+              sizes="(min-width: 1024px) 260px, 210px"
+              variant="phone"
+              class={`${railItem} ${phoneItem}`}
+            >
+              <span class="accent-text block font-semibold">{s.head}</span>
+              {s.body}
+            </ShotFigure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="models" class={section}>
+      <SectionHead prompt="tailscode --models" title="Any model, even your own GPU">
+        Your agents run on your own computers, so the model is yours to choose: a cloud model, or
+        one served from the graphics card in the machine across the room.
+      </SectionHead>
+      <ul class="mb-6 grid gap-2.5">
+        {
+          modelsBullets.map((b) => (
+            <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+              <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                ▸
+              </span>
+              <span>{b}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class={`${rail} sm:grid-cols-3`}>
+        {
+          phonesFor('models', 'party', 'carry').map((s) => (
+            <ShotFigure
+              dark={s.dark}
+              w={s.w}
+              h={s.h}
+              alt={`Tailscode on iPhone: ${s.head}. ${s.body}`}
+              sizes="(min-width: 1024px) 300px, 210px"
+              variant="phone"
+              class={`${railItem} ${phoneItem}`}
+            >
+              <span class="accent-text block font-semibold">{s.head}</span>
+              {s.body}
+            </ShotFigure>
+          ))
+        }
       </div>
     </section>
 
     <section id="lockscreen" class={section}>
       <div class="grid items-start gap-x-10 gap-y-8 lg:grid-cols-12">
         <div class="lg:col-span-5 lg:pt-10">
-          <SectionHead prompt="tailscode --lock-screen" title="Send. Pocket it. Get pinged.">
+          <SectionHead prompt="tailscode --long-runs" title="Long runs, no babysitting">
             Your agent is working on a machine across the room, or across the country. The turn
             lives on your Lock Screen the whole time, and the moment it needs you it says so.
           </SectionHead>
@@ -523,46 +586,163 @@ const clients = [
           </ul>
         </div>
         <div class="flex items-start justify-center gap-4 sm:gap-6 lg:col-span-7">
-          <figure class="w-[46%] max-w-[300px] shrink-0">
-            <div
-              class="overflow-hidden rounded-[1.4rem] border border-paper-border bg-black dark:border-term-border"
-            >
-              <video
-                id="promo-video"
-                class="block w-full"
-                width="608"
-                height="1080"
-                poster={`${shot('promo-poster')}?v=9`}
-                muted
-                loop
-                playsinline
-                controls
-                preload="none"
-                aria-label="Thirty seconds of Tailscode: a Live Activity on the Lock Screen, an approval, a question, the board across two machines, a diff, the month in numbers and the tailnet"
-              >
-                <source src="/video/tailscode-promo.mp4?v=1" type="video/mp4" />
-                <source src="/video/tailscode-promo.webm?v=1" type="video/webm" />
-              </video>
-            </div>
-            <figcaption
-              class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted"
-            >
-              <span class="accent-text mr-1 font-semibold">29 s</span> — no narration: ping, approve,
-              answer, board, diff, cost, tailnet.
-            </figcaption>
-          </figure>
           <ShotFigure
-            dark={phoneShots[0].dark}
-            w={phoneShots[0].w}
-            h={phoneShots[0].h}
-            alt="Tailscode on iPhone: the chat the notification opens, with Allow once, Always and Deny under the edit"
+            dark={shot('phone-approval')}
+            w={1320}
+            h={2868}
+            alt="Tailscode on iPhone: the chat the notification opens, a Megatron card saying Waiting for you and Allow once, Always and Deny under the edit"
             sizes="(min-width: 1024px) 280px, 46vw"
             variant="phone"
-            class="mt-10 w-[46%] max-w-[300px] shrink-0 sm:mt-16"
+            class="w-[46%] max-w-[300px] shrink-0"
           >
             <span class="accent-text mr-1 font-semibold">Tap</span> — and the agent waits on you, right
             under the edit.
           </ShotFigure>
+          <ShotFigure
+            dark={phoneShots.steer.dark}
+            w={phoneShots.steer.w}
+            h={phoneShots.steer.h}
+            alt={`Tailscode on iPhone: ${phoneShots.steer.head}. ${phoneShots.steer.body}`}
+            sizes="(min-width: 1024px) 280px, 46vw"
+            variant="phone"
+            class="mt-10 w-[46%] max-w-[300px] shrink-0 sm:mt-16"
+          >
+            <span class="accent-text block font-semibold">{phoneShots.steer.head}</span>
+            {phoneShots.steer.body}
+          </ShotFigure>
+        </div>
+      </div>
+    </section>
+
+    <section id="transcript" class={section}>
+      <div class="grid items-center gap-x-10 gap-y-8 lg:grid-cols-12">
+        <ShotFigure
+          dark={phoneShots.gpu.dark}
+          w={phoneShots.gpu.w}
+          h={phoneShots.gpu.h}
+          alt="Tailscode on iPhone: the question what is eating my GPU memory, answered under a Megatron head with a table of the four processes that hold it"
+          sizes="(min-width: 1024px) 300px, 62vw"
+          variant="phone"
+          class="mx-auto w-[62%] max-w-[300px] lg:order-first lg:col-span-5 lg:justify-self-center"
+        >
+          <span class="accent-text block font-semibold">{phoneShots.gpu.head}</span>
+          {phoneShots.gpu.body}
+        </ShotFigure>
+        <div class="lg:col-span-7">
+          <SectionHead prompt="tailscode --transcript" title="A native transcript, not a terminal">
+            Streaming text written at the model’s own speed, with thinking and tool runs folded into
+            readable groups.
+          </SectionHead>
+          <ul class="mb-6 grid gap-2.5">
+            {
+              transcriptBullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                    ▸
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="term-frame p-4">
+            <p class="term-label accent-text mb-1.5">not only code</p>
+            <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+              Your machines know things. Ask what is eating the GPU, research a question, tidy a
+              folder, check a price: any agent, any model, from anywhere.
+            </p>
+          </div>
+        </div>
+      </div>
+      <ShotFigure
+        dark={megatron.dark}
+        w={megatron.w}
+        h={megatron.h}
+        alt="Megatron on the Mac: a turn's head lit by what it is doing, with its numbered steps and the agent's account beside the chat"
+        sizes="(min-width: 1152px) 880px, 100vw"
+        class="mx-auto mt-10 max-w-[880px]"
+      >
+        <span class="accent-text mr-1 font-semibold">Megatron on the Mac</span> — one turn, every step,
+        live.
+      </ShotFigure>
+    </section>
+
+    <section id="money" class={section}>
+      <div class="grid items-start gap-x-10 gap-y-8 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <SectionHead
+            prompt="tailscode --usage --month"
+            title="See what it costs. Before the wall."
+          >
+            A price is a conversation's, and the month is the account's. The numbers come from the
+            machines that hold the transcripts, so nothing about your spend is sent anywhere to be
+            added up.
+          </SectionHead>
+          <ul class="mb-6 grid gap-2.5">
+            {
+              moneyBullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                    ▸
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="term-frame p-4">
+            <p class="term-label accent-text mb-1.5">trophies · game center</p>
+            <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">
+              The ledger is also a game. 27 trophies and four leaderboards (streak days, and turns,
+              tokens and tool calls over thirty days) are scored from the same numbers, and Apple's
+              Game Center shows them. Signing in is optional: the trophy card renders whole without
+              an account.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 items-start gap-4 sm:gap-6 lg:col-span-7">
+          <ShotFigure
+            dark={shot('phone-costs')}
+            w={1320}
+            h={2868}
+            alt="Tailscode on iPhone: the month in numbers, about 1,899 dollars over 29 active days, with a bar for every day"
+            sizes="(min-width: 1024px) 300px, 45vw"
+            variant="phone"
+          >
+            <span class="accent-text block font-semibold">See what it costs</span>
+            Every turn priced, every month totalled across your machines.
+          </ShotFigure>
+          <ShotFigure
+            dark={shot('phone-limits')}
+            w={1320}
+            h={2868}
+            alt="Tailscode on iPhone: each provider's tightest window with its reset clock"
+            sizes="(min-width: 1024px) 300px, 45vw"
+            variant="phone"
+            class="mt-8"
+          >
+            <span class="accent-text block font-semibold">Limits before the wall</span>
+            Each provider's tightest window and reset clock.
+          </ShotFigure>
+          <figure class="col-span-2 mt-2">
+            <div class="term-frame overflow-hidden px-4 py-5 sm:px-8">
+              <img
+                src={`${shot('widgets')}?v=9`}
+                width="2042"
+                height="474"
+                loading="lazy"
+                decoding="async"
+                alt="Three Home Screen widgets: a medium usage widget with a ring and three provider rows, a small usage widget, and a small DeepSeek balance widget"
+                class="mx-auto block h-auto w-full max-w-[760px]"
+              />
+            </div>
+            <figcaption
+              class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted"
+            >
+              <span class="accent-text mr-1 font-semibold">Widgets</span> — the same quotas on your Home
+              Screen, a wall drawn as Used up rather than a bare percentage.
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -835,179 +1015,12 @@ const clients = [
       </div>
     </section>
 
-    <section id="screenshots" class={section}>
-      <SectionHead prompt="ls ~/tailscode/iphone" title="The pocket client, screen by screen">
-        Every frame is the built-in demo: what you see before wiring a single server. Scroll the
-        rail; tap a screen for the full-resolution picture.
-      </SectionHead>
-      <div
-        class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-3"
-        tabindex="0"
-        role="group"
-        aria-label="iPhone screenshots, scroll sideways"
-      >
-        {
-          phoneShots.map((s) => (
-            <ShotFigure
-              dark={s.dark}
-              w={s.w}
-              h={s.h}
-              alt={`Tailscode on iPhone: ${s.head}. ${s.body}`}
-              sizes="260px"
-              variant="phone"
-              class="w-[210px] shrink-0 snap-center sm:w-[260px]"
-            >
-              <span class="accent-text block font-semibold">{s.head}</span>
-              {s.body}
-            </ShotFigure>
-          ))
-        }
-      </div>
-    </section>
-
     <DuoCombo slug="tailscode" name={app.shortName} accent={accent} sectionClass={section} />
-
-    <section id="money" class={section}>
-      <div class="grid items-start gap-x-10 gap-y-8 lg:grid-cols-12">
-        <div class="lg:col-span-5">
-          <SectionHead
-            prompt="tailscode --usage --month"
-            title="See what it costs. Before the wall."
-          >
-            A price is a conversation's, and the month is the account's. The numbers come from the
-            machines that hold the transcripts, so nothing about your spend is sent anywhere to be
-            added up.
-          </SectionHead>
-          <ul class="mb-6 grid gap-2.5">
-            {
-              moneyBullets.map((b) => (
-                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
-                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
-                    ▸
-                  </span>
-                  <span>{b}</span>
-                </li>
-              ))
-            }
-          </ul>
-          <div class="term-frame p-4">
-            <p class="term-label accent-text mb-1.5">trophies · game center</p>
-            <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">
-              The ledger is also a game. 27 trophies and four leaderboards (streak days, and turns,
-              tokens and tool calls over thirty days) are scored from the same numbers, and Apple's
-              Game Center shows them. Signing in is optional: the trophy card renders whole without
-              an account.
-            </p>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 items-start gap-4 sm:gap-6 lg:col-span-7">
-          <ShotFigure
-            dark={shot('phone-costs')}
-            w={1320}
-            h={2868}
-            alt="Tailscode on iPhone: the month in numbers, about 1,865 dollars over 25 active days, with a bar for every day"
-            sizes="(min-width: 1024px) 300px, 45vw"
-            variant="phone"
-          >
-            <span class="accent-text block font-semibold">See what it costs</span>
-            Every turn priced, every month totalled across your machines.
-          </ShotFigure>
-          <ShotFigure
-            dark={shot('phone-limits')}
-            w={1320}
-            h={2868}
-            alt="Tailscode on iPhone: each provider's tightest window with its reset clock"
-            sizes="(min-width: 1024px) 300px, 45vw"
-            variant="phone"
-            class="mt-8"
-          >
-            <span class="accent-text block font-semibold">Limits before the wall</span>
-            Each provider's tightest window and reset clock.
-          </ShotFigure>
-          <figure class="col-span-2 mt-2">
-            <div class="term-frame overflow-hidden px-4 py-5 sm:px-8">
-              <img
-                src={`${shot('widgets')}?v=9`}
-                width="2042"
-                height="474"
-                loading="lazy"
-                decoding="async"
-                alt="Three Home Screen widgets: a medium usage widget with a ring and three provider rows, a small usage widget, and a small DeepSeek balance widget"
-                class="mx-auto block h-auto w-full max-w-[760px]"
-              />
-            </div>
-            <figcaption
-              class="mt-2.5 px-1 text-xs leading-relaxed text-paper-muted dark:text-term-muted"
-            >
-              <span class="accent-text mr-1 font-semibold">Widgets</span> — the same quotas on your Home
-              Screen, a wall drawn as Used up rather than a bare percentage.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section id="studio" class={section}>
-      <div class="mb-6 grid items-start gap-x-10 lg:grid-cols-12">
-        <div class="lg:col-span-5">
-          <SectionHead
-            prompt="tailscode studio --on arch"
-            title="A picture is something you ask for in words"
-          >
-            Describe it and your own machine paints it: ComfyUI behind Tailscale, Qwen-Image for
-            quality, FLUX 3 Klein for speed. A clip is the same sentence with a longer verb,
-            rendered by LTX from words or from a first frame. Nothing leaves your tailnet.
-          </SectionHead>
-        </div>
-        <div class="lg:col-span-7 lg:pt-9">
-          <ul class="mb-3 grid gap-2">
-            {
-              studioBullets.map((b) => (
-                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
-                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
-                    ▸
-                  </span>
-                  <span>{b}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
-
-      <div class={`${rail} lg:grid-cols-12`}>
-        <ShotFigure
-          dark={STUDIO.mac.dark}
-          light={STUDIO.mac.light}
-          w={STUDIO.mac.w}
-          h={STUDIO.mac.h}
-          alt="The Studio on the Mac: a finished picture on the stage with its verbs under it, the machine's shelf at the right and the brief docked below"
-          sizes="(min-width: 1024px) 760px, 80vw"
-          class={`${railItem} w-[80vw] lg:w-auto lg:col-span-9 lg:self-center`}
-        >
-          <span class="accent-text mr-1 font-semibold">Mac</span> — Image and video are one sheet inside
-          the Tailscode window, the conversation dimmed behind it; closing it never stops a render. Linux
-          has the same sheet.
-        </ShotFigure>
-        <ShotFigure
-          dark={STUDIO.phoneFinished.dark}
-          light={STUDIO.phoneFinished.light}
-          w={STUDIO.phoneFinished.w}
-          h={STUDIO.phoneFinished.h}
-          alt="The Studio on iPhone with a finished picture and its verbs"
-          sizes="(min-width: 1024px) 260px, 170px"
-          variant="phone"
-          class={`${railItem} w-[170px] lg:w-auto lg:col-span-3`}
-        >
-          <span class="accent-text mr-1 font-semibold">iPhone</span> — done: the verbs sit under the
-          picture.
-        </ShotFigure>
-      </div>
-    </section>
 
     <section id="desks" class={section}>
       <SectionHead prompt="ls ~/tailscode/ipad" title="A workspace, not a stretched phone">
-        On iPad the sidebar holds places, chat scopes and servers, the chat list sits beside it and
+        On iPad the Agents board and the wall get the whole screen, and the last hour runs lane by
+        lane. The sidebar holds places, chat scopes and servers, the chat list sits beside it and
         the conversation fills the rest. Narrow the window and it becomes the phone's app without
         closing the chat you were in; a chat opens in its own window for Stage Manager, and a
         hardware keyboard drives it all.
@@ -1070,6 +1083,64 @@ const clients = [
       </div>
     </section>
 
+    <section id="studio" class={section}>
+      <div class="mb-6 grid items-start gap-x-10 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <SectionHead
+            prompt="tailscode studio --on arch"
+            title="A picture is something you ask for in words"
+          >
+            Describe it and your own machine paints it: ComfyUI behind Tailscale, Qwen-Image for
+            quality, FLUX 3 Klein for speed. A clip is the same sentence with a longer verb,
+            rendered by LTX from words or from a first frame. Nothing leaves your tailnet.
+          </SectionHead>
+        </div>
+        <div class="lg:col-span-7 lg:pt-9">
+          <ul class="mb-3 grid gap-2">
+            {
+              studioBullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+                  <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                    ▸
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class={`${rail} lg:grid-cols-12`}>
+        <ShotFigure
+          dark={STUDIO.mac.dark}
+          light={STUDIO.mac.light}
+          w={STUDIO.mac.w}
+          h={STUDIO.mac.h}
+          alt="The Studio on the Mac: a finished picture on the stage with its verbs under it, the machine's shelf at the right and the brief docked below"
+          sizes="(min-width: 1024px) 760px, 80vw"
+          class={`${railItem} w-[80vw] lg:w-auto lg:col-span-9 lg:self-center`}
+        >
+          <span class="accent-text mr-1 font-semibold">Mac</span> — Image and video are one sheet inside
+          the Tailscode window, the conversation dimmed behind it; closing it never stops a render. Linux
+          has the same sheet.
+        </ShotFigure>
+        <ShotFigure
+          dark={STUDIO.phoneFinished.dark}
+          light={STUDIO.phoneFinished.light}
+          w={STUDIO.phoneFinished.w}
+          h={STUDIO.phoneFinished.h}
+          alt="The Studio on iPhone with a finished picture and its verbs"
+          sizes="(min-width: 1024px) 260px, 170px"
+          variant="phone"
+          class={`${railItem} w-[170px] lg:w-auto lg:col-span-3`}
+        >
+          <span class="accent-text mr-1 font-semibold">iPhone</span> — done: the verbs sit under the
+          picture.
+        </ShotFigure>
+      </div>
+    </section>
+
     <section id="features" class={section}>
       <SectionHead prompt="tailscode --features" title={`What ${app.shortName} does`} />
       <FeatureGrid features={c.features} accent={accent} compact />
@@ -1083,25 +1154,6 @@ const clients = [
         </section>
       )
     }
-
-    <section class={section}>
-      <SectionHead prompt="man tailscode" title={`How ${app.shortName} works`} />
-      <ol class={`${rail} sm:grid-cols-3`}>
-        {
-          c.howItWorks.map((step, i) => (
-            <li class={`${railItem} term-frame w-[80vw] p-5 sm:w-auto`}>
-              <p class="term-label accent-text mb-2">{String(i + 1).padStart(2, '0')}</p>
-              <p class="mb-1.5 text-sm font-bold text-paper-text dark:text-term-text">
-                {step.step}
-              </p>
-              <p class="text-xs leading-relaxed text-paper-muted dark:text-term-muted">
-                {step.body}
-              </p>
-            </li>
-          ))
-        }
-      </ol>
-    </section>
 
     <section id="faq" class={section}>
       <SectionHead prompt="tailscode --help" title="Questions, answered" />

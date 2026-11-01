@@ -1,6 +1,6 @@
 {
-  "seoTitle": "Tailscode: Claude Code, opencode & Oh My Pi on your Lock Screen",
-  "metaDescription": "Every Claude Code, opencode and Oh My Pi agent on one board and your Lock Screen. Approve, follow every step, price every turn. iPhone, iPad, Mac, Linux.",
+  "seoTitle": "Tailscode: Claude Code, opencode & Oh My Pi, in one pocket",
+  "metaDescription": "Run Claude Code, opencode and Oh My Pi on your own computers, on any model, even your own GPU, and follow them all from your phone. No relay, no sign-in.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
@@ -11,6 +11,7 @@
     "claude code lock screen",
     "claude code remote",
     "claude code approve from phone",
+    "claude code agents board",
     "opencode mobile client",
     "opencode 2 client",
     "oh my pi ios app",
@@ -19,6 +20,8 @@
     "tailscale coding agent",
     "remote coding agent ios",
     "coding agent lock screen",
+    "local llm remote client",
+    "ollama llama.cpp iphone",
     "claude code usage tracker",
     "claude code spend",
     "self-hosted ai coding",
@@ -26,40 +29,40 @@
     "tailscode aur",
     "claude code arch linux"
   ],
-  "heroHeadline": "All your coding agents on one board, live on the Lock Screen",
-  "heroSubhead": "Claude Code, opencode and Oh My Pi on your own computers. See what needs you and what is working, approve from the Lock Screen, follow every step, and leave the wall up to watch them all work. Over your own tailnet, on iPhone, iPad, Mac and Linux.",
+  "heroHeadline": "All your agents. One pocket.",
+  "heroSubhead": "Claude Code, opencode and Oh My Pi, working on your own computers, on any model they can run, even one on your own graphics card. Start a task from the couch, check on six at once, and get a ping when the long one finishes, over your own tailnet.",
   "accentColor": "#546BFF",
   "highlights": [
-    "Every agent on one board, and a wall to leave on",
-    "Live Activity per conversation on the Lock Screen",
-    "Megatron: every step of a turn, live",
+    "Every agent on every machine, one board",
+    "Any model, even one on your own GPU",
+    "Long runs on your Lock Screen, approvals behind Face ID",
     "Free, open source, no relay, no sign-in"
   ],
   "features": [
     {
-      "title": "The Lock Screen is the status board",
-      "body": "A Live Activity per conversation shows what the agent is doing, for how long and how many tools it has run. An approval alerts you; a finished turn lingers with its outcome. Tap to land in the exact chat.",
-      "glyph": "❖"
-    },
-    {
-      "title": "Approve with the edit in view",
-      "body": "Allow once, always or deny, right under the diff, while the agent waits. A question arrives as a card you answer with a tap. Queue the next message, edit it before it goes, or stop the turn on the server.",
-      "glyph": "⊹"
-    },
-    {
-      "title": "Every agent, one board",
-      "body": "What needs you, what is working, what runs in the background and what the last hour did, across every machine. Peek at a run, open, stop or nudge it, and answer an approval from its card.",
+      "title": "Every agent on one board",
+      "body": "The Agents board shows what needs you, what is working, what runs in the background and what finished in the last hour, with approve and answer on each card. Peek at a run, then open, stop or nudge it. Watch turns it into a full-screen wall of every agent and helper, an approval a hold away.",
       "glyph": "◈"
     },
     {
-      "title": "A wall to leave on",
-      "body": "Every agent and sub-agent on a Metal ground, full screen on a phone, a folded iPhone Duo, an iPad or any Mac window. Effects say what changed; an approval is a hold away.",
-      "glyph": "▦"
+      "title": "Any model, even your own GPU",
+      "body": "Whatever your agent can run, from cloud models to a local model served by Ollama or llama.cpp on your own machine, picked per chat with its reasoning effort.",
+      "glyph": "∿"
     },
     {
-      "title": "Megatron, every step live",
-      "body": "A turn's thinking, tool runs and notes become one head that breathes while it works. Open it for numbered steps, search, the agent's own account and a replay, or share it as a poster.",
-      "glyph": "✺"
+      "title": "Carry it, or swipe to another model",
+      "body": "Carry a conversation to another model and it gets a short brief of the chat to pick up the thread. A party of six favourite models and their effort levels sits one tap or one swipe of the model pill away.",
+      "glyph": "⊹"
+    },
+    {
+      "title": "Long runs, no babysitting",
+      "body": "A Live Activity per running conversation on the Lock Screen, one for each with Pro. Notifications say what happened, you can reply from the Lock Screen, and an approval shows the exact command and asks for Face ID or your passcode.",
+      "glyph": "❖"
+    },
+    {
+      "title": "A native transcript, not a terminal",
+      "body": "Megatron folds a turn's thinking, tool runs and notes into one head you open for numbered steps, search, the agent's own account and a replay, or share as a poster. Diffs, commands and their real output sit inline, and code copies byte-exact.",
+      "glyph": "▣"
     },
     {
       "title": "A repository is read, never operated",
@@ -67,48 +70,33 @@
       "glyph": "◉"
     },
     {
-      "title": "Prices in dollars",
-      "body": "Every conversation priced, every month totalled across machines by model, project and tool. Always marked an estimate: a subscription bills a flat fee, so the figure is API-equivalent value, never a bill.",
-      "glyph": "▤"
-    },
-    {
-      "title": "Limits before the wall",
-      "body": "Each provider's tightest window and its reset clock on Home and in a widget, with the pace: turns left in the context, a clock when a window will run out before it resets, and one Running low notice. Claude plan limits, Grok quotas, Ollama Cloud, DeepSeek balance.",
-      "glyph": "◐"
-    },
-    {
-      "title": "One pill for model and effort",
-      "body": "Which model and how hard it thinks are one decision: tap a level or slide to it, pin a pair, swipe to cycle. Ultracode burns a rainbow along the composer's edge.",
-      "glyph": "∿"
-    },
-    {
-      "title": "Six models, one party",
-      "body": "Six slots, each a model at an effort on a named server, one tap apart. Carry a chat to another model or machine with a short brief, or branch any answer with Try with another model.",
-      "glyph": "⁂"
-    },
-    {
-      "title": "Three agents, one app",
-      "body": "opencode directly, Claude Code through claude-bridge, Oh My Pi through omp-bridge: two open-source companion servers. Every model Oh My Pi can reach is one picker away.",
+      "title": "Not only code",
+      "body": "Your machines know things. Ask what is eating the GPU, research a question, tidy a folder, check a price: any agent, any model, from anywhere.",
       "glyph": "◑"
     },
     {
-      "title": "Native, and written not pasted",
-      "body": "Programmatic UIKit on iOS, GTK4 on Linux, AppKit on the Mac, all Swift 6. Answers play out at a reading pace with nothing re-wrapping under you, and code copies byte-exact.",
-      "glyph": "▣"
+      "title": "Know what it costs, before the wall",
+      "body": "Every conversation priced, every month totalled across machines, by model, project and tool, and each provider's plan limits with the pace and turns left. Always an estimate, never a bill.",
+      "glyph": "▤"
+    },
+    {
+      "title": "Three agents, three desks",
+      "body": "opencode directly, Claude Code through claude-bridge, Oh My Pi through omp-bridge. Programmatic UIKit on iPhone and iPad, AppKit on the Mac, GTK4 on Linux, all Swift 6 and all open source.",
+      "glyph": "◐"
     }
   ],
   "howItWorks": [
     {
-      "step": "Run an agent server",
-      "body": "On the machine where you code, run claude-bridge's one-line installer: it downloads a prebuilt program (no Swift or git), starts it as a service and ends with a QR code. Prefer opencode or Oh My Pi? opencode serve and omp-bridge work the same way. All three are open source."
+      "step": "Run one command",
+      "body": "On the computer you code on, run claude-bridge's one-line installer: it downloads a prebuilt program (no Swift or git), starts it as a service and ends with a QR code. opencode has a one-line installer too, and Oh My Pi runs through omp-bridge. All three are open source."
     },
     {
       "step": "Join the same tailnet",
       "body": "Install Tailscale on your devices, free for personal use. They see each other directly; the app checks your phone's tailnet address and which agent answers the address you type."
     },
     {
-      "step": "Connect and go",
-      "body": "Scan the QR code the installer printed, open its link, or let Tailscode discover your servers. Send a prompt from the phone, follow it on the Lock Screen, sit down at the desktop and the same session is already there."
+      "step": "Scan and go",
+      "body": "Scan the QR code, confirm, and the app has your machine. Or open the link, or let Tailscode discover your servers. Want to look first? A built-in demo shows the main screens with no server at all."
     }
   ],
   "pricing": {
@@ -117,8 +105,9 @@
       "title": "Tailscode",
       "price": "Free",
       "items": [
-        "One server, full chat, approvals, and questions",
-        "Attachments, models, forking, compaction",
+        "One server: full chat, approvals and questions",
+        "The Agents and Home boards, with peek",
+        "Attachments, every model, forking, compaction",
         "Live Activities, one session at a time",
         "Every theme, the analytics, the git surface",
         "The built-in demo: explore with no server"
@@ -128,10 +117,10 @@
       "title": "Tailscode Pro",
       "price": "$14.99 once",
       "items": [
-        "Unlimited servers, one session list",
+        "Unlimited servers in one list",
         "Concurrent Live Activities (iPhone)",
         "One purchase, iPhone and Mac",
-        "A supporter badge",
+        "A supporter heart",
         "The delegate board (beta): bounded tasks for your cheaper models"
       ]
     },
@@ -149,11 +138,11 @@
   "faq": [
     {
       "q": "Is it free?",
-      "a": "Yes. The free app is the complete core: one server, full chat, approvals and questions, attachments, models, forking, Live Activities, the analytics and the git surface. Tailscode Pro is a one-time $14.99 unlock for unlimited servers, concurrent Live Activities on iPhone, the delegate board (beta) and a supporter badge. There is no subscription, and the Linux client and a Mac build you compile yourself are free and complete."
+      "a": "Yes. The free app is the complete core: one server, full chat, the Agents and Home boards, approvals and questions, attachments, every model, forking, a Live Activity at a time, the analytics and the git surface. Tailscode Pro is a one-time $14.99 unlock for unlimited servers in one list, concurrent Live Activities on iPhone, the delegate board (beta) and a supporter heart. There is no subscription, and the Linux client and a Mac build you compile yourself are free and complete."
     },
     {
       "q": "What do I need?",
-      "a": "A computer you code on, running opencode, Claude Code through claude-bridge, or Oh My Pi through omp-bridge; Tailscale (free for personal use) on that machine and on your phone; and the app. Set-up is three steps the app verifies as you go. No server yet? Tap 'Try the demo' on the first screen to explore every screen with sample conversations, no tailnet needed."
+      "a": "A computer you code on, running opencode, Claude Code through claude-bridge, or Oh My Pi through omp-bridge; Tailscale (free for personal use) on that machine and on your phone; and the app. Set-up is one command on the computer and a QR code to scan, and the app verifies each step as you go. No server yet? Tap 'Try the demo' on the first screen to explore the main screens with sample conversations, no tailnet needed."
     },
     {
       "q": "Is my code sent anywhere?",
@@ -172,6 +161,14 @@
       "a": "Yes. The agents board lists what needs you, what is working, what runs in the background and what finished in the last hour, for every session on every machine, with each one's helpers and todos. Watch turns it into a full-screen wall to leave on a spare screen, and an approval is a hold away. It is in the free app on the iPhone, iPad, Mac and Linux."
     },
     {
+      "q": "Can I run a model on my own GPU?",
+      "a": "Yes, through an agent that can reach one: opencode and Oh My Pi both run a model served by Ollama or llama.cpp on your own machine, and Tailscode picks it per chat with its reasoning effort, next to the cloud models. When most of your work runs on your own machine, the month and its card lead with it, with each local model's speed. The chat still travels point to point over your tailnet."
+    },
+    {
+      "q": "Is it only for code?",
+      "a": "No. Your machines know things, so you can ask what is eating the GPU, research a question, tidy a folder or check a price: any agent, any model, from anywhere. A turn shows its steps in Megatron, so you can read how the answer was reached."
+    },
+    {
       "q": "Is there a Mac and a Linux client?",
       "a": "Yes: a native AppKit app for macOS 26, on the Mac App Store under the same purchase as the iPhone app, and a native GTK4/libadwaita app for Linux. Arch users install it from the AUR (`paru -S tailscode`); everyone else grabs the release tarball from GitHub. Both desktops add tiling splits and a global quick-ask hotkey; the Linux client and a Mac build you compile yourself also carry an embedded terminal and web and video panes, which the sandboxed Mac App Store build leaves out."
     },
@@ -181,7 +178,7 @@
     },
     {
       "q": "What does Pro add?",
-      "a": "Tailscode Pro is a one-time $14.99 unlock for unlimited servers, concurrent Live Activities on iPhone, a supporter badge and the delegate board, a beta that hands routine tasks to a cheaper model and lets a verifier decide. The free app is the complete core forever, with one server."
+      "a": "Tailscode Pro is a one-time $14.99 unlock for unlimited servers in one list, concurrent Live Activities on iPhone, a supporter heart and the delegate board, a beta that hands routine tasks to a cheaper model and lets a verifier decide. iPhone and Mac share one purchase on the same Apple Account. The free app is the complete core forever, with one server."
     },
     {
       "q": "Where do pictures and clips get made?",
@@ -198,22 +195,26 @@
   ],
   "screenshotCaptions": {
     "iphone": [
-      "Approve the risky command — Allow once, always or deny, right under the edit, while the agent waits.",
-      "Every machine, one board — Live turns first, grouped by project, across all your servers.",
-      "Read every diff from your phone — Branch, staged, changed: the real patch, from the machine that owns it.",
-      "When it asks, you answer — A question arrives as a card. Answer with a tap.",
-      "Pick the model. Set the effort. — One pill carries both. Pin pairs and swipe between them.",
-      "Hand off the routine work (beta) — A cheaper model tries first, a verifier decides. Nothing lands until it passes."
+      "All your agents. One pocket. — Claude Code, opencode and Oh My Pi, working on your own computers.",
+      "Leave it on. Watch them work. — Every agent and helper, live and full screen. Hold to approve.",
+      "Any model. Even your own GPU. — A cloud model or a local one on your machine, per chat.",
+      "Look in on any agent — What it's doing now, its last steps and its helpers.",
+      "One line. Then scan. — Claude Code's bridge installs with one command. No sign-in.",
+      "Steer it mid-run — Queue the next message, or stop the turn on the server.",
+      "Ask your machines anything — Not only code: ask what's eating the GPU.",
+      "Switch models, keep the thread — The next model gets a short brief of the chat and carries on.",
+      "Six models, one swipe away — A model and its effort in each slot. Swipe the pill to switch.",
+      "See what it costs — Every turn priced, every month totalled across machines."
     ],
     "ipad": [
-      "The workspace: places and servers in the sidebar, every chat beside it, the live turn filling the rest",
-      "An edit waits for approval with the list in view, and its chat wears NEEDS YOU while it does",
-      "The real diff rises as a sheet over the conversation, read from the machine that owns the repo",
-      "The month in numbers beside the list: every turn priced, totalled across your machines"
+      "All your agents, one screen: an approval waiting with its command and an Approve under it, what is working, what runs in the background and what finished",
+      "The wall: every agent and helper full screen, an approval waiting on its card, the last hour's lane across the foot",
+      "The last hour, lane by lane, with a peek at one agent: what it is doing now and its last steps",
+      "The workspace: places and servers in the sidebar, every chat beside it, a live turn with its Megatron head and steps filling the rest"
     ],
     "desktop": [
       "Four panes, four sessions: an edit waiting on one, subagents fanning out in another, the live count in the title bar",
-      "The Mac in Liquid Glass: every chat in the sidebar, the transcript, the facts row and the model-and-effort pill",
+      "The Agents window on the Mac: an approval with its command, what is working, the background and what finished, and a peek at the run beside them",
       "Two machines side by side on the Mac: a question waiting in one pane, a turn running in the other"
     ]
   },

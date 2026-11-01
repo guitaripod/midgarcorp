@@ -3173,7 +3173,7 @@
       "primaryColor": "#546BFF",
       "name": "Tailscode: Coding Agent Remote",
       "appStoreUrl": "https://apps.apple.com/us/app/tailscode/id6791660932",
-      "description": "Send a prompt to Claude Code, opencode or Oh My Pi from your phone, pocket it, and watch the turn finish on your Lock Screen. Approve the risky command, answer the agent's question, read the diff — over your own Tailscale network, with no relay, no account and no analytics. Free and open source.\n\nTRY IT BEFORE YOU WIRE ANYTHING\nA built-in demo walks every screen with sample conversations. No server needed.\n\nWHAT YOU NEED\nA Mac or Linux machine on your tailnet (Tailscale is free for personal use) running one of your agents: opencode, Claude Code through the open-source claude-bridge, or Oh My Pi through the open-source omp-bridge. Set-up is three verified steps.\n\nTHE TURN, LIVE ON YOUR LOCK SCREEN\n• A Live Activity per conversation: what it is doing, for how long, and how many tools it has run.\n• An approval request alerts you; a finished turn lingers with its outcome. Tap to land in the exact chat.\n• Updates arrive by push while the app is suspended.\n\nA NATIVE TRANSCRIPT, NOT A TERMINAL\n• Streaming text written at the model's own speed, with thinking and tool runs folded into readable groups.\n• Diffs, commands and their real output inline; syntax-highlighted code with byte-exact copy.\n• Allow once, always, or deny without leaving the chat. Agent questions become tappable cards, and a failed turn says what happened and offers to try again.\n• One quiet row of facts — context, spend, branch, agents out — that steps aside when there is nothing to say.\n• Queue the next message while a turn runs, edit it before it goes, or stop the turn on the server.\n• Every picture the agent hands you, in a gallery you can zoom, save or share.\n\nEVERY MACHINE ON ONE BOARD\n• All your servers' conversations in one list, live status first, grouped by project.\n• Read the repository before you trust the change: branch, staged, changed, untracked, and the diff of any file.\n• Subagents dock inside the turn that spawned them; a compaction is drawn as a seam with what it kept.\n• Slash commands from the server's own catalog, per-message model and reasoning effort, forking.\n\nKNOW WHAT IT COSTS\n• Every conversation priced, every month totalled across machines — by model, project and tool.\n• Plan limits and quotas for Claude, Grok, Ollama Cloud, DeepSeek and more, on Home and in a widget.\n\nPICTURES AND CLIPS, ON YOUR OWN MACHINE\n• Describe an image or a short clip in words; it renders on your own machine and arrives in the app.\n\nHAND OFF THE ROUTINE WORK (BETA)\n• A cheaper model tries first and a verifier decides. Nothing lands until it passes.\n\nYOURS, END TO END\n• Point-to-point over your tailnet. No relay servers, no account, no analytics, nobody reading your code.\n• Programmatic UIKit, Swift 6, Liquid Glass on iOS 26. Eight themes, dark mode, Dynamic Type, haptics.\n• Open source under GPL-3.0 — the app, the engine, and both bridges.\n\nFREE, WITH AN HONEST PRO\nThe free app is the complete core: one server, full chat, approvals, attachments, models, forking, and Live Activities. Tailscode Pro is a one-time purchase, no subscription: multiple saved servers, concurrent Live Activities, the delegate board, and a supporter badge.\n\nTailscode is independent open-source software: not affiliated with or endorsed by Anthropic, Tailscale Inc., the opencode project or Oh My Pi.\n\nPrivacy policy: https://midgarcorp.cc/tailscode/privacy\nSource code: https://github.com/guitaripod/Tailscode",
+      "description": "Your coding agents don't stop when you leave the desk, so neither should you. Tailscode puts every agent running on your own computers in your pocket: Claude Code, opencode and Oh My Pi, on any model they can run, including one on your own graphics card. Start a task from the couch, check on six at once from anywhere, and get a ping when the long one finishes. Your chats go straight to your machines over your own Tailscale network, never through a relay, with no sign-in. Free and open source.\n\nONE COMMAND TO SET UP\nFor Claude Code, one line on the computer you code on installs the bridge and ends with a QR code. Scan it, confirm, and the app has your machine; opencode has a one-line installer too. Want to look first? A built-in demo shows the main screens with no server at all.\n\nEVERY AGENT AT A GLANCE\n• Home is one ranked board: a sentence that says who needs you and what is working, then the chats waiting on you, working, pinned and recent.\n• The Agents board shows what needs you, what is working, what runs in the background and what finished in the last hour, with approve and answer on each card. Watch turns it into a full-screen wall of every agent.\n• Peek at any agent without opening its chat: its step, its last moves, its context.\n\nANY MODEL, EVEN YOUR OWN GPU\n• Whatever your agent can run, from cloud models to a local model served by Ollama or llama.cpp on your own machine, picked per chat with its reasoning effort.\n• Carry a conversation to another model: the next one gets a short brief of the chat and picks up the thread.\n• A party of six favourite models and their effort levels, one tap or one swipe of the model pill away.\n\nLONG RUNS, NO BABYSITTING\n• A Live Activity on your Lock Screen for a running conversation, one for each with Pro: what it is doing, for how long, and how many tools it has run.\n• Notifications say what happened: how long it took, what it changed and the first of what it said. Reply from the Lock Screen to start the next turn. An approval shows the exact command and asks for Face ID or your passcode; a question shows its options as buttons.\n• Queue the next message while a turn runs, edit it before it goes, or stop the turn on the server.\n\nA NATIVE TRANSCRIPT, NOT A TERMINAL\n• Megatron folds a turn's thinking and tool runs into one head you open to read, search and replay every step.\n• Diffs, commands and their real output inline; syntax-highlighted code with byte-exact copy.\n• Send screenshots and photos; every picture the agent hands back lands in a gallery.\n\nNOT ONLY CODE\nYour machines know things. Ask what is eating the GPU, research a question, tidy a folder, check a price: any agent, any model, from anywhere.\n\nKNOW WHAT IT COSTS\n• Every conversation priced, every month totalled across machines, by model, project and tool. Always an estimate, never a bill.\n• Plan limits and quotas per provider and account, with the pace and turns left, on Home and in widgets.\n\nYOURS, END TO END\n• Your chats travel point to point over your tailnet, never through a relay. No sign-in, no ads, no tracking, and your code and conversations never reach us.\n• iPhone, iPad and Mac, plus a Linux desktop app, all open source under GPL-3.0: the app, the engine and the bridges.\n\nFREE, WITH AN HONEST PRO\nThe free app is the complete core on one server: full chat, the Agents and Home boards, approvals, attachments, every model, a Live Activity at a time. Tailscode Pro is a one-time purchase, no subscription: unlimited servers in one list, concurrent Live Activities, iPhone and Mac on the same Apple Account, the delegate board, and a supporter heart.\n\nTailscode is independent open-source software, not affiliated with or endorsed by Anthropic, Tailscale Inc., the opencode project or Oh My Pi.\n\nPrivacy policy: https://midgarcorp.cc/tailscode/privacy\nSource code: https://github.com/guitaripod/Tailscode",
       "category": "Developer Tools",
       "price": "Free",
       "rating": 0,
@@ -3186,7 +3186,7 @@
       "iconLocal": "/screenshots/tailscode/icon.webp",
       "marketingUrl": "https://midgarcorp.cc/tailscode",
       "supportUrl": "https://midgarcorp.cc/tailscode/support",
-      "keywords": "tailscale,tailnet,omp,vibe,llm,git,diff,approve,homelab,quota,usage,spend,widget,lock screen,phone",
+      "keywords": "ai,llm,local,ollama,gpu,tailscale,tailnet,vibe,ssh,terminal,cli,homelab,linux,mac,omp,parallel,dev",
       "platforms": [
         "iPhone",
         "iPad",
@@ -3195,34 +3195,58 @@
       "screenshots": {
         "iphone": [
           {
-            "src": "/screenshots/tailscode/phone-lock.webp",
+            "src": "/screenshots/tailscode/phone-agents.webp",
             "w": 1320,
             "h": 2868,
-            "label": "Tailscode on the iPhone Lock Screen: a Live Activity awaiting approval"
+            "label": "Tailscode on iPhone: the Agents board, an approval waiting with its command and what is working"
           },
           {
-            "src": "/screenshots/tailscode/phone-approval.webp",
+            "src": "/screenshots/tailscode/phone-wall.webp",
             "w": 1320,
             "h": 2868,
-            "label": "Tailscode on iPhone: Allow once, Always or Deny while the agent waits"
+            "label": "Tailscode on iPhone: the wall, every agent and helper full screen with an approval to hold"
           },
           {
-            "src": "/screenshots/tailscode/phone-board.webp",
+            "src": "/screenshots/tailscode/phone-models.webp",
             "w": 1320,
             "h": 2868,
-            "label": "Tailscode on iPhone: every machine on one board, live turns first"
+            "label": "Tailscode on iPhone: the model sheet, cloud models and local ones on your own machine, with an effort for each"
           },
           {
-            "src": "/screenshots/tailscode/phone-diff.webp",
+            "src": "/screenshots/tailscode/phone-peek.webp",
             "w": 1320,
             "h": 2868,
-            "label": "Tailscode on iPhone: the real patch of a changed file"
+            "label": "Tailscode on iPhone: a peek at one agent, its step, its last moves and its helpers"
           },
           {
-            "src": "/screenshots/tailscode/phone-question.webp",
+            "src": "/screenshots/tailscode/phone-setup.webp",
             "w": 1320,
             "h": 2868,
-            "label": "Tailscode on iPhone: an agent question answered with a tap"
+            "label": "Tailscode on iPhone: set-up, the bridge's one-line installer and the QR code to scan"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-steer.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: steering a turn mid-run, a message queued and the stop button"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-gpu.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: asking a machine what is eating the GPU, answered in a Megatron head and a table"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-carry.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: a conversation carried to another model with a short brief"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-party.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: a party of six models, each at its effort on a named server"
           },
           {
             "src": "/screenshots/tailscode/phone-costs.webp",
@@ -3231,22 +3255,16 @@
             "label": "Tailscode on iPhone: the month in dollars across machines"
           },
           {
+            "src": "/screenshots/tailscode/phone-approval.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: Allow once, Always or Deny while the agent waits"
+          },
+          {
             "src": "/screenshots/tailscode/phone-limits.webp",
             "w": 1320,
             "h": 2868,
             "label": "Tailscode on iPhone: each provider's tightest window and reset clock"
-          },
-          {
-            "src": "/screenshots/tailscode/phone-effort.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Tailscode on iPhone: the model sheet with pinned model and effort pairs"
-          },
-          {
-            "src": "/screenshots/tailscode/phone-delegate.webp",
-            "w": 1320,
-            "h": 2868,
-            "label": "Tailscode on iPhone: the delegate ladder (beta)"
           },
           {
             "src": "/screenshots/tailscode/suomi-dark-13.webp",
@@ -3289,28 +3307,28 @@
         ],
         "ipad": [
           {
+            "src": "/screenshots/tailscode/ipad-ws-agents.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Tailscode on iPad: the Agents board with an approval waiting"
+          },
+          {
+            "src": "/screenshots/tailscode/ipad-ws-wall.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Tailscode on iPad: the wall, every agent and helper full screen"
+          },
+          {
+            "src": "/screenshots/tailscode/ipad-ws-hour.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Tailscode on iPad: the last hour, lane by lane, with a peek at one agent"
+          },
+          {
             "src": "/screenshots/tailscode/ipad-ws-live.webp",
             "w": 1600,
             "h": 1200,
-            "label": "Tailscode on iPad: the workspace with a live turn"
-          },
-          {
-            "src": "/screenshots/tailscode/ipad-ws-approve.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Tailscode on iPad: an edit waiting for approval with the chat list in view"
-          },
-          {
-            "src": "/screenshots/tailscode/ipad-ws-diff.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Tailscode on iPad: the real diff of a changed file"
-          },
-          {
-            "src": "/screenshots/tailscode/ipad-ws-month.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Tailscode on iPad: the month in numbers"
+            "label": "Tailscode on iPad: the workspace with a live turn and its Megatron head"
           }
         ],
         "linux": [
@@ -3387,10 +3405,10 @@
             "label": "Tailscode for Mac in the light face: the picture viewer sheet over the Studio"
           },
           {
-            "src": "/screenshots/tailscode/mac-dark-chat.webp",
+            "src": "/screenshots/tailscode/mac-dark-agents.webp",
             "w": 1920,
-            "h": 825,
-            "label": "Tailscode for Mac: the compact chat with its link rail open"
+            "h": 1228,
+            "label": "Tailscode for Mac: the Agents window, an approval waiting and a peek at the run"
           },
           {
             "src": "/screenshots/tailscode/mac-dark-split.webp",

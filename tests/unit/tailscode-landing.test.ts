@@ -40,9 +40,11 @@ const referencedShots = (): string[] => {
 describe('Tailscode landing page', () => {
   it('names the app the way the store does', () => {
     expect(facts.name).toBe('Tailscode: Coding Agent Remote');
-    expect(facts.description.startsWith('Send a prompt to Claude Code, opencode or Oh My Pi')).toBe(
-      true
-    );
+    expect(
+      facts.description.startsWith(
+        "Your coding agents don't stop when you leave the desk, so neither should you."
+      )
+    ).toBe(true);
     expect(facts.keywords).toContain('tailnet');
   });
 
@@ -80,15 +82,32 @@ describe('Tailscode landing page', () => {
   it('says nothing that went stale when iOS 1.75 shipped', () => {
     const all = JSON.stringify(copy) + page;
     expect(all).not.toMatch(/iOS 1\.73/);
+    expect(all).not.toMatch(/arrive with 1\.78/);
     expect(all).not.toMatch(/now in App Review/i);
     expect(all).not.toMatch(/Linux is in the AUR and on the App Store/);
   });
 
-  it('puts the trust claim and the Lock Screen first', () => {
-    expect(copy.heroHeadline).toMatch(/Lock Screen/);
+  it("leads with the store's header line and keeps the trust claim beside it", () => {
+    expect(copy.heroHeadline).toBe('All your agents. One pocket.');
     for (const fact of ['No relay', 'No sign-in', 'No tracking', 'GPL-3.0']) {
       expect(page).toContain(fact);
     }
+  });
+
+  it("tells the store's story in the store's order", () => {
+    const at = (id: string) => page.indexOf(`<section id="${id}"`);
+    const order = ['setup', 'agents', 'models', 'lockscreen', 'transcript', 'money', 'trust'];
+    const found = order.map(at);
+    expect(found.every((i) => i >= 0)).toBe(true);
+    expect([...found].sort((a, b) => a - b)).toEqual(found);
+    expect(page).not.toContain('man tailscode');
+  });
+
+  it("captions the store's ten iPhone panels, one per role", () => {
+    const roles = /phoneRoles = \[([^\]]+)\]/.exec(page)![1].match(/'([^']+)'/g)!;
+    expect(roles).toHaveLength(10);
+    expect(copy.screenshotCaptions.iphone).toHaveLength(roles.length);
+    for (const caption of copy.screenshotCaptions.iphone) expect(caption).toContain(' — ');
   });
 
   it('makes no privacy claim the App Privacy label contradicts', () => {
