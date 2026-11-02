@@ -292,9 +292,9 @@
       "rollup": "sum",
       "suppress": false,
       "owner": "marcus",
-      "caveat": "ok made an image; declined is the model or moderation refusing the request; failed is anything else, a provider outage or billing stop first of all. Before 2026-11-02 a Gemini outage was recorded as declined.",
+      "caveat": "ok made an image; declined is the model or moderation refusing the request; failed is anything else, a provider outage or billing stop first of all. Before 2026-11-02 mako filed a failed Gemini call under its no-image text, so those rows are told apart by the HTTP error or parse failure they carry.",
       "kind": "sql",
-      "sql": "SELECT date(u.created_at) AS period, COALESCE(NULLIF(a.registry_slug, ''), u.app_id) AS app,\n  CASE WHEN u.error IS NULL THEN 'ok'\n    WHEN u.error LIKE '%No images returned by Gemini%' OR u.error LIKE '%moderation%' OR u.error LIKE '%content_policy%' THEN 'declined'\n    ELSE 'failed' END AS dim,\n  COUNT(*) AS value\nFROM usage_records u LEFT JOIN apps a ON a.app_id = u.app_id WHERE date(u.created_at) BETWEEN :since AND :until GROUP BY period, app, dim"
+      "sql": "SELECT date(u.created_at) AS period, COALESCE(NULLIF(a.registry_slug, ''), u.app_id) AS app,\n  CASE WHEN u.error IS NULL THEN 'ok'\n    WHEN u.error LIKE '%moderation%' OR u.error LIKE '%content_policy%' THEN 'declined'\n    WHEN u.error LIKE '%No images returned by Gemini%' AND u.error NOT LIKE '%Gemini API error%' AND u.error NOT LIKE '%Failed to parse%' THEN 'declined'\n    ELSE 'failed' END AS dim,\n  COUNT(*) AS value\nFROM usage_records u LEFT JOIN apps a ON a.app_id = u.app_id WHERE date(u.created_at) BETWEEN :since AND :until GROUP BY period, app, dim"
     },
     {
       "id": "downloads",
