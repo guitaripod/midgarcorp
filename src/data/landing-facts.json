@@ -3253,6 +3253,42 @@
             "w": 1320,
             "h": 2868,
             "label": "Tailscode on iPhone: the video screen in its second pass"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-hermes.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: Hermes’s card, a checklist the machine proves, thinking with Bolt on the machine’s own GPU"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-pill.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: the model chooser with a Hermes section beside Claude"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-later.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: Ask later reading “weekdays 7:30” as tomorrow at 7:30, asked by the machine"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-scheduled.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: every machine’s schedules, soonest first, with how each last went"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-machine-agents.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: a machine’s agents, Claude Code built in, Hermes ready on the local GPU, Gemini CLI needing a key, goose found"
+          },
+          {
+            "src": "/screenshots/tailscode/phone-schedule.webp",
+            "w": 1320,
+            "h": 2868,
+            "label": "Tailscode on iPhone: a schedule’s page, its history saying quiet, answered, caught up after the machine was off, and failed in the machine’s words"
           }
         ],
         "iphonelight": [

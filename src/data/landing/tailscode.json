@@ -1,6 +1,6 @@
 {
-  "seoTitle": "Tailscode: Claude Code, opencode & Oh My Pi, in one pocket",
-  "metaDescription": "Run Claude Code, opencode and Oh My Pi on your own computers, on any model, even your own GPU, and follow them all from your phone. No relay, no sign-in.",
+  "seoTitle": "Tailscode: Claude Code, Hermes, opencode & any ACP agent, in one pocket",
+  "metaDescription": "Run Claude Code, Hermes, opencode, Oh My Pi and any ACP agent on your own computers, on any model, even your own GPU. Schedule questions your machine asks itself, and follow it all from your phone. No relay, no sign-in.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
@@ -27,10 +27,18 @@
     "self-hosted ai coding",
     "open source coding agent app",
     "tailscode aur",
-    "claude code arch linux"
+    "claude code arch linux",
+    "hermes agent ios app",
+    "hermes agent iphone",
+    "acp client ios",
+    "agent client protocol app",
+    "gemini cli iphone",
+    "codex acp client",
+    "scheduled ai agent tasks",
+    "claude code schedule"
   ],
   "heroHeadline": "All your agents. One pocket.",
-  "heroSubhead": "Claude Code, opencode and Oh My Pi, working on your own computers, on any model they can run, even one on your own graphics card. Start a task from the couch, check on six at once, and get a ping when the long one finishes, over your own tailnet.",
+  "heroSubhead": "Claude Code, Hermes, opencode, Oh My Pi and any ACP agent, working on your own computers, on any model they can run, even one on your own graphics card. Start a task from the couch, check on six at once, have the machine ask every morning, and get a ping when the long one finishes, over your own tailnet.",
   "accentColor": "#546BFF",
   "highlights": [
     "Every agent on every machine, one board",
@@ -80,15 +88,20 @@
       "glyph": "▤"
     },
     {
-      "title": "Three agents, three desks",
-      "body": "opencode directly, Claude Code through claude-bridge, Oh My Pi through omp-bridge. Programmatic UIKit on iPhone and iPad, AppKit on the Mac, GTK4 on Linux, all Swift 6 and all open source.",
+      "title": "Any agent, three desks",
+      "body": "opencode directly, Claude Code through claude-bridge, Oh My Pi through omp-bridge, and through claude-bridge every agent that speaks the Agent Client Protocol: Hermes, Gemini CLI, Codex, goose and the rest of the ACP registry. Programmatic UIKit on iPhone and iPad, AppKit on the Mac, GTK4 on Linux, all Swift 6 and all open source.",
       "glyph": "◐"
+    },
+    {
+      "title": "The machine keeps the clock",
+      "body": "Hold Send to ask later, or say it: “weekdays 7:30”, “every 2 hours”. Your machine asks whether or not the phone is on, keeps one conversation that remembers, stays quiet when nothing changed, and says when it missed a run.",
+      "glyph": "◷"
     }
   ],
   "howItWorks": [
     {
       "step": "Run one command",
-      "body": "On the computer you code on, run claude-bridge's one-line installer: it downloads a prebuilt program (no Swift or git), starts it as a service and ends with a QR code. opencode has a one-line installer too, and Oh My Pi runs through omp-bridge. All three are open source."
+      "body": "On the computer you code on, run claude-bridge's one-line installer: it downloads a prebuilt program (no Swift or git), starts it as a service and ends with a QR code. opencode has a one-line installer too, and Oh My Pi runs through omp-bridge. All three are open source. Hermes, Gemini CLI and any other ACP agent run through claude-bridge too: the app finds them on the machine and adds them to the model pill."
     },
     {
       "step": "Join the same tailnet",
@@ -154,7 +167,11 @@
     },
     {
       "q": "Which coding agents does it support?",
-      "a": "opencode natively, 1.x or 2, with any provider you've configured in it; Claude Code through claude-bridge; and Oh My Pi through omp-bridge. The bridges are open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama."
+      "a": "opencode natively, 1.x or 2, with any provider you've configured in it; Claude Code through claude-bridge; and Oh My Pi through omp-bridge. The bridges are open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama. Through claude-bridge it also runs any agent that speaks the Agent Client Protocol — Hermes, Gemini CLI, Codex, goose, Kimi CLI, Qwen Code, GitHub Copilot and the rest of the ACP registry: the bridge finds the ones already on your machine, installs others from the registry with one tap, and can give an agent a brain from the model server your machine already runs (llama-swap, ollama, LM Studio, vLLM)."
+    },
+    {
+      "q": "Can my machine ask something on a schedule?",
+      "a": "Yes. Hold Send (or press ⌥⏎ on the desktops) and pick a time, or type one: “weekdays 7:30”, “every 2 hours”, “fri 17:00”. The schedule lives on the machine, so it runs whether or not your phone or computer is on, with any agent and model. Repeats keep one conversation that remembers the last run and stay quiet when nothing changed; a failure always speaks, and a run the machine was off for is said, not hidden. Works with claude-bridge and omp-bridge."
     },
     {
       "q": "Can I see every agent at once?",

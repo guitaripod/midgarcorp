@@ -1014,5 +1014,29 @@
     72,
     144,
     216
+  ],
+  "/screenshots/tailscode/phone-hermes.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-pill.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-later.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-scheduled.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-machine-agents.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-schedule.webp": [
+    480,
+    960
   ]
 }

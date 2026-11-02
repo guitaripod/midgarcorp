@@ -117,6 +117,33 @@ const deskShots = [
   },
 ];
 
+/// Any ACP agent on a machine you already have, and the schedules the machine keeps: the machine's
+/// Agents section, Hermes's card and the pill with an agent in it; Ask later and Scheduled.
+const anyAgentShots = [
+  { ...phone('machine-agents'), head: 'Found', body: 'the agents already on your machine.' },
+  { ...phone('hermes'), head: 'One tap', body: 'Hermes thinks with the GPU you already have.' },
+  { ...phone('pill'), head: 'In the pill', body: 'Hermes beside Opus, one pick away.' },
+];
+const laterShots = [
+  { ...phone('later'), head: 'Say when', body: 'and see the date it means.' },
+  { ...phone('scheduled'), head: 'Scheduled', body: 'every machine’s schedules, soonest first.' },
+  { ...phone('schedule'), head: 'Its history', body: 'quiet, answered, caught up after the machine was off.' },
+];
+
+const anyAgentBullets = [
+  'Hermes, Gemini CLI, Codex, goose, Kimi, Qwen Code, Copilot and the rest of the ACP registry, through the claude-bridge already on your machine. Nothing new to install, pair or open.',
+  'Ready means it answered: the machine opens a real session in each agent before calling it ready, and says in its own words what is missing when it is not.',
+  'No model of its own? Give it one tap of the GPU you already run: llama-swap, ollama, LM Studio and vLLM are found and offered first. Keys stay on the machine.',
+  'An agent is a section of the model pill, so party slots, presets and carry work across Claude Code and Hermes alike.',
+];
+
+const laterBullets = [
+  'Hold Send and pick a time, or say it: weekdays 7:30, every 2 hours, fri 17:00. The date it means is shown before anything is saved.',
+  'The machine asks, whether or not your phone or computer is on, with any agent and model.',
+  'Repeats keep one conversation that remembers, and stay quiet when nothing changed. A failure always speaks.',
+  'A run the machine was off for is said, not hidden: caught up at 09:12, missed 07:30.',
+];
+
 const agentsBullets = [
   'Home is one ranked board: a sentence that says who needs you and what is working, then the chats waiting on you, working, pinned and recent.',
   'The Agents board shows what needs you, what is working, what runs in the background and what finished in the last hour, with approve and answer on each card.',
@@ -553,6 +580,80 @@ const clients = [
               w={s.w}
               h={s.h}
               alt={`Tailscode on iPhone: ${s.head}. ${s.body}`}
+              sizes="(min-width: 1024px) 300px, 210px"
+              variant="phone"
+              class={`${railItem} ${phoneItem}`}
+            >
+              <span class="accent-text block font-semibold">{s.head}</span>
+              {s.body}
+            </ShotFigure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="any-agent" class={section}>
+      <SectionHead prompt="tailscode --agents" title="Any agent. Nothing new to install.">
+        Every agent that speaks the Agent Client Protocol runs on the machine you already connected.
+        The bridge finds them, proves each with a real session, and puts them in the model pill.
+      </SectionHead>
+      <ul class="mb-6 grid gap-2.5">
+        {
+          anyAgentBullets.map((b) => (
+            <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+              <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                ▸
+              </span>
+              <span>{b}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class={`${rail} sm:grid-cols-3`}>
+        {
+          anyAgentShots.map((s) => (
+            <ShotFigure
+              dark={s.dark}
+              w={s.w}
+              h={s.h}
+              alt={`Tailscode on iPhone: ${s.head}, ${s.body}`}
+              sizes="(min-width: 1024px) 300px, 210px"
+              variant="phone"
+              class={`${railItem} ${phoneItem}`}
+            >
+              <span class="accent-text block font-semibold">{s.head}</span>
+              {s.body}
+            </ShotFigure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="schedules" class={section}>
+      <SectionHead prompt="tailscode --every morning" title="Your machine asks. Every morning.">
+        Schedules live on the machine, not the phone, so a question asked every weekday at 7:30 is
+        asked at 7:30 whether or not anything of yours is awake.
+      </SectionHead>
+      <ul class="mb-6 grid gap-2.5">
+        {
+          laterBullets.map((b) => (
+            <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
+              <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+                ▸
+              </span>
+              <span>{b}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class={`${rail} sm:grid-cols-3`}>
+        {
+          laterShots.map((s) => (
+            <ShotFigure
+              dark={s.dark}
+              w={s.w}
+              h={s.h}
+              alt={`Tailscode on iPhone: ${s.head}, ${s.body}`}
               sizes="(min-width: 1024px) 300px, 210px"
               variant="phone"
               class={`${railItem} ${phoneItem}`}
