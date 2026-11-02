@@ -283,6 +283,20 @@
       "sql": "SELECT date(c.created_at) AS period, COALESCE(NULLIF(a.registry_slug, ''), c.app_id) AS app, c.alias AS dim, COUNT(*) AS value FROM chat_requests c LEFT JOIN apps a ON a.app_id = c.app_id WHERE date(c.created_at) BETWEEN :since AND :until GROUP BY period, app, dim"
     },
     {
+      "id": "ai_images",
+      "title": "AI images",
+      "purpose": "Image generations and edits mako was asked for, by outcome. A day of failed with no ok is a provider outage, which the nightly preflight reports.",
+      "unit": "requests",
+      "source": "mako",
+      "grain": "day",
+      "rollup": "sum",
+      "suppress": false,
+      "owner": "marcus",
+      "caveat": "ok made an image; declined is the model or moderation refusing the request; failed is anything else, a provider outage or billing stop first of all. Before 2026-11-02 a Gemini outage was recorded as declined.",
+      "kind": "sql",
+      "sql": "SELECT date(u.created_at) AS period, COALESCE(NULLIF(a.registry_slug, ''), u.app_id) AS app,\n  CASE WHEN u.error IS NULL THEN 'ok'\n    WHEN u.error LIKE '%No images returned by Gemini%' OR u.error LIKE '%moderation%' OR u.error LIKE '%content_policy%' THEN 'declined'\n    ELSE 'failed' END AS dim,\n  COUNT(*) AS value\nFROM usage_records u LEFT JOIN apps a ON a.app_id = u.app_id WHERE date(u.created_at) BETWEEN :since AND :until GROUP BY period, app, dim"
+    },
+    {
       "id": "downloads",
       "title": "Downloads",
       "purpose": "First-time App Store downloads, from Apple's sales reports.",
