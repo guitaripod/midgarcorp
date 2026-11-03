@@ -134,25 +134,17 @@ const link =
     {
       preview && (
         <aside
-          aria-labelledby="preview-title"
-          class="term-frame mb-8 sm:mb-10 max-w-3xl !border-l-2 !border-l-paper-amber dark:!border-l-term-amber p-4 sm:p-5 text-sm"
+          role="note"
+          class="term-frame mb-8 sm:mb-10 inline-flex items-center gap-3 !border-l-2 !border-l-paper-amber dark:!border-l-term-amber px-4 py-3 text-sm"
         >
-          <p class="term-label mb-2 flex items-center gap-2 !text-paper-amber dark:!text-term-amber">
+          <span class="term-label flex items-center gap-2 !text-paper-amber dark:!text-term-amber">
             <span
               aria-hidden="true"
               class="h-1.5 w-1.5 rounded-full bg-paper-amber dark:bg-term-amber motion-safe:animate-pulse"
             />
-            preview · not released
-          </p>
-          <p id="preview-title" class="font-bold text-paper-text dark:text-term-text">
-            These numbers are not ready to quote.
-          </p>
-          <p class="mt-1 leading-relaxed text-paper-muted dark:text-term-muted">
-            This page is still being built. Most apps begin sending usage counts with their next
-            release, so active and new installs read low for now, and any figure, definition or
-            chart here can change before release. The privacy rules below already hold; only the
-            numbers are unfinished.
-          </p>
+            wip
+          </span>
+          <span class="text-paper-text dark:text-term-text">This page is a work in progress.</span>
         </aside>
       )
     }

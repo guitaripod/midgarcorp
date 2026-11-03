@@ -185,8 +185,8 @@ describe('built /open page', () => {
     if (sample) expect(has(mainText('open/index.html'), stats.rules.note)).toBe(true);
   });
 
-  it.skipIf(!built)('leads with the preview banner only while the page is unreleased', () => {
-    expect(has(mainText('open/index.html'), 'These numbers are not ready to quote.')).toBe(preview);
+  it.skipIf(!built)('says the page is a work in progress only while it is unreleased', () => {
+    expect(has(mainText('open/index.html'), 'This page is a work in progress.')).toBe(preview);
   });
 
   it.skipIf(!built)('explains the privacy rules and links the open code', () => {
