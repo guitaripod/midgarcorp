@@ -307,26 +307,6 @@
     480,
     960
   ],
-  "/screenshots/sforesight/mac-1.webp": [
-    480,
-    960
-  ],
-  "/screenshots/sforesight/mac-2.webp": [
-    480,
-    960
-  ],
-  "/screenshots/sforesight/mac-3.webp": [
-    480,
-    960
-  ],
-  "/screenshots/sforesight/mac-4.webp": [
-    480,
-    960
-  ],
-  "/screenshots/sforesight/mac-5.webp": [
-    480,
-    960
-  ],
   "/screenshots/solarbeam/iphone-1.webp": [
     480,
     960
@@ -767,6 +747,10 @@
     480,
     960
   ],
+  "/screenshots/flaccy/linux-14.webp": [
+    480,
+    960
+  ],
   "/screenshots/flaccy/linux-6.webp": [
     480,
     960
@@ -851,6 +835,30 @@
     480,
     960
   ],
+  "/screenshots/tailscode/phone-hermes.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-pill.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-later.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-scheduled.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-machine-agents.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/phone-schedule.webp": [
+    480,
+    960
+  ],
   "/screenshots/tailscode/suomi-light-13.webp": [
     480,
     960
@@ -931,11 +939,6 @@
     480,
     960
   ],
-  "/screenshots/tailscode/icon.webp": [
-    72,
-    144,
-    216
-  ],
   "/screenshots/crucible/hero.webp": [
     480,
     960
@@ -975,11 +978,6 @@
     144,
     216
   ],
-  "/screenshots/sforesight/icon.webp": [
-    72,
-    144,
-    216
-  ],
   "/screenshots/solarbeam/icon.webp": [
     72,
     144,
@@ -1015,28 +1013,9 @@
     144,
     216
   ],
-  "/screenshots/tailscode/phone-hermes.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-pill.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-later.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-scheduled.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-machine-agents.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-schedule.webp": [
-    480,
-    960
+  "/screenshots/tailscode/icon.webp": [
+    72,
+    144,
+    216
   ]
 }

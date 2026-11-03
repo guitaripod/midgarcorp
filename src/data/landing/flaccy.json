@@ -104,7 +104,7 @@
     },
     {
       "title": "Flaccy for Linux",
-      "body": "A native GTK4 app that tints itself with the colour of whatever is playing, with gapless GStreamer playback, MPRIS media keys, Last.fm scrobbling, synced lyrics you can save as a video, listening stats and the same equalizer, in light or dark. Free and open source. Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
+      "body": "A native GTK4 app that tints itself with the colour of whatever is playing, with gapless GStreamer playback, MPRIS media keys, Last.fm scrobbling, synced lyrics you can save as a video, listening stats and the same equalizer, in light or dark. Artist pages open on the artist’s photo with your own history beside it: your plays and rank, a bar for every year you have listened and the songs you have never played. Give any song a volume of its own, and keep playlists, loves and plays in step with your other devices through Flaccy Server. Free and open source. Install with one command — curl -fsSL https://raw.githubusercontent.com/guitaripod/flaccy/master/linux/get-flaccy.sh | sh — or from the AUR with yay -S flaccy-bin.",
       "glyph": "🐧"
     }
   ],
@@ -165,7 +165,7 @@
     },
     {
       "q": "Is there a Linux app?",
-      "a": "Yes. Flaccy for Linux is a free, open source GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, synced lyrics and a full equalizer, with an adaptive theme that retints the whole app with the colour of whatever you're playing. Install it with the one-line command in the Flaccy for Linux section or from the AUR with yay -S flaccy-bin."
+      "a": "Yes. Flaccy for Linux is a free, open source GTK4 app with gapless playback, MPRIS media keys, Last.fm scrobbling, synced lyrics, a full equalizer, a volume of its own for any song and artist pages that show your own history with each artist, with an adaptive theme that retints the whole app with the colour of whatever you're playing. Install it with the one-line command in the Flaccy for Linux section or from the AUR with yay -S flaccy-bin."
     },
     {
       "q": "Can I share song lyrics as a video?",
@@ -203,7 +203,8 @@
       "Advanced mode: up to ten bells, shelves and filters in a table, one profile per output.",
       "Album pages awash in the cover's own color, with year, genre, and quality badges added automatically.",
       "Every song with codec, quality, plays, and a Loved filter.",
-      "Artist pages with bios, genre chips, and similar artists pulled from your own library.",
+      "Artist pages that open on the artist’s photo, or their record when there is none, with your top songs, their latest and your most played release, and the discography by kind.",
+      "You & the artist: your plays, hours and rank, how much of their catalogue you have heard, a bar for every year since your first play, and the songs you have never played, one click away.",
       "Playlists with collage covers, built entirely from your own files.",
       "The queue — history, now playing, and a reorderable Up Next — glowing in the current accent.",
       "Synced lyrics that follow the music, the live line lit in your accent. Click any line to seek.",

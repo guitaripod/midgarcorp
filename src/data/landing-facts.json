@@ -3069,6 +3069,12 @@
             "label": "Artist"
           },
           {
+            "src": "/screenshots/flaccy/linux-14.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Your history"
+          },
+          {
             "src": "/screenshots/flaccy/linux-6.webp",
             "w": 1920,
             "h": 1080,
