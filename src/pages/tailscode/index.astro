@@ -127,7 +127,11 @@ const anyAgentShots = [
 const laterShots = [
   { ...phone('later'), head: 'Say when', body: 'and see the date it means.' },
   { ...phone('scheduled'), head: 'Scheduled', body: 'every machine’s schedules, soonest first.' },
-  { ...phone('schedule'), head: 'Its history', body: 'quiet, answered, caught up after the machine was off.' },
+  {
+    ...phone('schedule'),
+    head: 'Its history',
+    body: 'quiet, answered, caught up after the machine was off.',
+  },
 ];
 
 /// Where Hermes and the schedules are today. Delete it once App Review has cleared 1.82.
@@ -597,7 +601,10 @@ const clients = [
     </section>
 
     <section id="any-agent" class={section}>
-      <SectionHead prompt="tailscode --agents" title="Hermes, and any agent. Nothing new to install.">
+      <SectionHead
+        prompt="tailscode --agents"
+        title="Hermes, and any agent. Nothing new to install."
+      >
         Hermes and every other agent that speaks the Agent Client Protocol run on the machine you
         already connected. The bridge finds them, proves each with a real session, and puts them in
         the model pill.
