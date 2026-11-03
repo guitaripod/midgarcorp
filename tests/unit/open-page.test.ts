@@ -10,6 +10,7 @@ import {
   NO_USAGE_COUNTS,
   nameFromSlug,
   openAppFor,
+  preview,
   sample,
   statsApps,
 } from '../../src/data/open';
@@ -182,6 +183,10 @@ describe('built /open page', () => {
   it.skipIf(!built)('says the data is a sample only while the snapshot is one', () => {
     expect(has(mainText('open/index.html'), 'sample numbers')).toBe(sample);
     if (sample) expect(has(mainText('open/index.html'), stats.rules.note)).toBe(true);
+  });
+
+  it.skipIf(!built)('leads with the preview banner only while the page is unreleased', () => {
+    expect(has(mainText('open/index.html'), 'These numbers are not ready to quote.')).toBe(preview);
   });
 
   it.skipIf(!built)('explains the privacy rules and links the open code', () => {

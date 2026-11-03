@@ -55,6 +55,8 @@ export const KIDS_APP_SLUG = 'master-of-flags';
 
 export const stats = statsData as unknown as OpenStats;
 export const sample = isSample(stats);
+/** True until /open is released: the page leads with a preview banner saying its numbers are not final. */
+export const preview = true;
 export const statsUrl = STATS_URL;
 export const statsApps = appsWithData(stats);
 export const events = eventViews(signalsCatalogData as unknown as SignalsCatalog);
