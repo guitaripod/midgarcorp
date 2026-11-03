@@ -35,7 +35,11 @@
     "gemini cli iphone",
     "codex acp client",
     "scheduled ai agent tasks",
-    "claude code schedule"
+    "claude code schedule",
+    "hermes agent app",
+    "hermes agent remote",
+    "hermes agent phone",
+    "nous research hermes app"
   ],
   "heroHeadline": "All your agents. One pocket.",
   "heroSubhead": "Claude Code, Hermes, opencode, Oh My Pi and any ACP agent, working on your own computers, on any model they can run, even one on your own graphics card. Start a task from the couch, check on six at once, have the machine ask every morning, and get a ping when the long one finishes, over your own tailnet.",
@@ -168,6 +172,10 @@
     {
       "q": "Which coding agents does it support?",
       "a": "opencode natively, 1.x or 2, with any provider you've configured in it; Claude Code through claude-bridge; and Oh My Pi through omp-bridge. The bridges are open-source Swift servers that expose a terminal agent as structured streaming sessions backed by your own subscriptions. Oh My Pi brings its whole provider catalog: Ollama Cloud, OpenCode Go, OpenRouter, Anthropic, xAI, DeepSeek and your local ollama. Through claude-bridge it also runs any agent that speaks the Agent Client Protocol — Hermes, Gemini CLI, Codex, goose, Kimi CLI, Qwen Code, GitHub Copilot and the rest of the ACP registry: the bridge finds the ones already on your machine, installs others from the registry with one tap, and can give an agent a brain from the model server your machine already runs (llama-swap, ollama, LM Studio, vLLM)."
+    },
+    {
+      "q": "Does Tailscode work with Hermes Agent?",
+      "a": "Yes. Hermes runs through claude-bridge on the computer where it lives: install the bridge with its one-line installer (1.17 or newer), open that machine in Tailscode, and add Hermes from its Agents section. If Hermes has no model set up yet, one tap points it at the model server the machine already runs (llama-swap, ollama, LM Studio, vLLM), or you paste an OpenRouter, Anthropic, DeepSeek or xAI key that stays on the machine. Hermes keeps its own memory, skills and settings in ~/.hermes; Tailscode only sets its model. It then sits in the model pill beside Claude Code, with its tool calls, plan and answers drawn like any other chat, and it can run on a schedule. Live on Linux today; the iPhone, iPad and Mac get it in Tailscode 1.82."
     },
     {
       "q": "Can my machine ask something on a schedule?",

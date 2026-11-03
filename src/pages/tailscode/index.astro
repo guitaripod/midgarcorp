@@ -130,6 +130,10 @@ const laterShots = [
   { ...phone('schedule'), head: 'Its history', body: 'quiet, answered, caught up after the machine was off.' },
 ];
 
+/// Where Hermes and the schedules are today. Delete it once App Review has cleared 1.82.
+const agentsAvailability =
+  'Hermes, ACP agents and schedules need claude-bridge 1.17: on Linux today, on the iPhone, iPad and Mac with Tailscode 1.82 once App Review clears it.';
+
 const anyAgentBullets = [
   'Hermes, Gemini CLI, Codex, goose, Kimi, Qwen Code, Copilot and the rest of the ACP registry, through the claude-bridge already on your machine. Nothing new to install, pair or open.',
   'Ready means it answered: the machine opens a real session in each agent before calling it ready, and says in its own words what is missing when it is not.',
@@ -593,10 +597,12 @@ const clients = [
     </section>
 
     <section id="any-agent" class={section}>
-      <SectionHead prompt="tailscode --agents" title="Any agent. Nothing new to install.">
-        Every agent that speaks the Agent Client Protocol runs on the machine you already connected.
-        The bridge finds them, proves each with a real session, and puts them in the model pill.
+      <SectionHead prompt="tailscode --agents" title="Hermes, and any agent. Nothing new to install.">
+        Hermes and every other agent that speaks the Agent Client Protocol run on the machine you
+        already connected. The bridge finds them, proves each with a real session, and puts them in
+        the model pill.
       </SectionHead>
+      <p class="mb-4 text-xs text-paper-muted dark:text-term-muted">{agentsAvailability}</p>
       <ul class="mb-6 grid gap-2.5">
         {
           anyAgentBullets.map((b) => (
