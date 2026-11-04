@@ -106,12 +106,13 @@ describe('apps on the page', () => {
     expect(openAppFor('pay-day').href).toBe('/payday/');
     expect(openAppFor('solar-beam').name).toBe('Solar Beam');
     expect(openAppFor('psywave').href).toBe('/psywave/');
+    expect(openAppFor('living-dex').href).toBe('/livingdex/');
   });
 
   it('falls back to the slug for an app with no landing page', () => {
-    expect(openAppFor('living-dex')).toEqual({
-      slug: 'living-dex',
-      name: 'Living Dex',
+    expect(openAppFor('sforesight')).toEqual({
+      slug: 'sforesight',
+      name: 'Sforesight',
       href: null,
       icon: null,
     });

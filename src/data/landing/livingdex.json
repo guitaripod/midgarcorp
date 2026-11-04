@@ -1,0 +1,147 @@
+{
+  "seoTitle": "Living Dex — Bird, Plant, Bug & Mushroom Identifier",
+  "metaDescription": "Point your iPhone at a bird, bug, plant or mushroom and Living Dex names it, rates how rare it is where you are and adds it to your Dex. 30 free IDs, no account.",
+  "keywords": [
+    "animal identifier app",
+    "bird identifier app",
+    "plant identifier app",
+    "mushroom identifier app",
+    "insect identifier app",
+    "species collection game",
+    "nature app for iphone",
+    "wildlife spotting app"
+  ],
+  "heroHeadline": "Point at anything alive. Add it to your Dex.",
+  "heroSubhead": "Living Dex names the bird, bug, plant or mushroom in front of your camera, checks the name against GBIF, the world's biodiversity database, and rates how rare it is where you are. Every catch becomes a card in your Dex, from Common to Legendary.",
+  "accentColor": "#22C55E",
+  "highlights": [
+    "Birds, plants, bugs and fungi, named and checked against GBIF",
+    "A real rarity for where you are, from Common to Legendary",
+    "A Nearby Dex of the species around you, waiting to be found",
+    "30 free identifications, no account"
+  ],
+  "features": [
+    {
+      "title": "Catch what you see",
+      "body": "Point the camera at something alive or pick a photo. The species is named in seconds, and the name is checked against GBIF, the world's biodiversity database.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Real rarity",
+      "body": "Rarity comes from how often a species is recorded near you, from Common to Legendary, with the conservation status of threatened species.",
+      "glyph": "✦"
+    },
+    {
+      "title": "A Nearby Dex",
+      "body": "Every species that lives around you appears as a locked slot painted with its realm's art, so you know what to look for next.",
+      "glyph": "◈"
+    },
+    {
+      "title": "The realms of life",
+      "body": "Animals, plants, fungi, protists and more, each with an illustrated realm to sort and filter your Dex by and a Field Guide that is free to read.",
+      "glyph": "❖"
+    },
+    {
+      "title": "Field entries and calls",
+      "body": "Each catch opens a field entry that teaches you something about it, with the sound of its call wherever a recording exists.",
+      "glyph": "▰"
+    },
+    {
+      "title": "Streaks and trading cards",
+      "body": "Daily streaks, XP and levels reward getting outside. Share any catch as a collectible trading card, and climb the Game Center leaderboard.",
+      "glyph": "⬡"
+    }
+  ],
+  "howItWorks": [
+    {
+      "step": "Pick a starter",
+      "body": "Every Dex begins with one real species you choose, so there is something in it before you leave the house."
+    },
+    {
+      "step": "Catch",
+      "body": "Point at a garden bird, a wildflower, a beetle or a toadstool and tap. Living Dex names it and rates how rare it is where you are."
+    },
+    {
+      "step": "Fill the Dex",
+      "body": "Each catch becomes a card. The Nearby Dex shows which local species are still locked, waiting to be found."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does Living Dex cost?",
+      "a": "Living Dex is free to download and every device starts with 30 free identifications. After that, Living Dex Pro gives unlimited identifications for $4.99 a month or $29.99 a year as an auto-renewing subscription, or you can buy a one-time credit pack: 100 identifications for $2.99, 400 for $9.99, 1,200 for $24.99 or 2,600 for $49.99. Browsing your Dex, the Nearby list, the Field Guide and field entries is always free."
+    },
+    {
+      "q": "How accurate are the identifications?",
+      "a": "A cloud AI model names the species from your photo, then the name is checked against GBIF, the world's biodiversity database. Identifications are still best guesses and can be wrong. Never eat, touch or handle a wild plant, fungus or animal based on the app."
+    },
+    {
+      "q": "Do I need an account?",
+      "a": "No. Living Dex works without an account or sign-up. Your Dex, sightings and photos are kept on your iPhone."
+    },
+    {
+      "q": "What happens to my photos and location?",
+      "a": "To name a species, a shrunk copy of the photo goes through Midgar's server to Google's Gemini, and no copy is kept once the answer comes back. Location is optional and only used while the app is open: rarity uses the sighting rounded to about 11 km, and the Nearby list uses a grid cell of about 55 km. Without location, rarity comes from worldwide data. Your location is never sent to the AI and never linked to an account."
+    },
+    {
+      "q": "Does it work offline?",
+      "a": "Identifying a catch needs a connection, because every identification happens in the cloud. Your Dex itself is stored on your iPhone."
+    },
+    {
+      "q": "Which devices does it run on?",
+      "a": "Living Dex runs on iPhone with iOS 26 or later."
+    }
+  ],
+  "screenshotCaptions": {
+    "iphone": [
+      "Point at anything alive",
+      "Pick a starter to open your Dex",
+      "Every catch is a card",
+      "Sort your finds by realm",
+      "Locked slots show what lives near you",
+      "An illustrated Field Guide, free to read",
+      "Field entries, calls and conservation status",
+      "Share a catch as a trading card",
+      "Streaks, XP and levels"
+    ]
+  },
+  "ctaLine": "Step outside and catch your first species.",
+  "pricingNote": "Free to download with 30 free identifications. Then Living Dex Pro, an auto-renewing subscription, for unlimited identifications, or one-time credit packs. Browsing your Dex, Nearby and the Field Guide is always free.",
+  "pricing": {
+    "heading": "Browsing is free. Identifications start with 30 on us.",
+    "free": {
+      "title": "Free",
+      "price": "$0",
+      "items": [
+        "30 free identifications on every device",
+        "Your Dex, the Nearby list and the Field Guide",
+        "Field entries, calls and trading cards",
+        "No account, no ads"
+      ]
+    },
+    "premium": {
+      "title": "Living Dex Pro",
+      "price": "$4.99/mo · $29.99/yr",
+      "items": ["Unlimited identifications", "Recognised on all your devices"]
+    },
+    "tiers": [
+      {
+        "name": "Monthly",
+        "price": "$4.99",
+        "amount": 4.99,
+        "period": "P1M",
+        "note": "per month, auto-renewing"
+      },
+      {
+        "name": "Annual",
+        "price": "$29.99",
+        "amount": 29.99,
+        "period": "P1Y",
+        "note": "per year, auto-renewing"
+      }
+    ],
+    "footnote": "US prices shown; your local price appears in the App Store. Subscriptions renew automatically until you cancel in your Apple Account settings. Prefer no subscription? Credit packs of 100, 400, 1,200 or 2,600 identifications ($2.99, $9.99, $24.99, $49.99) are one-time purchases."
+  },
+  "trustNote": "Photos go through Midgar's server to Google's Gemini only to name the organism, and no copy is kept once the answer returns. Your Dex, sightings and photos stay on your iPhone. Location is optional and leaves the phone only rounded, to about 11 km for rarity and a 55 km cell for Nearby. No ads, no tracking.",
+  "requires": null
+}

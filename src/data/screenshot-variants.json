@@ -939,6 +939,42 @@
     480,
     960
   ],
+  "/screenshots/livingdex/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-9.webp": [
+    480,
+    960
+  ],
   "/screenshots/crucible/hero.webp": [
     480,
     960
@@ -1014,6 +1050,11 @@
     216
   ],
   "/screenshots/tailscode/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/livingdex/icon.webp": [
     72,
     144,
     216
