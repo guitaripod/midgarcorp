@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { isGitHubUsername } from '../../lib/github-username';
 
 export const prerender = false;
 
@@ -6,7 +7,7 @@ export const GET: APIRoute = async (context) => {
   const url = new URL(context.request.url);
   const username = url.searchParams.get('username');
 
-  if (!username) {
+  if (!username || !isGitHubUsername(username)) {
     return new Response(JSON.stringify({ error: 'Username required' }), {
       status: 400,
       headers: {
@@ -45,7 +46,7 @@ export const GET: APIRoute = async (context) => {
 
   try {
     // Fetch user data
-    const userResponse = await fetch(`https://api.github.com/users/${username}`, { headers });
+    const userResponse = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}`, { headers });
 
     if (!userResponse.ok) {
       const rateLimitRemaining = userResponse.headers.get('X-RateLimit-Remaining');
@@ -80,7 +81,7 @@ export const GET: APIRoute = async (context) => {
 
     // Fetch recent repos
     const reposResponse = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=3`,
+      `https://api.github.com/users/${encodeURIComponent(username)}/repos?sort=updated&per_page=3`,
       { headers }
     );
 
