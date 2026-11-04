@@ -234,16 +234,16 @@ const foldKey = (entry: Row): string | null =>
   .rl-name {
     grid-area: name;
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
-    gap: 0.5rem;
+    column-gap: 0.5rem;
     min-width: 0;
     font-size: 0.875rem;
   }
 
   .rl-app {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    min-width: 0;
+    overflow-wrap: anywhere;
     font-weight: 600;
     transition: color 0.15s;
     @apply text-paper-text dark:text-term-text;

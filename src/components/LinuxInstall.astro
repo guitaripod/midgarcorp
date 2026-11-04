@@ -38,7 +38,7 @@ const { name, channels, large = false } = Astro.props;
     </div>
     <button
       type="button"
-      class="copy-btn text-xs text-term-faint hover:text-term-green transition-colors flex-shrink-0"
+      class="copy-btn inline-flex min-h-6 min-w-6 items-center justify-center px-1.5 text-xs text-term-faint hover:text-term-green transition-colors flex-shrink-0"
       aria-label={`Copy install command for ${name}`}
     >
       copy
@@ -69,7 +69,7 @@ const { name, channels, large = false } = Astro.props;
 
 <style>
   .install-tab {
-    @apply text-xs px-1.5 py-0.5 rounded-sm text-term-faint border border-transparent transition-colors;
+    @apply text-xs px-1.5 py-1 rounded-sm text-term-faint border border-transparent transition-colors;
   }
 
   .install-tab:hover {

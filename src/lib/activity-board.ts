@@ -229,7 +229,7 @@ function renderCalendarPanel(data: ActivitySnapshot, now: Date): string {
   return `
     <div class="term-frame p-4 sm:p-5">
       <div class="flex items-baseline justify-between gap-3 mb-3">
-        <p class="prompt-line truncate">git log --since=${weeks}.weeks</p>
+        <p class="prompt-line break-words">git log --since=${weeks}.weeks</p>
         <span class="text-[11px] ${faint} whitespace-nowrap">${num(t.contributionsWindow)} total</span>
       </div>
       ${renderHeatmap(data.calendar)}
@@ -239,7 +239,7 @@ function renderCalendarPanel(data: ActivitySnapshot, now: Date): string {
         ${statTile(num(t.activeRepos30d), 'repos · 30d')}
       </dl>
       ${renderLanguages(data.languages, windowLabel)}
-      <p class="mt-4 text-[10px] ${faint}">counts include private work · repos shown are public · synced ${ago(data.generatedAt, now)}</p>
+      <p class="mt-4 text-[11px] ${faint}">counts include private work · repos shown are public · synced ${ago(data.generatedAt, now)}</p>
     </div>`;
 }
 
@@ -270,7 +270,7 @@ function renderBench(data: ActivitySnapshot, now: Date): string {
   return `
     <div class="term-frame px-4 sm:px-5 pt-4 sm:pt-5 pb-1">
       <div class="flex items-baseline justify-between gap-3 mb-1">
-        <p class="prompt-line truncate">ls ~/bench --sort=commits</p>
+        <p class="prompt-line break-words">ls ~/bench --sort=commits</p>
         <span class="text-[11px] ${faint} whitespace-nowrap">${num(active)} active · ${data.focusWindow}d</span>
       </div>
       <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-8">${cells}</ul>

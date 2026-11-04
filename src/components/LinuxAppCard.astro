@@ -23,7 +23,7 @@ const style = FRESHNESS_STYLE[status];
 const targetUrl = app.homepageUrl ?? app.githubUrl;
 const releaseStamp = app.latestReleaseDate ? app.latestReleaseDate.slice(0, 7) : null;
 const linkClass =
-  'text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
+  'inline-flex min-h-6 items-center text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
 ---
 
 <article
@@ -41,7 +41,7 @@ const linkClass =
           >{FORM_GLYPHS[app.form]}</span
         >
         <h3
-          class="text-base sm:text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors truncate"
+          class="text-base sm:text-lg font-bold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors break-words"
         >
           <a href={targetUrl} target="_blank" rel="noopener noreferrer">{app.name}</a>
         </h3>

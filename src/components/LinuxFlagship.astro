@@ -24,7 +24,7 @@ const style = FRESHNESS_STYLE[status];
 const releaseStamp = app.latestReleaseDate ? app.latestReleaseDate.slice(0, 10) : null;
 const targetUrl = app.homepageUrl ?? app.githubUrl;
 const linkClass =
-  'text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
+  'inline-flex min-h-6 items-center text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors';
 ---
 
 <article

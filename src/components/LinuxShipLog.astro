@@ -48,7 +48,7 @@ const legendLevels = [0, 1, 2, 3, 4];
   <div class="overflow-x-auto" data-ship-scroll>
     <div class="min-w-[600px]">
       <div class="flex items-end gap-3 mb-1.5" aria-hidden="true">
-        <div class="w-28 sm:w-36 flex-shrink-0"></div>
+        <div class="w-36 flex-shrink-0"></div>
         <div class="relative flex-1 h-4 min-w-0">
           {
             yearLabels.map((year) => (
@@ -70,7 +70,7 @@ const legendLevels = [0, 1, 2, 3, 4];
             const style = FRESHNESS_STYLE[freshness(app.latestReleaseDate, now)];
             return (
               <li class="flex items-center gap-3 group">
-                <span class="sticky left-0 z-10 w-28 sm:w-36 flex-shrink-0 truncate pr-2 bg-paper-panel dark:bg-term-panel text-xs text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors">
+                <span class="sticky left-0 z-10 w-36 flex-shrink-0 truncate pr-2 bg-paper-panel dark:bg-term-panel text-xs text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors">
                   {app.name}
                 </span>
                 <svg

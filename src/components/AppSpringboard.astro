@@ -96,19 +96,21 @@ const wallpaper = dock.map((entry, index) => `--w${index + 1}:${entry.app.primar
             style={`--accent:${entry.app.primaryColor}`}
           >
             <a href={anchor} class="sb-link" aria-label={label(name, fresh)}>
-              <img
-                src={entry.app.icon}
-                srcset={srcset}
-                sizes={srcset ? '72px' : undefined}
-                alt=""
-                width="512"
-                height="512"
-                class="sb-icon"
-                loading="eager"
-                decoding="async"
-              />
+              <span class="sb-iconwrap">
+                <img
+                  src={entry.app.icon}
+                  srcset={srcset}
+                  sizes={srcset ? '72px' : undefined}
+                  alt=""
+                  width="512"
+                  height="512"
+                  class="sb-icon"
+                  loading="eager"
+                  decoding="async"
+                />
+                {fresh && <span class="sb-dot sb-dot--badge" aria-hidden="true" />}
+              </span>
               <span class="sb-name" aria-hidden="true">
-                {fresh && <span class="sb-dot" />}
                 {name}
               </span>
             </a>
@@ -126,18 +128,20 @@ const wallpaper = dock.map((entry, index) => `--w${index + 1}:${entry.app.primar
             style={`--accent:${entry.app.primaryColor}`}
           >
             <a href={anchor} class="sb-link" aria-label={label(name, fresh)} title={name}>
-              <img
-                src={entry.app.icon}
-                srcset={srcset}
-                sizes={srcset ? '72px' : undefined}
-                alt=""
-                width="512"
-                height="512"
-                class="sb-icon"
-                loading="eager"
-                decoding="async"
-              />
-              {fresh && <span class="sb-dot sb-dot--dock" aria-hidden="true" />}
+              <span class="sb-iconwrap">
+                <img
+                  src={entry.app.icon}
+                  srcset={srcset}
+                  sizes={srcset ? '72px' : undefined}
+                  alt=""
+                  width="512"
+                  height="512"
+                  class="sb-icon"
+                  loading="eager"
+                  decoding="async"
+                />
+                {fresh && <span class="sb-dot sb-dot--badge" aria-hidden="true" />}
+              </span>
             </a>
           </li>
         ))
@@ -323,21 +327,17 @@ const wallpaper = dock.map((entry, index) => `--w${index + 1}:${entry.app.primar
   }
 
   .sb-name {
-    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     max-width: 100%;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
     text-align: center;
     font-family: theme('fontFamily.sans');
     font-size: 0.6875rem;
     line-height: 1rem;
     @apply text-paper-text dark:text-term-text;
-  }
-
-  .sb-name .sb-dot {
-    margin-right: 0.25rem;
-    vertical-align: 0.08em;
   }
 
   .sb-dot {
@@ -358,11 +358,22 @@ const wallpaper = dock.map((entry, index) => `--w${index + 1}:${entry.app.primar
     vertical-align: 0.05em;
   }
 
-  .sb-dot--dock {
+  .sb-iconwrap {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .sb-dot--badge {
     position: absolute;
-    bottom: -0.55rem;
-    left: 50%;
-    transform: translateX(-50%);
+    top: -0.2rem;
+    right: -0.2rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    outline: 2px solid theme('colors.paper.bg');
+  }
+
+  :global(.dark) .sb-dot--badge {
+    outline-color: theme('colors.term.bg');
   }
 
   .sb-dock {
@@ -414,8 +425,12 @@ const wallpaper = dock.map((entry, index) => `--w${index + 1}:${entry.app.primar
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .sb-link:hover .sb-icon,
-    .sb-link:focus-visible .sb-icon {
+    .sb-iconwrap {
+      transition: transform 0.2s ease;
+    }
+
+    .sb-link:hover .sb-iconwrap,
+    .sb-link:focus-visible .sb-iconwrap {
       transform: translateY(-2px) scale(1.04);
     }
   }

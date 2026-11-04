@@ -265,6 +265,8 @@ body[data-shell='wide'] {
 
 .act-sparksvg-lg {
   height: 24px;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .dark .act-sparksvg-lg {

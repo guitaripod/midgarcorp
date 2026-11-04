@@ -356,7 +356,9 @@ const withCode = (text: string) =>
           <div
             class="term-frame flex items-center justify-between gap-3 px-3 py-2.5 font-mono text-sm"
           >
-            <code class="truncate text-paper-text dark:text-term-text">
+            <code
+              class="min-w-0 overflow-x-auto whitespace-nowrap text-paper-text dark:text-term-text"
+            >
               <span class="accent-text">$</span> curl -fsSL <span
                 class="text-paper-green dark:text-term-green">unrager.com/install.sh</span
               > | bash
@@ -421,7 +423,7 @@ const withCode = (text: string) =>
           <div
             id="unrager-downloads-popover"
             role="tooltip"
-            class="invisible absolute bottom-[calc(100%+12px)] left-0 z-20 w-max max-w-xs translate-y-1 rounded-lg border border-paper-border bg-paper-raised p-3.5 text-left opacity-0 shadow-2xl transition-all duration-150 dark:border-term-border dark:bg-term-raised"
+            class="invisible absolute bottom-[calc(100%+12px)] left-0 z-20 w-max max-w-[min(20rem,calc(100vw-2rem))] translate-y-1 rounded-lg border border-paper-border bg-paper-raised p-3.5 text-left opacity-0 shadow-2xl transition-all duration-150 dark:border-term-border dark:bg-term-raised"
           >
             <p class="accent-text mb-1.5 text-[0.62rem] font-bold uppercase tracking-[0.14em]">
               what this counts
