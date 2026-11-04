@@ -119,5 +119,48 @@
     ]
   },
   "ctaLine": "Start the free Judaism path today and explore humanity's greatest mystery.",
-  "pricingNote": "Free to start (full Judaism path, no account); Premium unlocks all paths and unlimited Oracle chat at $19.99/year or $2.99/month, with a one-time lifetime option and single-tradition purchases also available."
+  "pricingNote": "Free to start (full Judaism path, no account); Premium unlocks all paths and unlimited Oracle chat at $19.99/year or $2.99/month, with a one-time lifetime option and single-tradition purchases also available.",
+  "pricing": {
+    "heading": "The Judaism path is free. Premium opens every other one.",
+    "free": {
+      "title": "Free",
+      "price": "$0",
+      "items": [
+        "The full Judaism path, every lesson, quiz and mastery test",
+        "Streaks and progress kept on your device",
+        "No account"
+      ]
+    },
+    "premium": {
+      "title": "Premium",
+      "price": "$2.99/mo · $19.99/yr",
+      "items": [
+        "All 21 other paths, and every future path",
+        "Unlimited Oracle chat with the deity guides"
+      ]
+    },
+    "tiers": [
+      {
+        "name": "Monthly",
+        "price": "$2.99",
+        "amount": 2.99,
+        "period": "P1M",
+        "note": "per month, auto-renewing"
+      },
+      {
+        "name": "Annual",
+        "price": "$19.99",
+        "amount": 19.99,
+        "period": "P1Y",
+        "note": "per year, auto-renewing"
+      },
+      {
+        "name": "Ultimate",
+        "price": "$89.99",
+        "amount": 89.99,
+        "note": "once, never renews"
+      }
+    ],
+    "footnote": "US prices shown; your local price appears in the App Store. Subscriptions renew automatically until you cancel in your Apple Account settings. Prefer to own it? Ultimate Enlightenment unlocks every path and the Oracle with one purchase, and any single path is $3.99 on its own."
+  }
 }

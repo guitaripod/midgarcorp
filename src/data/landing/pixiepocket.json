@@ -123,6 +123,53 @@
   },
   "ctaLine": "Start with 5 free edits a day and edit your first photo in seconds.",
   "pricingNote": "Free to download, with 5 free Standard edits a day for your first 7 days. Then buy packs of 10, 40 or 120 edits ($2.99, $9.99, $24.99) that never expire, or PixiePocket Plus, 60 edits a week for $6.99, auto-renewing until you cancel.",
+  "pricing": {
+    "heading": "Start with free edits. Then packs, or Plus.",
+    "free": {
+      "title": "Pixie Week",
+      "price": "$0",
+      "items": [
+        "5 free Standard edits a day for your first 7 days",
+        "No sign-up and no card"
+      ]
+    },
+    "premium": {
+      "title": "PixiePocket Plus",
+      "price": "$6.99/wk",
+      "items": [
+        "60 edits every week, Standard or Max",
+        "Renews weekly until you cancel"
+      ]
+    },
+    "tiers": [
+      {
+        "name": "Plus",
+        "price": "$6.99",
+        "amount": 6.99,
+        "period": "P1W",
+        "note": "per week, auto-renewing"
+      },
+      {
+        "name": "10 edits",
+        "price": "$2.99",
+        "amount": 2.99,
+        "note": "once, never expire"
+      },
+      {
+        "name": "40 edits",
+        "price": "$9.99",
+        "amount": 9.99,
+        "note": "once, never expire"
+      },
+      {
+        "name": "120 edits",
+        "price": "$24.99",
+        "amount": 24.99,
+        "note": "once, never expire"
+      }
+    ],
+    "footnote": "US prices shown; your local price appears in the App Store. Plus renews weekly until you cancel in your Apple Account settings. Edit packs are one-time purchases that never expire. A Standard image costs one edit and a Max image five."
+  },
   "video": {
     "src": "/screenshots/pixiepocket/promo.mp4?v=2",
     "poster": "/screenshots/pixiepocket/promo-poster.webp?v=2",

@@ -90,3 +90,27 @@ describe('No landing page promises a free trial', () => {
     expect(offenders).toEqual([]);
   });
 });
+
+/// Landing pages of apps that sell nothing in-app, so their store price chip already tells the
+/// whole story. Every app today sells a subscription, an unlock, packs or tips.
+const NO_IN_APP_PURCHASES = new Set<string>();
+
+describe('Every landing page states its in-app prices', () => {
+  const dir = path.join(process.cwd(), 'src', 'data', 'landing');
+  const pages = fs
+    .readdirSync(dir)
+    .filter((name) => name.endsWith('.json'))
+    .map((name) => ({
+      slug: name.replace('.json', ''),
+      copy: JSON.parse(read('src', 'data', 'landing', name)),
+    }))
+    .filter(({ slug }) => !NO_IN_APP_PURCHASES.has(slug));
+
+  it.each(pages.map(({ slug, copy }) => [slug, copy]))(
+    '%s has a pricing block with priced tiers',
+    (_slug, copy) => {
+      expect(copy.pricing?.tiers?.length).toBeGreaterThan(0);
+      for (const tier of copy.pricing.tiers) expect(tier.price).toMatch(/^\$\d/);
+    }
+  );
+});

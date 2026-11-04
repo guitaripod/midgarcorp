@@ -114,5 +114,41 @@
     ]
   },
   "ctaLine": "Start with 3 free playlists. Describe your first mood now.",
-  "pricingNote": "Free to start with 3 playlists, then either a Psywave Pro subscription for unlimited mixes or one-time credit packs that never expire."
+  "pricingNote": "Free to start with 3 playlists, then either a Psywave Pro subscription for unlimited mixes or one-time credit packs that never expire.",
+  "pricing": {
+    "heading": "Three playlists free. Then Pro, or packs.",
+    "free": {
+      "title": "Free",
+      "price": "$0",
+      "items": [
+        "Your first 3 playlists",
+        "Every playlist saved, ready to re-import"
+      ]
+    },
+    "premium": {
+      "title": "Psywave Pro",
+      "price": "$4.99/mo · $29.99/yr",
+      "items": [
+        "Unlimited playlists",
+        "Longer mixes of up to 50 songs"
+      ]
+    },
+    "tiers": [
+      {
+        "name": "Monthly",
+        "price": "$4.99",
+        "amount": 4.99,
+        "period": "P1M",
+        "note": "per month, auto-renewing"
+      },
+      {
+        "name": "Annual",
+        "price": "$29.99",
+        "amount": 29.99,
+        "period": "P1Y",
+        "note": "per year, auto-renewing"
+      }
+    ],
+    "footnote": "US prices shown; your local price appears in the App Store. Subscriptions renew automatically until you cancel in your Apple Account settings. Prefer no subscription? Credit packs of 15, 50 or 120 playlists ($2.99, $6.99, $12.99) are one-time purchases that never expire. Importing playlists needs an Apple Music subscription."
+  }
 }

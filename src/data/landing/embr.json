@@ -116,5 +116,46 @@
     ]
   },
   "ctaLine": "Get the native Twitch client your iPhone deserves.",
-  "pricingNote": "Free and open source. Browse and watch as a guest, or sign in with Twitch for Following, chat, and moderator tools — no tracking, no subscription."
+  "pricingNote": "Free and open source. Browse and watch as a guest, or sign in with Twitch for Following, chat, and moderator tools — no tracking, no subscription.",
+  "pricing": {
+    "heading": "Free and open source. Tips are optional.",
+    "free": {
+      "title": "Embr",
+      "price": "$0",
+      "items": [
+        "Live streams, VODs and clips in a native player",
+        "Chat with 7TV, BTTV and FFZ emotes",
+        "Browse as a guest, sign in for Following"
+      ]
+    },
+    "premium": {
+      "title": "Tips",
+      "price": "$1.99 · $4.99 · $9.99",
+      "items": [
+        "A one-time tip that supports development",
+        "Unlocks nothing: every feature is free"
+      ]
+    },
+    "tiers": [
+      {
+        "name": "Small tip",
+        "price": "$1.99",
+        "amount": 1.99,
+        "note": "once"
+      },
+      {
+        "name": "Medium tip",
+        "price": "$4.99",
+        "amount": 4.99,
+        "note": "once"
+      },
+      {
+        "name": "Large tip",
+        "price": "$9.99",
+        "amount": 9.99,
+        "note": "once"
+      }
+    ],
+    "footnote": "US prices shown; your local price appears in the App Store. Tips are one-time purchases that unlock nothing; Embr has no subscription."
+  }
 }

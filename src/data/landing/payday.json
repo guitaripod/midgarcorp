@@ -111,5 +111,43 @@
     ]
   },
   "ctaLine": "Be ready for the EU e-invoicing mandates. Start invoicing free today.",
-  "pricingNote": "Free unlimited invoicing; Pro is a monthly or annual subscription, and Peppol sends plus optional AI run on one-time credit packs."
+  "pricingNote": "Free unlimited invoicing; Pro is a monthly or annual subscription, and Peppol sends plus optional AI run on one-time credit packs.",
+  "pricing": {
+    "heading": "Invoicing is free. Pro adds e-invoices.",
+    "free": {
+      "title": "Free",
+      "price": "$0",
+      "items": [
+        "Unlimited invoices, estimates and clients",
+        "Your logo, multi-currency and the full VAT engine",
+        "VAT number validation",
+        "Works offline, no account to start"
+      ]
+    },
+    "premium": {
+      "title": "Pay Day Pro",
+      "price": "$4.99/mo · $39.99/yr",
+      "items": [
+        "Factur-X / ZUGFeRD hybrid e-invoices",
+        "Peppol delivery into your client's system"
+      ]
+    },
+    "tiers": [
+      {
+        "name": "Monthly",
+        "price": "$4.99",
+        "amount": 4.99,
+        "period": "P1M",
+        "note": "per month, auto-renewing"
+      },
+      {
+        "name": "Annual",
+        "price": "$39.99",
+        "amount": 39.99,
+        "period": "P1Y",
+        "note": "per year, auto-renewing"
+      }
+    ],
+    "footnote": "US prices shown; your local price appears in the App Store. Subscriptions renew automatically until you cancel in your Apple Account settings. Peppol sends and the optional AI helpers use one-time credit packs of 30, 110, 300 or 650 credits ($2.99, $9.99, $24.99, $49.99)."
+  }
 }

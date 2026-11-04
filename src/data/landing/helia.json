@@ -118,5 +118,49 @@
     ]
   },
   "ctaLine": "Get the upside of daylight, on a sunburn budget you never overdraw.",
-  "pricingNote": "Free safety core forever — live UV, your sunburn budget, hands-free tracking and reminders. Pro coaching is $9.99/year or $1.99/month, with a one-time $29.99 lifetime option."
+  "pricingNote": "Free safety core forever — live UV, your sunburn budget, hands-free tracking and reminders. Pro coaching is $9.99/year or $1.99/month, with a one-time $29.99 lifetime option.",
+  "pricing": {
+    "heading": "The safety core is free forever. Pro adds the coaching.",
+    "free": {
+      "title": "Free",
+      "price": "$0",
+      "items": [
+        "Live local UV and your personal sunburn budget",
+        "Hands-free session tracking and the safe-exposure timer",
+        "Reminders, with no account"
+      ]
+    },
+    "premium": {
+      "title": "Helia Pro",
+      "price": "$1.99/mo · $9.99/yr · $29.99 once",
+      "items": [
+        "Circadian light coaching and vitamin-D estimates",
+        "Mood and sleep guidance",
+        "Full history and trends, and the solar coach"
+      ]
+    },
+    "tiers": [
+      {
+        "name": "Monthly",
+        "price": "$1.99",
+        "amount": 1.99,
+        "period": "P1M",
+        "note": "per month, auto-renewing"
+      },
+      {
+        "name": "Annual",
+        "price": "$9.99",
+        "amount": 9.99,
+        "period": "P1Y",
+        "note": "per year, auto-renewing"
+      },
+      {
+        "name": "Lifetime",
+        "price": "$29.99",
+        "amount": 29.99,
+        "note": "once, never renews"
+      }
+    ],
+    "footnote": "US prices shown; your local price appears in the App Store. Subscriptions renew automatically until you cancel in your Apple Account settings. The lifetime unlock never renews."
+  }
 }
