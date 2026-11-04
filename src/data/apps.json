@@ -12,10 +12,10 @@
         "Apple TV",
         "Vision Pro"
       ],
-      "category": "Photo & Video",
+      "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam-james-webb-images/id6705124497",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/60/c0/bb/60c0bb43-dfc5-fa64-8cb1-8b3c0e3543c6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/d7/3e/95d73ecf-b69f-951a-2bf7-b7c76e4bee26/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#F59E0B",
       "features": [
         "Curated Webb image gallery",
@@ -33,10 +33,10 @@
         "iPhone",
         "iPad"
       ],
-      "category": "Food & Drink",
+      "category": "Food \u0026 Drink",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/double-kick-menu-translator/id6736581403",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/03/57/a2/0357a2b1-dac4-3871-5c25-9b7f87e3431d/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a7/83/0d/a7830d72-d60e-384c-bfc0-7d2f55279403/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#DC2626",
       "features": [
         "Instant menu translation",
@@ -57,7 +57,7 @@
       "category": "Music",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/psywave-ai-playlist-maker/id6727000827",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/d1/57/00d15751-6640-bfd6-0269-95ab62d98cdc/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/73/3d/1f733d4e-fa7d-4ef8-7344-c0fd361ef046/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#8B5CF6",
       "features": [
         "ML-powered music analysis",
@@ -68,17 +68,17 @@
     },
     {
       "id": "dream-eater",
-      "name": "Dream Eater: Dream Interpreter",
+      "name": "Dream Eater: Dream Journal",
       "tagline": "Voice Dream Journal",
-      "description": "A voice-first dream journal: speak it before it fades, keep it with the real moon and sky of that night, and ask for a reading that asks questions instead of handing you a verdict.",
+      "description": "You wake at 3 a.m. with a dream still vivid.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
       "category": "Lifestyle",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-dream-interpreter/id6661019277",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b8/20/c5/b820c527-7151-0d96-64cd-bed53c165c7d/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-dream-journal/id6661019277",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b4/cd/42/b4cd427a-fde6-051f-9aa7-15f195f2ad8a/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#8B7CF6",
       "features": [
         "Voice capture that works offline",
@@ -99,7 +99,7 @@
       "category": "Utilities",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-inventory-warranty/id1523538855",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/03/da/7e/03da7e96-4a6c-616e-04a8-92a4f7277a4e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/0e/ab/da/0eabda95-f92b-4d2a-5f12-7f833d765c60/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#10B981",
       "features": [
         "Warranty and return reminders",
@@ -111,19 +111,18 @@
     {
       "id": "master-of-flags",
       "name": "Master of Flags: World Quiz",
-      "tagline": "Learn Flags & Capitals",
-      "description": "A flag and capitals quiz with no ads, no subscription and no account: wrong answers teach the right flag, and a Daily Challenge keeps the habit.",
+      "tagline": "Learn Flags \u0026 Capitals",
+      "description": "Master of Flags is FREE. No ads.",
       "platforms": [
         "iPhone",
         "iPad",
         "Mac",
-        "Apple TV",
         "Apple Watch"
       ],
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/21/21/b8/2121b86e-4bfb-9b10-b738-bc776d72a2c0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6f/3c/c1/6f3cc15c-7ed6-768e-5bfe-9b8cb03776cf/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EF4444",
       "features": [
         "Flags and capitals, six regions",
@@ -144,7 +143,7 @@
       "category": "Education",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/99/f4/eb/99f4ebf1-b177-e24a-4cbf-d56d90309e62/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/eb/89/bd/eb89bd5c-d765-3411-cfdb-8917bb0376c3/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#7C3AED",
       "features": [
         "Local MLX LLM technology for offline AI",
@@ -157,20 +156,20 @@
       "id": "pixiepocket",
       "name": "PixiePocket: AI Image Maker",
       "tagline": "Create AI Images in Your Pocket",
-      "description": "Turn any photo into something amazing with one tap: a pro headshot, a restored old photo, a 3D figurine, an anime portrait, a royal portrait of your pet. Powered by Google's Nano Banana 2 and Nano Banana Pro.",
+      "description": "Turn any photo into something amazing with one tap: a pro headshot, a restored old photo, a 3D figurine, an anime portrait, a royal portrait of your pet. Standard runs on Google's Nano Banana 2.1 and Max on OpenAI's GPT Image 2.5.",
       "platforms": [
         "iPhone",
         "iPad"
       ],
-      "category": "Photo & Video",
+      "category": "Photo \u0026 Video",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4a/30/0a/4a300a74-7885-7894-40cc-a77e32b27b37/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/49/92/24/49922419-aaa4-b8e8-b1bd-1903575cfc24/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#EC4899",
       "features": [
-        "One-tap edits, from headshots to old-photo restores",
-        "Refine any image by chat",
-        "Pay per image, credits never expire"
+        "14 one-tap edits, from headshots to old-photo restores",
+        "Standard on Nano Banana 2.1, Max on GPT Image 2.5",
+        "Edit packs that never expire, or Plus for 60 edits a week"
       ],
       "releaseDate": "2025-09-19T07:00:00Z"
     },
@@ -186,34 +185,58 @@
       "category": "Entertainment",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/embr-live-streams/id6784940198",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9b/cf/47/9bcf47f5-c888-89b6-d9cc-cdc31d112c80/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/70/2f/c7/702fc712-3d54-c495-34a7-bf639c1ce2ad/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#9147FF",
       "features": [
-        "Native player with PiP & background audio",
-        "Real-time chat with 7TV, BTTV & FFZ emotes",
+        "Native player with PiP \u0026 background audio",
+        "Real-time chat with 7TV, BTTV \u0026 FFZ emotes",
         "Browse as a guest, sign in for Following"
       ],
       "releaseDate": "2026-07-06T07:00:00Z"
     },
     {
-      "id": "tailscode",
-      "name": "Tailscode: Coding Agent Remote",
-      "tagline": "The Remote for Your Coding Agents",
-      "description": "Send a prompt to Claude Code, opencode or Oh My Pi from your phone, pocket it, and watch the turn finish on your Lock Screen. Approve the risky command, answer the agent's question, read every diff — from anywhere on your own Tailscale network.",
+      "id": "crucible",
+      "name": "Crucible for Plex",
+      "tagline": "Plex, Done Right on iPhone, iPad and Apple TV",
+      "description": "Crucible is a native client for your Plex Media Server on iPhone, iPad and Apple TV. It is built to feel like part of the system: the system player, native menus and context menus, Liquid Glass on the newest software, and a library that opens exactly where you left off.",
       "platforms": [
-        "iPhone"
+        "iPhone",
+        "iPad",
+        "Apple TV"
       ],
-      "category": "Developer Tools",
+      "category": "Entertainment",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/tailscode-coding-agent-remote/id6791660932",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/27/00/2a/27002a72-cfb0-6eb6-1c6e-586a3012d706/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#546BFF",
+      "appStoreUrl": "https://apps.apple.com/us/app/crucible-for-plex/id6822066419",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9c/fd/1b/9cfd1bab-a2c2-c961-5aae-9f880c14552d/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#F97316",
       "features": [
-        "Drive Claude Code & opencode from your phone",
-        "Point-to-point over your own Tailscale network",
-        "Watch the turn land on your Lock Screen"
+        "A Resume-first Home on iPhone, iPad and Apple TV",
+        "Skip Intro, offline downloads and a Year in Review",
+        "Open source, with a built-in demo to try first"
       ],
-      "releaseDate": "2026-07-28T07:00:00Z"
+      "releaseDate": "2026-10-15T07:00:00Z"
+    },
+    {
+      "id": "flaccy",
+      "name": "Flaccy – Lossless FLAC Player",
+      "tagline": "The Player for the Music You Own",
+      "description": "Flaccy plays the music you own at full quality: FLAC, ALAC, WAV, AIFF, MP3 and AAC. A real equalizer, gapless playback, synced lyrics you can share as a video, Last.fm scrobbling and a standalone Apple Watch app.",
+      "platforms": [
+        "iPhone",
+        "Apple Watch",
+        "Mac"
+      ],
+      "category": "Music",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/flaccy-lossless-flac-player/id6787493695",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6e/e0/09/6ee00933-a1c3-68ac-7460-99b3f9499ae0/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#FF4D6D",
+      "features": [
+        "Gapless FLAC playback with quality badges",
+        "A real equalizer with a setting per output",
+        "Last.fm scrobbling, charts \u0026 Year in Music"
+      ],
+      "releaseDate": "2026-07-09T07:00:00Z"
     },
     {
       "id": "psybeam",
@@ -227,7 +250,7 @@
       "category": "Travel",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/psybeam-ai-voice-translator/id6777952645",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0a/78/58/0a7858b4-9296-fd64-c54e-723a7d9d14a4/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/99/ae/dc/99aedc26-3c3b-f607-07b8-31e9598fea19/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#06B6D4",
       "features": [
         "Real-time voice-to-voice in 20+ languages",
@@ -238,50 +261,70 @@
     },
     {
       "id": "helia",
-      "name": "Helia: UV Index & Sun Safety",
+      "name": "Helia: UV Index \u0026 Sun Safety",
       "tagline": "The Honest Solar Coach",
       "description": "Helia is the honest solar coach. Most sun apps either push you to maximize a tan or just show a raw UV number.",
       "platforms": [
         "iPhone"
       ],
-      "category": "Health & Fitness",
+      "category": "Health \u0026 Fitness",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/helia-uv-index-sun-safety/id6785542220",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/5a/b0/39/5ab0397c-823d-32c9-e938-15d8045ea4b5/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/82/1f/91/821f9175-c659-9c20-2b57-fdfcdbdb629d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
       "primaryColor": "#F5A623",
       "features": [
         "A live sunburn budget tuned to your skin",
-        "Real-time local UV & a safe-exposure timer",
-        "Circadian, vitamin-D & mood coaching"
+        "Real-time local UV \u0026 a safe-exposure timer",
+        "Circadian, vitamin-D \u0026 mood coaching"
       ],
       "releaseDate": "2026-07-21T07:00:00Z"
     },
     {
-      "id": "flaccy",
-      "name": "Flaccy – Lossless FLAC Player",
-      "tagline": "The Player for the Music You Own",
-      "description": "Flaccy is a beautiful player for the music you own. Drop in your FLAC, ALAC, AAC, or MP3 files and get a fast, gorgeous library with gapless playback, synced lyrics you can share as a video, and scrobbling — no streaming subscription, no upload, no account.",
+      "id": "tailscode",
+      "name": "Tailscode: Coding Agent Remote",
+      "tagline": "The Remote for Your Coding Agents",
+      "description": "Send a prompt to Claude Code, opencode or Oh My Pi from your phone, pocket it, and watch the turn finish on your Lock Screen. Approve the risky command, answer the agent's question, read the diff — over your own Tailscale network, with no relay, no account and no analytics.",
       "platforms": [
         "iPhone",
-        "Apple Watch",
+        "iPad",
         "Mac"
       ],
-      "category": "Music",
+      "category": "Developer Tools",
       "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/flaccy-lossless-flac-player/id6787493695",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b4/38/b9/b438b95a-a05d-5660-bd16-7dacb8422163/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#FF4D6D",
+      "appStoreUrl": "https://apps.apple.com/us/app/tailscode-coding-agent-remote/id6791660932",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b0/b8/ac/b0b8ac03-e57a-0ede-9316-ed7ee84ab9c7/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#546BFF",
       "features": [
-        "Gapless FLAC playback with quality badges",
-        "A real equalizer with a setting per output",
-        "Last.fm scrobbling, charts & Year in Music"
+        "Drive Claude Code \u0026 opencode from your phone",
+        "Point-to-point over your own Tailscale network",
+        "Watch the turn land on your Lock Screen"
       ],
-      "releaseDate": "2026-07-09T07:00:00Z"
+      "releaseDate": "2026-07-28T07:00:00Z"
+    },
+    {
+      "id": "living-dex",
+      "name": "Living Dex: Animal Identifier",
+      "tagline": "Birds, Plants, Bugs \u0026 Fungi, Named",
+      "description": "Turn the real world into your personal collection. Point your camera at a bird, bug, plant or mushroom, or pick a photo, and Living Dex names it, rates how rare it is where you are, and adds it to your Dex.",
+      "platforms": [
+        "iPhone"
+      ],
+      "category": "Education",
+      "price": "Free",
+      "appStoreUrl": "https://apps.apple.com/us/app/living-dex-animal-identifier/id6787688416",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f3/e7/42/f3e74243-d486-c74d-08f9-ea675176b9da/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "primaryColor": "#22C55E",
+      "features": [
+        "Names any bird, bug, plant or mushroom",
+        "Real rarity for where you are",
+        "A Nearby Dex of what lives around you"
+      ],
+      "releaseDate": "2026-10-15T07:00:00Z"
     },
     {
       "id": "payday",
-      "name": "Pay Day: E-Invoice & Peppol",
-      "tagline": "Peppol & Factur-X Invoices on iPhone",
+      "name": "Pay Day: E-Invoice \u0026 Peppol",
+      "tagline": "Peppol \u0026 Factur-X Invoices on iPhone",
       "description": "Most invoice apps make a pretty PDF. Pay Day makes one your tax authority's system can actually read.",
       "platforms": [
         "iPhone",
@@ -290,7 +333,7 @@
       "category": "Business",
       "price": "Free",
       "appStoreUrl": "https://apps.apple.com/us/app/pay-day-e-invoice-peppol/id6779927672",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/dc/11/14/dc11140b-e2f7-bd31-25ae-266cf8722ac1/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2e/f7/b6/2ef7b6a4-3e32-10ba-259d-e31d64f4915a/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
       "primaryColor": "#22C55E",
       "features": [
         "Factur-X / ZUGFeRD e-invoices",
@@ -298,28 +341,6 @@
         "Real EN 16931 VAT engine"
       ],
       "releaseDate": "2026-07-14T07:00:00Z"
-    },
-    {
-      "id": "crucible",
-      "name": "Crucible for Plex",
-      "tagline": "Plex, Done Right on iPhone, iPad and Apple TV",
-      "description": "Crucible is a native client for your Plex Media Server on iPhone and Apple TV. It is built to feel like part of the system: the system player, native menus and context menus, Liquid Glass on the newest software, and a library that opens exactly where you left off.",
-      "platforms": [
-        "iPhone",
-        "iPad",
-        "Apple TV"
-      ],
-      "category": "Entertainment",
-      "price": "Free",
-      "appStoreUrl": "https://apps.apple.com/us/app/crucible-for-plex/id6822066419",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/db/64/1d/db641d20-e06c-5e3f-59ac-b83b7153c333/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
-      "primaryColor": "#F97316",
-      "features": [
-        "A Resume-first Home on iPhone, iPad and Apple TV",
-        "Skip Intro, offline downloads and a Year in Review",
-        "Open source, with a built-in demo to try first"
-      ],
-      "releaseDate": "2026-10-15T07:00:00Z"
     }
   ]
 }

@@ -8,11 +8,11 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"regexp"
 	"slices"
 	"sort"
 	"strings"
 	"time"
+	"unicode"
 )
 
 const (
@@ -37,6 +37,7 @@ type iTunesApp struct {
 	ReleaseDate               string   `json:"releaseDate"`
 	Version                   string   `json:"version"`
 	CurrentVersionReleaseDate string   `json:"currentVersionReleaseDate"`
+	ReleaseNotes              string   `json:"releaseNotes"`
 	MinimumOsVersion          string   `json:"minimumOsVersion"`
 	AverageUserRating         float64  `json:"averageUserRating"`
 	UserRatingCount           int      `json:"userRatingCount"`
@@ -102,16 +103,6 @@ var appEnhancements = map[int]struct {
 		},
 		Platforms: []string{"iPhone", "iPad", "Mac", "Apple TV", "Vision Pro"},
 	},
-	6736438070: {
-		ID:           "sforesight",
-		Tagline:      "ML-Powered SF Symbol Search",
-		PrimaryColor: "#3B82F6",
-		Features: []string{
-			"ML-powered semantic search",
-			"Instant symbol preview",
-			"Export in multiple formats",
-		},
-	},
 	6736581403: {
 		ID:           "double-kick",
 		Tagline:      "Understand Any Menu, Anywhere",
@@ -167,9 +158,9 @@ var appEnhancements = map[int]struct {
 		Tagline:      "Create AI Images in Your Pocket",
 		PrimaryColor: "#EC4899",
 		Features: []string{
-			"Advanced OpenAI gpt-image-1 integration",
-			"Chat-based interface for natural prompting",
-			"Persistent cloud storage with public galleries",
+			"14 one-tap edits, from headshots to old-photo restores",
+			"Standard on Nano Banana 2.1, Max on GPT Image 2.5",
+			"Edit packs that never expire, or Plus for 60 edits a week",
 		},
 	},
 	6746733380: {
@@ -244,6 +235,17 @@ var appEnhancements = map[int]struct {
 			"Drive Claude Code & opencode from your phone",
 			"Point-to-point over your own Tailscale network",
 			"Watch the turn land on your Lock Screen",
+		},
+		Platforms: []string{"iPhone", "iPad", "Mac"},
+	},
+	6787688416: {
+		ID:           "living-dex",
+		Tagline:      "Birds, Plants, Bugs & Fungi, Named",
+		PrimaryColor: "#22C55E",
+		Features: []string{
+			"Names any bird, bug, plant or mushroom",
+			"Real rarity for where you are",
+			"A Nearby Dex of what lives around you",
 		},
 		Platforms: []string{"iPhone"},
 	},
@@ -448,67 +450,48 @@ func transformiTunesApp(app iTunesApp) App {
 }
 
 func mapDeviceTosPlatform(app iTunesApp) []string {
-	// Check for macOS apps
 	if app.Kind == "mac-software" {
 		return []string{"Mac"}
 	}
 
-	// Check supported devices array
-	if len(app.SupportedDevices) > 0 {
-		// Mac apps report a MacDesktop device family even when kind stays "software"
-		for _, device := range app.SupportedDevices {
-			if strings.Contains(device, "Mac") {
-				return []string{"Mac"}
-			}
-		}
-
-		// Check for Apple TV
-		for _, device := range app.SupportedDevices {
-			if strings.Contains(device, "AppleTV") {
-				return []string{"Apple TV"}
-			}
-		}
-
-		// Check for iOS devices
-		var platforms []string
-		hasIPhone := false
-		hasIPad := false
-
-		for _, device := range app.SupportedDevices {
-			if strings.Contains(device, "iPhone") {
-				hasIPhone = true
-			}
-			if strings.Contains(device, "iPad") {
-				hasIPad = true
-			}
-		}
-
-		if hasIPhone {
-			platforms = append(platforms, "iPhone")
-		}
-		if hasIPad {
-			platforms = append(platforms, "iPad")
-		}
-
-		if len(platforms) > 0 {
-			return platforms
+	var platforms []string
+	for _, family := range deviceFamilies {
+		if slices.ContainsFunc(app.SupportedDevices, func(device string) bool {
+			return strings.Contains(device, family.marker)
+		}) {
+			platforms = append(platforms, family.platform)
 		}
 	}
+	if len(platforms) > 0 {
+		return platforms
+	}
 
-	// Fallback: check screenshot URLs for iOS apps
-	var platforms []string
 	if len(app.IPadScreenshotURLs) > 0 {
 		platforms = append(platforms, "iPad")
 	}
 	if len(app.ScreenshotURLs) > 0 {
 		platforms = append(platforms, "iPhone")
 	}
-
 	if len(platforms) > 0 {
 		return platforms
 	}
 
 	return []string{"iPhone", "iPad"}
+}
+
+// / deviceFamilies maps a supportedDevices marker to the platform it stands for. An iOS
+// / record lists every family it reaches (a universal purchase with a Mac or Watch app
+// / reports MacDesktop or Watch beside the iPhones and iPads), so the platforms are the
+// / union of the families found, in this order.
+var deviceFamilies = []struct {
+	marker   string
+	platform string
+}{
+	{"iPhone", "iPhone"},
+	{"iPad", "iPad"},
+	{"MacDesktop", "Mac"},
+	{"AppleTV", "Apple TV"},
+	{"Watch", "Apple Watch"},
 }
 
 // / getWithRetry retries transient failures from the iTunes lookup API, which
@@ -549,17 +532,53 @@ func getWithRetry(url string) ([]byte, error) {
 	return nil, lastErr
 }
 
-var sentenceRegex = regexp.MustCompile(`[^.!?]+[.!?]+`)
-
+// / splitSentences breaks store copy into sentences. A sentence ends at a terminator
+// / (after any closing quotes or brackets) that is followed by the end of the text or by
+// / whitespace and a capital, digit or opening quote, so "3 a.m. and" and "Last.fm" stay
+// / inside the sentence that holds them.
 func splitSentences(text string) []string {
+	runes := []rune(text)
 	var sentences []string
-	for _, match := range sentenceRegex.FindAllString(text, -1) {
-		trimmed := strings.TrimSpace(match)
-		if trimmed != "" {
-			sentences = append(sentences, trimmed)
+	start := 0
+	for i := 0; i < len(runes); i++ {
+		if !strings.ContainsRune(".!?", runes[i]) {
+			continue
 		}
+		end := i + 1
+		for end < len(runes) && strings.ContainsRune(".!?\"'”’)", runes[end]) {
+			end++
+		}
+		if !endsSentence(runes, end) {
+			continue
+		}
+		if sentence := strings.TrimSpace(string(runes[start:end])); sentence != "" {
+			sentences = append(sentences, sentence)
+		}
+		start = end
+		i = end - 1
 	}
 	return sentences
+}
+
+// / endsSentence reports whether the text after a terminator closes the sentence: nothing
+// / but whitespace is left, a line break follows, or whitespace leads into a capital, digit,
+// / opening quote or bullet.
+func endsSentence(runes []rune, at int) bool {
+	next := at
+	for next < len(runes) && unicode.IsSpace(runes[next]) {
+		if runes[next] == '\n' {
+			return true
+		}
+		next++
+	}
+	if next == len(runes) {
+		return true
+	}
+	if next == at {
+		return false
+	}
+	r := runes[next]
+	return unicode.IsUpper(r) || unicode.IsDigit(r) || strings.ContainsRune("\"“'‘(•·-–—*", r)
 }
 
 func indexOf(slice []string, item string) int {
@@ -590,6 +609,7 @@ type liveFacts struct {
 	ReleaseDate               string  `json:"releaseDate,omitempty"`
 	CurrentVersionReleaseDate string  `json:"currentVersionReleaseDate,omitempty"`
 	MinimumOsVersion          string  `json:"minimumOsVersion,omitempty"`
+	ReleaseNotes              string  `json:"releaseNotes,omitempty"`
 }
 
 const liveLookupURL = "https://itunes.apple.com/lookup?id=%d&country=us"
@@ -598,7 +618,8 @@ const liveLookupURL = "https://itunes.apple.com/lookup?id=%d&country=us"
 // / lookup for every live landing page. The per-app endpoint is used instead of
 // / the developer-wide lookup behind apps.json because the latter is edge-cached
 // / and lags real version bumps by days. Last-good values are preserved for any
-// / app whose lookup fails, so a transient API hiccup never blanks the data.
+// / app whose lookup fails, so a transient API hiccup never blanks the data, and an
+// / app that no longer has a live landing page drops out of the file.
 func refreshLiveFacts() (int, error) {
 	factsPath := filepath.Join("src", "data", "landing-facts.json")
 	raw, err := os.ReadFile(factsPath)
@@ -616,22 +637,27 @@ func refreshLiveFacts() (int, error) {
 	}
 
 	livePath := filepath.Join("src", "data", "landing-live.json")
-	live := map[string]liveFacts{}
+	previous := map[string]liveFacts{}
 	if existing, err := os.ReadFile(livePath); err == nil {
-		_ = json.Unmarshal(existing, &live)
+		_ = json.Unmarshal(existing, &previous)
 	}
 
+	live := map[string]liveFacts{}
 	updated := 0
 	for _, a := range facts.Apps {
 		if a.Status != "live" {
 			continue
 		}
+		key := fmt.Sprintf("%d", a.TrackID)
 		it, err := lookupApp(a.TrackID)
 		if err != nil {
 			fmt.Printf("  ⚠️  keeping last-good facts for %d: %v\n", a.TrackID, err)
+			if last, ok := previous[key]; ok {
+				live[key] = last
+			}
 			continue
 		}
-		live[fmt.Sprintf("%d", a.TrackID)] = liveFacts{
+		live[key] = liveFacts{
 			Version:                   it.Version,
 			Price:                     priceLabel(it.Price),
 			Rating:                    math.Round(it.AverageUserRating*100) / 100,
@@ -639,6 +665,7 @@ func refreshLiveFacts() (int, error) {
 			ReleaseDate:               it.ReleaseDate,
 			CurrentVersionReleaseDate: it.CurrentVersionReleaseDate,
 			MinimumOsVersion:          it.MinimumOsVersion,
+			ReleaseNotes:              strings.TrimSpace(it.ReleaseNotes),
 		}
 		updated++
 	}

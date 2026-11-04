@@ -153,7 +153,7 @@ func platformClass(platforms []string) string {
 
 // / liveStorePlatformClass classifies the live listing the same way as
 // / platformClass, from the raw supportedDevices rather than the display
-// / platforms, which collapse any app with a MacDesktop device to just "Mac".
+// / platforms, which an app's enhancement entry may override.
 func liveStorePlatformClass(it iTunesApp) string {
 	if it.Kind == "mac-software" {
 		return "macOS"
