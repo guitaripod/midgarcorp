@@ -1,0 +1,297 @@
+---
+import { RECENT_DAYS, type AppEntry, type AppRelease } from '@data/apps';
+import { foldShared, shippedWithin } from '../lib/app-release';
+import { iconSrcset } from '../lib/icon-srcset';
+import { ageLabel } from '../lib/work';
+
+export interface Props {
+  releases: (AppEntry & { release: AppRelease })[];
+  now: Date;
+}
+
+const { releases, now } = Astro.props;
+
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+const groups = [
+  {
+    title: `shipped in the last ${RECENT_DAYS} days`,
+    rows: releases.filter((entry) => shippedWithin(entry.release.date, RECENT_DAYS, now)),
+    fresh: true,
+  },
+  {
+    title: 'earlier',
+    rows: releases.filter((entry) => !shippedWithin(entry.release.date, RECENT_DAYS, now)),
+    fresh: false,
+  },
+].filter((group) => group.rows.length > 0);
+
+type Row = AppEntry & { release: AppRelease };
+
+const hrefFor = (entry: AppEntry): string => entry.landingHref ?? entry.app.appStoreUrl;
+const nameOf = (entry: AppEntry): string => entry.app.displayName ?? entry.app.name;
+
+/// Releases that say the same thing on the same day fold into one line, keyed by both.
+const foldKey = (entry: Row): string | null =>
+  entry.release.headline ? `${ageLabel(entry.release.date, now)}|${entry.release.headline}` : null;
+---
+
+<div class="rl term-frame">
+  {
+    groups.map((group) => (
+      <section class="rl-group">
+        <h3 class="rl-title">
+          <span aria-hidden="true"># </span>
+          {group.title}
+        </h3>
+        <ol class="rl-list" role="list">
+          {foldShared(group.rows, foldKey).map((fold) => {
+            const entry = fold[0];
+            const age = (
+              <time
+                class:list={[
+                  'rl-age',
+                  group.fresh
+                    ? 'text-paper-green dark:text-term-green'
+                    : 'text-paper-muted dark:text-term-faint',
+                ]}
+                datetime={entry.release.date}
+                title={dateFormat.format(new Date(entry.release.date))}
+              >
+                {ageLabel(entry.release.date, now)}
+              </time>
+            );
+            return fold.length > 1 ? (
+              <li class="rl-row rl-row--fold">
+                {age}
+                <span
+                  class:list={['rl-folder', fold.length > 4 && 'rl-folder--nine']}
+                  aria-hidden="true"
+                >
+                  {fold.slice(0, 9).map((member) => (
+                    <img
+                      src={member.app.icon}
+                      alt=""
+                      width="512"
+                      height="512"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ))}
+                </span>
+                <span class="rl-name">
+                  <span class="rl-app">{fold.length} apps</span>
+                </span>
+                <span class="rl-note rl-note--fold">
+                  {entry.release.headline}{' '}
+                  {fold.map((member, index) => (
+                    <>
+                      <a href={hrefFor(member)} class="rl-member">
+                        {nameOf(member)} <span class="rl-version">{member.release.version}</span>
+                      </a>
+                      {index < fold.length - 1 && <span aria-hidden="true"> · </span>}
+                    </>
+                  ))}
+                </span>
+              </li>
+            ) : (
+              <li>
+                <a href={hrefFor(entry)} class="rl-row">
+                  {age}
+                  <img
+                    src={entry.app.icon}
+                    srcset={iconSrcset(entry.app.icon)}
+                    sizes="28px"
+                    alt=""
+                    width="512"
+                    height="512"
+                    class="rl-icon"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="rl-name">
+                    <span class="rl-app">{nameOf(entry)}</span>
+                    <span class="rl-version">{entry.release.version}</span>
+                  </span>
+                  <span class="rl-note">
+                    {entry.release.headline ?? 'Release notes on the App Store.'}
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .rl {
+    container: rl / inline-size;
+    padding: 0.5rem 0;
+  }
+
+  .rl-group + .rl-group {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    @apply border-t border-paper-border dark:border-term-border;
+  }
+
+  .rl-title {
+    padding: 0.5rem clamp(0.75rem, 3cqi, 1.25rem) 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    @apply text-paper-muted dark:text-term-faint;
+  }
+
+  .rl-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rl-row {
+    display: grid;
+    grid-template-columns: 1.75rem minmax(0, 1fr) auto;
+    grid-template-areas:
+      'icon name age'
+      'icon note note';
+    column-gap: 0.75rem;
+    row-gap: 0.125rem;
+    align-items: center;
+    padding: 0.55rem clamp(0.75rem, 3cqi, 1.25rem);
+    transition: background-color 0.15s;
+  }
+
+  .rl-folder {
+    grid-area: icon;
+    align-self: start;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 3px;
+    border-radius: 22.5%;
+    @apply bg-paper-raised dark:bg-term-raised border border-paper-border dark:border-term-border;
+  }
+
+  .rl-folder--nine {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+  }
+
+  .rl-folder img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 22.5%;
+  }
+
+  .rl-member {
+    white-space: nowrap;
+    @apply text-paper-text dark:text-term-text underline decoration-dotted underline-offset-2;
+  }
+
+  .rl-member:hover,
+  .rl-member:focus-visible {
+    @apply text-paper-green dark:text-term-green;
+  }
+
+  a.rl-row:hover,
+  a.rl-row:focus-visible {
+    @apply bg-paper-raised dark:bg-term-raised;
+  }
+
+  a.rl-row:hover .rl-app,
+  a.rl-row:focus-visible .rl-app {
+    @apply text-paper-green dark:text-term-green;
+  }
+
+  .rl-age {
+    grid-area: age;
+    font-size: 0.6875rem;
+    white-space: nowrap;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .rl-icon {
+    grid-area: icon;
+    align-self: start;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 22.5%;
+    @apply border border-paper-border dark:border-term-border;
+  }
+
+  .rl-name {
+    grid-area: name;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    min-width: 0;
+    font-size: 0.875rem;
+  }
+
+  .rl-app {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    transition: color 0.15s;
+    @apply text-paper-text dark:text-term-text;
+  }
+
+  .rl-version {
+    flex: none;
+    font-size: 0.75rem;
+    @apply text-paper-amber dark:text-term-amber;
+  }
+
+  .rl-note {
+    grid-area: note;
+    font-family: theme('fontFamily.sans');
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    @apply text-paper-muted dark:text-term-muted;
+  }
+
+  @container rl (min-width: 44rem) {
+    .rl-row {
+      grid-template-columns: 4.5rem 1.75rem minmax(0, 14rem) minmax(0, 1fr);
+      grid-template-areas: 'age icon name note';
+    }
+
+    .rl-age {
+      text-align: left;
+    }
+
+    .rl-icon {
+      align-self: center;
+    }
+
+    .rl-note:not(.rl-note--fold) {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .rl-folder {
+      align-self: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rl-row,
+    .rl-app {
+      transition: none;
+    }
+  }
+</style>

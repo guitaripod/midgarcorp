@@ -1,6 +1,8 @@
 ---
 import { cleanAppStoreDescription } from '@utils/app-description';
-import { appMax, type AppEntry } from '@data/apps';
+import { APPS_NOW, appMax, type AppEntry } from '@data/apps';
+import { iconSrcset } from '../lib/icon-srcset';
+import { ageLabel } from '../lib/work';
 import AppShots from './AppShots.astro';
 import WorkWeight from './WorkWeight.astro';
 
@@ -11,7 +13,9 @@ export interface Props {
 }
 
 const { entry, flip = false, eager = false } = Astro.props;
-const { app, work, version, shots, device } = entry;
+const { app, work, version, shots, device, release } = entry;
+const title = app.displayName ?? app.name;
+const srcset = iconSrcset(app.icon);
 
 const description = cleanAppStoreDescription(app.description);
 const onStore = app.appStoreUrl.includes('apps.apple.com');
@@ -43,7 +47,9 @@ const linkClass =
     <div class="flex items-center gap-4 mb-4">
       <img
         src={app.icon}
-        alt={`${app.name} icon`}
+        srcset={srcset}
+        sizes={srcset ? '72px' : undefined}
+        alt={`${title} icon`}
         width="72"
         height="72"
         class="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-xl border border-paper-border dark:border-term-border flex-shrink-0"
@@ -58,10 +64,10 @@ const linkClass =
                 href={entry.landingHref}
                 class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
               >
-                {app.name}
+                {title}
               </a>
             ) : (
-              <span class="text-paper-text dark:text-term-text">{app.name}</span>
+              <span class="text-paper-text dark:text-term-text">{title}</span>
             )
           }
         </h3>
@@ -75,6 +81,13 @@ const linkClass =
       {
         entry.openSource && (
           <span class="text-paper-greendim dark:text-term-greendim">open source</span>
+        )
+      }
+      {
+        release && (
+          <time datetime={release.date} class="text-paper-faint dark:text-term-faint">
+            updated {ageLabel(release.date, APPS_NOW)}
+          </time>
         )
       }
       {
@@ -158,6 +171,10 @@ const linkClass =
 </article>
 
 <style>
+  article:target h3 a {
+    color: var(--accent);
+  }
+
   .line-clamp-4 {
     display: -webkit-box;
     -webkit-line-clamp: 4;

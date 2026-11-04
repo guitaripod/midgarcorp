@@ -2,38 +2,72 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import AppCard from '@components/AppCard.astro';
 import AppFlagship from '@components/AppFlagship.astro';
-import ShareBar from '@components/ShareBar.astro';
-import StatCell from '@components/StatCell.astro';
-import { appEntries, appHeroes, appRest, appStats } from '@data/apps';
+import AppReleaseLog from '@components/AppReleaseLog.astro';
+import AppSpringboard from '@components/AppSpringboard.astro';
+import PageSection from '@components/PageSection.astro';
+import {
+  APPS_NOW,
+  RECENT_DAYS,
+  appEntries,
+  appHeroes,
+  appReleases,
+  appRest,
+  appStats,
+} from '@data/apps';
 
 const pageTitle = 'Apple Platform Apps | guitaripod';
-const { storeCount } = appStats;
+const now = APPS_NOW;
+const { storeCount, shippedRecently } = appStats;
 const cards = appEntries;
 
-const leader = [...appEntries].sort(
-  (a, b) => (b.work?.commitCount ?? 0) - (a.work?.commitCount ?? 0)
-)[0];
-const freeCount = appEntries.filter((entry) => entry.app.price === 'Free').length;
-const platformShare = appStats.platforms
-  .map((platform) => ({
-    label: platform,
-    count: appEntries.filter((entry) => entry.app.platforms.includes(platform)).length,
-  }))
-  .sort((a, b) => b.count - a.count)
-  .map((entry) => ({ ...entry, fraction: entry.count / appEntries.length }));
-const platformBars = [
-  'bg-paper-green dark:bg-term-green',
-  'bg-paper-amber dark:bg-term-amber',
-  'bg-paper-greendim dark:bg-term-greendim',
-  'bg-paper-border2 dark:bg-term-border2',
-  'bg-paper-muted dark:bg-term-muted',
-];
-const platformItems = platformShare.map((entry, index) => ({
-  ...entry,
-  barClass: platformBars[index % platformBars.length],
-}));
+const listed = (items: string[]): string =>
+  items.length > 1 ? `${items.slice(0, -1).join(', ')} and ${items.at(-1)}` : items.join('');
+const plural = (count: number, noun: string): string => `${count} ${noun}${count === 1 ? '' : 's'}`;
 
-const ogDescription = `${storeCount} apps live on the App Store — iPhone, iPad, Mac, and Apple TV — plus open-source builds. ${appStats.commits.toLocaleString('en-US')} commits across ML-powered consumer products, developer tools, and education apps, designed and shipped solo.`;
+const applePlatforms = appStats.platforms.filter((platform) => platform !== 'Linux');
+const freeCount = appEntries.filter((entry) => entry.app.price === 'Free').length;
+const launches = appEntries
+  .filter((entry) => entry.app.releaseDate)
+  .sort((a, b) => (a.app.releaseDate ?? '').localeCompare(b.app.releaseDate ?? ''));
+const firstYear = launches[0]?.app.releaseDate?.slice(0, 4);
+const newest = launches.at(-1);
+const monthYear = new Intl.DateTimeFormat('en-GB', {
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+const readout = [
+  {
+    key: 'apps',
+    value: `${storeCount} on the App Store${firstYear ? `, since ${firstYear}` : ''}`,
+  },
+  { key: 'commits', value: appStats.commits.toLocaleString('en-US') },
+  {
+    key: 'updated',
+    value: `${plural(shippedRecently, 'app')} in the last ${RECENT_DAYS} days`,
+    href: appReleases.length > 0 ? '#releases' : undefined,
+  },
+  ...(newest?.app.releaseDate
+    ? [
+        {
+          key: 'newest',
+          value: `${newest.app.displayName ?? newest.app.name}, ${monthYear.format(new Date(newest.app.releaseDate))}`,
+          href: `#${newest.slug ?? newest.app.id}`,
+        },
+      ]
+    : []),
+  { key: 'runs on', value: appStats.platforms.join(', ') },
+  {
+    key: 'price',
+    value:
+      freeCount === appEntries.length
+        ? `free to download, all ${freeCount}`
+        : `${freeCount} free to download`,
+  },
+];
+
+const ogDescription = `${storeCount} apps live on the App Store for ${listed(applePlatforms)}, with ${appStats.commits.toLocaleString('en-US')} commits behind them and ${plural(shippedRecently, 'app')} updated in the last ${RECENT_DAYS} days. Designed, built and shipped solo.`;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -46,112 +80,105 @@ const structuredData = {
     name: 'guitaripod',
     url: 'https://midgarcorp.cc',
   },
-  hasPart: cards.map(({ app }) => ({
+  hasPart: cards.map(({ app, release }) => ({
     '@type': 'SoftwareApplication',
     name: app.name,
     description: app.tagline,
     applicationCategory: app.category,
     operatingSystem: app.platforms.join(', '),
+    softwareVersion: release?.version,
     offers: {
       '@type': 'Offer',
       price: app.price === 'Free' ? '0' : app.price.replace('$', ''),
       priceCurrency: 'USD',
     },
     datePublished: app.releaseDate,
+    dateModified: release?.date,
     url: app.appStoreUrl,
   })),
 };
 ---
 
 <BaseLayout title={pageTitle} description={ogDescription} image="/og-apps-grid.png">
-  <header class="pt-12 sm:pt-16 mb-8 sm:mb-10">
-    <p class="prompt-line mb-4">ls ~/apps --sort=work</p>
-    <h1
-      class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-paper-text dark:text-term-text"
-    >
-      Apple Platform <span class="phosphor">Apps</span>
-    </h1>
-    <p
-      class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-3xl mb-3 leading-relaxed"
-    >
-      {storeCount} apps live on the App Store spanning iPhone, iPad, Mac, and Apple TV, plus open-source
-      builds shipped from Linux. Each one solves a real problem — from on-device LLM tutoring to AI image
-      generation to a 4K window on the cosmos.
-    </p>
-    <p class="text-sm sm:text-base text-paper-faint dark:text-term-faint max-w-2xl">
-      Designed, built, and shipped solo after seven years of engineering at scale. Ordered by the
-      work behind each app. Open source where it makes sense.
-    </p>
-  </header>
-
-  <section class="mb-14 sm:mb-20">
-    <div class="term-frame p-5 sm:p-6">
-      <p class="prompt-line mb-5">apps --stats</p>
-      <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-7">
-        <StatCell label="apps_shipped" value={appEntries.length}>
-          <p class="text-[11px] text-paper-muted dark:text-term-muted">
-            <span class="text-paper-green dark:text-term-green">{storeCount}</span> on the App Store
-          </p>
-        </StatCell>
-        <StatCell label="commits_across_apps" value={appStats.commits.toLocaleString('en-US')}>
-          {
-            leader?.work && (
-              <p class="text-[11px] text-paper-muted dark:text-term-muted">
-                most work:{' '}
-                <a
-                  href={leader.landingHref}
-                  class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors underline decoration-dotted underline-offset-2"
-                >
-                  {leader.app.name}
-                </a>
-                <span class="text-paper-green dark:text-term-green">
-                  {` ${leader.work.commitCount.toLocaleString('en-US')}`}
-                </span>
-              </p>
-            )
-          }
-        </StatCell>
-        <StatCell label="platforms" value={platformItems.length}>
-          <ShareBar
-            items={platformItems}
-            summary={platformItems.map((p) => `${p.count} ${p.label}`).join(', ')}
-          />
-        </StatCell>
-        <StatCell label="free_to_download" value={freeCount}>
-          <p class="text-[11px] text-paper-muted dark:text-term-muted">
-            no ads, no tracking in the apps that say so
-          </p>
-        </StatCell>
+  <header class="apps-hero pt-12 sm:pt-16 mb-14 sm:mb-20">
+    <div class="apps-hero__text">
+      <p class="prompt-line mb-4">ls ~/apps --sort=work</p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-paper-text dark:text-term-text"
+      >
+        Apple Platform <span class="phosphor">Apps</span>
+      </h1>
+      <p
+        class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-2xl mb-6 leading-relaxed"
+      >
+        {storeCount} apps for {listed(applePlatforms)}, designed, built and shipped solo. Each one
+        does one job properly, and none of them is finished: {plural(shippedRecently, 'app')} shipped
+        an update in the last {RECENT_DAYS} days.
+      </p>
+      <dl class="readout">
+        {
+          readout.map((row) => (
+            <div class="readout__row">
+              <dt>{row.key}</dt>
+              <dd>
+                {row.href ? (
+                  <a href={row.href} class="readout__link">
+                    {row.value}
+                  </a>
+                ) : (
+                  row.value
+                )}
+              </dd>
+            </div>
+          ))
+        }
       </dl>
     </div>
-  </section>
+
+    <AppSpringboard entries={appEntries} platformCounts={appStats.platformCounts} now={now} />
+  </header>
 
   {
     appHeroes.length > 0 && (
-      <section class="mb-14 sm:mb-20" aria-labelledby="apps-featured">
-        <h2 id="apps-featured" class="sr-only">
-          Most worked-on apps
-        </h2>
+      <PageSection
+        command={`ls ~/apps --sort=work | head -${appHeroes.length}`}
+        title="Most worked on"
+        blurb="Commits and releases decide the order, not stars or downloads. The rest follow further down, in the same order."
+      >
         <div class="space-y-16 sm:space-y-24">
           {appHeroes.map((entry, index) => (
             <AppFlagship entry={entry} flip={index % 2 === 1} eager={index === 0} />
           ))}
         </div>
-      </section>
+      </PageSection>
     )
   }
 
-  <section>
-    <div class="flex items-baseline justify-between gap-4 mb-6">
-      <h2 class="prompt-line font-normal">ls ~/apps --all</h2>
-      <span class="text-xs text-paper-muted dark:text-term-faint whitespace-nowrap">
-        {appRest.length} more
-      </span>
-    </div>
+  {
+    appReleases.length > 0 && (
+      <PageSection
+        id="releases"
+        command="ls -lt ~/apps"
+        title="Latest releases"
+        blurb="Every app's current App Store version, newest first, with the first line of what changed."
+        aside={`${plural(shippedRecently, 'app')} updated in ${RECENT_DAYS} days`}
+      >
+        <AppReleaseLog releases={appReleases} now={now} />
+      </PageSection>
+    )
+  }
+
+  <PageSection
+    command="ls ~/apps --all"
+    title="Everything else"
+    blurb="Still ranked by the work behind each one. Every app has its own page with screenshots, pricing and an FAQ."
+    aside={plural(appRest.length, 'app')}
+  >
     <div class="apps-grid grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
       {
-        appRest.map((entry) => (
+        appRest.map((entry, index) => (
           <AppCard
+            wide={appRest.length % 2 === 1 && index === appRest.length - 1}
             app={entry.app}
             landingHref={entry.landingHref}
             openSource={entry.openSource}
@@ -160,11 +187,13 @@ const structuredData = {
             device={entry.device}
             commits={entry.work?.commitCount}
             version={entry.version}
+            updated={entry.release?.date}
+            anchor={entry.slug ?? entry.app.id}
           />
         ))
       }
     </div>
-  </section>
+  </PageSection>
 
   <section class="mt-12 sm:mt-16 mb-12">
     <div class="term-frame p-6 sm:p-8">
@@ -175,11 +204,12 @@ const structuredData = {
       <p
         class="text-sm sm:text-base text-paper-muted dark:text-term-muted mb-6 max-w-2xl leading-relaxed"
       >
-        I take Apple-platform products from idea to App Store — Swift across iPhone, iPad, Mac, and
-        TV, with the backend and AI integration to match. {storeCount} live apps prove the pipeline works.
+        I take Apple-platform products from idea to App Store: Swift across iPhone, iPad, Mac and
+        TV, with the backend and AI integration to match. The {storeCount} apps above went through the
+        same pipeline.
       </p>
       <a
-        href="/services#book"
+        href="/services/#book"
         class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
       >
         Get in touch →
@@ -191,61 +221,40 @@ const structuredData = {
 </BaseLayout>
 
 <style>
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  .apps-hero {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .apps-hero {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: 3.5rem;
     }
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .apps-grid > :global(*) {
-      animation: fadeIn 0.5s ease-out forwards;
-      opacity: 0;
-    }
+  .readout {
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.8125rem;
+  }
 
-    .apps-grid > :global(*:nth-child(1)) {
-      animation-delay: 0.05s;
-    }
-    .apps-grid > :global(*:nth-child(2)) {
-      animation-delay: 0.1s;
-    }
-    .apps-grid > :global(*:nth-child(3)) {
-      animation-delay: 0.15s;
-    }
-    .apps-grid > :global(*:nth-child(4)) {
-      animation-delay: 0.2s;
-    }
-    .apps-grid > :global(*:nth-child(5)) {
-      animation-delay: 0.25s;
-    }
-    .apps-grid > :global(*:nth-child(6)) {
-      animation-delay: 0.3s;
-    }
-    .apps-grid > :global(*:nth-child(7)) {
-      animation-delay: 0.35s;
-    }
-    .apps-grid > :global(*:nth-child(8)) {
-      animation-delay: 0.4s;
-    }
-    .apps-grid > :global(*:nth-child(9)) {
-      animation-delay: 0.45s;
-    }
-    .apps-grid > :global(*:nth-child(10)) {
-      animation-delay: 0.5s;
-    }
-    .apps-grid > :global(*:nth-child(11)) {
-      animation-delay: 0.55s;
-    }
-    .apps-grid > :global(*:nth-child(12)) {
-      animation-delay: 0.6s;
-    }
-    .apps-grid > :global(*:nth-child(n + 13)) {
-      animation-delay: 0.65s;
-    }
+  .readout__row {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .readout dt {
+    @apply text-paper-green dark:text-term-green;
+  }
+
+  .readout dd {
+    @apply text-paper-text dark:text-term-text;
+  }
+
+  .readout__link {
+    @apply underline decoration-dotted underline-offset-2 hover:text-paper-green dark:hover:text-term-green transition-colors;
   }
 </style>

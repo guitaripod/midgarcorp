@@ -1,3 +1,4 @@
+import { releaseHeadline, shippedWithin } from '../lib/app-release';
 import { workScore } from '../lib/work';
 import appWork from './app-work.json';
 import appsData from './apps.json';
@@ -29,6 +30,12 @@ export interface AppCardData {
   releaseDate?: string;
 }
 
+export interface AppRelease {
+  version: string;
+  date: string;
+  headline: string | null;
+}
+
 export interface AppEntry {
   app: AppCardData;
   slug?: string;
@@ -39,11 +46,13 @@ export interface AppEntry {
   version?: string;
   device: string | null;
   shots: Screenshot[];
+  release: AppRelease | null;
   score: number;
 }
 
 export const APPS_NOW = new Date();
 export const APP_HERO_SCORE = 17;
+export const RECENT_DAYS = 7;
 const SHOT_COUNT = 3;
 
 const workBySlug = appWork as unknown as Record<string, AppWork>;
@@ -61,6 +70,16 @@ function shotsFor(landing: LandingApp | undefined): { device: string | null; sho
   return { device, shots: all.slice(0, LANDSCAPE.has(device) ? 2 : SHOT_COUNT) };
 }
 
+/// The store's current version, when it shipped and the first line of its What's New.
+function releaseFor(landing: LandingApp | undefined): AppRelease | null {
+  if (!landing?.version || !landing.currentVersionReleaseDate) return null;
+  return {
+    version: landing.version,
+    date: landing.currentVersionReleaseDate,
+    headline: releaseHeadline(landing.releaseNotes),
+  };
+}
+
 function entryFor(app: AppCardData, landing: LandingApp | undefined, now: Date): AppEntry {
   const work = landing ? (workBySlug[landing.slug] ?? null) : null;
   const { device, shots } = shotsFor(landing);
@@ -75,6 +94,7 @@ function entryFor(app: AppCardData, landing: LandingApp | undefined, now: Date):
     version: landing?.version,
     device,
     shots,
+    release: releaseFor(landing),
     score: workScore(
       { commitCount: work?.commitCount, releaseCount: work?.releaseCount, latestDate: latest },
       now
@@ -82,8 +102,10 @@ function entryFor(app: AppCardData, landing: LandingApp | undefined, now: Date):
   };
 }
 
-/// Prefer the curated landing price over the iTunes price, which lags a price change by hours,
-/// and the self-hosted icon over the remote 512px artwork.
+/// An app with a landing page speaks with that page's copy, which is kept in step with each
+/// release, rather than the store listing's opening lines or the fetcher's fallback features.
+/// The curated price beats the iTunes price, which lags a price change by hours, and the
+/// self-hosted icon beats the remote 512px artwork.
 function storeEntry(app: StoreApp, now: Date): AppEntry {
   const id = trackIdFor(app.appStoreUrl);
   const landing = id ? landingByTrack.get(id) : undefined;
@@ -91,6 +113,11 @@ function storeEntry(app: StoreApp, now: Date): AppEntry {
     ? {
         ...app,
         displayName: landing.shortName,
+        tagline: landing.content.heroHeadline,
+        description: landing.content.heroSubhead,
+        features: landing.content.highlights,
+        platforms: landing.platforms,
+        primaryColor: landing.content.accentColor || landing.primaryColor,
         price: landing.price,
         icon: landing.iconLocal ?? app.icon,
       }
@@ -134,11 +161,37 @@ export function buildAppEntries(now: Date = APPS_NOW): AppEntry[] {
 
 export const appEntries: AppEntry[] = buildAppEntries();
 
+/// Platforms by how many apps run on them, most first.
+function platformCounts(entries: AppEntry[]): { platform: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const entry of entries) {
+    for (const platform of entry.app.platforms) {
+      counts.set(platform, (counts.get(platform) ?? 0) + 1);
+    }
+  }
+  return [...counts]
+    .map(([platform, count]) => ({ platform, count }))
+    .sort((a, b) => b.count - a.count || a.platform.localeCompare(b.platform));
+}
+
+/// Every app's current release, newest first.
+export function releasesOf(entries: AppEntry[]): (AppEntry & { release: AppRelease })[] {
+  return entries
+    .filter((entry): entry is AppEntry & { release: AppRelease } => entry.release !== null)
+    .sort((a, b) => b.release.date.localeCompare(a.release.date));
+}
+
+export const appReleases = releasesOf(appEntries);
+
 export const appStats = {
   storeCount: appsData.apps.length,
   total: appEntries.length,
   commits: appEntries.reduce((sum, entry) => sum + (entry.work?.commitCount ?? 0), 0),
-  platforms: [...new Set(appEntries.flatMap((entry) => entry.app.platforms))],
+  platforms: platformCounts(appEntries).map((entry) => entry.platform),
+  platformCounts: platformCounts(appEntries),
+  shippedRecently: appReleases.filter((entry) =>
+    shippedWithin(entry.release.date, RECENT_DAYS, APPS_NOW)
+  ).length,
 };
 
 export const appMax = {

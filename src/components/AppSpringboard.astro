@@ -1,0 +1,428 @@
+---
+import { RECENT_DAYS, type AppEntry } from '@data/apps';
+import { shippedWithin } from '../lib/app-release';
+import { iconSrcset } from '../lib/icon-srcset';
+
+export interface Props {
+  entries: AppEntry[];
+  platformCounts: { platform: string; count: number }[];
+  now: Date;
+  dockSize?: number;
+}
+
+const { entries, platformCounts, now, dockSize = 4 } = Astro.props;
+
+const dock = entries.slice(0, dockSize);
+const grid = entries.slice(dockSize);
+
+/// The chips are a row of small toggles, so the longer platform names show in short form there;
+/// screen readers still hear the full name.
+const CHIP_NAMES: Record<string, string> = {
+  'Apple TV': 'TV',
+  'Apple Watch': 'Watch',
+  'Vision Pro': 'Vision',
+};
+
+const platformKey = (platform: string): string => platform.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+const items = (list: AppEntry[]) =>
+  list.map((entry) => ({
+    entry,
+    name: entry.app.displayName ?? entry.app.name,
+    anchor: `#${entry.slug ?? entry.app.id}`,
+    platforms: entry.app.platforms.map(platformKey).join(' '),
+    fresh: shippedWithin(entry.release?.date, RECENT_DAYS, now),
+    srcset: iconSrcset(entry.app.icon),
+  }));
+
+const label = (name: string, fresh: boolean): string =>
+  fresh ? `${name}, updated in the last ${RECENT_DAYS} days` : name;
+
+/// One rule per platform: picking it fades the icon of every app that does not run there and
+/// mutes its name, which stays readable because the link still works. Generated from the data
+/// so a new platform filters without a stylesheet edit.
+const filterRules = platformCounts
+  .map(({ platform }) => {
+    const key = platformKey(platform);
+    const other = `.sb:has(#sb-p-${key}:checked) .sb-app:not([data-platforms~="${key}"])`;
+    return `${other} .sb-icon{opacity:.18;filter:grayscale(1)}${other} .sb-name{color:var(--sb-dim-text)}${other} .sb-dot{opacity:.3}`;
+  })
+  .join('');
+
+const wallpaper = dock.map((entry, index) => `--w${index + 1}:${entry.app.primaryColor}`).join(';');
+---
+
+<section class="sb term-frame" aria-label="Every app at a glance">
+  <style is:inline set:html={filterRules}></style>
+  <div class="sb-bar">
+    <p class="prompt-line">ls ~/apps --icons</p>
+    <fieldset class="sb-filter">
+      <legend class="sr-only">Show the apps that run on</legend>
+      <input type="radio" name="sb-platform" id="sb-p-all" class="sr-only" checked />
+      <label for="sb-p-all">all <span class="sb-count">{entries.length}</span></label>
+      {
+        platformCounts.map(({ platform, count }) => (
+          <>
+            <input
+              type="radio"
+              name="sb-platform"
+              id={`sb-p-${platformKey(platform)}`}
+              class="sr-only"
+            />
+            <label for={`sb-p-${platformKey(platform)}`}>
+              {CHIP_NAMES[platform] ? (
+                <>
+                  <span class="sr-only">{platform}</span>
+                  <span aria-hidden="true">{CHIP_NAMES[platform]}</span>
+                </>
+              ) : (
+                platform
+              )}{' '}
+              <span class="sb-count">{count}</span>
+            </label>
+          </>
+        ))
+      }
+    </fieldset>
+  </div>
+
+  <div class="sb-screen" style={wallpaper}>
+    <ul class="sb-grid" role="list">
+      {
+        items(grid).map(({ entry, name, anchor, platforms, fresh, srcset }) => (
+          <li
+            class="sb-app"
+            data-platforms={platforms}
+            style={`--accent:${entry.app.primaryColor}`}
+          >
+            <a href={anchor} class="sb-link" aria-label={label(name, fresh)}>
+              <img
+                src={entry.app.icon}
+                srcset={srcset}
+                sizes={srcset ? '72px' : undefined}
+                alt=""
+                width="512"
+                height="512"
+                class="sb-icon"
+                loading="eager"
+                decoding="async"
+              />
+              <span class="sb-name" aria-hidden="true">
+                {fresh && <span class="sb-dot" />}
+                {name}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <ul class="sb-dock" role="list" aria-label="Dock: the apps with the most work behind them">
+      {
+        items(dock).map(({ entry, name, anchor, platforms, fresh, srcset }) => (
+          <li
+            class="sb-app"
+            data-platforms={platforms}
+            style={`--accent:${entry.app.primaryColor}`}
+          >
+            <a href={anchor} class="sb-link" aria-label={label(name, fresh)} title={name}>
+              <img
+                src={entry.app.icon}
+                srcset={srcset}
+                sizes={srcset ? '72px' : undefined}
+                alt=""
+                width="512"
+                height="512"
+                class="sb-icon"
+                loading="eager"
+                decoding="async"
+              />
+              {fresh && <span class="sb-dot sb-dot--dock" aria-hidden="true" />}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <p class="sb-legend">
+    <span class="sb-dot sb-dot--legend" aria-hidden="true"></span> updated in the last {RECENT_DAYS}
+    days · the dock holds the {dock.length} with the most work
+  </p>
+</section>
+
+<style>
+  .sb {
+    --sb-dim-text: theme('colors.paper.muted');
+    container: sb / inline-size;
+    padding: clamp(0.875rem, 3.5cqi, 1.25rem);
+  }
+
+  .sb-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .sb-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  .sb-filter label {
+    cursor: pointer;
+    user-select: none;
+    border-radius: 999px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    @apply border border-paper-border text-paper-muted dark:border-term-border dark:text-term-muted;
+    transition:
+      color 0.15s,
+      border-color 0.15s,
+      background-color 0.15s;
+  }
+
+  .sb-filter .sb-count {
+    @apply text-paper-faint dark:text-term-faint;
+  }
+
+  .sb-filter label:hover {
+    @apply border-paper-border2 text-paper-text dark:border-term-border2 dark:text-term-text;
+  }
+
+  .sb-filter input:checked + label {
+    @apply border-paper-green bg-paper-green text-paper-bg dark:border-term-green dark:bg-term-green dark:text-term-bg;
+  }
+
+  .sb-filter input:checked + label .sb-count {
+    color: inherit;
+  }
+
+  .sb-filter input:focus-visible + label {
+    @apply outline outline-2 outline-offset-2 outline-paper-green dark:outline-term-green;
+  }
+
+  .sb-screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    padding: clamp(1rem, 5cqi, 1.75rem) clamp(0.75rem, 4cqi, 1.5rem) clamp(0.75rem, 3cqi, 1rem);
+    background:
+      radial-gradient(
+        60% 55% at 12% 8%,
+        color-mix(in srgb, var(--w1, transparent) 34%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        55% 50% at 92% 20%,
+        color-mix(in srgb, var(--w2, transparent) 30%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        65% 55% at 78% 96%,
+        color-mix(in srgb, var(--w3, transparent) 30%, transparent),
+        transparent 72%
+      ),
+      radial-gradient(
+        55% 50% at 6% 88%,
+        color-mix(in srgb, var(--w4, transparent) 26%, transparent),
+        transparent 70%
+      ),
+      theme('colors.term.bg');
+  }
+
+  :global(html:not(.dark)) .sb-screen {
+    background:
+      radial-gradient(
+        60% 55% at 12% 8%,
+        color-mix(in srgb, var(--w1, transparent) 26%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        55% 50% at 92% 20%,
+        color-mix(in srgb, var(--w2, transparent) 22%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        65% 55% at 78% 96%,
+        color-mix(in srgb, var(--w3, transparent) 22%, transparent),
+        transparent 72%
+      ),
+      radial-gradient(
+        55% 50% at 6% 88%,
+        color-mix(in srgb, var(--w4, transparent) 20%, transparent),
+        transparent 70%
+      ),
+      theme('colors.paper.bg');
+  }
+
+  .sb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 4.5cqi, 1.5rem) clamp(0.5rem, 3cqi, 1rem);
+    margin: 0 0 clamp(1.25rem, 5cqi, 1.75rem);
+    padding: 0;
+    list-style: none;
+  }
+
+  :global(.dark) .sb {
+    --sb-dim-text: theme('colors.term.muted');
+  }
+
+  .sb-app {
+    display: flex;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .sb-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    min-width: 0;
+    border-radius: 1rem;
+    outline-offset: 4px;
+  }
+
+  .sb-icon {
+    width: clamp(3.25rem, 14cqi, 4.25rem);
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 22.5%;
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.08),
+      0 6px 16px -8px rgb(0 0 0 / 0.6);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      opacity 0.25s ease,
+      filter 0.25s ease;
+  }
+
+  :global(html:not(.dark)) .sb-icon {
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 0.08),
+      0 6px 14px -8px rgb(0 0 0 / 0.35);
+  }
+
+  .sb-link:hover .sb-icon,
+  .sb-link:focus-visible .sb-icon {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--accent) 60%, transparent),
+      0 10px 28px -10px var(--accent);
+  }
+
+  .sb-name {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-family: theme('fontFamily.sans');
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    @apply text-paper-text dark:text-term-text;
+  }
+
+  .sb-name .sb-dot {
+    margin-right: 0.25rem;
+    vertical-align: 0.08em;
+  }
+
+  .sb-dot {
+    flex: none;
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 999px;
+    @apply bg-paper-green dark:bg-term-green;
+  }
+
+  :global(.dark) .sb-dot {
+    box-shadow: 0 0 6px rgb(51 255 102 / 0.6);
+  }
+
+  .sb-dot--legend {
+    margin-right: 0.3rem;
+    vertical-align: 0.05em;
+  }
+
+  .sb-dot--dock {
+    position: absolute;
+    bottom: -0.55rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sb-dock {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.5rem, 3cqi, 1rem);
+    margin: 0;
+    padding: clamp(0.625rem, 3cqi, 0.875rem) clamp(0.5rem, 3cqi, 1rem)
+      clamp(0.875rem, 3.5cqi, 1.125rem);
+    list-style: none;
+    border-radius: 1.5rem;
+    background: rgb(255 255 255 / 0.07);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  :global(html:not(.dark)) .sb-dock {
+    background: rgb(255 255 255 / 0.45);
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06);
+  }
+
+  .sb-legend {
+    margin-top: 0.75rem;
+    font-size: 0.6875rem;
+    @apply text-paper-muted dark:text-term-muted;
+  }
+
+  @container sb (min-width: 34rem) {
+    .sb-bar {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sb-filter {
+      justify-content: flex-end;
+    }
+  }
+
+  @container sb (min-width: 46rem) {
+    .sb-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .sb-dock {
+      width: min(100%, 30rem);
+      margin-inline: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .sb-link:hover .sb-icon,
+    .sb-link:focus-visible .sb-icon {
+      transform: translateY(-2px) scale(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sb-icon {
+      transition: none;
+    }
+  }
+</style>
