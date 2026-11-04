@@ -1,9 +1,11 @@
 {
-  "seoTitle": "Flaccy — Lossless FLAC Player for iPhone, Apple Watch and Mac",
+  "seoTitle": "Flaccy — Lossless FLAC Player for iPhone, iPad, Apple Watch and Mac",
   "metaDescription": "Play the music you own at full quality: FLAC, ALAC, WAV, AIFF, MP3 and AAC, gapless, with a real equalizer, synced lyrics and Last.fm scrobbling.",
   "keywords": [
     "flac player iphone",
     "lossless music player ios",
+    "flac player ipad",
+    "lossless music player ipad",
     "hi-res music player iphone",
     "iphone equalizer music player",
     "parametric equalizer iphone",
@@ -22,14 +24,14 @@
     "share song lyrics iphone"
   ],
   "heroHeadline": "Play the music you own, at full quality",
-  "heroSubhead": "Flaccy plays your FLAC, ALAC, WAV, AIFF, MP3 and AAC files exactly as they were mastered — gapless, with a real equalizer, synced lyrics you can share as a video, Last.fm scrobbling and an Apple Watch app that works without your phone. No account, no ads, and your files never leave your device.",
+  "heroSubhead": "Flaccy plays your FLAC, ALAC, WAV, AIFF, MP3 and AAC files exactly as they were mastered — gapless, with a real equalizer, synced lyrics you can share as a video, Last.fm scrobbling, a full iPad layout and an Apple Watch app that works without your phone. No account, no ads, and your files never leave your device.",
   "accentColor": "#FF4D6D",
   "highlights": [
     "Codec, bit depth and sample rate on every track, from CD quality to Hi-Res",
     "A Home that picks up where you left off, with mixes made from your own listening",
     "A real equalizer: drag the curve, import AutoEq profiles, give every output its own setting",
     "Gapless playback, synced lyrics you can turn into a video, and every play scrobbled to Last.fm, even offline",
-    "A standalone Apple Watch app, a native Mac app and a free Linux app"
+    "A full iPad layout, a standalone Apple Watch app, a native Mac app and a free Linux app"
   ],
   "features": [
     {
@@ -39,12 +41,12 @@
     },
     {
       "title": "A Home that picks up where you left off",
-      "body": "Flaccy opens on Home: the album you were in, ready to resume, a row of what you played lately, mixes and Library Radio built from your own listening, what's new in your library, and what you were playing on this day in earlier years. Arrange or hide any of it. Everything is worked out on your device from your own library and history, on iPhone, Mac and Linux.",
+      "body": "Flaccy opens on Home: the album you were in, ready to resume, a row of what you played lately, mixes and Library Radio built from your own listening, what's new in your library, and what you were playing on this day in earlier years. Arrange or hide any of it. Everything is worked out on your device from your own library and history, on iPhone, iPad, Mac and Linux.",
       "glyph": "⌂"
     },
     {
       "title": "A real equalizer",
-      "body": "Drag the curve and hear it change, or switch to Advanced for up to ten bands with bells, shelves, filters and adjustable Q. Sixteen presets, your own saved profiles, and import of Equalizer APO and AutoEq text to tune for your headphones. Every output remembers its own setting, so AirPods, a wired DAC and the speaker each sound right. Automatic headroom keeps boosts from clipping, Hold to compare is level-matched so louder never wins, and gapless playback stays intact. On iPhone, Mac and Linux.",
+      "body": "Drag the curve and hear it change, or switch to Advanced for up to ten bands with bells, shelves, filters and adjustable Q. Sixteen presets, your own saved profiles, and import of Equalizer APO and AutoEq text to tune for your headphones. Every output remembers its own setting, so AirPods, a wired DAC and the speaker each sound right. Automatic headroom keeps boosts from clipping, Hold to compare is level-matched so louder never wins, and gapless playback stays intact. On iPhone, iPad, Mac and Linux.",
       "glyph": "≋"
     },
     {
@@ -64,7 +66,7 @@
     },
     {
       "title": "Share Lyrics",
-      "body": "Pick the lines you love from a song's synced lyrics and get a short video of them over the song itself, its real audio, or a still image card. Four templates: Spotlight, one big line at a time; Verse, lines scrolling past; Poster, cover art with every line lighting up as it is sung; and Pulse, a turning disc inside a ring of audio-reactive bars. Choose Story, Post, Square or Wide, colours drawn from the cover (Artwork, Vivid, Dark or Light), one of four fonts, and word-by-word fill when the lyrics carry word timing. Up to 30 seconds, and the preview plays the clip's audio. Long-press a line on iPhone, right-click one on Mac or Linux. Video export on Linux needs ffmpeg.",
+      "body": "Pick the lines you love from a song's synced lyrics and get a short video of them over the song itself, its real audio, or a still image card. Four templates: Spotlight, one big line at a time; Verse, lines scrolling past; Poster, cover art with every line lighting up as it is sung; and Pulse, a turning disc inside a ring of audio-reactive bars. Choose Story, Post, Square or Wide, colours drawn from the cover (Artwork, Vivid, Dark or Light), one of four fonts, and word-by-word fill when the lyrics carry word timing. Up to 30 seconds, and the preview plays the clip's audio. Long-press a line on iPhone or iPad, right-click one on Mac or Linux. Video export on Linux needs ffmpeg.",
       "glyph": "❝"
     },
     {
@@ -98,6 +100,11 @@
       "glyph": "▯"
     },
     {
+      "title": "Flaccy for iPad",
+      "body": "A sidebar holds Home, your library and every playlist, with Now Playing and Up Next in a column beside it. Lyrics and the queue spread across the screen next to the artwork. Use the keyboard and the menu bar (Space plays and pauses, ⌘1 to ⌘6 move around), hover with a trackpad, drag songs into Up Next or onto a playlist, and drop audio files from Files straight into your library. Included with the same purchase.",
+      "glyph": "▭"
+    },
+    {
       "title": "Flaccy for Mac",
       "body": "A native Liquid Glass Mac app that wears the colour of your music, with the equalizer in its own window beside your library (⌥⌘E). Watch a folder and new files appear instantly, control playback from the menu bar player and your media keys, sort a multi-column song list, browse keyboard-first and export full-resolution Year in Music posters. Available on the Mac App Store.",
       "glyph": "⌘"
@@ -129,7 +136,7 @@
     },
     {
       "q": "Does Flaccy have an equalizer?",
-      "a": "Yes, on iPhone, Mac and Linux. Drag the curve in Simple mode, or switch to Advanced for up to ten bands with bells, shelves, high-pass and low-pass filters and adjustable Q. It ships with sixteen presets, saves your own, and imports Equalizer APO and AutoEq profile text so you can tune for your headphones. Each output (AirPods, a wired DAC, the speaker) keeps its own setting and switches when you do. Automatic headroom prevents clipping, and Hold to compare is level-matched so louder never sounds better. With the equalizer off or flat the signal passes through untouched, and gapless playback is unaffected. The Apple Watch app plays through the system and has no equalizer."
+      "a": "Yes, on iPhone, iPad, Mac and Linux. Drag the curve in Simple mode, or switch to Advanced for up to ten bands with bells, shelves, high-pass and low-pass filters and adjustable Q. It ships with sixteen presets, saves your own, and imports Equalizer APO and AutoEq profile text so you can tune for your headphones. Each output (AirPods, a wired DAC, the speaker) keeps its own setting and switches when you do. Automatic headroom prevents clipping, and Hold to compare is level-matched so louder never sounds better. With the equalizer off or flat the signal passes through untouched, and gapless playback is unaffected. The Apple Watch app plays through the system and has no equalizer."
     },
     {
       "q": "Do I need an account or a streaming subscription?",
@@ -137,7 +144,7 @@
     },
     {
       "q": "How much does Flaccy cost?",
-      "a": "Free to download, with a 7-day free trial that starts the first time you play your own music. After that, keep everything with a one-time Lifetime purchase ($12.99), or choose the yearly plan ($7.99 a year, renews until you cancel). One purchase covers iPhone, Apple Watch and Mac. Flaccy for Linux is free and open source."
+      "a": "Free to download, with a 7-day free trial that starts the first time you play your own music. After that, keep everything with a one-time Lifetime purchase ($12.99), or choose the yearly plan ($7.99 a year, renews until you cancel). One purchase covers iPhone, iPad, Apple Watch and Mac. Flaccy for Linux is free and open source."
     },
     {
       "q": "How do I get my music into Flaccy?",
@@ -160,8 +167,12 @@
       "a": "Yes. On the inner display the library sits beside Now Playing, lyrics and artwork get their own panes, and layouts end at the fold. On the outer display it behaves like a regular iPhone."
     },
     {
+      "q": "Does Flaccy work on iPad?",
+      "a": "Yes. On iPad, Flaccy has a sidebar for your library and playlists, with Now Playing and Up Next in a column beside it, and lyrics and the queue laid out next to the artwork. It supports a hardware keyboard and the menu bar, a trackpad or mouse, and drag and drop, including audio files dropped in from Files. It is the same app as on iPhone, so the same purchase covers both."
+    },
+    {
       "q": "Is there a Mac app?",
-      "a": "Yes. Flaccy for Mac is a native Liquid Glass app on the Mac App Store. Point it at a folder and new files appear instantly, control playback from the menu bar player and your media keys, sort a multi-column song list and export full-resolution Year in Music posters. The same purchase covers iPhone, Apple Watch and Mac."
+      "a": "Yes. Flaccy for Mac is a native Liquid Glass app on the Mac App Store. Point it at a folder and new files appear instantly, control playback from the menu bar player and your media keys, sort a multi-column song list and export full-resolution Year in Music posters. The same purchase covers iPhone, iPad, Apple Watch and Mac."
     },
     {
       "q": "Is there a Linux app?",
@@ -169,7 +180,7 @@
     },
     {
       "q": "Can I share song lyrics as a video?",
-      "a": "Yes. Pick lines from a song's synced lyrics and Flaccy makes a short video of them over the song itself, up to 30 seconds with its real audio, or a still image card. Choose a template (Spotlight, Verse, Poster or Pulse), a format (Story 9:16, Post 4:5, Square or Wide 16:9), colours from the cover and a font. On iPhone use the share button beside the lyrics or long-press a line; on Mac the share menu or right-click a line; on Linux right-click a line and choose Save Video. Video export on Linux needs ffmpeg."
+      "a": "Yes. Pick lines from a song's synced lyrics and Flaccy makes a short video of them over the song itself, up to 30 seconds with its real audio, or a still image card. Choose a template (Spotlight, Verse, Poster or Pulse), a format (Story 9:16, Post 4:5, Square or Wide 16:9), colours from the cover and a font. On iPhone and iPad use the share button beside the lyrics or long-press a line; on Mac the share menu or right-click a line; on Linux right-click a line and choose Save Video. Video export on Linux needs ffmpeg."
     }
   ],
   "screenshotCaptions": {
@@ -184,6 +195,16 @@
       "Apple Watch: sync albums and play them offline, no iPhone needed.",
       "Advanced mode: up to ten bands, AutoEq import, and a profile for every output.",
       "Light or dark, following your system or your choice."
+    ],
+    "ipad": [
+      "Home on iPad: the sidebar on one side, Now Playing and Up Next on the other.",
+      "Every album one tap away in the sidebar, each wearing its quality badge.",
+      "Album pages with codec, bit depth and sample rate on every track.",
+      "Artwork and synced lyrics side by side. Tap any line to jump to it.",
+      "Up Next beside the artwork: drag to reorder, or drop songs in from the library.",
+      "Last.fm scrobbling with offline retry, and charts for every period.",
+      "The equalizer: drag the curve and hear it change, with a live spectrum behind it.",
+      "Year in Music: story cards and a poster of your listening year."
     ],
     "mac": [
       "Your whole collection in a native Liquid Glass library, every file wearing its quality badge.",
@@ -214,7 +235,7 @@
     ]
   },
   "ctaLine": "Your music deserves a better player.",
-  "pricingNote": "Free to try for 7 days, then a one-time Lifetime purchase or a yearly plan. No account, no ads, nothing uploaded. One purchase covers iPhone, Apple Watch and Mac; Flaccy for Linux is free and open source.",
+  "pricingNote": "Free to try for 7 days, then a one-time Lifetime purchase or a yearly plan. No account, no ads, nothing uploaded. One purchase covers iPhone, iPad, Apple Watch and Mac; Flaccy for Linux is free and open source.",
   "pricing": {
     "heading": "Free to try. Own it once.",
     "free": {
@@ -250,7 +271,7 @@
         "note": "Renews until canceled"
       }
     ],
-    "footnote": "US prices shown; your local price appears in the App Store. One purchase covers iPhone, Apple Watch and Mac. Flaccy for Linux is free and open source."
+    "footnote": "US prices shown; your local price appears in the App Store. One purchase covers iPhone, iPad, Apple Watch and Mac. Flaccy for Linux is free and open source."
   },
   "lifestyle": [],
   "macAppStoreUrl": "https://apps.apple.com/us/app/flaccy-lossless-flac-player/id6787493695"
