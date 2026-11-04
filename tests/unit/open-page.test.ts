@@ -18,6 +18,7 @@ import {
   LISTED_VALUES_MAX,
   eventViews,
   metricViews,
+  publicCaveat,
   type MetricsCatalog,
   type SignalsCatalog,
 } from '../../src/lib/open-catalog';
@@ -98,6 +99,23 @@ describe('metric views', () => {
     expect(views.find((view) => view.id === 'wau')?.published).toBe(true);
     expect(views.find((view) => view.id === 'dau')?.published).toBe(false);
     expect(views.find((view) => view.id === 'sales')?.published).toBe(false);
+  });
+});
+
+describe('public caveats', () => {
+  it('states the public floor, not the internal one, on a published metric', () => {
+    expect(publicCaveat('A cohort under 5 installs is hidden.', 10)).toBe(
+      'A cohort under 10 installs is hidden.'
+    );
+    const caveats = metrics.metrics.filter((metric) => /under \d+ installs/.test(metric.caveat));
+    const views = metricViews(
+      metrics,
+      caveats.map((metric) => metric.id),
+      10
+    );
+    for (const view of views.filter((view) => view.published)) {
+      expect(view.caveat).not.toMatch(/under 5 installs/);
+    }
   });
 });
 

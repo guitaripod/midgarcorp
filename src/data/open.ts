@@ -62,7 +62,8 @@ export const statsApps = appsWithData(stats);
 export const events = eventViews(signalsCatalogData as unknown as SignalsCatalog);
 export const metrics = metricViews(
   metricsCatalogData as unknown as MetricsCatalog,
-  stats.metrics.map((metric) => metric.id)
+  stats.metrics.map((metric) => metric.id),
+  stats.rules.min_count
 );
 
 /// A registry slug as a name: "living-dex" becomes "Living Dex".

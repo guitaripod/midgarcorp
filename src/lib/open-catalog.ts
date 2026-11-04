@@ -132,8 +132,18 @@ export function eventViews(catalog: SignalsCatalog): EventView[] {
   }));
 }
 
+/// A published metric's caveat with the public floor in place of the registry's internal one: the
+/// registry hides cells under 5 in answers to Midgar, the public stats hide anything under `minCount`.
+export function publicCaveat(caveat: string, minCount: number): string {
+  return caveat.replace(/\bunder \d+ installs\b/g, `under ${minCount} installs`);
+}
+
 /// Every metric of the metrics catalog except the App Store report figures (which come from Apple, not the apps), flagged when the public numbers on the page use it.
-export function metricViews(catalog: MetricsCatalog, publishedIds: string[]): MetricView[] {
+export function metricViews(
+  catalog: MetricsCatalog,
+  publishedIds: string[],
+  publicMinCount?: number
+): MetricView[] {
   const published = new Set(publishedIds);
   return catalog.metrics
     .filter((metric) => metric.source !== 'appstore')
@@ -144,7 +154,10 @@ export function metricViews(catalog: MetricsCatalog, publishedIds: string[]): Me
       unit: metric.unit,
       grain: metric.grain,
       source: SOURCE_LABELS[metric.source] ?? metric.source,
-      caveat: metric.caveat,
+      caveat:
+        published.has(metric.id) && publicMinCount !== undefined
+          ? publicCaveat(metric.caveat, publicMinCount)
+          : metric.caveat,
       published: published.has(metric.id),
     }));
 }
