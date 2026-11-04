@@ -142,16 +142,16 @@
     {
       "id": "paywall_purchases",
       "title": "Paywall purchases",
-      "purpose": "Checkouts that ended in a purchase.",
-      "unit": "checkouts",
+      "purpose": "Purchases completed in the app.",
+      "unit": "purchases",
       "source": "signals",
       "grain": "day",
       "rollup": "sum",
       "suppress": true,
       "owner": "marcus",
-      "caveat": "The app's view of the purchase.",
+      "caveat": "The app's view of the purchase, every product it sells, tips included. Checkout signals report how a purchase that did not complete ended; a completed one is paywall.purchase.",
       "kind": "sql",
-      "sql": "SELECT day AS period, app, '' AS dim, SUM(count) AS value FROM daily WHERE event = 'paywall.checkout' AND (dim = 'purchased' OR dim LIKE 'purchased|%') AND day BETWEEN :since AND :until GROUP BY day, app"
+      "sql": "SELECT day AS period, app, '' AS dim, SUM(count) AS value FROM daily WHERE event = 'paywall.purchase' AND day BETWEEN :since AND :until GROUP BY day, app"
     },
     {
       "id": "paywall_conversion",
