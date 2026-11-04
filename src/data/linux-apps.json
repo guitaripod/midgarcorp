@@ -12,7 +12,7 @@
       "language": "Go",
       "description": "A command-line tool to browse the NASA Astronomy Picture of the Day archive.",
       "stars": 6,
-      "commitCount": 39,
+      "commitCount": 40,
       "releaseCount": 2,
       "releaseDates": [
         "2023-02-13T18:47:07Z",
@@ -57,8 +57,8 @@
       "language": "Python",
       "description": "Ranks open models on one NVIDIA RTX PRO 6000 Blackwell: speed and answer quality for everything llama-swap serves, built into one leaderboard you can follow.",
       "stars": 1,
-      "commitCount": 119,
-      "releaseCount": 15,
+      "commitCount": 145,
+      "releaseCount": 21,
       "releaseDates": [
         "2026-09-12T19:21:36Z",
         "2026-09-12T19:57:04Z",
@@ -74,7 +74,13 @@
         "2026-10-15T21:15:47Z",
         "2026-10-15T21:35:51Z",
         "2026-10-16T21:27:18Z",
-        "2026-10-16T22:01:51Z"
+        "2026-10-16T22:01:51Z",
+        "2026-10-17T08:34:58Z",
+        "2026-10-17T13:45:45Z",
+        "2026-10-17T15:55:47Z",
+        "2026-10-17T16:34:00Z",
+        "2026-10-24T04:57:59Z",
+        "2026-10-24T12:53:11Z"
       ],
       "githubUrl": "https://github.com/guitaripod/blackwall",
       "homepageUrl": "https://midgarcorp.cc/blackwall/",
@@ -91,9 +97,9 @@
         "sglang",
         "vllm"
       ],
-      "latestVersion": "2.0.1",
-      "latestReleaseDate": "2026-10-16T22:01:51Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/blackwall/releases/tag/2.0.1",
+      "latestVersion": "2.4.0",
+      "latestReleaseDate": "2026-10-24T12:53:11Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/blackwall/releases/tag/2.4.0",
       "hasLinuxBinary": false,
       "linuxBinaryUrl": null,
       "note": null,
@@ -200,8 +206,8 @@
       "language": "Swift",
       "description": "Runs Claude Code headlessly and serves it as structured HTTP sessions with streaming, subagents, spend and git, as a systemd user service.",
       "stars": 1,
-      "commitCount": 152,
-      "releaseCount": 33,
+      "commitCount": 195,
+      "releaseCount": 42,
       "releaseDates": [
         "2026-07-29T19:43:51Z",
         "2026-08-03T17:45:11Z",
@@ -235,16 +241,25 @@
         "2026-09-25T19:24:40Z",
         "2026-10-05T13:01:48Z",
         "2026-10-10T12:02:45Z",
-        "2026-10-10T12:02:46Z"
+        "2026-10-10T12:02:46Z",
+        "2026-10-20T20:28:36Z",
+        "2026-10-20T20:37:57Z",
+        "2026-10-20T21:11:18Z",
+        "2026-10-20T21:22:12Z",
+        "2026-10-23T09:03:37Z",
+        "2026-10-23T10:33:10Z",
+        "2026-11-03T09:42:23Z",
+        "2026-11-04T09:26:11Z",
+        "2026-11-04T10:15:44Z"
       ],
       "githubUrl": "https://github.com/guitaripod/claude-bridge",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.14.0",
-      "latestReleaseDate": "2026-10-10T12:02:46Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.14.0",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
+      "latestVersion": "1.19.0",
+      "latestReleaseDate": "2026-11-04T10:15:44Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.19.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/claude-bridge/releases/download/1.19.0/claude-bridge-1.19.0-linux-x86_64.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -257,6 +272,11 @@
             "channel": "script",
             "label": "install script",
             "command": "curl -fsSL https://raw.githubusercontent.com/guitaripod/claude-bridge/master/install.sh | bash"
+          },
+          {
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/tap/claude-bridge"
           }
         ]
       }
@@ -271,7 +291,7 @@
       "language": "Rust",
       "description": "Tiered task dispatcher: packets in, verified patches out",
       "stars": 1,
-      "commitCount": 10,
+      "commitCount": 11,
       "releaseCount": 2,
       "releaseDates": [
         "2026-09-24T23:12:45Z",
@@ -288,11 +308,16 @@
       "note": null,
       "install": {
         "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "cargo install --git https://github.com/guitaripod/delegate"
+          "channel": "homebrew",
+          "label": "Homebrew",
+          "command": "brew install guitaripod/tap/delegate"
         },
         "all": [
+          {
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/tap/delegate"
+          },
           {
             "channel": "source",
             "label": "from source",
@@ -310,8 +335,8 @@
       "lang": "rust",
       "language": "Rust",
       "description": "A fast emoji picker for KDE Plasma Wayland",
-      "stars": 1,
-      "commitCount": 14,
+      "stars": 2,
+      "commitCount": 15,
       "releaseCount": 2,
       "releaseDates": [
         "2026-07-13T09:09:20Z",
@@ -370,7 +395,7 @@
       "language": "Rust",
       "description": "Cross-machine emulation save, mod, and shader cache sync over SSH",
       "stars": 0,
-      "commitCount": 14,
+      "commitCount": 16,
       "releaseCount": 2,
       "releaseDates": [
         "2026-03-21T13:51:35Z",
@@ -408,10 +433,10 @@
       "group": "desktop",
       "lang": "rust",
       "language": "Rust",
-      "description": "A lossless music player with gapless playback, a real equalizer, synced lyrics you can save as a video and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
-      "stars": 5,
-      "commitCount": 102,
-      "releaseCount": 31,
+      "description": "A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
+      "stars": 7,
+      "commitCount": 236,
+      "releaseCount": 40,
       "releaseDates": [
         "2026-07-10T13:46:58Z",
         "2026-07-10T13:57:33Z",
@@ -443,16 +468,25 @@
         "2026-09-25T22:06:03Z",
         "2026-10-02T15:55:55Z",
         "2026-10-14T11:06:10Z",
-        "2026-10-14T22:11:12Z"
+        "2026-10-14T22:11:12Z",
+        "2026-10-17T00:13:26Z",
+        "2026-10-17T02:23:37Z",
+        "2026-10-17T12:02:07Z",
+        "2026-10-25T15:18:34Z",
+        "2026-10-25T17:09:48Z",
+        "2026-10-26T15:08:10Z",
+        "2026-10-30T02:07:08Z",
+        "2026-10-31T20:50:42Z",
+        "2026-11-03T16:04:47Z"
       ],
       "githubUrl": "https://github.com/guitaripod/flaccy",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.18.1",
-      "latestReleaseDate": "2026-10-14T22:11:12Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.18.1",
+      "latestVersion": "1.27.0",
+      "latestReleaseDate": "2026-11-03T16:04:47Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.27.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.18.1/flaccy-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.27.0/flaccy-linux-x86_64.tar.gz",
       "note": "GTK4 / libadwaita",
       "install": {
         "primary": {
@@ -633,10 +667,12 @@
       "language": "Rust",
       "description": "GPU monitor, in plain language. NVIDIA Linux native TUI with an optional local-LLM helper.",
       "stars": 0,
-      "commitCount": 21,
-      "releaseCount": 1,
+      "commitCount": 24,
+      "releaseCount": 3,
       "releaseDates": [
-        "2026-10-16T21:03:40Z"
+        "2026-10-16T21:03:40Z",
+        "2026-10-18T09:32:26Z",
+        "2026-10-18T10:31:09Z"
       ],
       "githubUrl": "https://github.com/guitaripod/gpulens",
       "homepageUrl": null,
@@ -649,11 +685,11 @@
         "rust",
         "tui"
       ],
-      "latestVersion": "0.1.0",
-      "latestReleaseDate": "2026-10-16T21:03:40Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/gpulens/releases/tag/0.1.0",
+      "latestVersion": "0.1.2",
+      "latestReleaseDate": "2026-10-18T10:31:09Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/gpulens/releases/tag/0.1.2",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/gpulens/releases/download/0.1.0/gpulens-0.1.0-x86_64-linux.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/gpulens/releases/download/0.1.2/gpulens-0.1.2-x86_64-linux.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -825,9 +861,9 @@
       "lang": "swift",
       "language": "Swift",
       "description": "Puts an Oh My Pi coding agent on your tailnet: the claude-bridge wire protocol over HTTP and SSE, as a systemd user service.",
-      "stars": 1,
-      "commitCount": 50,
-      "releaseCount": 13,
+      "stars": 2,
+      "commitCount": 76,
+      "releaseCount": 17,
       "releaseDates": [
         "2026-08-25T16:26:57Z",
         "2026-09-04T16:15:43Z",
@@ -841,16 +877,20 @@
         "2026-09-24T23:12:38Z",
         "2026-09-25T19:24:47Z",
         "2026-09-25T19:24:48Z",
-        "2026-10-10T12:02:49Z"
+        "2026-10-10T12:02:49Z",
+        "2026-10-23T19:29:02Z",
+        "2026-10-24T22:23:44Z",
+        "2026-11-03T09:43:20Z",
+        "2026-11-04T09:26:07Z"
       ],
       "githubUrl": "https://github.com/guitaripod/omp-bridge",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "0.8.0",
-      "latestReleaseDate": "2026-10-10T12:02:49Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/omp-bridge/releases/tag/v0.8.0",
-      "hasLinuxBinary": false,
-      "linuxBinaryUrl": null,
+      "latestVersion": "0.11.0",
+      "latestReleaseDate": "2026-11-04T09:26:07Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/omp-bridge/releases/tag/v0.11.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/omp-bridge/releases/download/v0.11.0/omp-bridge-0.11.0-linux-x86_64.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -900,11 +940,16 @@
       "note": null,
       "install": {
         "primary": {
-          "channel": "aur",
-          "label": "AUR",
-          "command": "yay -S pomme"
+          "channel": "homebrew",
+          "label": "Homebrew",
+          "command": "brew install guitaripod/tap/pomme"
         },
         "all": [
+          {
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/tap/pomme"
+          },
           {
             "channel": "aur",
             "label": "AUR",
@@ -928,7 +973,7 @@
       "language": "Rust",
       "description": "GPU-accelerated review window for screen recordings",
       "stars": 2,
-      "commitCount": 11,
+      "commitCount": 12,
       "releaseCount": 2,
       "releaseDates": [
         "2026-08-09T13:26:08Z",
@@ -982,8 +1027,8 @@
       "lang": "python",
       "language": "Python",
       "description": "Routes Steam Remote Play sessions to a dummy HDMI",
-      "stars": 4,
-      "commitCount": 16,
+      "stars": 5,
+      "commitCount": 19,
       "releaseCount": 2,
       "releaseDates": [
         "2026-07-26T22:19:58Z",
@@ -1135,7 +1180,7 @@
       "language": "Rust",
       "description": "A Song.link CLI app written in Rust. Paste a music service URL, the app generates a Song.link URL blazingly fast and copies it to your clipboard even more blazingly fast.",
       "stars": 3,
-      "commitCount": 4,
+      "commitCount": 5,
       "releaseCount": 2,
       "releaseDates": [
         "2022-09-04T12:07:50Z",
@@ -1197,11 +1242,16 @@
       "note": null,
       "install": {
         "primary": {
-          "channel": "source",
-          "label": "from source",
-          "command": "git clone https://github.com/guitaripod/speedrun-cli && cd speedrun-cli && go build"
+          "channel": "homebrew",
+          "label": "Homebrew",
+          "command": "brew install guitaripod/tap/speedrun-cli"
         },
         "all": [
+          {
+            "channel": "homebrew",
+            "label": "Homebrew",
+            "command": "brew install guitaripod/tap/speedrun-cli"
+          },
           {
             "channel": "source",
             "label": "from source",
@@ -1219,9 +1269,9 @@
       "lang": "swift",
       "language": "Swift",
       "description": "Your AI agents, anywhere: a native GTK4 client for Claude Code, Oh My Pi and opencode running on your own machines, over your own tailnet.",
-      "stars": 14,
-      "commitCount": 512,
-      "releaseCount": 47,
+      "stars": 15,
+      "commitCount": 626,
+      "releaseCount": 49,
       "releaseDates": [
         "2026-07-29T19:44:13Z",
         "2026-08-03T17:50:52Z",
@@ -1269,7 +1319,9 @@
         "2026-10-11T14:30:08Z",
         "2026-10-13T00:28:47Z",
         "2026-10-13T19:53:56Z",
-        "2026-10-16T11:06:41Z"
+        "2026-10-16T11:06:41Z",
+        "2026-10-21T00:32:33Z",
+        "2026-10-30T10:02:45Z"
       ],
       "githubUrl": "https://github.com/guitaripod/Tailscode",
       "homepageUrl": "https://midgarcorp.cc/tailscode",
@@ -1284,11 +1336,11 @@
         "swift",
         "tailscale"
       ],
-      "latestVersion": "1.78",
-      "latestReleaseDate": "2026-10-16T11:06:41Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/Tailscode/releases/tag/v1.78",
+      "latestVersion": "1.80",
+      "latestReleaseDate": "2026-10-30T10:02:45Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/Tailscode/releases/tag/v1.80",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/Tailscode/releases/download/v1.78/tailscode-1.78-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/Tailscode/releases/download/v1.80/tailscode-1.80-linux-x86_64.tar.gz",
       "note": "GTK 4.12+ / libadwaita 1.4+",
       "install": {
         "primary": {
@@ -1401,7 +1453,7 @@
       "language": "Rust",
       "description": "A decision engine for your Steam library: three questions, three cards, one game. Single binary, no account.",
       "stars": 0,
-      "commitCount": 4,
+      "commitCount": 9,
       "releaseCount": 2,
       "releaseDates": [
         "2026-08-18T16:33:43Z",
@@ -1453,8 +1505,8 @@
       "lang": "rust",
       "language": "Rust",
       "description": "Takes the rage out of your x.com timeline with a model on your own computer: a terminal client, a CLI and a browser extension.",
-      "stars": 14,
-      "commitCount": 337,
+      "stars": 15,
+      "commitCount": 371,
       "releaseCount": 67,
       "releaseDates": [
         "2026-04-12T09:06:40Z",
@@ -1563,7 +1615,7 @@
       "lang": "rust",
       "language": "Rust",
       "description": "Autonomous research agent powered by local LLMs",
-      "stars": 9,
+      "stars": 10,
       "commitCount": 49,
       "releaseCount": 8,
       "releaseDates": [

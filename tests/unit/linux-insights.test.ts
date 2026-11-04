@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { LinuxApp } from '../../src/data/linux';
-import { linuxApps, linuxScore, partitionSection } from '../../src/data/linux';
+import { LINUX_NOW, linuxApps, linuxScore, partitionSection } from '../../src/data/linux';
 import {
   ageLabel,
   barFraction,
@@ -140,7 +140,7 @@ describe('release timeline', () => {
   });
 
   it('plots every release the data records', () => {
-    const log = shipLog(linuxApps, NOW);
+    const log = shipLog(linuxApps, LINUX_NOW);
     const plotted = log.rows.reduce((sum, row) => sum + row.counts.reduce((a, b) => a + b, 0), 0);
     expect(plotted).toBe(linuxApps.reduce((sum, app) => sum + app.releaseDates.length, 0));
   });
