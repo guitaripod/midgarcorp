@@ -33,7 +33,7 @@ Astro static site (blog, app landing pages, /apps, /linux, /opensource, /open, /
 - Free apps with IAP must set `pricing` in their landing copy JSON (the store price chip only knows the download price).
 - Never label Solar Beam's `webb-live` sunshield temperatures as live (frozen commissioning readings).
 - `DuoCombo` copy says only what the picture shows (both displays), never "optimised for iPhone Duo". After regenerating combos with `compose_combo.py`, bump `DUO_REV` in `duo.ts`.
-- `generate-linux-og.js` and `generate-page-og.js` repeat `workScore` without the recency term; keep them in step with `src/lib/work.ts`.
+- `generate-linux-og.js`, `generate-page-og.js` and `generate-apps-og-grid.js` repeat `workScore` without the recency term; keep them in step with `src/lib/work.ts`.
 - Safari color-scheme triad stays in sync: `html`/`html.dark` background in `global.css`, `theme-color` metas in `BaseHead.astro`, the inline pre-paint theme script.
 - `<body>` carries no background (MatrixRain canvas colour lives on `html`).
 - Cloudflare adapter refuses `node:fs` in bundled code, so components read manifests, not the filesystem. `tests/unit/screenshot-variants.test.ts`, `duo-combos.test.ts` and `linux-data.test.ts` guard those manifests and files.

@@ -13,11 +13,36 @@ const appsData = JSON.parse(await fs.readFile(appsDataPath, 'utf-8'));
 const factsPath = path.join(__dirname, '..', 'src', 'data', 'landing-facts.json');
 const facts = JSON.parse(await fs.readFile(factsPath, 'utf-8'));
 
+const workPath = path.join(__dirname, '..', 'src', 'data', 'app-work.json');
+const work = JSON.parse(await fs.readFile(workPath, 'utf-8'));
+
 const localIconByTrack = new Map(
   facts.apps.filter((a) => a.iconLocal).map((a) => [String(a.trackId), a.iconLocal])
 );
+const factByTrack = new Map(facts.apps.map((a) => [String(a.trackId), a]));
 
 const trackIdFor = (appStoreUrl) => appStoreUrl.match(/id(\d+)/)?.[1] ?? '';
+
+/// src/lib/work.ts's workScore without the recency term, so the card lists the apps in the
+/// order the page ranks them.
+const workScore = (app) => {
+  const entry = work[factByTrack.get(trackIdFor(app.appStoreUrl))?.slug] ?? {};
+  return 2 * Math.log(1 + (entry.commitCount ?? 0)) + 2.5 * Math.log(1 + (entry.releaseCount ?? 0));
+};
+
+/// Every Apple platform the apps reach, the most common first, as the card's closing line.
+function platformLine(apps) {
+  const counts = new Map();
+  for (const app of apps) {
+    const platforms = factByTrack.get(trackIdFor(app.appStoreUrl))?.platforms ?? app.platforms;
+    for (const platform of platforms.filter((p) => p !== 'Linux')) {
+      counts.set(platform, (counts.get(platform) ?? 0) + 1);
+    }
+  }
+  const names = [...counts].sort((a, b) => b[1] - a[1]).map(([platform]) => platform);
+  const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0];
+  return `${apps.length} apps for ${list}`;
+}
 
 /// The self-hosted icon is the same artwork with the corner-mask repair applied
 /// (scripts/unmask_icon.py), so prefer it and only reach for the store artwork
@@ -47,7 +72,7 @@ async function generateOGGrid(sharp) {
   const ogWidth = 1200;
   const ogHeight = 630;
 
-  const apps = appsData.apps;
+  const apps = [...appsData.apps].sort((a, b) => workScore(b) - workScore(a));
   const rows = apps.length > 5 ? 2 : 1;
   const cols = Math.ceil(apps.length / rows);
   const padding = 28;
@@ -139,7 +164,7 @@ async function generateOGGrid(sharp) {
       <style>
         .stats { fill: #ffb000; font-size: 22px; font-family: ${mono}; }
       </style>
-      <text x="${ogWidth / 2}" y="50" text-anchor="middle" class="stats">${apps.length} apps · iPhone · iPad · Mac · Apple TV · by guitaripod</text>
+      <text x="${ogWidth / 2}" y="50" text-anchor="middle" class="stats">${platformLine(apps)}</text>
     </svg>`
   );
 
