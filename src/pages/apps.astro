@@ -147,7 +147,7 @@ const structuredData = {
       >
         <div class="space-y-16 sm:space-y-24">
           {appHeroes.map((entry, index) => (
-            <AppFlagship entry={entry} flip={index % 2 === 1} eager={index === 0} />
+            <AppFlagship entry={entry} flip={index % 2 === 1} />
           ))}
         </div>
       </PageSection>

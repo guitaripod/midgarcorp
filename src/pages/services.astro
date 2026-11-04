@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import AppCard from '@components/AppCard.astro';
 import CareerTimeline from '@components/CareerTimeline.astro';
 import { appEntries, appStats } from '@data/apps';
+import { iconSrcset } from '../lib/icon-srcset';
 import { ossStats } from '@data/oss';
 import careerData from '../data/career.json';
 
@@ -145,6 +146,8 @@ const dedicatedFeatures = [
                 <li>
                   <img
                     src={entry.app.icon}
+                    srcset={iconSrcset(entry.app.icon)}
+                    sizes="72px"
                     alt=""
                     width="64"
                     height="64"
@@ -423,23 +426,43 @@ const dedicatedFeatures = [
             p(cal, ar);
           };
       })(window, 'https://app.cal.com/embed/embed.js', 'init');
-      Cal('init', { origin: 'https://cal.com' });
-      Cal('inline', {
-        elementOrSelector: '#cal-embed',
-        calLink: 'midgarcorp/20min',
-        layout: 'month_view',
-      });
       const calTheme = () =>
         document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-      Cal('ui', {
-        theme: calTheme(),
-        styles: { branding: { brandColor: '#3fb950' } },
-        hideEventTypeDetails: false,
-        layout: 'month_view',
-      });
-      new MutationObserver(() => {
-        Cal('ui', { theme: calTheme() });
-      }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+      /** Loads the booking calendar; it pulls in about 2 MB from cal.com, so it waits until the visitor nears it. */
+      const startCal = () => {
+        Cal('init', { origin: 'https://cal.com' });
+        Cal('inline', {
+          elementOrSelector: '#cal-embed',
+          calLink: 'midgarcorp/20min',
+          layout: 'month_view',
+        });
+        Cal('ui', {
+          theme: calTheme(),
+          styles: { branding: { brandColor: '#3fb950' } },
+          hideEventTypeDetails: false,
+          layout: 'month_view',
+        });
+        new MutationObserver(() => {
+          Cal('ui', { theme: calTheme() });
+        }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      };
+
+      const calEmbed = document.getElementById('cal-embed');
+      if (calEmbed && 'IntersectionObserver' in window) {
+        const watcher = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              watcher.disconnect();
+              startCal();
+            }
+          },
+          { rootMargin: '800px 0px' }
+        );
+        watcher.observe(calEmbed);
+      } else {
+        startCal();
+      }
     </script>
 
     <p class="text-sm text-paper-faint dark:text-term-faint mt-6">

@@ -82,7 +82,7 @@ const structuredData = {
   </section>
 
   {
-    linuxSections.map((section, sectionIndex) => (
+    linuxSections.map((section) => (
       <PageSection
         id={section.theme === 'tools' ? 'command-line' : section.theme}
         command={section.command}
@@ -94,12 +94,7 @@ const structuredData = {
           {section.heroes.length > 0 && (
             <div class="space-y-16 sm:space-y-24">
               {section.heroes.map((app, index) => (
-                <LinuxFlagship
-                  app={app}
-                  now={now}
-                  flip={index % 2 === 1}
-                  eager={sectionIndex === 0 && index === 0}
-                />
+                <LinuxFlagship app={app} now={now} flip={index % 2 === 1} />
               ))}
             </div>
           )}
