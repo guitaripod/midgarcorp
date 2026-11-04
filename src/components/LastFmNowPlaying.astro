@@ -66,7 +66,7 @@ const { username, showArtwork = true, size = 'normal' } = Astro.props;
     );
 
   const statCell = (value, label, title) => `
-    <div class="text-sm font-bold text-paper-text dark:text-term-text truncate" title="${esc(title ?? value)}">${value}</div>
+    <div class="text-sm font-bold text-paper-text dark:text-term-text truncate" title="${esc(title ?? value)}">${esc(value)}</div>
     <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">${label}</div>`;
 
   const progressBar = (pct) => `
@@ -164,7 +164,7 @@ const { username, showArtwork = true, size = 'normal' } = Astro.props;
                   <div class="flex-1 min-w-0">
                     <div class="flex items-baseline justify-between gap-2">
                       <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(a.name)}</div>
-                      <div class="text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0">${a.playcount}</div>
+                      <div class="text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0">${esc(a.playcount)}</div>
                     </div>
                     ${progressBar((parseInt(a.playcount, 10) / maxPlays) * 100)}
                   </div>
