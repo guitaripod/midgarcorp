@@ -18,7 +18,7 @@ const langList =
     ? `${linuxStats.languages.slice(0, -1).join(', ')} and ${linuxStats.languages.at(-1)}`
     : linuxStats.languages.join('');
 
-const ogDescription = `${linuxStats.appCount} Linux apps and tools — ${linuxStats.commitCount} commits and ${linuxStats.releaseCount} releases in ${langList}. GTK4 desktop apps, the servers and benchmarks behind a local-AI setup, Plasma and Steam utilities, and single-binary CLIs, installable via cargo, Homebrew, the AUR and install scripts.`;
+const ogDescription = `${linuxStats.appCount} Linux apps and tools, ${linuxStats.commitCount.toLocaleString('en-US')} commits and ${linuxStats.releaseCount} releases: GTK4 desktop apps, local-AI servers and benchmarks, Plasma and Steam utilities and single-binary CLIs.`;
 
 const plural = (count: number, noun: string): string => `${count} ${noun}${count === 1 ? '' : 's'}`;
 

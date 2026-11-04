@@ -29,6 +29,12 @@ const internalLinks = (html: string): string[] =>
     .map((match) => match[1])
     .filter((href) => !href.startsWith('//') && !href.startsWith('/api/'));
 
+const decode = (text: string): string =>
+  text
+    .replace(/&amp;/g, '&')
+    .replace(/&#39;|&#x27;/g, "'")
+    .replace(/&quot;/g, '"');
+
 describe.skipIf(!built)('built site', () => {
   it('links every page with the trailing slash its canonical URL has', () => {
     const offenders = pages.flatMap(({ route, html }) =>
@@ -46,5 +52,17 @@ describe.skipIf(!built)('built site', () => {
         .map((href) => `${route} -> ${href}`)
     );
     expect([...new Set(offenders)].slice(0, 20)).toEqual([]);
+  });
+
+  it('keeps every title and description inside what a result page shows', () => {
+    const long = pages.flatMap(({ route, html }) => {
+      const title = decode(html.match(/<title>([^<]*)<\/title>/)?.[1] ?? '');
+      const description = decode(html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '');
+      return [
+        ...(title.length > 70 ? [`${route} title ${title.length}`] : []),
+        ...(description.length > 165 ? [`${route} description ${description.length}`] : []),
+      ];
+    });
+    expect(long).toEqual([]);
   });
 });
