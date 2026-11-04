@@ -62,17 +62,17 @@ REVIEW_FALLBACK = {
     "psybeam": {
         "category": "Travel",
         "price": "Free",
-        "repoIcon": os.path.expanduser("~/Dev/ios/psybeam"),
+        "repoIcon": os.path.expanduser("~/Dev/midgar/apps/psybeam"),
     },
     "payday": {
         "category": "Business",
         "price": "Free",
-        "repoIcon": os.path.expanduser("~/Dev/ios/PayDay"),
+        "repoIcon": os.path.expanduser("~/Dev/midgar/apps/pay-day"),
     },
     "helia": {
         "category": "Health & Fitness",
         "price": "Free",
-        "repoIcon": os.path.expanduser("~/Dev/ios/Helia"),
+        "repoIcon": os.path.expanduser("~/Dev/midgar/apps/helia"),
     },
 }
 
