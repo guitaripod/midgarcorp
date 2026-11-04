@@ -1,107 +1,114 @@
 {
   "dreameater": {
     "repo": "DreamEater",
-    "commitCount": 615,
+    "commitCount": 660,
     "releaseCount": 3,
     "latestReleaseDate": "2026-10-09T21:50:40Z",
-    "pushedAt": "2026-10-14T01:04:11Z"
+    "pushedAt": "2026-11-03T03:38:06Z"
   },
   "psywave": {
     "repo": "psywave",
-    "commitCount": 80,
+    "commitCount": 116,
     "releaseCount": 3,
     "latestReleaseDate": "2026-10-09T18:56:57Z",
-    "pushedAt": "2026-10-13T18:38:50Z"
+    "pushedAt": "2026-11-03T03:09:57Z"
   },
   "doublekick": {
     "repo": "doublekick",
-    "commitCount": 98,
+    "commitCount": 126,
     "releaseCount": 1,
     "latestReleaseDate": "2026-10-09T21:17:59Z",
-    "pushedAt": "2026-10-13T18:29:37Z"
+    "pushedAt": "2026-11-03T03:16:57Z"
   },
   "pixiepocket": {
     "repo": "pixie",
-    "commitCount": 537,
+    "commitCount": 571,
     "releaseCount": 4,
     "latestReleaseDate": "2026-10-09T18:56:51Z",
-    "pushedAt": "2026-10-13T19:11:50Z"
+    "pushedAt": "2026-11-04T03:26:22Z"
   },
   "appofthedead": {
     "repo": "appofthedead",
-    "commitCount": 241,
+    "commitCount": 275,
     "releaseCount": 4,
     "latestReleaseDate": "2026-10-09T16:48:16Z",
-    "pushedAt": "2026-10-13T18:46:55Z"
+    "pushedAt": "2026-11-03T03:04:04Z"
   },
   "masterofflags": {
     "repo": "master-of-flags",
     "commitCount": 341,
     "releaseCount": 3,
     "latestReleaseDate": "2026-10-09T13:57:05Z",
-    "pushedAt": "2026-10-12T22:19:29Z"
+    "pushedAt": "2026-11-03T02:57:28Z"
   },
   "masterofinventory": {
     "repo": "inventory",
-    "commitCount": 199,
+    "commitCount": 231,
     "releaseCount": 1,
     "latestReleaseDate": "2026-10-09T13:57:02Z",
-    "pushedAt": "2026-10-11T20:38:13Z"
+    "pushedAt": "2026-11-03T03:06:58Z"
   },
   "solarbeam": {
     "repo": "solarbeam",
-    "commitCount": 135,
+    "commitCount": 238,
     "releaseCount": 2,
     "latestReleaseDate": "2026-10-09T13:57:04Z",
-    "pushedAt": "2026-10-13T19:27:07Z"
+    "pushedAt": "2026-11-03T02:54:06Z"
   },
   "psybeam": {
     "repo": "psybeam",
-    "commitCount": 60,
+    "commitCount": 86,
     "releaseCount": 3,
     "latestReleaseDate": "2026-10-09T19:19:09Z",
-    "pushedAt": "2026-10-13T18:13:36Z"
+    "pushedAt": "2026-11-01T03:11:40Z"
   },
   "payday": {
     "repo": "PayDay",
-    "commitCount": 57,
+    "commitCount": 101,
     "releaseCount": 2,
     "latestReleaseDate": "2026-10-09T19:13:05Z",
-    "pushedAt": "2026-10-13T18:19:43Z"
+    "pushedAt": "2026-11-03T03:31:08Z"
   },
   "helia": {
     "repo": "Helia",
-    "commitCount": 86,
+    "commitCount": 126,
     "releaseCount": 1,
     "latestReleaseDate": "2026-10-09T23:52:12Z",
-    "pushedAt": "2026-10-13T19:03:15Z"
+    "pushedAt": "2026-11-03T03:27:18Z"
   },
   "embr": {
     "repo": "embr",
-    "commitCount": 135,
+    "commitCount": 164,
     "releaseCount": 2,
     "latestReleaseDate": "2026-10-09T13:57:07Z",
-    "pushedAt": "2026-10-13T18:26:28Z"
+    "pushedAt": "2026-11-03T03:00:57Z"
   },
   "crucible": {
     "repo": "Crucible",
-    "commitCount": 348,
+    "commitCount": 440,
     "releaseCount": 9,
     "latestReleaseDate": "2026-10-12T19:25:12Z",
-    "pushedAt": "2026-10-14T10:15:10Z"
+    "pushedAt": "2026-11-04T07:42:22Z"
   },
   "flaccy": {
     "repo": "flaccy",
-    "commitCount": 311,
-    "releaseCount": 33,
-    "latestReleaseDate": "2026-10-14T11:06:10Z",
-    "pushedAt": "2026-10-14T11:28:25Z"
+    "commitCount": 603,
+    "releaseCount": 47,
+    "latestReleaseDate": "2026-11-03T17:06:11Z",
+    "pushedAt": "2026-11-04T02:53:01Z"
   },
   "tailscode": {
     "repo": "Tailscode",
-    "commitCount": 1135,
-    "releaseCount": 46,
-    "latestReleaseDate": "2026-10-13T19:53:56Z",
-    "pushedAt": "2026-10-14T00:45:06Z"
+    "commitCount": 1656,
+    "releaseCount": 49,
+    "latestReleaseDate": "2026-10-30T10:02:45Z",
+    "pushedAt": "2026-11-04T10:04:58Z"
+  },
+  "livingdex": {
+    "repo": "livingdex",
+    "commitCount": 109,
+    "releaseCount": 0,
+    "latestReleaseDate": null,
+    "pushedAt": "2026-11-04T03:37:06Z"
   }
 }

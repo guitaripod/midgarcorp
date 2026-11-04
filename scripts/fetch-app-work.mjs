@@ -6,7 +6,7 @@ import { execSync } from 'node:child_process';
 const OWNER = 'guitaripod';
 const OUT = path.join(process.cwd(), 'src', 'data', 'app-work.json');
 
-/// Landing slug -> GitHub repo, for every App Store app whose source is public. Apps whose
+/// Landing slug -> GitHub repo, for every App Store app whose source is on GitHub. Apps whose
 /// repo is missing here simply show no commit count.
 const APP_REPOS = {
   dreameater: 'DreamEater',
@@ -16,7 +16,6 @@ const APP_REPOS = {
   appofthedead: 'appofthedead',
   masterofflags: 'master-of-flags',
   masterofinventory: 'inventory',
-  sforesight: 'sforesight',
   solarbeam: 'solarbeam',
   psybeam: 'psybeam',
   payday: 'PayDay',
@@ -25,6 +24,7 @@ const APP_REPOS = {
   crucible: 'Crucible',
   flaccy: 'flaccy',
   tailscode: 'Tailscode',
+  livingdex: 'livingdex',
 };
 
 /// CI exports GITHUB_TOKEN; a local run borrows the gh CLI's login.
@@ -50,6 +50,16 @@ function buildQuery() {
   return `query { ${aliases} }`;
 }
 
+/// The committed snapshot, so a repo this token cannot see (CI's GITHUB_TOKEN reads public repos
+/// only) keeps its last-known counts instead of dropping out of the ranking.
+function readPrevious() {
+  try {
+    return JSON.parse(fs.readFileSync(OUT, 'utf8'));
+  } catch {
+    return {};
+  }
+}
+
 async function main() {
   const token = resolveToken();
   if (!token) {
@@ -65,10 +75,18 @@ async function main() {
   const { data, errors } = await res.json();
   if (!data) throw new Error(errors?.[0]?.message ?? 'no data');
 
+  const previous = readPrevious();
   const work = {};
+  const kept = [];
   for (const [slug, repo] of Object.entries(APP_REPOS)) {
     const node = data[slug];
-    if (!node) continue;
+    if (!node) {
+      if (previous[slug]) {
+        work[slug] = previous[slug];
+        kept.push(slug);
+      }
+      continue;
+    }
     work[slug] = {
       repo,
       commitCount: node.defaultBranchRef?.target?.history?.totalCount ?? 0,
@@ -80,6 +98,7 @@ async function main() {
   fs.writeFileSync(OUT, JSON.stringify(work, null, 2) + '\n');
   const total = Object.values(work).reduce((sum, entry) => sum + entry.commitCount, 0);
   console.log(`✓ app-work.json: ${Object.keys(work).length} apps, ${total} commits`);
+  if (kept.length) console.log(`  kept last-known counts for ${kept.join(', ')} (repo not visible)`);
 }
 
 main().catch((err) => {
