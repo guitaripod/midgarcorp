@@ -122,27 +122,30 @@ const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
 const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : undefined);
 
 const privacyOverrides: Record<string, string> = {
-  crucible: 'https://midgarcorp.cc/crucible/privacy',
-  embr: 'https://embr.guitaripod.workers.dev/legal/privacy',
-  livingdex: 'https://midgarcorp.cc/legal/living-dex/privacy/',
+  crucible: 'https://midgarcorp.cc/crucible/privacy/',
   solarbeam: 'https://midgarcorp.cc/solarbeam/privacy',
-  tailscode: 'https://midgarcorp.cc/tailscode/privacy',
+  tailscode: 'https://midgarcorp.cc/tailscode/privacy/',
 };
-const privacyTenants: Record<string, string> = {
-  dreameater: 'dreameater',
-  pixiepocket: 'pixiepocket',
-  psywave: 'psywave',
-  doublekick: 'doublekick',
-  psybeam: 'psybeam',
-  appofthedead: 'appofthedead',
-  payday: 'payday',
-  helia: 'helia',
+/// Landing slug to the registry slug its policy lives under at midgarcorp.cc/legal/<slug>/.
+const legalSlugs: Record<string, string> = {
+  appofthedead: 'app-of-the-dead',
+  doublekick: 'double-kick',
+  dreameater: 'dream-eater',
+  embr: 'embr',
   flaccy: 'flaccy',
+  helia: 'helia',
+  livingdex: 'living-dex',
+  masterofflags: 'master-of-flags',
+  masterofinventory: 'master-of-inventory',
+  payday: 'pay-day',
+  pixiepocket: 'pixiepocket',
+  psybeam: 'psybeam',
+  psywave: 'psywave',
 };
 const privacyUrl =
   privacyOverrides[app.slug] ??
-  (privacyTenants[app.slug]
-    ? `https://mako.midgarcorp.cc/privacy/${privacyTenants[app.slug]}`
+  (legalSlugs[app.slug]
+    ? `https://midgarcorp.cc/legal/${legalSlugs[app.slug]}/privacy/`
     : undefined);
 const supportUrl = app.supportUrl ?? undefined;
 
@@ -252,9 +255,6 @@ const siblings = landingApps
   .slice(0, 6);
 
 const sectionPrompt = (cmd: string) => cmd;
----
-
-<BaseLayout title={c.seoTitle} description={c.metaDescription} image={ogImage}>
 
 const noteBlocks = releaseNoteBlocks(app.releaseNotes);
 const NOTES_SHOWN = 6;
@@ -266,6 +266,9 @@ const releasedOn = app.currentVersionReleaseDate
       timeZone: 'UTC',
     }).format(new Date(app.currentVersionReleaseDate))
   : null;
+---
+
+<BaseLayout title={c.seoTitle} description={c.metaDescription} image={ogImage}>
   <div style={`--accent:${accent}`}>
     <!-- Breadcrumb -->
     <nav
@@ -620,9 +623,6 @@ const releasedOn = app.currentVersionReleaseDate
       ) : null
     }
 
-    <!-- About (full store description) -->
-    {
-      !c.hideAbout ? (
     {
       app.version && noteBlocks.length > 0 ? (
         <section
@@ -654,6 +654,9 @@ const releasedOn = app.currentVersionReleaseDate
       ) : null
     }
 
+    <!-- About (full store description) -->
+    {
+      !c.hideAbout ? (
         <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
           <p class="prompt-line mb-3">{sectionPrompt(`less ${app.slug}/README`)}</p>
           <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
