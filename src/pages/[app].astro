@@ -11,6 +11,8 @@ import WebbLive from '@components/landing/WebbLive.astro';
 import AppIcon from '@components/landing/AppIcon.astro';
 import InstallGuide from '@components/landing/InstallGuide.astro';
 import DuoCombo from '@components/landing/DuoCombo.astro';
+import ReleaseNotes from '@components/landing/ReleaseNotes.astro';
+import { releaseNoteBlocks } from '../lib/app-release';
 import {
   landingApps,
   DEVICE_LABELS,
@@ -253,6 +255,17 @@ const sectionPrompt = (cmd: string) => cmd;
 ---
 
 <BaseLayout title={c.seoTitle} description={c.metaDescription} image={ogImage}>
+
+const noteBlocks = releaseNoteBlocks(app.releaseNotes);
+const NOTES_SHOWN = 6;
+const releasedOn = app.currentVersionReleaseDate
+  ? new Intl.DateTimeFormat('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    }).format(new Date(app.currentVersionReleaseDate))
+  : null;
   <div style={`--accent:${accent}`}>
     <!-- Breadcrumb -->
     <nav
@@ -610,6 +623,37 @@ const sectionPrompt = (cmd: string) => cmd;
     <!-- About (full store description) -->
     {
       !c.hideAbout ? (
+    {
+      app.version && noteBlocks.length > 0 ? (
+        <section
+          id="whats-new"
+          class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
+        >
+          <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --changelog`)}</p>
+          <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+            What's new in <span class="accent-text">{app.version}</span>
+          </h2>
+          {releasedOn && (
+            <p class="mb-6 text-sm text-paper-muted dark:text-term-muted">
+              On the App Store since{' '}
+              <time datetime={app.currentVersionReleaseDate}>{releasedOn}</time>
+            </p>
+          )}
+          <div class="max-w-2xl space-y-3 font-sans">
+            <ReleaseNotes blocks={noteBlocks.slice(0, NOTES_SHOWN)} />
+            {noteBlocks.length > NOTES_SHOWN && (
+              <details class="group space-y-3">
+                <summary class="cursor-pointer font-mono text-sm text-paper-green dark:text-term-green">
+                  everything in {app.version}
+                </summary>
+                <ReleaseNotes blocks={noteBlocks.slice(NOTES_SHOWN)} />
+              </details>
+            )}
+          </div>
+        </section>
+      ) : null
+    }
+
         <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
           <p class="prompt-line mb-3">{sectionPrompt(`less ${app.slug}/README`)}</p>
           <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">

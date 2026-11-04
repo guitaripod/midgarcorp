@@ -69,3 +69,30 @@ export function foldShared<T>(items: T[], keyOf: (item: T) => string | null, atL
   }
   return groups;
 }
+
+export type NoteBlock =
+  | { kind: 'heading'; text: string }
+  | { kind: 'paragraph'; text: string }
+  | { kind: 'list'; items: string[] };
+
+/// An App Store "What's New" text as blocks a page can render: heading lines ("New:",
+/// "WHAT'S NEW") lose their colon, bullet or numbered lines gather into one list, and every
+/// other line is a paragraph.
+export function releaseNoteBlocks(notes: string | null | undefined): NoteBlock[] {
+  const blocks: NoteBlock[] = [];
+  for (const raw of (notes ?? '').split(/\n+/)) {
+    const line = raw.trim();
+    if (!line) continue;
+    if (BULLET.test(line)) {
+      const item = line.replace(BULLET, '').trim();
+      const last = blocks.at(-1);
+      if (last?.kind === 'list') last.items.push(item);
+      else blocks.push({ kind: 'list', items: [item] });
+    } else if (isHeading(line)) {
+      blocks.push({ kind: 'heading', text: line.replace(/:$/, '') });
+    } else {
+      blocks.push({ kind: 'paragraph', text: line });
+    }
+  }
+  return blocks;
+}

@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { foldShared, releaseHeadline, shippedWithin } from '../../src/lib/app-release';
+import {
+  foldShared,
+  releaseHeadline,
+  releaseNoteBlocks,
+  shippedWithin,
+} from '../../src/lib/app-release';
 
 describe('releaseHeadline', () => {
   it('takes the first sentence of the notes', () => {
@@ -92,5 +97,25 @@ describe('foldShared', () => {
   it('leaves notes below the threshold alone', () => {
     const groups = foldShared(rows, (row) => row.note, 4);
     expect(groups).toHaveLength(5);
+  });
+});
+
+describe('releaseNoteBlocks', () => {
+  it('turns headings, bullets and prose into blocks', () => {
+    expect(
+      releaseNoteBlocks(
+        'New:\n• Faster sync\n• Smaller app\n\nThanks for using it.\n1. One more\n2. Two more'
+      )
+    ).toEqual([
+      { kind: 'heading', text: 'New' },
+      { kind: 'list', items: ['Faster sync', 'Smaller app'] },
+      { kind: 'paragraph', text: 'Thanks for using it.' },
+      { kind: 'list', items: ['One more', 'Two more'] },
+    ]);
+  });
+
+  it('returns nothing for missing notes', () => {
+    expect(releaseNoteBlocks(undefined)).toEqual([]);
+    expect(releaseNoteBlocks('\n\n')).toEqual([]);
   });
 });

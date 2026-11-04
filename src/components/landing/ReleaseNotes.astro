@@ -1,0 +1,40 @@
+---
+import type { NoteBlock } from '../../lib/app-release';
+
+export interface Props {
+  blocks: NoteBlock[];
+}
+
+const { blocks } = Astro.props;
+---
+
+{
+  blocks.map((block) =>
+    block.kind === 'heading' ? (
+      <h3 class="accent-text pt-2 text-xs font-bold uppercase tracking-[0.16em]">{block.text}</h3>
+    ) : block.kind === 'list' ? (
+      <ul class="space-y-1.5">
+        {block.items.map((item) => (
+          <li class="flex items-start gap-2 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            <span class="accent-text mt-0.5 shrink-0" aria-hidden="true">
+              ▸
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{block.text}</p>
+    )
+  )
+}
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+
+  :global(.dark) .accent-text {
+    color: color-mix(in srgb, var(--accent), #fff 24%);
+  }
+</style>
