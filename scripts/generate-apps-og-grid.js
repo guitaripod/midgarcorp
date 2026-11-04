@@ -63,6 +63,14 @@ async function generateOGGrid(sharp) {
           {
             input: Buffer.from(
               `<svg width="${iconSize}" height="${iconSize}">
+                <rect width="${iconSize}" height="${iconSize}" rx="24" fill="#fff"/>
+              </svg>`
+            ),
+            blend: 'dest-in',
+          },
+          {
+            input: Buffer.from(
+              `<svg width="${iconSize}" height="${iconSize}">
                 <rect width="${iconSize}" height="${iconSize}" rx="24" fill="none" stroke="#2d333b" stroke-width="2"/>
               </svg>`
             ),
@@ -119,7 +127,7 @@ async function generateOGGrid(sharp) {
         .dollar { fill: #33ff66; font-size: 22px; font-family: ${mono}; }
         .title { fill: #e6edf3; font-size: 46px; font-weight: bold; font-family: ${mono}; }
       </style>
-      <text x="${ogWidth / 2}" y="52" text-anchor="middle"><tspan class="dollar">$ </tspan><tspan class="prompt">ls ~/apps</tspan></text>
+      <text x="${ogWidth / 2}" y="52" text-anchor="middle"><tspan class="dollar">$</tspan><tspan class="prompt" dx="14">ls ~/apps</tspan></text>
       <text x="${ogWidth / 2}" y="108" text-anchor="middle" class="title">Apple Platform Apps</text>
     </svg>`
   );
