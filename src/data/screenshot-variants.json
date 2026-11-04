@@ -75,6 +75,18 @@
     480,
     960
   ],
+  "/screenshots/psywave/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/iphone-6.webp": [
+    480,
+    960
+  ],
   "/screenshots/psywave/ipad-1.webp": [
     480,
     960
@@ -84,6 +96,18 @@
     960
   ],
   "/screenshots/psywave/ipad-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/ipad-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/ipad-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/psywave/ipad-6.webp": [
     480,
     960
   ],
@@ -152,6 +176,10 @@
     960
   ],
   "/screenshots/appofthedead/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/iphone-6.webp": [
     480,
     960
   ],
@@ -439,22 +467,6 @@
     480,
     960
   ],
-  "/screenshots/psybeam/iphone-5.webp": [
-    480,
-    960
-  ],
-  "/screenshots/psybeam/iphone-6.webp": [
-    480,
-    960
-  ],
-  "/screenshots/psybeam/iphone-7.webp": [
-    480,
-    960
-  ],
-  "/screenshots/psybeam/iphone-8.webp": [
-    480,
-    960
-  ],
   "/screenshots/payday/iphone-1.webp": [
     480,
     960
@@ -532,6 +544,38 @@
     960
   ],
   "/screenshots/embr/iphone-9.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/ipad-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/ipad-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/ipad-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/ipad-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/ipad-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/ipad-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/ipad-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/ipad-8.webp": [
     480,
     960
   ],
@@ -976,6 +1020,35 @@
     960
   ],
   "/screenshots/crucible/hero.webp": [
+    480,
+    960
+  ],
+  "/screenshots/pixiepocket/promo-poster.webp": [
+    480
+  ],
+  "/screenshots/flaccy/og-hero.webp": [
+    480
+  ],
+  "/screenshots/tailscode/agents-megatron-mac.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/desk-dark-studio-states.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-painting.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/mac-dark-video.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/promo-poster.webp": [
+    480
+  ],
+  "/screenshots/tailscode/widgets.webp": [
     480,
     960
   ],

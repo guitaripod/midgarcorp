@@ -105,14 +105,24 @@
   "screenshotCaptions": {
     "iphone": [
       "Watch live, with real-time chat",
+      "Star your favorites, no account needed",
       "Every live channel, at a glance",
-      "Your channels, one tap away",
       "Native chat with 7TV, BTTV & FFZ",
-      "Browse by category",
       "Listen in the background",
+      "Browse by category",
       "Find channels and games instantly",
       "Make it yours",
       "A native Twitch client for iPhone"
+    ],
+    "ipad": [
+      "Watch live, with real-time chat",
+      "Star your favorites, no account needed",
+      "Every live channel, at a glance",
+      "Native chat with 7TV, BTTV & FFZ",
+      "Listen in the background",
+      "Browse by category",
+      "Find channels and games instantly",
+      "Make it yours"
     ]
   },
   "ctaLine": "Get the native Twitch client your iPhone deserves.",

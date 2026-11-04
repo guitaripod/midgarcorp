@@ -18,6 +18,7 @@ Tools: cwebp on PATH, Pillow installed.
 Run from repo root: python3 scripts/fetch-store-assets.py
 """
 
+import glob
 import json
 import os
 import re
@@ -47,7 +48,6 @@ APPS = [
     {"slug": "appofthedead", "trackId": 6746733380, "shortName": "App of the Dead", "color": "#A855F7", "status": "live"},
     {"slug": "masterofflags", "trackId": 1484270248, "shortName": "Master of Flags", "color": "#EF4444", "status": "live"},
     {"slug": "masterofinventory", "trackId": 1523538855, "shortName": "Master of Inventory", "color": "#10B981", "status": "live"},
-    {"slug": "sforesight", "trackId": 6736438070, "shortName": "SForesight", "color": "#38BDF8", "status": "live"},
     {"slug": "solarbeam", "trackId": 6705124497, "shortName": "Solar Beam", "color": "#F59E0B", "status": "live"},
     {"slug": "psybeam", "trackId": 6777952645, "shortName": "Psybeam", "color": "#06B6D4", "status": "live"},
     {"slug": "payday", "trackId": 6779927672, "shortName": "Pay Day", "color": "#22C55E", "status": "review"},
@@ -100,8 +100,13 @@ PINNED_DESCRIPTIONS = {"solarbeam"}
 PINNED_SCREENSHOTS = {"solarbeam", "tailscode", "pixiepocket"}
 # Slugs whose remade UI is still in review: the page follows the newest submitted
 # version of every platform (its screenshots, description and keywords) instead of
-# the version the storefront serves today.
-NEWEST_VERSION = {"dreameater", "masterofflags", "masterofinventory"}
+# the version the storefront serves today. Empty once each remade version is live, so
+# the pages show what the shipped app does.
+NEWEST_VERSION: set[str] = set()
+# Store screenshots the web page leaves out, by slug and filename label. Master of
+# Inventory's store paywall art still reads "Start 7 days free" after 3.1.0 dropped the
+# trial, and no landing page shows a trial (decision D22).
+SKIP_SHOTS = {"masterofinventory": {"Paywall"}}
 # Cap the stored webp width per device class (display never exceeds this @2x).
 WIDTH_CAP = {"iphone": 1290, "ipad": 1600, "tv": 1920, "mac": 1920}
 
@@ -156,6 +161,17 @@ def to_webp(src_png, dest_webp, cap_width):
         ["cwebp", "-quiet", "-q", "80", "-resize", str(cap_width), "0", src_png, "-o", dest_webp],
         check=True,
     )
+
+
+def drop_stale_variants(dest_webp):
+    """Delete the @<width> downscales of a screenshot that was just replaced.
+
+    generate-screenshot-variants.mjs keeps any variant already on disk, so without this a
+    refreshed screenshot would keep serving the previous release's pixels at every width
+    below the original.
+    """
+    for variant in glob.glob(dest_webp.replace(".webp", "@*.webp")):
+        os.remove(variant)
 
 
 def template_url(image_asset, fmt="png"):
@@ -266,6 +282,8 @@ def process_app(app):
 
     shots_manifest = {}
     for bucket, assets in merged.items():
+        skip = SKIP_SHOTS.get(slug, set())
+        assets = [a for a in assets if label_from_filename(a.get("fileName"), 0) not in skip]
         cap = WIDTH_CAP[bucket]
         items = []
         for i, attrs in enumerate(assets):
@@ -283,6 +301,7 @@ def process_app(app):
             except Exception as e:
                 print(f"  ! {bucket} #{i} webp failed: {e}")
                 continue
+            drop_stale_variants(dest)
             scale = min(asset["width"], cap) / asset["width"]
             items.append({
                 "src": f"/screenshots/{slug}/{dest_name}",
@@ -370,6 +389,7 @@ def process_app(app):
             if unmask(icon_png):
                 print("  icon: filled the baked-in corner mask")
             to_webp(icon_png, os.path.join(out_dir, "icon.webp"), 512)
+            drop_stale_variants(os.path.join(out_dir, "icon.webp"))
             fact["iconLocal"] = f"/screenshots/{slug}/icon.webp"
         except Exception as e:
             print(f"  ! icon failed: {e}")

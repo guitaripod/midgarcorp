@@ -37,6 +37,19 @@ async function writeVariants(publicSrc, sourceWidth, widths, slug) {
   return made;
 }
 
+/// The other screenshots in an app's folder, such as the figures a bespoke page like
+/// /tailscode places itself: every top-level webp that is not an icon, a variant or a shot
+/// the manifest already covers.
+async function pageFigures(slug, manifest) {
+  const dir = path.join(PUBLIC, 'screenshots', slug);
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((name) => name.endsWith('.webp') && !name.includes('@') && !name.startsWith('icon'))
+    .map((name) => `/screenshots/${slug}/${name}`)
+    .filter((src) => !manifest[src]);
+}
+
 /// Store screenshots are archived at capture resolution (1320–3840px wide) and
 /// icons at 512px, but the page frames them into a few hundred — or, for icons,
 /// 24–72 — CSS pixels; these variants are what the srcsets pick from.
@@ -60,6 +73,14 @@ async function main() {
     if (!hero || !hero.src.endsWith('.webp')) continue;
     const widths = await writeVariants(hero.src, hero.w, WIDTHS, file.replace(/\.json$/, ''));
     if (widths.length) manifest[hero.src] = widths;
+  }
+
+  for (const app of facts.apps) {
+    for (const src of await pageFigures(app.slug, manifest)) {
+      const { width } = await sharp(path.join(PUBLIC, src.replace(/^\//, ''))).metadata();
+      const widths = await writeVariants(src, width ?? 0, WIDTHS, app.slug);
+      if (widths.length) manifest[src] = widths;
+    }
   }
 
   for (const app of facts.apps) {
