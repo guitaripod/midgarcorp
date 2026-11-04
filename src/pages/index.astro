@@ -22,6 +22,14 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 4);
 
+/// "Recent" only while the newest post is a few months old; after that the section is simply
+/// the writing, so the homepage never calls a year-old post recent.
+const RECENT_WRITING_DAYS = 120;
+const newestPostAge = posts[0]
+  ? (Date.now() - posts[0].data.pubDate.valueOf()) / 86_400_000
+  : Infinity;
+const writingHeading = newestPostAge <= RECENT_WRITING_DAYS ? 'recent writing' : 'writing';
+
 const postsWithReadingTime = posts.map((post) => ({
   ...post,
   readingTime: calculateReadingTime(post.body),
