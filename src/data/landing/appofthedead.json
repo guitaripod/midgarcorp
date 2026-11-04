@@ -1,6 +1,6 @@
 {
   "seoTitle": "App of the Dead — Learn World Religions Free",
-  "metaDescription": "Learn what 22 religions believe about the afterlife in 5-minute lessons. Gamified quizzes, daily streaks, and an Oracle that chats on your iPhone. Start free.",
+  "metaDescription": "Where will your soul go? Face the Judgment of six afterlives, then learn what 22 religions believe in 5-minute lessons, and ask the gods on your iPhone.",
   "keywords": [
     "comparative religion app",
     "world religions for beginners",
@@ -15,15 +15,20 @@
     "study world faiths offline",
     "gamified learning quizzes"
   ],
-  "heroHeadline": "What happens after we die? Find out, one lesson at a time.",
-  "heroSubhead": "App of the Dead turns comparative religion into a game. Bite-sized lessons, quick quizzes, and daily streaks take you across 22 traditions and the great afterlife myths of history. Neutral, respectful, and made for the curious.",
+  "heroHeadline": "Where will your soul go? Six afterlives are about to tell you.",
+  "heroSubhead": "App of the Dead opens with the Judgment: nine questions from the guardians of the dead weigh your soul by Egyptian, Greek, Norse, Aztec, Zoroastrian and Buddhist rules. Then explore 22 traditions in five-minute lessons, neutral, respectful and made for the curious.",
   "accentColor": "#A855F7",
   "highlights": [
-    "The full Judaism path is free for life — no account, no time limit",
-    "22 traditions side by side, from Buddhism and Islam to Norse and Egyptian",
-    "Ask the Oracle: chat with deity guides through a model that runs on your iPhone"
+    "The Judgment: your verdict in six traditions, and a Soul Card to share",
+    "22 traditions side by side, each a path of story-card lessons on its own map",
+    "Ask the Oracle: deity guides answer on your iPhone, instantly with Apple Intelligence"
   ],
   "features": [
+    {
+      "title": "The Judgment",
+      "body": "Thoth reads your record, Charon asks for his coin, Odin asks how your story ends, and Anubis weighs your heart against the feather of Ma'at. See where you would go, from the Field of Reeds to Valhalla, and share your Soul Card.",
+      "glyph": "⚖"
+    },
     {
       "title": "Every belief, side by side",
       "body": "Walk a path through Judaism, Christianity, Islam, Buddhism, Hinduism, Norse, Egyptian, Greek and more. See where the world's oldest answers agree and where they diverge.",
@@ -36,18 +41,13 @@
     },
     {
       "title": "The Oracle",
-      "body": "Chat with Anubis, Odin, Kali and other guides. After a one-time model download, the AI runs on your iPhone and your questions are answered on-device.",
+      "body": "Chat with Anubis, Odin, Hecate, Azrael and other guides. On iPhones with Apple Intelligence the Oracle answers at once with Apple's on-device model; other iPhones download it once. Your questions never leave your phone.",
       "glyph": "⊹"
     },
     {
       "title": "Built to keep you learning",
-      "body": "Daily streaks turn five minutes into a habit. XP and levels track your progress, and badges mark each path you finish.",
+      "body": "Every tradition is a path map of story-card lessons. A Daily Omen asks one question a day from any faith, streaks turn five minutes into a habit, and XP and badges mark each path you finish.",
       "glyph": "✦"
-    },
-    {
-      "title": "The Scroll of Ascension",
-      "body": "Your profile becomes a living Book of the Dead: a golden XP ring, a Halls of the Dead trophy room for all 22 realms, and your full Hall of Honors.",
-      "glyph": "◉"
     },
     {
       "title": "Respectful by design",
@@ -57,16 +57,16 @@
   ],
   "howItWorks": [
     {
-      "step": "Start free",
-      "body": "Open the Judaism path and learn Jewish afterlife beliefs and Olam Ha-Ba end to end, no account required."
+      "step": "Face the Judgment",
+      "body": "Answer nine guardians of the dead in about two minutes and get your verdict in six traditions. It opens every path and every god for your first week, with nothing to sign up for."
     },
     {
       "step": "Build a streak",
-      "body": "Take a five-minute lesson a day, answer the quizzes, and watch your XP, levels, and badges climb."
+      "body": "Take a five-minute lesson a day on a tradition's path map, answer the Daily Omen, and watch your XP and badges climb."
     },
     {
       "step": "Go deeper",
-      "body": "Unlock the other 21 paths and unlimited Oracle conversations, or add single traditions whenever curiosity strikes."
+      "body": "Keep every path and unlimited Oracle conversations with Premium, add single traditions, or stay on the Judaism path, free forever."
     }
   ],
   "faq": [
@@ -80,11 +80,11 @@
     },
     {
       "q": "Does the app work offline?",
-      "a": "Lessons and quizzes work offline once downloaded. The Oracle uses an on-device model, which is downloaded once over the internet; after that, your questions are answered on your iPhone."
+      "a": "Lessons, quizzes and the Judgment work offline. The Oracle runs on your iPhone: instantly with Apple Intelligence, or after a one-time model download on other iPhones."
     },
     {
       "q": "Is my data private?",
-      "a": "Yes. After the model is downloaded, Oracle conversations are processed on-device, so your spiritual questions are answered on your phone rather than on a chat server."
+      "a": "Yes. Oracle conversations are processed on your iPhone, by Apple's on-device model or the downloaded one, so your spiritual questions never go to a chat server."
     },
     {
       "q": "Is this trying to convert me to a religion?",
@@ -92,11 +92,11 @@
     },
     {
       "q": "Which devices does it support?",
-      "a": "App of the Dead runs on iPhone and iPad with iOS 18.2 or later, in both light and dark mode."
+      "a": "App of the Dead runs on iPhone and iPad with iOS 18.2 or later. The Oracle's instant answers need an iPhone with Apple Intelligence; other iPhones download the model once."
     },
     {
       "q": "Can I try it before paying?",
-      "a": "Yes. The full Judaism path is free forever, so you can learn a whole tradition before deciding. Subscriptions renew automatically through your Apple ID and can be cancelled anytime in Settings."
+      "a": "Yes. Facing the Judgment opens every path and every god for seven days, with nothing to sign up for and nothing to cancel, and the full Judaism path is free forever. Subscriptions renew automatically through your Apple ID and can be cancelled anytime in Settings."
     },
     {
       "q": "Who is App of the Dead for?",
