@@ -37,7 +37,7 @@ const apps = legalApps();
               <>
                 {index > 0 && <span aria-hidden="true"> · </span>}
                 <a
-                  href={`/legal/${app.slug}/${doc}`}
+                  href={`/legal/${app.slug}/${doc}/`}
                   class="text-paper-green underline decoration-dotted underline-offset-2 dark:text-term-green"
                 >
                   {LEGAL_LABELS[doc]}

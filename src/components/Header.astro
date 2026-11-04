@@ -6,17 +6,18 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 
 const navItems = [
-  { href: '/services', label: 'services' },
-  { href: '/apps', label: 'apps' },
-  { href: '/linux', label: 'linux' },
-  { href: '/opensource', label: 'oss' },
-  { href: '/open', label: 'open' },
-  { href: '/archive', label: 'blog' },
-  { href: '/tags', label: 'tags' },
-  { href: '/links', label: 'links' },
+  { href: '/services/', label: 'services' },
+  { href: '/apps/', label: 'apps' },
+  { href: '/linux/', label: 'linux' },
+  { href: '/opensource/', label: 'oss' },
+  { href: '/open/', label: 'open' },
+  { href: '/archive/', label: 'blog' },
+  { href: '/tags/', label: 'tags' },
+  { href: '/links/', label: 'links' },
 ];
 
-const isItemActive = (href: string) => href !== '/' && currentPath.split('/')[0] === href.slice(1);
+const isItemActive = (href: string) =>
+  href !== '/' && currentPath.split('/')[0] === href.replace(/^\/|\/$/g, '');
 ---
 
 <header

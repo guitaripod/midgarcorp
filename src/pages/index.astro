@@ -71,7 +71,7 @@ const engagements = careerData.entries.slice(0, 3);
           >about ↓</a
         > ·
         <a
-          href="/services"
+          href="/services/"
           class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors whitespace-nowrap underline decoration-dotted underline-offset-2"
           >hire →</a
         >
@@ -115,13 +115,13 @@ const engagements = careerData.entries.slice(0, 3);
           </p>
           <div class="flex flex-wrap gap-3">
             <a
-              href="/services"
+              href="/services/"
               class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
             >
               ./work-with-me
             </a>
             <a
-              href="/apps"
+              href="/apps/"
               class="inline-flex items-center gap-2 px-5 py-2.5 border border-paper-border2 dark:border-term-border2 text-paper-text dark:text-term-text rounded-sm text-sm font-semibold hover:border-paper-green dark:hover:border-term-green hover:text-paper-green dark:hover:text-term-green transition-colors"
             >
               ./see-the-work
@@ -149,7 +149,7 @@ const engagements = careerData.entries.slice(0, 3);
 
     <!-- Selected Engagements -->
     <section>
-      <a href="/services#engagements" class="group block term-frame term-frame-hover p-5 sm:p-6">
+      <a href="/services/#engagements" class="group block term-frame term-frame-hover p-5 sm:p-6">
         <div class="flex items-center justify-between mb-5">
           <p class="prompt-line">git log --employers --oneline</p>
           <span class="text-xs text-paper-greendim dark:text-term-greendim"> full timeline → </span>
@@ -181,7 +181,7 @@ const engagements = careerData.entries.slice(0, 3);
 
     <!-- Featured Apps -->
     <section class="defer-paint">
-      <SectionHead path="~/apps" href="/apps" cta="ls apps/">most worked-on</SectionHead>
+      <SectionHead path="~/apps" href="/apps/" cta="ls apps/">most worked-on</SectionHead>
       <CardGrid md={1} lg={3}>
         {
           featuredApps.map((entry) => (
@@ -203,7 +203,7 @@ const engagements = careerData.entries.slice(0, 3);
 
     <!-- Linux Apps -->
     <section class="defer-paint">
-      <SectionHead path="~/linux" href="/linux" cta="ls linux/">
+      <SectionHead path="~/linux" href="/linux/" cta="ls linux/">
         apps &amp; tools ·
         <span class="text-paper-amber dark:text-term-amber"
           >{linuxStats.commitCount.toLocaleString('en-US')} commits</span
@@ -216,7 +216,7 @@ const engagements = careerData.entries.slice(0, 3);
 
     <!-- Open Source -->
     <section class="defer-paint">
-      <SectionHead path="~/oss" href="/opensource" cta="ls oss/">open source, by work</SectionHead>
+      <SectionHead path="~/oss" href="/opensource/" cta="ls oss/">open source, by work</SectionHead>
       <CardGrid md={2} lg={3}>
         {
           featuredOpenSource.map((project) => (
@@ -231,7 +231,7 @@ const engagements = careerData.entries.slice(0, 3);
 
     <!-- Recent Posts -->
     <section class="defer-paint">
-      <SectionHead path="~/blog" href="/archive" cta="ls blog/">recent writing</SectionHead>
+      <SectionHead path="~/blog" href="/archive/" cta="ls blog/">{writingHeading}</SectionHead>
 
       <CardGrid md={2} lg={2}>
         {
@@ -240,7 +240,7 @@ const engagements = careerData.entries.slice(0, 3);
 
             return (
               <article class="group term-frame term-frame-hover p-4 sm:p-5">
-                <a href={`/blog/${post.slug}`} class="block">
+                <a href={`/blog/${post.slug}/`} class="block">
                   <h3 class="text-base sm:text-lg font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors mb-2">
                     {post.data.title}
                   </h3>

@@ -40,7 +40,7 @@ const chipClass =
         <>
           <div class="flex flex-wrap gap-2 sm:gap-3">
             {repeated.map(({ tag, count }) => (
-              <a href={`/tags/${tag}`} class={chipClass}>
+              <a href={`/tags/${tag}/`} class={chipClass}>
                 <span class="font-medium text-paper-greendim dark:text-term-greendim group-hover:text-paper-green dark:group-hover:text-term-green transition-colors">
                   #{tag}
                 </span>
@@ -59,7 +59,7 @@ const chipClass =
               <div class="flex flex-wrap gap-2 mt-4">
                 {once.map(({ tag }) => (
                   <a
-                    href={`/tags/${tag}`}
+                    href={`/tags/${tag}/`}
                     class="term-frame term-frame-hover px-2.5 py-1 text-xs text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green transition-colors"
                   >
                     #{tag}

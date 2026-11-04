@@ -28,7 +28,7 @@ const { posts } = Astro.props;
   <div class="py-8">
     <div class="mb-8">
       <a
-        href="/tags"
+        href="/tags/"
         class="inline-flex items-center gap-2 text-sm text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors mb-4"
       >
         ← cd ..
@@ -55,7 +55,7 @@ const { posts } = Astro.props;
 
           return (
             <article class="group">
-              <a href={`/blog/${post.slug}`} class="block">
+              <a href={`/blog/${post.slug}/`} class="block">
                 <h2 class="text-xl font-semibold text-paper-text dark:text-term-text group-hover:text-paper-green dark:group-hover:text-term-green transition-colors">
                   {post.data.title}
                 </h2>
@@ -76,7 +76,7 @@ const { posts } = Astro.props;
                     .slice(0, 2)
                     .map((otherTag) => (
                       <a
-                        href={`/tags/${otherTag}`}
+                        href={`/tags/${otherTag}/`}
                         class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
                       >
                         #{otherTag}

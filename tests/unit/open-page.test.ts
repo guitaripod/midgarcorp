@@ -227,7 +227,7 @@ describe('built /open page', () => {
 
   it.skipIf(!built)('is in the footer and header navigation, active only on its own page', () => {
     const page = html();
-    expect(has(page, 'href="/open"')).toBe(true);
+    expect(has(page, 'href="/open/"')).toBe(true);
     expect(/>\s*5:open\*\s*<\/a>/.test(page)).toBe(true);
     expect(/>\s*4:oss\s*<\/a>/.test(page)).toBe(true);
     const oss = readFileSync(`${dist}opensource/index.html`, 'utf8');
