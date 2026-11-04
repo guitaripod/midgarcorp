@@ -1492,6 +1492,7 @@
         "iPhone",
         "iPad",
         "Apple TV",
+        "Apple Watch",
         "Mac"
       ]
     },
@@ -2664,7 +2665,8 @@
       "keywords": "stream,streaming,livestream,twitch viewer,7tv,bttv,ffz,emotes,vod,clips,pip,irc,esports,gaming,chat",
       "iconLocal": "/screenshots/embr/icon.webp",
       "platforms": [
-        "iPhone"
+        "iPhone",
+        "iPad"
       ]
     },
     {
@@ -3166,7 +3168,8 @@
       "platforms": [
         "iPhone",
         "iPad",
-        "Mac"
+        "Mac",
+        "Linux"
       ],
       "screenshots": {
         "iphone": [

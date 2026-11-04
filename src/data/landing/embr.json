@@ -25,7 +25,7 @@
   "features": [
     {
       "title": "A real native player",
-      "body": "Live streams, VODs, and clips play in AVPlayer, not a web wrapper. Picture-in-picture, background audio, quality selection, fullscreen, playback speed, latency control, and double-tap to seek — all the controls a native app should have.",
+      "body": "Live streams, VODs, and clips play in AVPlayer, not a web wrapper. Picture-in-picture, background audio, quality selection, fullscreen, playback speed, latency display, and double-tap to seek — all the controls a native app should have.",
       "glyph": "◉"
     },
     {
@@ -79,7 +79,7 @@
     },
     {
       "q": "What can the video player do?",
-      "a": "Embr uses a native AVPlayer for live streams, VODs, and clips, with picture-in-picture, background audio, quality selection, fullscreen, playback speed, latency control, and double-tap to seek."
+      "a": "Embr uses a native AVPlayer for live streams, VODs, and clips, with picture-in-picture, background audio, quality selection, fullscreen, playback speed, latency display, and double-tap to seek."
     },
     {
       "q": "Which emotes does chat support?",
@@ -99,7 +99,7 @@
     },
     {
       "q": "Which devices does Embr run on?",
-      "a": "Embr runs on iPhone."
+      "a": "Embr runs on iPhone and iPad."
     }
   ],
   "screenshotCaptions": {

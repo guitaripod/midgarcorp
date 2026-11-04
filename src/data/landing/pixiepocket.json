@@ -1,33 +1,33 @@
 {
-  "seoTitle": "PixiePocket — One-Tap AI Photo Editor with Nano Banana",
-  "metaDescription": "Turn a selfie into a pro headshot, restore old photos or become a 3D figurine in one tap, then refine by chat. Nano Banana 2 and Pro. 3 free images, no subscription.",
+  "seoTitle": "PixiePocket — AI Photo Editor with Nano Banana and GPT Image",
+  "metaDescription": "Turn a selfie into a pro headshot, restore an old photo or become a 3D figurine in one tap, then refine it by chat. 5 free edits a day for your first 7 days.",
   "keywords": [
     "ai headshot generator app",
     "nano banana photo editor",
     "restore old photos ai",
     "colorize old photos app",
     "3d figurine ai photo",
-    "ai photo editor no subscription",
-    "nano banana pro app iphone",
     "ai retouch selfie",
     "white background photo ai",
     "royal pet portrait ai",
     "halloween costume photo ai",
-    "before and after ai photo edit"
+    "before and after ai photo edit",
+    "gpt image photo editor",
+    "holiday card photo ai"
   ],
   "heroHeadline": "Edit any photo in one tap",
-  "heroSubhead": "Pick a photo, tap an edit: a pro headshot, a restored old photo, a 3D figurine. Then refine it by chat. Powered by Nano Banana. No subscription, ever.",
+  "heroSubhead": "Pick a photo, tap an edit: a pro headshot, a restored old photo, a 3D figurine. Then refine it by chat. Standard runs on Google's Nano Banana 2.1, Max on OpenAI's GPT Image 2.5.",
   "accentColor": "#EC4899",
   "highlights": [
-    "3 free images to start, no sign-up",
-    "13 one-tap edits, from headshots to old-photo restores",
-    "Nano Banana 2, Nano Banana Pro and GPT Image",
-    "Pay per image, credits never expire"
+    "5 free edits a day for your first 7 days, no sign-up",
+    "14 one-tap edits, from headshots to old-photo restores",
+    "Standard on Nano Banana 2.1, Max on GPT Image 2.5",
+    "Edit packs that never expire, or Plus for 60 edits a week"
   ],
   "features": [
     {
       "title": "One-tap edits",
-      "body": "Pro headshot, a four-shot headshot pack, old-photo restore, 3D figurine, natural retouch, white background, anime style, magazine cover, new outfit or hairstyle, travel photo, royal pet portrait and a Halloween costume.",
+      "body": "Pro headshot, a four-shot headshot pack, old-photo restore, 3D figurine, natural retouch, white background, anime style, magazine cover, new outfit or hairstyle, travel photo, royal pet portrait, a holiday card and a Halloween costume.",
       "glyph": "◈"
     },
     {
@@ -41,13 +41,13 @@
       "glyph": "⌗"
     },
     {
-      "title": "Three engines",
-      "body": "Nano Banana 2 is fast and affordable, Nano Banana Pro brings sharper detail and text, and GPT Image adds size, quality and transparent-background controls.",
+      "title": "Two levels of quality",
+      "body": "Standard runs on Nano Banana 2.1 and suits most edits at one edit per image. Max runs on GPT Image 2.5, the most detailed model, at five edits per image. If one model is busy or declines, another takes over.",
       "glyph": "◉"
     },
     {
-      "title": "Pay per image",
-      "body": "Start with 3 free images. After that, buy a credit pack once and create whenever you like; credits never expire, and a declined request never costs you anything.",
+      "title": "Edits, your way",
+      "body": "Your first edit starts 5 free Standard edits a day for 7 days. After that, buy a pack of 10, 40 or 120 edits that never expire, or PixiePocket Plus for 60 edits every week. A request that fails never costs an edit.",
       "glyph": "❖"
     },
     {
@@ -63,7 +63,7 @@
     },
     {
       "step": "Tap",
-      "body": "Tap a one-tap edit and the result arrives in seconds, made by Google's Nano Banana."
+      "body": "Tap a one-tap edit and the result arrives in seconds, on Nano Banana 2.1 or, for Max, GPT Image 2.5."
     },
     {
       "step": "Refine",
@@ -73,19 +73,19 @@
   "faq": [
     {
       "q": "Does PixiePocket require a subscription?",
-      "a": "No. There are no subscriptions and no renewals. You buy credit packs once and spend them as you create, and credits never expire."
+      "a": "No. Edit packs of 10, 40 or 120 are one-time purchases that never expire. PixiePocket Plus is optional: 60 edits every week for $6.99, a weekly subscription that renews until you cancel it in your Apple Account settings."
     },
     {
       "q": "How much does PixiePocket cost?",
-      "a": "The app is free to download and every new user gets 3 free images. After that you buy credit packs, with bigger packs carrying up to 68% bonus credits. A Nano Banana 2 image costs 21 credits and a Nano Banana Pro image 41."
+      "a": "The app is free to download, and your first edit starts 5 free Standard edits a day for 7 days. After that, packs of 10, 40 or 120 edits cost $2.99, $9.99 and $24.99, or PixiePocket Plus gives 60 edits a week for $6.99. A Standard image costs one edit and a Max image five."
     },
     {
       "q": "What can I do in one tap?",
-      "a": "Turn a selfie into a pro headshot or a pack of four, restore and colorize an old photo, become a 3D figurine, retouch a portrait naturally, cut a subject onto a white background, or try anime, magazine-cover, outfit, hairstyle, travel, royal-pet and Halloween looks."
+      "a": "Turn a selfie into a pro headshot or a pack of four, restore and colorize an old photo, become a 3D figurine, retouch a portrait naturally, cut a subject onto a white background, or try anime, magazine-cover, outfit, hairstyle, travel, royal-pet, holiday-card and Halloween looks."
     },
     {
       "q": "Which AI models does it use?",
-      "a": "Google's Nano Banana 2 and Nano Banana Pro, and OpenAI's GPT Image. One-tap edits run on Nano Banana."
+      "a": "Standard runs on Google's Nano Banana 2.1 and Max on OpenAI's GPT Image 2.5. If one model is busy or declines a request, another takes over."
     },
     {
       "q": "What happens to my prompts and photos?",
@@ -97,7 +97,7 @@
     },
     {
       "q": "What if the AI declines my request?",
-      "a": "Some photos and prompts are declined by content moderation, most often on photos of people. You are never charged for a declined request, and rewording it usually works."
+      "a": "Some photos and prompts are declined by content moderation, most often on photos of people. A request that fails never costs you an edit, and rewording it usually works."
     },
     {
       "q": "What devices does PixiePocket support?",
@@ -121,11 +121,11 @@
       "Refine the latest image by chat"
     ]
   },
-  "ctaLine": "Start with 3 free images and edit your first photo in seconds.",
-  "pricingNote": "Free to download with 3 free images. You buy credit packs once, bigger packs carry up to 68% bonus credits, and credits never expire — no subscription.",
+  "ctaLine": "Start with 5 free edits a day and edit your first photo in seconds.",
+  "pricingNote": "Free to download, with 5 free Standard edits a day for your first 7 days. Then buy packs of 10, 40 or 120 edits ($2.99, $9.99, $24.99) that never expire, or PixiePocket Plus, 60 edits a week for $6.99, auto-renewing until you cancel.",
   "video": {
     "src": "/screenshots/pixiepocket/promo.mp4?v=2",
     "poster": "/screenshots/pixiepocket/promo-poster.webp?v=2",
-    "caption": "A 30-second tour: one-tap edits, refine by chat, three AI models, the gallery, and the app on iPhone and iPhone Duo."
+    "caption": "A 30-second tour: one-tap edits, refine by chat, the gallery, and the app on iPhone and iPhone Duo."
   }
 }

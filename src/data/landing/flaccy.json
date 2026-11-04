@@ -137,7 +137,7 @@
     },
     {
       "q": "How much does Flaccy cost?",
-      "a": "Free to download, with a 7-day free trial that starts the first time you play your own music. After that, keep everything with a one-time Lifetime purchase ($12.99), or choose the yearly plan ($7.99 a year, renews until you cancel). The iPhone app (with Apple Watch) and the Mac app are separate purchases. Flaccy for Linux is free and open source."
+      "a": "Free to download, with a 7-day free trial that starts the first time you play your own music. After that, keep everything with a one-time Lifetime purchase ($12.99), or choose the yearly plan ($7.99 a year, renews until you cancel). One purchase covers iPhone, Apple Watch and Mac. Flaccy for Linux is free and open source."
     },
     {
       "q": "How do I get my music into Flaccy?",
@@ -161,7 +161,7 @@
     },
     {
       "q": "Is there a Mac app?",
-      "a": "Yes. Flaccy for Mac is a native Liquid Glass app on the Mac App Store. Point it at a folder and new files appear instantly, control playback from the menu bar player and your media keys, sort a multi-column song list and export full-resolution Year in Music posters. It is a separate purchase from the iOS app."
+      "a": "Yes. Flaccy for Mac is a native Liquid Glass app on the Mac App Store. Point it at a folder and new files appear instantly, control playback from the menu bar player and your media keys, sort a multi-column song list and export full-resolution Year in Music posters. The same purchase covers iPhone, Apple Watch and Mac."
     },
     {
       "q": "Is there a Linux app?",
@@ -250,8 +250,8 @@
         "note": "Renews until canceled"
       }
     ],
-    "footnote": "US prices shown; your local price appears in the App Store. The iPhone app (with Apple Watch) and the Mac app are separate purchases. Flaccy for Linux is free and open source."
+    "footnote": "US prices shown; your local price appears in the App Store. One purchase covers iPhone, Apple Watch and Mac. Flaccy for Linux is free and open source."
   },
   "lifestyle": [],
-  "macAppStoreUrl": "https://apps.apple.com/us/app/id6789594504"
+  "macAppStoreUrl": "https://apps.apple.com/us/app/flaccy-lossless-flac-player/id6787493695"
 }
