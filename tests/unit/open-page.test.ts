@@ -17,6 +17,7 @@ import {
 import {
   LISTED_VALUES_MAX,
   eventViews,
+  catalogIds,
   metricViews,
   publicCaveat,
   type MetricsCatalog,
@@ -115,6 +116,17 @@ describe('public caveats', () => {
     );
     for (const view of views.filter((view) => view.published)) {
       expect(view.caveat).not.toMatch(/under 5 installs/);
+    }
+  });
+});
+
+describe('published metrics', () => {
+  it('flags the retention series the stats publish as w1 and w4', () => {
+    const views = metricViews(metrics, catalogIds(['wau', 'w1', 'w4']), 10);
+    for (const id of ['retention_w1', 'retention_w4']) {
+      const view = views.find((entry) => entry.id === id);
+      expect(view?.published, id).toBe(true);
+      expect(view?.caveat, id).toMatch(/under 10 installs/);
     }
   });
 });

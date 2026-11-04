@@ -3,6 +3,7 @@ import signalsCatalogData from '../generated/signals-catalog.json';
 import { appsWithData, isSample, STATS_URL } from '../lib/open-stats.mjs';
 import {
   eventViews,
+  catalogIds,
   metricViews,
   type MetricsCatalog,
   type SignalsCatalog,
@@ -62,7 +63,7 @@ export const statsApps = appsWithData(stats);
 export const events = eventViews(signalsCatalogData as unknown as SignalsCatalog);
 export const metrics = metricViews(
   metricsCatalogData as unknown as MetricsCatalog,
-  stats.metrics.map((metric) => metric.id),
+  catalogIds(stats.metrics.map((metric) => metric.id)),
   stats.rules.min_count
 );
 

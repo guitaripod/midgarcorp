@@ -132,6 +132,18 @@ export function eventViews(catalog: SignalsCatalog): EventView[] {
   }));
 }
 
+/// Public stats ids that name a registry metric differently, as services/ops/src/public/stats.ts
+/// maps them: the retention series are published as w1 and w4.
+export const PUBLIC_METRIC_IDS: Record<string, string> = {
+  w1: 'retention_w1',
+  w4: 'retention_w4',
+};
+
+/// The registry metric behind each id the public stats publish.
+export function catalogIds(publicIds: string[]): string[] {
+  return publicIds.map((id) => PUBLIC_METRIC_IDS[id] ?? id);
+}
+
 /// A published metric's caveat with the public floor in place of the registry's internal one: the
 /// registry hides cells under 5 in answers to Midgar, the public stats hide anything under `minCount`.
 export function publicCaveat(caveat: string, minCount: number): string {
