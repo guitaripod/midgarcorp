@@ -46,7 +46,10 @@ export const GET: APIRoute = async (context) => {
 
   try {
     // Fetch user data
-    const userResponse = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}`, { headers });
+    const userResponse = await fetch(
+      `https://api.github.com/users/${encodeURIComponent(username)}`,
+      { headers }
+    );
 
     if (!userResponse.ok) {
       const rateLimitRemaining = userResponse.headers.get('X-RateLimit-Remaining');
