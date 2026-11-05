@@ -159,7 +159,7 @@ var appEnhancements = map[int]struct {
 		PrimaryColor: "#EC4899",
 		Features: []string{
 			"14 one-tap edits, from headshots to old-photo restores",
-			"Standard on Nano Banana 2.1, Max on GPT Image 2.5",
+			"Standard on Nano Banana 2.1, Max on GPT Image 2.6",
 			"Edit packs that never expire, or Plus for 60 edits a week",
 		},
 	},

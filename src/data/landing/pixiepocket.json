@@ -16,12 +16,12 @@
     "holiday card photo ai"
   ],
   "heroHeadline": "Edit any photo in one tap",
-  "heroSubhead": "Pick a photo, tap an edit: a pro headshot, a restored old photo, a 3D figurine. Then refine it by chat. Standard runs on Google's Nano Banana 2.1, Max on OpenAI's GPT Image 2.5.",
+  "heroSubhead": "Pick a photo, tap an edit: a pro headshot, a restored old photo, a 3D figurine. Then refine it by chat. Standard runs on Google's Nano Banana 2.1, Max on OpenAI's GPT Image 2.6.",
   "accentColor": "#EC4899",
   "highlights": [
     "5 free edits a day for your first 7 days, no sign-up",
     "14 one-tap edits, from headshots to old-photo restores",
-    "Standard on Nano Banana 2.1, Max on GPT Image 2.5",
+    "Standard on Nano Banana 2.1, Max on GPT Image 2.6",
     "Edit packs that never expire, or Plus for 60 edits a week"
   ],
   "features": [
@@ -42,7 +42,7 @@
     },
     {
       "title": "Two levels of quality",
-      "body": "Standard runs on Nano Banana 2.1 and suits most edits at one edit per image. Max runs on GPT Image 2.5, the most detailed model, at five edits per image. If one model is busy or declines, another takes over.",
+      "body": "Standard runs on Nano Banana 2.1 and suits most edits at one edit per image. Max runs on GPT Image 2.6, the most detailed model, at five edits per image. If one model is busy or declines, another takes over.",
       "glyph": "◉"
     },
     {
@@ -63,7 +63,7 @@
     },
     {
       "step": "Tap",
-      "body": "Tap a one-tap edit and the result arrives in seconds, on Nano Banana 2.1 or, for Max, GPT Image 2.5."
+      "body": "Tap a one-tap edit and the result arrives in seconds, on Nano Banana 2.1 or, for Max, GPT Image 2.6."
     },
     {
       "step": "Refine",
@@ -85,7 +85,7 @@
     },
     {
       "q": "Which AI models does it use?",
-      "a": "Standard runs on Google's Nano Banana 2.1 and Max on OpenAI's GPT Image 2.5. If one model is busy or declines a request, another takes over."
+      "a": "Standard runs on Google's Nano Banana 2.1 and Max on OpenAI's GPT Image 2.6. If one model is busy or declines a request, another takes over."
     },
     {
       "q": "What happens to my prompts and photos?",
