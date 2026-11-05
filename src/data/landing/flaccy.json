@@ -144,7 +144,7 @@
     },
     {
       "q": "How much does Flaccy cost?",
-      "a": "Free to download, with a 7-day free trial that starts the first time you play your own music. After that, keep everything with a one-time Lifetime purchase ($12.99), or choose the yearly plan ($7.99 a year, renews until you cancel). One purchase covers iPhone, iPad, Apple Watch and Mac. Flaccy for Linux is free and open source."
+      "a": "Free to download, with a 7-day free trial that starts the first time you play your own music. After that, keep everything with a one-time Lifetime purchase ($34.99), or choose the yearly plan ($14.99 a year, renews until you cancel). One purchase covers iPhone, iPad, Apple Watch and Mac. Flaccy for Linux is free and open source."
     },
     {
       "q": "How do I get my music into Flaccy?",
@@ -249,7 +249,7 @@
     },
     "premium": {
       "title": "Flaccy Lifetime",
-      "price": "$12.99",
+      "price": "$34.99",
       "items": [
         "Your library, gapless playback, synced lyrics and Last.fm scrobbling",
         "AI cleanup, Year in Music, smart playlists and the wantlist",
@@ -259,14 +259,14 @@
     "tiers": [
       {
         "name": "Lifetime",
-        "price": "$12.99",
-        "amount": 12.99,
+        "price": "$34.99",
+        "amount": 34.99,
         "note": "One payment"
       },
       {
         "name": "Yearly",
-        "price": "$7.99",
-        "amount": 7.99,
+        "price": "$14.99",
+        "amount": 14.99,
         "period": "year",
         "note": "Renews until canceled"
       }
