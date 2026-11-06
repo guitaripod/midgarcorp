@@ -993,37 +993,49 @@
             "src": "/screenshots/appofthedead/iphone-1.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Oracle"
+            "label": "Verdict"
           },
           {
             "src": "/screenshots/appofthedead/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Cap Hero"
+            "label": "Charon"
           },
           {
             "src": "/screenshots/appofthedead/iphone-3.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Cap Home"
+            "label": "Weighing"
           },
           {
             "src": "/screenshots/appofthedead/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Cap Lesson"
+            "label": "Soulcard"
           },
           {
             "src": "/screenshots/appofthedead/iphone-5.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Cap Halls"
+            "label": "Oracle"
           },
           {
             "src": "/screenshots/appofthedead/iphone-6.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Cap Library"
+            "label": "Pathmap"
+          },
+          {
+            "src": "/screenshots/appofthedead/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Lesson"
+          },
+          {
+            "src": "/screenshots/appofthedead/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Home"
           }
         ],
         "ipad": [
@@ -1031,32 +1043,32 @@
             "src": "/screenshots/appofthedead/ipad-1.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Home"
+            "label": "Verdict"
           },
           {
             "src": "/screenshots/appofthedead/ipad-2.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Lesson"
+            "label": "Charon"
           },
           {
             "src": "/screenshots/appofthedead/ipad-3.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Library"
+            "label": "Weighing"
           },
           {
             "src": "/screenshots/appofthedead/ipad-4.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Home Dark"
+            "label": "Home"
           }
         ]
       },
       "name": "App of the Dead: Religions",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
-      "description": "What happens after we die? Twenty-two faiths have answered for thousands of years. Explore every one in 5-minute lessons, then talk to the gods themselves.\n\nApp of the Dead turns comparative religion into a game. Bite-size lessons, instant-feedback quizzes, XP, streaks and achievements carry you across 22 belief systems and how each one imagines death, the soul and the world beyond.\n\nMEET THE ORACLE\nConverse with deities and guides as on-device AI personas, Anubis, Hermes, Kali, Odin, Azrael and more, and ask them anything about life, death and the afterlife. The Oracle now runs Google Gemma 4, a 2026-generation model, for dramatically smarter, more in-character answers. It runs entirely on your iPhone, so your conversations never leave the device, online or off.\n\nLEARN THROUGH PLAY\nEvery lesson is a few minutes. Multiple-choice, matching and true-or-false questions give immediate feedback, so the ideas actually stick. Mastery tests crown each path and your streak keeps you coming back.\n\nEVERY BELIEF, SIDE BY SIDE\nJudaism, Christianity, Islam, Buddhism, Hinduism, Norse, Egyptian, Greek, Zoroastrian and many more, each with its own theme and voice. See where traditions agree, where they diverge, and what they each say lies beyond, all in one place.\n\nSTART FREE\nThe complete Judaism path is free forever, no account required. Learn at your own pace, fully offline, with everything stored on your device.\n\nGO PREMIUM\nUnlock all 21 remaining paths, unlimited Oracle conversations and every future path with Premium. Keep learning for one annual price, or go monthly. Prefer to own forever? Unlock a single path on its own, or take Ultimate lifetime access.\n\nBUILT TO KEEP YOU LEARNING\nDistinct themes per tradition, full VoiceOver and Dynamic Type support, and a profile that maps your whole journey across all 22 realms.\n\nDeath is the one question every culture has tried to answer. Start exploring how.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://docs.google.com/document/d/1hgyLnTBAPtZC4miv1nEHuvw4_oRhj_gScdCxy7kGePw/edit?usp=sharing",
-      "releaseNotes": "A maintenance update. The App Store page is now also available in Arabic, Indonesian, Russian, Thai, Turkish and Vietnamese.",
+      "description": "Where will your soul go when you die? Six of the world's oldest traditions are about to tell you.\n\nNEW IN APP OF THE DEAD 2.0: THE JUDGMENT\nNine questions, about two minutes. Thoth reads the record of your life, Charon asks for his coin, Odin asks how your story ends, and Anubis lays your heart on the scale against the feather of Ma'at. Then the verdict: where you would go by the rules of Egyptian, Greek, Norse, Aztec, Zoroastrian and Buddhist belief, from the Field of Reeds to Valhalla, Mictlan to the House of Song. Share your Soul Card and dare your friends to face it.\n\n22 AFTERLIVES, ONE APP\nApp of the Dead turns comparative religion into a game. Judaism, Christianity, Islam, Hinduism, Buddhism, Sikhism, the Egyptian Duat, the Greek underworld, Norse Hel and Valhalla, Aztec Mictlan, Zoroastrianism, Shinto, Taoism and more. Each tradition is a path of short story-card lessons on a map of its own, ending in a mastery test.\n\nLEARN THROUGH PLAY\nMultiple-choice, matching and true-or-false questions with instant feedback. XP, streaks, achievements, Game Center leaderboards, and a Daily Omen: one question a day from any tradition.\n\nTALK TO THE GODS\nAsk Anubis about the weighing of the heart, Odin about Valhalla, Hecate about the crossroads, Azrael about the grave. On iPhones with Apple Intelligence the Oracle answers instantly; on other iPhones it downloads once. Either way it runs entirely on your iPhone, so your questions never leave it.\n\nA FREE WEEK AFTER YOUR VERDICT\nFinish the Judgment and every path and every god opens for seven days, if you have not bought anything yet. Nothing to sign up for, nothing to cancel. The Judaism path stays free forever.\n\nGO PREMIUM\nPremium unlocks all 22 paths and unlimited Oracle conversations, yearly or monthly. Prefer to own it? Unlock a single path, or take Ultimate lifetime access.\n\nBuilt with care for every tradition: no ads, no account, VoiceOver and Dynamic Type support.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://midgarcorp.cc/legal/app-of-the-dead/privacy",
+      "releaseNotes": "App of the Dead 2.0 is a new app around the oldest question.\n\n• The Judgment: nine questions from the guardians of the dead weigh your soul by six traditions and show where you would go. Share your Soul Card.\n• Finish the Judgment and every path and every god opens for a week, free, with nothing to sign up for.\n• A new look: night skies, gold leaf, each tradition in its own colour, and text that grows with Dynamic Type.\n• Every tradition opens on a path map of its lessons, ending at the mastery crown.\n• Lessons read as story cards, a few sentences at a time, with the key terms the Oracle explains.\n• A Daily Omen on Home: one question a day from any tradition keeps your streak alive.\n• The Oracle answers instantly on iPhones with Apple Intelligence, knows its tradition's lessons, remembers your last questions, and its replies share as cards.\n• If a message speaks of suicide or of hurting yourself, the Oracle steps aside and points you to free, confidential help.\n• Fixes: lesson text no longer shows stray citation marks, and Mandaeism has its own symbol.",
       "category": "Education",
       "genres": [
         "Education",
@@ -1067,9 +1079,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.4.15",
+      "version": "2.0",
       "releaseDate": "2025-09-23T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-02T18:50:51Z",
+      "currentVersionReleaseDate": "2026-11-05T19:41:17Z",
       "minimumOsVersion": "18.2",
       "contentRating": "12+",
       "languages": [
@@ -1219,10 +1231,10 @@
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.aotd",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/eb/89/bd/eb89bd5c-d765-3411-cfdb-8917bb0376c3/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/21/c1/6721c1dd-4ff4-7a3e-5c6e-366d33932a01/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
       "supportUrl": "https://x.com/prblemslver",
-      "keywords": "afterlife,trivia,world,pantheon,egyptian,norse,greek,buddhism,hinduism,deity,theology,chat,ai,soul",
+      "keywords": "heaven,hell,judgment,gods,greek,norse,egyptian,soul,death,underworld,oracle,world,trivia,chat,ai",
       "iconLocal": "/screenshots/appofthedead/icon.webp",
       "platforms": [
         "iPhone",
