@@ -37,7 +37,7 @@ const execFileAsync = promisify(execFile);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 const OWNER = 'guitaripod';
-const CRATES_UA = 'midgarcorp-linux-page (guitaripod@gmail.com)';
+const CRATES_UA = 'midgarcorp-linux-page (marcus@midgarcorp.cc)';
 
 // ---------------------------------------------------------------------------
 // Curation config — the ONLY things that ever need a human. Everything else is
