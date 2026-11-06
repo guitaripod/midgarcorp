@@ -41,7 +41,7 @@
     },
     {
       "title": "The Oracle",
-      "body": "Chat with Anubis, Odin, Hecate, Azrael and other guides. On iPhones with Apple Intelligence the Oracle answers at once with Apple's on-device model; other iPhones download it once. Your questions never leave your phone.",
+      "body": "Chat with Anubis, Odin, Hecate, Azrael and other guides. On iPhones with Apple Intelligence and iOS 26 or later the Oracle answers at once with Apple's on-device model; other iPhones download a model once. Your questions never leave your phone.",
       "glyph": "⊹"
     },
     {
@@ -58,7 +58,7 @@
   "howItWorks": [
     {
       "step": "Face the Judgment",
-      "body": "Answer nine guardians of the dead in about two minutes and get your verdict in six traditions. It opens every path and every god for your first week, with nothing to sign up for."
+      "body": "Answer nine guardians of the dead in about two minutes and get your verdict in six traditions. Finish it and every path and every god opens for a week, with nothing to sign up for."
     },
     {
       "step": "Build a streak",
@@ -80,7 +80,7 @@
     },
     {
       "q": "Does the app work offline?",
-      "a": "Lessons, quizzes and the Judgment work offline. The Oracle runs on your iPhone: instantly with Apple Intelligence, or after a one-time model download on other iPhones."
+      "a": "Lessons, quizzes and the Judgment work offline. The Oracle runs on your iPhone: instantly with Apple Intelligence on iOS 26 or later, or after a one-time model download on other iPhones."
     },
     {
       "q": "Is my data private?",
@@ -92,11 +92,11 @@
     },
     {
       "q": "Which devices does it support?",
-      "a": "App of the Dead runs on iPhone and iPad with iOS 18.2 or later. The Oracle's instant answers need an iPhone with Apple Intelligence; other iPhones download the model once."
+      "a": "App of the Dead runs on iPhone and iPad with iOS 18.2 or later. The Oracle's instant answers need an iPhone with Apple Intelligence on iOS 26 or later; other iPhones download a model once."
     },
     {
       "q": "Can I try it before paying?",
-      "a": "Yes. Facing the Judgment opens every path and every god for seven days, with nothing to sign up for and nothing to cancel, and the full Judaism path is free forever. Subscriptions renew automatically through your Apple ID and can be cancelled anytime in Settings."
+      "a": "Yes. Finish the Judgment and every path and every god opens for seven days if you have not bought anything yet, with nothing to sign up for and nothing to cancel. The full Judaism path is free forever, and the first lesson of every other path plays free. Subscriptions renew automatically through your Apple ID and can be cancelled anytime in Settings."
     },
     {
       "q": "Who is App of the Dead for?",
