@@ -1,5 +1,5 @@
 ---
-import { formatCell, isHidden, isNumber } from '../../lib/open-stats.mjs';
+import { formatCell, formatEur, isHidden, isNumber } from '../../lib/open-stats.mjs';
 import type { Cell } from '@data/open';
 
 export interface Props {
@@ -9,10 +9,20 @@ export interface Props {
   minCount: number;
   lead?: boolean;
   size?: 'hero' | 'small';
-  mark?: 'apple' | 'midgar' | 'ledger';
+  mark?: 'apple' | 'midgar' | 'ledger' | 'money';
+  money?: boolean;
 }
 
-const { label, cell = null, caption, minCount, lead = false, size = 'hero', mark } = Astro.props;
+const {
+  label,
+  cell = null,
+  caption,
+  minCount,
+  lead = false,
+  size = 'hero',
+  mark,
+  money = false,
+} = Astro.props;
 ---
 
 <div class:list={['bs', `bs--${size}`, { 'bs--lead': lead }]}>
@@ -23,7 +33,14 @@ const { label, cell = null, caption, minCount, lead = false, size = 'hero', mark
   <dd class="bs-value">
     {
       isNumber(cell) ? (
-        <span class="bs-number">{formatCell(cell)}</span>
+        <span class:list={['bs-number', { 'bs-number--money': money }]}>
+          {money && (
+            <span class="bs-approx" title="approximate">
+              ≈
+            </span>
+          )}
+          {money ? formatEur(cell) : formatCell(cell)}
+        </span>
       ) : isHidden(cell) ? (
         <span class="bs-number bs-number--hidden">
           {cell}
@@ -52,6 +69,7 @@ const { label, cell = null, caption, minCount, lead = false, size = 'hero', mark
     --bs-muted: theme('colors.paper.muted');
     --bs-lead: theme('colors.paper.green');
     --bs-ledger: theme('colors.paper.amber');
+    --bs-money: theme('colors.paper.amber');
     display: flex;
     flex-direction: column;
     min-width: 0;
@@ -62,6 +80,7 @@ const { label, cell = null, caption, minCount, lead = false, size = 'hero', mark
     --bs-muted: theme('colors.term.muted');
     --bs-lead: theme('colors.term.green');
     --bs-ledger: theme('colors.term.amber');
+    --bs-money: theme('colors.term.amber');
   }
 
   .bs-mark {
@@ -80,6 +99,28 @@ const { label, cell = null, caption, minCount, lead = false, size = 'hero', mark
   .bs-mark--midgar {
     background: var(--bs-lead);
     border-radius: 999px;
+  }
+
+  .bs-mark--money {
+    background: var(--bs-money);
+    border-radius: 1px;
+    transform: rotate(45deg) scale(0.85);
+  }
+
+  .bs-approx {
+    margin-right: 0.08em;
+    font-size: 0.55em;
+    font-weight: 400;
+    vertical-align: 0.35em;
+    opacity: 0.75;
+  }
+
+  .bs.bs--lead .bs-number.bs-number--money {
+    color: var(--bs-money);
+  }
+
+  :global(.dark) .bs.bs--lead .bs-number.bs-number--money {
+    text-shadow: 0 0 18px rgba(255, 176, 0, 0.3);
   }
 
   .bs-mark--ledger {

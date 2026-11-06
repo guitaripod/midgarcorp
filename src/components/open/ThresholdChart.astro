@@ -1,6 +1,6 @@
 ---
 import { thresholdBars } from '../../lib/open-page.mjs';
-import { formatCell, formatMonth, formatWeek } from '../../lib/open-stats.mjs';
+import { formatCell, formatEur, formatMonth, formatWeek } from '../../lib/open-stats.mjs';
 import type { Cell } from '@data/open';
 
 export interface Era {
@@ -16,9 +16,10 @@ export interface Props {
   open?: boolean;
   size?: 'compact' | 'normal' | 'tall';
   top?: number;
-  tone?: 'midgar' | 'apple';
+  tone?: 'midgar' | 'apple' | 'money';
   grain?: 'week' | 'month';
   era?: Era;
+  money?: boolean;
 }
 
 const {
@@ -32,10 +33,14 @@ const {
   tone = 'midgar',
   grain = 'week',
   era,
+  money = false,
 } = Astro.props;
 const compact = size === 'compact';
 const LABEL_ALL_MAX = 16;
-const chart = thresholdBars(cells, { minCount, height: 100, floorMin: compact ? 16 : 8, top });
+const chart = money
+  ? thresholdBars(cells, { minCount: 0, height: 100, floorMin: 0, top, minBar: 1 })
+  : thresholdBars(cells, { minCount, height: 100, floorMin: compact ? 16 : 8, top });
+const show = (value: Cell) => (money ? formatEur(value) : formatCell(value));
 const values = chart.bars.filter((bar) => bar.kind === 'value');
 const lastValue = values.at(-1);
 const peak = values.reduce<(typeof values)[number] | undefined>(
@@ -71,9 +76,13 @@ const eraStart = era && era.from >= 0 && era.from < cells.length ? era.from : nu
           </div>
         )
       }
-      <div class="oc-line" style={`bottom:${chart.band}%`}>
-        {!compact && <span class="oc-line__label">publish line · {minCount}</span>}
-      </div>
+      {
+        !money && (
+          <div class="oc-line" style={`bottom:${chart.band}%`}>
+            {!compact && <span class="oc-line__label">publish line · {minCount}</span>}
+          </div>
+        )
+      }
       {
         chart.bars.map((bar) => (
           <span
@@ -89,7 +98,7 @@ const eraStart = era && era.from >= 0 && era.from < cells.length ? era.from : nu
             style={`height:${bar.h}%`}
           >
             {bar.kind === 'value' && labelled(bar.index) && (
-              <span class="oc-bar__value">{formatCell(bar.value)}</span>
+              <span class="oc-bar__value">{show(bar.value)}</span>
             )}
           </span>
         ))
@@ -103,7 +112,7 @@ const eraStart = era && era.from >= 0 && era.from < cells.length ? era.from : nu
         <span>
           {grain === 'month' ? '' : 'week of '}
           {periodLabel(last)}
-          {dense && lastValue?.index === lastIndex && ` · ${formatCell(lastValue.value)}`}
+          {dense && lastValue?.index === lastIndex && ` · ${show(lastValue.value)}`}
         </span>
       </figcaption>
     )
@@ -140,6 +149,25 @@ const eraStart = era && era.from >= 0 && era.from < cells.length ? era.from : nu
   :global(.dark) .oc--apple {
     --oc-ink: theme('colors.term.text');
     --oc-ink-soft: theme('colors.term.muted');
+  }
+
+  .oc--money {
+    --oc-ink: theme('colors.paper.amber');
+    --oc-ink-soft: color-mix(in srgb, theme('colors.paper.amber') 55%, transparent);
+  }
+
+  :global(.dark) .oc--money {
+    --oc-ink: theme('colors.term.amber');
+    --oc-ink-soft: color-mix(in srgb, theme('colors.term.amber') 55%, transparent);
+  }
+
+  .oc--money .oc-bar--era.oc-bar--value {
+    background: var(--oc-ink);
+    opacity: 1;
+  }
+
+  :global(.dark) .oc--money .oc-bar--latest {
+    box-shadow: 0 0 12px rgba(255, 176, 0, 0.3);
   }
 
   .oc--compact {

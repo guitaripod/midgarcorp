@@ -24,7 +24,7 @@ import {
   type MetricsCatalog,
   type SignalsCatalog,
 } from '../../src/lib/open-catalog';
-import { appsWithData } from '../../src/lib/open-stats.mjs';
+import { appsWithData, moneyOf } from '../../src/lib/open-stats.mjs';
 
 const siteRoot = resolve(process.cwd());
 const dist = `${siteRoot}/dist/`;
@@ -215,6 +215,15 @@ describe('built /open page', () => {
   it.skipIf(!built)('says the data is a sample only while the snapshot is one', () => {
     expect(has(mainText('open/index.html'), 'sample numbers')).toBe(sample);
     if (sample) expect(has(mainText('open/index.html'), stats.rules.note)).toBe(true);
+  });
+
+  it.skipIf(!built)('shows money only when the stats publish it, with what it is', () => {
+    const text = mainText('open/index.html');
+    const money = moneyOf(apple);
+    expect(has(text, 'Earned, week by week')).toBe(money !== null);
+    expect(has(text, 'Money is published as totals.')).toBe(money !== null);
+    if (money) expect(has(text, money.basis)).toBe(true);
+    expect(has(text, 'Anything under 10')).toBe(true);
   });
 
   it.skipIf(!built)("shows Apple's year only when the stats carry it", () => {

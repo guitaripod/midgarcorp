@@ -2,7 +2,13 @@
 import AppIcon from '@components/landing/AppIcon.astro';
 import ThresholdChart from './ThresholdChart.astro';
 import Value from './Value.astro';
-import { describeSeries, formatWeek, latestOf, seriesOf } from '../../lib/open-stats.mjs';
+import {
+  describeSeries,
+  formatEur,
+  formatWeek,
+  latestOf,
+  seriesOf,
+} from '../../lib/open-stats.mjs';
 import { agoLabel } from '../../lib/open-page.mjs';
 import type { OpenApp, Row } from '@data/open';
 
@@ -18,6 +24,9 @@ export interface Props {
   downloadsTop: number;
   open: boolean;
   quiet?: string;
+  earned?: number;
+  earnedRecent?: number;
+  earnedSince?: string;
 }
 
 const {
@@ -32,6 +41,9 @@ const {
   downloadsTop,
   open,
   quiet,
+  earned,
+  earnedRecent,
+  earnedSince = '',
 } = Astro.props;
 const active = latestOf(weeks, 'wau');
 const fetched = downloads ? latestOf(downloads, 'downloads') : null;
@@ -115,6 +127,25 @@ const weekOf = (period: string | undefined) => (period ? `week of ${formatWeek(p
     </section>
   </div>
 
+  {
+    earned !== undefined && (
+      <p class="acc-earned">
+        <span class="acc-mark acc-mark--money" aria-hidden="true" />
+        {earned > 0 ? (
+          <>
+            <span class="acc-earned__total">≈ {formatEur(earned)}</span>
+            <span>earned {earnedSince}</span>
+            {earnedRecent !== undefined && earnedRecent > 0 && (
+              <span class="acc-earned__recent">{formatEur(earnedRecent)} in 12 weeks</span>
+            )}
+          </>
+        ) : (
+          <span>nothing earned {earnedSince}</span>
+        )}
+      </p>
+    )
+  }
+
   <footer class="acc-foot">
     <span>{version ? `version ${version}` : ''}</span>
     <span>updated {agoLabel(releasedDaysAgo)}</span>
@@ -127,6 +158,7 @@ const weekOf = (period: string | undefined) => (period ? `week of ${formatWeek(p
     --acc-muted: theme('colors.paper.muted');
     --acc-green: theme('colors.paper.green');
     --acc-border: theme('colors.paper.border');
+    --acc-money: theme('colors.paper.amber');
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
@@ -139,6 +171,7 @@ const weekOf = (period: string | undefined) => (period ? `week of ${formatWeek(p
     --acc-muted: theme('colors.term.muted');
     --acc-green: theme('colors.term.green');
     --acc-border: theme('colors.term.border');
+    --acc-money: theme('colors.term.amber');
   }
 
   .acc-head {
@@ -231,6 +264,36 @@ const weekOf = (period: string | undefined) => (period ? `week of ${formatWeek(p
   .acc-mark--apple {
     background: var(--acc-text);
     transform: rotate(45deg);
+  }
+
+  .acc-mark--money {
+    background: var(--acc-money);
+    transform: rotate(45deg) scale(0.85);
+  }
+
+  .acc-earned {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--acc-muted);
+  }
+
+  .acc-earned .acc-mark {
+    align-self: center;
+  }
+
+  .acc-earned__total {
+    font-size: 1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--acc-money);
+  }
+
+  .acc-earned__recent {
+    margin-left: auto;
+    font-size: 0.6875rem;
   }
 
   .acc-mark--midgar {

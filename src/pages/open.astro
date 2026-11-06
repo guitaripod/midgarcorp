@@ -35,8 +35,13 @@ import {
   isNumber,
   isOpenPeriod,
   seriesOf,
+  formatCell,
+  formatEur,
+  moneyOf,
 } from '../lib/open-stats.mjs';
 import {
+  describeMoney,
+  sumMoney,
   daysSince,
   firstPublished,
   formatDay,
@@ -70,13 +75,23 @@ const appleWeeks = trimLeading(apple?.weeks ?? []);
 const appleMonths = trimLeading(apple?.months ?? []);
 const eraIndex = indexFrom(appleWeeks, firstWeek);
 const era = eraIndex > 0 ? { from: eraIndex, label: "Midgar's own counts begin" } : undefined;
+const money = moneyOf(apple);
+const moneyLine = money ? `Earned means ${money.basis}, so it is approximate (≈).` : '';
 
-const yearTiles = [
+interface YearTile {
+  key: 'proceeds_eur' | 'downloads' | 'countries_downloaded' | 'purchases' | 'countries_purchased';
+  label: string;
+  caption: string;
+  lead: boolean;
+  money?: boolean;
+}
+
+const countTiles: YearTile[] = [
   {
     key: 'downloads',
     label: 'First-time downloads',
     caption: 'Every app, every storefront, redownloads not included.',
-    lead: true,
+    lead: !money,
   },
   {
     key: 'countries_downloaded',
@@ -87,16 +102,32 @@ const yearTiles = [
   {
     key: 'purchases',
     label: 'Paid purchases',
-    caption: 'Paid downloads, in-app purchases and renewals.',
+    caption: money
+      ? `Paid downloads, in-app purchases and renewals, from ${formatCell(apple?.totals.countries_purchased ?? null)} countries.`
+      : 'Paid downloads, in-app purchases and renewals.',
     lead: false,
   },
-  {
-    key: 'countries_purchased',
-    label: 'Countries that bought',
-    caption: 'Storefronts with at least one paid purchase.',
-    lead: false,
-  },
-] as const;
+];
+const yearTiles: YearTile[] = money
+  ? [
+      {
+        key: 'proceeds_eur',
+        label: 'Earned',
+        caption: "After Apple's commission and taxes, in euros.",
+        lead: true,
+        money: true,
+      },
+      ...countTiles,
+    ]
+  : [
+      ...countTiles,
+      {
+        key: 'countries_purchased',
+        label: 'Countries that bought',
+        caption: 'Storefronts with at least one paid purchase.',
+        lead: false,
+      },
+    ];
 
 const appleCards = [
   {
@@ -122,10 +153,11 @@ const appleCards = [
 ];
 
 const appleColumns = [
-  { field: 'downloads', label: 'Downloads' },
-  { field: 'redownloads', label: 'Redownloads' },
-  { field: 'purchases', label: 'Paid purchases' },
-  { field: 'active_subscriptions', label: 'Subscriptions' },
+  ...(money ? [{ field: 'proceeds_eur', label: 'Earned ≈', money: true }] : []),
+  { field: 'downloads', label: 'Downloads', money: false },
+  { field: 'redownloads', label: 'Redownloads', money: false },
+  { field: 'purchases', label: 'Paid purchases', money: false },
+  { field: 'active_subscriptions', label: 'Subscriptions', money: false },
 ];
 
 const sources = [
@@ -134,7 +166,9 @@ const sources = [
         {
           source: 'apple' as const,
           title: "Apple's reports",
-          text: `Downloads, paid purchases and subscriptions from App Store Connect's daily reports, for every app since ${formatDay(apple.first_day)}. A day behind, as Apple publishes them.`,
+          text: money
+            ? `Downloads, paid purchases, subscriptions and what they earned, from App Store Connect's daily reports, for every app since ${formatDay(apple.first_day)}. A day behind, as Apple publishes them.`
+            : `Downloads, paid purchases and subscriptions from App Store Connect's daily reports, for every app since ${formatDay(apple.first_day)}. A day behind, as Apple publishes them.`,
         },
       ]
     : []),
@@ -281,6 +315,8 @@ const appCards = cardSlugs.map((slug) => {
     releasedDaysAgo: daysSince(landing?.currentVersionReleaseDate, now),
     open: lastRow !== undefined && isOpenPeriod(lastRow.period, 'week', generatedAt),
     quiet: quietNote(slug),
+    earned: money ? (apple?.apps[slug]?.proceeds_eur ?? 0) : undefined,
+    earnedRecent: money ? (sumMoney(apple?.apps[slug]?.weeks ?? []) ?? 0) : undefined,
   };
 });
 
@@ -302,6 +338,14 @@ const principles = [
     'so no figure points at a handful of people.',
   ],
   ['The code is open.', 'Every event is declared in one public registry.'],
+  ...(money
+    ? [
+        [
+          'Money is published as totals.',
+          'Earnings show as sums per week, month and app, never purchase by purchase. Euros are not held back, so a week with one sale shows what it earned.',
+        ],
+      ]
+    : []),
 ];
 
 const activeEvent = events.find((event) => event.name === 'app.active');
@@ -409,7 +453,9 @@ const link =
     >
       {
         apple
-          ? `A year of Midgar's ${cadence.total} apps in public: every download and sale Apple reports, and what Midgar's own counts and purchase ledger see, published as it is. Small numbers stay private.`
+          ? money
+            ? `A year of Midgar's ${cadence.total} apps in public: every download, sale and euro Apple reports, and what Midgar's own counts and purchase ledger see, published as it is. Small counts stay private.`
+            : `A year of Midgar's ${cadence.total} apps in public: every download and sale Apple reports, and what Midgar's own counts and purchase ledger see, published as it is. Small numbers stay private.`
           : `How many people use Midgar's ${cadence.total} apps, counted without identifiers and published as it is, straight from the same numbers Midgar runs on. Small numbers stay private.`
       }
     </p>
@@ -465,35 +511,63 @@ const link =
               <BigStat
                 label={tile.label}
                 cell={apple.totals[tile.key]}
+                money={tile.money}
                 caption={tile.caption}
                 minCount={minCount}
                 lead={tile.lead}
-                mark="apple"
+                mark={tile.money ? 'money' : 'apple'}
               />
             ))}
           </dl>
-          <div class="open-year">
-            <p class="open-year__title">
-              First-time downloads, week by week
-              <span class="open-year__span">
-                {appleWeeks.length} finished weeks, from the week of{' '}
-                {formatWeek(appleWeeks[0]?.period ?? apple.first_day)}
-              </span>
-            </p>
-            <ThresholdChart
-              cells={seriesOf(appleWeeks, 'downloads')}
-              periods={appleWeeks.map((row) => row.period)}
-              minCount={minCount}
-              size="tall"
-              tone="apple"
-              era={era}
-              label={describeSeries('First-time downloads', appleWeeks, 'downloads')}
-            />
-            {era && (
-              <p class="open-year__note">
-                <span class="open-year__era" aria-hidden="true" /> The shaded weeks are the ones
-                Midgar also counts itself, exactly and without identifiers, below.
+          <div class:list={['open-year', { 'open-year--twin': money }]}>
+            {money && (
+              <div class="open-year__chart">
+                <p class="open-year__title">
+                  <span class="open-year__key open-year__key--money" aria-hidden="true" />
+                  Earned, week by week
+                  <span class="open-year__span">≈ euros, never held back</span>
+                </p>
+                <ThresholdChart
+                  cells={seriesOf(appleWeeks, 'proceeds_eur')}
+                  periods={appleWeeks.map((row) => row.period)}
+                  minCount={minCount}
+                  size="tall"
+                  tone="money"
+                  money
+                  era={era}
+                  label={describeMoney('Earned per week', appleWeeks, 'proceeds_eur')}
+                />
+              </div>
+            )}
+            <div class="open-year__chart">
+              <p class="open-year__title">
+                <span class="open-year__key open-year__key--apple" aria-hidden="true" />
+                First-time downloads, week by week
+                <span class="open-year__span">
+                  {appleWeeks.length} finished weeks, from the week of{' '}
+                  {formatWeek(appleWeeks[0]?.period ?? apple.first_day)}
+                </span>
               </p>
+              <ThresholdChart
+                cells={seriesOf(appleWeeks, 'downloads')}
+                periods={appleWeeks.map((row) => row.period)}
+                minCount={minCount}
+                size="tall"
+                tone="apple"
+                era={era}
+                label={describeSeries('First-time downloads', appleWeeks, 'downloads')}
+              />
+            </div>
+            {(era || money) && (
+              <div class="open-year__notes">
+                {money && <p class="open-year__note open-year__note--money">{moneyLine}</p>}
+                {era && (
+                  <p class="open-year__note">
+                    <span class="open-year__era" aria-hidden="true" /> The shaded weeks are the ones
+                    Midgar also counts itself, exactly and without identifiers, below.
+                  </p>
+                )}
+              </div>
             )}
           </div>
         </section>
@@ -596,8 +670,23 @@ const link =
         id="apple"
         command="open stats --source apple --months"
         title="Month by month, as Apple reports it"
-        blurb={`Every finished month since ${monthName(appleMonths[0]?.period ?? apple.first_day)}, from App Store Connect's sales and subscription reports, across every app. The reports begin on ${formatDay(apple.first_day)}, so that first month is partial. A hatched bar is a month under the publish line.`}
+        blurb={`Every finished month since ${monthName(appleMonths[0]?.period ?? apple.first_day)}, from App Store Connect's sales and subscription reports, across every app.${appleMonths[0]?.period.slice(0, 7) === apple.first_day.slice(0, 7) ? ` The reports begin on ${formatDay(apple.first_day)}, so that first month is partial.` : ''} A hatched bar is a month under the publish line.`}
       >
+        {money && (
+          <div class="mb-5">
+            <MetricCard
+              title="Earned, month by month"
+              blurb={`${moneyLine} Refunds count against the month Apple reports them in.`}
+              rows={appleMonths}
+              field="proceeds_eur"
+              generatedAt={generatedAt}
+              minCount={minCount}
+              grain="month"
+              tone="money"
+              money
+            />
+          </div>
+        )}
         <div class="open-grid open-grid--metrics">
           {appleCards.map((card) => (
             <MetricCard
@@ -649,7 +738,13 @@ const link =
                     </th>
                     {appleColumns.map((column) => (
                       <td class="px-3 py-2 text-right">
-                        <Value cell={row[column.field]} minCount={minCount} />
+                        {column.money ? (
+                          <span class="tabular-nums">
+                            {formatEur(row[column.field], { cents: true })}
+                          </span>
+                        ) : (
+                          <Value cell={row[column.field]} minCount={minCount} />
+                        )}
                       </td>
                     ))}
                   </tr>
@@ -690,7 +785,13 @@ const link =
                     </th>
                     {appleColumns.map((column) => (
                       <td class="px-3 py-2 text-right">
-                        <Value cell={row[column.field]} minCount={minCount} />
+                        {column.money ? (
+                          <span class="tabular-nums">
+                            {formatEur(row[column.field], { cents: true })}
+                          </span>
+                        ) : (
+                          <Value cell={row[column.field]} minCount={minCount} />
+                        )}
                       </td>
                     ))}
                   </tr>
@@ -862,6 +963,9 @@ const link =
               downloadsTop={downloadsTop}
               open={card.open}
               quiet={card.quiet}
+              earned={card.earned}
+              earnedRecent={card.earnedRecent}
+              earnedSince={apple ? `since ${formatMonth(apple.first_day)}` : ''}
             />
           ))}
         </div>
@@ -1230,6 +1334,51 @@ const link =
   .open-year__span {
     letter-spacing: 0.04em;
     text-transform: none;
+  }
+
+  .open-year--twin {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @container board (min-width: 56rem) {
+    .open-year--twin {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2rem;
+    }
+
+    .open-year--twin .open-year__notes {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .open-year__key {
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    transform: rotate(45deg);
+    align-self: center;
+  }
+
+  .open-year__key--apple {
+    background: var(--oh-text);
+  }
+
+  .open-year__key--money {
+    background: theme('colors.paper.amber');
+  }
+
+  :global(.dark) .open-year__key--money {
+    background: theme('colors.term.amber');
+  }
+
+  .open-year__notes {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .open-year__note--money {
+    display: block;
   }
 
   .open-year__note {
