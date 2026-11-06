@@ -206,8 +206,8 @@
       "language": "Swift",
       "description": "Runs Claude Code headlessly and serves it as structured HTTP sessions with streaming, subagents, spend and git, as a systemd user service.",
       "stars": 1,
-      "commitCount": 195,
-      "releaseCount": 42,
+      "commitCount": 201,
+      "releaseCount": 44,
       "releaseDates": [
         "2026-07-29T19:43:51Z",
         "2026-08-03T17:45:11Z",
@@ -250,16 +250,18 @@
         "2026-10-23T10:33:10Z",
         "2026-11-03T09:42:23Z",
         "2026-11-04T09:26:11Z",
-        "2026-11-04T10:15:44Z"
+        "2026-11-04T10:15:44Z",
+        "2026-11-04T17:46:08Z",
+        "2026-11-06T08:37:26Z"
       ],
       "githubUrl": "https://github.com/guitaripod/claude-bridge",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.19.0",
-      "latestReleaseDate": "2026-11-04T10:15:44Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.19.0",
+      "latestVersion": "1.20.1",
+      "latestReleaseDate": "2026-11-06T08:37:26Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.20.1",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/claude-bridge/releases/download/1.19.0/claude-bridge-1.19.0-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/claude-bridge/releases/download/1.20.1/claude-bridge-1.20.1-linux-x86_64.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -336,7 +338,7 @@
       "language": "Rust",
       "description": "A fast emoji picker for KDE Plasma Wayland",
       "stars": 2,
-      "commitCount": 15,
+      "commitCount": 16,
       "releaseCount": 2,
       "releaseDates": [
         "2026-07-13T09:09:20Z",
@@ -435,8 +437,8 @@
       "language": "Rust",
       "description": "A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
       "stars": 7,
-      "commitCount": 236,
-      "releaseCount": 40,
+      "commitCount": 240,
+      "releaseCount": 41,
       "releaseDates": [
         "2026-07-10T13:46:58Z",
         "2026-07-10T13:57:33Z",
@@ -477,16 +479,17 @@
         "2026-10-26T15:08:10Z",
         "2026-10-30T02:07:08Z",
         "2026-10-31T20:50:42Z",
-        "2026-11-03T16:04:47Z"
+        "2026-11-03T16:04:47Z",
+        "2026-11-06T14:37:17Z"
       ],
       "githubUrl": "https://github.com/guitaripod/flaccy",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.27.0",
-      "latestReleaseDate": "2026-11-03T16:04:47Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.27.0",
+      "latestVersion": "1.28.0",
+      "latestReleaseDate": "2026-11-06T14:37:17Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.28.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.27.0/flaccy-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/flaccy/releases/download/linux-v1.28.0/flaccy-linux-x86_64.tar.gz",
       "note": "GTK4 / libadwaita",
       "install": {
         "primary": {
@@ -667,7 +670,7 @@
       "language": "Rust",
       "description": "GPU monitor, in plain language. NVIDIA Linux native TUI with an optional local-LLM helper.",
       "stars": 0,
-      "commitCount": 24,
+      "commitCount": 25,
       "releaseCount": 3,
       "releaseDates": [
         "2026-10-16T21:03:40Z",
@@ -766,7 +769,7 @@
       "language": "Rust",
       "description": "Agent-native Instagram profile archive",
       "stars": 1,
-      "commitCount": 21,
+      "commitCount": 22,
       "releaseCount": 5,
       "releaseDates": [
         "2026-07-19T12:52:54Z",
@@ -1270,7 +1273,7 @@
       "language": "Swift",
       "description": "Your AI agents, anywhere: a native GTK4 client for Claude Code, Oh My Pi and opencode running on your own machines, over your own tailnet.",
       "stars": 15,
-      "commitCount": 626,
+      "commitCount": 630,
       "releaseCount": 49,
       "releaseDates": [
         "2026-07-29T19:44:13Z",
@@ -1324,7 +1327,7 @@
         "2026-10-30T10:02:45Z"
       ],
       "githubUrl": "https://github.com/guitaripod/Tailscode",
-      "homepageUrl": "https://midgarcorp.cc/tailscode",
+      "homepageUrl": "https://midgarcorp.cc/tailscode/",
       "topics": [
         "ai-agents",
         "claude-code",
