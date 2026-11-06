@@ -1,0 +1,200 @@
+---
+import { thresholdBars } from '../../lib/open-page.mjs';
+import { formatCell, formatWeek } from '../../lib/open-stats.mjs';
+import type { Cell } from '@data/open';
+
+export interface Props {
+  cells: Cell[];
+  periods: string[];
+  minCount: number;
+  label: string;
+  open?: boolean;
+  compact?: boolean;
+  top?: number;
+}
+
+const { cells, periods, minCount, label, open = false, compact = false, top } = Astro.props;
+const chart = thresholdBars(cells, { minCount, height: 100, floorMin: compact ? 16 : 8, top });
+const lastValue = [...chart.bars].reverse().find((bar) => bar.kind === 'value');
+const lastIndex = cells.length - 1;
+const first = periods[0];
+const last = periods[lastIndex];
+---
+
+<figure class:list={['oc', { 'oc--compact': compact }]} role="img" aria-label={label}>
+  <div class="oc-plot" aria-hidden="true">
+    <div class="oc-bars" style={`--oc-count:${cells.length}`}>
+      <div class="oc-line" style={`bottom:${chart.band}%`}>
+        {!compact && <span class="oc-line__label">publish line · {minCount}</span>}
+      </div>
+      {
+        chart.bars.map((bar) => (
+          <span
+            class:list={[
+              'oc-bar',
+              `oc-bar--${bar.kind}`,
+              {
+                'oc-bar--latest': lastValue !== undefined && bar.index === lastValue.index,
+                'oc-bar--open': open && bar.index === lastIndex,
+              },
+            ]}
+            style={`height:${bar.h}%`}
+          >
+            {!compact && bar.kind === 'value' && (
+              <span class="oc-bar__value">{formatCell(bar.value)}</span>
+            )}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+  {
+    !compact && first && last && (
+      <figcaption class="oc-axis" aria-hidden="true">
+        <span>{formatWeek(first)}</span>
+        <span>week of {formatWeek(last)}</span>
+      </figcaption>
+    )
+  }
+</figure>
+
+<style>
+  .oc {
+    --oc-ink: theme('colors.paper.green');
+    --oc-ink-soft: theme('colors.paper.greendim');
+    --oc-hatch: theme('colors.paper.border2');
+    --oc-line: theme('colors.paper.amber');
+    --oc-text: theme('colors.paper.muted');
+    --oc-height: 9.5rem;
+    margin: 0;
+  }
+
+  :global(.dark) .oc {
+    --oc-ink: theme('colors.term.green');
+    --oc-ink-soft: theme('colors.term.greendim');
+    --oc-hatch: theme('colors.term.border2');
+    --oc-line: theme('colors.term.amber');
+    --oc-text: theme('colors.term.muted');
+  }
+
+  .oc--compact {
+    --oc-height: 2.75rem;
+  }
+
+  .oc-plot {
+    position: relative;
+    height: var(--oc-height);
+    padding-top: 1.1rem;
+  }
+
+  .oc--compact .oc-plot {
+    padding-top: 0;
+  }
+
+  .oc-bars {
+    position: absolute;
+    inset: 1.1rem 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(var(--oc-count), minmax(0, 1fr));
+    gap: clamp(2px, 1.2cqi, 6px);
+    align-items: end;
+  }
+
+  .oc--compact .oc-bars {
+    inset: 0;
+    gap: 2px;
+  }
+
+  .oc-bar {
+    position: relative;
+    display: block;
+    min-height: 0;
+    border-radius: 1px 1px 0 0;
+  }
+
+  .oc-bar--value {
+    background: var(--oc-ink-soft);
+    opacity: 0.85;
+  }
+
+  .oc-bar--latest {
+    background: var(--oc-ink);
+    opacity: 1;
+  }
+
+  :global(.dark) .oc-bar--latest {
+    box-shadow: 0 0 12px rgba(51, 255, 102, 0.35);
+  }
+
+  .oc-bar--open {
+    background: transparent;
+    outline: 1px dashed var(--oc-ink);
+    outline-offset: -1px;
+  }
+
+  .oc-bar--hidden {
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--oc-hatch) 0 1.5px,
+      transparent 1.5px 5px
+    );
+    box-shadow: inset 0 1px 0 var(--oc-hatch);
+  }
+
+  .oc-bar--none {
+    height: 1px !important;
+    background: var(--oc-hatch);
+    opacity: 0.4;
+  }
+
+  .oc-bar__value {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 0.15rem;
+    font-size: 0.6875rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--oc-text);
+    white-space: nowrap;
+  }
+
+  .oc-bar--latest .oc-bar__value {
+    color: var(--oc-ink);
+    font-weight: 700;
+  }
+
+  .oc-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 1px dashed var(--oc-line);
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .oc--compact .oc-line {
+    opacity: 0.55;
+  }
+
+  .oc-line__label {
+    position: absolute;
+    left: 0;
+    bottom: 0.2rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--oc-line);
+    white-space: nowrap;
+  }
+
+  .oc-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+    font-size: 0.6875rem;
+    color: var(--oc-text);
+  }
+</style>

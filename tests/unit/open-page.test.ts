@@ -248,7 +248,7 @@ describe('built /open page', () => {
   });
 
   it.skipIf(!built)('marks tables and charts for assistive technology', () => {
-    expect(has(html(), '<caption class="sr-only">')).toBe(true);
+    expect(/<caption class="sr-only"[^>]*>/.test(html())).toBe(true);
     expect(has(html(), 'role="img"')).toBe(true);
     expect(/<th[^>]*scope="col"/.test(html())).toBe(true);
     expect(/<th[^>]*scope="row"/.test(html())).toBe(true);

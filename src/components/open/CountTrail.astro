@@ -1,0 +1,263 @@
+---
+export interface Field {
+  name: string;
+  example: string;
+}
+
+export interface Props {
+  eventName: string;
+  fields: Field[];
+  eventsCount: number;
+  minCount: number;
+}
+
+const { eventName, fields, eventsCount, minCount } = Astro.props;
+
+const steps = [
+  {
+    where: 'on the device',
+    title: 'An app counts a moment',
+    text: `Opened this week, finished the introduction, saw the purchase screen. ${eventsCount} kinds of count are declared, and an app can send nothing else.`,
+  },
+  {
+    where: 'on the wire',
+    title: 'Only the count travels',
+    text: 'The app, the platform, the app version and, for some counts, the week it was installed. No user, device or Midgar ID, and no IP address is kept.',
+  },
+  {
+    where: 'on the server',
+    title: 'Kept as daily totals',
+    text: 'Each count becomes one more in a total per app and day. There is never a log of what one install did.',
+  },
+  {
+    where: 'on this page',
+    title: 'Summed, then held back',
+    text: `Weeks and months are summed from the totals. Anything under ${minCount} is published as <${minCount}, and when it could be worked out from a total, one more figure is held back with it.`,
+  },
+];
+
+const never = ['user or account', 'device identifier', 'Midgar ID', 'IP address'];
+---
+
+<div class="trail">
+  <ol class="trail-steps">
+    {
+      steps.map((step, index) => (
+        <li class="trail-step term-frame">
+          <p class="trail-where">
+            <span class="trail-index">{String(index + 1).padStart(2, '0')}</span> {step.where}
+          </p>
+          <h3 class="trail-title">{step.title}</h3>
+          <p class="trail-text">{step.text}</p>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="trail-carry term-frame">
+    <div>
+      <p class="trail-where">What one count carries, for example</p>
+      <dl class="trail-fields">
+        <div class="trail-field">
+          <dt>count</dt>
+          <dd><code>{eventName}</code></dd>
+        </div>
+        {
+          fields.map((field) => (
+            <div class="trail-field">
+              <dt>{field.name}</dt>
+              <dd>
+                <code>{field.example}</code>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+    <div>
+      <p class="trail-where trail-where--never">Never sent or kept</p>
+      <ul class="trail-never">
+        {
+          never.map((item) => (
+            <li>
+              <span aria-hidden="true">×</span> <s>{item}</s>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="trail-note">
+        A count names an app, never a person. The {eventsCount} kinds of count and every value they may
+        hold are listed below and in the public registry.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .trail {
+    --tr-text: theme('colors.paper.text');
+    --tr-muted: theme('colors.paper.muted');
+    --tr-green: theme('colors.paper.green');
+    --tr-red: theme('colors.paper.red');
+    --tr-border: theme('colors.paper.border');
+    --tr-bg: theme('colors.paper.bg');
+    container: trail / inline-size;
+    display: grid;
+    gap: 1rem;
+  }
+
+  :global(.dark) .trail {
+    --tr-text: theme('colors.term.text');
+    --tr-muted: theme('colors.term.muted');
+    --tr-green: theme('colors.term.green');
+    --tr-red: theme('colors.term.red');
+    --tr-border: theme('colors.term.border');
+    --tr-bg: theme('colors.term.bg');
+  }
+
+  .trail-steps {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: none;
+  }
+
+  .trail-step {
+    position: relative;
+    padding: 1rem 1.1rem 1.1rem;
+  }
+
+  .trail-where {
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--tr-muted);
+  }
+
+  .trail-index {
+    color: var(--tr-green);
+    font-weight: 700;
+  }
+
+  .trail-title {
+    margin-top: 0.5rem;
+    font-weight: 700;
+    color: var(--tr-text);
+  }
+
+  .trail-text {
+    margin-top: 0.35rem;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--tr-muted);
+  }
+
+  .trail-carry {
+    padding: 1rem 1.1rem 1.1rem;
+  }
+
+  .trail-fields {
+    margin: 0.75rem 0 1rem;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.8125rem;
+  }
+
+  .trail-field {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed var(--tr-border);
+  }
+
+  .trail-field dt {
+    color: var(--tr-muted);
+  }
+
+  .trail-field code {
+    color: var(--tr-green);
+  }
+
+  .trail-where--never {
+    color: var(--tr-red);
+  }
+
+  .trail-never {
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    font-size: 0.8125rem;
+    color: var(--tr-muted);
+  }
+
+  .trail-note {
+    margin-top: 1rem;
+    max-width: 30rem;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--tr-muted);
+  }
+
+  .trail-never span {
+    color: var(--tr-red);
+    font-weight: 700;
+  }
+
+  @container trail (min-width: 40rem) {
+    .trail-steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @container trail (min-width: 64rem) {
+    .trail {
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
+      align-items: stretch;
+    }
+
+    .trail-steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @container trail (min-width: 84rem) {
+    .trail {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .trail-steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .trail-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -0.5rem;
+      top: 50%;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      transform: translate(50%, -50%);
+      border: 1px solid var(--tr-border);
+      border-radius: 999px;
+      background: var(--tr-bg);
+      color: var(--tr-green);
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+
+    .trail-carry {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: 2rem;
+    }
+  }
+</style>

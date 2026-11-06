@@ -1,0 +1,191 @@
+---
+import AppIcon from '@components/landing/AppIcon.astro';
+import ThresholdChart from './ThresholdChart.astro';
+import { describeSeries, formatCell, isHidden, isNumber, seriesOf } from '../../lib/open-stats.mjs';
+import { agoLabel } from '../../lib/open-page.mjs';
+import type { OpenApp, Row } from '@data/open';
+
+export interface Props {
+  app: OpenApp;
+  weeks: Row[];
+  week: Row | null;
+  weekLabel: string;
+  platforms: string[];
+  version?: string;
+  releasedDaysAgo: number | null;
+  minCount: number;
+  top: number;
+  open: boolean;
+}
+
+const { app, weeks, week, weekLabel, platforms, version, releasedDaysAgo, minCount, top, open } =
+  Astro.props;
+const cell = week?.wau ?? null;
+const cells = seriesOf(weeks, 'wau');
+const periods = weeks.map((row) => row.period);
+---
+
+<article class="acc term-frame term-frame-hover" id={`app-${app.slug}`}>
+  <header class="acc-head">
+    {
+      app.icon && (
+        <AppIcon src={app.icon} width={44} height={44} displayWidths={[44]} class="acc-icon" />
+      )
+    }
+    <div class="acc-title">
+      {
+        app.href ? (
+          <a href={app.href} class="acc-name">
+            {app.name}
+          </a>
+        ) : (
+          <span class="acc-name">{app.name}</span>
+        )
+      }
+      <p class="acc-meta">{platforms.join(' · ')}</p>
+    </div>
+    <div class="acc-count">
+      {
+        isNumber(cell) ? (
+          <span class="acc-number">{formatCell(cell)}</span>
+        ) : isHidden(cell) ? (
+          <span class="acc-number acc-number--hidden">
+            {cell}
+            <span class="sr-only"> (hidden: fewer than {minCount})</span>
+          </span>
+        ) : (
+          <span class="acc-number acc-number--hidden">
+            <span aria-hidden="true">–</span>
+            <span class="sr-only">not yet</span>
+          </span>
+        )
+      }
+      <span class="acc-unit">weekly active</span>
+    </div>
+  </header>
+  <ThresholdChart
+    cells={cells}
+    periods={periods}
+    minCount={minCount}
+    top={top}
+    open={open}
+    compact
+    label={describeSeries(`${app.name} weekly active installs`, weeks, 'wau')}
+  />
+  <footer class="acc-foot">
+    <span>{weekLabel}</span>
+    <span>
+      {version && <>{version} · </>}
+      updated {agoLabel(releasedDaysAgo)}
+    </span>
+  </footer>
+</article>
+
+<style>
+  .acc {
+    --acc-text: theme('colors.paper.text');
+    --acc-muted: theme('colors.paper.muted');
+    --acc-green: theme('colors.paper.green');
+    --acc-border: theme('colors.paper.border');
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1rem 1.1rem 0.85rem;
+    min-width: 0;
+  }
+
+  :global(.dark) .acc {
+    --acc-text: theme('colors.term.text');
+    --acc-muted: theme('colors.term.muted');
+    --acc-green: theme('colors.term.green');
+    --acc-border: theme('colors.term.border');
+  }
+
+  .acc-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .acc :global(.acc-icon) {
+    width: 2.75rem;
+    height: 2.75rem;
+    flex: none;
+    border-radius: 0.65rem;
+    border: 1px solid var(--acc-border);
+    object-fit: cover;
+  }
+
+  .acc-title {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .acc-name {
+    display: block;
+    font-weight: 700;
+    color: var(--acc-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  a.acc-name:hover {
+    color: var(--acc-green);
+  }
+
+  .acc-meta {
+    margin-top: 0.15rem;
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    color: var(--acc-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .acc-count {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: none;
+  }
+
+  .acc-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--acc-text);
+  }
+
+  .acc-number--hidden {
+    color: var(--acc-muted);
+    opacity: 0.8;
+  }
+
+  .acc-unit {
+    margin-top: 0.2rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--acc-muted);
+  }
+
+  .acc-foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--acc-border);
+    font-size: 0.6875rem;
+    color: var(--acc-muted);
+  }
+
+  .acc-foot > span:last-child {
+    text-align: right;
+  }
+</style>

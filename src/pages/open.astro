@@ -1,16 +1,20 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import CardGrid from '@components/CardGrid.astro';
 import PageSection from '@components/PageSection.astro';
 import AppIcon from '@components/landing/AppIcon.astro';
+import AppCountCard from '@components/open/AppCountCard.astro';
+import BigStat from '@components/open/BigStat.astro';
+import CountTrail from '@components/open/CountTrail.astro';
 import MetricCard from '@components/open/MetricCard.astro';
-import Spark from '@components/open/Spark.astro';
 import Value from '@components/open/Value.astro';
+import githubActivity from '@data/github-activity.json';
 import {
   events,
   kidsApp,
   KIT_SIGNALS,
+  landingFor,
   metrics,
+  NO_USAGE_COUNTS,
   openAppFor,
   preview,
   SITE_REPO,
@@ -18,27 +22,78 @@ import {
   stats,
   activityApps,
   statsUrl,
+  storeApps,
 } from '@data/open';
 import {
-  describeSeries,
   formatMonth,
   formatStamp,
   formatWeek,
+  isNumber,
   isOpenPeriod,
-  seriesOf,
 } from '../lib/open-stats.mjs';
+import {
+  daysSince,
+  firstPublished,
+  latestFinished,
+  monthName,
+  platformsOf,
+  shipCadence,
+  statsExcerpt,
+  weekRange,
+} from '../lib/open-page.mjs';
 
 const pageTitle = 'Midgar in the open | guitaripod';
 const pageDescription =
-  "How many people use Midgar's apps, published as it is: weekly active installs, purchases and AI requests, small numbers hidden, and the code behind it.";
+  "How many people use Midgar's apps, published as it is: weekly active installs, purchases and AI requests, small numbers held back, and the code behind it.";
 
+const now = Date.now();
 const minCount = stats.rules.min_count;
 const generatedAt = stats.generated_at;
 const weeks = stats.portfolio.weeks;
 const months = stats.portfolio.months;
+const week = latestFinished(weeks, 'week', generatedAt);
+const month = latestFinished(months, 'month', generatedAt);
+const firstWeek = firstPublished(weeks, ['wau', 'new_installs']);
+const cadence = shipCadence(storeApps, now);
+const platforms = platformsOf(storeApps);
+const contributionsYear = githubActivity.totals?.contributionsYear ?? null;
 
 const publicTitle = (id: string, fallback: string) =>
   stats.metrics.find((metric) => metric.id === id)?.title ?? fallback;
+
+const heroTiles = [
+  {
+    field: 'wau',
+    label: publicTitle('wau', 'Weekly active installs'),
+    caption: 'Installs that opened an app that week.',
+    lead: true,
+  },
+  {
+    field: 'new_installs',
+    label: publicTitle('new_installs', 'New installs'),
+    caption: 'Installs seen in the week they were installed.',
+    lead: false,
+  },
+  {
+    field: 'purchases',
+    label: publicTitle('purchases', 'Purchases'),
+    caption: 'First and one-time purchases. Renewals are not counted.',
+    lead: false,
+  },
+  {
+    field: 'active_subscriptions',
+    label: publicTitle('active_subscriptions', 'Active subscriptions'),
+    caption: 'Paid-up subscriptions, from the purchase ledger.',
+    lead: false,
+  },
+];
+
+const monthTiles = [
+  { field: 'mau', label: publicTitle('mau', 'Monthly active installs') },
+  { field: 'purchases', label: publicTitle('purchases', 'Purchases') },
+  { field: 'ai_requests', label: publicTitle('ai_requests', 'AI requests') },
+  { field: 'active_subscriptions', label: publicTitle('active_subscriptions', 'Subscriptions') },
+];
 
 const weeklyCards = [
   {
@@ -54,7 +109,7 @@ const weeklyCards = [
   {
     field: 'purchases',
     title: publicTitle('purchases', 'Purchases'),
-    blurb: 'Purchases recorded that week.',
+    blurb: 'Purchases recorded that week, across every app.',
   },
   {
     field: 'ai_requests',
@@ -80,16 +135,43 @@ const monthlyColumns = [
   { field: 'active_subscriptions', label: 'Subscriptions' },
 ];
 
-const appRows = activityApps.map((slug) => {
+const appTop = Math.max(
+  minCount,
+  ...activityApps
+    .flatMap((slug) =>
+      stats.apps[slug].weeks.map((row) => row.wau).filter((cell) => isNumber(cell))
+    )
+    .map(Number)
+);
+
+const appCards = activityApps.map((slug) => {
   const series = stats.apps[slug];
+  const landing = landingFor(slug);
+  const appWeek = latestFinished(series.weeks, 'week', generatedAt);
   const lastRow = series.weeks.at(-1);
   return {
     app: openAppFor(slug),
-    series,
-    lastRow,
+    weeks: series.weeks,
+    week: appWeek,
+    weekLabel: appWeek ? `week of ${formatWeek(appWeek.period)}` : 'no weeks yet',
+    platforms: landing?.platforms ?? [],
+    version: landing?.version,
+    releasedDaysAgo: daysSince(landing?.currentVersionReleaseDate, now),
     open: lastRow !== undefined && isOpenPeriod(lastRow.period, 'week', generatedAt),
   };
 });
+
+const familyApps = [
+  ...[...activityApps, ...NO_USAGE_COUNTS].map((slug) => landingFor(slug)),
+  ...storeApps,
+]
+  .filter((app): app is NonNullable<typeof app> => app !== undefined && app.status === 'live')
+  .filter((app, index, list) => list.findIndex((other) => other.slug === app.slug) === index);
+
+const quietApps = NO_USAGE_COUNTS.map((slug) => ({
+  app: openAppFor(slug),
+  landing: landingFor(slug),
+})).filter((entry) => entry.landing);
 
 const principles = [
   ['Counts, not people.', 'An install reports that it was active, never whose.'],
@@ -102,6 +184,18 @@ const principles = [
     'so no figure points at a handful of people.',
   ],
   ['The code is open.', 'Every event is declared in one public registry.'],
+];
+
+const activeEvent = events.find((event) => event.name === 'app.active');
+const carryFields = [
+  { name: 'app', example: 'flaccy' },
+  { name: 'platform', example: 'iOS' },
+  { name: 'app version', example: '1.16.1' },
+  ...(activeEvent?.cohort ? [{ name: 'install week', example: '2026-10-26' }] : []),
+  ...(activeEvent?.props ?? []).map((prop) => ({
+    name: prop.name,
+    example: prop.values.includes('week') ? 'week' : (prop.values[0] ?? '…'),
+  })),
 ];
 
 const codeLinks = [
@@ -119,6 +213,34 @@ const codeLinks = [
   { href: statsUrl, label: 'public stats JSON', blurb: 'the numbers on this page' },
 ];
 
+const excerpt = statsExcerpt(stats, 2);
+const proof = [
+  {
+    value: cadence.total,
+    label: 'apps live on the App Store',
+    note: `${platforms.length} platforms: ${platforms.join(', ')}`,
+  },
+  {
+    value: cadence.updated7,
+    label: 'shipped an update in the last 7 days',
+    note: `${cadence.updated30} of ${cadence.total} in the last 30 days`,
+  },
+  {
+    value: events.length,
+    label: 'kinds of count, declared in public',
+    note: 'An app can send nothing that is not in the registry.',
+  },
+  ...(contributionsYear
+    ? [
+        {
+          value: contributionsYear,
+          label: 'GitHub contributions in 12 months',
+          note: 'Public and private work, counted by GitHub.',
+        },
+      ]
+    : []),
+];
+
 const tableWrap =
   'term-frame relative overflow-x-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-paper-green dark:focus-visible:outline-term-green';
 const headCell = 'px-3 py-2 text-xs font-normal text-paper-muted dark:text-term-muted';
@@ -129,8 +251,8 @@ const link =
   'text-paper-green dark:text-term-green underline decoration-dotted underline-offset-2 hover:opacity-80';
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <header class="pt-10 sm:pt-14 mb-8 sm:mb-10">
+<BaseLayout title={pageTitle} description={pageDescription} width="wide">
+  <header class="open-hero pt-10 sm:pt-14 mb-14 sm:mb-20">
     {
       preview && (
         <aside
@@ -148,55 +270,149 @@ const link =
         </aside>
       )
     }
-    <p class="prompt-line mb-4">curl -s api.midgarcorp.cc/v1/ops/public/stats</p>
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-5">
+      <p class="prompt-line">curl -s api.midgarcorp.cc/v1/ops/public/stats</p>
+      <p class="open-live text-xs text-paper-muted dark:text-term-muted">
+        <span class="open-live__dot" aria-hidden="true"></span>
+        <span class="text-paper-green dark:text-term-green font-bold tracking-[0.16em]"
+          >LIVE DATA</span
+        >
+        <span aria-hidden="true">·</span>
+        updated <time datetime={generatedAt} data-ago>{formatStamp(generatedAt)}</time>
+      </p>
+    </div>
     <h1
-      class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-paper-text dark:text-term-text"
+      class="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-paper-text dark:text-term-text"
     >
       Midgar, <span class="phosphor">in the open</span>
     </h1>
-    <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-3xl leading-relaxed">
-      How many people use Midgar's apps, published as it is.
+    <p
+      class="mt-5 text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-3xl leading-relaxed"
+    >
+      How many people use Midgar's {cadence.total} apps, counted without identifiers and published as
+      it is, straight from the same numbers Midgar runs on. Small numbers stay private.
     </p>
-    <ul class="mt-4 max-w-3xl space-y-1 text-sm text-paper-muted dark:text-term-muted">
+    <ul class="open-family" aria-label="Midgar's apps">
       {
-        principles.map(([lead, rest]) => (
+        familyApps.map((app) => (
           <li>
-            <span aria-hidden="true" class="text-paper-green dark:text-term-green">
-              &gt;
-            </span>{' '}
-            <strong class="font-bold text-paper-text dark:text-term-text">{lead}</strong> {rest}
+            <a href={`/${app.slug}/`} aria-label={app.shortName} title={app.shortName}>
+              {app.iconLocal && (
+                <AppIcon
+                  src={app.iconLocal}
+                  width={44}
+                  height={44}
+                  displayWidths={[44]}
+                  class="open-family__icon"
+                />
+              )}
+            </a>
           </li>
         ))
       }
     </ul>
-    <p class="mt-4 text-xs text-paper-muted dark:text-term-muted">
-      Updated <time datetime={generatedAt}>{formatStamp(generatedAt)}</time> · weeks start on Monday,
-      UTC
-    </p>
-  </header>
 
-  {
-    sample && (
-      <div
-        role="note"
-        class="term-frame mb-10 !border-paper-amber dark:!border-term-amber p-4 text-sm text-paper-text dark:text-term-text"
-      >
-        <p class="term-label mb-1 !text-paper-amber dark:!text-term-amber">sample numbers</p>
-        <p>{stats.rules.note}</p>
+    {
+      sample && (
+        <div
+          role="note"
+          class="term-frame mt-8 !border-paper-amber dark:!border-term-amber p-4 text-sm text-paper-text dark:text-term-text"
+        >
+          <p class="term-label mb-1 !text-paper-amber dark:!text-term-amber">sample numbers</p>
+          <p>{stats.rules.note}</p>
+        </div>
+      )
+    }
+
+    <section class="open-board term-frame mt-8 sm:mt-10" aria-labelledby="board-title">
+      <div class="open-board__head">
+        <h2 id="board-title" class="term-label">
+          Latest full week
+          {week && <span class="open-board__range">{weekRange(week.period)}</span>}
+        </h2>
+        <p class="text-xs text-paper-muted dark:text-term-muted">
+          {
+            firstWeek
+              ? `Usage counting began with the apps' ${monthName(firstWeek)} releases.`
+              : 'No usage count has cleared the publish line yet.'
+          }
+        </p>
       </div>
-    )
-  }
+      {
+        week ? (
+          <dl class="open-board__tiles">
+            {heroTiles.map((tile) => (
+              <BigStat
+                label={tile.label}
+                cell={week[tile.field]}
+                caption={tile.caption}
+                minCount={minCount}
+                lead={tile.lead}
+              />
+            ))}
+          </dl>
+        ) : (
+          <p class="p-5 text-sm text-paper-muted dark:text-term-muted">No finished week yet.</p>
+        )
+      }
+      {
+        month && (
+          <div class="open-board__month">
+            <p class="term-label">{monthName(month.period)}</p>
+            <dl class="open-board__month-tiles">
+              {monthTiles.map((tile) => (
+                <BigStat
+                  label={tile.label}
+                  cell={month[tile.field]}
+                  caption=""
+                  minCount={minCount}
+                  size="small"
+                />
+              ))}
+            </dl>
+          </div>
+        )
+      }
+    </section>
+
+    <dl class="open-proof mt-6">
+      {
+        proof.map((cell) => (
+          <div class="open-proof__cell">
+            <dt class="open-proof__label">{cell.label}</dt>
+            <dd class="open-proof__value">{cell.value.toLocaleString('en-US')}</dd>
+            <dd class="open-proof__note">{cell.note}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <ul class="open-rules">
+      {
+        principles.map(([lead, rest]) => (
+          <li class="open-rules__item">
+            <span aria-hidden="true" class="open-rules__mark">
+              &gt;
+            </span>
+            <span>
+              <strong class="font-bold text-paper-text dark:text-term-text">{lead}</strong> {rest}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </header>
 
   <PageSection
     id="portfolio"
-    command="open stats --weeks 12"
-    title="All apps"
-    blurb={`The last ${weeks.length} weeks, newest on the right. A dashed end means the week is still running. Active and new installs count only app versions that send usage counts, which most apps begin with their next release; purchases and AI requests cover every app.`}
+    command={`open stats --weeks ${weeks.length}`}
+    title="All apps, week by week"
+    blurb={`The last ${weeks.length} finished weeks, newest on the right. A hatched bar is a week under the publish line: something happened, fewer than ${minCount}, so it is held back. Active and new installs count app versions that send usage counts; purchases and AI requests cover every app.`}
   >
     {
       weeks.length > 0 ? (
         <>
-          <CardGrid md={2} lg={2}>
+          <div class="open-grid open-grid--metrics">
             {weeklyCards.map((card) => (
               <MetricCard
                 title={card.title}
@@ -207,7 +423,18 @@ const link =
                 minCount={minCount}
               />
             ))}
-          </CardGrid>
+          </div>
+          <ul class="open-legend mt-4">
+            <li>
+              <span class="open-legend__key open-legend__key--value" /> published
+            </li>
+            <li>
+              <span class="open-legend__key open-legend__key--hidden" /> under {minCount}, held back
+            </li>
+            <li>
+              <span class="open-legend__key open-legend__key--line" /> publish line
+            </li>
+          </ul>
           <details class="mt-6">
             <summary class="term-label cursor-pointer select-none hover:text-paper-green dark:hover:text-term-green transition-colors">
               every week and month as a table
@@ -314,74 +541,26 @@ const link =
   <PageSection
     id="apps"
     command="open stats --by app"
-    title="Each app"
-    blurb="Weekly active installs per app, the busiest first."
+    title="Every app"
+    blurb={`Weekly active installs per app over the last ${weeks.length} weeks, the busiest first, on one shared scale. Each card also says when the app last shipped an update, from the App Store.`}
   >
     {
-      appRows.length > 0 ? (
-        <div
-          class={tableWrap}
-          role="region"
-          aria-label="Weekly active installs per app"
-          tabindex="0"
-        >
-          <table class="w-full text-sm">
-            <caption class="sr-only">
-              Weekly active installs of each app over the last 12 weeks
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col" class={`${headCell} text-left`}>
-                  App
-                </th>
-                <th scope="col" class={`${headCell} text-left hidden sm:table-cell`}>
-                  Last 12 weeks
-                </th>
-                <th scope="col" class={`${headCell} text-right`}>
-                  Latest week
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {appRows.map(({ app, series, lastRow, open }) => (
-                <tr class={rowRule} id={`app-${app.slug}`}>
-                  <th scope="row" class="px-3 py-2 text-left font-normal">
-                    <span class="flex items-center gap-3">
-                      {app.icon && (
-                        <AppIcon
-                          src={app.icon}
-                          width={28}
-                          height={28}
-                          displayWidths={[28]}
-                          class="h-7 w-7 shrink-0 rounded-[0.45rem] border border-paper-border object-cover dark:border-term-border"
-                        />
-                      )}
-                      {app.href ? (
-                        <a
-                          href={app.href}
-                          class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors"
-                        >
-                          {app.name}
-                        </a>
-                      ) : (
-                        <span class="text-paper-text dark:text-term-text">{app.name}</span>
-                      )}
-                    </span>
-                  </th>
-                  <td class="px-3 py-2 hidden sm:table-cell w-1/3">
-                    <Spark
-                      cells={seriesOf(series.weeks, 'wau')}
-                      label={describeSeries('Weekly active installs', series.weeks, 'wau')}
-                      open={open}
-                    />
-                  </td>
-                  <td class="px-3 py-2 text-right text-base font-bold">
-                    <Value cell={lastRow?.wau} minCount={minCount} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      appCards.length > 0 ? (
+        <div class="open-grid open-grid--apps">
+          {appCards.map((card) => (
+            <AppCountCard
+              app={card.app}
+              weeks={card.weeks}
+              week={card.week}
+              weekLabel={card.weekLabel}
+              platforms={card.platforms}
+              version={card.version}
+              releasedDaysAgo={card.releasedDaysAgo}
+              minCount={minCount}
+              top={appTop}
+              open={card.open}
+            />
+          ))}
         </div>
       ) : (
         <p class="term-frame p-4 text-sm text-paper-muted dark:text-term-muted">
@@ -389,6 +568,58 @@ const link =
         </p>
       )
     }
+    {
+      quietApps.length > 0 && (
+        <div class="open-quiet mt-4">
+          <p class="term-label">not counted</p>
+          <ul class="open-quiet__list">
+            {quietApps.map(({ app, landing }) => (
+              <li class="open-quiet__app" id={`quiet-${app.slug}`}>
+                {app.icon && (
+                  <AppIcon
+                    src={app.icon}
+                    width={28}
+                    height={28}
+                    displayWidths={[28]}
+                    class="h-7 w-7 shrink-0 rounded-[0.45rem] border border-paper-border object-cover dark:border-term-border"
+                  />
+                )}
+                {app.href ? (
+                  <a
+                    href={app.href}
+                    class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green"
+                  >
+                    {app.name}
+                  </a>
+                ) : (
+                  <span class="text-paper-text dark:text-term-text">{app.name}</span>
+                )}
+                <span class="text-xs text-paper-muted dark:text-term-muted">
+                  {app.slug === kidsApp.slug
+                    ? "sends no usage counts: Apple's Kids Category"
+                    : 'sends no usage counts'}
+                  {landing?.platforms && ` · ${landing.platforms.join(' · ')}`}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </PageSection>
+
+  <PageSection
+    id="how"
+    command="midgar signals --explain"
+    title="How a count travels"
+    blurb="From a tap on someone's phone to a number on this page, in four steps. Nothing on the way can tell who it was."
+  >
+    <CountTrail
+      eventName={activeEvent?.name ?? 'app.active'}
+      fields={carryFields}
+      eventsCount={events.length}
+      minCount={minCount}
+    />
   </PageSection>
 
   <PageSection
@@ -402,70 +633,607 @@ const link =
       Read Master of Flags'
       <a href="/legal/master-of-flags/privacy/" class={link}>privacy policy</a>.
     </p>
-    <details class="mb-3">
-      <summary
-        class="term-label cursor-pointer select-none hover:text-paper-green dark:hover:text-term-green transition-colors"
-      >
-        the {events.length} counts the apps can send
-      </summary>
-      <dl class="term-frame mt-3 divide-y divide-paper-border dark:divide-term-border">
-        {
-          events.map((event) => (
-            <div class="px-4 py-3" id={`event-${event.name}`}>
-              <dt>
-                <code class="text-sm font-bold text-paper-text dark:text-term-text">
-                  {event.name}
-                </code>
-                {event.reserved && <span class={`${chip} ml-2`}>not sent yet</span>}
-              </dt>
-              <dd class="mt-1 text-sm text-paper-muted dark:text-term-muted">{event.purpose}</dd>
-            </div>
-          ))
-        }
-      </dl>
-    </details>
-    <details>
-      <summary
-        class="term-label cursor-pointer select-none hover:text-paper-green dark:hover:text-term-green transition-colors"
-      >
-        how each number is defined
-      </summary>
-      <dl class="term-frame mt-3 divide-y divide-paper-border dark:divide-term-border">
-        {
-          metrics.map((metric) => (
-            <div class="px-4 py-3" id={`metric-${metric.id}`}>
-              <dt class="text-sm font-bold text-paper-text dark:text-term-text">{metric.title}</dt>
-              <dd class="mt-1 text-sm text-paper-muted dark:text-term-muted">
-                {metric.purpose} {metric.caveat}
-              </dd>
-            </div>
-          ))
-        }
-      </dl>
-    </details>
+    <div class="open-grid open-grid--catalog">
+      <details class="open-catalog term-frame">
+        <summary class="open-catalog__summary">
+          <span class="open-catalog__count">{events.length}</span>
+          <span>
+            <span class="term-label block">counts the apps can send</span>
+            <span class="text-xs text-paper-muted dark:text-term-muted">
+              each with its purpose and how often one install may send it
+            </span>
+          </span>
+        </summary>
+        <dl
+          class="divide-y divide-paper-border dark:divide-term-border border-t border-paper-border dark:border-term-border"
+        >
+          {
+            events.map((event) => (
+              <div class="px-4 py-3" id={`event-${event.name}`}>
+                <dt>
+                  <code class="text-sm font-bold text-paper-text dark:text-term-text">
+                    {event.name}
+                  </code>
+                  {event.reserved && <span class={`${chip} ml-2`}>not sent yet</span>}
+                </dt>
+                <dd class="mt-1 text-sm text-paper-muted dark:text-term-muted">{event.purpose}</dd>
+                <dd class="mt-1 text-xs text-paper-faint dark:text-term-faint">{event.sent}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </details>
+      <details class="open-catalog term-frame">
+        <summary class="open-catalog__summary">
+          <span class="open-catalog__count">{metrics.length}</span>
+          <span>
+            <span class="term-label block">numbers made from them</span>
+            <span class="text-xs text-paper-muted dark:text-term-muted">
+              how each number is defined, with its caveat
+            </span>
+          </span>
+        </summary>
+        <dl
+          class="divide-y divide-paper-border dark:divide-term-border border-t border-paper-border dark:border-term-border"
+        >
+          {
+            metrics.map((metric) => (
+              <div class="px-4 py-3" id={`metric-${metric.id}`}>
+                <dt class="text-sm font-bold text-paper-text dark:text-term-text">
+                  {metric.title}
+                  {metric.published && <span class={`${chip} ml-2`}>on this page</span>}
+                </dt>
+                <dd class="mt-1 text-sm text-paper-muted dark:text-term-muted">
+                  {metric.purpose} {metric.caveat}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </details>
+    </div>
   </PageSection>
 
   <PageSection
     id="code"
     command="git clone github.com/guitaripod/midgarkit"
     title="Check it yourself"
-    blurb="The counting is open source."
+    blurb="The numbers are one request away and the counting is open source. This is the start of what the API answered when this page was built."
   >
-    <ul class="space-y-1 text-sm">
-      {
-        codeLinks.map((entry) => (
-          <li>
-            <a href={entry.href} target="_blank" rel="noopener noreferrer" class={link}>
-              {entry.label} ↗
-            </a>{' '}
-            <span class="text-paper-muted dark:text-term-muted">{entry.blurb}</span>
-          </li>
-        ))
-      }
-    </ul>
-    <p class="mt-4 max-w-2xl text-xs text-paper-muted dark:text-term-muted">
-      Something looks wrong or unclear? Write to
-      <a href="mailto:support@midgarcorp.cc" class={link}>support@midgarcorp.cc</a>.
-    </p>
+    <div class="open-verify">
+      <figure class="open-terminal">
+        <figcaption class="open-terminal__bar">
+          <span class="open-terminal__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>public stats, excerpt</span>
+        </figcaption>
+        <pre
+          class="open-terminal__body"
+          tabindex="0"><code><span class="open-terminal__prompt">$ curl -s {statsUrl}</span>
+{excerpt}</code></pre>
+      </figure>
+      <div>
+        <ul class="space-y-3 text-sm">
+          {
+            codeLinks.map((entry) => (
+              <li>
+                <a href={entry.href} target="_blank" rel="noopener noreferrer" class={link}>
+                  {entry.label} ↗
+                </a>
+                <span class="block text-xs text-paper-muted dark:text-term-muted">
+                  {entry.blurb}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-6 max-w-2xl text-xs text-paper-muted dark:text-term-muted">
+          Something looks wrong or unclear? Write to
+          <a href="mailto:support@midgarcorp.cc" class={link}>support@midgarcorp.cc</a>.
+        </p>
+      </div>
+    </div>
   </PageSection>
 </BaseLayout>
+
+<script>
+  const RELATIVE = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+
+  /** Says how long ago an ISO time was, in the largest unit that fits. */
+  function ago(iso: string): string | null {
+    const at = Date.parse(iso);
+    if (Number.isNaN(at)) return null;
+    const minutes = Math.round((at - Date.now()) / 60000);
+    if (Math.abs(minutes) < 60) return RELATIVE.format(minutes, 'minute');
+    const hours = Math.round(minutes / 60);
+    if (Math.abs(hours) < 48) return RELATIVE.format(hours, 'hour');
+    return RELATIVE.format(Math.round(hours / 24), 'day');
+  }
+
+  for (const node of document.querySelectorAll<HTMLTimeElement>('time[data-ago]')) {
+    const label = ago(node.dateTime);
+    if (!label) continue;
+    node.title = node.textContent ?? '';
+    node.textContent = label;
+  }
+</script>
+
+<style>
+  .open-hero {
+    --oh-text: theme('colors.paper.text');
+    --oh-muted: theme('colors.paper.muted');
+    --oh-green: theme('colors.paper.green');
+    --oh-border: theme('colors.paper.border');
+    --oh-panel: theme('colors.paper.panel');
+    --oh-raised: theme('colors.paper.raised');
+  }
+
+  :global(.dark) .open-hero {
+    --oh-text: theme('colors.term.text');
+    --oh-muted: theme('colors.term.muted');
+    --oh-green: theme('colors.term.green');
+    --oh-border: theme('colors.term.border');
+    --oh-panel: theme('colors.term.panel');
+    --oh-raised: theme('colors.term.raised');
+  }
+
+  .open-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .open-live__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--oh-green);
+    box-shadow: 0 0 0 0 var(--oh-green);
+  }
+
+  :global(.dark) .open-live__dot {
+    box-shadow: 0 0 10px rgba(51, 255, 102, 0.6);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .open-live__dot {
+      animation: open-pulse 2.4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes open-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  .open-family {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .open-family a {
+    display: block;
+    border-radius: 0.7rem;
+    transition: transform 0.15s ease;
+  }
+
+  .open-family a:hover,
+  .open-family a:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  .open-family :global(.open-family__icon) {
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.65rem;
+    border: 1px solid var(--oh-border);
+    object-fit: cover;
+  }
+
+  @media (min-width: 40rem) {
+    .open-family :global(.open-family__icon) {
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+  }
+
+  .open-board {
+    container: board / inline-size;
+    position: relative;
+    overflow: hidden;
+  }
+
+  :global(.dark) .open-board {
+    border-color: theme('colors.term.border2');
+    background:
+      radial-gradient(120% 140% at 0% 0%, rgba(51, 255, 102, 0.07), transparent 55%),
+      theme('colors.term.panel');
+  }
+
+  .open-board {
+    background:
+      radial-gradient(120% 140% at 0% 0%, rgba(0, 95, 0, 0.05), transparent 55%),
+      theme('colors.paper.panel');
+  }
+
+  .open-board__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--oh-border);
+  }
+
+  .open-board__range {
+    margin-left: 0.75rem;
+    color: var(--oh-text);
+    letter-spacing: 0.08em;
+  }
+
+  .open-board__tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1.25rem;
+    margin: 0;
+    padding: 1.5rem 1.25rem 1.75rem;
+  }
+
+  .open-board__month {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1rem 1.25rem 1.25rem;
+    border-top: 1px dashed var(--oh-border);
+    background: color-mix(in srgb, var(--oh-raised) 45%, transparent);
+  }
+
+  .open-board__month-tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.25rem;
+    margin: 0;
+  }
+
+  @container board (min-width: 46rem) {
+    .open-board__tiles {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      padding: 2rem 1.75rem 2.25rem;
+    }
+
+    .open-board__tiles > :global(.bs + .bs) {
+      border-left: 1px solid var(--oh-border);
+      padding-left: 1.5rem;
+    }
+
+    .open-board__month {
+      grid-template-columns: 10rem minmax(0, 1fr);
+      align-items: center;
+      padding: 1.1rem 1.75rem;
+    }
+
+    .open-board__month-tiles {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .open-board__head {
+      padding: 1rem 1.75rem;
+    }
+  }
+
+  .open-proof {
+    container: proof / inline-size;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    margin-bottom: 0;
+    border: 1px solid var(--oh-border);
+    background: var(--oh-border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .open-proof__cell {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.1rem;
+    background: var(--oh-panel);
+  }
+
+  .open-proof__label {
+    order: 2;
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    color: var(--oh-text);
+  }
+
+  .open-proof__value {
+    order: 1;
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--oh-green);
+  }
+
+  .open-proof__note {
+    order: 3;
+    margin: 0.3rem 0 0;
+    font-size: 0.6875rem;
+    line-height: 1.45;
+    color: var(--oh-muted);
+  }
+
+  @media (min-width: 64rem) {
+    .open-proof {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .open-rules {
+    display: grid;
+    gap: 0.5rem 2rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.8125rem;
+    color: var(--oh-muted);
+  }
+
+  @media (min-width: 48rem) {
+    .open-rules {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .open-rules__item {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .open-rules__mark {
+    color: var(--oh-green);
+  }
+
+  .open-grid {
+    container: open-grid / inline-size;
+    display: grid;
+    gap: 1rem;
+  }
+
+  @container open-grid (min-width: 1px) {
+    .open-grid > * {
+      min-width: 0;
+    }
+  }
+
+  .open-grid--metrics,
+  .open-grid--catalog {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .open-grid--apps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 40rem) {
+    .open-grid--metrics,
+    .open-grid--apps,
+    .open-grid--catalog {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+  }
+
+  @media (min-width: 72rem) {
+    .open-grid--apps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 88rem) {
+    .open-grid--metrics {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .open-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 1.25rem;
+    padding: 0;
+    list-style: none;
+    font-size: 0.75rem;
+    color: theme('colors.paper.muted');
+  }
+
+  :global(.dark) .open-legend {
+    color: theme('colors.term.muted');
+  }
+
+  .open-legend li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .open-legend__key {
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.6rem;
+  }
+
+  .open-legend__key--value {
+    background: theme('colors.paper.green');
+  }
+
+  :global(.dark) .open-legend__key--value {
+    background: theme('colors.term.green');
+  }
+
+  .open-legend__key--hidden {
+    background-image: repeating-linear-gradient(
+      135deg,
+      theme('colors.paper.border2') 0 1.5px,
+      transparent 1.5px 4px
+    );
+  }
+
+  :global(.dark) .open-legend__key--hidden {
+    background-image: repeating-linear-gradient(
+      135deg,
+      theme('colors.term.border2') 0 1.5px,
+      transparent 1.5px 4px
+    );
+  }
+
+  .open-legend__key--line {
+    height: 0;
+    border-top: 1px dashed theme('colors.paper.amber');
+  }
+
+  :global(.dark) .open-legend__key--line {
+    border-top-color: theme('colors.term.amber');
+  }
+
+  .open-quiet {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .open-quiet__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .open-quiet__app {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+  }
+
+  .open-catalog {
+    align-self: start;
+  }
+
+  .open-catalog__summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .open-catalog__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .open-catalog__count {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: theme('colors.paper.green');
+  }
+
+  :global(.dark) .open-catalog__count {
+    color: theme('colors.term.green');
+  }
+
+  .open-catalog__summary::after {
+    content: '+';
+    margin-left: auto;
+    font-size: 1.25rem;
+    color: theme('colors.paper.muted');
+  }
+
+  :global(.dark) .open-catalog__summary::after {
+    color: theme('colors.term.muted');
+  }
+
+  .open-catalog[open] .open-catalog__summary::after {
+    content: '−';
+  }
+
+  .open-verify {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 64rem) {
+    .open-verify {
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  .open-terminal {
+    margin: 0;
+    border: 1px solid theme('colors.term.border2');
+    border-radius: 3px;
+    background: theme('colors.term.bg');
+    color: theme('colors.term.text');
+    overflow: hidden;
+  }
+
+  .open-terminal__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid theme('colors.term.border');
+    background: theme('colors.term.panel');
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: theme('colors.term.muted');
+  }
+
+  .open-terminal__dots {
+    display: inline-flex;
+    gap: 0.35rem;
+  }
+
+  .open-terminal__dots i {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: theme('colors.term.border2');
+  }
+
+  .open-terminal__body {
+    margin: 0;
+    border-radius: 0;
+    background: theme('colors.term.bg');
+    padding: 1rem 1.1rem 1.2rem;
+    overflow-x: auto;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: theme('colors.term.text');
+  }
+
+  .open-terminal__prompt {
+    color: theme('colors.term.green');
+  }
+</style>

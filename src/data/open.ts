@@ -102,3 +102,6 @@ export const NO_USAGE_COUNTS = [KIDS_APP_SLUG, 'crucible'];
 
 /// The apps whose weekly activity the page shows, the busiest first.
 export const activityApps = statsApps.filter((slug) => !NO_USAGE_COUNTS.includes(slug));
+
+/// The apps live on the App Store, as the site's store facts list them.
+export const storeApps = landingApps.filter((app) => app.status === 'live');
