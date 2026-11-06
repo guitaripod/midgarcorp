@@ -27,8 +27,11 @@ export async function refresh(url = STATS_URL, out = OUT) {
 
 async function main() {
   const stats = await refresh();
+  const apple = stats.apple
+    ? `Apple's reports for ${stats.apple.weeks.length} weeks through ${stats.apple.through}`
+    : 'no Apple section yet';
   console.log(
-    `✓ Open stats: ${Object.keys(stats.apps).length} apps, generated ${stats.generated_at}`
+    `✓ Open stats: ${Object.keys(stats.apps).length} apps, ${apple}, generated ${stats.generated_at}`
   );
 }
 

@@ -1,6 +1,6 @@
 import metricsCatalogData from '../generated/metrics-catalog.json';
 import signalsCatalogData from '../generated/signals-catalog.json';
-import { appsWithData, isSample, STATS_URL } from '../lib/open-stats.mjs';
+import { appleOf, appsWithData, isSample, STATS_URL } from '../lib/open-stats.mjs';
 import {
   eventViews,
   catalogIds,
@@ -33,12 +33,31 @@ export interface PublicMetric {
   caveat: string;
 }
 
+export interface AppleTotals {
+  downloads: Cell;
+  purchases: Cell;
+  countries_downloaded: Cell;
+  countries_purchased: Cell;
+}
+
+/** Apple's own reports as the public stats publish them: counts only, the same floor as the rest. */
+export interface AppleSection {
+  source: string;
+  first_day: string;
+  through: string;
+  weeks: Row[];
+  months: Row[];
+  apps: Record<string, { weeks: Row[] }>;
+  totals: AppleTotals;
+}
+
 export interface OpenStats {
   generated_at: string;
   rules: { min_count: number; weeks: number; months: number; note: string };
   portfolio: Series;
   apps: Record<string, Series>;
   metrics: PublicMetric[];
+  apple?: AppleSection;
 }
 
 export interface OpenApp {
@@ -56,6 +75,8 @@ export const KIDS_APP_SLUG = 'master-of-flags';
 
 export const stats = statsData as unknown as OpenStats;
 export const sample = isSample(stats);
+/** Apple's reports, or null while the API does not publish them yet. */
+export const apple = appleOf(stats) as AppleSection | null;
 /** True until /open is released: the page leads with a work-in-progress banner. */
 export const preview = false;
 export const statsUrl = STATS_URL;

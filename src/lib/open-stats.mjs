@@ -9,7 +9,10 @@
  * @typedef {{ period: string, [key: string]: Cell | string }} Row
  * @typedef {{ weeks: Row[], months: Row[], retention: { cohort: string, w1: Cell, w4: Cell }[] }} Series
  * @typedef {{ id: string, title: string, unit: string, caveat: string }} PublicMetric
- * @typedef {{ generated_at: string, rules: { min_count: number, weeks: number, months: number, note: string }, portfolio: Series, apps: Record<string, Series>, metrics: PublicMetric[] }} OpenStats
+ * @typedef {{ period: string, downloads?: Cell, redownloads?: Cell, purchases?: Cell, active_subscriptions?: Cell }} AppleRow
+ * @typedef {{ downloads: Cell, purchases: Cell, countries_downloaded: Cell, countries_purchased: Cell }} AppleTotals
+ * @typedef {{ source: string, first_day: string, through: string, weeks: AppleRow[], months: AppleRow[], apps: Record<string, { weeks: AppleRow[] }>, totals: AppleTotals }} AppleSection
+ * @typedef {{ generated_at: string, rules: { min_count: number, weeks: number, months: number, note: string }, portfolio: Series, apps: Record<string, Series>, metrics: PublicMetric[], apple?: AppleSection }} OpenStats
  */
 
 export const STATS_URL = 'https://api.midgarcorp.cc/v1/ops/public/stats';
@@ -57,9 +60,42 @@ function seriesIsValid(series) {
   );
 }
 
+const isDay = (value) =>
+  typeof value === 'string' &&
+  /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+  !Number.isNaN(Date.parse(value));
+
+const APPLE_TOTALS = ['downloads', 'purchases', 'countries_downloaded', 'countries_purchased'];
+
+/**
+ * True when the `apple` section (Apple's own reports: downloads, paid purchases and active
+ * subscriptions by week and month, per-app weekly downloads and totals) has the shape the page
+ * reads. Every count is a number, a hidden marker or null, like the rest of the stats.
+ */
+export function appleIsValid(apple) {
+  return (
+    isRecord(apple) &&
+    typeof apple.source === 'string' &&
+    isDay(apple.first_day) &&
+    isDay(apple.through) &&
+    rowsAreValid(apple.weeks, 'period') &&
+    rowsAreValid(apple.months, 'period') &&
+    isRecord(apple.apps) &&
+    Object.values(apple.apps).every((app) => isRecord(app) && rowsAreValid(app.weeks, 'period')) &&
+    isRecord(apple.totals) &&
+    APPLE_TOTALS.every((key) => isCell(apple.totals[key] ?? null))
+  );
+}
+
+/** The `apple` section when the snapshot carries a well-formed one, else null: the page then leaves it out. */
+export function appleOf(stats) {
+  return stats && appleIsValid(stats.apple) ? stats.apple : null;
+}
+
 /**
  * True when a fetched body has the shape the page reads. A failed or half-written answer must
- * never replace the committed snapshot, so every list and cell is checked.
+ * never replace the committed snapshot, so every list and cell is checked. The `apple` section is
+ * optional, since the API added it later, but a malformed one refuses the whole body.
  */
 export function isUsable(stats) {
   return (
@@ -72,7 +108,8 @@ export function isUsable(stats) {
     isRecord(stats.apps) &&
     Object.values(stats.apps).every(seriesIsValid) &&
     Array.isArray(stats.metrics) &&
-    stats.metrics.every((metric) => isRecord(metric) && typeof metric.id === 'string')
+    stats.metrics.every((metric) => isRecord(metric) && typeof metric.id === 'string') &&
+    (stats.apple === undefined || appleIsValid(stats.apple))
   );
 }
 

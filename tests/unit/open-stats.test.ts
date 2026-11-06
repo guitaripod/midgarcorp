@@ -6,6 +6,8 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import {
   allHidden,
+  appleIsValid,
+  appleOf,
   appsWithData,
   describeSeries,
   formatCell,
@@ -41,6 +43,42 @@ function validStats(overrides: Record<string, unknown> = {}) {
     },
     apps: {},
     metrics: [{ id: 'wau', title: 'Weekly active installs', unit: 'installs', caveat: '' }],
+    ...overrides,
+  };
+}
+
+function validApple(overrides: Record<string, unknown> = {}) {
+  return {
+    source: 'App Store Connect sales and subscription reports',
+    first_day: '2025-11-13',
+    through: '2026-11-04',
+    weeks: [
+      {
+        period: '2026-10-19',
+        downloads: 269,
+        redownloads: 61,
+        purchases: H,
+        active_subscriptions: H,
+      },
+      {
+        period: '2026-10-26',
+        downloads: 229,
+        redownloads: 58,
+        purchases: 12,
+        active_subscriptions: null,
+      },
+    ],
+    months: [
+      {
+        period: '2026-10-01',
+        downloads: 934,
+        redownloads: 223,
+        purchases: 26,
+        active_subscriptions: H,
+      },
+    ],
+    apps: { flaccy: { weeks: [{ period: '2026-10-26', downloads: 58 }] } },
+    totals: { downloads: 2627, purchases: 59, countries_downloaded: 103, countries_purchased: 22 },
     ...overrides,
   };
 }
@@ -179,6 +217,32 @@ describe('shape of the published stats', () => {
     expect(isUsable(validStats({ apps: { psywave: { weeks: [] } } }))).toBe(false);
   });
 
+  it('accepts an answer without the Apple section, as the API gave before it had one', () => {
+    expect(isUsable(validStats())).toBe(true);
+    expect(appleOf(validStats())).toBeNull();
+  });
+
+  it('accepts a well-formed Apple section and hands it to the page', () => {
+    const stats = validStats({ apple: validApple() });
+    expect(isUsable(stats)).toBe(true);
+    expect(appleOf(stats)?.totals.downloads).toBe(2627);
+  });
+
+  it('refuses the whole answer when its Apple section is malformed', () => {
+    for (const apple of [
+      null,
+      validApple({ first_day: 'last year' }),
+      validApple({ weeks: [{ period: '2026-10-26', downloads: 'lots' }] }),
+      validApple({ apps: { flaccy: { months: [] } } }),
+      validApple({ totals: { downloads: 'many' } }),
+      validApple({ months: undefined }),
+    ]) {
+      expect(appleIsValid(apple)).toBe(false);
+      expect(isUsable(validStats({ apple }))).toBe(false);
+      expect(appleOf(validStats({ apple }))).toBeNull();
+    }
+  });
+
   it('marks a snapshot as a sample only by its note', () => {
     expect(isSample(validStats())).toBe(false);
     expect(isSample(validStats({ rules: { min_count: 10, note: 'SAMPLE DATA, not real' } }))).toBe(
@@ -271,6 +335,21 @@ describe('refresh', () => {
 
   it('keeps the committed file when the answer has the wrong shape', async () => {
     reply = { status: 200, body: '{"ok":true}' };
+    await expect(refresh(url, out)).rejects.toThrow(/expected shape/);
+    expect(readFileSync(out, 'utf8')).toBe('committed\n');
+  });
+
+  it('writes an answer that carries the Apple section', async () => {
+    reply = { status: 200, body: JSON.stringify(validStats({ apple: validApple() })) };
+    await refresh(url, out);
+    expect(JSON.parse(readFileSync(out, 'utf8')).apple.totals.countries_downloaded).toBe(103);
+  });
+
+  it('keeps the committed file when the Apple section is malformed', async () => {
+    reply = {
+      status: 200,
+      body: JSON.stringify(validStats({ apple: validApple({ through: 'soon' }) })),
+    };
     await expect(refresh(url, out)).rejects.toThrow(/expected shape/);
     expect(readFileSync(out, 'utf8')).toBe('committed\n');
   });
