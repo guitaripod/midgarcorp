@@ -14,7 +14,7 @@ export interface DuoCombo {
 }
 
 /// Bump when a combo image is regenerated so browsers refetch the stable path.
-const DUO_REV = '1';
+const DUO_REV = '2';
 
 const entries = manifest as Record<string, DuoEntry>;
 
