@@ -150,12 +150,18 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: npm run build
 
+    - name: Keep the sitemap that is live before this deploy
+      run: curl -fsS https://midgarcorp.cc/sitemap-0.xml -o "$RUNNER_TEMP/previous-sitemap.xml" || true
+
     - name: Deploy to Cloudflare Pages Production
       uses: cloudflare/wrangler-action@v3
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         command: pages deploy dist --project-name=midgarcorp --branch=master --commit-dirty=true
+
+    - name: Tell IndexNow search engines which pages changed
+      run: node scripts/indexnow.mjs "$RUNNER_TEMP/previous-sitemap.xml" dist/sitemap-0.xml
 
   audit-store:
     runs-on: ubuntu-latest
