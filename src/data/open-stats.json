@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T10:10:54.804Z",
+  "generated_at": "2026-11-06T10:23:30.868Z",
   "rules": {
     "min_count": 10,
     "weeks": 12,
@@ -3652,13 +3652,20 @@
     "source": "App Store Connect sales and subscription reports",
     "first_day": "2025-11-13",
     "through": "2026-11-04",
-    "pushed_at": "2026-11-06T10:09:56.677Z",
+    "pushed_at": "2026-11-06T10:21:33.140Z",
+    "money": {
+      "currency": "EUR",
+      "approximate": true,
+      "basis": "Apple's reported developer proceeds, after Apple's commission and the sales taxes Apple collects, converted at the European Central Bank's reference rate of each day",
+      "source": "European Central Bank via frankfurter.dev"
+    },
     "weeks": [
       {
         "period": "2025-11-17",
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3668,6 +3675,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 14.72,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3677,6 +3685,7 @@
         "downloads": "<10",
         "redownloads": 11,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3686,6 +3695,7 @@
         "downloads": "<10",
         "redownloads": 12,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3695,6 +3705,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3704,6 +3715,7 @@
         "downloads": "<10",
         "redownloads": 11,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3713,6 +3725,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3722,6 +3735,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 8.14,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3731,6 +3745,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3740,6 +3755,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3749,6 +3765,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3758,6 +3775,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3767,6 +3785,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3776,6 +3795,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 7.22,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3785,6 +3805,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3794,6 +3815,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3803,6 +3825,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3812,6 +3835,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3821,6 +3845,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3830,6 +3855,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3839,6 +3865,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3848,6 +3875,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3857,6 +3885,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3866,6 +3895,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3875,6 +3905,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3884,6 +3915,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3893,6 +3925,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3902,6 +3935,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3911,6 +3945,7 @@
         "downloads": "<10",
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3920,6 +3955,7 @@
         "downloads": 195,
         "redownloads": 14,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": 28,
         "countries_purchased": "<10"
@@ -3929,6 +3965,7 @@
         "downloads": 23,
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3938,6 +3975,7 @@
         "downloads": 15,
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -3947,6 +3985,7 @@
         "downloads": 18,
         "redownloads": 10,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": 10,
         "countries_purchased": "<10"
@@ -3956,6 +3995,7 @@
         "downloads": 20,
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": 16,
         "countries_purchased": "<10"
@@ -3965,6 +4005,7 @@
         "downloads": 17,
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": 14,
         "countries_purchased": "<10"
@@ -3974,6 +4015,7 @@
         "downloads": 15,
         "redownloads": "<10",
         "purchases": "<10",
+        "proceeds_eur": 6.93,
         "active_subscriptions": null,
         "countries_downloaded": 12,
         "countries_purchased": "<10"
@@ -3983,6 +4025,7 @@
         "downloads": 48,
         "redownloads": 10,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": "<10",
         "countries_downloaded": 21,
         "countries_purchased": "<10"
@@ -3992,6 +4035,7 @@
         "downloads": 86,
         "redownloads": 21,
         "purchases": "<10",
+        "proceeds_eur": 18.17,
         "active_subscriptions": "<10",
         "countries_downloaded": 30,
         "countries_purchased": "<10"
@@ -4001,6 +4045,7 @@
         "downloads": 143,
         "redownloads": 15,
         "purchases": "<10",
+        "proceeds_eur": 23.28,
         "active_subscriptions": "<10",
         "countries_downloaded": 38,
         "countries_purchased": "<10"
@@ -4010,6 +4055,7 @@
         "downloads": 138,
         "redownloads": 13,
         "purchases": "<10",
+        "proceeds_eur": 7.02,
         "active_subscriptions": "<10",
         "countries_downloaded": 34,
         "countries_purchased": "<10"
@@ -4019,6 +4065,7 @@
         "downloads": 139,
         "redownloads": 20,
         "purchases": "<10",
+        "proceeds_eur": 48.42,
         "active_subscriptions": "<10",
         "countries_downloaded": 39,
         "countries_purchased": "<10"
@@ -4028,6 +4075,7 @@
         "downloads": 75,
         "redownloads": 12,
         "purchases": "<10",
+        "proceeds_eur": 0.76,
         "active_subscriptions": "<10",
         "countries_downloaded": 30,
         "countries_purchased": "<10"
@@ -4037,6 +4085,7 @@
         "downloads": 154,
         "redownloads": 24,
         "purchases": "<10",
+        "proceeds_eur": 14.93,
         "active_subscriptions": "<10",
         "countries_downloaded": 42,
         "countries_purchased": "<10"
@@ -4046,6 +4095,7 @@
         "downloads": 173,
         "redownloads": 35,
         "purchases": "<10",
+        "proceeds_eur": 35.64,
         "active_subscriptions": "<10",
         "countries_downloaded": 36,
         "countries_purchased": "<10"
@@ -4055,6 +4105,7 @@
         "downloads": 177,
         "redownloads": 38,
         "purchases": "<10",
+        "proceeds_eur": 25.65,
         "active_subscriptions": "<10",
         "countries_downloaded": 42,
         "countries_purchased": "<10"
@@ -4064,6 +4115,7 @@
         "downloads": 158,
         "redownloads": 22,
         "purchases": "<10",
+        "proceeds_eur": 2.47,
         "active_subscriptions": "<10",
         "countries_downloaded": 27,
         "countries_purchased": "<10"
@@ -4073,6 +4125,7 @@
         "downloads": 173,
         "redownloads": 29,
         "purchases": "<10",
+        "proceeds_eur": 27.54,
         "active_subscriptions": "<10",
         "countries_downloaded": 36,
         "countries_purchased": "<10"
@@ -4082,6 +4135,7 @@
         "downloads": 204,
         "redownloads": 80,
         "purchases": "<10",
+        "proceeds_eur": 67.15,
         "active_subscriptions": "<10",
         "countries_downloaded": 46,
         "countries_purchased": "<10"
@@ -4091,6 +4145,7 @@
         "downloads": 269,
         "redownloads": 55,
         "purchases": "<10",
+        "proceeds_eur": 69.28,
         "active_subscriptions": "<10",
         "countries_downloaded": 54,
         "countries_purchased": "<10"
@@ -4100,6 +4155,7 @@
         "downloads": 229,
         "redownloads": 56,
         "purchases": "<10",
+        "proceeds_eur": 88.1,
         "active_subscriptions": "<10",
         "countries_downloaded": 43,
         "countries_purchased": "<10"
@@ -4111,6 +4167,7 @@
         "downloads": 12,
         "redownloads": 39,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -4120,6 +4177,7 @@
         "downloads": "<10",
         "redownloads": 23,
         "purchases": "<10",
+        "proceeds_eur": 8.14,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -4129,6 +4187,7 @@
         "downloads": "<10",
         "redownloads": 15,
         "purchases": "<10",
+        "proceeds_eur": 7.22,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -4138,6 +4197,7 @@
         "downloads": "<10",
         "redownloads": 29,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -4147,6 +4207,7 @@
         "downloads": "<10",
         "redownloads": 23,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -4156,6 +4217,7 @@
         "downloads": 15,
         "redownloads": 21,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
@@ -4165,6 +4227,7 @@
         "downloads": 235,
         "redownloads": 40,
         "purchases": "<10",
+        "proceeds_eur": 0,
         "active_subscriptions": null,
         "countries_downloaded": 36,
         "countries_purchased": "<10"
@@ -4174,6 +4237,7 @@
         "downloads": 97,
         "redownloads": 27,
         "purchases": "<10",
+        "proceeds_eur": 6.93,
         "active_subscriptions": null,
         "countries_downloaded": 39,
         "countries_purchased": "<10"
@@ -4183,6 +4247,7 @@
         "downloads": 545,
         "redownloads": 80,
         "purchases": 14,
+        "proceeds_eur": 80.94,
         "active_subscriptions": "<10",
         "countries_downloaded": 70,
         "countries_purchased": "<10"
@@ -4192,6 +4257,7 @@
         "downloads": 638,
         "redownloads": 114,
         "purchases": 12,
+        "proceeds_eur": 101.34,
         "active_subscriptions": "<10",
         "countries_downloaded": 68,
         "countries_purchased": "<10"
@@ -4201,6 +4267,7 @@
         "downloads": 934,
         "redownloads": 223,
         "purchases": 26,
+        "proceeds_eur": 256.84,
         "active_subscriptions": "<10",
         "countries_downloaded": 74,
         "countries_purchased": 14
@@ -4214,6 +4281,7 @@
         "downloads": 18,
         "redownloads": 57,
         "purchases": "<10",
+        "proceeds_eur": 14.72,
         "countries_downloaded": "<10",
         "countries_purchased": "<10"
       },
@@ -4224,6 +4292,7 @@
         "downloads": 2609,
         "redownloads": 622,
         "purchases": 58,
+        "proceeds_eur": 486.66,
         "countries_downloaded": 103,
         "countries_purchased": 22
       }
@@ -4234,6 +4303,7 @@
       "downloads": 2627,
       "redownloads": 679,
       "purchases": 59,
+      "proceeds_eur": 501.38,
       "countries_downloaded": 103,
       "countries_purchased": 22
     },
@@ -4242,865 +4312,1073 @@
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": 11
+            "downloads": 11,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": 10
+            "downloads": 10,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": 10
+            "downloads": 10,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           }
         ],
         "downloads": 140,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 0
       },
       "crucible": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": 30
+            "downloads": 30,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": 21
+            "downloads": 21,
+            "proceeds_eur": 6.08
           }
         ],
         "downloads": 69,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 6.08
       },
       "double-kick": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           }
         ],
         "downloads": 17,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 0
       },
       "dream-eater": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           }
         ],
         "downloads": 37,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 0
       },
       "embr": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": 16
+            "downloads": 16,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": 16
+            "downloads": 16,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": 13
+            "downloads": 13,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": 16
+            "downloads": 16,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": 15
+            "downloads": 15,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": 16
+            "downloads": 16,
+            "proceeds_eur": 0
           }
         ],
         "downloads": 159,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 0
       },
       "flaccy": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": 32
+            "downloads": 32,
+            "proceeds_eur": 7.14
           },
           {
             "period": "2026-08-17",
-            "downloads": 29
+            "downloads": 29,
+            "proceeds_eur": 7.02
           },
           {
             "period": "2026-08-24",
-            "downloads": 37
+            "downloads": 37,
+            "proceeds_eur": 30.23
           },
           {
             "period": "2026-08-31",
-            "downloads": 29
+            "downloads": 29,
+            "proceeds_eur": -1.7
           },
           {
             "period": "2026-09-07",
-            "downloads": 37
+            "downloads": 37,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": 43
+            "downloads": 43,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": 40
+            "downloads": 40,
+            "proceeds_eur": 12.91
           },
           {
             "period": "2026-09-28",
-            "downloads": 28
+            "downloads": 28,
+            "proceeds_eur": 6.81
           },
           {
             "period": "2026-10-05",
-            "downloads": 47
+            "downloads": 47,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": 46
+            "downloads": 46,
+            "proceeds_eur": 32.94
           },
           {
             "period": "2026-10-19",
-            "downloads": 76
+            "downloads": 76,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": 58
+            "downloads": 58,
+            "proceeds_eur": 58.71
           }
         ],
         "downloads": 558,
-        "purchases": 21
+        "purchases": 21,
+        "proceeds_eur": 162.84
       },
       "helia": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 23.31
           }
         ],
         "downloads": 32,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 30.24
       },
       "living-dex": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           }
         ],
         "downloads": 11,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 0
       },
       "master-of-flags": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": 26
+            "downloads": 26,
+            "proceeds_eur": 2.93
           },
           {
             "period": "2026-08-17",
-            "downloads": 25
+            "downloads": 25,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": 33
+            "downloads": 33,
+            "proceeds_eur": 7.28
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": 24
+            "downloads": 24,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": 25
+            "downloads": 25,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": 15
+            "downloads": 15,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": 23
+            "downloads": 23,
+            "proceeds_eur": 8.4
           },
           {
             "period": "2026-10-05",
-            "downloads": 21
+            "downloads": 21,
+            "proceeds_eur": 15.72
           },
           {
             "period": "2026-10-12",
-            "downloads": 35
+            "downloads": 35,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": 52
+            "downloads": 52,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": 39
+            "downloads": 39,
+            "proceeds_eur": 0
           }
         ],
         "downloads": 436,
-        "purchases": 12
+        "purchases": 12,
+        "proceeds_eur": 52.54
       },
       "master-of-inventory": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 2.18
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           }
         ],
         "downloads": 174,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 2.18
       },
       "pay-day": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           }
         ],
         "downloads": 31,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 0
       },
       "pixiepocket": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": 17
+            "downloads": 17,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": 11
+            "downloads": 11,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 7.08
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           }
         ],
         "downloads": 112,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 7.08
       },
       "psybeam": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           }
         ],
         "downloads": 52,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 0
       },
       "psywave": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-17",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 3.75
           },
           {
             "period": "2026-09-14",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-21",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-26",
-            "downloads": "<10"
+            "downloads": "<10",
+            "proceeds_eur": 0
           }
         ],
         "downloads": 51,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 3.75
       },
       "solar-beam": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": 31
+            "downloads": 31,
+            "proceeds_eur": 2.2
           },
           {
             "period": "2026-08-17",
-            "downloads": 30
+            "downloads": 30,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": 21
+            "downloads": 21,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-31",
-            "downloads": 13
+            "downloads": 13,
+            "proceeds_eur": 2.46
           },
           {
             "period": "2026-09-07",
-            "downloads": 22
+            "downloads": 22,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-14",
-            "downloads": 24
+            "downloads": 24,
+            "proceeds_eur": 22.79
           },
           {
             "period": "2026-09-21",
-            "downloads": 33
+            "downloads": 33,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-28",
-            "downloads": 24
+            "downloads": 24,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-05",
-            "downloads": 32
+            "downloads": 32,
+            "proceeds_eur": 2.56
           },
           {
             "period": "2026-10-12",
-            "downloads": 41
+            "downloads": 41,
+            "proceeds_eur": 34.21
           },
           {
             "period": "2026-10-19",
-            "downloads": 31
+            "downloads": 31,
+            "proceeds_eur": 33.73
           },
           {
             "period": "2026-10-26",
-            "downloads": 37
+            "downloads": 37,
+            "proceeds_eur": 0
           }
         ],
         "downloads": 385,
-        "purchases": 12
+        "purchases": 12,
+        "proceeds_eur": 155.18
       },
       "tailscode": {
         "weeks": [
           {
             "period": "2026-08-10",
-            "downloads": 10
+            "downloads": 10,
+            "proceeds_eur": 11.01
           },
           {
             "period": "2026-08-17",
-            "downloads": 16
+            "downloads": 16,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-08-24",
-            "downloads": 17
+            "downloads": 17,
+            "proceeds_eur": 10.91
           },
           {
             "period": "2026-08-31",
-            "downloads": 10
+            "downloads": 10,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-09-07",
-            "downloads": 29
+            "downloads": 29,
+            "proceeds_eur": 11.18
           },
           {
             "period": "2026-09-14",
-            "downloads": 30
+            "downloads": 30,
+            "proceeds_eur": 12.85
           },
           {
             "period": "2026-09-21",
-            "downloads": 45
+            "downloads": 45,
+            "proceeds_eur": 12.74
           },
           {
             "period": "2026-09-28",
-            "downloads": 47
+            "downloads": 47,
+            "proceeds_eur": -12.74
           },
           {
             "period": "2026-10-05",
-            "downloads": 39
+            "downloads": 39,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-12",
-            "downloads": 37
+            "downloads": 37,
+            "proceeds_eur": 0
           },
           {
             "period": "2026-10-19",
-            "downloads": 33
+            "downloads": 33,
+            "proceeds_eur": 35.55
           },
           {
             "period": "2026-10-26",
-            "downloads": 28
+            "downloads": 28,
+            "proceeds_eur": 0
           }
         ],
         "downloads": 363,
-        "purchases": "<10"
+        "purchases": "<10",
+        "proceeds_eur": 81.51
       }
     },
     "definitions": [
@@ -5118,6 +5396,11 @@
         "id": "purchases",
         "title": "Paid purchases",
         "caveat": "Every paid transaction the sales reports carry: in-app purchases, subscription starts and renewals, and paid downloads. Free trials and refunds are not counted."
+      },
+      {
+        "id": "proceeds_eur",
+        "title": "Proceeds (EUR)",
+        "caveat": "What Apple reports it owes Midgar for the period's sales, after Apple's commission and the sales taxes Apple collects, net of refunds, each day's amount in each currency converted to euros at the European Central Bank's reference rate of that day (the last published rate on weekends and holidays; the few currencies the ECB does not publish at a recent market rate). An approximation of what Apple pays out, which uses its own rates. Not hidden under 10."
       },
       {
         "id": "active_subscriptions",
