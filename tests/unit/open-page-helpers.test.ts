@@ -190,7 +190,7 @@ describe('Apple history helpers', () => {
       { period: '2025-11-01', downloads: '<10', purchases: null },
       { period: '2025-12-01', downloads: null, purchases: null },
     ];
-    expect(trimLeading(rows).map((row) => row.period)).toEqual(['2025-11-01', '2025-12-01']);
+    expect(trimLeading(rows).map((row: { period: string }) => row.period)).toEqual(['2025-11-01', '2025-12-01']);
     expect(trimLeading([{ period: '2025-10-01', downloads: null }])).toEqual([]);
   });
 
