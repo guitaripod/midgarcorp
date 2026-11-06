@@ -1,0 +1,130 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AppIcon from '@components/landing/AppIcon.astro';
+import { landingApps, type LandingApp } from '@data/landing';
+import { SUPPORT_EMAIL, privacyUrlFor, supportMailto } from '../../utils/app-links';
+
+/// Every landing app but tailscode, whose own support page is src/pages/tailscode/support.astro.
+export function getStaticPaths() {
+  return landingApps
+    .filter((app) => app.slug !== 'tailscode')
+    .map((app) => ({ params: { app: app.slug }, props: { app } }));
+}
+
+const { app } = Astro.props as { app: LandingApp };
+const accent = app.content.accentColor || app.primaryColor;
+const name = app.shortName;
+const privacyUrl = privacyUrlFor(app.slug);
+const mailto = supportMailto(name);
+---
+
+<BaseLayout
+  title={`${name} Support`}
+  description={`Help with ${name}: email ${SUPPORT_EMAIL} and the developer answers.`}
+>
+  <div style={`--accent:${accent}`}>
+    <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/apps/" class="hover:text-paper-green dark:hover:text-term-green">apps</a></li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href={`/${app.slug}/`} class="hover:text-paper-green dark:hover:text-term-green">
+            {app.slug}
+          </a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">support</li>
+      </ol>
+    </nav>
+
+    <header class="flex items-center gap-4 py-10 sm:py-14">
+      {
+        app.iconLocal && (
+          <AppIcon
+            src={app.iconLocal}
+            width={64}
+            height={64}
+            displayWidths={[56, 64]}
+            class="h-14 w-14 shrink-0 rounded-[0.9rem] border border-paper-border object-cover dark:border-term-border sm:h-16 sm:w-16"
+          />
+        )
+      }
+      <h1 class="text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-4xl">
+        {name} Support
+      </h1>
+    </header>
+
+    <section class="border-t border-paper-border pb-12 pt-10 dark:border-term-border">
+      <div class="grid max-w-3xl gap-5">
+        <div class="term-frame p-5 sm:p-6">
+          <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">Email</h2>
+          <p class="mb-4 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            Questions, problems, ideas or purchases: write to the developer and you get an answer
+            from the person who makes {name}. Say which device you use and the app version from
+            {name}'s settings.
+          </p>
+          <a
+            href={mailto}
+            class="accent-btn inline-flex max-w-full items-center gap-2 break-all rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
+          >
+            {SUPPORT_EMAIL}
+          </a>
+        </div>
+
+        <div class="term-frame p-5 sm:p-6">
+          <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
+            Subscriptions and refunds
+          </h2>
+          <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            Apple bills every App Store purchase. Manage or cancel a subscription in your Apple
+            Account settings, and ask for a refund at
+            <a
+              href="https://reportaproblem.apple.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-paper-green underline decoration-dotted underline-offset-2 dark:text-term-green"
+              >reportaproblem.apple.com ↗</a
+            >.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-paper-faint dark:text-term-faint">
+        <a href={`/${app.slug}/`} class="hover:text-paper-green dark:hover:text-term-green"
+          >← back to {name}</a
+        >
+        {
+          privacyUrl && (
+            <a href={privacyUrl} class="hover:text-paper-green dark:hover:text-term-green">
+              Privacy Policy
+            </a>
+          )
+        }
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: var(--accent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .accent-btn {
+    color: color-mix(in srgb, var(--accent), #000 34%);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  :global(.dark) .accent-btn {
+    color: color-mix(in srgb, var(--accent), #fff 24%);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .accent-btn:hover {
+    background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+  }
+</style>

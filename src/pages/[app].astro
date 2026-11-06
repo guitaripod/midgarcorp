@@ -13,6 +13,7 @@ import InstallGuide from '@components/landing/InstallGuide.astro';
 import DuoCombo from '@components/landing/DuoCombo.astro';
 import ReleaseNotes from '@components/landing/ReleaseNotes.astro';
 import { releaseNoteBlocks } from '../lib/app-release';
+import { privacyUrlFor, supportPath } from '../utils/app-links';
 import {
   landingApps,
   DEVICE_LABELS,
@@ -121,33 +122,8 @@ const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
 
 const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : undefined);
 
-const privacyOverrides: Record<string, string> = {
-  crucible: 'https://midgarcorp.cc/crucible/privacy/',
-  solarbeam: 'https://midgarcorp.cc/solarbeam/privacy',
-  tailscode: 'https://midgarcorp.cc/tailscode/privacy/',
-};
-/// Landing slug to the registry slug its policy lives under at midgarcorp.cc/legal/<slug>/.
-const legalSlugs: Record<string, string> = {
-  appofthedead: 'app-of-the-dead',
-  doublekick: 'double-kick',
-  dreameater: 'dream-eater',
-  embr: 'embr',
-  flaccy: 'flaccy',
-  helia: 'helia',
-  livingdex: 'living-dex',
-  masterofflags: 'master-of-flags',
-  masterofinventory: 'master-of-inventory',
-  payday: 'pay-day',
-  pixiepocket: 'pixiepocket',
-  psybeam: 'psybeam',
-  psywave: 'psywave',
-};
-const privacyUrl =
-  privacyOverrides[app.slug] ??
-  (legalSlugs[app.slug]
-    ? `https://midgarcorp.cc/legal/${legalSlugs[app.slug]}/privacy/`
-    : undefined);
-const supportUrl = app.supportUrl ?? undefined;
+const privacyUrl = privacyUrlFor(app.slug);
+const supportUrl = supportPath(app.slug);
 
 const allShots = Object.values(app.screenshots)
   .flat()
@@ -822,18 +798,9 @@ const releasedOn = app.currentVersionReleaseDate
               </a>
             )
           }
-          {
-            supportUrl && (
-              <a
-                href={supportUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:text-paper-green dark:hover:text-term-green"
-              >
-                Support ↗
-              </a>
-            )
-          }
+          <a href={supportUrl} class="hover:text-paper-green dark:hover:text-term-green">
+            Support
+          </a>
           {
             privacyUrl && (
               <a
