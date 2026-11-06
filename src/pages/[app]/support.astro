@@ -2,7 +2,12 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import AppIcon from '@components/landing/AppIcon.astro';
 import { landingApps, type LandingApp } from '@data/landing';
-import { SUPPORT_EMAIL, privacyUrlFor, supportMailto } from '../../utils/app-links';
+import {
+  SUPPORT_EMAIL,
+  hasSubscription,
+  privacyUrlFor,
+  supportMailto,
+} from '../../utils/app-links';
 
 /// Every landing app but tailscode, whose own support page is src/pages/tailscode/support.astro.
 export function getStaticPaths() {
@@ -16,6 +21,7 @@ const accent = app.content.accentColor || app.primaryColor;
 const name = app.shortName;
 const privacyUrl = privacyUrlFor(app.slug);
 const mailto = supportMailto(name);
+const renews = hasSubscription(app.content.pricing?.tiers);
 ---
 
 <BaseLayout
@@ -75,11 +81,12 @@ const mailto = supportMailto(name);
 
         <div class="term-frame p-5 sm:p-6">
           <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
-            Subscriptions and refunds
+            {renews ? 'Subscriptions and refunds' : 'Purchases and refunds'}
           </h2>
           <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
-            Apple bills every App Store purchase. Manage or cancel a subscription in your Apple
-            Account settings, and ask for a refund at
+            Apple bills every App Store purchase.
+            {renews && 'Manage or cancel a subscription in your Apple Account settings.'}
+            Ask for a refund at
             <a
               href="https://reportaproblem.apple.com"
               target="_blank"

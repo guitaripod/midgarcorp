@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   SUPPORT_EMAIL,
+  hasSubscription,
   privacyUrlFor,
   supportMailto,
   supportPath,
@@ -17,6 +18,13 @@ describe('app links', () => {
     for (const app of landingApps) {
       expect(supportPath(app.slug)).toBe(`/${app.slug}/support/`);
     }
+  });
+
+  it('tells a renewing tier from one-time purchases', () => {
+    expect(hasSubscription([{ period: 'P1M' }, {}])).toBe(true);
+    expect(hasSubscription([{ period: 'year' }])).toBe(true);
+    expect(hasSubscription([{ period: 'one-time' }, {}])).toBe(false);
+    expect(hasSubscription(undefined)).toBe(false);
   });
 
   it('finds a privacy policy for every landing app', () => {

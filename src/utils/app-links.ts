@@ -38,6 +38,11 @@ export function supportPath(slug: string): string {
   return `/${slug}/support/`;
 }
 
+/** True when one of the app's price tiers renews: a period other than a one-time purchase. */
+export function hasSubscription(tiers: { period?: string }[] | undefined): boolean {
+  return (tiers ?? []).some((tier) => !!tier.period && tier.period !== 'one-time');
+}
+
 /** A `mailto:` link to support with the app's name as the subject. */
 export function supportMailto(appName: string): string {
   return `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(appName)}`;
