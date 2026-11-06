@@ -16,6 +16,8 @@ import { LINUX_NOW, LINUX_SHOWCASE, linuxApps, linuxStats } from '@data/linux';
 import { landingSlugs } from '@data/landing';
 import { ossProjects, ossStats } from '@data/oss';
 import activity from '../data/github-activity.json';
+import { markdownPath } from '@utils/llms';
+import { siteGraph } from '@utils/structured-data';
 
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -58,10 +60,16 @@ const stats = [
 ];
 
 const engagements = careerData.entries.slice(0, 3);
+
+const homeJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': siteGraph('/apple-touch-icon.png'),
+};
 ---
 
 <BaseLayout
   width="wide"
+  markdown={markdownPath('')}
   title="Midgar Corp — guitaripod"
   description={`Independent engineer: seven years of production iOS, backend and AI. ${appsData.apps.length} apps on the App Store and ${ossStats.repos} open-source projects with ${ossStats.commits.toLocaleString('en-US')} commits.`}
 >
@@ -274,6 +282,7 @@ const engagements = careerData.entries.slice(0, 3);
       </CardGrid>
     </section>
   </div>
+  <script type="application/ld+json" set:html={JSON.stringify(homeJsonLd)} />
 </BaseLayout>
 
 <style>

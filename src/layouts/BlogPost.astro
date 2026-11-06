@@ -6,6 +6,7 @@ import BionicToggle from '@components/BionicToggle.astro';
 import EnhanceCodeBlocks from '@components/EnhanceCodeBlocks.astro';
 import { calculateReadingTime } from '@utils/reading-time';
 import { generateTableOfContents } from '@utils/toc';
+import { markdownPath } from '@utils/llms';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
@@ -37,7 +38,9 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
   image={image}
   article={true}
   publishedTime={pubDate.toISOString()}
+  modifiedTime={updatedDate?.toISOString()}
   tags={tags}
+  markdown={markdownPath(`blog/${post.slug}`)}
 >
   <ProgressBar />
 

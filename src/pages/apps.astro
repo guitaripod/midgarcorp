@@ -14,6 +14,14 @@ import {
   appRest,
   appStats,
 } from '@data/apps';
+import {
+  WEBSITE_ID,
+  absoluteUrl,
+  breadcrumbList,
+  googleAppCategory,
+  operatingSystems,
+  organizationRef,
+} from '@utils/structured-data';
 
 const pageTitle = 'Apple Platform Apps | guitaripod';
 const now = APPS_NOW;
@@ -72,30 +80,41 @@ const ogDescription = `${storeCount} apps on the App Store for ${listed(applePla
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
+  '@id': 'https://midgarcorp.cc/apps/',
   name: pageTitle,
   description: ogDescription,
   url: 'https://midgarcorp.cc/apps/',
-  author: {
-    '@type': 'Person',
-    name: 'guitaripod',
-    url: 'https://midgarcorp.cc',
+  isPartOf: { '@id': WEBSITE_ID },
+  publisher: organizationRef,
+  breadcrumb: breadcrumbList([{ name: 'Apps', path: '/apps/' }]),
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: cards.length,
+    itemListElement: cards.map(({ app, release, landingHref }, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: landingHref ? absoluteUrl(landingHref) : app.appStoreUrl,
+      item: {
+        '@type': 'SoftwareApplication',
+        ...(landingHref ? { '@id': `${absoluteUrl(landingHref)}#app` } : {}),
+        name: app.name,
+        description: app.tagline,
+        applicationCategory: googleAppCategory(app.category),
+        operatingSystem: operatingSystems(app.platforms),
+        softwareVersion: release?.version,
+        offers: {
+          '@type': 'Offer',
+          price: app.price === 'Free' ? '0' : app.price.replace(/[^0-9.]/g, ''),
+          priceCurrency: 'USD',
+        },
+        datePublished: app.releaseDate,
+        dateModified: release?.date,
+        url: landingHref ? absoluteUrl(landingHref) : app.appStoreUrl,
+        sameAs: app.appStoreUrl,
+        publisher: organizationRef,
+      },
+    })),
   },
-  hasPart: cards.map(({ app, release }) => ({
-    '@type': 'SoftwareApplication',
-    name: app.name,
-    description: app.tagline,
-    applicationCategory: app.category,
-    operatingSystem: app.platforms.join(', '),
-    softwareVersion: release?.version,
-    offers: {
-      '@type': 'Offer',
-      price: app.price === 'Free' ? '0' : app.price.replace('$', ''),
-      priceCurrency: 'USD',
-    },
-    datePublished: app.releaseDate,
-    dateModified: release?.date,
-    url: app.appStoreUrl,
-  })),
 };
 ---
 

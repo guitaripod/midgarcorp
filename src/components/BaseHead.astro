@@ -1,11 +1,18 @@
 ---
+import { SITE_TITLE } from '../consts';
+import { organizationRef, personRef } from '@utils/structured-data';
+
 export interface Props {
   title: string;
   description: string;
   image?: string;
   article?: boolean;
   publishedTime?: string;
+  modifiedTime?: string;
   tags?: string[];
+  noindex?: boolean;
+  markdown?: string;
+  appStoreId?: number;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -16,10 +23,20 @@ const {
   image = '/og-image.png',
   article = false,
   publishedTime,
+  modifiedTime,
   tags = [],
+  noindex = false,
+  markdown,
+  appStoreId,
 } = Astro.props;
 
-const ogImage = new URL(image, Astro.url);
+const ogImage = new URL(image, Astro.site);
+
+/// Indexable pages let search and AI answers show a large image preview and as much of
+/// the text as they need; a page kept out of the index still passes its links on.
+const robots = noindex
+  ? 'noindex, follow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
 // Inline data-URI favicon so browsers can never serve a stale cached icon.
 const faviconDataUri =
@@ -34,19 +51,20 @@ const faviconDataUri =
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
+{!noindex && <link rel="canonical" href={canonicalURL} />}
+{markdown && <link rel="alternate" type="text/markdown" href={markdown} />}
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <meta name="author" content="guitaripod" />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content={robots} />
+{appStoreId && <meta name="apple-itunes-app" content={`app-id=${appStoreId}`} />}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={article ? 'article' : 'website'} />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
@@ -58,7 +76,7 @@ const faviconDataUri =
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={Astro.url} />
+<meta name="twitter:url" content={canonicalURL} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
@@ -68,10 +86,11 @@ const faviconDataUri =
 
 <!-- Article specific -->
 {article && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{article && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 {article && tags.length > 0 && tags.map((tag) => <meta property="article:tag" content={tag} />)}
 
 <!-- RSS Feed -->
-<link rel="alternate" type="application/rss+xml" title={title} href="/rss.xml" />
+<link rel="alternate" type="application/rss+xml" title={`${SITE_TITLE} blog`} href="/rss.xml" />
 
 <!-- Fonts and styles -->
 <link
@@ -95,20 +114,18 @@ const faviconDataUri =
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
+        '@id': `${canonicalURL}#post`,
         headline: title,
         description: description,
+        url: canonicalURL,
+        mainEntityOfPage: canonicalURL,
         datePublished: publishedTime,
-        author: {
-          '@type': 'Person',
-          name: 'guitaripod',
-          url: 'https://midgarcorp.cc',
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Midgar Corp',
-        },
+        dateModified: modifiedTime ?? publishedTime,
+        inLanguage: 'en',
+        author: personRef,
+        publisher: organizationRef,
         image: ogImage,
-        keywords: tags.join(', '),
+        keywords: tags,
       })}
     />
   )

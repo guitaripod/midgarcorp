@@ -132,7 +132,7 @@ describe('Tailscode landing page', () => {
     ]) {
       expect(questions).toContain(q);
     }
-    expect(page).toContain('c.faq.map');
+    expect(page).toContain('appPageJsonLd(app, { ratingShown: showsRating })');
   });
 
   it('keeps the delegate board the last perk of Pro', () => {

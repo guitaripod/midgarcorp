@@ -2,15 +2,15 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import FeatureGrid from '@components/landing/FeatureGrid.astro';
 import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import { breadcrumbList, organizationRef, personRef } from '@utils/structured-data';
+import { productPage } from '@data/product-pages';
 
 const site = 'https://midgarcorp.cc';
-const canonical = `${site}/yoink`;
+const canonical = `${site}/yoink/`;
 const ogImage = '/og/yoink.png';
 const accent = '#ff0033';
 
-const seoTitle = 'Yoink — grab thumbnails and videos from YouTube';
-const metaDescription =
-  'A Chromium extension that adds a toolbar to every YouTube thumbnail: save the full-res thumbnail, or download the video in up to 4K, ready to post to X.';
+const { seoTitle, metaDescription } = productPage('yoink');
 
 const githubUrl = 'https://github.com/guitaripod/yoink';
 const releasesUrl = 'https://github.com/guitaripod/yoink/releases';
@@ -126,8 +126,8 @@ const faq = [
 ];
 
 const structuredData = {
-  '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
+  '@id': `${canonical}#app`,
   name: 'Yoink',
   applicationCategory: 'BrowserApplication',
   operatingSystem: 'Chrome, Chromium, Edge, Brave, Vivaldi',
@@ -135,21 +135,29 @@ const structuredData = {
   url: canonical,
   downloadUrl: releasesUrl,
   softwareVersion: '1.2.1',
-  author: {
-    '@type': 'Person',
-    name: 'guitaripod',
-    url: site,
-  },
+  author: personRef,
+  publisher: organizationRef,
   offers: {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
   },
 };
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    structuredData,
+    breadcrumbList([
+      { name: 'Linux', path: '/linux/' },
+      { name: 'Yoink', path: '/yoink/' },
+    ]),
+  ],
+};
 ---
 
 <BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>
-  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <div class="py-8 sm:py-12">
     <header class="mb-12 sm:mb-16">

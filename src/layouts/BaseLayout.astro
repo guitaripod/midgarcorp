@@ -12,9 +12,13 @@ export interface Props {
   image?: string;
   article?: boolean;
   publishedTime?: string;
+  modifiedTime?: string;
   tags?: string[];
   searchable?: boolean;
   width?: 'standard' | 'wide';
+  noindex?: boolean;
+  markdown?: string;
+  appStoreId?: number;
 }
 
 const {
@@ -23,9 +27,13 @@ const {
   image,
   article,
   publishedTime,
+  modifiedTime,
   tags,
   searchable = true,
   width = 'standard',
+  noindex = false,
+  markdown,
+  appStoreId,
 } = Astro.props;
 
 const kind = searchKind(Astro.url.pathname, landingSlugs);
@@ -40,7 +48,11 @@ const kind = searchKind(Astro.url.pathname, landingSlugs);
       image={image}
       article={article}
       publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
       tags={tags}
+      noindex={noindex}
+      markdown={markdown}
+      appStoreId={appStoreId}
     />
   </head>
   <body

@@ -9,7 +9,9 @@ import AppIcon from '@components/landing/AppIcon.astro';
 import SectionHead from '@components/landing/SectionHead.astro';
 import ShotFigure from '@components/landing/ShotFigure.astro';
 import DuoCombo from '@components/landing/DuoCombo.astro';
-import { landingApps, screenshotUrl, type LandingApp } from '@data/landing';
+import { landingApps, type LandingApp } from '@data/landing';
+import { appPageJsonLd } from '@utils/structured-data';
+import { markdownPath } from '@utils/llms';
 
 export const prerender = true;
 
@@ -21,16 +23,12 @@ const releaseUrl = app.latestReleaseUrl ?? app.githubUrl;
 const macStoreUrl = c.macAppStoreUrl ?? app.appStoreUrl;
 const aurUrl = 'https://aur.archlinux.org/packages/tailscode';
 
-const site = 'https://midgarcorp.cc';
-const canonical = `${site}/tailscode/`;
 const OG_REV = '10';
 const ogImage = `/og/tailscode.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
   ? app.name.split(':').slice(1).join(':').trim()
   : (app.category ?? '');
-
-const abs = (p?: string | null) => (p ? (p.startsWith('http') ? p : site + p) : undefined);
 
 const shotBase = '/screenshots/tailscode';
 const shot = (name: string) => `${shotBase}/${name}.webp`;
@@ -217,88 +215,8 @@ const phoneItem = 'w-[210px] sm:w-full sm:max-w-[300px] sm:justify-self-center';
 const btn =
   'accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors';
 
-const operatingSystem = 'iOS, iPadOS, Linux, macOS';
-const priceNumeric = app.price === 'Free' ? '0' : app.price.replace('$', '');
-
-const allShots = Object.values(app.screenshots)
-  .flat()
-  .map((s) => abs(screenshotUrl(s.src)));
-
-const downloadOffer = {
-  '@type': 'Offer',
-  name: `${app.shortName} download`,
-  price: priceNumeric,
-  priceCurrency: 'USD',
-  url: app.appStoreUrl,
-  availability: 'https://schema.org/InStock',
-};
-const premiumOffers = (c.pricing?.tiers ?? [])
-  .filter((tier) => typeof tier.amount === 'number')
-  .map((tier) => ({
-    '@type': 'Offer',
-    name: `${c.pricing!.premium.title} — ${tier.name}`,
-    price: String(tier.amount),
-    priceCurrency: 'USD',
-    url: app.appStoreUrl,
-    availability: 'https://schema.org/InStock',
-    category: 'InAppPurchase',
-    ...(tier.period
-      ? { eligibleDuration: { '@type': 'QuantitativeValue', value: tier.period } }
-      : {}),
-  }));
-
-const softwareApp = {
-  '@type': 'SoftwareApplication',
-  name: app.name,
-  alternateName: 'Tailscode',
-  operatingSystem,
-  applicationCategory: 'DeveloperApplication',
-  description: c.metaDescription,
-  url: canonical,
-  installUrl: app.appStoreUrl,
-  downloadUrl: app.appStoreUrl,
-  image: abs(app.iconLocal),
-  screenshot: allShots,
-  offers: premiumOffers.length ? [downloadOffer, ...premiumOffers] : downloadOffer,
-  author: { '@type': 'Organization', name: 'Midgar Oy', url: site },
-  publisher: { '@type': 'Organization', name: 'Midgar Oy', url: site },
-  ...(app.releaseDate ? { datePublished: app.releaseDate } : {}),
-  ...(app.ratingCount > 0
-    ? {
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: app.rating,
-          ratingCount: app.ratingCount,
-          bestRating: 5,
-          worstRating: 1,
-        },
-      }
-    : {}),
-  isAccessibleForFree: true,
-  license: 'https://www.gnu.org/licenses/gpl-3.0.html',
-  codeRepository: githubUrl,
-};
-
-const breadcrumb = {
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: site },
-    { '@type': 'ListItem', position: 2, name: 'Apps', item: `${site}/apps` },
-    { '@type': 'ListItem', position: 3, name: app.shortName, item: canonical },
-  ],
-};
-const faqPage = {
-  '@type': 'FAQPage',
-  mainEntity: c.faq.map((f) => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
-  })),
-};
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [softwareApp, breadcrumb, faqPage],
-};
+const showsRating = app.ratingCount >= 5;
+const jsonLd = appPageJsonLd(app, { ratingShown: showsRating });
 
 const siblings = landingApps
   .filter((a) => a.slug !== 'tailscode')
@@ -324,7 +242,13 @@ const clients = [
 ];
 ---
 
-<BaseLayout title={c.seoTitle} description={c.metaDescription} image={ogImage}>
+<BaseLayout
+  title={c.seoTitle}
+  description={c.metaDescription}
+  image={ogImage}
+  markdown={markdownPath(app.slug)}
+  appStoreId={app.trackId > 0 ? app.trackId : undefined}
+>
   <div style={`--accent:${accent}`}>
     <nav
       aria-label="Breadcrumb"
@@ -415,7 +339,7 @@ const clients = [
 
         <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
           {
-            app.ratingCount >= 5 && (
+            showsRating && (
               <StarRating
                 rating={app.rating}
                 count={app.ratingCount}

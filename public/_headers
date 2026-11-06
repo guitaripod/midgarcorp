@@ -38,3 +38,36 @@
 
 /og/*
   Cache-Control: public, max-age=604800
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+/og-preview
+  X-Robots-Tag: noindex
+
+/archive-preview
+  X-Robots-Tag: noindex
+
+/embed-preview
+  X-Robots-Tag: noindex
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/index.html.md
+  Link: <https://midgarcorp.cc/>; rel="canonical"
+
+/:page/index.html.md
+  Link: <https://midgarcorp.cc/:page/>; rel="canonical"
+
+/blog/:slug/index.html.md
+  Link: <https://midgarcorp.cc/blog/:slug/>; rel="canonical"

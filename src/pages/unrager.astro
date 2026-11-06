@@ -7,15 +7,20 @@ import UnragerTimeline from '@components/landing/UnragerTimeline.astro';
 import UnragerPopup from '@components/landing/UnragerPopup.astro';
 import UnragerTerminal from '@components/landing/UnragerTerminal.astro';
 import UnragerPhones from '@components/landing/UnragerPhones.astro';
+import {
+  breadcrumbList,
+  faqPage as faqPageNode,
+  organizationRef,
+  personRef,
+} from '@utils/structured-data';
+import { productPage } from '@data/product-pages';
 
 const site = 'https://midgarcorp.cc';
-const canonical = `${site}/unrager`;
+const canonical = `${site}/unrager/`;
 const ogImage = '/og/unrager.png';
 const accent = '#1D9BF0';
 
-const seoTitle = 'unrager — keep x.com, lose the rage';
-const metaDescription =
-  'A browser extension that takes the rage-bait out of your x.com timeline, judged by a model on your own computer. Free, open source, and nothing leaves your machine.';
+const { seoTitle, metaDescription } = productPage('unrager');
 
 const installCmd = 'curl -fsSL https://unrager.com/install.sh | bash';
 const modelCmd = 'ollama pull hf.co/guitaripod/unrager-4b:Q4_K_M';
@@ -255,6 +260,7 @@ const faq = [
 
 const softwareApp = {
   '@type': 'SoftwareApplication',
+  '@id': `${canonical}#app`,
   name: 'unrager',
   operatingSystem: 'macOS, Linux',
   applicationCategory: 'BrowserApplication',
@@ -265,26 +271,13 @@ const softwareApp = {
   programmingLanguage: ['Rust', 'JavaScript'],
   license: 'https://www.gnu.org/licenses/gpl-3.0.html',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  author: { '@type': 'Organization', name: 'Midgar Oy', url: site },
-  publisher: { '@type': 'Organization', name: 'Midgar Oy', url: site },
+  author: personRef,
+  publisher: organizationRef,
 };
 
-const breadcrumb = {
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: site },
-    { '@type': 'ListItem', position: 2, name: 'unrager', item: canonical },
-  ],
-};
+const breadcrumb = breadcrumbList([{ name: 'unrager', path: '/unrager/' }]);
 
-const faqPage = {
-  '@type': 'FAQPage',
-  mainEntity: faq.map((f) => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
-  })),
-};
+const faqPage = faqPageNode(faq);
 
 const jsonLd = { '@context': 'https://schema.org', '@graph': [softwareApp, breadcrumb, faqPage] };
 

@@ -1,4 +1,5 @@
 import { workScore } from '../lib/work';
+import { canonicalLink } from '../utils/site-url';
 import openSourceData from './opensource.json';
 
 export type OssProject = (typeof openSourceData.projects)[number];
@@ -17,9 +18,12 @@ export function ossScore(project: OssProject, now: Date = OSS_NOW): number {
   );
 }
 
-export const ossProjects: OssProject[] = [...openSourceData.projects].sort(
-  (a, b) => ossScore(b) - ossScore(a) || a.name.localeCompare(b.name)
-);
+export const ossProjects: OssProject[] = openSourceData.projects
+  .map((project) => ({
+    ...project,
+    ...(project.homepageUrl ? { homepageUrl: canonicalLink(project.homepageUrl) } : {}),
+  }))
+  .sort((a, b) => ossScore(b) - ossScore(a) || a.name.localeCompare(b.name));
 
 export const ossMax = {
   commits: Math.max(1, ...ossProjects.map((project) => project.commitCount ?? 0)),

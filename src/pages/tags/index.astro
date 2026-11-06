@@ -24,7 +24,12 @@ const chipClass =
   'group term-frame term-frame-hover flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base';
 ---
 
-<BaseLayout searchable={false} title="Tags | guitaripod" description="Browse all blog post tags">
+<BaseLayout
+  searchable={false}
+  noindex
+  title="Tags | guitaripod"
+  description="Browse all blog post tags"
+>
   <div class="py-6 sm:py-8">
     <p class="prompt-line mb-4">grep -c tags ~/blog/*</p>
     <h1 class="text-3xl sm:text-4xl font-bold text-paper-text dark:text-term-text mb-6 sm:mb-8">

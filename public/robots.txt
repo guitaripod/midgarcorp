@@ -1,4 +1,9 @@
+# midgarcorp.cc welcomes search engines, AI assistants, AI agents and AI training crawlers.
+# An index of the site for language models: https://midgarcorp.cc/llms.txt
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
+Disallow: /api/
 
 Sitemap: https://midgarcorp.cc/sitemap-index.xml

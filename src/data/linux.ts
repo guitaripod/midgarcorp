@@ -1,4 +1,5 @@
 import { workScore } from '../lib/work';
+import { canonicalLink } from '../utils/site-url';
 import linuxData from './linux-apps.json';
 
 export interface LinuxInstallChannel {
@@ -60,7 +61,11 @@ export function linuxScore(app: LinuxApp, now: Date = LINUX_NOW): number {
 type RawLinuxApp = Omit<LinuxApp, 'formLabel'>;
 
 export const linuxApps: LinuxApp[] = (linuxData.apps as RawLinuxApp[])
-  .map((app) => ({ ...app, formLabel: FORM_LABELS[app.form] }))
+  .map((app) => ({
+    ...app,
+    homepageUrl: app.homepageUrl ? canonicalLink(app.homepageUrl) : null,
+    formLabel: FORM_LABELS[app.form],
+  }))
   .sort((a, b) => linuxScore(b) - linuxScore(a) || a.id.localeCompare(b.id));
 
 export interface LinuxShot {

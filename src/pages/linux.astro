@@ -9,6 +9,13 @@ import LinuxShipLog from '@components/LinuxShipLog.astro';
 import LinuxShowcaseCard from '@components/LinuxShowcaseCard.astro';
 import LinuxStats from '@components/LinuxStats.astro';
 import { LINUX_NOW, LINUX_SHOWCASE, linuxApps, linuxSections, linuxStats } from '@data/linux';
+import {
+  WEBSITE_ID,
+  breadcrumbList,
+  canonicalLink,
+  organizationRef,
+  personRef,
+} from '@utils/structured-data';
 
 const pageTitle = 'Linux Apps & Tools | guitaripod';
 const now = LINUX_NOW;
@@ -28,11 +35,10 @@ const structuredData = {
   name: pageTitle,
   description: ogDescription,
   url: 'https://midgarcorp.cc/linux/',
-  author: {
-    '@type': 'Person',
-    name: 'guitaripod',
-    url: 'https://midgarcorp.cc',
-  },
+  isPartOf: { '@id': WEBSITE_ID },
+  author: personRef,
+  publisher: organizationRef,
+  breadcrumb: breadcrumbList([{ name: 'Linux', path: '/linux/' }]),
   hasPart: linuxApps.map((app) => ({
     '@type': 'SoftwareApplication',
     name: app.name,
@@ -45,7 +51,9 @@ const structuredData = {
       ? `https://midgarcorp.cc${LINUX_SHOWCASE[app.id].shot.src}`
       : undefined,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    url: app.githubUrl,
+    url: canonicalLink(app.homepageUrl ?? app.githubUrl),
+    codeRepository: app.githubUrl,
+    author: personRef,
   })),
 };
 ---

@@ -2,15 +2,15 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import FeatureGrid from '@components/landing/FeatureGrid.astro';
 import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import { breadcrumbList, organizationRef, personRef } from '@utils/structured-data';
+import { productPage } from '@data/product-pages';
 
 const site = 'https://midgarcorp.cc';
-const canonical = `${site}/recview`;
+const canonical = `${site}/recview/`;
 const ogImage = '/og/recview.png';
 const accent = '#619EEB';
 
-const seoTitle = 'recview — review a screen recording the second it ends';
-const metaDescription =
-  'A GTK4 review window that opens when a capture stops: scrub on the GPU, trim, crop, export upload-ready H.264 or bin it. Built for gpu-screen-recorder.';
+const { seoTitle, metaDescription } = productPage('recview');
 
 const githubUrl = 'https://github.com/guitaripod/recview';
 const releasesUrl = 'https://github.com/guitaripod/recview/releases';
@@ -101,8 +101,8 @@ const faq = [
 ];
 
 const structuredData = {
-  '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
+  '@id': `${canonical}#app`,
   name: 'recview',
   applicationCategory: 'MultimediaApplication',
   operatingSystem: 'Linux',
@@ -111,21 +111,29 @@ const structuredData = {
   downloadUrl: releasesUrl,
   softwareVersion: version,
   license: 'https://www.gnu.org/licenses/gpl-3.0.html',
-  author: {
-    '@type': 'Person',
-    name: 'guitaripod',
-    url: site,
-  },
+  author: personRef,
+  publisher: organizationRef,
   offers: {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
   },
 };
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    structuredData,
+    breadcrumbList([
+      { name: 'Linux', path: '/linux/' },
+      { name: 'recview', path: '/recview/' },
+    ]),
+  ],
+};
 ---
 
 <BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>
-  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <div class="py-8 sm:py-12">
     <header class="mb-12 sm:mb-16">
