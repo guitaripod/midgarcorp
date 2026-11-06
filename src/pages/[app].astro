@@ -13,6 +13,7 @@ import InstallGuide from '@components/landing/InstallGuide.astro';
 import DuoCombo from '@components/landing/DuoCombo.astro';
 import ReleaseNotes from '@components/landing/ReleaseNotes.astro';
 import { releaseNoteBlocks } from '../lib/app-release';
+import { siblingApps } from '@utils/sibling-apps';
 import { appPageJsonLd, operatingSystems } from '@utils/structured-data';
 import { markdownPath } from '@utils/llms';
 import { privacyUrlFor, supportPath } from '../utils/app-links';
@@ -126,11 +127,7 @@ const descBlocks = app.description
     return { line, isHeading };
   });
 
-// A few sibling apps for internal linking, newest first so recent releases surface.
-const siblings = landingApps
-  .filter((a) => a.slug !== app.slug)
-  .sort((a, b) => new Date(b.releaseDate ?? 0).getTime() - new Date(a.releaseDate ?? 0).getTime())
-  .slice(0, 6);
+const siblings = siblingApps(landingApps, app.slug);
 
 const sectionPrompt = (cmd: string) => cmd;
 

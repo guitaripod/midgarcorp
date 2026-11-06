@@ -13,7 +13,7 @@ import appsData from '../data/apps.json';
 import careerData from '../data/career.json';
 import { appEntries } from '@data/apps';
 import { LINUX_NOW, LINUX_SHOWCASE, linuxApps, linuxStats } from '@data/linux';
-import { landingSlugs } from '@data/landing';
+import { landingApps, landingSlugs } from '@data/landing';
 import { ossProjects, ossStats } from '@data/oss';
 import activity from '../data/github-activity.json';
 import { markdownPath } from '@utils/llms';
@@ -39,6 +39,13 @@ const postsWithReadingTime = posts.map((post) => ({
 
 const featuredApps = appEntries.filter((entry) => entry.shots.length > 0).slice(0, 3);
 const featuredAppSlugs = new Set(featuredApps.map((entry) => entry.slug));
+const shortNames = new Map(landingApps.map((app) => [app.slug, app.shortName]));
+
+/// Every other app with a page, named in one line under the cards, so each app page is a
+/// link away from the home page and not only from /apps/.
+const moreApps = appEntries
+  .filter((entry) => entry.slug && entry.landingHref && !featuredAppSlugs.has(entry.slug))
+  .map((entry) => ({ href: entry.landingHref!, name: shortNames.get(entry.slug!)! }));
 
 const featuredLinux = linuxApps
   .filter((app) => app.id in LINUX_SHOWCASE && !featuredAppSlugs.has(app.id))
@@ -215,6 +222,24 @@ const homeJsonLd = {
           ))
         }
       </CardGrid>
+      {
+        moreApps.length > 0 && (
+          <p class="mt-6 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            <span class="text-paper-faint dark:text-term-faint">also shipping:</span>{' '}
+            {moreApps.map((app, index) => (
+              <>
+                {index > 0 && <span aria-hidden="true"> · </span>}
+                <a
+                  href={app.href}
+                  class="text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+                >
+                  {app.name}
+                </a>
+              </>
+            ))}
+          </p>
+        )
+      }
     </section>
 
     <!-- Linux Apps -->

@@ -10,6 +10,7 @@ import SectionHead from '@components/landing/SectionHead.astro';
 import ShotFigure from '@components/landing/ShotFigure.astro';
 import DuoCombo from '@components/landing/DuoCombo.astro';
 import { landingApps, type LandingApp } from '@data/landing';
+import { siblingApps } from '@utils/sibling-apps';
 import { appPageJsonLd } from '@utils/structured-data';
 import { markdownPath } from '@utils/llms';
 
@@ -218,10 +219,7 @@ const btn =
 const showsRating = app.ratingCount >= 5;
 const jsonLd = appPageJsonLd(app, { ratingShown: showsRating });
 
-const siblings = landingApps
-  .filter((a) => a.slug !== 'tailscode')
-  .sort((a, b) => new Date(b.releaseDate ?? 0).getTime() - new Date(a.releaseDate ?? 0).getTime())
-  .slice(0, 6);
+const siblings = siblingApps(landingApps, 'tailscode');
 
 const clients = [
   {
