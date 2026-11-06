@@ -1,31 +1,47 @@
 ---
 import AppIcon from '@components/landing/AppIcon.astro';
 import ThresholdChart from './ThresholdChart.astro';
-import { describeSeries, formatCell, isHidden, isNumber, seriesOf } from '../../lib/open-stats.mjs';
+import Value from './Value.astro';
+import { describeSeries, formatWeek, latestOf, seriesOf } from '../../lib/open-stats.mjs';
 import { agoLabel } from '../../lib/open-page.mjs';
 import type { OpenApp, Row } from '@data/open';
 
 export interface Props {
   app: OpenApp;
   weeks: Row[];
-  week: Row | null;
-  weekLabel: string;
+  downloads: Row[] | null;
   platforms: string[];
   version?: string;
   releasedDaysAgo: number | null;
   minCount: number;
-  top: number;
+  activeTop: number;
+  downloadsTop: number;
   open: boolean;
+  quiet?: string;
 }
 
-const { app, weeks, week, weekLabel, platforms, version, releasedDaysAgo, minCount, top, open } =
-  Astro.props;
-const cell = week?.wau ?? null;
-const cells = seriesOf(weeks, 'wau');
-const periods = weeks.map((row) => row.period);
+const {
+  app,
+  weeks,
+  downloads,
+  platforms,
+  version,
+  releasedDaysAgo,
+  minCount,
+  activeTop,
+  downloadsTop,
+  open,
+  quiet,
+} = Astro.props;
+const active = latestOf(weeks, 'wau');
+const fetched = downloads ? latestOf(downloads, 'downloads') : null;
+const weekOf = (period: string | undefined) => (period ? `week of ${formatWeek(period)}` : '');
 ---
 
-<article class="acc term-frame term-frame-hover" id={`app-${app.slug}`}>
+<article
+  class="acc term-frame term-frame-hover"
+  id={quiet ? `quiet-${app.slug}` : `app-${app.slug}`}
+>
   <header class="acc-head">
     {
       app.icon && (
@@ -44,40 +60,64 @@ const periods = weeks.map((row) => row.period);
       }
       <p class="acc-meta">{platforms.join(' · ')}</p>
     </div>
-    <div class="acc-count">
+  </header>
+
+  <div class:list={['acc-cols', { 'acc-cols--one': !downloads }]}>
+    {
+      downloads && (
+        <section class="acc-col acc-col--apple">
+          <p class="acc-label">
+            <span class="acc-mark acc-mark--apple" aria-hidden="true" />
+            downloads
+          </p>
+          <p class="acc-number">
+            <Value cell={fetched?.cell ?? null} minCount={minCount} />
+          </p>
+          <p class="acc-when">{weekOf(fetched?.period)}</p>
+          <ThresholdChart
+            cells={seriesOf(downloads, 'downloads')}
+            periods={downloads.map((row) => row.period)}
+            minCount={minCount}
+            top={downloadsTop}
+            size="compact"
+            tone="apple"
+            label={describeSeries(`${app.name} first-time downloads`, downloads, 'downloads')}
+          />
+        </section>
+      )
+    }
+    <section class="acc-col acc-col--midgar">
+      <p class="acc-label">
+        <span class="acc-mark acc-mark--midgar" aria-hidden="true"></span>
+        weekly active
+      </p>
       {
-        isNumber(cell) ? (
-          <span class="acc-number">{formatCell(cell)}</span>
-        ) : isHidden(cell) ? (
-          <span class="acc-number acc-number--hidden">
-            {cell}
-            <span class="sr-only"> (hidden: fewer than {minCount})</span>
-          </span>
+        quiet ? (
+          <p class="acc-quiet">{quiet}</p>
         ) : (
-          <span class="acc-number acc-number--hidden">
-            <span aria-hidden="true">–</span>
-            <span class="sr-only">not yet</span>
-          </span>
+          <>
+            <p class="acc-number">
+              <Value cell={active?.cell ?? null} minCount={minCount} />
+            </p>
+            <p class="acc-when">{weekOf(active?.period)}</p>
+            <ThresholdChart
+              cells={seriesOf(weeks, 'wau')}
+              periods={weeks.map((row) => row.period)}
+              minCount={minCount}
+              top={activeTop}
+              open={open}
+              size="compact"
+              label={describeSeries(`${app.name} weekly active installs`, weeks, 'wau')}
+            />
+          </>
         )
       }
-      <span class="acc-unit">weekly active</span>
-    </div>
-  </header>
-  <ThresholdChart
-    cells={cells}
-    periods={periods}
-    minCount={minCount}
-    top={top}
-    open={open}
-    compact
-    label={describeSeries(`${app.name} weekly active installs`, weeks, 'wau')}
-  />
+    </section>
+  </div>
+
   <footer class="acc-foot">
-    <span>{weekLabel}</span>
-    <span>
-      {version && <>{version} · </>}
-      updated {agoLabel(releasedDaysAgo)}
-    </span>
+    <span>{version ? `version ${version}` : ''}</span>
+    <span>updated {agoLabel(releasedDaysAgo)}</span>
   </footer>
 </article>
 
@@ -89,7 +129,7 @@ const periods = weeks.map((row) => row.period);
     --acc-border: theme('colors.paper.border');
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 0.9rem;
     padding: 1rem 1.1rem 0.85rem;
     min-width: 0;
   }
@@ -103,7 +143,7 @@ const periods = weeks.map((row) => row.period);
 
   .acc-head {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.75rem;
     min-width: 0;
   }
@@ -146,15 +186,61 @@ const periods = weeks.map((row) => row.period);
     overflow: hidden;
   }
 
-  .acc-count {
+  .acc-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+
+  .acc-cols--one {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .acc-col {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    min-width: 0;
+  }
+
+  .acc-col--midgar {
+    padding-left: 1.1rem;
+    border-left: 1px dashed var(--acc-border);
+  }
+
+  .acc-cols--one .acc-col--midgar {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .acc-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--acc-muted);
+  }
+
+  .acc-mark {
+    width: 0.4rem;
+    height: 0.4rem;
     flex: none;
   }
 
+  .acc-mark--apple {
+    background: var(--acc-text);
+    transform: rotate(45deg);
+  }
+
+  .acc-mark--midgar {
+    background: var(--acc-green);
+    border-radius: 999px;
+  }
+
   .acc-number {
-    font-size: 1.75rem;
+    margin-top: 0.35rem;
+    font-size: 1.6rem;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.03em;
@@ -162,16 +248,16 @@ const periods = weeks.map((row) => row.period);
     color: var(--acc-text);
   }
 
-  .acc-number--hidden {
+  .acc-when {
+    margin: 0.2rem 0 0.6rem;
+    font-size: 0.625rem;
     color: var(--acc-muted);
-    opacity: 0.8;
   }
 
-  .acc-unit {
-    margin-top: 0.2rem;
-    font-size: 0.625rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+  .acc-quiet {
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
     color: var(--acc-muted);
   }
 
@@ -183,9 +269,5 @@ const periods = weeks.map((row) => row.period);
     border-top: 1px solid var(--acc-border);
     font-size: 0.6875rem;
     color: var(--acc-muted);
-  }
-
-  .acc-foot > span:last-child {
-    text-align: right;
   }
 </style>

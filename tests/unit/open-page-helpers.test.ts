@@ -3,6 +3,11 @@ import {
   agoLabel,
   daysSince,
   firstPublished,
+  formatDay,
+  indexFrom,
+  rankApps,
+  sumPublished,
+  trimLeading,
   latestFinished,
   monthName,
   platformsOf,
@@ -165,5 +170,54 @@ describe('the quoted JSON', () => {
 
   it('marks nothing when every week fits', () => {
     expect(statsExcerpt(stats, 5)).not.toContain('/*');
+  });
+});
+
+describe('Apple history helpers', () => {
+  it('formats a day', () => {
+    expect(formatDay('2025-11-13')).toBe('Nov 13, 2025');
+    expect(formatDay('nonsense')).toBe('nonsense');
+  });
+
+  it('sums published numbers and counts the held-back cells', () => {
+    expect(sumPublished([12, '<10', null, 30, '<10'])).toEqual({ total: 42, hidden: 2 });
+    expect(sumPublished([])).toEqual({ total: 0, hidden: 0 });
+  });
+
+  it('drops the periods before a source began, keeping later gaps', () => {
+    const rows = [
+      { period: '2025-10-01', downloads: null, purchases: null },
+      { period: '2025-11-01', downloads: '<10', purchases: null },
+      { period: '2025-12-01', downloads: null, purchases: null },
+    ];
+    expect(trimLeading(rows).map((row) => row.period)).toEqual(['2025-11-01', '2025-12-01']);
+    expect(trimLeading([{ period: '2025-10-01', downloads: null }])).toEqual([]);
+  });
+
+  it('finds where a later series begins inside a longer one', () => {
+    const weeks = [{ period: '2026-10-05' }, { period: '2026-10-12' }, { period: '2026-10-19' }];
+    expect(indexFrom(weeks, '2026-10-12')).toBe(1);
+    expect(indexFrom(weeks, '2026-10-14')).toBe(2);
+    expect(indexFrom(weeks, '2026-11-02')).toBe(-1);
+    expect(indexFrom(weeks, null)).toBe(-1);
+  });
+
+  it('ranks apps by published downloads, then activity, then name', () => {
+    const apple = {
+      flaccy: { weeks: [{ period: 'w', downloads: 50 }] },
+      embr: { weeks: [{ period: 'w', downloads: '<10' }] },
+      helia: { weeks: [{ period: 'w', downloads: '<10' }] },
+    };
+    const activity = {
+      embr: { weeks: [{ period: 'w', wau: 13 }] },
+      helia: { weeks: [{ period: 'w', wau: '<10' }] },
+    };
+    expect(rankApps(['helia', 'embr', 'zeta', 'flaccy'], apple, activity)).toEqual([
+      'flaccy',
+      'embr',
+      'helia',
+      'zeta',
+    ]);
+    expect(rankApps(['b', 'a'])).toEqual(['a', 'b']);
   });
 });

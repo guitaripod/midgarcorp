@@ -6,9 +6,12 @@ import AppCountCard from '@components/open/AppCountCard.astro';
 import BigStat from '@components/open/BigStat.astro';
 import CountTrail from '@components/open/CountTrail.astro';
 import MetricCard from '@components/open/MetricCard.astro';
+import SourceTag from '@components/open/SourceTag.astro';
+import ThresholdChart from '@components/open/ThresholdChart.astro';
 import Value from '@components/open/Value.astro';
 import githubActivity from '@data/github-activity.json';
 import {
+  apple,
   events,
   kidsApp,
   KIT_SIGNALS,
@@ -25,26 +28,32 @@ import {
   storeApps,
 } from '@data/open';
 import {
+  describeSeries,
   formatMonth,
   formatStamp,
   formatWeek,
   isNumber,
   isOpenPeriod,
+  seriesOf,
 } from '../lib/open-stats.mjs';
 import {
   daysSince,
   firstPublished,
+  formatDay,
+  indexFrom,
   latestFinished,
   monthName,
   platformsOf,
+  rankApps,
   shipCadence,
+  trimLeading,
   statsExcerpt,
   weekRange,
 } from '../lib/open-page.mjs';
 
 const pageTitle = 'Midgar in the open | guitaripod';
 const pageDescription =
-  "How many people use Midgar's apps, published as it is: weekly active installs, purchases and AI requests, small numbers held back, and the code behind it.";
+  "A year of Midgar's apps in public: Apple's downloads and sales, Midgar's own counts and its purchase ledger, small numbers held back, code open.";
 
 const now = Date.now();
 const minCount = stats.rules.min_count;
@@ -57,6 +66,91 @@ const firstWeek = firstPublished(weeks, ['wau', 'new_installs']);
 const cadence = shipCadence(storeApps, now);
 const platforms = platformsOf(storeApps);
 const contributionsYear = githubActivity.totals?.contributionsYear ?? null;
+const appleWeeks = trimLeading(apple?.weeks ?? []);
+const appleMonths = trimLeading(apple?.months ?? []);
+const eraIndex = indexFrom(appleWeeks, firstWeek);
+const era = eraIndex > 0 ? { from: eraIndex, label: "Midgar's own counts begin" } : undefined;
+
+const yearTiles = [
+  {
+    key: 'downloads',
+    label: 'First-time downloads',
+    caption: 'Every app, every storefront, redownloads not included.',
+    lead: true,
+  },
+  {
+    key: 'countries_downloaded',
+    label: 'Countries reached',
+    caption: 'Storefronts with at least one download.',
+    lead: false,
+  },
+  {
+    key: 'purchases',
+    label: 'Paid purchases',
+    caption: 'Paid downloads, in-app purchases and renewals.',
+    lead: false,
+  },
+  {
+    key: 'countries_purchased',
+    label: 'Countries that bought',
+    caption: 'Storefronts with at least one paid purchase.',
+    lead: false,
+  },
+] as const;
+
+const appleCards = [
+  {
+    field: 'downloads',
+    title: 'First-time downloads',
+    blurb: 'Downloads by people who never had the app, as Apple reports them.',
+  },
+  {
+    field: 'redownloads',
+    title: 'Redownloads',
+    blurb: 'People installing an app again on a device they own.',
+  },
+  {
+    field: 'purchases',
+    title: 'Paid purchases',
+    blurb: 'Paid downloads, in-app purchases and subscription renewals.',
+  },
+  {
+    field: 'active_subscriptions',
+    title: 'Active subscriptions',
+    blurb: 'Paid subscriptions running at the end of the month.',
+  },
+];
+
+const appleColumns = [
+  { field: 'downloads', label: 'Downloads' },
+  { field: 'redownloads', label: 'Redownloads' },
+  { field: 'purchases', label: 'Paid purchases' },
+  { field: 'active_subscriptions', label: 'Subscriptions' },
+];
+
+const sources = [
+  ...(apple
+    ? [
+        {
+          source: 'apple' as const,
+          title: "Apple's reports",
+          text: `Downloads, paid purchases and subscriptions from App Store Connect's daily reports, for every app since ${formatDay(apple.first_day)}. A day behind, as Apple publishes them.`,
+        },
+      ]
+    : []),
+  {
+    source: 'midgar' as const,
+    title: "Midgar's own counts",
+    text: firstWeek
+      ? `Installs that open an app, counted on the device with no identifier. Exact, and only from app versions released since ${monthName(firstWeek)}.`
+      : 'Installs that open an app, counted on the device with no identifier, from app versions that send usage counts.',
+  },
+  {
+    source: 'ledger' as const,
+    title: 'The purchase ledger',
+    text: 'Every purchase and subscription as Apple notifies Midgar of it, the moment it happens, from the day the ledger began.',
+  },
+];
 
 const publicTitle = (id: string, fallback: string) =>
   stats.metrics.find((metric) => metric.id === id)?.title ?? fallback;
@@ -67,32 +161,44 @@ const heroTiles = [
     label: publicTitle('wau', 'Weekly active installs'),
     caption: 'Installs that opened an app that week.',
     lead: true,
+    mark: 'midgar' as const,
   },
   {
     field: 'new_installs',
     label: publicTitle('new_installs', 'New installs'),
     caption: 'Installs seen in the week they were installed.',
     lead: false,
+    mark: 'midgar' as const,
   },
   {
     field: 'purchases',
     label: publicTitle('purchases', 'Purchases'),
     caption: 'First and one-time purchases. Renewals are not counted.',
     lead: false,
+    mark: 'ledger' as const,
   },
   {
     field: 'active_subscriptions',
     label: publicTitle('active_subscriptions', 'Active subscriptions'),
     caption: 'Paid-up subscriptions, from the purchase ledger.',
     lead: false,
+    mark: 'ledger' as const,
   },
 ];
 
 const monthTiles = [
-  { field: 'mau', label: publicTitle('mau', 'Monthly active installs') },
-  { field: 'purchases', label: publicTitle('purchases', 'Purchases') },
-  { field: 'ai_requests', label: publicTitle('ai_requests', 'AI requests') },
-  { field: 'active_subscriptions', label: publicTitle('active_subscriptions', 'Subscriptions') },
+  { field: 'mau', label: publicTitle('mau', 'Monthly active installs'), mark: 'midgar' as const },
+  { field: 'purchases', label: publicTitle('purchases', 'Purchases'), mark: 'ledger' as const },
+  {
+    field: 'ai_requests',
+    label: publicTitle('ai_requests', 'AI requests'),
+    mark: 'midgar' as const,
+  },
+  {
+    field: 'active_subscriptions',
+    label: publicTitle('active_subscriptions', 'Subscriptions'),
+    mark: 'ledger' as const,
+  },
 ];
 
 const weeklyCards = [
@@ -135,29 +241,46 @@ const monthlyColumns = [
   { field: 'active_subscriptions', label: 'Subscriptions' },
 ];
 
-const appTop = Math.max(
-  minCount,
-  ...activityApps
-    .flatMap((slug) =>
-      stats.apps[slug].weeks.map((row) => row.wau).filter((cell) => isNumber(cell))
-    )
-    .map(Number)
+const numbersOf = (rows: { [key: string]: unknown }[], field: string) =>
+  rows.map((row) => row[field]).filter((cell): cell is number => isNumber(cell));
+
+const cardSlugs = rankApps(
+  [...activityApps, ...NO_USAGE_COUNTS].filter(
+    (slug, index, list) => list.indexOf(slug) === index && landingFor(slug)?.status === 'live'
+  ),
+  apple?.apps ?? {},
+  stats.apps
 );
 
-const appCards = activityApps.map((slug) => {
-  const series = stats.apps[slug];
+const activeTop = Math.max(
+  minCount,
+  ...cardSlugs.flatMap((slug) => numbersOf(stats.apps[slug]?.weeks ?? [], 'wau'))
+);
+const downloadsTop = Math.max(
+  minCount,
+  ...cardSlugs.flatMap((slug) => numbersOf(apple?.apps[slug]?.weeks ?? [], 'downloads'))
+);
+
+const quietNote = (slug: string) =>
+  slug === kidsApp.slug
+    ? "Sends no usage counts: it is in Apple's Kids Category."
+    : NO_USAGE_COUNTS.includes(slug)
+      ? 'Sends no usage counts.'
+      : undefined;
+
+const appCards = cardSlugs.map((slug) => {
+  const lifestream = stats.apps[slug]?.weeks ?? [];
   const landing = landingFor(slug);
-  const appWeek = latestFinished(series.weeks, 'week', generatedAt);
-  const lastRow = series.weeks.at(-1);
+  const lastRow = lifestream.at(-1);
   return {
     app: openAppFor(slug),
-    weeks: series.weeks,
-    week: appWeek,
-    weekLabel: appWeek ? `week of ${formatWeek(appWeek.period)}` : 'no weeks yet',
+    weeks: lifestream,
+    downloads: apple ? (apple.apps[slug]?.weeks ?? []) : null,
     platforms: landing?.platforms ?? [],
     version: landing?.version,
     releasedDaysAgo: daysSince(landing?.currentVersionReleaseDate, now),
     open: lastRow !== undefined && isOpenPeriod(lastRow.period, 'week', generatedAt),
+    quiet: quietNote(slug),
   };
 });
 
@@ -167,11 +290,6 @@ const familyApps = [
 ]
   .filter((app): app is NonNullable<typeof app> => app !== undefined && app.status === 'live')
   .filter((app, index, list) => list.findIndex((other) => other.slug === app.slug) === index);
-
-const quietApps = NO_USAGE_COUNTS.map((slug) => ({
-  app: openAppFor(slug),
-  landing: landingFor(slug),
-})).filter((entry) => entry.landing);
 
 const principles = [
   ['Counts, not people.', 'An install reports that it was active, never whose.'],
@@ -289,8 +407,11 @@ const link =
     <p
       class="mt-5 text-base sm:text-lg text-paper-muted dark:text-term-muted max-w-3xl leading-relaxed"
     >
-      How many people use Midgar's {cadence.total} apps, counted without identifiers and published as
-      it is, straight from the same numbers Midgar runs on. Small numbers stay private.
+      {
+        apple
+          ? `A year of Midgar's ${cadence.total} apps in public: every download and sale Apple reports, and what Midgar's own counts and purchase ledger see, published as it is. Small numbers stay private.`
+          : `How many people use Midgar's ${cadence.total} apps, counted without identifiers and published as it is, straight from the same numbers Midgar runs on. Small numbers stay private.`
+      }
     </p>
     <ul class="open-family" aria-label="Midgar's apps">
       {
@@ -324,18 +445,70 @@ const link =
       )
     }
 
-    <section class="open-board term-frame mt-8 sm:mt-10" aria-labelledby="board-title">
+    {
+      apple && (
+        <section
+          class="open-board open-board--year term-frame mt-8 sm:mt-10"
+          aria-labelledby="year-title"
+        >
+          <div class="open-board__head">
+            <h2 id="year-title" class="term-label">
+              A year on the App Store
+              <span class="open-board__range">
+                {formatDay(apple.first_day)} – {formatDay(apple.through)}
+              </span>
+            </h2>
+            <SourceTag source="apple" />
+          </div>
+          <dl class="open-board__tiles">
+            {yearTiles.map((tile) => (
+              <BigStat
+                label={tile.label}
+                cell={apple.totals[tile.key]}
+                caption={tile.caption}
+                minCount={minCount}
+                lead={tile.lead}
+                mark="apple"
+              />
+            ))}
+          </dl>
+          <div class="open-year">
+            <p class="open-year__title">
+              First-time downloads, week by week
+              <span class="open-year__span">
+                {appleWeeks.length} finished weeks, from the week of{' '}
+                {formatWeek(appleWeeks[0]?.period ?? apple.first_day)}
+              </span>
+            </p>
+            <ThresholdChart
+              cells={seriesOf(appleWeeks, 'downloads')}
+              periods={appleWeeks.map((row) => row.period)}
+              minCount={minCount}
+              size="tall"
+              tone="apple"
+              era={era}
+              label={describeSeries('First-time downloads', appleWeeks, 'downloads')}
+            />
+            {era && (
+              <p class="open-year__note">
+                <span class="open-year__era" aria-hidden="true" /> The shaded weeks are the ones
+                Midgar also counts itself, exactly and without identifiers, below.
+              </p>
+            )}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="open-board term-frame mt-6" aria-labelledby="board-title">
       <div class="open-board__head">
         <h2 id="board-title" class="term-label">
-          Latest full week
+          Latest full week, counted by Midgar
           {week && <span class="open-board__range">{weekRange(week.period)}</span>}
         </h2>
-        <p class="text-xs text-paper-muted dark:text-term-muted">
-          {
-            firstWeek
-              ? `Usage counting began with the apps' ${monthName(firstWeek)} releases.`
-              : 'No usage count has cleared the publish line yet.'
-          }
+        <p class="open-board__tags">
+          <SourceTag source="midgar" />
+          <SourceTag source="ledger" />
         </p>
       </div>
       {
@@ -348,6 +521,7 @@ const link =
                 caption={tile.caption}
                 minCount={minCount}
                 lead={tile.lead}
+                mark={tile.mark}
               />
             ))}
           </dl>
@@ -367,6 +541,7 @@ const link =
                   caption=""
                   minCount={minCount}
                   size="small"
+                  mark={tile.mark}
                 />
               ))}
             </dl>
@@ -374,6 +549,18 @@ const link =
         )
       }
     </section>
+
+    <ul class="open-sources mt-6" aria-label="Where each number comes from">
+      {
+        sources.map((entry) => (
+          <li class="open-sources__item">
+            <SourceTag source={entry.source} />
+            <p class="open-sources__title">{entry.title}</p>
+            <p class="open-sources__text">{entry.text}</p>
+          </li>
+        ))
+      }
+    </ul>
 
     <dl class="open-proof mt-6">
       {
@@ -403,11 +590,124 @@ const link =
     </ul>
   </header>
 
+  {
+    apple && (
+      <PageSection
+        id="apple"
+        command="open stats --source apple --months"
+        title="Month by month, as Apple reports it"
+        blurb={`Every finished month since ${monthName(appleMonths[0]?.period ?? apple.first_day)}, from App Store Connect's sales and subscription reports, across every app. The reports begin on ${formatDay(apple.first_day)}, so that first month is partial. A hatched bar is a month under the publish line.`}
+      >
+        <div class="open-grid open-grid--metrics">
+          {appleCards.map((card) => (
+            <MetricCard
+              title={card.title}
+              blurb={card.blurb}
+              rows={appleMonths}
+              field={card.field}
+              generatedAt={generatedAt}
+              minCount={minCount}
+              grain="month"
+              tone="apple"
+            />
+          ))}
+        </div>
+        <details class="mt-6">
+          <summary class="term-label cursor-pointer select-none hover:text-paper-green dark:hover:text-term-green transition-colors">
+            Apple's weeks and months as a table
+          </summary>
+          <div
+            class={`${tableWrap} mt-3`}
+            role="region"
+            aria-label="Apple's monthly numbers"
+            tabindex="0"
+          >
+            <table class="w-full min-w-[34rem] text-sm">
+              <caption class="sr-only">
+                Apple-reported numbers for each month since {formatDay(apple.first_day)}
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" class={`${headCell} text-left`}>
+                    Month
+                  </th>
+                  {appleColumns.map((column) => (
+                    <th scope="col" class={`${headCell} text-right`}>
+                      {column.label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[...appleMonths].reverse().map((row) => (
+                  <tr class={rowRule}>
+                    <th
+                      scope="row"
+                      class="whitespace-nowrap px-3 py-2 text-left font-normal text-paper-text dark:text-term-text"
+                    >
+                      {formatMonth(row.period)}
+                    </th>
+                    {appleColumns.map((column) => (
+                      <td class="px-3 py-2 text-right">
+                        <Value cell={row[column.field]} minCount={minCount} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div
+            class={`${tableWrap} mt-4`}
+            role="region"
+            aria-label="Apple's weekly numbers"
+            tabindex="0"
+          >
+            <table class="w-full min-w-[34rem] text-sm">
+              <caption class="sr-only">
+                Apple-reported numbers for each of the last {appleWeeks.length} weeks
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" class={`${headCell} text-left`}>
+                    Week of
+                  </th>
+                  {appleColumns.map((column) => (
+                    <th scope="col" class={`${headCell} text-right`}>
+                      {column.label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[...appleWeeks].reverse().map((row) => (
+                  <tr class={rowRule}>
+                    <th
+                      scope="row"
+                      class="whitespace-nowrap px-3 py-2 text-left font-normal text-paper-text dark:text-term-text"
+                    >
+                      {formatWeek(row.period)} {row.period.slice(0, 4)}
+                    </th>
+                    {appleColumns.map((column) => (
+                      <td class="px-3 py-2 text-right">
+                        <Value cell={row[column.field]} minCount={minCount} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </PageSection>
+    )
+  }
+
   <PageSection
     id="portfolio"
     command={`open stats --weeks ${weeks.length}`}
-    title="All apps, week by week"
-    blurb={`The last ${weeks.length} finished weeks, newest on the right. A hatched bar is a week under the publish line: something happened, fewer than ${minCount}, so it is held back. Active and new installs count app versions that send usage counts; purchases and AI requests cover every app.`}
+    title="Midgar's own counts, week by week"
+    blurb={`The last ${weeks.length} finished weeks, newest on the right, counted by the apps themselves and the purchase ledger: exact, but only from the app versions that send usage counts, so the earlier weeks sit under the publish line. A hatched bar is a week under it: something happened, fewer than ${minCount}, so it is held back. Purchases and AI requests cover every app.`}
   >
     {
       weeks.length > 0 ? (
@@ -542,7 +842,9 @@ const link =
     id="apps"
     command="open stats --by app"
     title="Every app"
-    blurb={`Weekly active installs per app over the last ${weeks.length} weeks, the busiest first, on one shared scale. Each card also says when the app last shipped an update, from the App Store.`}
+    blurb={apple
+      ? `Each app's first-time downloads from Apple's reports beside its weekly active installs from Midgar's own counts, over the last ${weeks.length} weeks, each on one scale shared by every app, the most downloaded first. Each card also says when the app last shipped an update.`
+      : `Weekly active installs per app over the last ${weeks.length} weeks, the busiest first, on one shared scale. Each card also says when the app last shipped an update, from the App Store.`}
   >
     {
       appCards.length > 0 ? (
@@ -551,14 +853,15 @@ const link =
             <AppCountCard
               app={card.app}
               weeks={card.weeks}
-              week={card.week}
-              weekLabel={card.weekLabel}
+              downloads={card.downloads}
               platforms={card.platforms}
               version={card.version}
               releasedDaysAgo={card.releasedDaysAgo}
               minCount={minCount}
-              top={appTop}
+              activeTop={activeTop}
+              downloadsTop={downloadsTop}
               open={card.open}
+              quiet={card.quiet}
             />
           ))}
         </div>
@@ -566,44 +869,6 @@ const link =
         <p class="term-frame p-4 text-sm text-paper-muted dark:text-term-muted">
           No app has reported counts yet.
         </p>
-      )
-    }
-    {
-      quietApps.length > 0 && (
-        <div class="open-quiet mt-4">
-          <p class="term-label">not counted</p>
-          <ul class="open-quiet__list">
-            {quietApps.map(({ app, landing }) => (
-              <li class="open-quiet__app" id={`quiet-${app.slug}`}>
-                {app.icon && (
-                  <AppIcon
-                    src={app.icon}
-                    width={28}
-                    height={28}
-                    displayWidths={[28]}
-                    class="h-7 w-7 shrink-0 rounded-[0.45rem] border border-paper-border object-cover dark:border-term-border"
-                  />
-                )}
-                {app.href ? (
-                  <a
-                    href={app.href}
-                    class="text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green"
-                  >
-                    {app.name}
-                  </a>
-                ) : (
-                  <span class="text-paper-text dark:text-term-text">{app.name}</span>
-                )}
-                <span class="text-xs text-paper-muted dark:text-term-muted">
-                  {app.slug === kidsApp.slug
-                    ? "sends no usage counts: Apple's Kids Category"
-                    : 'sends no usage counts'}
-                  {landing?.platforms && ` · ${landing.platforms.join(' · ')}`}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
       )
     }
   </PageSection>
@@ -928,6 +1193,100 @@ const link =
     .open-board__head {
       padding: 1rem 1.75rem;
     }
+  }
+
+  .open-board__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .open-board--year {
+    border-color: theme('colors.paper.border2');
+  }
+
+  :global(.dark) .open-board--year {
+    background:
+      radial-gradient(120% 140% at 100% 0%, rgba(230, 237, 243, 0.06), transparent 55%),
+      theme('colors.term.panel');
+  }
+
+  .open-year {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .open-year__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--oh-muted);
+  }
+
+  .open-year__span {
+    letter-spacing: 0.04em;
+    text-transform: none;
+  }
+
+  .open-year__note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--oh-muted);
+  }
+
+  .open-year__era {
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.6rem;
+    border-left: 1px dashed var(--oh-green);
+    background: color-mix(in srgb, var(--oh-green) 14%, transparent);
+  }
+
+  @container board (min-width: 46rem) {
+    .open-year {
+      padding: 0 1.75rem 1.75rem;
+    }
+  }
+
+  .open-sources {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 56rem) {
+    .open-sources {
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  .open-sources__item {
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--oh-border);
+  }
+
+  .open-sources__title {
+    margin-top: 0.6rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--oh-text);
+  }
+
+  .open-sources__text {
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: var(--oh-muted);
   }
 
   .open-proof {

@@ -153,8 +153,9 @@ export function thresholdBars(
 }
 
 /**
- * The opening of the public JSON as the page quotes it: the stamp, the rule and the newest
- * `weeks` portfolio rows, pretty-printed. The rest is elided with a marker, never invented.
+ * The opening of the public JSON as the page quotes it: the stamp, the rule, the newest `weeks`
+ * portfolio rows and, when the answer has one, the head of the Apple section. The rest is elided
+ * with a marker, never invented.
  */
 export function statsExcerpt(stats, weeks = 2) {
   const recent = stats.portfolio.weeks.slice(-weeks);
@@ -163,8 +164,75 @@ export function statsExcerpt(stats, weeks = 2) {
     rules: { min_count: stats.rules.min_count, weeks: stats.rules.weeks },
     portfolio: { weeks: recent },
   };
-  const text = JSON.stringify(body, null, 2);
+  if (stats.apple) {
+    body.apple = {
+      source: stats.apple.source,
+      first_day: stats.apple.first_day,
+      through: stats.apple.through,
+      totals: stats.apple.totals,
+    };
+  }
+  let text = JSON.stringify(body, null, 2);
   const elided = stats.portfolio.weeks.length - recent.length;
-  if (elided <= 0) return text;
-  return text.replace('"weeks": [', `"weeks": [ /* ${elided} earlier weeks */`);
+  if (elided > 0) {
+    text = text.replace('"weeks": [', `"weeks": [ /* ${elided} earlier weeks */`);
+  }
+  if (stats.apple) {
+    text = text.replace('"apple": {', '"apple": { /* weeks, months and apps elided */');
+  }
+  return text;
+}
+
+/** "2025-11-13" as "Nov 13, 2025". */
+export function formatDay(day) {
+  const [year, month, date] = (day ?? '').split('-').map(Number);
+  if (!year || !month || !date) return day ?? '';
+  return `${MONTHS[month - 1] ?? '?'} ${date}, ${year}`;
+}
+
+/** The sum of the published numbers in a list and how many of its cells were held back. */
+export function sumPublished(cells) {
+  return cells.reduce(
+    (acc, cell) => {
+      if (isNumber(cell)) acc.total += cell;
+      else if (isHidden(cell)) acc.hidden += 1;
+      return acc;
+    },
+    { total: 0, hidden: 0 }
+  );
+}
+
+/** The rows from the first one that holds any value: leading periods before a source began are dropped. */
+export function trimLeading(rows) {
+  const start = rows.findIndex((row) =>
+    Object.entries(row).some(
+      ([key, cell]) => key !== 'period' && cell !== null && cell !== undefined
+    )
+  );
+  return start === -1 ? [] : rows.slice(start);
+}
+
+/** The index of the first row whose period is on or after `period`, or -1 when there is none. */
+export function indexFrom(rows, period) {
+  if (!period) return -1;
+  return rows.findIndex((row) => row.period >= period);
+}
+
+/**
+ * App slugs in the order the page lists them: most published Apple downloads first, then most
+ * recent weekly active installs, then by name. An app with no Apple series ranks on activity alone.
+ */
+export function rankApps(slugs, appleApps = {}, activity = {}) {
+  const downloads = (slug) =>
+    sumPublished((appleApps[slug]?.weeks ?? []).map((row) => row.downloads ?? null)).total;
+  const active = (slug) => {
+    const rows = activity[slug]?.weeks ?? [];
+    for (let index = rows.length - 1; index >= 0; index -= 1) {
+      if (isNumber(rows[index].wau)) return rows[index].wau;
+    }
+    return -1;
+  };
+  return [...slugs].sort(
+    (a, b) => downloads(b) - downloads(a) || active(b) - active(a) || a.localeCompare(b)
+  );
 }

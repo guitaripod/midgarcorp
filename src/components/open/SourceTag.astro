@@ -1,0 +1,68 @@
+---
+export type Source = 'apple' | 'midgar' | 'ledger';
+
+export interface Props {
+  source: Source;
+}
+
+const LABELS: Record<Source, string> = {
+  apple: "Apple's reports",
+  midgar: "Midgar's counts",
+  ledger: 'purchase ledger',
+};
+
+const { source } = Astro.props;
+---
+
+<span class:list={['st', `st--${source}`]}>
+  <span class="st-mark" aria-hidden="true"></span>{LABELS[source]}
+</span>
+
+<style>
+  .st {
+    --st-apple: theme('colors.paper.text');
+    --st-midgar: theme('colors.paper.green');
+    --st-ledger: theme('colors.paper.amber');
+    --st-border: theme('colors.paper.border');
+    --st-text: theme('colors.paper.muted');
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.15rem 0.45rem;
+    border: 1px solid var(--st-border);
+    border-radius: 2px;
+    font-size: 0.625rem;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--st-text);
+    white-space: nowrap;
+  }
+
+  :global(.dark) .st {
+    --st-apple: theme('colors.term.text');
+    --st-midgar: theme('colors.term.green');
+    --st-ledger: theme('colors.term.amber');
+    --st-border: theme('colors.term.border');
+    --st-text: theme('colors.term.muted');
+  }
+
+  .st-mark {
+    width: 0.45rem;
+    height: 0.45rem;
+  }
+
+  .st--apple .st-mark {
+    background: var(--st-apple);
+    transform: rotate(45deg);
+  }
+
+  .st--midgar .st-mark {
+    background: var(--st-midgar);
+    border-radius: 999px;
+  }
+
+  .st--ledger .st-mark {
+    background: var(--st-ledger);
+  }
+</style>

@@ -1,7 +1,12 @@
 ---
 import { thresholdBars } from '../../lib/open-page.mjs';
-import { formatCell, formatWeek } from '../../lib/open-stats.mjs';
+import { formatCell, formatMonth, formatWeek } from '../../lib/open-stats.mjs';
 import type { Cell } from '@data/open';
+
+export interface Era {
+  from: number;
+  label: string;
+}
 
 export interface Props {
   cells: Cell[];
@@ -9,21 +14,63 @@ export interface Props {
   minCount: number;
   label: string;
   open?: boolean;
-  compact?: boolean;
+  size?: 'compact' | 'normal' | 'tall';
   top?: number;
+  tone?: 'midgar' | 'apple';
+  grain?: 'week' | 'month';
+  era?: Era;
 }
 
-const { cells, periods, minCount, label, open = false, compact = false, top } = Astro.props;
+const {
+  cells,
+  periods,
+  minCount,
+  label,
+  open = false,
+  size = 'normal',
+  top,
+  tone = 'midgar',
+  grain = 'week',
+  era,
+} = Astro.props;
+const compact = size === 'compact';
+const LABEL_ALL_MAX = 16;
 const chart = thresholdBars(cells, { minCount, height: 100, floorMin: compact ? 16 : 8, top });
-const lastValue = [...chart.bars].reverse().find((bar) => bar.kind === 'value');
+const values = chart.bars.filter((bar) => bar.kind === 'value');
+const lastValue = values.at(-1);
+const peak = values.reduce<(typeof values)[number] | undefined>(
+  (best, bar) => (best && Number(best.value) >= Number(bar.value) ? best : bar),
+  undefined
+);
+const LABEL_CLEARANCE = 14;
+const dense = cells.length > LABEL_ALL_MAX;
+const labelled = (index: number) =>
+  !compact &&
+  (index === lastValue?.index ||
+    index === peak?.index ||
+    (!dense && chart.bars[index].h >= chart.band + LABEL_CLEARANCE));
 const lastIndex = cells.length - 1;
+const periodLabel = (period: string) =>
+  grain === 'month' ? formatMonth(period) : formatWeek(period);
 const first = periods[0];
 const last = periods[lastIndex];
+const eraStart = era && era.from >= 0 && era.from < cells.length ? era.from : null;
 ---
 
-<figure class:list={['oc', { 'oc--compact': compact }]} role="img" aria-label={label}>
+<figure
+  class:list={['oc', `oc--${size}`, `oc--${tone}`, { 'oc--dense': dense }]}
+  role="img"
+  aria-label={label}
+>
   <div class="oc-plot" aria-hidden="true">
     <div class="oc-bars" style={`--oc-count:${cells.length}`}>
+      {
+        eraStart !== null && era && (
+          <div class="oc-era" style={`left:calc(${(eraStart / cells.length) * 100}% - 1px)`}>
+            {!compact && <span class="oc-era__label">{era.label}</span>}
+          </div>
+        )
+      }
       <div class="oc-line" style={`bottom:${chart.band}%`}>
         {!compact && <span class="oc-line__label">publish line · {minCount}</span>}
       </div>
@@ -36,11 +83,12 @@ const last = periods[lastIndex];
               {
                 'oc-bar--latest': lastValue !== undefined && bar.index === lastValue.index,
                 'oc-bar--open': open && bar.index === lastIndex,
+                'oc-bar--era': eraStart !== null && bar.index >= eraStart,
               },
             ]}
             style={`height:${bar.h}%`}
           >
-            {!compact && bar.kind === 'value' && (
+            {bar.kind === 'value' && labelled(bar.index) && (
               <span class="oc-bar__value">{formatCell(bar.value)}</span>
             )}
           </span>
@@ -51,8 +99,12 @@ const last = periods[lastIndex];
   {
     !compact && first && last && (
       <figcaption class="oc-axis" aria-hidden="true">
-        <span>{formatWeek(first)}</span>
-        <span>week of {formatWeek(last)}</span>
+        <span>{periodLabel(first)}</span>
+        <span>
+          {grain === 'month' ? '' : 'week of '}
+          {periodLabel(last)}
+          {dense && lastValue?.index === lastIndex && ` · ${formatCell(lastValue.value)}`}
+        </span>
       </figcaption>
     )
   }
@@ -62,33 +114,45 @@ const last = periods[lastIndex];
   .oc {
     --oc-ink: theme('colors.paper.green');
     --oc-ink-soft: theme('colors.paper.greendim');
+    --oc-era: theme('colors.paper.green');
     --oc-hatch: theme('colors.paper.border2');
     --oc-line: theme('colors.paper.amber');
     --oc-text: theme('colors.paper.muted');
     --oc-height: 9.5rem;
     margin: 0;
+    container: oc / inline-size;
   }
 
   :global(.dark) .oc {
     --oc-ink: theme('colors.term.green');
     --oc-ink-soft: theme('colors.term.greendim');
+    --oc-era: theme('colors.term.green');
     --oc-hatch: theme('colors.term.border2');
     --oc-line: theme('colors.term.amber');
     --oc-text: theme('colors.term.muted');
+  }
+
+  .oc--apple {
+    --oc-ink: theme('colors.paper.text');
+    --oc-ink-soft: theme('colors.paper.muted');
+  }
+
+  :global(.dark) .oc--apple {
+    --oc-ink: theme('colors.term.text');
+    --oc-ink-soft: theme('colors.term.muted');
   }
 
   .oc--compact {
     --oc-height: 2.75rem;
   }
 
+  .oc--tall {
+    --oc-height: clamp(10rem, 6rem + 12vw, 15rem);
+  }
+
   .oc-plot {
     position: relative;
     height: var(--oc-height);
-    padding-top: 1.1rem;
-  }
-
-  .oc--compact .oc-plot {
-    padding-top: 0;
   }
 
   .oc-bars {
@@ -100,13 +164,22 @@ const last = periods[lastIndex];
     align-items: end;
   }
 
+  .oc--dense .oc-bars {
+    gap: clamp(1px, 0.35cqi, 3px);
+  }
+
   .oc--compact .oc-bars {
     inset: 0;
     gap: 2px;
   }
 
+  .oc--tall .oc-bars {
+    inset: 1.6rem 0 0 0;
+  }
+
   .oc-bar {
     position: relative;
+    z-index: 1;
     display: block;
     min-height: 0;
     border-radius: 1px 1px 0 0;
@@ -122,8 +195,13 @@ const last = periods[lastIndex];
     opacity: 1;
   }
 
-  :global(.dark) .oc-bar--latest {
+  :global(.dark) .oc--midgar .oc-bar--latest {
     box-shadow: 0 0 12px rgba(51, 255, 102, 0.35);
+  }
+
+  .oc--apple .oc-bar--era.oc-bar--value {
+    background: var(--oc-ink);
+    opacity: 1;
   }
 
   .oc-bar--open {
@@ -160,6 +238,12 @@ const last = periods[lastIndex];
     white-space: nowrap;
   }
 
+  .oc-bar:nth-last-child(-n + 2) .oc-bar__value {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+
   .oc-bar--latest .oc-bar__value {
     color: var(--oc-ink);
     font-weight: 700;
@@ -171,7 +255,7 @@ const last = periods[lastIndex];
     right: 0;
     border-top: 1px dashed var(--oc-line);
     opacity: 0.8;
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
   }
 
@@ -188,6 +272,45 @@ const last = periods[lastIndex];
     text-transform: uppercase;
     color: var(--oc-line);
     white-space: nowrap;
+  }
+
+  .oc-era {
+    position: absolute;
+    top: -1.1rem;
+    bottom: 0;
+    right: -2px;
+    z-index: 0;
+    border-left: 1px dashed var(--oc-era);
+    background: color-mix(in srgb, var(--oc-era) 9%, transparent);
+    pointer-events: none;
+  }
+
+  .oc--compact .oc-era {
+    top: 0;
+  }
+
+  .oc-era__label {
+    position: absolute;
+    top: 0;
+    right: calc(100% + 0.4rem);
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--oc-era);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  @container oc (max-width: 40rem) {
+    .oc-era__label {
+      display: none;
+    }
+  }
+
+  @container oc (max-width: 48rem) {
+    .oc--dense .oc-bar__value {
+      display: none;
+    }
   }
 
   .oc-axis {

@@ -7,6 +7,7 @@ import stats from '../../src/data/open-stats.json';
 import { landingApps } from '../../src/data/landing';
 import {
   activityApps,
+  apple,
   NO_USAGE_COUNTS,
   nameFromSlug,
   openAppFor,
@@ -214,6 +215,13 @@ describe('built /open page', () => {
   it.skipIf(!built)('says the data is a sample only while the snapshot is one', () => {
     expect(has(mainText('open/index.html'), 'sample numbers')).toBe(sample);
     if (sample) expect(has(mainText('open/index.html'), stats.rules.note)).toBe(true);
+  });
+
+  it.skipIf(!built)("shows Apple's year only when the stats carry it", () => {
+    const text = mainText('open/index.html');
+    expect(has(text, 'A year on the App Store')).toBe(apple !== null);
+    expect(has(text, 'Month by month, as Apple reports it')).toBe(apple !== null);
+    expect(has(text, "Midgar's own counts, week by week")).toBe(true);
   });
 
   it.skipIf(!built)('says the page is a work in progress only while it is unreleased', () => {
