@@ -9,9 +9,10 @@
  * @typedef {{ period: string, [key: string]: Cell | string }} Row
  * @typedef {{ weeks: Row[], months: Row[], retention: { cohort: string, w1: Cell, w4: Cell }[] }} Series
  * @typedef {{ id: string, title: string, unit: string, caveat: string }} PublicMetric
- * @typedef {{ period: string, downloads?: Cell, redownloads?: Cell, purchases?: Cell, active_subscriptions?: Cell }} AppleRow
- * @typedef {{ downloads: Cell, purchases: Cell, countries_downloaded: Cell, countries_purchased: Cell }} AppleTotals
- * @typedef {{ source: string, first_day: string, through: string, weeks: AppleRow[], months: AppleRow[], apps: Record<string, { weeks: AppleRow[] }>, totals: AppleTotals }} AppleSection
+ * @typedef {{ period: string, downloads?: Cell, redownloads?: Cell, purchases?: Cell, active_subscriptions?: Cell, proceeds_eur?: number }} AppleRow
+ * @typedef {{ downloads: Cell, purchases: Cell, countries_downloaded: Cell, countries_purchased: Cell, proceeds_eur?: number }} AppleTotals
+ * @typedef {{ currency: string, approximate: boolean, basis: string, source: string }} AppleMoney
+ * @typedef {{ source: string, first_day: string, through: string, weeks: AppleRow[], months: AppleRow[], apps: Record<string, { weeks: AppleRow[], proceeds_eur?: number }>, totals: AppleTotals, money?: AppleMoney }} AppleSection
  * @typedef {{ generated_at: string, rules: { min_count: number, weeks: number, months: number, note: string }, portfolio: Series, apps: Record<string, Series>, metrics: PublicMetric[], apple?: AppleSection }} OpenStats
  */
 
@@ -67,6 +68,22 @@ const isDay = (value) =>
 
 const APPLE_TOTALS = ['downloads', 'purchases', 'countries_downloaded', 'countries_purchased'];
 
+/** True for a money field that is absent or a number: euros are never hidden, so "<10" is not allowed. */
+const isMoneyOrAbsent = (value) => value === undefined || isNumber(value);
+
+/** True for the `money` note that says what the euro figures are, or for its absence. */
+function moneyNoteIsValid(money) {
+  return (
+    money === undefined ||
+    (isRecord(money) &&
+      typeof money.currency === 'string' &&
+      typeof money.approximate === 'boolean' &&
+      typeof money.basis === 'string')
+  );
+}
+
+const rowsMoneyIsValid = (rows) => rows.every((row) => isMoneyOrAbsent(row.proceeds_eur));
+
 /**
  * True when the `apple` section (Apple's own reports: downloads, paid purchases and active
  * subscriptions by week and month, per-app weekly downloads and totals) has the shape the page
@@ -83,8 +100,36 @@ export function appleIsValid(apple) {
     isRecord(apple.apps) &&
     Object.values(apple.apps).every((app) => isRecord(app) && rowsAreValid(app.weeks, 'period')) &&
     isRecord(apple.totals) &&
-    APPLE_TOTALS.every((key) => isCell(apple.totals[key] ?? null))
+    APPLE_TOTALS.every((key) => isCell(apple.totals[key] ?? null)) &&
+    isMoneyOrAbsent(apple.totals.proceeds_eur) &&
+    rowsMoneyIsValid(apple.weeks) &&
+    rowsMoneyIsValid(apple.months) &&
+    Object.values(apple.apps).every(
+      (app) => isMoneyOrAbsent(app.proceeds_eur) && rowsMoneyIsValid(app.weeks)
+    ) &&
+    moneyNoteIsValid(apple.money)
   );
+}
+
+/**
+ * What the euro figures are, when the Apple section publishes money: its note plus the all-time
+ * total. Null when the section has no money yet, so the page leaves every euro out.
+ */
+export function moneyOf(apple) {
+  if (!apple || !isNumber(apple.totals?.proceeds_eur) || !isRecord(apple.money)) return null;
+  return { ...apple.money, total: apple.totals.proceeds_eur };
+}
+
+/** Euros as "€1,234", or with cents as "€12.34"; a dash for nothing. */
+export function formatEur(value, { cents = false } = {}) {
+  if (!isNumber(value)) return '–';
+  const digits = cents ? 2 : 0;
+  const sign = value < 0 ? '−' : '';
+  const amount = Math.abs(value).toLocaleString('en-US', {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  });
+  return `${sign}€${amount}`;
 }
 
 /** The `apple` section when the snapshot carries a well-formed one, else null: the page then leaves it out. */

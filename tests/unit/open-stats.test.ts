@@ -8,6 +8,8 @@ import {
   allHidden,
   appleIsValid,
   appleOf,
+  formatEur,
+  moneyOf,
   appsWithData,
   describeSeries,
   formatCell,
@@ -82,6 +84,18 @@ function validApple(overrides: Record<string, unknown> = {}) {
     ...overrides,
   };
 }
+
+describe('euros', () => {
+  it('formats whole euros, cents, negatives and nothing', () => {
+    expect(formatEur(484.48)).toBe('€484');
+    expect(formatEur(1234.5)).toBe('€1,235');
+    expect(formatEur(82.93, { cents: true })).toBe('€82.93');
+    expect(formatEur(0, { cents: true })).toBe('€0.00');
+    expect(formatEur(-46.33, { cents: true })).toBe('−€46.33');
+    expect(formatEur(null)).toBe('–');
+    expect(formatEur('<10')).toBe('–');
+  });
+});
 
 describe('hidden and missing values', () => {
   it('treats a "<n" string as hidden and nothing else', () => {
@@ -226,6 +240,54 @@ describe('shape of the published stats', () => {
     const stats = validStats({ apple: validApple() });
     expect(isUsable(stats)).toBe(true);
     expect(appleOf(stats)?.totals.downloads).toBe(2627);
+  });
+
+  it('accepts euros on every level and reads the money note', () => {
+    const apple = validApple({
+      weeks: [{ period: '2026-10-26', downloads: 229, proceeds_eur: 82.93 }],
+      months: [{ period: '2026-10-01', downloads: 934, proceeds_eur: 0 }],
+      apps: {
+        flaccy: { proceeds_eur: 159.94, weeks: [{ period: '2026-10-26', proceeds_eur: -4.5 }] },
+      },
+      totals: {
+        downloads: 2627,
+        purchases: 59,
+        countries_downloaded: 103,
+        countries_purchased: 22,
+        proceeds_eur: 484.48,
+      },
+      money: { currency: 'EUR', approximate: true, basis: 'developer proceeds', source: 'reports' },
+    });
+    expect(appleIsValid(apple)).toBe(true);
+    expect(moneyOf(apple)).toEqual({
+      currency: 'EUR',
+      approximate: true,
+      basis: 'developer proceeds',
+      source: 'reports',
+      total: 484.48,
+    });
+  });
+
+  it('leaves money out until both the total and its note are published', () => {
+    expect(moneyOf(validApple())).toBeNull();
+    expect(moneyOf(null)).toBeNull();
+    const withoutNote = validApple({
+      totals: { ...validApple().totals, proceeds_eur: 484.48 },
+    });
+    expect(appleIsValid(withoutNote)).toBe(true);
+    expect(moneyOf(withoutNote)).toBeNull();
+  });
+
+  it('refuses hidden or malformed euros and a malformed money note', () => {
+    for (const apple of [
+      validApple({ weeks: [{ period: '2026-10-26', proceeds_eur: '<10' }] }),
+      validApple({ apps: { flaccy: { proceeds_eur: 'lots', weeks: [] } } }),
+      validApple({ totals: { ...validApple().totals, proceeds_eur: null } }),
+      validApple({ money: { currency: 'EUR', approximate: 'yes', basis: 'x' } }),
+      validApple({ money: 'EUR' }),
+    ]) {
+      expect(appleIsValid(apple)).toBe(false);
+    }
   });
 
   it('refuses the whole answer when its Apple section is malformed', () => {

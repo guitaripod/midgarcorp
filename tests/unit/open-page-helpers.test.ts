@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
   agoLabel,
+  describeMoney,
+  sumMoney,
   daysSince,
   firstPublished,
   formatDay,
@@ -219,5 +221,61 @@ describe('Apple history helpers', () => {
       'zeta',
     ]);
     expect(rankApps(['b', 'a'])).toEqual(['a', 'b']);
+  });
+});
+
+describe('money helpers', () => {
+  it('draws a money chart with no band, zero weeks flat and small sums visible', () => {
+    const chart = thresholdBars([0, 0.4, 50, 100, -3], {
+      minCount: 0,
+      height: 100,
+      floorMin: 0,
+      minBar: 1,
+    });
+    expect(chart.band).toBe(0);
+    expect(chart.bars.map((bar) => bar.h)).toEqual([0, 1, 50, 100, 0]);
+  });
+
+  it('keeps counts unchanged: a published count stands above the band', () => {
+    const chart = thresholdBars([12], { minCount: 10, height: 100 });
+    expect(chart.bars[0].h).toBe(30);
+    expect(thresholdBars([10.5], { minCount: 10, height: 100 }).bars[0].h).toBe(27);
+  });
+
+  it('sums a money column and says when there is none', () => {
+    expect(sumMoney([{ proceeds_eur: 10.1 }, { proceeds_eur: 0.2 }, { downloads: 4 }])).toBe(10.3);
+    expect(sumMoney([{ downloads: 4 }])).toBeUndefined();
+    expect(sumMoney([])).toBeUndefined();
+  });
+
+  it('describes a money chart for screen readers', () => {
+    const rows = [
+      { period: 'a', proceeds_eur: 2.23 },
+      { period: 'b', proceeds_eur: 82.93 },
+    ];
+    expect(describeMoney('Earned per week', rows, 'proceeds_eur')).toBe(
+      'Earned per week over 2 weeks, in approximate euros: from €2 to €83, €83 in the newest.'
+    );
+    expect(describeMoney('Earned', [{ period: 'a' }], 'proceeds_eur')).toBe(
+      'Earned: nothing published yet.'
+    );
+  });
+
+  it('quotes the money note in the JSON excerpt when there is one', () => {
+    const stats = {
+      generated_at: '2026-11-06T08:47:11.838Z',
+      rules: { min_count: 10, weeks: 12 },
+      portfolio: { weeks: [], months: [], retention: [] },
+      apple: {
+        source: 'reports',
+        first_day: '2025-11-13',
+        through: '2026-11-04',
+        totals: { downloads: 2627, proceeds_eur: 484.48 },
+        money: { currency: 'EUR', approximate: true, basis: 'developer proceeds' },
+      },
+    };
+    const text = statsExcerpt(stats, 2);
+    expect(text).toContain('"proceeds_eur": 484.48');
+    expect(text).toContain('"approximate": true');
   });
 });

@@ -8,7 +8,7 @@
  * @typedef {{ shortName: string, platforms?: string[], currentVersionReleaseDate?: string, version?: string }} StoreApp
  */
 
-import { isHidden, isNumber, isOpenPeriod } from './open-stats.mjs';
+import { formatEur, isHidden, isNumber, isOpenPeriod } from './open-stats.mjs';
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -126,22 +126,25 @@ export function firstPublished(rows, fields) {
  * line between "held back" and "published" stays readable at any scale. The scale reaches at least
  * `headroom` times the publish line, so a series that barely clears it is drawn as barely
  * clearing it and the band never fills the chart; `top` shares one scale across several charts.
+ * Money is drawn with `minCount` and `floorMin` at zero: no band, no publish line. A zero or
+ * negative number (a week with no sales, or only refunds) has no height; any positive number
+ * stands at least `minBar` units above the band.
  *
  * @param {Cell[]} cells
- * @param {{ minCount: number, height: number, floorMin?: number, top?: number, headroom?: number }} box
+ * @param {{ minCount: number, height: number, floorMin?: number, top?: number, headroom?: number, minBar?: number }} box
  */
 export function thresholdBars(
   cells,
-  { minCount, height, floorMin = 6, top: shared, headroom = 4 }
+  { minCount, height, floorMin = 6, top: shared, headroom = 4, minBar = 2 }
 ) {
   const numbers = cells.filter(isNumber);
-  const top = Math.max(minCount * headroom, shared ?? 0, ...numbers);
+  const top = Math.max(minCount * headroom, shared ?? 0, ...numbers, 1);
   const scale = height / top;
   const band = Math.min(height, Math.max(minCount * scale, floorMin));
   const round = (value) => Math.round(value * 10) / 10;
   const bars = cells.map((cell, index) => {
     if (isNumber(cell)) {
-      const size = Math.min(height, Math.max(cell * scale, band + 2));
+      const size = cell <= 0 ? 0 : Math.min(height, Math.max(cell * scale, band + minBar));
       return { index, kind: 'value', value: cell, h: round(size), y: round(height - size) };
     }
     if (isHidden(cell)) {
@@ -170,6 +173,7 @@ export function statsExcerpt(stats, weeks = 2) {
       first_day: stats.apple.first_day,
       through: stats.apple.through,
       totals: stats.apple.totals,
+      ...(stats.apple.money ? { money: stats.apple.money } : {}),
     };
   }
   let text = JSON.stringify(body, null, 2);
@@ -235,4 +239,19 @@ export function rankApps(slugs, appleApps = {}, activity = {}) {
   return [...slugs].sort(
     (a, b) => downloads(b) - downloads(a) || active(b) - active(a) || a.localeCompare(b)
   );
+}
+
+/** A sentence a screen reader gets in place of a money chart: its span, range and newest value. */
+export function describeMoney(label, rows, key, unit = 'weeks') {
+  const numbers = rows.map((row) => row[key]).filter(isNumber);
+  if (numbers.length === 0) return `${label}: nothing published yet.`;
+  const newest = numbers.at(-1);
+  return `${label} over ${rows.length} ${unit}, in approximate euros: from ${formatEur(Math.min(...numbers))} to ${formatEur(Math.max(...numbers))}, ${formatEur(newest)} in the newest.`;
+}
+
+/** The sum of a money column over some rows, or undefined when none of them carries it. */
+export function sumMoney(rows, key = 'proceeds_eur') {
+  const numbers = rows.map((row) => row[key]).filter(isNumber);
+  if (numbers.length === 0) return undefined;
+  return Math.round(numbers.reduce((total, value) => total + value, 0) * 100) / 100;
 }
