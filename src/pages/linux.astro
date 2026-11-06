@@ -9,13 +9,7 @@ import LinuxShipLog from '@components/LinuxShipLog.astro';
 import LinuxShowcaseCard from '@components/LinuxShowcaseCard.astro';
 import LinuxStats from '@components/LinuxStats.astro';
 import { LINUX_NOW, LINUX_SHOWCASE, linuxApps, linuxSections, linuxStats } from '@data/linux';
-import {
-  WEBSITE_ID,
-  breadcrumbList,
-  canonicalLink,
-  organizationRef,
-  personRef,
-} from '@utils/structured-data';
+import { WEBSITE_ID, canonicalLink, organizationRef, personRef } from '@utils/structured-data';
 
 const pageTitle = 'Linux Apps & Tools | guitaripod';
 const now = LINUX_NOW;
@@ -38,7 +32,6 @@ const structuredData = {
   isPartOf: { '@id': WEBSITE_ID },
   author: personRef,
   publisher: organizationRef,
-  breadcrumb: breadcrumbList([{ name: 'Linux', path: '/linux/' }]),
   hasPart: linuxApps.map((app) => ({
     '@type': 'SoftwareApplication',
     name: app.name,

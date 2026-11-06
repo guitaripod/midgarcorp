@@ -2,7 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import FeatureGrid from '@components/landing/FeatureGrid.astro';
 import FaqAccordion from '@components/landing/FaqAccordion.astro';
-import { breadcrumbList, organizationRef, personRef } from '@utils/structured-data';
+import { organizationRef, personRef } from '@utils/structured-data';
 import { productPage } from '@data/product-pages';
 
 const site = 'https://midgarcorp.cc';
@@ -98,16 +98,7 @@ const structuredData = {
   },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    structuredData,
-    breadcrumbList([
-      { name: 'Linux', path: '/linux/' },
-      { name: 'imago', path: '/imago/' },
-    ]),
-  ],
-};
+const jsonLd = { '@context': 'https://schema.org', '@graph': [structuredData] };
 ---
 
 <BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>

@@ -5,7 +5,7 @@ import FaqAccordion from '@components/landing/FaqAccordion.astro';
 import SectionHead from '@components/SectionHead.astro';
 import snapshot from '@data/blackwall.json';
 import { SITE_URL, isUsable, verdict, wallLayout } from '../lib/blackwall.mjs';
-import { breadcrumbList, organizationRef, personRef } from '@utils/structured-data';
+import { organizationRef, personRef } from '@utils/structured-data';
 import { productPage } from '@data/product-pages';
 
 const site = 'https://midgarcorp.cc';
@@ -253,16 +253,7 @@ const structuredData = {
   },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    structuredData,
-    breadcrumbList([
-      { name: 'Linux', path: '/linux/' },
-      { name: 'Blackwall', path: '/blackwall/' },
-    ]),
-  ],
-};
+const jsonLd = { '@context': 'https://schema.org', '@graph': [structuredData] };
 ---
 
 <BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>

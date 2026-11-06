@@ -160,4 +160,21 @@ describe.skipIf(!built)('built site', () => {
     });
     expect(offenders).toEqual([]);
   });
+
+  it('marks up breadcrumbs and ratings only where readers can see them', () => {
+    const offenders = pages.flatMap(({ route, html }) => {
+      const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+        .map((m) => m[1])
+        .join('');
+      return [
+        ...(ld.includes('"BreadcrumbList"') && !html.includes('aria-label="Breadcrumb"')
+          ? [`${route} breadcrumb`]
+          : []),
+        ...(ld.includes('"AggregateRating"') && !/aria-label="Rated [0-9.]+ out of 5/.test(html)
+          ? [`${route} rating`]
+          : []),
+      ];
+    });
+    expect(offenders).toEqual([]);
+  });
 });

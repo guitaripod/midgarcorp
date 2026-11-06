@@ -17,7 +17,6 @@ import {
 import {
   WEBSITE_ID,
   absoluteUrl,
-  breadcrumbList,
   googleAppCategory,
   operatingSystems,
   organizationRef,
@@ -86,7 +85,6 @@ const structuredData = {
   url: 'https://midgarcorp.cc/apps/',
   isPartOf: { '@id': WEBSITE_ID },
   publisher: organizationRef,
-  breadcrumb: breadcrumbList([{ name: 'Apps', path: '/apps/' }]),
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: cards.length,
