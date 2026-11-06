@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
+import { landingApps } from '../../src/data/landing';
 
 const dist = resolve(process.cwd(), 'dist');
 const built = existsSync(join(dist, 'index.html'));
@@ -145,5 +146,18 @@ describe.skipIf(!built)('built site', () => {
     expect(banners).toContain('/flaccy/');
     expect(banners).not.toContain('/');
     expect(banners).not.toContain('/apps/');
+  });
+
+  it('names the app in the one h1 of every app landing page', () => {
+    const offenders = landingApps.flatMap((app) => {
+      const page = pages.find(({ route }) => route === `/${app.slug}/`);
+      const headings = [...(page?.html ?? '').matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/g)].map((m) =>
+        decode(m[1].replace(/<[^>]+>/g, '')).trim()
+      );
+      return headings.length === 1 && headings[0] === app.shortName
+        ? []
+        : [`/${app.slug}/ ${JSON.stringify(headings)}`];
+    });
+    expect(offenders).toEqual([]);
   });
 });
