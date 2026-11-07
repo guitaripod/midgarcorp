@@ -66,6 +66,10 @@
       "glyph": "⏭"
     },
     {
+      "title": "Previously On, from your own computer",
+      "body": "Crucible Server is a free, optional companion for the computer that runs Plex. Pair it once by scanning a QR code, and Crucible offers a Previously On for any show you've been watching: a short recap of the last episodes you finished, written by a model on your own hardware from the episodes' own subtitles and Plex's synopsis, checked so it never names someone the episode didn't and never reaches past what you've seen. Nothing leaves your network. It's open source under GPL-3.0, for Linux and macOS, with a Homebrew formula and an AUR package."
+    },
+    {
       "title": "Made for the couch",
       "body": "On Apple TV a full-screen backdrop follows focus, the hero shows the title, details and synopsis, and rails of Continue Watching, Up Next and Recently Added sit under it. Select opens, Play/Pause plays, a long press opens a native context menu. Liquid Glass controls on tvOS 26, the classic look with the same layout on older systems.",
       "glyph": "▣"
@@ -191,6 +195,10 @@
     {
       "q": "Can I build it myself?",
       "a": "Yes. The iPhone app builds with xtool on Linux, Windows (WSL) or a Mac, with no Xcode interface needed, and is installed over USB with your own Apple ID; a free Apple ID's build stops opening after seven days, a paid account lasts a year. The Apple TV app needs a Mac with Xcode 26 or newer and XcodeGen, because xtool doesn't support tvOS. A build from source has no Pro purchase and nothing locked. The steps are below."
+    },
+    {
+      "q": "What is Crucible Server, and do I need it?",
+      "a": "No: everything else in Crucible works without it. Crucible Server is an optional, free companion you install on the computer that runs Plex (Linux or macOS). It pairs with Crucible on iPhone, iPad and Apple TV and writes a Previously On for the shows you're watching using a local AI model you already run, such as Ollama, LM Studio or llama.cpp. It answers only your home network and your tailnet, every request carries your own Plex sign-in so it sees only what Plex lets you see, and no recap ever leaves your network. Install it from https://github.com/guitaripod/Crucible/tree/master/server and run crucible-server setup."
     }
   ],
   "screenshotCaptions": {
