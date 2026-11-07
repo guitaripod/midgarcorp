@@ -2988,7 +2988,17 @@
       "platforms": [
         "iPhone",
         "iPad"
-      ]
+      ],
+      "openSource": true,
+      "license": "GPL-3.0",
+      "githubUrl": "https://github.com/guitaripod/embr",
+      "ogShot": {
+        "src": "/screenshots/embr/web-watch.webp",
+        "w": 735,
+        "h": 1500,
+        "label": "Watch",
+        "framed": true
+      }
     },
     {
       "slug": "crucible",

@@ -1,6 +1,6 @@
 {
-  "seoTitle": "Embr — The Best Native Twitch Client for iPhone",
-  "metaDescription": "A fast, native Twitch client for iPhone and iPad: live, VODs and clips with PiP and background audio, and chat with 7TV, BTTV and FFZ emotes. Free and open source.",
+  "seoTitle": "Embr — Native Twitch Client for iPhone and iPad",
+  "metaDescription": "A fast, native Twitch client for iPhone and iPad: every 7TV, BetterTTV and FrankerFaceZ emote, a Chats tab, Mentions, user cards and moderator tools. Open source.",
   "keywords": [
     "native twitch client for iphone",
     "best twitch app ios",
@@ -13,13 +13,13 @@
     "twitch following without ads app",
     "twitch chat emote autocomplete"
   ],
-  "heroHeadline": "The Twitch client iPhone always deserved",
-  "heroSubhead": "Embr is a fast, fully native Twitch client built in UIKit. Watch live, VODs, and clips in a real AVPlayer with picture-in-picture and background audio, and read chat in real time with animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ merged into one stream.",
+  "heroHeadline": "Watch live. Chat native.",
+  "heroSubhead": "A fast, native Twitch client for iPhone and iPad. Streams play in Apple’s own player and keep going in the background, and chat is drawn natively with every emote from Twitch, 7TV, BetterTTV and FrankerFaceZ, across every room you keep open.",
   "accentColor": "#9147FF",
   "highlights": [
     "Native AVPlayer with picture-in-picture and background audio",
-    "Real-time chat with 7TV, BTTV, and FFZ emotes merged in",
-    "Browse everything as a guest — sign in only for Following",
+    "Chat with every 7TV, BetterTTV and FrankerFaceZ emote",
+    "A Chats tab, Mentions and user cards",
     "Open source, no tracking, your token stays in the Keychain"
   ],
   "features": [
@@ -83,11 +83,11 @@
     },
     {
       "q": "Which emotes does chat support?",
-      "a": "Chat runs over Twitch EventSub in real time and merges animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ into one stream, alongside badges, cheermotes, replies, and emote autocomplete."
+      "a": "Chat runs over Twitch EventSub in real time and merges animated emotes from Twitch, 7TV, BetterTTV and FrankerFaceZ into one stream, with an emote keyboard that has a section for each, alongside badges, cheermotes, replies and emote autocomplete."
     },
     {
       "q": "Can I moderate my channel from Embr?",
-      "a": "Yes. Embr includes moderator tools, plus report and block actions on any message, and chat search to keep busy rooms manageable."
+      "a": "Yes. Turn on Moderator Tools in Settings and, in the channels you moderate, allow or deny AutoMod's held messages, answer unban requests and read the moderation log. A user card adds delete, time out and ban. Anyone can report or block from a message."
     },
     {
       "q": "Is my data private?",
@@ -99,7 +99,15 @@
     },
     {
       "q": "Which devices does Embr run on?",
-      "a": "Embr runs on iPhone and iPad."
+      "a": "Embr runs on iPhone and iPad, and adapts to iPhone Duo's inner and outer displays."
+    },
+    {
+      "q": "Can I keep several chats open?",
+      "a": "Yes. The Chats tab keeps chats open without their video, with unread and mention counts on each, and Mentions gathers what mentions you from all of them. On iPad, up to three chats sit side by side."
+    },
+    {
+      "q": "Does Embr cost anything?",
+      "a": "No. Every feature is free. Tips and a one-time Founding Supporter purchase are optional; Founding Supporter unlocks only looks, and you can try each one on first."
     }
   ],
   "screenshotCaptions": {
@@ -125,10 +133,10 @@
       "Make it yours"
     ]
   },
-  "ctaLine": "Get the native Twitch client your iPhone deserves.",
-  "pricingNote": "Free and open source. Browse and watch as a guest, or sign in with Twitch for Following, chat, and moderator tools — no tracking, no subscription.",
+  "ctaLine": "Watch live. Chat native.",
+  "pricingNote": "Every feature is free. Browse and watch as a guest, or sign in with Twitch for Following, chat and moderator tools. No tracking, no subscription.",
   "pricing": {
-    "heading": "Free and open source. Tips are optional.",
+    "heading": "Every feature is free. Supporting is optional.",
     "free": {
       "title": "Embr",
       "price": "$0",
@@ -139,14 +147,20 @@
       ]
     },
     "premium": {
-      "title": "Tips",
-      "price": "$1.99 · $4.99 · $9.99",
+      "title": "Founding Supporter and tips",
+      "price": "$9.99 once · tips from $1.99",
       "items": [
-        "A one-time tip that supports development",
-        "Unlocks nothing: every feature is free"
+        "Founding Supporter: themes, accent colors, chat fonts, app icons and a badge everyone in Embr sees",
+        "Tips unlock nothing; they keep Embr going"
       ]
     },
     "tiers": [
+      {
+        "name": "Founding Supporter",
+        "price": "$9.99",
+        "amount": 9.99,
+        "note": "once"
+      },
       {
         "name": "Small tip",
         "price": "$1.99",
@@ -166,6 +180,6 @@
         "note": "once"
       }
     ],
-    "footnote": "US prices shown; your local price appears in the App Store. Tips are one-time purchases that unlock nothing; Embr has no subscription."
+    "footnote": "US prices shown; your local price appears in the App Store. Founding Supporter unlocks only looks; tips unlock nothing. Embr has no subscription."
   }
 }

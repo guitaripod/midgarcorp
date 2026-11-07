@@ -1,0 +1,583 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AppStoreBadge from '@components/landing/AppStoreBadge.astro';
+import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import AppIcon from '@components/landing/AppIcon.astro';
+import SectionHead from '@components/landing/SectionHead.astro';
+import DuoCombo from '@components/landing/DuoCombo.astro';
+import { landingApps, screenshotUrl, type LandingApp } from '@data/landing';
+import screenshotVariants from '@data/screenshot-variants.json';
+import { siblingApps } from '@utils/sibling-apps';
+import { appPageJsonLd } from '@utils/structured-data';
+import { markdownPath } from '@utils/llms';
+
+export const prerender = true;
+
+const app = landingApps.find((a) => a.slug === 'embr') as LandingApp;
+const c = app.content;
+const accent = c.accentColor || app.primaryColor;
+const githubUrl = app.githubUrl ?? 'https://github.com/guitaripod/embr';
+
+const OG_REV = '5';
+const ogImage = `/og/embr.png?v=${OG_REV}`;
+
+const variants = screenshotVariants as Record<string, number[]>;
+
+/// A figure of the page: a device-framed capture of the demo world, with the widths the variants script wrote.
+const figure = (name: string, w: number, h: number) => {
+  const src = `/screenshots/embr/web-${name}.webp`;
+  const srcset = [
+    ...(variants[src] ?? []).map(
+      (wide) => `${screenshotUrl(src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`
+    ),
+    `${screenshotUrl(src)} ${w}w`,
+  ].join(', ');
+  return { src: screenshotUrl(src), srcset, w, h };
+};
+const phone = (name: string) => figure(name, 735, 1500);
+
+const heroPhone = phone('watch');
+const heroPad = figure('ipad-chats', 1100, 1435);
+const fullscreen = figure('fullscreen', 1500, 735);
+const padShots = [
+  {
+    ...figure('ipad-watch', 1100, 1435),
+    alt: 'Embr on iPad: a stream above its chat, with a poll',
+  },
+  { ...figure('ipad-chats', 1100, 1435), alt: 'Embr on iPad: three chats side by side' },
+];
+
+const chatShots = [
+  {
+    ...phone('emotes'),
+    head: 'Every emote',
+    body: 'Twitch, 7TV, BetterTTV and FrankerFaceZ, in chat and on the emote keyboard.',
+  },
+  {
+    ...phone('chats'),
+    head: 'All your chats',
+    body: 'Keep rooms open without the video, with unread and mention counts on each.',
+  },
+  {
+    ...phone('mentions'),
+    head: 'Mentions',
+    body: 'Everything that mentions you or matches your highlights, from every open chat.',
+  },
+];
+
+const roomShots = [
+  {
+    ...phone('usercard'),
+    head: 'User cards',
+    body: 'Account age and their messages here, then mention, highlight, block or report.',
+  },
+  {
+    ...phone('moderate'),
+    head: 'Moderator Tools',
+    body: 'AutoMod’s held messages, unban requests and the log, in the channels you moderate.',
+  },
+];
+
+const yoursShots = [
+  {
+    ...phone('supporter'),
+    head: 'Founding Supporter',
+    body: 'Themes, accent colors, chat fonts, icons and a badge everyone in Embr sees.',
+  },
+  {
+    ...phone('settings'),
+    head: 'Settings, searchable',
+    body: 'Laid out like the Settings app, with every option one search away.',
+  },
+];
+
+const chatBullets = [
+  'Live chat over Twitch EventSub, drawn natively, so a room at full speed scrolls like any other list on your iPhone.',
+  'Every open chat shares one connection, so keeping three rooms open costs about the same as one.',
+  'Swipe a message to reply, tap a name for the card, long-press for the rest. Your own highlight words and people stand out wherever they appear.',
+  'Past broadcasts replay their chat in sync with the video, so a VOD feels like the live show.',
+];
+
+const playerBullets = [
+  'Live streams, VODs and clips in AVPlayer: picture-in-picture, quality selection, latency display, playback speed and double-tap to seek.',
+  'Background audio and an audio-only mode keep a stream going with the screen off, with the controls on your Lock Screen.',
+  'Turn your phone for fullscreen, and chat floats beside the stream. Double-tap the chat to put it away.',
+];
+
+const trustFacts = [
+  {
+    fact: 'Watch without an account',
+    note: 'Browse, search, watch and keep favorites as a guest. Sign in with Twitch only for Following and chat.',
+  },
+  {
+    fact: 'Your password never touches Embr',
+    note: 'Sign-in happens on Twitch’s own page; the token it gives back stays in your iPhone’s Keychain.',
+  },
+  {
+    fact: 'No tracking, no analytics',
+    note: 'Settings, history and blocks stay on your device, and favorites sync only through your own iCloud.',
+  },
+  {
+    fact: 'Open source',
+    note: 'Read every line on GitHub, from the player to the chat.',
+  },
+];
+
+const section = 'border-t border-paper-border py-10 dark:border-term-border sm:py-14';
+const btn =
+  'accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors';
+const rail =
+  'no-scrollbar -mx-4 flex snap-x snap-mandatory items-start gap-6 overflow-x-auto px-4 pb-3 sm:mx-0 sm:grid sm:overflow-visible sm:px-0 sm:pb-0';
+
+const showsRating = app.ratingCount >= 5;
+const jsonLd = appPageJsonLd(app, { ratingShown: showsRating });
+const siblings = siblingApps(landingApps, 'embr');
+---
+
+<BaseLayout
+  title={c.seoTitle}
+  description={c.metaDescription}
+  image={ogImage}
+  markdown={markdownPath(app.slug)}
+  appStoreId={app.trackId > 0 ? app.trackId : undefined}
+>
+  <div style={`--accent:${accent}`}>
+    <nav
+      aria-label="Breadcrumb"
+      class="hidden pt-8 text-xs text-paper-faint dark:text-term-faint sm:block"
+    >
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/apps/" class="hover:text-paper-green dark:hover:text-term-green">apps</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">embr</li>
+      </ol>
+    </nav>
+
+    <header
+      class="flex flex-col gap-10 py-6 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-x-12"
+    >
+      <div>
+        <div class="mb-5 flex items-center gap-4">
+          {
+            app.iconLocal && (
+              <AppIcon
+                src={app.iconLocal}
+                width={72}
+                height={72}
+                displayWidths={[64, 72]}
+                priority
+                class="hero-icon h-14 w-14 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[72px] sm:w-[72px]"
+              />
+            )
+          }
+          <div class="min-w-0">
+            <h1
+              class="text-xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-3xl"
+            >
+              {app.shortName}
+            </h1>
+            <p class="text-sm text-paper-muted dark:text-term-muted">Live streams and chat</p>
+          </div>
+        </div>
+
+        <p
+          class="mb-4 text-[2.1rem] font-extrabold leading-[1.05] tracking-tight text-paper-text dark:text-term-text sm:text-5xl"
+        >
+          Watch live.<br /><span class="ember-text">Chat native.</span>
+        </p>
+        <p
+          class="mb-6 max-w-xl text-base leading-relaxed text-paper-muted dark:text-term-muted sm:text-lg"
+        >
+          {c.heroSubhead}
+        </p>
+
+        <ul class="mb-6 flex flex-wrap gap-2" aria-label="What Embr promises">
+          {
+            ['No account needed', 'No tracking', 'Open source', '7TV · BTTV · FFZ'].map((fact) => (
+              <li>
+                <a
+                  href="#trust"
+                  class="inline-flex items-center gap-1 rounded-sm border border-paper-green/40 px-2 py-1 text-[11px] font-semibold text-paper-green transition-colors hover:bg-paper-green/10 dark:border-term-green/40 dark:text-term-green dark:hover:bg-term-green/10 sm:gap-1.5 sm:px-2.5 sm:text-xs"
+                >
+                  <span aria-hidden="true">✓</span>
+                  {fact}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mb-3 flex flex-wrap items-center gap-3">
+          <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class={btn}>
+            <img src="/icons/github.svg" alt="" width="18" height="18" class="dark:invert" />
+            GitHub
+          </a>
+        </div>
+        <p class="text-xs text-paper-faint dark:text-term-faint">
+          iPhone, iPad and iPhone Duo · every feature at no cost · tips and Founding Supporter are
+          optional
+        </p>
+      </div>
+
+      <div
+        class="stage relative mx-auto w-full max-w-[640px] overflow-hidden rounded-2xl lg:max-w-none"
+      >
+        <img
+          src={heroPad.src}
+          srcset={heroPad.srcset}
+          sizes="(min-width: 1024px) 380px, 60vw"
+          width={heroPad.w}
+          height={heroPad.h}
+          alt="Embr on iPad: three chats side by side, with emotes from every provider"
+          loading="eager"
+          decoding="async"
+          class="absolute right-[4%] top-[5%] w-[60%] drop-shadow-2xl"
+        />
+        <video
+          class="hero-phone absolute bottom-[-6%] left-[6%] w-[32%]"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster={heroPhone.src}
+          width={heroPhone.w}
+          height={heroPhone.h}
+          aria-label="Embr on iPhone: a stream with its poll and chat, emotes arriving live"
+        >
+          <source src="/screenshots/embr/hero-phone.mov" type='video/mp4; codecs="hvc1"' />
+          <source src="/screenshots/embr/hero-phone.webm" type="video/webm" />
+        </video>
+      </div>
+    </header>
+
+    <section id="chat" class={section}>
+      <SectionHead prompt="embr --chat" title="Chat, rebuilt for iPhone">
+        Every emote, every room you follow, and everything that mentions you, in one native chat
+        that keeps up with the busiest channels.
+      </SectionHead>
+      <div class={`${rail} sm:grid-cols-3`}>
+        {
+          chatShots.map((shot) => (
+            <figure class="w-[220px] shrink-0 snap-center sm:w-full sm:max-w-[300px] sm:justify-self-center">
+              <img
+                src={shot.src}
+                srcset={shot.srcset}
+                sizes="(min-width: 640px) 300px, 220px"
+                width={shot.w}
+                height={shot.h}
+                alt={`Embr on iPhone: ${shot.head}`}
+                loading="lazy"
+                decoding="async"
+                class="drop-shadow-xl"
+              />
+              <figcaption class="mt-3 text-sm leading-snug text-paper-muted dark:text-term-muted">
+                <span class="font-semibold text-paper-text dark:text-term-text">{shot.head}.</span>{' '}
+                {shot.body}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+      <ul
+        class="mt-8 grid gap-3 text-sm leading-relaxed text-paper-muted dark:text-term-muted sm:grid-cols-2"
+      >
+        {
+          chatBullets.map((line) => (
+            <li class="flex gap-2.5">
+              <span class="ember-dot mt-2 h-1.5 w-1.5 shrink-0 rounded-full" aria-hidden="true" />
+              {line}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section id="player" class={section}>
+      <SectionHead prompt="embr --watch" title="A real player, not a web page">
+        Streams open in Apple’s own video player, so they behave like everything else on your
+        iPhone.
+      </SectionHead>
+      <div class="grid items-center gap-8 lg:grid-cols-[1.25fr_1fr]">
+        <figure>
+          <img
+            src={fullscreen.src}
+            srcset={fullscreen.srcset}
+            sizes="(min-width: 1024px) 620px, 92vw"
+            width={fullscreen.w}
+            height={fullscreen.h}
+            alt="Embr fullscreen on iPhone: the stream with chat floating beside it"
+            loading="lazy"
+            decoding="async"
+            class="drop-shadow-2xl"
+          />
+        </figure>
+        <ul class="grid gap-4 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+          {
+            playerBullets.map((line) => (
+              <li class="flex gap-2.5">
+                <span class="ember-dot mt-2 h-1.5 w-1.5 shrink-0 rounded-full" aria-hidden="true" />
+                {line}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section id="room" class={section}>
+      <SectionHead prompt="embr --room" title="Know the room">
+        Who is talking, what they said here, and, in the channels you moderate, what AutoMod is
+        holding.
+      </SectionHead>
+      <div class={`${rail} sm:grid-cols-2`}>
+        {
+          roomShots.map((shot) => (
+            <figure class="w-[220px] shrink-0 snap-center sm:w-full sm:max-w-[300px] sm:justify-self-center">
+              <img
+                src={shot.src}
+                srcset={shot.srcset}
+                sizes="(min-width: 640px) 300px, 220px"
+                width={shot.w}
+                height={shot.h}
+                alt={`Embr on iPhone: ${shot.head}`}
+                loading="lazy"
+                decoding="async"
+                class="drop-shadow-xl"
+              />
+              <figcaption class="mt-3 text-sm leading-snug text-paper-muted dark:text-term-muted">
+                <span class="font-semibold text-paper-text dark:text-term-text">{shot.head}.</span>{' '}
+                {shot.body}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="ipad" class={section}>
+      <SectionHead prompt="embr --ipad" title="Made for the big screen too">
+        On iPad, the stream and its chat sit side by side in wide windows, and the Chats tab keeps
+        up to three rooms open at once.
+      </SectionHead>
+      <div class="mx-auto grid max-w-[880px] gap-6 sm:grid-cols-2">
+        {
+          padShots.map((shot) => (
+            <figure>
+              <img
+                src={shot.src}
+                srcset={shot.srcset}
+                sizes="(min-width: 640px) 430px, 92vw"
+                width={shot.w}
+                height={shot.h}
+                alt={shot.alt}
+                loading="lazy"
+                decoding="async"
+                class="drop-shadow-2xl"
+              />
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <DuoCombo slug="embr" name="Embr" accent={accent} sectionClass={section} />
+
+    <section id="yours" class={section}>
+      <SectionHead prompt="embr --yours" title="Make it yours">
+        Every feature is there for everyone. If Embr becomes how you watch, a one-time Founding
+        Supporter purchase adds looks, and you can try each one on first.
+      </SectionHead>
+      <div class={`${rail} sm:grid-cols-2`}>
+        {
+          yoursShots.map((shot) => (
+            <figure class="w-[220px] shrink-0 snap-center sm:w-full sm:max-w-[300px] sm:justify-self-center">
+              <img
+                src={shot.src}
+                srcset={shot.srcset}
+                sizes="(min-width: 640px) 300px, 220px"
+                width={shot.w}
+                height={shot.h}
+                alt={`Embr on iPhone: ${shot.head}`}
+                loading="lazy"
+                decoding="async"
+                class="drop-shadow-xl"
+              />
+              <figcaption class="mt-3 text-sm leading-snug text-paper-muted dark:text-term-muted">
+                <span class="font-semibold text-paper-text dark:text-term-text">{shot.head}.</span>{' '}
+                {shot.body}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="trust" class={section}>
+      <SectionHead prompt="embr --privacy" title="Yours, not ours" />
+      <dl class="grid gap-4 sm:grid-cols-2">
+        {
+          trustFacts.map((item) => (
+            <div class="rounded-sm border border-paper-border p-4 dark:border-term-border">
+              <dt class="mb-1 font-semibold text-paper-text dark:text-term-text">{item.fact}</dt>
+              <dd class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                {item.note}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="mt-4 text-xs text-paper-faint dark:text-term-faint">
+        Embr is an independent app and is not affiliated with Twitch. Twitch is a trademark of its
+        owner. Read the <a
+          href="/legal/embr/privacy/"
+          class="underline decoration-dotted underline-offset-2 hover:text-paper-green dark:hover:text-term-green"
+          >privacy policy</a
+        >.
+      </p>
+    </section>
+
+    <section id="faq" class={section}>
+      <SectionHead prompt="embr --help" title="Questions, answered" />
+      <FaqAccordion faq={c.faq} accent={accent} />
+    </section>
+
+    <section class={section}>
+      <div class="term-frame relative overflow-hidden p-6 sm:p-10">
+        <span class="cta-spine absolute inset-y-0 left-0 w-1" aria-hidden="true"></span>
+        <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-4">
+            {
+              app.iconLocal && (
+                <AppIcon
+                  src={app.iconLocal}
+                  width={64}
+                  height={64}
+                  displayWidths={[56]}
+                  class="h-14 w-14 rounded-[0.9rem] border border-paper-border object-cover dark:border-term-border"
+                />
+              )
+            }
+            <div>
+              <h2 class="text-lg font-bold text-paper-text dark:text-term-text sm:text-xl">
+                {c.ctaLine}
+              </h2>
+              <p class="mt-1 text-sm text-paper-muted dark:text-term-muted">{c.pricingNote}</p>
+            </div>
+          </div>
+          <div class="flex shrink-0 flex-wrap items-center gap-3">
+            <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" class={btn}>
+              <img src="/icons/github.svg" alt="" width="18" height="18" class="dark:invert" />
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div
+          class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-paper-border pt-5 text-xs text-paper-faint dark:border-term-border dark:text-term-faint"
+        >
+          {app.version && <span>v{app.version}</span>}
+          {app.minimumOsVersion && <span>requires iOS {app.minimumOsVersion}+</span>}
+          <a
+            href={app.appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-paper-green dark:hover:text-term-green">App Store ↗</a
+          >
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-paper-green dark:hover:text-term-green">GitHub ↗</a
+          >
+          <a href="/embr/support/" class="hover:text-paper-green dark:hover:text-term-green"
+            >Support ↗</a
+          >
+          <a href="/legal/embr/privacy/" class="hover:text-paper-green dark:hover:text-term-green"
+            >Privacy ↗</a
+          >
+          <span>by {app.sellerName ?? 'Midgar Oy'}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-paper-border py-10 dark:border-term-border">
+      <p class="prompt-line mb-5">ls ~/apps</p>
+      <div class="flex flex-wrap gap-3">
+        {
+          siblings.map((s) => (
+            <a
+              href={`/${s.slug}/`}
+              class="group inline-flex items-center gap-2.5 rounded-sm border border-paper-border px-3 py-2 text-sm transition-colors hover:border-paper-border2 dark:border-term-border dark:hover:border-term-border2"
+            >
+              {s.iconLocal && (
+                <AppIcon
+                  src={s.iconLocal}
+                  width={24}
+                  height={24}
+                  displayWidths={[24]}
+                  class="h-6 w-6 rounded-md object-cover"
+                />
+              )}
+              <span class="font-medium text-paper-muted group-hover:text-paper-green dark:text-term-muted dark:group-hover:text-term-green">
+                {s.shortName}
+              </span>
+            </a>
+          ))
+        }
+        <a
+          href="/apps/"
+          class="inline-flex items-center gap-2 rounded-sm border border-paper-border px-3 py-2 text-sm font-medium text-paper-muted transition-colors hover:border-paper-border2 hover:text-paper-green dark:border-term-border dark:text-term-muted dark:hover:border-term-border2 dark:hover:text-term-green"
+        >
+          all apps →
+        </a>
+      </div>
+    </section>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>
+
+<style>
+  .stage {
+    aspect-ratio: 1 / 0.92;
+    background:
+      radial-gradient(60% 55% at 18% 82%, rgb(255 106 42 / 0.45), transparent 70%),
+      radial-gradient(55% 60% at 85% 15%, rgb(145 71 255 / 0.55), transparent 72%),
+      radial-gradient(40% 40% at 60% 70%, rgb(232 62 140 / 0.3), transparent 70%),
+      linear-gradient(180deg, #0e0918, #06040b);
+  }
+  .hero-phone {
+    filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.55));
+  }
+  .ember-text {
+    background: linear-gradient(90deg, #ff8a3d, #ff4f87 55%, #b070ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .ember-dot {
+    background: linear-gradient(135deg, #ff8a3d, #b070ff);
+  }
+  .hero-icon {
+    box-shadow: 0 14px 40px -12px color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  .accent-btn {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  :global(.dark) .accent-btn {
+    color: color-mix(in srgb, var(--accent), #fff 24%);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .accent-btn:hover {
+    background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+  }
+  .cta-spine {
+    background: linear-gradient(180deg, #ff8a3d, #b070ff);
+    opacity: 0.85;
+  }
+</style>

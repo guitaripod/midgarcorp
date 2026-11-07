@@ -183,6 +183,14 @@
     480,
     960
   ],
+  "/screenshots/appofthedead/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/appofthedead/iphone-8.webp": [
+    480,
+    960
+  ],
   "/screenshots/appofthedead/ipad-1.webp": [
     480,
     960
@@ -1058,6 +1066,48 @@
   "/screenshots/pixiepocket/promo-poster.webp": [
     480
   ],
+  "/screenshots/embr/web-audio.webp": [
+    480
+  ],
+  "/screenshots/embr/web-chats.webp": [
+    480
+  ],
+  "/screenshots/embr/web-emotes.webp": [
+    480
+  ],
+  "/screenshots/embr/web-favorites.webp": [
+    480
+  ],
+  "/screenshots/embr/web-fullscreen.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/web-ipad-chats.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/web-ipad-watch.webp": [
+    480,
+    960
+  ],
+  "/screenshots/embr/web-mentions.webp": [
+    480
+  ],
+  "/screenshots/embr/web-moderate.webp": [
+    480
+  ],
+  "/screenshots/embr/web-settings.webp": [
+    480
+  ],
+  "/screenshots/embr/web-supporter.webp": [
+    480
+  ],
+  "/screenshots/embr/web-usercard.webp": [
+    480
+  ],
+  "/screenshots/embr/web-watch.webp": [
+    480
+  ],
   "/screenshots/flaccy/og-hero.webp": [
     480
   ],
@@ -1163,13 +1213,5 @@
     72,
     144,
     216
-  ],
-  "/screenshots/appofthedead/iphone-7.webp": [
-    480,
-    960
-  ],
-  "/screenshots/appofthedead/iphone-8.webp": [
-    480,
-    960
   ]
 }
