@@ -59,6 +59,7 @@ const FORCE_INCLUDE = [
   'remoteplay-display',
   'imago',
   'tonight',
+  'prebake',
 ];
 
 /** False positives to drop (a backend/library the rule let through). */

@@ -1,6 +1,6 @@
 {
   "generated": "scripts/fetch-linux-releases.mjs — auto-discovered, live from GitHub / crates.io / AUR",
-  "count": 30,
+  "count": 33,
   "apps": [
     {
       "id": "apod-cli",
@@ -206,8 +206,8 @@
       "language": "Swift",
       "description": "Runs Claude Code headlessly and serves it as structured HTTP sessions with streaming, subagents, spend and git, as a systemd user service.",
       "stars": 1,
-      "commitCount": 201,
-      "releaseCount": 44,
+      "commitCount": 204,
+      "releaseCount": 45,
       "releaseDates": [
         "2026-07-29T19:43:51Z",
         "2026-08-03T17:45:11Z",
@@ -252,16 +252,17 @@
         "2026-11-04T09:26:11Z",
         "2026-11-04T10:15:44Z",
         "2026-11-04T17:46:08Z",
-        "2026-11-06T08:37:26Z"
+        "2026-11-06T08:37:26Z",
+        "2026-11-06T17:42:42Z"
       ],
       "githubUrl": "https://github.com/guitaripod/claude-bridge",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.20.1",
-      "latestReleaseDate": "2026-11-06T08:37:26Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.20.1",
+      "latestVersion": "1.21.0",
+      "latestReleaseDate": "2026-11-06T17:42:42Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.21.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/claude-bridge/releases/download/1.20.1/claude-bridge-1.20.1-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/claude-bridge/releases/download/1.21.0/claude-bridge-1.21.0-linux-x86_64.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -279,6 +280,59 @@
             "channel": "homebrew",
             "label": "Homebrew",
             "command": "brew install guitaripod/tap/claude-bridge"
+          }
+        ]
+      }
+    },
+    {
+      "id": "clicker",
+      "name": "clicker",
+      "form": "cli",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Agent-native Apple TV remote",
+      "stars": 0,
+      "commitCount": 10,
+      "releaseCount": 6,
+      "releaseDates": [
+        "2026-10-27T07:57:32Z",
+        "2026-10-27T12:49:36Z",
+        "2026-10-27T14:58:47Z",
+        "2026-10-27T15:18:21Z",
+        "2026-10-27T15:51:29Z",
+        "2026-10-27T16:15:02Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/clicker",
+      "homepageUrl": null,
+      "topics": [
+        "apple-tv",
+        "cli",
+        "companion-link",
+        "home-automation",
+        "linux",
+        "remote-control",
+        "rust",
+        "tvos"
+      ],
+      "latestVersion": "0.2.3",
+      "latestReleaseDate": "2026-10-27T16:15:02Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/clicker/releases/tag/v0.2.3",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/clicker/releases/download/v0.2.3/clicker-0.2.3-x86_64-unknown-linux-gnu.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "cargo install --git https://github.com/guitaripod/clicker"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/clicker"
           }
         ]
       }
@@ -437,7 +491,7 @@
       "language": "Rust",
       "description": "A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
       "stars": 7,
-      "commitCount": 240,
+      "commitCount": 241,
       "releaseCount": 41,
       "releaseDates": [
         "2026-07-10T13:46:58Z",
@@ -779,7 +833,7 @@
         "2026-07-19T19:20:08Z"
       ],
       "githubUrl": "https://github.com/guitaripod/imago",
-      "homepageUrl": "https://midgarcorp.cc/imago",
+      "homepageUrl": "https://midgarcorp.cc/imago/",
       "topics": [],
       "latestVersion": "0.1.4",
       "latestReleaseDate": "2026-07-19T19:20:08Z",
@@ -865,8 +919,8 @@
       "language": "Swift",
       "description": "Puts an Oh My Pi coding agent on your tailnet: the claude-bridge wire protocol over HTTP and SSE, as a systemd user service.",
       "stars": 2,
-      "commitCount": 76,
-      "releaseCount": 17,
+      "commitCount": 79,
+      "releaseCount": 18,
       "releaseDates": [
         "2026-08-25T16:26:57Z",
         "2026-09-04T16:15:43Z",
@@ -884,16 +938,17 @@
         "2026-10-23T19:29:02Z",
         "2026-10-24T22:23:44Z",
         "2026-11-03T09:43:20Z",
-        "2026-11-04T09:26:07Z"
+        "2026-11-04T09:26:07Z",
+        "2026-11-06T17:48:04Z"
       ],
       "githubUrl": "https://github.com/guitaripod/omp-bridge",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "0.11.0",
-      "latestReleaseDate": "2026-11-04T09:26:07Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/omp-bridge/releases/tag/v0.11.0",
+      "latestVersion": "0.12.0",
+      "latestReleaseDate": "2026-11-06T17:48:04Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/omp-bridge/releases/tag/v0.12.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/omp-bridge/releases/download/v0.11.0/omp-bridge-0.11.0-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/omp-bridge/releases/download/v0.12.0/omp-bridge-0.12.0-linux-x86_64.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -967,6 +1022,118 @@
       }
     },
     {
+      "id": "prebake",
+      "name": "prebake",
+      "form": "daemon",
+      "theme": "system",
+      "group": "desktop",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Bakes Steam's Vulkan shader caches while you are away, so games start without \"Processing Vulkan shaders\". Linux daemon.",
+      "stars": 0,
+      "commitCount": 20,
+      "releaseCount": 1,
+      "releaseDates": [
+        "2026-11-07T12:03:54Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/prebake",
+      "homepageUrl": "https://midgarcorp.cc/linux/",
+      "topics": [
+        "daemon",
+        "fossilize",
+        "gaming",
+        "linux",
+        "proton",
+        "rust",
+        "shader-cache",
+        "shaders",
+        "steam",
+        "systemd",
+        "vulkan"
+      ],
+      "latestVersion": "0.1.0",
+      "latestReleaseDate": "2026-11-07T12:03:54Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/prebake/releases/tag/0.1.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/prebake/releases/download/0.1.0/prebake-0.1.0-x86_64-linux.tar.gz",
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "crates.io",
+          "label": "crates.io",
+          "command": "cargo install prebake"
+        },
+        "all": [
+          {
+            "channel": "crates.io",
+            "label": "crates.io",
+            "command": "cargo install prebake"
+          },
+          {
+            "channel": "aur",
+            "label": "AUR",
+            "command": "yay -S prebake"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/prebake"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rc-tui",
+      "name": "rc-tui",
+      "form": "tui",
+      "theme": "tools",
+      "group": "bin",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "RevenueCat overview in the terminal.",
+      "stars": 0,
+      "commitCount": 34,
+      "releaseCount": 6,
+      "releaseDates": [
+        "2026-10-20T02:24:28Z",
+        "2026-10-21T07:32:14Z",
+        "2026-10-21T14:57:28Z",
+        "2026-10-25T21:21:34Z",
+        "2026-10-25T23:23:38Z",
+        "2026-11-06T12:03:20Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/rc-tui",
+      "homepageUrl": null,
+      "topics": [
+        "dashboard",
+        "ratatui",
+        "revenuecat",
+        "rust",
+        "terminal",
+        "tui"
+      ],
+      "latestVersion": "0.5.0",
+      "latestReleaseDate": "2026-11-06T12:03:20Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/rc-tui/releases/tag/0.5.0",
+      "hasLinuxBinary": false,
+      "linuxBinaryUrl": null,
+      "note": null,
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "cargo install --git https://github.com/guitaripod/rc-tui"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/rc-tui"
+          }
+        ]
+      }
+    },
+    {
       "id": "recview",
       "name": "recview",
       "form": "gui",
@@ -983,7 +1150,7 @@
         "2026-08-09T18:05:38Z"
       ],
       "githubUrl": "https://github.com/guitaripod/recview",
-      "homepageUrl": "https://midgarcorp.cc/recview",
+      "homepageUrl": "https://midgarcorp.cc/recview/",
       "topics": [
         "ffmpeg",
         "gtk4",
@@ -1273,7 +1440,7 @@
       "language": "Swift",
       "description": "Your AI agents, anywhere: a native GTK4 client for Claude Code, Oh My Pi and opencode running on your own machines, over your own tailnet.",
       "stars": 15,
-      "commitCount": 630,
+      "commitCount": 635,
       "releaseCount": 49,
       "releaseDates": [
         "2026-07-29T19:44:13Z",
@@ -1509,8 +1676,8 @@
       "language": "Rust",
       "description": "Takes the rage out of your x.com timeline with a model on your own computer: a terminal client, a CLI and a browser extension.",
       "stars": 15,
-      "commitCount": 371,
-      "releaseCount": 67,
+      "commitCount": 372,
+      "releaseCount": 68,
       "releaseDates": [
         "2026-04-12T09:06:40Z",
         "2026-04-12T09:46:49Z",
@@ -1578,16 +1745,17 @@
         "2026-10-03T12:36:54Z",
         "2026-10-05T18:36:39Z",
         "2026-10-13T16:27:51Z",
-        "2026-10-16T22:12:43Z"
+        "2026-10-16T22:12:43Z",
+        "2026-11-07T09:52:37Z"
       ],
       "githubUrl": "https://github.com/guitaripod/unrager",
-      "homepageUrl": "https://midgarcorp.cc/unrager",
+      "homepageUrl": "https://midgarcorp.cc/unrager/",
       "topics": [],
-      "latestVersion": "0.31.2",
-      "latestReleaseDate": "2026-10-16T22:12:43Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/unrager/releases/tag/0.31.2",
+      "latestVersion": "0.32.0",
+      "latestReleaseDate": "2026-11-07T09:52:37Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/unrager/releases/tag/0.32.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/unrager/releases/download/0.31.2/unrager-0.31.2-cli-x86_64-unknown-linux-gnu.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/unrager/releases/download/0.32.0/unrager-0.32.0-cli-x86_64-unknown-linux-gnu.tar.gz",
       "note": null,
       "install": {
         "primary": {
