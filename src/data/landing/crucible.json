@@ -1,6 +1,6 @@
 {
   "seoTitle": "Crucible for Plex: native Plex for iPhone, iPad and Apple TV",
-  "metaDescription": "A free, open-source Plex client for iPhone, iPad and Apple TV: a Resume-first Home, Skip Intro, offline downloads and playback that keeps your place.",
+  "metaDescription": "A free, open-source Plex client for iPhone, iPad and Apple TV that skips anime filler, recaps and intros, with a Resume-first Home and offline downloads.",
   "accentColor": "#F97316",
   "keywords": [
     "crucible for plex",
@@ -38,12 +38,20 @@
     "plex ipad keyboard shortcuts",
     "plex resume where you left off",
     "plex still watching",
-    "plex custom skip interval"
+    "plex custom skip interval",
+    "plex skip filler",
+    "plex anime filler",
+    "skip anime filler episodes",
+    "plex skip recap",
+    "plex skip preview",
+    "anime filler guide",
+    "plex spoiler free"
   ],
   "heroHeadline": "Plex, done right on iPhone, iPad and Apple TV",
-  "heroSubhead": "A fast, native Plex client for iPhone and iPad and a Liquid Glass living-room app for Apple TV, on one engine: a Resume-first Home, Skip Intro, playback that keeps your place through sleep and breaks, a Year in Review of your viewing and menus that look like the system's own. Free on the App Store, open source, and there is a built-in demo if you have no server to hand.",
+  "heroSubhead": "A fast, native Plex client for iPhone and iPad and a Liquid Glass living-room app for Apple TV, on one engine: a Resume-first Home, Essentials to skip the anime-only episodes of long shows, Skip Intro, Skip Recap and Skip Preview, playback that keeps your place through sleep and breaks, a Year in Review of your viewing and menus that look like the system's own. Free on the App Store, open source, and there is a built-in demo if you have no server to hand.",
   "highlights": [
     "Free on the App Store for iPhone, iPad and Apple TV, with an optional Crucible Pro that covers all three",
+    "Essentials skips the anime-only episodes of long shows (Dragon Ball Super: 110 of 131, or 83 with the films you've seen), and Skip Recap and Skip Preview read your files' own chapters",
     "A Resume-first Home on every device: Continue Watching and Up Next lead, the artwork does the rest",
     "iPad: a library sidebar, several windows, a menu bar and keyboard shortcuts, with layouts that use a large window",
     "Apple TV: a cinematic Home, the system player, native menus and Top Shelf",
@@ -52,6 +60,11 @@
     "Open source under GPL-3.0, with no sign-up, ads or analytics: it talks to plex.tv, your server and, for Crucible Pro, Midgar's purchase ledger"
   ],
   "features": [
+    {
+      "title": "Skip what doesn't matter",
+      "body": "Essentials hides the anime-only episodes of long shows, the ones that adapt no chapter of the manga: Dragon Ball Super goes from 131 episodes to 110, or 83 if you've seen the two films it opens by retelling, and Up Next follows your choice. The show page offers it once and says how much time it saves; any episode comes back with a long press. The guides come from Crucible Guides, an open dataset built from fan wikis (CC BY-SA) and checked every week. When a file's chapters are named, the player also offers Skip Recap, Skip Preview and Skip Ending, and Spoiler Shield hides the titles and stills of episodes you haven't seen.",
+      "glyph": "⏭"
+    },
     {
       "title": "Made for the couch",
       "body": "On Apple TV a full-screen backdrop follows focus, the hero shows the title, details and synopsis, and rails of Continue Watching, Up Next and Recently Added sit under it. Select opens, Play/Pause plays, a long press opens a native context menu. Liquid Glass controls on tvOS 26, the classic look with the same layout on older systems.",
@@ -126,6 +139,10 @@
     {
       "q": "Is Crucible on the App Store?",
       "a": "Yes. Crucible for Plex is a free download on the App Store, one listing for iPhone, iPad and Apple TV. It is also open source under GPL-3.0, so you can build it yourself if you prefer; a build from source is fully unlocked."
+    },
+    {
+      "q": "Which shows does Essentials cover?",
+      "a": "Every show in Crucible Guides, an open dataset at github.com/guitaripod/crucible-guides. It starts with Dragon Ball, Dragon Ball Z and Dragon Ball Super, whose wiki records for every episode the manga chapters it adapts and whether the whole episode is anime-only; an episode is hidden only when both say so. More shows join as their wikis carry both signals, and anyone can add one with a pull request. Skip Recap and Skip Preview work on any show whose files name their chapters."
     },
     {
       "q": "What is free, and what is Crucible Pro?",
