@@ -7,7 +7,7 @@ import {
   relativeTime,
   sumSince,
 } from '../../src/lib/github-activity.mjs';
-import { renderActivityBoard, type ActivitySnapshot } from '../../src/lib/activity-board';
+import { renderActivityBoard, repoLink, type ActivitySnapshot } from '../../src/lib/activity-board';
 import snapshot from '../../src/data/github-activity.json';
 
 const now = new Date('2026-09-11T12:00:00Z');
@@ -115,5 +115,42 @@ describe('activity board renderer', () => {
     const html = renderActivityBoard(idle, now);
     expect(html).toContain('Between');
     expect(html).toContain('act-heatmap');
+  });
+});
+
+describe('repo links', () => {
+  const repo = {
+    name: 'Embr',
+    url: 'https://github.com/guitaripod/embr',
+    homepageUrl: null as string | null,
+  };
+
+  it('prefers the page the GitHub homepage field names on this site', () => {
+    const link = repoLink(
+      { ...repo, name: 'pixie', homepageUrl: 'https://midgarcorp.cc/pixiepocket' },
+      {}
+    );
+    expect(link).toEqual({ href: '/pixiepocket/', external: false });
+  });
+
+  it('falls back to the landing page keyed by lowercase repo name', () => {
+    expect(repoLink(repo, { embr: '/embr/' })).toEqual({ href: '/embr/', external: false });
+  });
+
+  it('keeps GitHub when no page exists or the homepage is elsewhere', () => {
+    const github = { href: repo.url, external: true };
+    expect(repoLink(repo, {})).toEqual(github);
+    expect(repoLink({ ...repo, homepageUrl: 'https://midgarcorp.cc' }, {})).toEqual(github);
+    expect(repoLink({ ...repo, homepageUrl: 'https://example.com/embr/' }, {})).toEqual(github);
+    expect(repoLink({ ...repo, homepageUrl: 'not a url' }, {})).toEqual(github);
+  });
+
+  it('renders internal links without a new tab', () => {
+    const base = snapshot as ActivitySnapshot;
+    const focus = { ...base.repos[0], name: 'Focus', homepageUrl: null };
+    const html = renderActivityBoard({ ...base, repos: [focus, ...base.repos.slice(1)] }, now, {
+      focus: '/focus-page/',
+    });
+    expect(html).toMatch(/<a href="\/focus-page\/" class="phosphor/);
   });
 });
