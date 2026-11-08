@@ -246,17 +246,13 @@
       {
         "title": "Install xtool",
         "body": "xtool builds and installs iOS apps without Xcode's interface. On a Mac, install Xcode 26 or newer from the App Store, open it once, then install xtool.",
-        "code": [
-          "brew install xtool-org/tap/xtool"
-        ],
+        "code": ["brew install xtool-org/tap/xtool"],
         "note": "On Linux or Windows (WSL) you install Swift 6.4, usbmuxd, and Xcode's `.xip` from Apple instead; the step-by-step guide below lists each command."
       },
       {
         "title": "Sign in to Apple",
         "body": "Pick `1: Password` to use any Apple ID, a free one included, then enter the two-factor code. Your credentials go only to Apple. On Linux and Windows it also asks for the path to the `.xip`.",
-        "code": [
-          "xtool setup"
-        ]
+        "code": ["xtool setup"]
       },
       {
         "title": "Build it and put it on your phone",
@@ -273,9 +269,7 @@
       {
         "title": "Apple TV, optional",
         "body": "The Apple TV app is an Xcode project, because xtool doesn't support tvOS. It needs a Mac with Xcode 26 or newer and XcodeGen. Generate the project, open it, choose your signing team and run it on your paired Apple TV; the README and `tv/README.md` cover the details.",
-        "code": [
-          "cd Crucible/tv && xcodegen generate && open CrucibleTV.xcodeproj"
-        ],
+        "code": ["cd Crucible/tv && xcodegen generate && open CrucibleTV.xcodeproj"],
         "note": "The Top Shelf extension needs the App Group capability, so it only shows up when your signing setup provides it. tvOS 17 or later; Liquid Glass needs tvOS 26 on an Apple TV 4K (2nd generation) or later."
       }
     ],
@@ -304,7 +298,7 @@
     },
     "premium": {
       "title": "Crucible Pro",
-      "price": "$17.99 once · $7.99/yr",
+      "price": "$17.99 once · $7.99/yr until Dec 7",
       "items": [
         "Unlimited offline downloads on iPhone",
         "The full Statistics screen: month, year and all-time, with the library filter",
@@ -318,14 +312,14 @@
         "name": "Lifetime",
         "price": "$17.99",
         "amount": 17.99,
-        "note": "once, never renews; launch price, rising to $24.99 on December 7, 2026"
+        "note": "once, never renews; launch price until December 7, 2026, then $39.99"
       },
       {
         "name": "Annual",
         "price": "$7.99",
         "amount": 7.99,
         "period": "P1Y",
-        "note": "per year, auto-renewing"
+        "note": "per year, auto-renewing; $14.99 for new subscribers from December 7, 2026, while existing subscribers keep their price"
       }
     ],
     "footnote": "Prices are US dollars and vary by region. The annual subscription renews automatically until cancelled in your Apple Account settings, at least 24 hours before the end of the period; the lifetime unlock never renews. Both are family-shareable, and either one unlocks Crucible Pro on iPhone, iPad and Apple TV. A build from source is always fully unlocked."
