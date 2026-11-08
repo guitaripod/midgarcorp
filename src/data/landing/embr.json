@@ -107,7 +107,7 @@
     },
     {
       "q": "Does Embr cost anything?",
-      "a": "No. Every feature is free. Tips and a one-time Founding Supporter purchase are optional; Founding Supporter unlocks only looks, and you can try each one on first."
+      "a": "No. Watching, chat and browsing are free. Tips and a one-time Founding Supporter purchase are optional; Founding Supporter unlocks only looks, and you can try each one on first."
     }
   ],
   "screenshotCaptions": {
@@ -134,9 +134,9 @@
     ]
   },
   "ctaLine": "Watch live. Chat native.",
-  "pricingNote": "Every feature is free. Browse and watch as a guest, or sign in with Twitch for Following, chat and moderator tools. No tracking, no subscription.",
+  "pricingNote": "Watching, chat and browsing are free. Browse and watch as a guest, or sign in with Twitch for Following, chat and moderator tools. No tracking.",
   "pricing": {
-    "heading": "Every feature is free. Supporting is optional.",
+    "heading": "Watching is free. Supporting is optional.",
     "free": {
       "title": "Embr",
       "price": "$0",
@@ -180,6 +180,6 @@
         "note": "once"
       }
     ],
-    "footnote": "US prices shown; your local price appears in the App Store. Founding Supporter unlocks only looks; tips unlock nothing. Embr has no subscription."
+    "footnote": "US prices shown; your local price appears in the App Store. Founding Supporter unlocks only looks; tips unlock nothing."
   }
 }
