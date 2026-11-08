@@ -1,17 +1,25 @@
 ---
-import { renderActivityBoard, type ActivitySnapshot } from '../lib/activity-board';
+import { renderActivityBoard, type ActivitySnapshot, type PagePaths } from '../lib/activity-board';
 import snapshotData from '../data/github-activity.json';
+import { landingSlugs } from '@data/landing';
 
 const snapshot = snapshotData as ActivitySnapshot;
-const html = renderActivityBoard(snapshot, new Date());
+const pages: PagePaths = Object.fromEntries(landingSlugs.map((slug) => [slug, `/${slug}/`]));
+const html = renderActivityBoard(snapshot, new Date(), pages);
+const embeddedPages = JSON.stringify(pages);
 const embedded = JSON.stringify(snapshot).replace(/</g, '\\u003c');
 ---
 
 <div id="activity-board" set:html={html} />
 <script type="application/json" id="activity-snapshot" set:html={embedded} />
+<script type="application/json" id="activity-pages" set:html={embeddedPages} />
 
 <script>
-  import { renderActivityBoard, type ActivitySnapshot } from '../lib/activity-board';
+  import {
+    renderActivityBoard,
+    type ActivitySnapshot,
+    type PagePaths,
+  } from '../lib/activity-board';
 
   const REFRESH_MS = 5 * 60 * 1000;
 
@@ -21,8 +29,12 @@ const embedded = JSON.stringify(snapshot).replace(/</g, '\\u003c');
     if (!root || !raw || root.dataset.live) return;
     root.dataset.live = 'true';
 
+    const pages: PagePaths = JSON.parse(
+      document.getElementById('activity-pages')?.textContent ?? '{}'
+    );
+
     const paint = (data: ActivitySnapshot) => {
-      root.innerHTML = renderActivityBoard(data, new Date());
+      root.innerHTML = renderActivityBoard(data, new Date(), pages);
     };
 
     paint(JSON.parse(raw));

@@ -39,6 +39,36 @@ export interface ActivitySnapshot {
   languages: { name: string; color: string | null; commits: number; share: number }[];
 }
 
+export type PagePaths = Record<string, string>;
+
+const SITE_HOSTS = new Set(['midgarcorp.cc', 'www.midgarcorp.cc']);
+
+/// The site path a repo's GitHub homepage field names, when that field points at a page of
+/// this site other than the home page itself, with the trailing slash the canonical URLs use.
+function homepagePath(homepageUrl: string | null): string | null {
+  if (!homepageUrl) return null;
+  try {
+    const url = new URL(homepageUrl);
+    if (!SITE_HOSTS.has(url.hostname) || url.pathname === '/') return null;
+    return url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`;
+  } catch {
+    return null;
+  }
+}
+
+/// Where a repo's title goes: its page on this site (the homepage field, else the landing
+/// page keyed by lowercase repo name in `pages`), and GitHub only when no page exists.
+export function repoLink(
+  repo: Pick<ActivityRepo, 'name' | 'url' | 'homepageUrl'>,
+  pages: PagePaths
+): { href: string; external: boolean } {
+  const path = homepagePath(repo.homepageUrl) ?? pages[repo.name.toLowerCase()];
+  return path ? { href: path, external: false } : { href: repo.url, external: true };
+}
+
+const linkTarget = (link: { external: boolean }): string =>
+  link.external ? ' target="_blank" rel="noopener noreferrer"' : '';
+
 const esc = (value: unknown): string =>
   String(value ?? '').replace(
     /[&<>"']/g,
@@ -184,7 +214,7 @@ function releaseChip(repo: ActivityRepo, now: Date): string {
   return `<a href="${esc(repo.release.url)}" target="_blank" rel="noopener noreferrer" class="${amber} ${hoverGreen} whitespace-nowrap">${esc(repo.release.tag)} · ${ago(repo.release.publishedAt, now)}</a>`;
 }
 
-function renderFocus(data: ActivitySnapshot, now: Date): string {
+function renderFocus(data: ActivitySnapshot, now: Date, pages: PagePaths): string {
   const focus = data.repos[0];
   const windowLabel = data.focusWindow === 7 ? 'this week' : 'this month';
   if (!focus) {
@@ -209,10 +239,11 @@ function renderFocus(data: ActivitySnapshot, now: Date): string {
   }
   chips.push(`<span>pushed ${ago(focus.pushedAt, now)}</span>`);
   if (focus.release) chips.push(releaseChip(focus, now));
+  const link = repoLink(focus, pages);
   return `
     <p class="term-label mb-3">now building · ${windowLabel}</p>
     <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 leading-[1.05] tracking-tight break-words">
-      <a href="${esc(focus.url)}" target="_blank" rel="noopener noreferrer" class="phosphor cursor-blink hover:opacity-90 transition-opacity">${esc(focus.name)}</a>
+      <a href="${esc(link.href)}"${linkTarget(link)} class="phosphor cursor-blink hover:opacity-90 transition-opacity">${esc(focus.name)}</a>
     </h1>
     <p class="text-base sm:text-lg ${muted} leading-relaxed max-w-2xl">${esc(focus.description || 'No description yet.')}</p>
     <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 mt-4 text-xs ${muted}">${chips.join('')}</div>
@@ -243,15 +274,16 @@ function renderCalendarPanel(data: ActivitySnapshot, now: Date): string {
     </div>`;
 }
 
-function renderBench(data: ActivitySnapshot, now: Date): string {
+function renderBench(data: ActivitySnapshot, now: Date, pages: PagePaths): string {
   const rows = data.repos.slice(1);
   if (!rows.length) return '';
   const key = data.focusWindow === 7 ? 'commits7d' : 'commits30d';
   const cells = rows
-    .map(
-      (repo) => `
+    .map((repo) => {
+      const link = repoLink(repo, pages);
+      return `
       <li class="min-w-0">
-        <a href="${esc(repo.url)}" target="_blank" rel="noopener noreferrer" class="group/row block py-2.5 sm:py-3 border-t border-paper-border dark:border-term-border">
+        <a href="${esc(link.href)}"${linkTarget(link)} class="group/row block py-2.5 sm:py-3 border-t border-paper-border dark:border-term-border">
           <div class="flex items-center gap-2.5 min-w-0">
             <span class="w-2 h-2 rounded-full flex-shrink-0" style="background:${esc(repo.language?.color ?? fallbackLanguageColor)}" title="${esc(repo.language?.name ?? '')}"></span>
             <span class="text-sm font-semibold ${text} truncate group-hover/row:text-paper-green dark:group-hover/row:text-term-green transition-colors" title="${esc(repo.name)}">${esc(repo.name)}</span>
@@ -263,8 +295,8 @@ function renderBench(data: ActivitySnapshot, now: Date): string {
             <span class="whitespace-nowrap">pushed ${ago(repo.pushedAt, now)}</span>
           </div>
         </a>
-      </li>`
-    )
+      </li>`;
+    })
     .join('');
   const active = data.totals[data.focusWindow === 7 ? 'activeRepos7d' : 'activeRepos30d'];
   return `
@@ -277,7 +309,11 @@ function renderBench(data: ActivitySnapshot, now: Date): string {
     </div>`;
 }
 
-export function renderActivityBoard(data: ActivitySnapshot, now: Date): string {
+export function renderActivityBoard(
+  data: ActivitySnapshot,
+  now: Date,
+  pages: PagePaths = {}
+): string {
   const lastPush = data.lastPush ? ago(data.lastPush, now) : null;
   return `
     <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-6">
@@ -295,8 +331,8 @@ export function renderActivityBoard(data: ActivitySnapshot, now: Date): string {
       }
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-      <div class="lg:col-span-7 min-w-0">${renderFocus(data, now)}</div>
+      <div class="lg:col-span-7 min-w-0">${renderFocus(data, now, pages)}</div>
       <div class="lg:col-span-5 min-w-0">${renderCalendarPanel(data, now)}</div>
-      <div class="lg:col-span-12 min-w-0">${renderBench(data, now)}</div>
+      <div class="lg:col-span-12 min-w-0">${renderBench(data, now, pages)}</div>
     </div>`;
 }
