@@ -55,11 +55,11 @@ describe('Solar Beam landing copy', () => {
   });
 });
 
-/// D22: no subscription sells with a free trial. Flaccy's seven days and App of the Dead's Premium Week
-/// (D26, D27) are in-app runways, not store offers, and their pages say so; every other landing page,
-/// store description and terms page stays silent about trials.
+/// D22: no subscription sells with a free trial. Flaccy's seven days, App of the Dead's Premium Week
+/// (D26, D27) and Embr Studio's Pro week (D33) are in-app runways, not store offers, and their pages say so;
+/// every other landing page, store description and terms page stays silent about trials.
 const TRIAL = /free[- ]trial|free week|[0-9]+[- ]days? free|free for [0-9]+ days|try it free for/i;
-const RUNWAY_APPS = new Set(['flaccy', 'appofthedead']);
+const RUNWAY_APPS = new Set(['flaccy', 'appofthedead', 'embr']);
 
 const read = (...parts: string[]) => fs.readFileSync(path.join(process.cwd(), ...parts), 'utf8');
 

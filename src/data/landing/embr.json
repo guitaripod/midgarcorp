@@ -1,6 +1,6 @@
 {
   "seoTitle": "Embr — Native Twitch Client for iPhone and iPad",
-  "metaDescription": "A fast, native Twitch client for iPhone and iPad: every 7TV, BetterTTV and FrankerFaceZ emote, a Chats tab, Mentions, user cards and moderator tools. Open source.",
+  "metaDescription": "A fast, native Twitch client for iPhone and iPad with every 7TV, BTTV and FFZ emote, plus Embr Studio for streamers on iPhone, iPad and Apple TV. Open source.",
   "keywords": [
     "native twitch client for iphone",
     "best twitch app ios",
@@ -19,7 +19,7 @@
   "highlights": [
     "Native AVPlayer with picture-in-picture and background audio",
     "Chat with every 7TV, BetterTTV and FrankerFaceZ emote",
-    "A Chats tab, Mentions and user cards",
+    "Embr Studio: your stream's control room on iPhone, iPad and Apple TV",
     "Open source, no tracking, your token stays in the Keychain"
   ],
   "features": [
@@ -27,6 +27,11 @@
       "title": "A real native player",
       "body": "Live streams, VODs, and clips play in AVPlayer, not a web wrapper. Picture-in-picture, background audio, quality selection, fullscreen, playback speed, latency display, and double-tap to seek — all the controls a native app should have.",
       "glyph": "◉"
+    },
+    {
+      "title": "Embr Studio, for streamers",
+      "body": "Keep your own channel on a screen while you're live: chat you can read from across the room, the next ad break counting down with Snooze and Run Ad, and every follow, sub, raid, hype train, poll and prediction as it happens. Moderate from the couch with the Siri Remote, get a recap after every stream, and try it all on a sample stream before you sign in. On iPhone, iPad and Apple TV.",
+      "glyph": "◎"
     },
     {
       "title": "Chat that keeps up",
@@ -86,6 +91,10 @@
       "a": "Chat runs over Twitch EventSub in real time and merges animated emotes from Twitch, 7TV, BetterTTV and FrankerFaceZ into one stream, with an emote keyboard that has a section for each, alongside badges, cheermotes, replies and emote autocomplete."
     },
     {
+      "q": "What is Embr Studio?",
+      "a": "A screen for your own Twitch channel while you're live, on iPhone, iPad and Apple TV: your chat, the next ad break, and every follow, sub, raid and hype train. It reads your channel through Twitch's official API and plays no video. Chat, alerts and moderating your own channel are free; Studio Pro adds ad controls, alert sounds, stream recaps, moderator mode and quick messages for $3.99 a month, $29.99 a year or $79.99 once, and every streamer gets a free week of it from their first live stream in Studio."
+    },
+    {
       "q": "Can I moderate my channel from Embr?",
       "a": "Yes. Turn on Moderator Tools in Settings and, in the channels you moderate, allow or deny AutoMod's held messages, answer unban requests and read the moderation log. A user card adds delete, time out and ban. Anyone can report or block from a message."
     },
@@ -107,7 +116,7 @@
     },
     {
       "q": "Does Embr cost anything?",
-      "a": "No. Watching, chat and browsing are free. Tips and a one-time Founding Supporter purchase are optional; Founding Supporter unlocks only looks, and you can try each one on first."
+      "a": "No. Watching, chat and browsing are free. Streamers can add Studio Pro to Embr Studio by the month, the year or once. Tips and a one-time Founding Supporter purchase are optional; Founding Supporter unlocks only looks, and you can try each one on first."
     }
   ],
   "screenshotCaptions": {
@@ -147,14 +156,33 @@
       ]
     },
     "premium": {
-      "title": "Founding Supporter and tips",
-      "price": "$9.99 once · tips from $1.99",
+      "title": "Studio Pro, Founding Supporter and tips",
+      "price": "Studio Pro from $3.99 a month · Supporter $9.99 once",
       "items": [
+        "Studio Pro: ad controls, alert sounds, stream recaps, moderator mode and quick messages in Embr Studio",
         "Founding Supporter: themes, accent colors, chat fonts, app icons and a badge everyone in Embr sees",
         "Tips unlock nothing; they keep Embr going"
       ]
     },
     "tiers": [
+      {
+        "name": "Studio Pro",
+        "price": "$3.99",
+        "amount": 3.99,
+        "note": "a month"
+      },
+      {
+        "name": "Studio Pro",
+        "price": "$29.99",
+        "amount": 29.99,
+        "note": "a year"
+      },
+      {
+        "name": "Studio Pro",
+        "price": "$79.99",
+        "amount": 79.99,
+        "note": "once"
+      },
       {
         "name": "Founding Supporter",
         "price": "$9.99",
@@ -180,6 +208,6 @@
         "note": "once"
       }
     ],
-    "footnote": "US prices shown; your local price appears in the App Store. Founding Supporter unlocks only looks; tips unlock nothing."
+    "footnote": "US prices shown; your local price appears in the App Store. Studio Pro renews until cancelled, and every streamer gets a free week from their first live stream in Studio. Founding Supporter unlocks only looks; tips unlock nothing."
   }
 }
