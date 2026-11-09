@@ -206,8 +206,8 @@
       "language": "Swift",
       "description": "Runs Claude Code headlessly and serves it as structured HTTP sessions with streaming, subagents, spend and git, as a systemd user service.",
       "stars": 1,
-      "commitCount": 206,
-      "releaseCount": 46,
+      "commitCount": 208,
+      "releaseCount": 47,
       "releaseDates": [
         "2026-07-29T19:43:51Z",
         "2026-08-03T17:45:11Z",
@@ -254,16 +254,17 @@
         "2026-11-04T17:46:08Z",
         "2026-11-06T08:37:26Z",
         "2026-11-06T17:42:42Z",
-        "2026-11-08T12:48:16Z"
+        "2026-11-08T12:48:16Z",
+        "2026-11-09T16:28:51Z"
       ],
       "githubUrl": "https://github.com/guitaripod/claude-bridge",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.21.1",
-      "latestReleaseDate": "2026-11-08T12:48:16Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.21.1",
+      "latestVersion": "1.22.0",
+      "latestReleaseDate": "2026-11-09T16:28:51Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.22.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/claude-bridge/releases/download/1.21.1/claude-bridge-1.21.1-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/claude-bridge/releases/download/1.22.0/claude-bridge-1.22.0-linux-x86_64.tar.gz",
       "note": null,
       "install": {
         "primary": {
