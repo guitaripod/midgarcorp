@@ -139,6 +139,16 @@ describe.skipIf(!built)('built site', () => {
     expect(broken).toEqual([]);
   });
 
+  it('redirects only to canonical pages and files the site serves', () => {
+    const offenders = readFileSync(resolve(process.cwd(), 'public/_redirects'), 'utf8')
+      .split('\n')
+      .map((line) => line.trim().split(/\s+/))
+      .filter(([from, , status]) => from && from !== '/*' && status?.startsWith('3'))
+      .filter(([, to]) => !served(to.replace(/[?#].*$/, '')))
+      .map(([from, to]) => `${from} -> ${to}`);
+    expect(offenders).toEqual([]);
+  });
+
   it('keeps Cloudflare from rewriting mailto links into email-protection links that 404', () => {
     const offenders = pages
       .filter(

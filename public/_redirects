@@ -1,7 +1,12 @@
 /cli-tools /linux/#command-line 301
 /cli-tools/ /linux/#command-line 301
-/appofthedead/privacy /legal/app-of-the-dead/privacy 301
-/appofthedead/privacy/ /legal/app-of-the-dead/privacy 301
-/sforesight /apps 301
-/sforesight/* /apps 301
+/appofthedead/privacy /legal/app-of-the-dead/privacy/ 301
+/appofthedead/privacy/ /legal/app-of-the-dead/privacy/ 301
+/sforesight /apps/ 301
+/sforesight/* /apps/ 301
+/blog /archive/ 301
+/blog/ /archive/ 301
+/blog/swiftdata-uikit-comprehensive-guide /blog/integrating-swiftdata-with-uikit-applications/ 301
+/blog/swiftdata-uikit-comprehensive-guide/ /blog/integrating-swiftdata-with-uikit-applications/ 301
+/sitemap.xml /sitemap-index.xml 301
 /* /index.html 200

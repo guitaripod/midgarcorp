@@ -28,7 +28,7 @@ Astro static site (blog, app landing pages, /apps, /linux, /opensource, /open, /
 
 ## Rules that break things
 - `scripts/fetch-store-assets.py` needs `source ~/.config/midgar/credentials.env` when run locally.
-- `public/_redirects`: the `/cli-tools` rule stays above the `/* /index.html 200` catch-all, and the file ends in a newline.
+- `public/_redirects`: every rule stays above the `/* /index.html 200` catch-all, every target is a page's canonical trailing-slash URL (a slashless target chains a second 308), and the file ends in a newline.
 - Canonical URLs use a trailing slash; internal links must match or every click 308s.
 - `BaseLayout` wraps `<body>` in `<!--email_off-->`: Cloudflare's Email Address Obfuscation otherwise rewrites every `mailto:` link to `/cdn-cgi/l/email-protection`, which Search Console reports as a 404.
 - Free apps with IAP must set `pricing` in their landing copy JSON (the store price chip only knows the download price).
