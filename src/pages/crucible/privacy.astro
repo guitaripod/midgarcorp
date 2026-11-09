@@ -4,12 +4,12 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 const accent = '#F97316';
 const seoTitle = 'Crucible Privacy Policy';
 const metaDescription =
-  'Crucible has no analytics, ads, tracking or sign-up. It talks to plex.tv, your Plex server and, if you opt in, Tailscale; Pro uses an anonymous Midgar ID.';
+  'No analytics, ads, tracking or sign-up: Crucible talks to plex.tv, your Plex server and, if you opt in, Tailscale, Trakt or your Seerr.';
 
 const sections = [
   {
     title: 'What Crucible is',
-    body: 'Crucible is a Plex client for iPhone and Apple TV made by Midgar Oy. It runs on your device and talks to plex.tv, to sign you in and find your servers, and to the Plex Media Server you choose. If you are on a Tailscale network it may also ask the computers on that network which one is your server, and only if you opt in does it talk to api.tailscale.com.',
+    body: 'Crucible is a Plex client for iPhone and Apple TV made by Midgar Oy. It runs on your device and talks to plex.tv, to sign you in and find your servers, and to the Plex Media Server you choose. If you are on a Tailscale network it may also ask the computers on that network which one is your server, and only if you opt in does it talk to api.tailscale.com. From version 2.9 you can also connect Trakt and your own Seerr, described below; neither is contacted until you connect it.',
   },
   {
     title: 'What we collect',
@@ -22,6 +22,14 @@ const sections = [
   {
     title: 'Your Tailscale token (optional)',
     body: 'If a server cannot be found on your Tailscale network by name, you may give Crucible a Tailscale API access token so it can read your device list. The token is stored in the Keychain on your device, sent only to api.tailscale.com, and can be removed at any time in Settings, Server, Tailscale Search.',
+  },
+  {
+    title: 'Trakt (optional)',
+    body: 'From version 2.9 you can connect your Trakt account in Settings, Integrations, Trakt. Nothing is sent to Trakt until you do. Once connected, Crucible sends Trakt (api.trakt.tv, run by Trakt, Inc.) what you play, when and how far you got, the titles you mark watched (and unwatched, if you turn that on), your ratings and your check-ins, each identified by the IMDb, TMDB or TVDB number your Plex server holds for it, and it asks Trakt for the scores it shows on detail pages. Plays from downloads wait on your device until you are online. Your Trakt sign-in is stored in the Keychain on your device, separately for each Plex account and Home profile. Disconnecting tells Trakt to revoke Crucible’s access and deletes what Crucible kept about your Trakt account on the device; your history on Trakt stays there. Midgar receives none of it. Trakt’s privacy policy applies to your Trakt account: https://trakt.tv/privacy.',
+  },
+  {
+    title: 'Seerr (optional)',
+    body: 'From version 2.9 you can connect a Seerr, Overseerr or Jellyseerr you or your server’s owner runs, in Settings, Integrations, Seerr. It runs on your own server, like Plex. To find it, Crucible asks the addresses your Plex server already answers at on your home network or your Tailscale network whether Seerr runs there. When you connect, Crucible signs in to it with your Plex token, or with an API key you type; it then sends Seerr the titles you request and asks it which titles are requested, downloading or available. Its session and any API key are stored in the Keychain on your device. Midgar receives none of it.',
   },
   {
     title: 'Your library and viewing history',
