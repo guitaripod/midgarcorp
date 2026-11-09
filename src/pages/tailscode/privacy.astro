@@ -4,7 +4,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 const accent = '#546BFF';
 const seoTitle = 'Tailscode Privacy Policy';
 const metaDescription =
-  'Your chats, prompts, code and files never reach us. App Store builds keep a random Midgar ID and report purchases; Linux and direct Mac builds collect nothing.';
+  'Your chats, code and files never reach us. App Store builds keep a random Midgar ID and report purchases; Linux and direct Mac builds create no Midgar ID.';
 
 type Section = {
   title: string;
@@ -21,17 +21,17 @@ const collected = [
   {
     type: 'Device ID',
     detail: 'Linked to you · App Functionality',
-    body: 'The App Attest key id: Apple’s per-app, per-device key, which proves a request comes from a genuine copy of Tailscode. It is stored with the Midgar ID when the ID is created or joined. Tailscode reads no advertising identifier and no vendor identifier.',
+    body: 'The App Attest key: Apple’s per-app, per-device key, which proves a request comes from a genuine copy of Tailscode. It is stored with the Midgar ID when the ID is created or joined, together with its public key, Apple’s receipt for it where Apple gives one, and the times it was created and last used. Tailscode reads no advertising identifier and no vendor identifier.',
   },
   {
     type: 'Purchase History',
     detail: 'Linked to you · App Functionality',
-    body: 'The signed App Store transactions for Pro and for the tips, reported to the Midgar ledger at api.midgarcorp.cc together with your Midgar ID. Apple’s own server notifications for Tailscode reach the same ledger. There is no RevenueCat or other purchase SDK in the app.',
+    body: 'The signed App Store transactions for Pro and for the tips, reported to the Midgar ledger at api.midgarcorp.cc together with your Midgar ID. For tips, the ledger also passes these transactions to Midgar’s intelligence service (see Purchases). Apple’s own server notifications for Tailscode reach the same ledger. There is no RevenueCat or other purchase SDK in the app.',
   },
   {
     type: 'Product Interaction',
     detail: 'Not linked to you · Analytics',
-    body: 'Anonymous counts from MidgarKit: the Your Midgar and More Apps screens opened, which app tiles were shown and tapped, and a purchase event with the product id. They are sent to api.midgarcorp.cc with no Midgar ID, no device id and no other identifier, and our server stores only a running total per day, event, app and platform.',
+    body: 'Anonymous counts from MidgarKit: the Your Midgar and More Apps screens opened, which app tiles were shown and tapped, which other app’s page was opened or loaded from the portal, whether the App Store page of another app was shown as an overlay, that the app was active on each day, week and month (once each per install), the ISO week the app was installed in, that the Pro screen was shown and where it was opened from, and a purchase event with the product id. They are sent to api.midgarcorp.cc with no Midgar ID, no device id and nothing else that identifies you, and our server stores only a running total per day, event, app, platform, app version range, install week and the event’s own dimension.',
   },
 ];
 
@@ -51,7 +51,7 @@ const sections: Section[] = [
       'No chats, prompts, code, files, pictures or clips.',
       'No server addresses, passwords or API keys: they stay in the Keychain on your device and are sent only to the servers you configure.',
       'No location, contacts, browsing or search history, health data or financial information.',
-      'No diagnostics: the log stays on your device (see Diagnostics below). The app never starts MetricKit collection and contains no third-party analytics or crash-reporting software.',
+      'No diagnostics from the app: the log and Apple’s MetricKit reports stay on your device. Apple may give us anonymous crash and usage reports, but only if you opt in to sharing with developers (see Diagnostics below). The app contains no third-party analytics or crash-reporting software.',
     ],
   },
   {
@@ -64,28 +64,30 @@ const sections: Section[] = [
     title: 'Which copies collect',
     paragraphs: [
       'The App Store apps, the iPhone and iPad app and the Mac App Store app (and their TestFlight builds), create the Midgar ID, the App Attest key and the purchase reports above, because they sell Pro and the tips. The widget and the notification extensions hold no Midgar ID and send nothing.',
-      'The Linux app and the direct Mac build, which is not on the App Store, collect nothing. They sell nothing, create no Midgar ID and start none of Midgar’s services.',
+      'The Linux app collects nothing for Midgar. The direct Mac build, which is not on the App Store, sells nothing, creates no Midgar ID and sends no usage counts, but its More Apps card downloads the app list once a day (see Your Midgar and More Apps).',
     ],
   },
   {
     title: 'The Midgar ID and App Attest',
     paragraphs: [
       'The first time an App Store copy starts, it asks our server at api.midgarcorp.cc for a Midgar ID: a random identifier, and a random secret that proves the ID is yours. The server keeps the ID, a hash of the secret and the date it was created. The app keeps the ID and the secret in your iCloud Keychain, so the same ID follows you across your own devices and across Midgar’s other apps.',
-      'When the ID is created or joined, the app asks Apple’s App Attest service to confirm that the request comes from a genuine copy of Tailscode. We receive Apple’s attestation and keep its key id with the Midgar ID, and learn nothing else about you or your device. The ID is never sent with your conversations, code or files.',
+      'When the ID is created or joined, the app asks Apple’s App Attest service to confirm that the request comes from a genuine copy of Tailscode. We receive Apple’s attestation and keep the key’s id and public key, Apple’s receipt for the key where Apple gives one, the app’s bundle identifier, the key’s signature counter and the times the key was created and last used. The key also signs later requests, such as refreshing your sign-in. Where App Attest is not available, or fails for any reason other than Apple’s service being unreachable, the ID is created without it; if Apple’s service cannot be reached, the app tries again later. The ID is never sent with your conversations, code or files.',
     ],
   },
   {
     title: 'Purchases',
     paragraphs: [
       'Pro and the tips are bought through Apple In-App Purchase. Apple handles payment and billing, and we never receive your card details or your Apple Account details. When you buy or restore, the app sends the Midgar ledger the signed transaction record Apple has already issued (which product, the price, the dates, whether it was refunded, the order identifiers and your App Store country) together with your Midgar ID. The ledger keeps these records so that Pro is recognised on your iPhone, iPad and Mac, and so that Midgar can keep its financial records for as long as the law requires.',
+      'For a tip, the ledger also passes the transaction’s identifiers, product, dates, environment and your Midgar ID to Midgar’s intelligence service, which keeps the credit wallets of Midgar’s apps. That happens for a tip bought in the last 24 hours when the app reports it, and for each tip purchase and refund that Apple reports. Pro is not passed on.',
       'If our servers cannot be reached, StoreKit alone decides, so a purchase still completes and Pro still unlocks.',
     ],
   },
   {
     title: 'Your Midgar and More Apps',
     paragraphs: [
-      'Settings has a screen that shows what you own in Midgar’s other apps and suggests our other apps. Opening it downloads the app list from a catalogue service we run on Cloudflare, and the artwork and current prices from Apple’s servers; your App Store country is sent so prices are right for your region. The Midgar ID is sent as a sign-in token only with the request that lists which Midgar apps you already use.',
-      'The app also reports which tiles were shown and tapped, as the anonymous counts described above. That report carries no identifier of any kind and not your Midgar ID. Like any web service, Cloudflare may keep standard request logs, such as your IP address, for a limited time. We use them for nothing else.',
+      'Settings has a screen that shows what you own in Midgar’s other apps and suggests our other apps. Opening it downloads the app list from a catalogue service we run on Cloudflare, and the artwork and current prices from Apple’s servers; your device’s region setting is sent so prices are right for that region. The Midgar ID is sent as a sign-in token only with requests to the purchase ledger (reporting purchases and listing what you own) and the identity request that lists which Midgar apps you use.',
+      'The More Apps card in Settings, and the card in the Mac app’s General preferences, also download the app list once a day, when the card is shown. Those requests carry no Midgar ID. As with any web request, the servers see your IP address.',
+      'The App Store apps also report which tiles were shown and tapped, as the anonymous counts described above. That report carries no identifier of you, your device or your Midgar ID; the only identifiers on the request are the app’s own id and a random id made for that one request. On iPhone and iPad, opening another app’s page from the portal also gives Apple a campaign token that names Tailscode and the place you opened it from, and Midgar’s provider token, so that installs from the portal can be credited. Like any web service, Cloudflare may keep standard request logs, such as your IP address, for a limited time. We use them for nothing else.',
       'Midgar may publish aggregate statistics built from anonymous counts, such as weekly active installs, which never identify a person.',
     ],
   },
@@ -99,21 +101,22 @@ const sections: Section[] = [
   {
     title: 'Push notifications and Live Activities',
     paragraphs: [
-      'Live Activity push tokens are registered only with your own claude-bridge server. If that server holds an Apple push key, it sends Lock Screen updates through Apple’s push notification service (APNs), carrying the conversation’s title, its phase and tool counts. Nothing about this passes through Midgar.',
-      'When a turn ends while the app is closed, the notification is raised on your device after a background request answered by your own server over your tailnet, not through Midgar or Apple.',
+      'Live Activity push tokens are sent only to the server that runs the conversation, and only claude-bridge uses them. If that server holds an Apple push key, it sends Lock Screen updates through Apple’s push notification service (APNs). The updates carry the conversation’s title, its phase, a status line that can name the tool now running, the tool count, the start and end times, the card’s state name and, once the turn has settled, the number of background tasks still running. Nothing about this passes through Midgar.',
+      'The app also registers its APNs device token and your notification rules with each of your claude-bridge servers, so they can send alerts. When a turn ends while the app is closed, the alert comes from your own server: as an APNs push if it holds an Apple push key, or from a background request that the app leaves waiting on your server over your tailnet. Midgar is not involved in either.',
     ],
   },
   {
     title: 'Diagnostics',
     paragraphs: [
-      'A diagnostic log file, tailscode.log, stays on your device. It leaves only if you export it, share it or mail the diagnostic summary yourself. Read it first: nothing is sent unless you send it. If you have chosen in iOS to share analytics with app developers, Apple may give us anonymous crash and usage reports, which contain nothing we can link to you.',
+      'A diagnostic log file, tailscode.log, stays on your device. On iPhone and iPad, Apple’s MetricKit gives the app daily performance reports and crash, hang and disk-write reports. The app writes a summary of them into that log and keeps the full diagnostic files in the app’s Logs folder, on your device. Nothing from MetricKit is sent to us or to anyone else by the app. The log leaves only if you export it, share it or mail the diagnostic summary yourself. Read it first: nothing is sent unless you send it. If you have chosen in iOS to share analytics with app developers, Apple may give us anonymous crash and usage reports, which contain nothing we can link to you.',
     ],
   },
   {
     title: 'How long we keep data',
     items: [
       'Your conversations, code and files: not kept by us at all. They live on your machines and in your device’s own storage.',
-      'The Midgar ID record, its App Attest key id and your purchase records at Midgar: until you ask us to delete them.',
+      'The Midgar ID record and its App Attest key details at Midgar: until you ask us to delete them. A Midgar ID that never had an App Attest key is deleted automatically after 30 days, unless it has an active session or is linked to an Apple account. Any credit wallet it holds is not erased by that and stays unreachable on Midgar’s servers.',
+      'Purchase records at Midgar: kept on record for Midgar’s accounting, with the Midgar ID they were made with, as described under Deleting your data.',
       'Purchase records at Apple: kept under Apple’s policies.',
       'The anonymous More Apps and purchase counts: kept as running totals, as long as they are useful for measuring our own promotion. They are not linked to you, so they cannot be deleted per person.',
     ],
@@ -121,13 +124,13 @@ const sections: Section[] = [
   {
     title: 'Deleting your data',
     paragraphs: [
-      'Delete the app to remove everything stored on that device. The Midgar ID itself is kept in your iCloud Keychain, so it can outlive the app. To have your Midgar ID and the purchase records tied to it erased from our server, email marcus@midgarcorp.cc, tell us the app and the approximate date of your first purchase, and we will help you do it. We delete the server records, but we cannot change Apple’s own records, and we cannot refund a purchase: do that through Apple.',
+      'Delete the app to remove the files it keeps on that device. iOS keeps Keychain items when the app is deleted, so the sign-in session (a refresh token and the App Attest key id) and any server passwords or API keys you entered stay in the device’s Keychain. The Midgar ID itself is kept in your iCloud Keychain, so it can outlive the app. To have your Midgar ID erased from our server, email marcus@midgarcorp.cc, tell us the app and the approximate date of your first purchase, and we will help you do it. We then delete the Midgar ID record with its App Attest key details and sessions, erase the credit wallet the ID holds, and remove the ledger’s claims that tie the ID to its purchases. Purchase records that Midgar keeps for accounting stay on record with the Midgar ID they were made with, but that ID is retired and is no longer tied to any account, so nothing links them to an active account. We cannot change Apple’s own records, and we cannot refund a purchase: do that through Apple.',
     ],
   },
   {
     title: 'Your rights',
     paragraphs: [
-      'Where privacy law, such as the GDPR, gives you rights to access, correct, erase, restrict or move information about you, or to object to its use, contact us and we will help. We process the Midgar ID, the App Attest key id and the purchase records to provide, account for and support the purchases you make and to recognise Pro on your devices, and the anonymous counts in our legitimate interest in measuring our own promotion. Processing takes place in the European Union and the United States, by Cloudflare as our hosting provider. You may complain to your local data protection authority; in Finland that is the Office of the Data Protection Ombudsman (tietosuoja.fi).',
+      'Where privacy law, such as the GDPR, gives you rights to access, correct, erase, restrict or move information about you, or to object to its use, contact us and we will help. We process the Midgar ID, the App Attest key details and the purchase records to provide, account for and support the purchases you make and to recognise Pro on your devices, and the anonymous counts in our legitimate interest in measuring our own promotion. Processing takes place in the European Union and the United States, by Cloudflare as our hosting provider. You may complain to your local data protection authority; in Finland that is the Office of the Data Protection Ombudsman (tietosuoja.fi).',
     ],
   },
   {
@@ -162,13 +165,13 @@ const sections: Section[] = [
       >
         Tailscode Privacy Policy
       </h1>
-      <p class="text-xs text-paper-faint dark:text-term-faint">Last updated: 25 October 2026</p>
+      <p class="text-xs text-paper-faint dark:text-term-faint">Last updated: 9 November 2026</p>
       <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
         The short version: <span class="font-semibold text-paper-text dark:text-term-text"
           >your chats, prompts, code and files never reach us.</span
         > They travel between your device and machines you own. The App Store apps keep one random Midgar
         ID, report your purchases and send anonymous More Apps counts. Nothing is used for tracking,
-        and the Linux app and the direct Mac build collect nothing.
+        and the Linux app and the direct Mac build create no Midgar ID and send no usage counts.
       </p>
     </header>
 
