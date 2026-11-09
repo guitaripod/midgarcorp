@@ -1,0 +1,448 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const accent = '#F97316';
+const seoTitle = 'Set up Seerr for Crucible';
+const metaDescription =
+  'Install Seerr next to your Plex server, finish its setup, connect Radarr and Sonarr, and request from Crucible at home and anywhere over Tailscale.';
+
+const image = 'ghcr.io/seerr-team/seerr:latest';
+const dockerRun = (volume: string, sudo: boolean) =>
+  `${sudo ? 'sudo ' : ''}docker run -d --name seerr --init --restart unless-stopped -p 5055:5055 -e TZ=Etc/UTC -v ${volume}:/app/config ${image}`;
+const tzNote =
+  'Change TZ=Etc/UTC to the time zone of the Plex computer, such as Europe/Helsinki or America/New_York, before you run it.';
+
+type Line = { text?: string; command?: string; link?: { label: string; href: string } };
+type Host = { id: string; label: string; open?: boolean; lines: Line[] };
+
+const installHosts: Host[] = [
+  {
+    id: 'docker',
+    label: 'Linux with Docker',
+    open: true,
+    lines: [
+      {
+        text: 'On the computer that runs Plex, open a terminal and run these two commands. The first makes the folder Seerr keeps its settings in; the second starts Seerr and keeps it running after restarts.',
+      },
+      { command: 'mkdir -p ~/seerr/config && sudo chown -R 1000:1000 ~/seerr/config' },
+      { command: dockerRun('~/seerr/config', true) },
+      { text: tzNote },
+      {
+        text: 'No Docker on that computer yet? Install Docker Engine first.',
+        link: { label: 'Install Docker Engine', href: 'https://docs.docker.com/engine/install/' },
+      },
+    ],
+  },
+  {
+    id: 'unraid',
+    label: 'Unraid',
+    lines: [
+      {
+        text: 'Open Apps, search for Seerr and install it. In its template, switch from Basic View to Advanced View at the top right and check that Extra Parameters includes --init. Keep port 5055.',
+      },
+    ],
+  },
+  {
+    id: 'synology',
+    label: 'Synology',
+    lines: [
+      {
+        text: 'Seerr comes from SynoCommunity and needs DSM 7.2 or later. In Package Center open Settings, then Package Sources, and add SynoCommunity with this address. Then search Package Center for Seerr and install it.',
+      },
+      { command: 'https://packages.synocommunity.com' },
+    ],
+  },
+  {
+    id: 'truenas',
+    label: 'TrueNAS',
+    lines: [
+      {
+        text: 'Open Apps, choose Discover Apps, search for Seerr and install it. Keep its web port at 5055, which is where Crucible looks.',
+      },
+    ],
+  },
+  {
+    id: 'windows',
+    label: 'Windows',
+    lines: [
+      {
+        text: 'Install Docker Desktop, which also sets up WSL 2, and start it. Then run these two commands in PowerShell.',
+        link: {
+          label: 'Get Docker Desktop',
+          href: 'https://www.docker.com/products/docker-desktop/',
+        },
+      },
+      { command: 'docker volume create seerr-data' },
+      { command: dockerRun('seerr-data', false) },
+      { text: tzNote },
+    ],
+  },
+  {
+    id: 'mac',
+    label: 'Mac',
+    lines: [
+      {
+        text: 'Install Docker Desktop and start it. Then run these two commands in Terminal.',
+        link: {
+          label: 'Get Docker Desktop',
+          href: 'https://www.docker.com/products/docker-desktop/',
+        },
+      },
+      { command: 'docker volume create seerr-data' },
+      { command: dockerRun('seerr-data', false) },
+      { text: tzNote },
+    ],
+  },
+];
+
+const tailscaleHosts: Host[] = [
+  {
+    id: 'ts-linux',
+    label: 'Linux',
+    open: true,
+    lines: [
+      { command: 'curl -fsSL https://tailscale.com/install.sh | sh' },
+      { command: 'sudo tailscale up' },
+      { text: 'Open the link it prints and sign in.' },
+    ],
+  },
+  {
+    id: 'ts-unraid',
+    label: 'Unraid',
+    lines: [
+      {
+        text: 'Open Apps, install Tailscale (Plugin), then sign in under Settings, Network Services, Tailscale.',
+      },
+    ],
+  },
+  {
+    id: 'ts-synology',
+    label: 'Synology',
+    lines: [
+      {
+        text: 'Install Tailscale’s own package, not the older one in Package Center. Then in Control Panel, Task Scheduler, create a Triggered Task that runs as root at boot-up with this command, so Tailscale keeps working after a restart.',
+        link: {
+          label: 'Tailscale on Synology',
+          href: 'https://tailscale.com/docs/integrations/synology',
+        },
+      },
+      {
+        command:
+          '/var/packages/Tailscale/target/bin/tailscale configure-host; synosystemctl restart pkgctl-Tailscale.service',
+      },
+    ],
+  },
+  {
+    id: 'ts-truenas',
+    label: 'TrueNAS',
+    lines: [
+      {
+        text: 'In Tailscale’s admin console, under Settings, Keys, generate an auth key. Then in TrueNAS open Apps, choose Discover Apps, install Tailscale, enter the auth key and a hostname, and tick Userspace.',
+        link: {
+          label: 'Tailscale on TrueNAS',
+          href: 'https://tailscale.com/docs/integrations/truenas',
+        },
+      },
+    ],
+  },
+  {
+    id: 'ts-desktop',
+    label: 'Windows or Mac',
+    lines: [
+      {
+        text: 'Install Tailscale and sign in.',
+        link: { label: 'Get Tailscale', href: 'https://tailscale.com/download' },
+      },
+    ],
+  },
+];
+
+const wizard = [
+  'Choose Server Type: choose Configure Plex.',
+  'Sign In with the Plex account that owns your server.',
+  'Configure Media Server: press the button beside Server to load your servers, choose yours, press Sync Libraries, turn on the libraries to request into, then Continue.',
+  'Configure Services: add Radarr and Sonarr now or later, then Finish Setup.',
+];
+
+const trouble = [
+  'Seerr doesn’t show up in Crucible: on the Plex computer, open http://localhost:5055. If nothing opens, Seerr isn’t running; with Docker, sudo docker ps and sudo docker logs seerr say why. If it opens there but not on your phone, check the phone is on the home network, and on Windows set that network to Private and allow Docker Desktop through the firewall.',
+  'Docker says the name seerr is already in use: an earlier try is still there. Remove it with sudo docker rm -f seerr and run the command again.',
+  'Seerr runs on another computer or port: in Crucible choose Enter Address and type it, such as 192.168.1.50:5055 or requests.example.com.',
+  'Connecting fails after you turned on Enable CSRF Protection: that setting makes Seerr refuse plain HTTP, which is how Crucible talks to it at home, so its own pages stop opening too. Stop Seerr, set csrfProtection to false in settings.json in its config folder, and start it again.',
+  'Seerr is set up for Jellyfin or Emby: Crucible needs a Seerr set up for Plex.',
+];
+---
+
+<BaseLayout title={seoTitle} description={metaDescription}>
+  <div style={`--accent:${accent}`}>
+    <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/crucible/" class="hover:text-paper-green dark:hover:text-term-green">crucible</a
+          >
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">seerr</li>
+      </ol>
+    </nav>
+
+    <header class="py-10 sm:py-14">
+      <p class="prompt-line mb-5">cat crucible/SEERR.md</p>
+      <h1
+        class="mb-3 text-3xl font-bold tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+      >
+        Set up Seerr for Crucible
+      </h1>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
+        Seerr lets everyone you share Plex with ask for movies and shows the server doesn’t have,
+        right from Crucible on iPhone, iPad and Apple TV. It runs on the computer that runs Plex.
+        These steps take about ten minutes; keep Crucible open at <span
+          class="font-semibold text-paper-text dark:text-term-text"
+          >Settings, Integrations, Seerr, Set Up Seerr</span
+        > and it ticks each one off as you go.
+      </p>
+    </header>
+
+    <section class="border-t border-paper-border pb-12 pt-10 dark:border-term-border">
+      <div class="grid max-w-3xl gap-5">
+        <div class="term-frame p-5 sm:p-6">
+          <h2 class="accent-text mb-3 text-xs font-bold uppercase tracking-[0.16em]">
+            1. Install Seerr
+          </h2>
+          <p class="mb-4 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            Pick the system your Plex server runs on.
+          </p>
+          <div class="grid gap-2">
+            {
+              installHosts.map((host) => (
+                <details class="host" open={host.open}>
+                  <summary class="cursor-pointer text-sm font-semibold text-paper-text dark:text-term-text">
+                    {host.label}
+                  </summary>
+                  <div class="mt-3 grid gap-3">
+                    {host.lines.map((line) => (
+                      <Fragment>
+                        {line.text && (
+                          <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                            {line.text}
+                          </p>
+                        )}
+                        {line.link && (
+                          <p class="text-sm">
+                            <a class="accent-link" href={line.link.href} rel="noopener">
+                              {line.link.label} →
+                            </a>
+                          </p>
+                        )}
+                        {line.command && (
+                          <div
+                            class="command flex items-start gap-3 rounded-sm border border-term-border bg-term-bg px-3.5 py-3 text-[12.5px] text-term-text"
+                            data-copy={line.command}
+                          >
+                            <code class="min-w-0 flex-1 break-all">{line.command}</code>
+                            <button
+                              type="button"
+                              class="copy flex-shrink-0 text-xs text-term-faint transition-colors hover:text-term-green"
+                              hidden
+                            >
+                              copy
+                            </button>
+                          </div>
+                        )}
+                      </Fragment>
+                    ))}
+                  </div>
+                </details>
+              ))
+            }
+          </div>
+          <p class="mt-4 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            Already run Overseerr or Jellyseerr for Plex? Crucible works with it as it is, so skip
+            to step 3. To move to Seerr, their successor, back up its config folder first and follow
+            <a class="accent-link" href="https://docs.seerr.dev/migration-guide/" rel="noopener"
+              >Seerr’s migration guide</a
+            >.
+          </p>
+        </div>
+
+        <div class="term-frame p-5 sm:p-6">
+          <h2 class="accent-text mb-3 text-xs font-bold uppercase tracking-[0.16em]">
+            2. Finish Seerr’s setup
+          </h2>
+          <p class="mb-3 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            On any device at home, open Seerr in a browser at the address of the Plex computer and
+            port 5055, such as <code>http://192.168.1.20:5055</code>. Crucible shows the exact
+            address on its Set Up Seerr screen. Seerr’s setup then asks you to:
+          </p>
+          <ol
+            class="list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-paper-muted dark:text-term-muted"
+          >
+            {wizard.map((step) => <li>{step}</li>)}
+          </ol>
+        </div>
+
+        <div class="term-frame p-5 sm:p-6">
+          <h2 class="accent-text mb-3 text-xs font-bold uppercase tracking-[0.16em]">
+            3. Download with Radarr and Sonarr (optional)
+          </h2>
+          <p class="mb-3 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            Seerr keeps track of requests; Radarr (movies) and Sonarr (shows) find and download
+            them. Without them requests still wait in Seerr for you to add the titles yourself.
+          </p>
+          <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            In Seerr open Settings, then Services, and choose Add Radarr Server and Add Sonarr
+            Server. For each, enter the computer it runs on by its network address, such as
+            192.168.1.20, never localhost (Seerr runs in its own container), its port (7878 for
+            Radarr, 8989 for Sonarr unless you changed them) and its API key, which Radarr and
+            Sonarr show under Settings, General, Security. Turn on Default Server for each, or
+            requests have nowhere to go.
+          </p>
+        </div>
+
+        <div class="term-frame p-5 sm:p-6">
+          <h2 class="accent-text mb-3 text-xs font-bold uppercase tracking-[0.16em]">
+            4. Let your Plex users in
+          </h2>
+          <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            In Seerr open Settings, then Users. Keep Enable Plex Sign-In and Enable New Plex Sign-In
+            on, so everyone you share Plex with can sign in from Crucible with their own account.
+            Under Default Permissions, Request lets them ask for titles, and Auto-Approve sends
+            their requests on without waiting for you.
+          </p>
+        </div>
+
+        <div class="term-frame p-5 sm:p-6">
+          <h2 class="accent-text mb-3 text-xs font-bold uppercase tracking-[0.16em]">
+            5. Request away from home
+          </h2>
+          <p class="mb-4 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            At home Crucible reaches Seerr over your home network. Everywhere else it uses
+            Tailscale, a private network between your own devices that’s free for personal use:
+            nothing opens on your router and Seerr stays off the internet. Install it on the Plex
+            computer:
+          </p>
+          <div class="grid gap-2">
+            {
+              tailscaleHosts.map((host) => (
+                <details class="host" open={host.open}>
+                  <summary class="cursor-pointer text-sm font-semibold text-paper-text dark:text-term-text">
+                    {host.label}
+                  </summary>
+                  <div class="mt-3 grid gap-3">
+                    {host.lines.map((line) => (
+                      <Fragment>
+                        {line.text && (
+                          <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                            {line.text}
+                          </p>
+                        )}
+                        {line.link && (
+                          <p class="text-sm">
+                            <a class="accent-link" href={line.link.href} rel="noopener">
+                              {line.link.label} →
+                            </a>
+                          </p>
+                        )}
+                        {line.command && (
+                          <div
+                            class="command flex items-start gap-3 rounded-sm border border-term-border bg-term-bg px-3.5 py-3 text-[12.5px] text-term-text"
+                            data-copy={line.command}
+                          >
+                            <code class="min-w-0 flex-1 break-all">{line.command}</code>
+                            <button
+                              type="button"
+                              class="copy flex-shrink-0 text-xs text-term-faint transition-colors hover:text-term-green"
+                              hidden
+                            >
+                              copy
+                            </button>
+                          </div>
+                        )}
+                      </Fragment>
+                    ))}
+                  </div>
+                </details>
+              ))
+            }
+          </div>
+          <p class="mt-4 text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            Then install Tailscale from the App Store on your iPhone, iPad or Apple TV and sign in
+            with the same account. Crucible finds your Plex computer on Tailscale by itself and uses
+            it for Seerr whenever you’re away from home, and the home network whenever you’re back.
+          </p>
+        </div>
+
+        <div class="term-frame p-5 sm:p-6">
+          <h2 class="accent-text mb-3 text-xs font-bold uppercase tracking-[0.16em]">
+            6. Connect in Crucible
+          </h2>
+          <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+            In Crucible open Settings, Integrations, Seerr. It finds Seerr next to your Plex server
+            and signs in with the Plex account already in the app: choose Connect with Plex.
+            Everyone else in your Plex Home or with access to your server does the same on their own
+            devices.
+          </p>
+        </div>
+
+        <div class="term-frame p-5 sm:p-6">
+          <h2 class="accent-text mb-3 text-xs font-bold uppercase tracking-[0.16em]">
+            If something’s not working
+          </h2>
+          <ul
+            class="list-disc space-y-2 pl-5 text-sm leading-relaxed text-paper-muted dark:text-term-muted"
+          >
+            {trouble.map((item) => <li>{item}</li>)}
+          </ul>
+          <p class="mt-4 text-sm">
+            <a class="accent-link" href="https://docs.seerr.dev/getting-started/" rel="noopener"
+              >Seerr’s own documentation →</a
+            >
+          </p>
+        </div>
+      </div>
+      <p class="mt-8 text-xs text-paper-faint dark:text-term-faint">
+        <a href="/crucible/" class="hover:text-paper-green dark:hover:text-term-green"
+          >← back to Crucible</a
+        >
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  for (const block of document.querySelectorAll<HTMLElement>('.command')) {
+    const button = block.querySelector<HTMLButtonElement>('.copy');
+    const text = block.dataset.copy;
+    if (!button || !text || !navigator.clipboard) continue;
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(text);
+      button.textContent = 'copied';
+      setTimeout(() => (button.textContent = 'copy'), 1600);
+    });
+  }
+</script>
+
+<style>
+  .accent-text {
+    color: color-mix(in srgb, var(--accent), #000 42%);
+  }
+  :global(.dark) .accent-text {
+    color: color-mix(in srgb, var(--accent), #fff 24%);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .accent-link {
+    color: color-mix(in srgb, var(--accent), #000 30%);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  :global(.dark) .accent-link {
+    color: color-mix(in srgb, var(--accent), #fff 20%);
+  }
+  .host {
+    border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    padding-left: 0.875rem;
+  }
+</style>
