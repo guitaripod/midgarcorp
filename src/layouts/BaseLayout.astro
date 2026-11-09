@@ -59,6 +59,7 @@ const kind = searchKind(Astro.url.pathname, landingSlugs);
     class="min-h-screen text-paper-text dark:text-term-text font-mono antialiased"
     data-shell={width}
   >
+    <!--email_off-->
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:border focus:border-paper-green focus:bg-paper-bg focus:px-3 focus:py-2 focus:text-sm focus:text-paper-green dark:focus:border-term-green dark:focus:bg-term-bg dark:focus:text-term-green"
@@ -82,5 +83,6 @@ const kind = searchKind(Astro.url.pathname, landingSlugs);
     </main>
     <Footer />
     <div class="crt-overlay" aria-hidden="true"></div>
+    <!--/email_off-->
   </body>
 </html>

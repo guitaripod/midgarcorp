@@ -139,6 +139,16 @@ describe.skipIf(!built)('built site', () => {
     expect(broken).toEqual([]);
   });
 
+  it('keeps Cloudflare from rewriting mailto links into email-protection links that 404', () => {
+    const offenders = pages
+      .filter(
+        ({ html }) =>
+          !/<body[^>]*>\s*<!--email_off-->[\s\S]*<!--\/email_off-->\s*<\/body>/.test(html)
+      )
+      .map(({ route }) => route);
+    expect(offenders).toEqual([]);
+  });
+
   it('shows the Smart App Banner only on pages of apps live on the App Store', () => {
     const banners = pages
       .filter(({ html }) => html.includes('name="apple-itunes-app"'))

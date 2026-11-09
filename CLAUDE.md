@@ -30,6 +30,7 @@ Astro static site (blog, app landing pages, /apps, /linux, /opensource, /open, /
 - `scripts/fetch-store-assets.py` needs `source ~/.config/midgar/credentials.env` when run locally.
 - `public/_redirects`: the `/cli-tools` rule stays above the `/* /index.html 200` catch-all, and the file ends in a newline.
 - Canonical URLs use a trailing slash; internal links must match or every click 308s.
+- `BaseLayout` wraps `<body>` in `<!--email_off-->`: Cloudflare's Email Address Obfuscation otherwise rewrites every `mailto:` link to `/cdn-cgi/l/email-protection`, which Search Console reports as a 404.
 - Free apps with IAP must set `pricing` in their landing copy JSON (the store price chip only knows the download price).
 - Never label Solar Beam's `webb-live` sunshield temperatures as live (frozen commissioning readings).
 - `DuoCombo` copy says only what the picture shows (both displays), never "optimised for iPhone Duo". After regenerating combos with `compose_combo.py`, bump `DUO_REV` in `duo.ts`.
