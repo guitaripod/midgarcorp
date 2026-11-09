@@ -73,7 +73,7 @@
     },
     {
       "title": "A native transcript, not a terminal",
-      "body": "Megatron folds a turn's thinking, tool runs and notes into one head you open for numbered steps, search, the agent's own account and a replay, or share as a poster. Diffs, commands and their real output sit inline, and code copies byte-exact.",
+      "body": "Megatron folds a turn's thinking and tool runs into one head you open for numbered steps, search, the agent's own account and a replay, or share as a poster, while an answer it gives on the way to a bigger job stays in the chat. Diffs, commands and their real output sit inline, and code copies byte-exact.",
       "glyph": "▣"
     },
     {
@@ -83,7 +83,7 @@
     },
     {
       "title": "Not only code",
-      "body": "Your machines know things. Ask what is eating the GPU, research a question, tidy a folder, check a price: any agent, any model, from anywhere.",
+      "body": "Your machines know things. Ask what is eating the GPU, research a question, tidy a folder, check a price: any agent, any model, from anywhere. Or say it: the microphone beside Send writes your words at the cursor as you talk, with names from the chat spelled the way you'd type them.",
       "glyph": "◑"
     },
     {
