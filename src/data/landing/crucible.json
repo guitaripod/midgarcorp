@@ -228,37 +228,37 @@
   ],
   "screenshotCaptions": {
     "iphone": [
-      "Home — a Resume hero, Continue Watching, Up Next and your week at a glance",
+      "Home — a Resume hero, Continue Watching and Up Next",
       "Library — filter chips, a Continue banner and a Recently Watched rail with See All",
-      "Detail — immersive backdrop, one-tap Resume, audio and subtitle menus",
-      "Shows — season picker, episode rows, swipe actions and per-episode download rings",
-      "Search — grouped results with a Top Result, recents and genre browse",
+      "Detail — immersive backdrop, one-tap Play, Trakt and IMDb scores beside Plex's own, audio and subtitle menus",
+      "Shows — a season picker and episode rows with watched state, downloads and highlights",
+      "Search — a Top Result and grouped results, plus what your server lacks, ready to request through Seerr",
       "Downloads — storage at a glance, the queue, and everything ready to watch offline",
-      "Statistics — your year in watch time, streaks and an activity heatmap, filterable by library",
+      "Statistics — your year in watch time, streaks and an activity heatmap, from Plex alone or everything Trakt knows",
       "Share Your Year — preview a Story or Square poster before it goes out",
-      "You — profile and server status, Year in Review, Watch History and settings, in Light",
+      "You — profile and server status, your year so far, Watch History, Watchlist, Requests and settings, in Light",
       "Libraries — choose what appears on Home and counts toward your stats",
       "Player — Skip Intro with a live progress sweep, in landscape"
     ],
     "ipad": [
       "Home: a library sidebar and a Resume hero that grows with the window",
       "Library: poster grids that add columns as the window grows",
-      "Detail: a 16:9 backdrop, one-tap Play, audio and subtitle menus",
+      "Detail: a 16:9 backdrop, one-tap Play, Trakt, IMDb and critics' scores, audio and subtitle menus",
       "Shows: seasons and episodes with watched state and downloads on every row",
       "Player: the system player, with Space, S and N for play, skip and the next episode",
-      "Search: results grouped by type with a Top Result, one Command-F away",
-      "Statistics: your year in watch time, streaks and an activity heatmap",
+      "Search: what your server has, and what it lacks, ready to request through Seerr",
+      "Statistics: your year in watch time, streaks and an activity heatmap, from Plex alone or everything Trakt knows",
       "Watch History: every play, day by day, with posters"
     ],
     "tv": [
       "Home — a cinematic hero that follows focus, with Continue Watching and Up Next under it",
-      "Detail — backdrop, one-press Play, audio and subtitle menus and Cast & Crew",
+      "Detail — backdrop, one-press Play and Check In, with IMDb, Rotten Tomatoes, Trakt and Metacritic scores",
       "Context menu — long-press any card for Resume, Play from Beginning, View Details and Mark Watched",
       "Library — filter chips, a genre menu and a poster grid, with a tab for every library",
       "Player — scrub with a thumbnail preview on the system player",
       "Player — audio and subtitle menus in native glass",
       "Up Next — the next episode counts down as the credits roll",
-      "Statistics — your year in watch time, filterable by library"
+      "Statistics — your year in watch time, from Plex alone or everything Trakt knows, filterable by library"
     ]
   },
   "ctaLine": "Get it on the App Store.",
