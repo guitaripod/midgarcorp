@@ -1,6 +1,6 @@
 {
   "seoTitle": "Embr — Native Twitch Client for iPhone and iPad",
-  "metaDescription": "A fast, native Twitch client for iPhone and iPad with every 7TV, BTTV and FFZ emote, plus Embr Studio for streamers on iPhone, iPad and Apple TV. Open source.",
+  "metaDescription": "A fast, native Twitch client for iPhone and iPad with every 7TV, BTTV and FFZ emote, plus Embr Studio for streamers. Open source.",
   "keywords": [
     "native twitch client for iphone",
     "best twitch app ios",
@@ -19,7 +19,7 @@
   "highlights": [
     "Native AVPlayer with picture-in-picture and background audio",
     "Chat with every 7TV, BetterTTV and FrankerFaceZ emote",
-    "Embr Studio: your stream's control room on iPhone, iPad and Apple TV",
+    "Embr Studio: your stream's control room on iPhone and iPad",
     "Open source, no tracking, your token stays in the Keychain"
   ],
   "features": [
@@ -30,7 +30,7 @@
     },
     {
       "title": "Embr Studio, for streamers",
-      "body": "Keep your own channel on a screen while you're live: chat you can read from across the room, the next ad break counting down with Snooze and Run Ad, and every follow, sub, raid, hype train, poll and prediction as it happens. Moderate from the couch with the Siri Remote, get a recap after every stream, and try it all on a sample stream before you sign in. On iPhone, iPad and Apple TV.",
+      "body": "Keep your own channel on a screen while you're live: chat you can read from across the room, the next ad break counting down with Snooze and Run Ad, and every follow, sub, raid, hype train, poll and prediction as it happens. Moderate from the couch with the Siri Remote, get a recap after every stream, and try it all on a sample stream before you sign in. On iPhone and iPad.",
       "glyph": "◎"
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       "q": "What is Embr Studio?",
-      "a": "A screen for your own Twitch channel while you're live, on iPhone, iPad and Apple TV: your chat, the next ad break, and every follow, sub, raid and hype train. It reads your channel through Twitch's official API and plays no video. Chat, alerts and moderating your own channel are free; Studio Pro adds ad controls, alert sounds, stream recaps, moderator mode and quick messages for $3.99 a month, $29.99 a year or $79.99 once, and every streamer gets a free week of it from their first live stream in Studio."
+      "a": "A screen for your own Twitch channel while you're live, on iPhone and iPad: your chat, the next ad break, and every follow, sub, raid and hype train. It reads your channel through Twitch's official API and plays no video. Chat, alerts and moderating your own channel are free; Studio Pro adds ad controls, alert sounds, stream recaps, moderator mode and quick messages for $3.99 a month, $29.99 a year or $79.99 once, and every streamer gets a free week of it from their first live stream in Studio."
     },
     {
       "q": "Can I moderate my channel from Embr?",
