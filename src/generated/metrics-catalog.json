@@ -61,6 +61,34 @@
       "sql": "SELECT date(day, 'start of month') AS period, app, '' AS dim, SUM(count) AS value FROM daily WHERE event = 'app.active' AND dim = 'month' AND day BETWEEN :since AND :until GROUP BY period, app"
     },
     {
+      "id": "wau_by_version",
+      "title": "Weekly active installs by version",
+      "purpose": "Which versions of an app the week's active installs ran, as major.minor, so a release's reach shows.",
+      "unit": "installs",
+      "source": "signals",
+      "grain": "week",
+      "rollup": "mean",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "Counts installs, not people. An install counts once a week, under the version it ran when it first opened the app that week; a version the app did not report is unknown.",
+      "kind": "sql",
+      "sql": "SELECT date(day, '-6 days', 'weekday 1') AS period, app,\n  CASE WHEN version_bucket = '' THEN 'unknown' ELSE version_bucket END AS dim,\n  SUM(count) AS value FROM daily\nWHERE event = 'app.active' AND dim = 'week' AND day BETWEEN :since AND :until GROUP BY period, app, 3"
+    },
+    {
+      "id": "wau_by_platform",
+      "title": "Weekly active installs by platform",
+      "purpose": "Which platforms an app's active installs of the week ran on, so the iPhone, iPad and Mac share of a universal app shows.",
+      "unit": "installs",
+      "source": "signals",
+      "grain": "week",
+      "rollup": "mean",
+      "suppress": true,
+      "owner": "marcus",
+      "caveat": "Counts installs, not people. An install counts once a week, under the platform it reported when it first opened the app that week.",
+      "kind": "sql",
+      "sql": "SELECT date(day, '-6 days', 'weekday 1') AS period, app, platform AS dim, SUM(count) AS value FROM daily WHERE event = 'app.active' AND dim = 'week' AND day BETWEEN :since AND :until GROUP BY period, app, platform"
+    },
+    {
       "id": "new_installs",
       "title": "New installs",
       "purpose": "Installs active in the week they were installed, the closest Lifestream gets to downloads that open the app.",
