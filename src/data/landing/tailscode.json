@@ -137,7 +137,6 @@
         "Unlimited servers in one list",
         "Concurrent Live Activities (iPhone)",
         "One purchase, iPhone and Mac",
-        "A supporter heart",
         "The delegate board (beta): bounded tasks for your cheaper models"
       ]
     },
@@ -155,7 +154,7 @@
   "faq": [
     {
       "q": "Is it free?",
-      "a": "Yes. The free app is the complete core: one server, full chat, the Agents and Home boards, approvals and questions, attachments, every model, forking, a Live Activity at a time, the analytics and the git surface. Tailscode Pro is a one-time $14.99 unlock for unlimited servers in one list, concurrent Live Activities on iPhone, the delegate board (beta) and a supporter heart. There is no subscription, and the Linux client and a Mac build you compile yourself are free and complete."
+      "a": "Yes. The free app is the complete core: one server, full chat, the Agents and Home boards, approvals and questions, attachments, every model, forking, a Live Activity at a time, the analytics and the git surface. Tailscode Pro is a one-time $14.99 unlock for unlimited servers in one list, concurrent Live Activities on iPhone and the delegate board (beta). There is no subscription, and the Linux client and a Mac build you compile yourself are free and complete."
     },
     {
       "q": "What do I need?",
@@ -203,7 +202,7 @@
     },
     {
       "q": "What does Pro add?",
-      "a": "Tailscode Pro is a one-time $14.99 unlock for unlimited servers in one list, concurrent Live Activities on iPhone, a supporter heart and the delegate board, a beta that hands routine tasks to a cheaper model and lets a verifier decide. iPhone and Mac share one purchase on the same Apple Account. The free app is the complete core forever, with one server."
+      "a": "Tailscode Pro is a one-time $14.99 unlock for unlimited servers in one list, concurrent Live Activities on iPhone and the delegate board, a beta that hands routine tasks to a cheaper model and lets a verifier decide. iPhone and Mac share one purchase on the same Apple Account. The free app is the complete core forever, with one server."
     },
     {
       "q": "Where do pictures and clips get made?",
