@@ -169,7 +169,7 @@ const skeletonStills = Array.from({ length: 6 });
 
   async function refresh() {
     try {
-      const response = await fetch('/api/trakt.json');
+      const response = await fetch('/api/trakt.json', { cache: 'no-store' });
       const data = await response.json();
       if (!response.ok || data.error) throw new Error(data.error ?? `HTTP ${response.status}`);
       latest = data as TraktSummary;
