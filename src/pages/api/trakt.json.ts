@@ -26,7 +26,10 @@ function traktHeaders(clientId: string): HeadersInit {
 
 async function traktGet(path: string, clientId: string): Promise<Response> {
   const response = await fetch(`https://api.trakt.tv${path}`, { headers: traktHeaders(clientId) });
-  if (!response.ok) throw new Error(`Trakt answered ${response.status} for ${path.split('?')[0]}`);
+  if (!response.ok) {
+    const kind = response.headers.get('content-type')?.split(';')[0] ?? 'no content type';
+    throw new Error(`Trakt answered ${response.status} (${kind}) for ${path.split('?')[0]}`);
+  }
   return response;
 }
 
@@ -64,6 +67,7 @@ export const GET: APIRoute = async (context) => {
     return json(summary, 200, 'public, max-age=60, s-maxage=60');
   } catch (error) {
     const message = error instanceof Error ? error.message : 'unknown';
-    return json({ error: `Trakt unavailable: ${message}` }, 502, 'no-cache');
+    console.error(`[trakt] ${message}`);
+    return json({ error: `Trakt unavailable: ${message}` }, 503, 'no-cache');
   }
 };
