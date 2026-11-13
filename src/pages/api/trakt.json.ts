@@ -1,78 +1,69 @@
 import type { APIRoute } from 'astro';
+import { TRAKT_USER, itemCount, summarize, type RawTraktItem } from '../../lib/trakt';
 
 export const prerender = false;
 
+const RECENT_PLAYS = 12;
+const RECENT_SHOWN = 6;
+const WEEK_PLAYS = 100;
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+
+const json = (body: unknown, status: number, cacheControl: string) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': cacheControl },
+  });
+
+/** Trakt sits behind Cloudflare's bot check, which answers 403 to any request without a User-Agent, as Workers send by default. */
+function traktHeaders(clientId: string): HeadersInit {
+  return {
+    'Content-Type': 'application/json',
+    'trakt-api-version': '2',
+    'trakt-api-key': clientId,
+    'User-Agent': 'midgarcorp.cc/1.0 (+https://midgarcorp.cc/links/)',
+  };
+}
+
+async function traktGet(path: string, clientId: string): Promise<Response> {
+  const response = await fetch(`https://api.trakt.tv${path}`, { headers: traktHeaders(clientId) });
+  if (!response.ok) throw new Error(`Trakt answered ${response.status} for ${path.split('?')[0]}`);
+  return response;
+}
+
 export const GET: APIRoute = async (context) => {
-  const url = new URL(context.request.url);
-  const username = url.searchParams.get('username');
-
-  if (!username) {
-    return new Response(JSON.stringify({ error: 'Username required' }), {
-      status: 400,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-
-  // In Cloudflare Pages, secrets are available via context.locals.runtime.env
   const runtime = (context.locals as any).runtime;
   const clientId = runtime?.env?.TRAKT_CLIENT_ID || import.meta.env.TRAKT_CLIENT_ID;
+  if (!clientId) return json({ error: 'Trakt client ID not configured' }, 503, 'no-cache');
 
-  if (!clientId) {
-    return new Response(JSON.stringify({ error: 'Trakt.tv client ID not configured' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
+  const user = `/users/${TRAKT_USER}`;
+  const weekStart = new Date(Date.now() - WEEK_MS).toISOString();
 
   try {
-    // Fetch currently watching
-    const watchingResponse = await fetch(`https://api.trakt.tv/users/${username}/watching`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'trakt-api-version': '2',
-        'trakt-api-key': clientId,
-      },
+    const [watchingResponse, historyResponse, weekResponse] = await Promise.all([
+      traktGet(`${user}/watching?extended=images`, clientId),
+      traktGet(`${user}/history?limit=${RECENT_PLAYS}&extended=images`, clientId),
+      traktGet(
+        `${user}/history?limit=${WEEK_PLAYS}&start_at=${encodeURIComponent(weekStart)}`,
+        clientId
+      ),
+    ]);
+
+    const watching: RawTraktItem | null =
+      watchingResponse.status === 204 ? null : await watchingResponse.json();
+    const history: RawTraktItem[] = await historyResponse.json();
+    const week: RawTraktItem[] = await weekResponse.json();
+
+    const summary = summarize({
+      watching,
+      history: Array.isArray(history) ? history : [],
+      week: Array.isArray(week) ? week : [],
+      totalPlays: itemCount(historyResponse.headers.get('X-Pagination-Item-Count')),
+      weekPlays: itemCount(weekResponse.headers.get('X-Pagination-Item-Count')),
+      recentLimit: RECENT_SHOWN,
     });
-
-    let currentlyWatching = null;
-    if (watchingResponse.status === 200) {
-      currentlyWatching = await watchingResponse.json();
-    }
-
-    // Fetch watch history (last 5 items)
-    const historyResponse = await fetch(`https://api.trakt.tv/users/${username}/history?limit=5`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'trakt-api-version': '2',
-        'trakt-api-key': clientId,
-      },
-    });
-
-    const history = historyResponse.ok ? await historyResponse.json() : [];
-
-    return new Response(
-      JSON.stringify({
-        currentlyWatching,
-        history,
-      }),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'public, max-age=300, s-maxage=300',
-        },
-      }
-    );
+    return json(summary, 200, 'public, max-age=60, s-maxage=60');
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Failed to fetch Trakt.tv data' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const message = error instanceof Error ? error.message : 'unknown';
+    return json({ error: `Trakt unavailable: ${message}` }, 502, 'no-cache');
   }
 };

@@ -1,0 +1,197 @@
+---
+const skeletonStills = Array.from({ length: 6 });
+---
+
+<div id="trakt-status" class="space-y-5">
+  <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-4 lg:items-center">
+    <div id="trakt-hero" class="flex items-center gap-4">
+      <div
+        class="w-20 aspect-[2/3] flex-shrink-0 bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse"
+      >
+      </div>
+      <div class="flex-1 min-w-0 space-y-2">
+        <div class="h-3 w-1/3 bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse"></div>
+        <div class="h-4 w-3/4 bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse"></div>
+        <div class="h-3 w-1/2 bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse"></div>
+      </div>
+    </div>
+
+    <div id="trakt-stats" class="hidden grid grid-cols-3 gap-2"></div>
+  </div>
+
+  <div id="trakt-recent-section">
+    <p
+      class="text-[10px] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-2"
+    >
+      Recently watched
+    </p>
+    <div id="trakt-recent" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      {
+        skeletonStills.map(() => (
+          <div class="space-y-1.5">
+            <div class="aspect-video bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse" />
+            <div class="h-2.5 w-3/4 bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse" />
+            <div class="h-2.5 w-1/2 bg-paper-raised dark:bg-term-raised rounded-sm animate-pulse" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  import { heroState, timeAgo, type TraktSummary } from '../lib/trakt';
+
+  const POLL_MS = 60_000;
+  const TICK_MS = 15_000;
+
+  let latest: TraktSummary | null = null;
+
+  const esc = (value: unknown) =>
+    String(value ?? '').replace(
+      /[&<>"']/g,
+      (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]!
+    );
+
+  const screenIcon = (classes: string) =>
+    `<svg class="${classes}" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3H3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h18c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 16H3V5h18v14zM9 8l7 4-7 4V8z"/></svg>`;
+
+  function artwork(url: string | null, frame: string) {
+    const image = url
+      ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" />`
+      : '';
+    return `
+      <div class="${frame} relative bg-paper-raised dark:bg-term-raised rounded-sm overflow-hidden flex items-center justify-center">
+        ${screenIcon('w-6 h-6 text-paper-faint dark:text-term-faint')}
+        ${image}
+      </div>`;
+  }
+
+  const HERO_FRAME = 'w-20 aspect-[2/3] flex-shrink-0';
+
+  function statCell(value: string, label: string, title = value) {
+    return `
+      <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center min-w-0">
+        <div class="text-sm font-bold text-paper-text dark:text-term-text truncate" title="${esc(title)}">${esc(value)}</div>
+        <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">${esc(label)}</div>
+      </div>`;
+  }
+
+  function renderHero(summary: TraktSummary, now: Date) {
+    const hero = document.getElementById('trakt-hero');
+    if (!hero) return;
+    const state = heroState(summary, now);
+    const progress = state.progress === null ? null : Math.round(state.progress * 100);
+    const bar =
+      progress === null
+        ? ''
+        : `<div class="h-1 mt-3 bg-paper-raised dark:bg-term-raised rounded-sm overflow-hidden" role="progressbar" aria-label="Progress" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100">
+             <div class="h-full bg-paper-red dark:bg-term-red rounded-sm" style="width: ${Math.max(3, progress)}%"></div>
+           </div>`;
+    const tone = state.live
+      ? 'text-paper-red dark:text-term-red'
+      : 'text-paper-faint dark:text-term-faint';
+    const title = state.title;
+    hero.innerHTML = `
+      ${artwork(title?.poster ?? null, HERO_FRAME)}
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2">
+          ${screenIcon(`w-3.5 h-3.5 flex-shrink-0 ${tone} ${state.live ? 'animate-pulse' : ''}`)}
+          <span class="text-[11px] ${tone} ${state.live ? 'font-medium' : ''}">${esc(state.label)}</span>
+        </div>
+        ${title ? `<div class="text-base font-semibold text-paper-text dark:text-term-text truncate mt-1">${esc(title.title)}</div>` : ''}
+        ${title?.detail ? `<div class="text-xs text-paper-muted dark:text-term-muted truncate">${esc(title.detail)}</div>` : ''}
+        ${bar}
+      </div>`;
+  }
+
+  function renderStats(summary: TraktSummary) {
+    const stats = document.getElementById('trakt-stats');
+    if (!stats) return;
+    const top = summary.topOfWeek;
+    stats.innerHTML = [
+      statCell(
+        summary.totalPlays === null ? '—' : summary.totalPlays.toLocaleString('en-US'),
+        'plays'
+      ),
+      statCell(
+        summary.weekPlays === null ? '—' : summary.weekPlays.toLocaleString('en-US'),
+        'this week'
+      ),
+      statCell(
+        top?.title ?? '—',
+        'top this week',
+        top
+          ? `${top.title}: ${top.plays} ${top.plays === 1 ? 'play' : 'plays'} in the last 7 days`
+          : ''
+      ),
+    ].join('');
+    stats.classList.remove('hidden');
+  }
+
+  function renderRecent(summary: TraktSummary, now: Date) {
+    const recent = document.getElementById('trakt-recent');
+    if (!recent) return;
+    if (summary.recent.length === 0) {
+      recent.innerHTML = `<p class="col-span-full text-xs text-paper-faint dark:text-term-faint">No plays yet</p>`;
+      return;
+    }
+    recent.innerHTML = summary.recent
+      .map(
+        (item) => `
+          <div class="min-w-0" title="${esc([item.title, item.detail].filter(Boolean).join(' · '))}">
+            ${artwork(item.still ?? item.poster, 'w-full aspect-video')}
+            <div class="mt-1.5 text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(item.title)}</div>
+            ${item.detail ? `<div class="text-[10px] text-paper-muted dark:text-term-muted truncate">${esc(item.detail)}</div>` : ''}
+            <div class="text-[10px] text-paper-faint dark:text-term-faint truncate">${esc(timeAgo(item.watchedAt, now))}</div>
+          </div>`
+      )
+      .join('');
+  }
+
+  function render() {
+    if (!latest) return;
+    const now = new Date();
+    renderHero(latest, now);
+    renderStats(latest);
+    renderRecent(latest, now);
+  }
+
+  function renderError() {
+    const hero = document.getElementById('trakt-hero');
+    if (hero) {
+      hero.innerHTML = `
+        ${artwork(null, HERO_FRAME)}
+        <div class="flex-1 min-w-0 text-xs text-paper-faint dark:text-term-faint">Unable to load what I'm watching</div>`;
+    }
+    document.getElementById('trakt-recent-section')?.classList.add('hidden');
+  }
+
+  async function refresh() {
+    try {
+      const response = await fetch('/api/trakt.json');
+      const data = await response.json();
+      if (!response.ok || data.error) throw new Error(data.error ?? `HTTP ${response.status}`);
+      latest = data as TraktSummary;
+      render();
+    } catch (error) {
+      console.error('[Trakt]', error);
+      if (!latest) renderError();
+    }
+  }
+
+  function start() {
+    if (!document.getElementById('trakt-status')) return;
+    refresh();
+    setInterval(refresh, POLL_MS);
+    setInterval(() => {
+      if (latest?.watching) renderHero(latest, new Date());
+    }, TICK_MS);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+</script>
