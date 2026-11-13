@@ -26,7 +26,7 @@ const collected = [
   {
     type: 'Purchase History',
     detail: 'Linked to you · App Functionality',
-    body: 'The signed App Store transactions for Pro and for the tips, reported to the Midgar ledger at api.midgarcorp.cc together with your Midgar ID. For tips, the ledger also passes these transactions to Midgar’s intelligence service (see Purchases). Apple’s own server notifications for Tailscode reach the same ledger. There is no RevenueCat or other purchase SDK in the app.',
+    body: 'The signed App Store transactions for Pro, and for the tips that were sold until 13 November 2026, reported to the Midgar ledger at api.midgarcorp.cc together with your Midgar ID. For those tips, the ledger also passes the transactions to Midgar’s intelligence service (see Purchases). Apple’s own server notifications for Tailscode reach the same ledger. There is no RevenueCat or other purchase SDK in the app.',
   },
   {
     type: 'Product Interaction',
@@ -63,7 +63,7 @@ const sections: Section[] = [
   {
     title: 'Which copies collect',
     paragraphs: [
-      'The App Store apps, the iPhone and iPad app and the Mac App Store app (and their TestFlight builds), create the Midgar ID, the App Attest key and the purchase reports above, because they sell Pro and the tips. The widget and the notification extensions hold no Midgar ID and send nothing.',
+      'The App Store apps, the iPhone and iPad app and the Mac App Store app (and their TestFlight builds), create the Midgar ID, the App Attest key and the purchase reports above, because they sell Pro. The widget and the notification extensions hold no Midgar ID and send nothing.',
       'The Linux app collects nothing for Midgar. The direct Mac build, which is not on the App Store, sells nothing, creates no Midgar ID and sends no usage counts, but its More Apps card downloads the app list once a day (see Your Midgar and More Apps).',
     ],
   },
@@ -77,8 +77,8 @@ const sections: Section[] = [
   {
     title: 'Purchases',
     paragraphs: [
-      'Pro and the tips are bought through Apple In-App Purchase. Apple handles payment and billing, and we never receive your card details or your Apple Account details. When you buy or restore, the app sends the Midgar ledger the signed transaction record Apple has already issued (which product, the price, the dates, whether it was refunded, the order identifiers and your App Store country) together with your Midgar ID. The ledger keeps these records so that Pro is recognised on your iPhone, iPad and Mac, and so that Midgar can keep its financial records for as long as the law requires.',
-      'For a tip, the ledger also passes the transaction’s identifiers, product, dates, environment and your Midgar ID to Midgar’s intelligence service, which keeps the credit wallets of Midgar’s apps. That happens for a tip bought in the last 24 hours when the app reports it, and for each tip purchase and refund that Apple reports. Pro is not passed on.',
+      'Pro is bought through Apple In-App Purchase. Apple handles payment and billing, and we never receive your card details or your Apple Account details. When you buy or restore, the app sends the Midgar ledger the signed transaction record Apple has already issued (which product, the price, the dates, whether it was refunded, the order identifiers and your App Store country) together with your Midgar ID. The ledger keeps these records so that Pro is recognised on your iPhone, iPad and Mac, and so that Midgar can keep its financial records for as long as the law requires.',
+      'Tips were sold until 13 November 2026 and are no longer offered. For a tip bought before then, the ledger passed the transaction’s identifiers, product, dates, environment and your Midgar ID to Midgar’s intelligence service, which keeps the credit wallets of Midgar’s apps, and it still does so for a refund of such a tip that Apple reports. Pro is not passed on.',
       'If our servers cannot be reached, StoreKit alone decides, so a purchase still completes and Pro still unlocks.',
     ],
   },
@@ -165,7 +165,7 @@ const sections: Section[] = [
       >
         Tailscode Privacy Policy
       </h1>
-      <p class="text-xs text-paper-faint dark:text-term-faint">Last updated: 9 November 2026</p>
+      <p class="text-xs text-paper-faint dark:text-term-faint">Last updated: 13 November 2026</p>
       <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
         The short version: <span class="font-semibold text-paper-text dark:text-term-text"
           >your chats, prompts, code and files never reach us.</span

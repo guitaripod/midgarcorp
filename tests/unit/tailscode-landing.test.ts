@@ -88,7 +88,7 @@ describe('Tailscode landing page', () => {
   });
 
   it("leads with the store's header line and keeps the trust claim beside it", () => {
-    expect(copy.heroHeadline).toBe('All your agents. One pocket.');
+    expect(copy.heroHeadline).toBe('Leave your desk. Your agent finds you.');
     for (const fact of ['No relay', 'No sign-in', 'No tracking', 'GPL-3.0']) {
       expect(page).toContain(fact);
     }

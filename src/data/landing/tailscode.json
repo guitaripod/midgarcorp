@@ -41,13 +41,13 @@
     "hermes agent phone",
     "nous research hermes app"
   ],
-  "heroHeadline": "All your agents. One pocket.",
-  "heroSubhead": "Claude Code, Hermes, opencode, Oh My Pi and any ACP agent, working on your own computers, on any model they can run, even one on your own graphics card. Start a task from the couch, check on six at once, have the machine ask every morning, and get a ping when the long one finishes, over your own tailnet.",
+  "heroHeadline": "Leave your desk. Your agent finds you.",
+  "heroSubhead": "Claude Code, Hermes, opencode, Oh My Pi and any ACP agent keep working on your own computers while you are somewhere else. When one needs a decision it reaches your Lock Screen: read the exact command, approve it with Face ID, and come back to finished work. Any model they can run, even one on your own graphics card, over your own tailnet.",
   "accentColor": "#546BFF",
   "highlights": [
+    "Long runs on your Lock Screen, approvals behind Face ID",
     "Every agent on every machine, one board",
     "Any model, even one on your own GPU",
-    "Long runs on your Lock Screen, approvals behind Face ID",
     "Free, open source, no relay, no sign-in"
   ],
   "features": [
@@ -149,7 +149,7 @@
         "note": "No subscription"
       }
     ],
-    "footnote": "One purchase covers iPhone and Mac on the same Apple Account. The Linux client and the Mac build you compile yourself are free, open-source and complete: the unlock is how the work gets funded, not a wall around it."
+    "footnote": "One purchase covers iPhone and Mac on the same Apple Account. The Linux client and the Mac build you compile yourself are free, open-source and complete."
   },
   "faq": [
     {
@@ -162,7 +162,7 @@
     },
     {
       "q": "Is my code sent anywhere?",
-      "a": "Not by Tailscode. Prompts, answers, diffs and files travel between your devices and your machines over your own Tailscale network, and never reach us. There is no Tailscode server between them and nothing to sign in to. The App Store apps do keep a random Midgar ID, report your Pro or tip purchase to our ledger and send anonymous More Apps counts; none of it is used for tracking, and the Linux app and the direct Mac build collect nothing. The privacy policy lists every row, and the source is public. Your agent still talks to its own model provider the way it always did; that part is between you and them. One optional exception: if your claude-bridge holds an Apple push key, Lock Screen updates ride Apple's push service and carry the conversation's title, its phase and tool counts."
+      "a": "Not by Tailscode. Prompts, answers, diffs and files travel between your devices and your machines over your own Tailscale network, and never reach us. There is no Tailscode server between them and nothing to sign in to. The App Store apps do keep a random Midgar ID, report your Pro purchase to our ledger and send anonymous More Apps counts; none of it is used for tracking, and the Linux app and the direct Mac build collect nothing. The privacy policy lists every row, and the source is public. Your agent still talks to its own model provider the way it always did; that part is between you and them. One optional exception: if your claude-bridge holds an Apple push key, Lock Screen updates ride Apple's push service and carry the conversation's title, its phase and tool counts."
     },
     {
       "q": "Does it work without Tailscale?",

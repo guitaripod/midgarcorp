@@ -24,7 +24,7 @@ const releaseUrl = app.latestReleaseUrl ?? app.githubUrl;
 const macStoreUrl = c.macAppStoreUrl ?? app.appStoreUrl;
 const aurUrl = 'https://aur.archlinux.org/packages/tailscode';
 
-const OG_REV = '10';
+const OG_REV = '11';
 const ogImage = `/og/tailscode.png?v=${OG_REV}`;
 
 const subtitle = app.name.includes(':')
@@ -58,7 +58,7 @@ const megatron = faces('agents-megatron-mac', 'agents-megatron-mac', 2520, 1600)
 
 const hero = {
   wall: faces('ipad-ws-wall', 'ipad-ws-wall', 1600, 1200),
-  phone: phone('agents'),
+  phone: phone('approval'),
 };
 const syncBoth = faces('sync-03-both', 'sync-03-both', 1920, 1080);
 
@@ -289,7 +289,7 @@ const clients = [
         </div>
 
         <p
-          class="mb-4 text-[1.85rem] font-bold leading-tight tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
+          class="mb-4 text-balance text-[1.85rem] font-bold leading-tight tracking-tight text-paper-text dark:text-term-text sm:text-4xl"
         >
           {c.heroHeadline}
         </p>
@@ -372,7 +372,7 @@ const clients = [
           dark={hero.phone.dark}
           w={hero.phone.w}
           h={hero.phone.h}
-          alt="Tailscode on iPhone: the Agents board, two working and one needing you, an approval waiting with the exact command and Approve under it"
+          alt="Tailscode on iPhone: a chat stopped at an approval, the edit it wants to make shown as a diff, with Allow once, Always and Deny under it"
           sizes="(min-width: 1024px) 200px, 30vw"
           variant="phone"
           priority
@@ -1010,8 +1010,8 @@ const clients = [
             cannot reach each other directly, and Tailscode adds no hop of its own. Your agent still
             talks to its own model provider. And a claude-bridge that holds an Apple push key sends
             Lock Screen updates through Apple's push service, carrying the conversation's title, its
-            phase and tool counts. The App Store apps also keep a random Midgar ID for your Pro and
-            tip purchases and send anonymous More Apps counts, none of it near your chats or code.
+            phase and tool counts. The App Store apps also keep a random Midgar ID for your Pro
+            purchase and send anonymous More Apps counts, none of it near your chats or code.
             Read the
             <a
               href="/tailscode/privacy/"
