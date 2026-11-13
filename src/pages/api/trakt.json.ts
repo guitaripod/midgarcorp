@@ -7,6 +7,7 @@ const RECENT_PLAYS = 12;
 const RECENT_SHOWN = 6;
 const WEEK_PLAYS = 100;
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+const CACHE_SECONDS = 60;
 
 const json = (body: unknown, status: number, cacheControl: string) =>
   new Response(JSON.stringify(body), {
@@ -33,11 +34,7 @@ async function traktGet(path: string, clientId: string): Promise<Response> {
   return response;
 }
 
-export const GET: APIRoute = async (context) => {
-  const runtime = (context.locals as any).runtime;
-  const clientId = runtime?.env?.TRAKT_CLIENT_ID || import.meta.env.TRAKT_CLIENT_ID;
-  if (!clientId) return json({ error: 'Trakt client ID not configured' }, 503, 'no-cache');
-
+async function loadSummary(clientId: string): Promise<Response> {
   const user = `/users/${TRAKT_USER}`;
   const weekStart = new Date(Date.now() - WEEK_MS).toISOString();
 
@@ -64,10 +61,32 @@ export const GET: APIRoute = async (context) => {
       weekPlays: itemCount(weekResponse.headers.get('X-Pagination-Item-Count')),
       recentLimit: RECENT_SHOWN,
     });
-    return json(summary, 200, 'public, max-age=60, s-maxage=60');
+    return json(summary, 200, `public, max-age=${CACHE_SECONDS}, s-maxage=${CACHE_SECONDS}`);
   } catch (error) {
     const message = error instanceof Error ? error.message : 'unknown';
     console.error(`[trakt] ${message}`);
     return json({ error: `Trakt unavailable: ${message}` }, 503, 'no-cache');
   }
+}
+
+/**
+ * Keeps each good answer in the data centre's cache for a minute under one key that ignores the query string, so however
+ * many visitors poll, Trakt sees at most one round of three calls a minute per data centre on this Client ID.
+ */
+async function edgeCached(origin: string, load: () => Promise<Response>): Promise<Response> {
+  const cache = (globalThis as { caches?: { default?: Cache } }).caches?.default;
+  if (!cache) return load();
+  const key = new Request(`${origin}/api/trakt.json`);
+  const hit = await cache.match(key);
+  if (hit) return hit;
+  const response = await load();
+  if (response.ok) await cache.put(key, response.clone());
+  return response;
+}
+
+export const GET: APIRoute = async (context) => {
+  const runtime = (context.locals as any).runtime;
+  const clientId = runtime?.env?.TRAKT_CLIENT_ID || import.meta.env.TRAKT_CLIENT_ID;
+  if (!clientId) return json({ error: 'Trakt client ID not configured' }, 503, 'no-cache');
+  return edgeCached(new URL(context.request.url).origin, () => loadSummary(clientId));
 };
