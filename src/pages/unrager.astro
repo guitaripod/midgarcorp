@@ -89,6 +89,21 @@ const steps: Step[] = [
 
 const features = [
   {
+    title: 'Your posts, at a glance',
+    body: 'On your own posts, the faces of who liked and reposted them, a green +N on every count that rose since you last looked, and the link clicks and new followers X keeps two clicks deep sit in X’s own action bar. Nothing on the page moves.',
+    glyph: '◉',
+  },
+  {
+    title: 'Hover for the whole story',
+    body: 'Hover the views on your post for its impressions, how many engaged, its first two days hour by hour and every figure from X’s analytics, with tabs listing everyone who liked, reposted and quoted it, each with their flag and a Follow back.',
+    glyph: '▤',
+  },
+  {
+    title: 'Instant, and kept at home',
+    body: 'Your posts’ numbers are kept on your computer, so they show the moment x.com draws your posts, even after a restart, and X is asked again only once they could have changed. They come from the full server: unrager setup --apps.',
+    glyph: '⚡',
+  },
+  {
     title: 'Not interested, in one click',
     body: 'On For you, a frown next to X’s Grok button does what Not interested in this post does, without opening the menu. X gets the same feedback and shows you fewer posts like it.',
     glyph: '☹',
@@ -241,8 +256,12 @@ const faq = [
     a: 'Yes, but you build it yourself, once. X’s own iPhone app can’t run extensions, so unrager has a native client that talks to unrager on your computer: the same filter, with every hidden post listed under its rule, plus Ask, Brief and Translate on your model. It uses your X session, so it isn’t on the App Store: on a Mac with Xcode, one script builds it with your own (free) Apple ID and installs it on your phone, and it reaches your computer over a private network such as Tailscale.',
   },
   {
-    q: 'Where do the country flags in the iPhone app come from?',
-    a: 'From X’s own About this account lookup, asked one author at a time. When X rate-limits it, put community_cache = true under [about] in config.toml and unrager asks the X-Posed community cache first, in one request for everyone on screen. That sends the handles you are looking at to a third-party service and nothing else, which is why it is off by default.',
+    q: 'What do the stats on my own posts need?',
+    a: 'The full server, the same one the iPhone app uses: run unrager setup --apps. It reads X with your own login and asks for your posts’ analytics, likers, reposters and quotes, keeps them on your computer and asks again only once they could have changed, leaving most of X’s request budget alone. With the filter-only server the extension still marks what rose since your last look.',
+  },
+  {
+    q: 'Where do the country flags come from?',
+    a: 'In the iPhone app, from X’s own About this account lookup, asked one author at a time. When X rate-limits it, put community_cache = true under [about] in config.toml and unrager asks the X-Posed community cache first, in one request for everyone on screen. The lists of who liked, reposted and quoted your posts in the browser use only the countries unrager already knows and that cache, since X answers too few lookups for a list. The cache is sent the handles you are looking at and nothing else, which is why it is off by default.',
   },
   {
     q: 'Why load it unpacked instead of from the Chrome Web Store?',
