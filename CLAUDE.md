@@ -43,7 +43,7 @@ Astro static site (blog, app landing pages, /apps, /linux, /opensource, /open, /
 ## Legal pages and deploys
 - Each app's policy is `src/content/legal/<slug>/privacy.html` (and `terms.html`), served at `midgarcorp.cc/legal/<slug>/privacy/`. The page must say what the shipped app does: a promise that only a future release keeps (a deletion that release adds) waits on a branch until that release ships, as the Helia and Pay Day policies did before their releases.
 - `tests/unit/legal-pages.test.ts` reads the built `dist/`: run `npx astro build` before `npx vitest run`.
-- The site deploys from its mirror on every push and daily. Inside the monorepo the nightly job publishes the mirror at 04:30, so a change goes live that night; `midgar sync midgarcorp --push` publishes it now.
+- The site deploys from its mirror on every push and daily. Inside the monorepo, `.github/workflows/publish-site.yml` publishes the mirror on every push to master that touches `web/midgarcorp/` (`midgar sync midgarcorp --push --no-rejoin` on an arch runner with the mirror's deploy key), so a change is live about ten minutes after its push; the 04:30 nightly records the join. A mirror with commits of its own stops that job until the nightly merges them.
 
 ## Conventions
 - Rank everything with `workScore` in `src/lib/work.ts`; commits and releases decide the order, stars barely count.
