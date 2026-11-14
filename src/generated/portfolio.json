@@ -7,6 +7,9 @@
       "asc_app_ids": [
         "6746733380"
       ],
+      "platforms": [
+        "ios"
+      ],
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
@@ -22,6 +25,10 @@
       "stage": "maintain",
       "asc_app_ids": [
         "6822066419"
+      ],
+      "platforms": [
+        "ios",
+        "tvos"
       ],
       "policy": {
         "review_reply": "propose",
@@ -39,6 +46,9 @@
       "asc_app_ids": [
         "6736581403"
       ],
+      "platforms": [
+        "ios"
+      ],
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
@@ -55,6 +65,9 @@
       "asc_app_ids": [
         "6661019277"
       ],
+      "platforms": [
+        "ios"
+      ],
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
@@ -70,6 +83,10 @@
       "stage": "grow",
       "asc_app_ids": [
         "6784940198"
+      ],
+      "platforms": [
+        "ios",
+        "tvos"
       ],
       "policy": {
         "review_reply": "propose",
@@ -88,6 +105,10 @@
         "6787493695",
         "6789594504"
       ],
+      "platforms": [
+        "ios",
+        "macos"
+      ],
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
@@ -103,6 +124,9 @@
       "stage": "grow",
       "asc_app_ids": [
         "6785542220"
+      ],
+      "platforms": [
+        "ios"
       ],
       "policy": {
         "review_reply": "propose",
@@ -120,6 +144,9 @@
       "asc_app_ids": [
         "6787688416"
       ],
+      "platforms": [
+        "ios"
+      ],
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
@@ -135,6 +162,11 @@
       "stage": "core",
       "asc_app_ids": [
         "1484270248"
+      ],
+      "platforms": [
+        "ios",
+        "macos",
+        "tvos"
       ],
       "policy": {
         "review_reply": "propose",
@@ -152,6 +184,9 @@
       "asc_app_ids": [
         "1523538855"
       ],
+      "platforms": [
+        "ios"
+      ],
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
@@ -167,6 +202,9 @@
       "stage": "grow",
       "asc_app_ids": [
         "6779927672"
+      ],
+      "platforms": [
+        "ios"
       ],
       "policy": {
         "review_reply": "propose",
@@ -184,6 +222,9 @@
       "asc_app_ids": [
         "6751730339"
       ],
+      "platforms": [
+        "ios"
+      ],
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
@@ -199,6 +240,9 @@
       "stage": "maintain",
       "asc_app_ids": [
         "6777952645"
+      ],
+      "platforms": [
+        "ios"
       ],
       "policy": {
         "review_reply": "propose",
@@ -216,6 +260,9 @@
       "asc_app_ids": [
         "6727000827"
       ],
+      "platforms": [
+        "ios"
+      ],
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
@@ -231,6 +278,9 @@
       "stage": "retired",
       "asc_app_ids": [
         "6736438070"
+      ],
+      "platforms": [
+        "macos"
       ],
       "policy": {
         "review_reply": "propose",
@@ -248,6 +298,12 @@
       "asc_app_ids": [
         "6705124497"
       ],
+      "platforms": [
+        "ios",
+        "macos",
+        "tvos",
+        "visionos"
+      ],
       "policy": {
         "review_reply": "propose",
         "social_post": "propose",
@@ -263,6 +319,10 @@
       "stage": "core",
       "asc_app_ids": [
         "6791660932"
+      ],
+      "platforms": [
+        "ios",
+        "macos"
       ],
       "policy": {
         "review_reply": "propose",
