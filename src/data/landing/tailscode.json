@@ -1,6 +1,6 @@
 {
-  "seoTitle": "Tailscode: Claude Code, Hermes & any ACP agent, in one pocket",
-  "metaDescription": "Run Claude Code, Hermes, opencode and any ACP agent on your own computers, on any model, even your own GPU, on a schedule your machine keeps. No relay, no sign-in.",
+  "seoTitle": "Tailscode: Claude Code, Codex & opencode from your phone",
+  "metaDescription": "Use Claude Code, Codex, opencode and Hermes on your own computers from your phone: start tasks, approve from the Lock Screen. No SSH, no relay, no sign-in.",
   "keywords": [
     "claude code ios app",
     "claude code iphone client",
@@ -41,8 +41,8 @@
     "hermes agent phone",
     "nous research hermes app"
   ],
-  "heroHeadline": "Leave your desk. Your agent finds you.",
-  "heroSubhead": "Claude Code, Hermes, opencode, Oh My Pi and any ACP agent keep working on your own computers while you are somewhere else. When one needs a decision it reaches your Lock Screen: read the exact command, approve it with Face ID, and come back to finished work. Any model they can run, even one on your own graphics card, over your own tailnet.",
+  "heroHeadline": "Claude Code, from your phone.",
+  "heroSubhead": "Codex, opencode, Hermes, Oh My Pi and any ACP agent too. They work on your own computers while you are somewhere else. When one needs a decision it reaches your Lock Screen: read the exact command, approve it with Face ID, and come back to finished work. No SSH session, no tmux, nothing in between but your own tailnet.",
   "accentColor": "#546BFF",
   "highlights": [
     "Long runs on your Lock Screen, approvals behind Face ID",
