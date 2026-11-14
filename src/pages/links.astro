@@ -4,6 +4,8 @@ import LastFmNowPlaying from '../components/LastFmNowPlaying.astro';
 import GitHubStats from '../components/GitHubStats.astro';
 import GamerProfile from '../components/GamerProfile.astro';
 import TraktStatus from '../components/TraktStatus.astro';
+import AppIcon from '../components/landing/AppIcon.astro';
+import { getLandingApp } from '../data/landing';
 import appsData from '../data/apps.json';
 import openSourceData from '../data/opensource.json';
 
@@ -27,16 +29,6 @@ const links = [
     size: 'large',
     widget: 'lastfm',
     priority: 2,
-  },
-  {
-    title: 'Trakt',
-    url: 'https://trakt.tv/users/guitaripod',
-    description: 'Everything I watch, scrobbled live from Crucible, my Plex app',
-    iconPath: '/icons/trakt.svg',
-    brandColor: '#ED1C24',
-    size: 'full',
-    widget: 'trakt',
-    priority: 3,
   },
   {
     title: 'App Store',
@@ -77,6 +69,10 @@ const links = [
 ];
 
 const sortedLinks = links.sort((a, b) => a.priority - b.priority);
+const crucible = getLandingApp('crucible');
+const cruciblePlatforms = crucible?.platforms?.length
+  ? crucible.platforms.join(', ').replace(/, ([^,]*)$/, ' and $1')
+  : 'iPhone, iPad and Apple TV';
 ---
 
 <BaseLayout
@@ -104,11 +100,7 @@ const sortedLinks = links.sort((a, b) => a.priority - b.priority);
           .filter((link) => link.priority < 4)
           .map((link) => {
             const spanClass =
-              link.size === 'full'
-                ? 'md:col-span-2 lg:col-span-4'
-                : link.size === 'large'
-                  ? 'md:col-span-1 lg:col-span-2'
-                  : 'md:col-span-1 lg:col-span-1';
+              link.size === 'large' ? 'md:col-span-1 lg:col-span-2' : 'md:col-span-1 lg:col-span-1';
             const padding = link.widget ? 'p-6' : 'p-5';
             const chipBorder =
               link.brandColor === '#000000' ? 'dark:border dark:border-term-border' : '';
@@ -160,13 +152,12 @@ const sortedLinks = links.sort((a, b) => a.priority - b.priority);
 
                   {link.widget && (
                     <div
-                      class={`mt-auto ${link.widget === 'github' ? 'pt-3 border-t border-paper-border dark:border-term-border' : ''}`}
+                      class={`mt-auto ${link.widget !== 'lastfm' ? 'pt-3 border-t border-paper-border dark:border-term-border' : ''}`}
                     >
                       {link.widget === 'lastfm' && (
                         <LastFmNowPlaying username="guitaripod" size="large" />
                       )}
                       {link.widget === 'github' && <GitHubStats username="guitaripod" />}
-                      {link.widget === 'trakt' && <TraktStatus />}
                     </div>
                   )}
                 </div>
@@ -174,6 +165,82 @@ const sortedLinks = links.sort((a, b) => a.priority - b.priority);
             );
           })
       }
+
+      <div
+        class="md:col-span-2 lg:col-span-4 relative flex flex-col p-6 term-frame term-frame-hover overflow-hidden"
+      >
+        <div class="flex flex-wrap items-start gap-x-4 gap-y-3 mb-3">
+          <div class="relative flex-shrink-0 w-12 h-12">
+            {
+              crucible?.iconLocal && (
+                <AppIcon
+                  src={crucible.iconLocal}
+                  width={48}
+                  height={48}
+                  displayWidths={[48]}
+                  class="w-12 h-12 rounded-[0.8rem] border border-paper-border dark:border-term-border object-cover"
+                />
+              )
+            }
+            <div
+              class="absolute -bottom-1.5 -right-1.5 w-6 h-6 flex items-center justify-center rounded-full bg-[#ED1C24] ring-2 ring-paper-panel dark:ring-term-panel"
+              title="Scrobbled to Trakt"
+            >
+              <img
+                src="/icons/trakt.svg"
+                alt="Trakt"
+                class="w-3.5 h-3.5"
+                style="filter: brightness(0) saturate(100%) invert(100%);"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="flex-1 min-w-[12rem]">
+            <h2 class="text-lg font-semibold text-paper-text dark:text-term-text">
+              <a
+                href="/crucible/"
+                class="hover:text-paper-green dark:hover:text-term-green transition-colors"
+              >
+                Watching on Crucible
+              </a>
+            </h2>
+            <p class="text-xs text-paper-faint dark:text-term-faint mt-0.5">
+              My Plex app for {cruciblePlatforms}
+            </p>
+          </div>
+          <a
+            href="/crucible/"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-sm border border-paper-green dark:border-term-green text-paper-green dark:text-term-green hover:bg-paper-green hover:text-paper-bg dark:hover:bg-term-green dark:hover:text-term-bg transition-colors"
+          >
+            Get Crucible
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <p class="text-sm text-paper-muted dark:text-term-muted mb-4">
+          What I'm watching right now, straight from Crucible, which sends every play to Trakt as it
+          happens.
+        </p>
+        <TraktStatus />
+        <div
+          class="mt-5 pt-3 border-t border-paper-border dark:border-term-border flex flex-wrap items-center justify-between gap-2 text-xs"
+        >
+          <span class="flex flex-wrap gap-x-2 text-paper-faint dark:text-term-faint">
+            <span class="whitespace-nowrap">Free on the App Store</span>
+            <span aria-hidden="true">·</span>
+            <span class="whitespace-nowrap">open source</span>
+            <span aria-hidden="true">·</span>
+            <span class="whitespace-nowrap">built-in demo</span>
+          </span>
+          <a
+            href="https://trakt.tv/users/guitaripod"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-paper-muted dark:text-term-muted hover:text-paper-green dark:hover:text-term-green transition-colors"
+          >
+            My Trakt profile ↗
+          </a>
+        </div>
+      </div>
 
       <div
         class="md:col-span-2 lg:col-span-4 group relative flex flex-col p-6 term-frame term-frame-hover overflow-hidden"
