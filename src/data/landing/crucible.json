@@ -51,10 +51,15 @@
     "trakt apple tv",
     "overseerr app",
     "jellyseerr ios",
-    "plex request movies"
+    "plex request movies",
+    "trakt comments",
+    "trakt reviews app",
+    "plex trakt reviews",
+    "plex what to watch",
+    "plex recap"
   ],
   "heroHeadline": "Plex, done right on iPhone, iPad and Apple TV",
-  "heroSubhead": "A fast, native Plex client for iPhone and iPad and a Liquid Glass living-room app for Apple TV, on one engine: a Resume-first Home, Essentials to skip the anime-only episodes of long shows, Skip Intro, Skip Recap and Skip Preview, playback that keeps your place through sleep and breaks, a Year in Review of your viewing and menus that look like the system's own. Free on the App Store, open source, and there is a built-in demo if you have no server to hand.",
+  "heroSubhead": "A fast, native Plex client for iPhone and iPad and a Liquid Glass living-room app for Apple TV, on one engine: a Resume-first Home, What to Watch picks from your own library, Trakt's reviews and comments on every title, Essentials to skip the anime-only episodes of long shows, Skip Intro, Skip Recap and Skip Preview, playback that keeps your place through sleep and breaks, a Year in Review of your viewing and menus that look like the system's own. Free on the App Store, open source, and there is a built-in demo if you have no server to hand.",
   "highlights": [
     "Free on the App Store for iPhone, iPad and Apple TV, with an optional Crucible Pro that covers all three",
     "Essentials skips the anime-only episodes of long shows (Dragon Ball Super: 110 of 131, or 83 with the films you've seen), and Skip Recap and Skip Preview read your files' own chapters",
@@ -62,9 +67,10 @@
     "iPad: a library sidebar, several windows, a menu bar and keyboard shortcuts, with layouts that use a large window",
     "Apple TV: a cinematic Home, the system player, native menus and Top Shelf",
     "iPhone: offline downloads with a Live Activity, Skip Intro, Picture-in-Picture and background audio",
-    "Works with Trakt and your own Seerr: scrobbling, ratings and check-ins to Trakt are free, requests for what is missing go to your Seerr, and Crucible Pro brings everything you watched anywhere into Statistics",
+    "Ask what to watch: say what you feel like and get picks from your own library, with a reason for each, and a Previously On recap of your last episodes before you press play",
+    "Works with Trakt and your own Seerr: scrobbling, ratings, check-ins and each title's top comments are free, requests for what is missing go to your Seerr, and Crucible Pro opens every review and member on Trakt and brings everything you watched anywhere into Statistics",
     "Keeps your place: back at the exact moment you left after sleep, a short rewind after a break, and Still watching? before a season plays on",
-    "Open source under GPL-3.0, with no sign-up, ads or analytics: it talks to plex.tv, your server and, for Crucible Pro, Midgar's purchase ledger"
+    "Open source under GPL-3.0, with no sign-up, ads or analytics: it talks to plex.tv, your server, Midgar's purchase ledger for Crucible Pro and, only when you ask, Crucible's AI"
   ],
   "features": [
     {
@@ -73,8 +79,18 @@
       "glyph": "⏭"
     },
     {
-      "title": "Previously On, from your own computer",
-      "body": "Crucible Server is a free, optional companion for the computer that runs Plex. Pair it once by scanning a QR code, and Crucible offers a Previously On for any show you've been watching: a short recap of the last episodes you finished, written by a model on your own hardware from the episodes' own subtitles and Plex's synopsis, checked so it never names someone the episode didn't and never reaches past what you've seen. Nothing leaves your network. It's open source under GPL-3.0, for Linux and macOS, with a Homebrew formula and an AUR package."
+      "title": "Ask what to watch",
+      "body": "Say what you feel like, typed or dictated, and What to Watch picks from your own library with a reason for each; only titles you have can come back. On a show's page, Previously On catches you up before you press play: read the last episodes' descriptions for free, or have Crucible write a recap of them. Both are part of Crucible Pro, run only when you ask, and work in the demo.",
+      "glyph": "✦"
+    },
+    {
+      "title": "See what people say",
+      "body": "With Trakt connected, every movie, show and episode has its community: Trakt's score and how the votes spread, the reviews and comments people wrote with their replies, likes and seven reactions, and spoilers hidden until you tap them. Write a comment or a review yourself, reply, react, edit or delete your own, and report what breaks Trakt's rules. The score and the top two comments with their threads are free; Crucible Pro opens every comment in seven orders, What People Say (what people loved and didn't), who's watching right now and the members behind it all, to follow or block. On Apple TV too.",
+      "glyph": "❝"
+    },
+    {
+      "title": "Crucible Server, on your own computer",
+      "body": "Crucible Server is a free, optional companion for the computer that runs Plex. Pair it once by scanning a QR code, and Previously On is written by a model on your own hardware from the episodes' own subtitles and Plex's synopsis, checked so it never names someone the episode didn't and never reaches past what you've seen. With Crucible Pro, Library Research gives the videos Plex has no agent for, sports events, adult films or anything else, a real title, date, people and poster in Plex, and takes it back whenever you ask; your files are never changed. Nothing of it reaches Midgar. It's open source under GPL-3.0, for Linux and macOS, with a Homebrew formula and an AUR package."
     },
     {
       "title": "Made for the couch",
@@ -123,7 +139,7 @@
     },
     {
       "title": "Works with Trakt",
-      "body": "Connect Trakt in Settings › Integrations with a code, on iPhone, iPad or Apple TV. Crucible then records what you watch as you watch it, downloads included once you are back online, sends the titles you mark watched, your ratings and check-ins, and shows Trakt's score beside Plex's rating on each title's page. It asks before it doubles up with Trakt's own Plex sync. All of that is free; Crucible Pro adds your whole Trakt history to Statistics.",
+      "body": "Connect Trakt in Settings › Integrations with a code, on iPhone, iPad or Apple TV. Crucible then records what you watch as you watch it, downloads included once you are back online, sends the titles you mark watched, your ratings and check-ins, and shows Trakt's score beside Plex's rating and its community on each title's page. It asks before it doubles up with Trakt's own Plex sync. All of that is free; Crucible Pro adds every Trakt comment and member, and your whole Trakt history in Statistics.",
       "glyph": "◎"
     },
     {
@@ -167,7 +183,7 @@
     },
     {
       "q": "What is free, and what is Crucible Pro?",
-      "a": "Browsing, search and playback are free on iPhone, iPad and Apple TV, with Skip Intro, Skip Credits, Picture-in-Picture on iPhone, the Statistics view for the last week, one download at a time, Trakt scrobbling, ratings and check-ins, and requests through your Seerr. Crucible Pro unlocks unlimited offline downloads, the full Statistics screen with every range, the library filter and everything Trakt knows you watched, the Year in Review poster, approving and declining Seerr requests, and Top Shelf on Apple TV. Pay once for lifetime access or subscribe yearly; one purchase covers iPhone, iPad and Apple TV, and Family Sharing is on."
+      "a": "Browsing, search and playback are free on iPhone, iPad and Apple TV, with Skip Intro, Skip Credits, Picture-in-Picture on iPhone, the Statistics view for the last week, one download at a time, Trakt scrobbling, ratings, check-ins and each title's top comments, and requests through your Seerr. Crucible Pro unlocks What to Watch, Previously On recaps, every Trakt comment and member, unlimited offline downloads, the full Statistics screen with every range, the library filter and everything Trakt knows you watched, the Year in Review poster, approving and declining Seerr requests, Top Shelf on Apple TV and, with Crucible Server, Library Research. Pay once for lifetime access or subscribe yearly; one purchase covers iPhone, iPad and Apple TV, and Family Sharing is on."
     },
     {
       "q": "Can I try it without a Plex server?",
@@ -203,7 +219,7 @@
     },
     {
       "q": "Does it work with Trakt?",
-      "a": "Yes, from version 2.9. Connect Trakt in Settings › Integrations with the code it shows, on iPhone, iPad or Apple TV. Scrobbling while you watch, plays from downloads, watched marks, ratings, check-ins and Trakt's score on each title are free. With Crucible Pro, Statistics can show Everything: your Plex history together with what Trakt recorded elsewhere, each viewing counted once. Nothing goes to Trakt until you connect, and disconnecting revokes Crucible's access. Crucible uses Trakt but is not endorsed or certified by Trakt."
+      "a": "Yes, from version 2.9. Connect Trakt in Settings › Integrations with the code it shows, on iPhone, iPad or Apple TV. Scrobbling while you watch, plays from downloads, watched marks, ratings, check-ins and Trakt's score on each title are free, and from version 2.12 so are each title's top comments with their replies, likes, reactions and writing your own. Crucible Pro opens every comment, What People Say, who's watching now and the members behind them, and Statistics can show Everything: your Plex history together with what Trakt recorded elsewhere, each viewing counted once. Nothing goes to Trakt until you connect, and disconnecting revokes Crucible's access. Crucible uses Trakt but is not endorsed or certified by Trakt."
     },
     {
       "q": "Can I request movies and shows that aren't on the server?",
@@ -223,7 +239,7 @@
     },
     {
       "q": "What is Crucible Server, and do I need it?",
-      "a": "No: everything else in Crucible works without it. Crucible Server is an optional, free companion you install on the computer that runs Plex (Linux or macOS). It pairs with Crucible on iPhone, iPad and Apple TV and writes a Previously On for the shows you're watching using a local AI model you already run, such as Ollama, LM Studio or llama.cpp. It answers only your home network and your tailnet, every request carries your own Plex sign-in so it sees only what Plex lets you see, and no recap ever leaves your network. Install it from https://github.com/guitaripod/Crucible/tree/master/server and run crucible-server setup."
+      "a": "No: everything else in Crucible works without it. Crucible Server is an optional, free companion you install on the computer that runs Plex (Linux or macOS). It pairs with Crucible on iPhone, iPad and Apple TV and writes a Previously On for the shows you're watching using a local AI model you already run, such as Ollama, LM Studio or llama.cpp. With Crucible Pro, its Library Research looks up the videos Plex has no agent for (sports events, adult films or anything else) on the web through the search engine you choose and gives each a real title, date, people and poster in Plex, without changing your files. It answers only your home network and your tailnet, every request carries your own Plex sign-in so it sees only what Plex lets you see, and no recap ever leaves your network. Install it from https://github.com/guitaripod/Crucible/tree/master/server and run crucible-server setup."
     }
   ],
   "screenshotCaptions": {
@@ -317,7 +333,7 @@
         "Browsing, search and playback on iPhone, iPad and Apple TV",
         "Skip Intro, Skip Credits and Picture-in-Picture",
         "The whole Apple TV app, and Statistics for the last week",
-        "Trakt scrobbling, ratings and check-ins, and requests through your Seerr",
+        "Trakt scrobbling, ratings, check-ins and each title's top comments, and requests through your Seerr",
         "One offline download at a time on iPhone",
         "The built-in demo, with everything unlocked"
       ]
@@ -326,12 +342,15 @@
       "title": "Crucible Pro",
       "price": "$17.99 once · $7.99/yr until Dec 7",
       "items": [
+        "What to Watch picks and Previously On recaps, written when you ask",
+        "Every Trakt review and comment, What People Say, who's watching and the members behind them",
         "Unlimited offline downloads on iPhone",
         "The full Statistics screen: month, year and all-time, with the library filter",
         "Everything you watched in Statistics, with Trakt connected",
         "The shareable Year in Review poster on iPhone",
         "Approve, decline and retry everyone's Seerr requests",
         "Top Shelf on Apple TV: Continue Watching and Up Next on the Home screen",
+        "Library Research with Crucible Server, for the videos Plex has no agent for",
         "One purchase covers iPhone, iPad and Apple TV, with Family Sharing"
       ]
     },
@@ -352,7 +371,7 @@
     ],
     "footnote": "Prices are US dollars and vary by region. The annual subscription renews automatically until cancelled in your Apple Account settings, at least 24 hours before the end of the period; the lifetime unlock never renews. Both are family-shareable, and either one unlocks Crucible Pro on iPhone, iPad and Apple TV. A build from source is always fully unlocked."
   },
-  "trustNote": "Crucible has no sign-up, no ads and no analytics. It talks to plex.tv and the server you choose, and to Trakt or your own Seerr only if you connect them; Crucible Pro purchases are recorded with an anonymous Midgar ID in Midgar's purchase ledger, and the app contains no third-party SDK.",
+  "trustNote": "Crucible has no sign-up, no ads and no analytics. It talks to plex.tv and the server you choose, to Trakt or your own Seerr only if you connect them, and to Crucible's AI only when you ask it for a pick or a recap; Crucible Pro purchases are recorded with an anonymous Midgar ID in Midgar's purchase ledger, and the app contains no third-party SDK.",
   "installLast": true,
   "hideAbout": true
 }
