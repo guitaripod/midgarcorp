@@ -195,7 +195,7 @@
     },
     {
       "q": "Is there an Apple TV app?",
-      "a": "Yes, in the same App Store listing as the iPhone app. It is built for the Siri Remote on the same engine: a cinematic Home, a tab for every library, search, movie, show and episode pages, the system player with Skip Intro and Skip Credits as native actions and an Up Next card, Watch History, Statistics, a Year in Review card and a Top Shelf extension. It runs on tvOS 17 or later; tvOS 26 on an Apple TV 4K (2nd generation or later) gets Liquid Glass controls, and older systems and boxes get the classic look with the same layout."
+      "a": "Yes, in the same App Store listing as the iPhone app. It is built for the Siri Remote on the same engine: a cinematic Home, a tab for every library, search, movie, show and episode pages, the system player with Skip Intro and Skip Credits as native actions and an Up Next card, Watch History, Statistics, a Year in Review card and a Top Shelf extension with Crucible Pro. It runs on tvOS 17 or later; tvOS 26 on an Apple TV 4K (2nd generation or later) gets Liquid Glass controls, and older systems and boxes get the classic look with the same layout."
     },
     {
       "q": "What happens if playback is interrupted, or I fall asleep?",
@@ -331,7 +331,7 @@
       "price": "$0",
       "items": [
         "Browsing, search and playback on iPhone, iPad and Apple TV",
-        "Skip Intro, Skip Credits and Picture-in-Picture",
+        "Skip Intro, Skip Credits, and Picture-in-Picture on iPhone and iPad",
         "The whole Apple TV app, and Statistics for the last week",
         "Trakt scrobbling, ratings, check-ins and each title's top comments, and requests through your Seerr",
         "One offline download at a time on iPhone",

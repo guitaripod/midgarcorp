@@ -27,10 +27,10 @@ import {
 import screenshotVariants from '@data/screenshot-variants.json';
 
 export function getStaticPaths() {
-  // tailscode and embr have bespoke pages at src/pages/<slug>/index.astro; emitting
+  // tailscode, embr and crucible have bespoke pages at src/pages/<slug>/index.astro; emitting
   // them here too would render the same dist path twice with whichever wins.
   return landingApps
-    .filter((app) => app.slug !== 'tailscode' && app.slug !== 'embr')
+    .filter((app) => !['tailscode', 'embr', 'crucible'].includes(app.slug))
     .map((app) => ({ params: { app: app.slug }, props: { app } }));
 }
 

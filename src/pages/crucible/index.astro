@@ -1,0 +1,1264 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AppStoreBadge from '@components/landing/AppStoreBadge.astro';
+import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import InstallGuide from '@components/landing/InstallGuide.astro';
+import AppIcon from '@components/landing/AppIcon.astro';
+import { landingApps, screenshotUrl, type LandingApp } from '@data/landing';
+import screenshotVariants from '@data/screenshot-variants.json';
+import { siblingApps } from '@utils/sibling-apps';
+import { appPageJsonLd } from '@utils/structured-data';
+import { markdownPath } from '@utils/llms';
+
+export const prerender = true;
+
+const app = landingApps.find((a) => a.slug === 'crucible') as LandingApp;
+const c = app.content;
+const accent = c.accentColor || app.primaryColor;
+const githubUrl = app.githubUrl ?? 'https://github.com/guitaripod/Crucible';
+const releasesUrl = app.latestReleaseUrl ?? `${githubUrl}/releases`;
+
+const OG_REV = '13';
+const ogImage = `/og/crucible.png?v=${OG_REV}`;
+
+const variants = screenshotVariants as Record<string, number[]>;
+
+/// A figure of the page: a capture of the demo library from the 2.12 build, device-framed by the frames CLI, with the
+/// widths the variants script wrote beside it.
+const figure = (name: string, w: number, h: number) => {
+  const src = `/screenshots/crucible/web-${name}.webp`;
+  const srcset = [
+    ...(variants[src] ?? []).map(
+      (wide) => `${screenshotUrl(src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`
+    ),
+    `${screenshotUrl(src)} ${w}w`,
+  ].join(', ');
+  return { src: screenshotUrl(src), srcset, w, h };
+};
+const phone = (name: string) => figure(`phone-${name}`, 735, 1500);
+const pad = (name: string) => figure(`ipad-${name}`, 1500, 1150);
+const tv = (name: string) => figure(`tv-${name}`, 2400, 1374);
+
+const heroArt = figure('hero-salt-road', 1920, 1080);
+const house = { tv: tv('01'), pad: pad('home'), phone: phone('home') };
+const essentials = phone('essentials-offer');
+const watch = phone('what-to-watch');
+const community = { pad: pad('community') };
+const couch = tv('05');
+const viewing = { stats: phone('stats'), poster: phone('share-preview') };
+const ipad = pad('library');
+
+/// The rest of the app, one sentence each: what the scenes above leave out.
+const more = [
+  {
+    term: 'Trakt, built in',
+    body: 'Scrobbling while you watch, downloads included once you are back online, watched marks, ratings and check-ins, and Trakt’s score beside IMDb and Rotten Tomatoes on every title. Free.',
+  },
+  {
+    term: 'Requests through your Seerr',
+    body: 'Overseerr, Jellyseerr or Seerr beside your server: request what it lacks, watch it arrive, then play it. Approving everyone’s requests is Crucible Pro.',
+  },
+  {
+    term: 'Offline downloads',
+    body: 'Movies, whole seasons or single episodes at the quality you pick, in the background, with a Live Activity on iPhone.',
+  },
+  {
+    term: 'Keeps your place',
+    body: 'Back at the exact moment after sleep or a dropped stream, a short rewind after a break, and Still watching? before a season plays on.',
+  },
+  {
+    term: 'Skips that read your files',
+    body: 'Skip Intro and Credits from Plex markers, Skip Recap and Preview from your files’ own chapters, and Spoiler Shield for what you haven’t seen.',
+  },
+  {
+    term: 'Crucible Server, optional',
+    body: 'A free companion for the computer that runs Plex: recaps written by your own model from the episodes’ subtitles and, with Crucible Pro, Library Research for the videos Plex has no agent for.',
+  },
+];
+
+const versionLabel = app.version ? `Version ${app.version}` : null;
+const requires = 'iOS, iPadOS or tvOS 17 or later';
+
+const showsRating = app.ratingCount >= 5;
+const jsonLd = appPageJsonLd(app, { ratingShown: showsRating });
+const siblings = siblingApps(landingApps, 'crucible');
+---
+
+<BaseLayout
+  title={c.seoTitle}
+  description={c.metaDescription}
+  image={ogImage}
+  markdown={markdownPath(app.slug)}
+  appStoreId={app.trackId > 0 ? app.trackId : undefined}
+>
+  <div class="cru" style={`--accent:${accent}`}>
+    <nav
+      aria-label="Breadcrumb"
+      class="hidden pt-8 text-xs text-paper-faint dark:text-term-faint sm:block"
+    >
+      <ol class="flex flex-wrap items-center gap-1.5 font-mono">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/apps/" class="hover:text-paper-green dark:hover:text-term-green">apps</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">crucible</li>
+      </ol>
+    </nav>
+
+    <section class="hero bleed" aria-labelledby="app-name">
+      <img
+        class="hero-art"
+        src={heroArt.src}
+        srcset={heroArt.srcset}
+        sizes="100vw"
+        width={heroArt.w}
+        height={heroArt.h}
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-app">
+          {
+            app.iconLocal && (
+              <AppIcon
+                src={app.iconLocal}
+                width={56}
+                height={56}
+                displayWidths={[48, 56]}
+                priority
+                class="hero-icon h-12 w-12 rounded-[0.9rem] object-cover sm:h-14 sm:w-14"
+              />
+            )
+          }
+          <h1 id="app-name">Crucible</h1>
+          <span>for Plex</span>
+        </div>
+        <p class="display hero-title">Plex, done right.</p>
+        <p class="hero-sub">
+          A native client for your own Plex server on iPhone, iPad and Apple TV. Free on the App
+          Store, open source, and a built-in demo if you have no server yet.
+        </p>
+        <div class="hero-actions">
+          <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="ghost-btn">
+            <img src="/icons/github.svg" alt="" width="18" height="18" class="invert" />
+            Source on GitHub<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+        <figure class="hero-now">
+          <div class="hero-now-bar" aria-hidden="true"><span></span></div>
+          <figcaption>
+            The Salt Road, season 2, episode 4, with 17 minutes left: the Home hero of the built-in
+            demo.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="scene house bleed" aria-labelledby="house-title">
+      <div class="scene-inner">
+        <h2 id="house-title" class="display scene-title">One app for the whole house.</h2>
+        <p class="scene-lede">
+          iPhone, iPad and Apple TV share one App Store listing, one engine and one Crucible Pro
+          purchase. Each opens on what you were watching.
+        </p>
+        <div class="lineup">
+          <img
+            class="lineup-tv"
+            src={house.tv.src}
+            srcset={house.tv.srcset}
+            sizes="(min-width: 1024px) 60vw, 100vw"
+            width={house.tv.w}
+            height={house.tv.h}
+            alt="Crucible on Apple TV: Home with The Salt Road in the hero and Continue Watching under it"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lineup-small">
+            <img
+              class="lineup-pad"
+              src={house.pad.src}
+              srcset={house.pad.srcset}
+              sizes="(min-width: 1024px) 24vw, 60vw"
+              width={house.pad.w}
+              height={house.pad.h}
+              alt="Crucible on iPad: Home beside the library sidebar"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="lineup-phone"
+              src={house.phone.src}
+              srcset={house.phone.srcset}
+              sizes="(min-width: 1024px) 10vw, 30vw"
+              width={house.phone.w}
+              height={house.phone.h}
+              alt="Crucible on iPhone: Home with The Salt Road and Continue Watching"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature" aria-labelledby="essentials-title">
+      <div class="feature-text">
+        <p class="figure-num" aria-hidden="true"><s>131</s><span>110</span></p>
+        <h2 id="essentials-title" class="display feature-title">Skip the filler.</h2>
+        <p>
+          Essentials hides the anime-only episodes of long shows, the ones that adapt no chapter of
+          the manga: Dragon Ball Super goes from 131 episodes to 110, and Up Next follows. Any
+          episode comes back with a long press.
+        </p>
+        <p>
+          The guides come from Crucible Guides, an open dataset checked every week. Skip Intro,
+          Recap, Preview and Credits come from Plex markers and your files’ own chapters.
+        </p>
+      </div>
+      <img
+        class="feature-phone"
+        src={essentials.src}
+        srcset={essentials.srcset}
+        sizes="(min-width: 768px) 300px, 70vw"
+        width={essentials.w}
+        height={essentials.h}
+        alt="Paper Lanterns in Crucible on iPhone, offering to skip its 11 anime-only episodes"
+        loading="lazy"
+        decoding="async"
+      />
+    </section>
+
+    <section class="feature feature-flip" aria-labelledby="watch-title">
+      <div class="feature-text">
+        <p class="ask" aria-hidden="true">Something light for tonight</p>
+        <h2 id="watch-title" class="display feature-title">Say what you feel like.</h2>
+        <p>
+          What to Watch picks from your own library, with a reason for each, and only titles you
+          have can come back. Previously On catches you up on a show before you press play.
+        </p>
+        <p class="aside">
+          What to Watch and written recaps are Crucible Pro and run only when you ask; the episode
+          descriptions are free, and Crucible Server writes recaps on your own computer. Both work
+          in the demo.
+        </p>
+      </div>
+      <img
+        class="feature-phone"
+        src={watch.src}
+        srcset={watch.srcset}
+        sizes="(min-width: 768px) 300px, 70vw"
+        width={watch.w}
+        height={watch.h}
+        alt="What to Watch on iPhone: five picks from the library for Something light for tonight, each with a reason"
+        loading="lazy"
+        decoding="async"
+      />
+    </section>
+
+    <section class="feature feature-wide" aria-labelledby="community-title">
+      <div class="feature-text">
+        <p class="new">New in 2.12</p>
+        <h2 id="community-title" class="display feature-title">See what people say.</h2>
+        <p>
+          With Trakt connected, every movie, show and episode has its community: Trakt’s score and
+          how the votes spread, and the reviews and comments people wrote, with their replies and
+          reactions and spoilers hidden until you tap. Write your own, reply and react.
+        </p>
+        <p class="aside">
+          The score and the top comments are free. Crucible Pro opens every comment, What People Say
+          (what people loved and didn’t), who is watching right now and the members behind it all.
+        </p>
+      </div>
+      <img
+        class="feature-pad"
+        src={community.pad.src}
+        srcset={community.pad.srcset}
+        sizes="(min-width: 1024px) 640px, (min-width: 768px) 58vw, 100vw"
+        width={community.pad.w}
+        height={community.pad.h}
+        alt="Cold Meridian’s Trakt community on iPad: a 79% score with its vote histogram, what people loved and didn’t, and review cards"
+        loading="lazy"
+        decoding="async"
+      />
+    </section>
+
+    <section class="scene couch bleed" aria-labelledby="couch-title">
+      <div class="scene-inner">
+        <img
+          class="couch-tv"
+          src={couch.src}
+          srcset={couch.srcset}
+          sizes="(min-width: 1280px) 1200px, 100vw"
+          width={couch.w}
+          height={couch.h}
+          alt="Halcyon on Apple TV: the backdrop of an oil platform at night behind Play, Mark Watched, Rate and the audio menu"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="couch-text">
+          <h2 id="couch-title" class="display scene-title">Made for the couch.</h2>
+          <p class="scene-lede">
+            Built for the Siri Remote: a Home that follows focus, a tab for every library, the
+            system player with Skip Intro and an Up Next card at the credits, and with Crucible Pro,
+            Top Shelf. Liquid Glass on tvOS 26, the same layout on older systems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature" aria-labelledby="viewing-title">
+      <div class="feature-text">
+        <p class="figure-num" aria-hidden="true">
+          <span>483</span><small>hours in the demo’s year</small>
+        </p>
+        <h2 id="viewing-title" class="display feature-title">Know your viewing.</h2>
+        <p>
+          Statistics turns your Plex history into watch time, streaks, an activity heatmap, binges
+          and taste, and with Trakt connected it counts everything you watched elsewhere too. The
+          year ends in a poster to share as a Story or a Square.
+        </p>
+        <p class="aside">The last week is free; every range and the poster are Crucible Pro.</p>
+      </div>
+      <div class="feature-pair">
+        <img
+          src={viewing.stats.src}
+          srcset={viewing.stats.srcset}
+          sizes="(min-width: 768px) 240px, 45vw"
+          width={viewing.stats.w}
+          height={viewing.stats.h}
+          alt="Statistics on iPhone: 483 hours watched in 2026, days active, a streak and the longest binge"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src={viewing.poster.src}
+          srcset={viewing.poster.srcset}
+          sizes="(min-width: 768px) 240px, 45vw"
+          width={viewing.poster.w}
+          height={viewing.poster.h}
+          alt="The Year in Review poster on iPhone, ready to share"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </section>
+
+    <section class="feature feature-wide feature-flip" aria-labelledby="ipad-title">
+      <div class="feature-text">
+        <h2 id="ipad-title" class="display feature-title">Made for iPad.</h2>
+        <p>
+          A sidebar with every library, grids that grow with the window, several windows at once,
+          and a menu bar with keyboard shortcuts: Space plays, S skips the intro, Command-F
+          searches.
+        </p>
+      </div>
+      <img
+        class="feature-pad"
+        src={ipad.src}
+        srcset={ipad.srcset}
+        sizes="(min-width: 1024px) 640px, (min-width: 768px) 58vw, 100vw"
+        width={ipad.w}
+        height={ipad.h}
+        alt="The Movies library on iPad with the sidebar, a Continue banner and Recently Watched"
+        loading="lazy"
+        decoding="async"
+      />
+    </section>
+
+    <section class="band" aria-labelledby="more-title">
+      <h2 id="more-title" class="display band-title">And the rest of a good Plex app.</h2>
+      <dl class="more">
+        {
+          more.map((item) => (
+            <div>
+              <dt>{item.term}</dt>
+              <dd>{item.body}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    {
+      c.pricing && (
+        <section class="band" aria-labelledby="pricing-title">
+          <h2 id="pricing-title" class="display band-title">
+            Free to use. Crucible Pro to go further.
+          </h2>
+          <div class="plans">
+            <div class="plan">
+              <h3>
+                {c.pricing.free.title}
+                <span>{c.pricing.free.price}</span>
+              </h3>
+              <ul>
+                {c.pricing.free.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div class="plan plan-pro">
+              <h3>{c.pricing.premium.title}</h3>
+              <p class="tiers">
+                {c.pricing.tiers.map((tier) => (
+                  <span>
+                    <strong>{tier.price}</strong> {tier.name.toLowerCase()}
+                    {tier.note && <small>{tier.note}</small>}
+                  </span>
+                ))}
+              </p>
+              <ul>
+                {c.pricing.premium.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p class="fine">{c.pricing.footnote}</p>
+        </section>
+      )
+    }
+
+    <section class="band trust" aria-labelledby="trust-title">
+      <h2 id="trust-title" class="display band-title">Yours, in the open.</h2>
+      <p>
+        Crucible is free software under GPL-3.0 and I build it in the open: no sign-up, no ads, no
+        analytics and no third-party SDK. It talks to plex.tv and the server you choose, keeps
+        Crucible Pro purchases under an anonymous Midgar ID, fetches the episode guides as one file
+        shared by everyone, and reaches Trakt or your Seerr only once you connect them and
+        Crucible’s AI only when you ask it for a pick or a recap.
+        <a href="/crucible/privacy/">Read the privacy policy</a>.
+      </p>
+    </section>
+
+    <section class="band" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="display band-title">Questions.</h2>
+      <div class="faq">
+        <FaqAccordion faq={c.faq} accent={accent} />
+      </div>
+    </section>
+
+    {
+      c.install && (
+        <section class="band" aria-labelledby="source-title">
+          <details class="source">
+            <summary>
+              <div>
+                <h2 id="source-title" class="display band-title">
+                  Build it from source.
+                </h2>
+                <span>
+                  {c.install.time}, for the iPhone app with xtool or the Apple TV app with Xcode
+                </span>
+              </div>
+              <span class="toggle" aria-hidden="true" />
+            </summary>
+            <div class="source-body">
+              <InstallGuide install={c.install} prompt="./crucible --install" accent={accent} />
+            </div>
+          </details>
+        </section>
+      )
+    }
+
+    <section class="closing bleed" aria-labelledby="closing-title">
+      <div class="scene-inner closing-inner">
+        {
+          app.iconLocal && (
+            <AppIcon
+              src={app.iconLocal}
+              width={72}
+              height={72}
+              displayWidths={[64, 72]}
+              class="hero-icon h-16 w-16 rounded-[1.1rem] object-cover sm:h-[72px] sm:w-[72px]"
+            />
+          )
+        }
+        <h2 id="closing-title" class="display scene-title">Your library is waiting.</h2>
+        <p class="scene-lede">
+          Free on the App Store for iPhone, iPad and Apple TV. No server yet? Open it and choose Try
+          the demo.
+        </p>
+        <div class="hero-actions">
+          <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+          <a href={releasesUrl} target="_blank" rel="noopener noreferrer" class="ghost-btn">
+            Release notes<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+        <ul class="meta">
+          {versionLabel && <li>{versionLabel}</li>}
+          <li>Requires {requires}</li>
+          <li><a href="/crucible/support/">Support</a></li>
+          <li><a href="/crucible/privacy/">Privacy</a></li>
+          <li><a href="/crucible/seerr/">Seerr setup guide</a></li>
+          <li>By {app.sellerName ?? 'Midgar Oy'}</li>
+        </ul>
+        <p class="legal">
+          Crucible needs a Plex Media Server; Plex requires a Plex Pass or Remote Watch Pass to
+          stream from your server away from home. Crucible is an independent app and is not made by,
+          endorsed by or affiliated with Plex, Inc. Plex is a trademark of Plex, Inc. Crucible uses
+          Trakt but is not endorsed or certified by Trakt.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-paper-border py-10 font-mono dark:border-term-border">
+      <p class="prompt-line mb-5">ls ~/apps</p>
+      <div class="flex flex-wrap gap-3">
+        {
+          siblings.map((s) => (
+            <a
+              href={`/${s.slug}/`}
+              class="group inline-flex items-center gap-2.5 rounded-sm border border-paper-border px-3 py-2 text-sm transition-colors hover:border-paper-border2 dark:border-term-border dark:hover:border-term-border2"
+            >
+              {s.iconLocal && (
+                <AppIcon
+                  src={s.iconLocal}
+                  width={24}
+                  height={24}
+                  displayWidths={[24]}
+                  class="h-6 w-6 rounded-md object-cover"
+                />
+              )}
+              <span class="font-medium text-paper-muted group-hover:text-paper-green dark:text-term-muted dark:group-hover:text-term-green">
+                {s.shortName}
+              </span>
+            </a>
+          ))
+        }
+        <a
+          href="/apps/"
+          class="inline-flex items-center gap-2 rounded-sm border border-paper-border px-3 py-2 text-sm font-medium text-paper-muted transition-colors hover:border-paper-border2 hover:text-paper-green dark:border-term-border dark:text-term-muted dark:hover:border-term-border2 dark:hover:text-term-green"
+        >
+          all apps
+        </a>
+      </div>
+    </section>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>
+
+<style>
+  @font-face {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 100 900;
+    font-stretch: 62% 125%;
+    font-display: swap;
+    src: url('/fonts/archivo-var-latin.woff2') format('woff2');
+  }
+
+  :global(body) {
+    overflow-x: clip;
+  }
+
+  .cru {
+    --room: #090807;
+    --room-ink: #fff7ee;
+    --room-muted: #b3a593;
+    --ember: #f97316;
+    --glow: #ff8a1c;
+    --ink: #073642;
+    --body: #34505a;
+    --soft: #52676d;
+    --rule: #dcd3b8;
+    --link: #a3400a;
+    --focus: #a3400a;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+  }
+
+  :global(.dark) .cru {
+    --ink: #f3ece4;
+    --body: #c9c0b5;
+    --soft: #9a9186;
+    --rule: #2d333b;
+    --link: #ff9f4a;
+    --focus: #ff8a1c;
+  }
+
+  .display {
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-stretch: 118%;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .bleed {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+
+  .hero,
+  .scene,
+  .closing {
+    --focus: var(--glow);
+  }
+
+  .hero {
+    position: relative;
+    isolation: isolate;
+    min-height: min(92svh, 860px);
+    display: flex;
+    align-items: flex-end;
+    margin-top: 1.25rem;
+    background: var(--room);
+    color: var(--room-ink);
+    overflow: hidden;
+  }
+
+  .hero-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 22% 40%;
+    transform: scaleX(-1);
+    z-index: -2;
+  }
+
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgb(9 8 7 / 0.92) 0%, rgb(9 8 7 / 0.7) 38%, rgb(9 8 7 / 0.05) 72%),
+      linear-gradient(0deg, rgb(9 8 7 / 0.95) 0%, rgb(9 8 7 / 0) 45%);
+  }
+
+  .hero-inner,
+  .scene-inner {
+    width: 100%;
+    max-width: var(--shell-max);
+    margin-inline: auto;
+    padding-inline: var(--shell-gutter);
+  }
+
+  .hero-inner {
+    padding-block: clamp(5rem, 12vh, 9rem) clamp(2rem, 5vh, 3.5rem);
+  }
+
+  .hero-app h1 {
+    font: inherit;
+    margin-right: -0.55rem;
+  }
+
+  .hero-app {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #f2c78e;
+  }
+
+  .cru :global(.hero-icon) {
+    box-shadow: 0 16px 44px -14px rgb(255 138 28 / 0.6);
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 9.5vw, 7.5rem);
+    max-width: 11ch;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-sub {
+    max-width: 34rem;
+    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+    line-height: 1.5;
+    color: #e9ded1;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem 1.1rem;
+  }
+
+  .ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 48px;
+    padding: 0 1.15rem;
+    border-radius: 999px;
+    border: 1px solid rgb(255 247 238 / 0.35);
+    color: var(--room-ink);
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: rgb(255 247 238 / 0.06);
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .ghost-btn:hover {
+    background: rgb(255 247 238 / 0.14);
+    border-color: rgb(255 247 238 / 0.6);
+  }
+
+  .hero-now {
+    margin-top: clamp(2.5rem, 8vh, 4.5rem);
+    max-width: 30rem;
+  }
+
+  .hero-now-bar {
+    height: 4px;
+    border-radius: 999px;
+    background: rgb(255 247 238 / 0.22);
+    overflow: hidden;
+    margin-bottom: 0.7rem;
+  }
+
+  .hero-now-bar span {
+    display: block;
+    width: 64%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--glow);
+  }
+
+  .hero-now figcaption {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--room-muted);
+  }
+
+  .scene {
+    background: var(--room);
+    color: var(--room-ink);
+    padding-block: clamp(4rem, 9vw, 7.5rem);
+  }
+
+  .scene-title {
+    font-size: clamp(2.2rem, 5.4vw, 4.4rem);
+    max-width: 16ch;
+    margin-bottom: 1rem;
+  }
+
+  .scene-lede {
+    max-width: 38rem;
+    font-size: clamp(1rem, 0.94rem + 0.3vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--room-muted);
+  }
+
+  .house {
+    background:
+      radial-gradient(70% 55% at 45% 78%, rgb(255 138 28 / 0.16), transparent 70%),
+      linear-gradient(180deg, #0b0806 0%, var(--room) 100%);
+  }
+
+  .lineup {
+    margin-top: clamp(2.5rem, 6vw, 4.5rem);
+    display: grid;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    align-items: end;
+  }
+
+  .lineup img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.55));
+  }
+
+  .lineup-small {
+    display: grid;
+    grid-template-columns: 1fr 0.42fr;
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: end;
+  }
+
+  .feature {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    padding-block: clamp(4rem, 8vw, 6.5rem);
+    border-top: 1px solid var(--rule);
+    color: var(--body);
+  }
+
+  .feature-text {
+    max-width: 36rem;
+  }
+
+  .feature-text p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: clamp(2rem, 4.6vw, 3.6rem);
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .feature .aside {
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+
+  .feature-phone {
+    width: min(300px, 70vw);
+    height: auto;
+    justify-self: center;
+    filter: drop-shadow(0 24px 36px rgb(0 0 0 / 0.28));
+  }
+
+  .feature-pad {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    justify-self: center;
+    filter: drop-shadow(0 24px 36px rgb(0 0 0 / 0.28));
+  }
+
+  .feature-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    justify-self: center;
+    width: min(500px, 100%);
+  }
+
+  .feature-pair img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 24px 36px rgb(0 0 0 / 0.28));
+  }
+
+  .feature-text .figure-num {
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-stretch: 125%;
+    font-weight: 800;
+    font-size: clamp(3.5rem, 9vw, 6.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 0.35em;
+    margin-bottom: 1.5rem;
+  }
+
+  .figure-num s {
+    color: var(--soft);
+    font-size: 0.55em;
+    text-decoration-thickness: 0.08em;
+    text-decoration-color: var(--ember);
+  }
+
+  .figure-num small {
+    font-size: 0.32em;
+    font-stretch: 100%;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--soft);
+  }
+
+  .feature-text .ask {
+    display: inline-block;
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-stretch: 110%;
+    font-weight: 600;
+    font-size: clamp(1.15rem, 0.9rem + 1vw, 1.5rem);
+    color: var(--ink);
+    padding: 0.7rem 1.1rem;
+    border-radius: 0.9rem;
+    border: 1px solid var(--rule);
+    margin-bottom: 1.75rem;
+  }
+
+  .ask::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1.05em;
+    margin-left: 3px;
+    vertical-align: -0.12em;
+    background: var(--ember);
+  }
+
+  .feature-text .new {
+    color: var(--link);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .couch {
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  .couch-tv {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-inline: auto;
+    max-width: 1200px;
+    filter: drop-shadow(0 40px 60px rgb(0 0 0 / 0.6));
+  }
+
+  .couch-text {
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .band {
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    border-top: 1px solid var(--rule);
+    color: var(--body);
+  }
+
+  .band-title {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-bottom: 2rem;
+    max-width: 20ch;
+  }
+
+  .more {
+    display: grid;
+    gap: 1.75rem 3rem;
+  }
+
+  .more dt {
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+    font-size: 1.05rem;
+  }
+
+  .more dd {
+    line-height: 1.6;
+    max-width: 34rem;
+  }
+
+  .plans {
+    display: grid;
+    gap: 2.5rem 3rem;
+  }
+
+  .plan h3 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-stretch: 112%;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .plan h3 span {
+    font-size: 1.1rem;
+    color: var(--soft);
+    font-weight: 600;
+  }
+
+  .plan ul {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .plan li {
+    position: relative;
+    padding-left: 1.4rem;
+    line-height: 1.5;
+  }
+
+  .plan li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    border: 2px solid var(--soft);
+  }
+
+  .plan-pro li::before {
+    border-color: var(--ember);
+    background: var(--ember);
+  }
+
+  .tiers {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--ink);
+  }
+
+  .tiers strong {
+    font-size: 1.35rem;
+    font-weight: 800;
+  }
+
+  .tiers small {
+    display: block;
+    color: var(--soft);
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  .fine {
+    margin-top: 2rem;
+    max-width: 48rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--soft);
+  }
+
+  .trust p {
+    max-width: 42rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .trust a,
+  .fine a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .faq {
+    max-width: 48rem;
+  }
+
+  .source summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .source summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .source summary .band-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .source summary span:not(.toggle) {
+    display: block;
+    margin-top: 0.75rem;
+    color: var(--soft);
+  }
+
+  .toggle {
+    position: relative;
+    flex: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: 0.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+  }
+
+  .toggle::before,
+  .toggle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1rem;
+    height: 2px;
+    margin: -1px 0 0 -0.5rem;
+    background: var(--ember);
+    transition: transform 200ms ease;
+  }
+
+  .toggle::after {
+    transform: rotate(90deg);
+  }
+
+  .source[open] .toggle::after {
+    transform: rotate(0deg);
+  }
+
+  .source-body {
+    margin-top: 2rem;
+  }
+
+  .closing {
+    background:
+      radial-gradient(60% 70% at 50% 0%, rgb(46 26 10 / 0.9), transparent 70%), var(--room);
+    color: var(--room-ink);
+    padding-block: clamp(4.5rem, 9vw, 7rem);
+    text-align: center;
+  }
+
+  .closing-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .closing .scene-title {
+    margin-top: 1.75rem;
+  }
+
+  .closing .scene-lede {
+    margin-bottom: 2rem;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+    color: var(--room-muted);
+  }
+
+  .meta a {
+    display: inline-block;
+    padding-block: 0.3rem;
+    color: #f2c78e;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .legal {
+    max-width: 44rem;
+    margin-top: 1.75rem;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: #8c8276;
+  }
+
+  .cru :global(:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (min-width: 768px) {
+    .feature {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .feature-flip .feature-text {
+      order: 2;
+    }
+
+    .feature-wide {
+      grid-template-columns: 0.8fr 1.2fr;
+    }
+
+    .feature-wide.feature-flip {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .more {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .plans {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lineup {
+      grid-template-columns: 1.55fr 1fr;
+    }
+
+    .more {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      min-height: auto;
+    }
+
+    .hero-art {
+      object-position: 22% 30%;
+      height: 62%;
+    }
+
+    .hero-scrim {
+      background: linear-gradient(
+        0deg,
+        var(--room) 42%,
+        rgb(9 8 7 / 0.55) 62%,
+        rgb(9 8 7 / 0.1) 100%
+      );
+    }
+
+    .hero-inner {
+      padding-top: 13rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-art {
+      animation: settle 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .hero-inner > * {
+      animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      animation-delay: 0.25s;
+    }
+
+    .hero-now-bar span {
+      animation: grow 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      animation-delay: 0.6s;
+    }
+  }
+
+  @keyframes settle {
+    from {
+      transform: scaleX(-1) scale(1.06);
+      opacity: 0.4;
+    }
+    to {
+      transform: scaleX(-1) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes grow {
+    from {
+      width: 0;
+    }
+  }
+</style>
