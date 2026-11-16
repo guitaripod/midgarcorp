@@ -1,0 +1,37 @@
+---
+export interface Props {
+  rating: number;
+  count: number;
+  class?: string;
+}
+
+const { rating, count, class: className } = Astro.props;
+const label = `Rated ${rating.toFixed(1)} out of 5 from ${count} ratings`;
+const fill = Math.max(0, Math.min(100, (rating / 5) * 100)).toFixed(1);
+---
+
+<span class:list={['hero-rating', className]} aria-label={label}>
+  <span class="hero-stars" aria-hidden="true" style={`--fill:${fill}%`}>★★★★★</span>
+  <span aria-hidden="true">{rating.toFixed(1)} · {count} ratings</span>
+</span>
+
+<style>
+  .hero-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-stars {
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    background: linear-gradient(
+      90deg,
+      var(--star-on, currentColor) var(--fill),
+      var(--star-off, rgb(255 255 255 / 0.3)) var(--fill)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>

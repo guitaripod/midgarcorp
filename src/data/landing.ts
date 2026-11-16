@@ -131,7 +131,6 @@ export interface LandingContent {
   video?: { src: string; poster: string; caption: string };
   pricing?: Pricing;
   trustNote?: string;
-  webbLive?: boolean;
   bannerDevice?: string;
   hideAbout?: boolean;
   install?: Install;

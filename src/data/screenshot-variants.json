@@ -1066,6 +1066,42 @@
   "/screenshots/pixiepocket/promo-poster.webp": [
     480
   ],
+  "/screenshots/solarbeam/web-hero-planetarium.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/web-ipad-webb-gallery.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/web-mac-asteroids.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/web-mac-planetarium.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/web-phone-apod.webp": [
+    480
+  ],
+  "/screenshots/solarbeam/web-phone-planetarium-inside.webp": [
+    480
+  ],
+  "/screenshots/solarbeam/web-phone-planetarium.webp": [
+    480
+  ],
+  "/screenshots/solarbeam/web-phone-webb-status.webp": [
+    480
+  ],
+  "/screenshots/solarbeam/web-tv-ambient.webp": [
+    480,
+    960
+  ],
+  "/screenshots/solarbeam/web-vision-surround.webp": [
+    480,
+    960
+  ],
   "/screenshots/embr/web-audio.webp": [
     480
   ],

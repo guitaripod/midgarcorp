@@ -7,7 +7,6 @@ import FeatureGrid from '@components/landing/FeatureGrid.astro';
 import FaqAccordion from '@components/landing/FaqAccordion.astro';
 import DeviceFrame from '@components/landing/DeviceFrame.astro';
 import PricingTable from '@components/landing/PricingTable.astro';
-import WebbLive from '@components/landing/WebbLive.astro';
 import AppIcon from '@components/landing/AppIcon.astro';
 import InstallGuide from '@components/landing/InstallGuide.astro';
 import DuoCombo from '@components/landing/DuoCombo.astro';
@@ -27,10 +26,10 @@ import {
 import screenshotVariants from '@data/screenshot-variants.json';
 
 export function getStaticPaths() {
-  // tailscode, embr and crucible have bespoke pages at src/pages/<slug>/index.astro; emitting
-  // them here too would render the same dist path twice with whichever wins.
+  // tailscode, embr, crucible and solarbeam have bespoke pages at src/pages/<slug>/index.astro;
+  // emitting them here too would render the same dist path twice with whichever wins.
   return landingApps
-    .filter((app) => !['tailscode', 'embr', 'crucible'].includes(app.slug))
+    .filter((app) => !['tailscode', 'embr', 'crucible', 'solarbeam'].includes(app.slug))
     .map((app) => ({ params: { app: app.slug }, props: { app } }));
 }
 
@@ -481,8 +480,6 @@ const releasedOn = app.currentVersionReleaseDate
         </section>
       )
     }
-
-    {c.webbLive && <WebbLive accent={accent} />}
 
     <!-- How it works -->
     {
