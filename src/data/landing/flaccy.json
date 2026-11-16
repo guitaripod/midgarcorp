@@ -106,7 +106,7 @@
     },
     {
       "title": "Made for iPhone Duo",
-      "body": "On the inner display in landscape the library sits beside Now Playing, lyrics and artwork take their own panes, and every screen ends at the fold. On the outer display it is a regular, fast iPhone player.",
+      "body": "Open it while music plays and your library sits on one side of the fold, Now Playing on the other, its cover beside the status bar. Fold it like a book and lyrics or the queue take the facing page; stand it like a laptop and the cover and lyrics sit above the controls. Closed, it is a fast, full iPhone player, upright or on its side.",
       "glyph": "▯"
     },
     {
@@ -182,7 +182,7 @@
     },
     {
       "q": "Does it work on iPhone Duo?",
-      "a": "Yes. On the inner display in landscape the library sits beside Now Playing, lyrics and artwork get their own panes, and layouts end at the fold. On the outer display it behaves like a regular iPhone."
+      "a": "Yes. Open, your library sits beside Now Playing once music plays, and folded like a book each page stands on its own: album walls, album pages and lyrics meet the fold instead of crossing it. Stood like a laptop, the cover and lyrics sit above the controls. On the outer display it is a regular iPhone player, upright or on its side."
     },
     {
       "q": "Does Flaccy work on iPad?",
