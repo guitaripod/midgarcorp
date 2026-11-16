@@ -1,6 +1,6 @@
 {
   "generated": "scripts/fetch-linux-releases.mjs — auto-discovered, live from GitHub / crates.io / AUR",
-  "count": 33,
+  "count": 34,
   "apps": [
     {
       "id": "apod-cli",
@@ -43,6 +43,51 @@
             "channel": "source",
             "label": "from source",
             "command": "git clone https://github.com/guitaripod/apod-cli && cd apod-cli && go build"
+          }
+        ]
+      }
+    },
+    {
+      "id": "baton-pass",
+      "name": "baton-pass",
+      "form": "gui",
+      "theme": "desktop",
+      "group": "desktop",
+      "lang": "rust",
+      "language": "Rust",
+      "description": "Hand a KDE Plasma desktop's mouse, keyboard and clipboard to the Mac beside it",
+      "stars": 0,
+      "commitCount": 40,
+      "releaseCount": 1,
+      "releaseDates": [
+        "2026-11-15T06:22:17Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/baton-pass",
+      "homepageUrl": null,
+      "topics": [
+        "kde",
+        "kvm",
+        "macos",
+        "rust",
+        "wayland"
+      ],
+      "latestVersion": "0.1.0-alpha.1",
+      "latestReleaseDate": "2026-11-15T06:22:17Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/baton-pass/releases/tag/0.1.0-alpha.1",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/baton-pass/releases/download/0.1.0-alpha.1/baton-pass-0.1.0-alpha.1-x86_64-linux.tar.gz",
+      "note": "KDE Plasma / Wayland",
+      "install": {
+        "primary": {
+          "channel": "source",
+          "label": "from source",
+          "command": "cargo install --git https://github.com/guitaripod/baton-pass"
+        },
+        "all": [
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "cargo install --git https://github.com/guitaripod/baton-pass"
           }
         ]
       }
@@ -206,8 +251,8 @@
       "language": "Swift",
       "description": "Runs Claude Code headlessly and serves it as structured HTTP sessions with streaming, subagents, spend and git, as a systemd user service.",
       "stars": 1,
-      "commitCount": 206,
-      "releaseCount": 46,
+      "commitCount": 253,
+      "releaseCount": 62,
       "releaseDates": [
         "2026-07-29T19:43:51Z",
         "2026-08-03T17:45:11Z",
@@ -254,16 +299,32 @@
         "2026-11-04T17:46:08Z",
         "2026-11-06T08:37:26Z",
         "2026-11-06T17:42:42Z",
-        "2026-11-08T12:48:16Z"
+        "2026-11-08T12:48:16Z",
+        "2026-11-09T16:28:51Z",
+        "2026-11-09T18:38:30Z",
+        "2026-11-13T00:04:39Z",
+        "2026-11-14T13:43:15Z",
+        "2026-11-14T22:22:01Z",
+        "2026-11-15T09:16:46Z",
+        "2026-11-15T10:38:08Z",
+        "2026-11-15T14:07:22Z",
+        "2026-11-16T07:23:41Z",
+        "2026-11-16T08:50:19Z",
+        "2026-11-16T09:42:14Z",
+        "2026-11-16T12:20:18Z",
+        "2026-11-16T13:09:04Z",
+        "2026-11-16T14:22:08Z",
+        "2026-11-16T15:21:05Z",
+        "2026-11-16T16:12:36Z"
       ],
       "githubUrl": "https://github.com/guitaripod/claude-bridge",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "1.21.1",
-      "latestReleaseDate": "2026-11-08T12:48:16Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.21.1",
+      "latestVersion": "1.35.0",
+      "latestReleaseDate": "2026-11-16T16:12:36Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/claude-bridge/releases/tag/1.35.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/claude-bridge/releases/download/1.21.1/claude-bridge-1.21.1-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/claude-bridge/releases/download/1.35.0/claude-bridge-1.35.0-linux-x86_64.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -492,7 +553,7 @@
       "language": "Rust",
       "description": "A lossless music player with gapless playback, a real equalizer and Last.fm scrobbling — a native GTK4/libadwaita desktop app.",
       "stars": 7,
-      "commitCount": 244,
+      "commitCount": 268,
       "releaseCount": 41,
       "releaseDates": [
         "2026-07-10T13:46:58Z",
@@ -539,7 +600,27 @@
       ],
       "githubUrl": "https://github.com/guitaripod/flaccy",
       "homepageUrl": null,
-      "topics": [],
+      "topics": [
+        "autoeq",
+        "equalizer",
+        "flac",
+        "gapless",
+        "gstreamer",
+        "gtk4",
+        "ios",
+        "lastfm",
+        "libadwaita",
+        "linux",
+        "lyrics",
+        "macos",
+        "mpris",
+        "music-player",
+        "navidrome",
+        "opensubsonic",
+        "rust",
+        "self-hosted",
+        "subsonic"
+      ],
       "latestVersion": "1.28.0",
       "latestReleaseDate": "2026-11-06T14:37:17Z",
       "latestReleaseUrl": "https://github.com/guitaripod/flaccy/releases/tag/linux-v1.28.0",
@@ -920,8 +1001,8 @@
       "language": "Swift",
       "description": "Puts an Oh My Pi coding agent on your tailnet: the claude-bridge wire protocol over HTTP and SSE, as a systemd user service.",
       "stars": 2,
-      "commitCount": 80,
-      "releaseCount": 19,
+      "commitCount": 117,
+      "releaseCount": 28,
       "releaseDates": [
         "2026-08-25T16:26:57Z",
         "2026-09-04T16:15:43Z",
@@ -941,16 +1022,25 @@
         "2026-11-03T09:43:20Z",
         "2026-11-04T09:26:07Z",
         "2026-11-06T17:48:04Z",
-        "2026-11-09T09:50:22Z"
+        "2026-11-09T09:50:22Z",
+        "2026-11-09T21:41:31Z",
+        "2026-11-09T22:22:11Z",
+        "2026-11-10T08:33:26Z",
+        "2026-11-14T06:45:39Z",
+        "2026-11-14T10:57:30Z",
+        "2026-11-14T22:55:13Z",
+        "2026-11-15T10:38:31Z",
+        "2026-11-16T12:19:51Z",
+        "2026-11-16T13:09:37Z"
       ],
       "githubUrl": "https://github.com/guitaripod/omp-bridge",
       "homepageUrl": null,
       "topics": [],
-      "latestVersion": "0.12.1",
-      "latestReleaseDate": "2026-11-09T09:50:22Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/omp-bridge/releases/tag/v0.12.1",
+      "latestVersion": "0.18.0",
+      "latestReleaseDate": "2026-11-16T13:09:37Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/omp-bridge/releases/tag/v0.18.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/omp-bridge/releases/download/v0.12.1/omp-bridge-0.12.1-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/omp-bridge/releases/download/v0.18.0/omp-bridge-0.18.0-linux-x86_64.tar.gz",
       "note": null,
       "install": {
         "primary": {
@@ -1031,15 +1121,15 @@
       "group": "desktop",
       "lang": "rust",
       "language": "Rust",
-      "description": "Bakes Steam's Vulkan shader caches while you are away, so games start without \"Processing Vulkan shaders\". Linux daemon.",
+      "description": "Bakes Steam's Vulkan shader caches while you are away",
       "stars": 0,
-      "commitCount": 21,
+      "commitCount": 23,
       "releaseCount": 1,
       "releaseDates": [
         "2026-11-07T12:03:54Z"
       ],
       "githubUrl": "https://github.com/guitaripod/prebake",
-      "homepageUrl": "https://midgarcorp.cc/linux/",
+      "homepageUrl": null,
       "topics": [
         "daemon",
         "fossilize",
@@ -1145,7 +1235,7 @@
       "language": "Rust",
       "description": "GPU-accelerated review window for screen recordings",
       "stars": 2,
-      "commitCount": 12,
+      "commitCount": 14,
       "releaseCount": 2,
       "releaseDates": [
         "2026-08-09T13:26:08Z",
@@ -1200,7 +1290,7 @@
       "language": "Python",
       "description": "Routes Steam Remote Play sessions to a dummy HDMI",
       "stars": 5,
-      "commitCount": 19,
+      "commitCount": 21,
       "releaseCount": 2,
       "releaseDates": [
         "2026-07-26T22:19:58Z",
@@ -1441,9 +1531,9 @@
       "lang": "swift",
       "language": "Swift",
       "description": "Your AI agents, anywhere: a native GTK4 client for Claude Code, Oh My Pi and opencode running on your own machines, over your own tailnet.",
-      "stars": 15,
-      "commitCount": 646,
-      "releaseCount": 50,
+      "stars": 16,
+      "commitCount": 674,
+      "releaseCount": 51,
       "releaseDates": [
         "2026-07-29T19:44:13Z",
         "2026-08-03T17:50:52Z",
@@ -1494,7 +1584,8 @@
         "2026-10-16T11:06:41Z",
         "2026-10-21T00:32:33Z",
         "2026-10-30T10:02:45Z",
-        "2026-11-09T10:00:39Z"
+        "2026-11-09T10:00:39Z",
+        "2026-11-14T15:34:24Z"
       ],
       "githubUrl": "https://github.com/guitaripod/Tailscode",
       "homepageUrl": "https://midgarcorp.cc/tailscode/",
@@ -1509,11 +1600,11 @@
         "swift",
         "tailscale"
       ],
-      "latestVersion": "1.82",
-      "latestReleaseDate": "2026-11-09T10:00:39Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/Tailscode/releases/tag/v1.82",
+      "latestVersion": "1.83",
+      "latestReleaseDate": "2026-11-14T15:34:24Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/Tailscode/releases/tag/v1.83",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/Tailscode/releases/download/v1.82/tailscode-1.82-linux-x86_64.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/Tailscode/releases/download/v1.83/tailscode-1.83-linux-x86_64.tar.gz",
       "note": "GTK 4.12+ / libadwaita 1.4+",
       "install": {
         "primary": {
@@ -1679,8 +1770,8 @@
       "language": "Rust",
       "description": "Takes the rage out of your x.com timeline with a model on your own computer: a terminal client, a CLI and a browser extension.",
       "stars": 15,
-      "commitCount": 373,
-      "releaseCount": 68,
+      "commitCount": 379,
+      "releaseCount": 69,
       "releaseDates": [
         "2026-04-12T09:06:40Z",
         "2026-04-12T09:46:49Z",
@@ -1749,16 +1840,17 @@
         "2026-10-05T18:36:39Z",
         "2026-10-13T16:27:51Z",
         "2026-10-16T22:12:43Z",
-        "2026-11-07T09:52:37Z"
+        "2026-11-07T09:52:37Z",
+        "2026-11-14T13:26:54Z"
       ],
       "githubUrl": "https://github.com/guitaripod/unrager",
       "homepageUrl": "https://midgarcorp.cc/unrager/",
       "topics": [],
-      "latestVersion": "0.32.0",
-      "latestReleaseDate": "2026-11-07T09:52:37Z",
-      "latestReleaseUrl": "https://github.com/guitaripod/unrager/releases/tag/0.32.0",
+      "latestVersion": "0.33.0",
+      "latestReleaseDate": "2026-11-14T13:26:54Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/unrager/releases/tag/0.33.0",
       "hasLinuxBinary": true,
-      "linuxBinaryUrl": "https://github.com/guitaripod/unrager/releases/download/0.32.0/unrager-0.32.0-cli-x86_64-unknown-linux-gnu.tar.gz",
+      "linuxBinaryUrl": "https://github.com/guitaripod/unrager/releases/download/0.33.0/unrager-0.33.0-cli-x86_64-unknown-linux-gnu.tar.gz",
       "note": null,
       "install": {
         "primary": {
