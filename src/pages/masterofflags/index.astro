@@ -1576,6 +1576,8 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     width: 100%;
     height: auto;
     background: var(--night);
+    border-radius: 15% / 7.3%;
+    clip-path: inset(0.4% round 15% / 7.3%);
   }
 
   .preview figcaption {
@@ -1938,10 +1940,10 @@ const siblings = siblingApps(landingApps, 'masterofflags');
 
     .hero-art {
       width: 100%;
-      height: 60%;
-      object-position: 50% 40%;
-      -webkit-mask-image: none;
-      mask-image: none;
+      height: 24rem;
+      object-position: 50% 45%;
+      -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
     }
 
     .hero-scrim {
@@ -1954,7 +1956,7 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     }
 
     .hero-inner {
-      padding-top: 15rem;
+      padding-top: 19rem;
     }
 
     .quiz-label {
