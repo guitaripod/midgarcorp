@@ -1,56 +1,66 @@
 {
-  "seoTitle": "Master of Flags: Free Flag Quiz for iPhone, Mac and Apple TV",
-  "metaDescription": "A free flag and capitals quiz with no ads and no subscription. Daily Challenge, streaks, a 250-flag encyclopedia, Apple Watch and Couch Mode on Apple TV.",
+  "seoTitle": "Master of Flags: Flag Quiz on a 3D Globe, Free and No Ads",
+  "metaDescription": "Learn every flag on Earth on a 3D globe you paint with each flag you get right. 250 country cards, 33 expeditions and a Daily Challenge. Free, no ads.",
   "accentColor": "#EF4444",
   "keywords": [
-    "flag quiz app",
-    "learn country flags",
-    "world capitals quiz",
-    "geography quiz app",
-    "flag game no ads",
+    "flag quiz",
+    "flag game on a globe",
+    "world flags quiz",
+    "capitals quiz",
+    "geography game",
+    "country flags",
     "daily flag challenge",
-    "memorize country flags",
-    "flag quiz for mac",
     "flag quiz apple tv",
-    "spaced repetition flags"
+    "no ads flag quiz",
+    "learn flags offline"
   ],
-  "heroHeadline": "Learn every flag on Earth",
-  "heroSubhead": "A flag and capitals quiz that respects you: no ads, no subscription, no account. A wrong answer shows the right flag, its capital and what to look for. Free on iPhone, iPad, Mac, Apple TV and Apple Watch.",
+  "heroHeadline": "Paint the world with every flag you learn",
+  "heroSubhead": "Master of Flags 5.0 is a flag and capitals quiz played on a 3D globe that becomes yours: every country you get right is painted with its flag. No ads, no subscription, no account. Free on iPhone, iPad, Mac, Apple TV and Apple Watch.",
   "highlights": [
-    "No ads, no subscription, no account",
-    "Wrong answers teach the right flag, its capital and what to look for",
-    "A ten-question Daily Challenge with a streak that forgives",
-    "One optional Pro purchase covers iPhone, iPad, Mac and Apple TV"
+    "The Atlas: a 3D globe painted with every flag you get right",
+    "250 country cards with 1,000 stamps, from Bronze to holographic",
+    "33 expeditions with three stars each, and Explorer ranks up to Grand Master of Flags",
+    "No ads, no subscription, no account; Pro is one optional purchase"
   ],
   "features": [
     {
+      "title": "The Atlas",
+      "body": "Your globe is the game: answer on it, turn it and zoom it, and watch each flag fly to its country and paint it. Everything you learned before 5.0 is painted onto your globe the first time you open it.",
+      "glyph": "◍"
+    },
+    {
+      "title": "Find it on the globe",
+      "body": "A new kind of question asks you to tap a country you have already discovered, so you learn where every flag lives, not only what it looks like.",
+      "glyph": "⌖"
+    },
+    {
       "title": "Wrong answers teach",
-      "body": "Miss a flag and the tiles show the right one, its capital and what to look for. Right answers move on by themselves, and nothing ever blocks the next flag.",
+      "body": "Miss a flag and you see the right one, its capital and what to look for. Flags and capitals across Europe, Asia, Africa, the Americas, Oceania and the whole world, all free.",
       "glyph": "◈"
     },
     {
-      "title": "Flags and capitals, six regions",
-      "body": "Name the flag or match the capital across Europe, Asia, Africa, the Americas, Oceania and the whole world. Every region and both modes are free.",
+      "title": "250 cards to collect",
+      "body": "Every country is a card with four stamps to earn, Flag, Name, Capital and Place, from Bronze to holographic. The back of every card is the encyclopedia: the story behind the flag, what its colors and symbols mean, the country shape, neighbors, languages, currencies and a short history.",
       "glyph": "▣"
     },
     {
-      "title": "A Daily Challenge with a fair streak",
-      "body": "Ten flags, once a day, the same set for everyone, with a result you can share as a picture. Seven of ten keeps your streak, freezes cover a skipped day and a 48-hour repair window forgives a broken run.",
-      "glyph": "◉"
-    },
-    {
-      "title": "Learn, the flag encyclopedia",
-      "body": "About 250 flags and territories with capitals, facts and the story behind each flag. Search by nickname or native name, so Holland and Deutschland both work, and look-alike flags are one tap away.",
-      "glyph": "⬡"
-    },
-    {
-      "title": "Every Apple screen",
-      "body": "A real Mac app with a sidebar, menu bar and keyboard shortcuts. The full game on Apple TV, with Couch Mode for two to four players. Flash questions and your Daily streak on Apple Watch, and widgets for the Home Screen, Lock Screen and StandBy.",
+      "title": "Expeditions and ranks",
+      "body": "33 expeditions with one to three stars each, from Nordic Crosses and Tricolour Trouble to The Silk Road and Island Hopper, and Explorer ranks from Cadet to Grand Master of Flags.",
       "glyph": "✦"
     },
     {
+      "title": "A Daily Challenge with a fair streak",
+      "body": "The same ten flags for everyone, once a day, with a result you can share as a picture. Streak freezes cover a skipped day and a 48-hour repair window forgives a broken run.",
+      "glyph": "◉"
+    },
+    {
+      "title": "Every Apple screen",
+      "body": "The Atlas on iPhone, iPad and Apple TV, Couch Mode on Apple TV for two to four players with one remote, Flash questions and your Daily streak on Apple Watch, a Mac app, and widgets for the Home Screen and Lock Screen.",
+      "glyph": "⌘"
+    },
+    {
       "title": "Pro: drill what you miss",
-      "body": "Smart Review brings back the flags you miss on a spaced schedule. Similar Flags drills the look-alikes, Chad and Romania, Indonesia and Monaco. Hard Mode, full statistics, Daily Archive replay and five streak freezes a month round it out.",
+      "body": "Every expedition, four Looks for your globe (Paper, Blueprint, Aurora and Gold), a poster of your world to keep and share, Smart Review, Similar Flags, Hard Mode, full statistics, the Daily Archive and five streak freezes a month.",
       "glyph": "▲"
     }
   ],
@@ -61,18 +71,20 @@
       "title": "Free forever",
       "price": "$0",
       "items": [
+        "The Atlas: all 250 countries, every question and every stamp",
         "Flags and capitals in all six regions",
         "The Daily Challenge, streaks and one freeze a month",
-        "Learn, the 250-flag encyclopedia",
-        "Game Center leaderboards and 33 achievements"
+        "Cards, the flag encyclopedia, and Game Center"
       ]
     },
     "premium": {
       "title": "Master of Flags Pro",
       "price": "$6.99 once",
       "items": [
-        "Smart Review and Similar Flags drills",
-        "Hard Mode and full statistics",
+        "Every expedition (the first chapter is free)",
+        "Looks for your globe: Paper, Blueprint, Aurora and Gold",
+        "A poster of your world to keep and share",
+        "Smart Review, Similar Flags, Hard Mode and full statistics",
         "Daily Archive replay and five streak freezes a month",
         "One purchase on iPhone, iPad, Mac and Apple TV, shared with your family"
       ]
@@ -90,11 +102,19 @@
   "faq": [
     {
       "q": "Is Master of Flags really free?",
-      "a": "Yes. Both quiz modes, all six regions, the Daily Challenge, streaks, the encyclopedia and Game Center are free, with no ads and no account. Pro is optional."
+      "a": "Yes. The globe, all 250 countries, every question, stamps and cards, both quiz modes, all six regions, the Daily Challenge, streaks and Game Center are free, with no ads and no account. Pro is optional."
+    },
+    {
+      "q": "What is new in Master of Flags 5.0?",
+      "a": "The game now happens on a globe that becomes yours. Every country you get right is painted with its flag, and each flag flies to its country as you answer. There is a new question that asks you to find a country on the globe, 250 country cards to collect with four stamps each, 33 expeditions with stars to earn, Explorer ranks from Cadet to Grand Master of Flags, and the Daily, Smart Review and Similar Flags are played on the globe too."
+    },
+    {
+      "q": "Do I lose my progress in 5.0?",
+      "a": "No. The first time you open 5.0, everything you already knew is painted onto your globe, your lifetime points become your Explorer rank, and your Daily streak, freezes, results, bookmarks, region levels, Game Center scores and Pro stay exactly as they were."
     },
     {
       "q": "What does Pro unlock, and what does it cost?",
-      "a": "Pro is a one-time $6.99 purchase. It adds Hard Mode, Smart Review, Similar Flags, full statistics, replay of any Daily Challenge you missed and five streak freezes a month instead of one. There is no subscription."
+      "a": "Pro is a one-time $6.99 purchase. From 5.0 it adds every expedition (the first chapter is free), four Looks for your globe and a poster of your world, on top of Hard Mode, Smart Review, Similar Flags, full statistics, replay of any Daily Challenge you missed and five streak freezes a month instead of one. If you already own Pro, all of it is yours. There is no subscription."
     },
     {
       "q": "Do I pay again on another device, or for my family?",
@@ -150,6 +170,6 @@
       "The final table"
     ]
   },
-  "ctaLine": "Start learning the world's flags, free.",
+  "ctaLine": "Paint the world with every flag you learn.",
   "pricingNote": "Free to play with no ads or subscription. Pro is a one-time $6.99 purchase for iPhone, iPad, Mac and Apple TV, shared with your family."
 }

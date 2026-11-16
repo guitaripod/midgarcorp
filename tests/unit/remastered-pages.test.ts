@@ -43,9 +43,9 @@ const PAGES = [
     slug: 'masterofflags',
     font: '/fonts/fraunces-var-latin.woff2',
     prefixed: (page: string) =>
-      [...page.matchAll(/\b(phone|pad|mac)\('([^']+)'\)/g)].map(
+      [...page.matchAll(/\b(phone|pad|tv|figure)\('([^']+)'/g)].map(
         (m) =>
-          `/screenshots/masterofflags/web-${{ phone: 'phone', pad: 'ipad', mac: 'mac' }[m[1]]}-${m[2]}.webp`
+          `/screenshots/masterofflags/web-${{ phone: 'phone-', pad: 'ipad-', tv: 'tv-', figure: '' }[m[1]]}${m[2]}.webp`
       ),
   },
   {
@@ -128,11 +128,11 @@ describe('Master of Flags page', () => {
     (m) => ({ answer: m[1], options: m[2].match(/[A-Z]{3}/g) ?? [] })
   );
 
-  it('asks five rounds, each with its answer among three different flags', () => {
+  it('asks five rounds, each with its answer among four different flags', () => {
     expect(rounds).toHaveLength(5);
     for (const round of rounds) {
-      expect(round.options).toHaveLength(3);
-      expect(new Set(round.options).size).toBe(3);
+      expect(round.options).toHaveLength(4);
+      expect(new Set(round.options).size).toBe(4);
       expect(round.options).toContain(round.answer);
     }
   });
@@ -146,8 +146,10 @@ describe('Master of Flags page', () => {
     }
   });
 
-  it('draws its hero from the flag wall', () => {
-    expect(onDisk('/screenshots/masterofflags/flags/wall.webp')).toBe(true);
+  it('shows 5.0: the globe hero and the framed App Store preview', () => {
+    expect(page).toContain("figure('hero-globe'");
+    expect(onDisk('/screenshots/masterofflags/web-preview.mp4')).toBe(true);
+    expect(page).toContain('New in 5.0');
   });
 });
 

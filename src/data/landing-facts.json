@@ -1598,7 +1598,14 @@
         "Apple TV",
         "Apple Watch",
         "Mac"
-      ]
+      ],
+      "ogShot": {
+        "src": "/screenshots/masterofflags/web-phone-atlas.webp",
+        "w": 735,
+        "h": 1520,
+        "label": "Atlas",
+        "framed": true
+      }
     },
     {
       "slug": "masterofinventory",
