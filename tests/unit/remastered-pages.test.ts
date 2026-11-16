@@ -38,6 +38,15 @@ const PAGES = [
         return `/screenshots/solarbeam/web-${name}.webp`;
       }),
   },
+  {
+    slug: 'masterofflags',
+    font: '/fonts/fraunces-var-latin.woff2',
+    prefixed: (page: string) =>
+      [...page.matchAll(/\b(phone|pad|mac)\('([^']+)'\)/g)].map(
+        (m) =>
+          `/screenshots/masterofflags/web-${{ phone: 'phone', pad: 'ipad', mac: 'mac' }[m[1]]}-${m[2]}.webp`
+      ),
+  },
 ];
 
 describe.each(PAGES)('$slug landing page', ({ slug, font, prefixed }) => {
@@ -101,5 +110,34 @@ describe('Solar Beam page', () => {
     expect(ids).toHaveLength(10);
     for (const id of ids)
       expect(onDisk(`/screenshots/solarbeam/spheres/${id}.webp`), id).toBe(true);
+  });
+});
+
+describe('Master of Flags page', () => {
+  const page = read('src', 'pages', 'masterofflags', 'index.astro');
+  const rounds = [...page.matchAll(/answer: '([A-Z]{3})',[\s\S]*?options: \[([^\]]+)\]/g)].map(
+    (m) => ({ answer: m[1], options: m[2].match(/[A-Z]{3}/g) ?? [] })
+  );
+
+  it('asks five rounds, each with its answer among three different flags', () => {
+    expect(rounds).toHaveLength(5);
+    for (const round of rounds) {
+      expect(round.options).toHaveLength(3);
+      expect(new Set(round.options).size).toBe(3);
+      expect(round.options).toContain(round.answer);
+    }
+  });
+
+  it('names and ships every flag the quiz can show', () => {
+    for (const code of rounds.flatMap((r) => r.options)) {
+      expect(page).toMatch(new RegExp(`${code}: '`));
+      expect(onDisk(`/screenshots/masterofflags/flags/${code.toLowerCase()}.webp`), code).toBe(
+        true
+      );
+    }
+  });
+
+  it('draws its hero from the flag wall', () => {
+    expect(onDisk('/screenshots/masterofflags/flags/wall.webp')).toBe(true);
   });
 });

@@ -1,0 +1,1680 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AppStoreBadge from '@components/landing/AppStoreBadge.astro';
+import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import AppIcon from '@components/landing/AppIcon.astro';
+import HeroRating from '@components/landing/HeroRating.astro';
+import { landingApps, screenshotUrl, type LandingApp } from '@data/landing';
+import screenshotVariants from '@data/screenshot-variants.json';
+import { siblingApps } from '@utils/sibling-apps';
+import { appPageJsonLd } from '@utils/structured-data';
+import { markdownPath } from '@utils/llms';
+import { privacyUrlFor, supportPath } from '../../utils/app-links';
+import { duoCombo } from '@data/duo';
+
+export const prerender = true;
+
+const app = landingApps.find((a) => a.slug === 'masterofflags') as LandingApp;
+const c = app.content;
+const accent = c.accentColor || app.primaryColor;
+
+const OG_REV = '13';
+const ogImage = `/og/masterofflags.png?v=${OG_REV}`;
+
+const variants = screenshotVariants as Record<string, number[]>;
+
+/// A figure of the page from Master of Flags' App Store set: the framed device cut out of its
+/// store slide along the bezel the frames CLI drew, or an Apple TV capture as it was shot.
+const figure = (src: string, w: number, h: number) => {
+  const srcset = [
+    ...(variants[src] ?? []).map(
+      (wide) => `${screenshotUrl(src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`
+    ),
+    `${screenshotUrl(src)} ${w}w`,
+  ].join(', ');
+  return { src: screenshotUrl(src), srcset, w, h };
+};
+const phone = (name: string) =>
+  figure(`/screenshots/masterofflags/web-phone-${name}.webp`, 735, 1521);
+const pad = (name: string) =>
+  figure(`/screenshots/masterofflags/web-ipad-${name}.webp`, 1150, 1499);
+const mac = (name: string) => figure(`/screenshots/masterofflags/web-mac-${name}.webp`, 1656, 983);
+const tv = (index: number) => figure(`/screenshots/masterofflags/tv-${index}.webp`, 1920, 1080);
+
+const shots = {
+  daily: phone('daily'),
+  learn: phone('learn'),
+  search: phone('search'),
+  train: phone('train'),
+  couch: tv(5),
+  pad: pad('play'),
+  mac: mac('learn'),
+};
+
+const flag = (code: string) => `/screenshots/masterofflags/flags/${code.toLowerCase()}.webp`;
+
+/// The rounds of the quiz on this page, lookalike flags from the app's own data: the capital,
+/// the flag cue and the lookalike note are the words Master of Flags shows after an answer.
+const rounds = [
+  {
+    answer: 'MDA',
+    name: 'Moldova',
+    capital: 'Chișinău',
+    cue: 'Three equal vertical bands of Prussian blue, chrome yellow and vermilion red.',
+    note: 'Romania has the same blue, yellow and red bands, and no coat of arms.',
+    options: ['ROU', 'MDA', 'AND'],
+  },
+  {
+    answer: 'TCD',
+    name: 'Chad',
+    capital: 'N’Djamena',
+    cue: 'Three equal vertical bands of blue, gold and red.',
+    note: 'Romania has the same bands; its blue is slightly lighter.',
+    options: ['TCD', 'BEL', 'ROU'],
+  },
+  {
+    answer: 'IDN',
+    name: 'Indonesia',
+    capital: 'Jakarta',
+    cue: 'Two equal horizontal bands of red over white.',
+    note: 'Monaco is the same red over white in a squarer shape; Poland is white over red.',
+    options: ['POL', 'MCO', 'IDN'],
+  },
+  {
+    answer: 'IRL',
+    name: 'Ireland',
+    capital: 'Dublin',
+    cue: 'Three equal vertical bands of green, white and orange.',
+    note: 'Ivory Coast reverses the colours: orange, white, green. Italy ends in red, not orange.',
+    options: ['CIV', 'ITA', 'IRL'],
+  },
+  {
+    answer: 'NOR',
+    name: 'Norway',
+    capital: 'Oslo',
+    cue: 'Red with a blue cross outlined in white that reaches the edges.',
+    note: 'Iceland reverses the colours: a blue field with a red cross edged in white.',
+    options: ['ISL', 'NOR', 'DNK'],
+  },
+];
+const first = rounds[0];
+
+/// Lookalike pairs Similar Flags drills, with the note the app shows for each.
+const pairs = [
+  {
+    a: { code: 'TCD', name: 'Chad' },
+    b: { code: 'ROU', name: 'Romania' },
+    note: 'Romania’s blue is slightly lighter.',
+  },
+  {
+    a: { code: 'IDN', name: 'Indonesia' },
+    b: { code: 'MCO', name: 'Monaco' },
+    note: 'Monaco’s flag is a squarer shape.',
+  },
+  {
+    a: { code: 'IRL', name: 'Ireland' },
+    b: { code: 'CIV', name: 'Ivory Coast' },
+    note: 'The same three bands, colours reversed.',
+  },
+  {
+    a: { code: 'AUS', name: 'Australia' },
+    b: { code: 'NZL', name: 'New Zealand' },
+    note: 'New Zealand’s four stars are red.',
+  },
+];
+
+const versionLabel = app.version ? `Version ${app.version}` : null;
+const requires = 'iOS 18, macOS 26, tvOS 18 or watchOS 11';
+const privacyUrl = privacyUrlFor(app.slug);
+const duo = duoCombo('masterofflags');
+
+const showsRating = app.ratingCount >= 5;
+const jsonLd = appPageJsonLd(app, { ratingShown: showsRating });
+const siblings = siblingApps(landingApps, 'masterofflags');
+---
+
+<BaseLayout
+  title={c.seoTitle}
+  description={c.metaDescription}
+  image={ogImage}
+  markdown={markdownPath(app.slug)}
+  appStoreId={app.trackId > 0 ? app.trackId : undefined}
+>
+  <div class="mof" style={`--accent:${accent}`}>
+    <nav
+      aria-label="Breadcrumb"
+      class="hidden pt-8 text-xs text-paper-faint dark:text-term-faint sm:block"
+    >
+      <ol class="flex flex-wrap items-center gap-1.5 font-mono">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/apps/" class="hover:text-paper-green dark:hover:text-term-green">apps</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">masterofflags</li>
+      </ol>
+    </nav>
+
+    <section class="hero bleed" aria-labelledby="app-name">
+      <div class="hero-wall" aria-hidden="true"></div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-app">
+          {
+            app.iconLocal && (
+              <AppIcon
+                src={app.iconLocal}
+                width={56}
+                height={56}
+                displayWidths={[48, 56]}
+                priority
+                class="hero-icon h-12 w-12 rounded-[0.9rem] object-cover sm:h-14 sm:w-14"
+              />
+            )
+          }
+          <h1 id="app-name">Master of Flags</h1>
+          <span>World Quiz</span>
+        </div>
+        <p class="display hero-title">Learn every flag on <em>Earth.</em></p>
+        <p class="hero-sub">
+          A flag and capitals quiz that respects you: no ads, no subscription, no account. A wrong
+          answer shows the right flag, its capital and what to look for. Free on iPhone, iPad, Mac,
+          Apple TV and Apple Watch.
+        </p>
+        <div class="hero-actions">
+          <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+          <a href="#play" class="ghost-btn">Play a round here</a>
+        </div>
+        <div class="hero-proof">
+          {showsRating && <HeroRating rating={app.rating} count={app.ratingCount} />}
+          <span class="promise">No ads. No subscription. Ever.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="play" class="atlas play bleed" aria-labelledby="play-title">
+      <div class="atlas-inner play-grid">
+        <div class="play-text">
+          <p class="kicker">Play</p>
+          <h2 id="play-title" class="display atlas-title">Wrong answers teach.</h2>
+          <p>
+            Name the flag or match the capital across Europe, Asia, Africa, the Americas, Oceania
+            and the whole world. Miss one and the tiles show the right flag, its capital and what to
+            look for; get it right and the next flag comes by itself.
+          </p>
+          <p class="aside">Every region and both modes are free.</p>
+        </div>
+
+        <div class="quiz" data-quiz>
+          <script type="application/json" data-quiz-rounds set:html={JSON.stringify(rounds)} />
+          <p class="quiz-count" data-quiz-count>Flag 1 of {rounds.length}</p>
+          <p class="quiz-ask">
+            <span data-quiz-prefix>Which flag is </span><strong data-quiz-name>{first.name}</strong
+            ><span data-quiz-suffix>?</span>
+          </p>
+          <div class="quiz-options" role="group" aria-label="Three flags to choose from">
+            {
+              first.options.map((code, index) => (
+                <button type="button" class="quiz-tile" data-code={code} disabled>
+                  <span class="quiz-index" aria-hidden="true">
+                    {index + 1}
+                  </span>
+                  <img
+                    src={flag(code)}
+                    alt={`Flag ${index + 1}`}
+                    width="480"
+                    height="320"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="quiz-label" />
+                </button>
+              ))
+            }
+          </div>
+          <div class="quiz-result" data-quiz-result aria-live="polite"></div>
+          <details class="quiz-reveal" data-quiz-static>
+            <summary>Show the answer</summary>
+            <p>
+              <strong>{first.name}</strong> is flag {first.options.indexOf(first.answer) + 1}.
+              Capital {first.capital}. {first.cue}
+              {first.note}
+            </p>
+          </details>
+          <div class="quiz-actions">
+            <button type="button" class="brass-btn" data-quiz-next hidden>Next flag</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature" aria-labelledby="daily-title">
+      <div class="feature-text">
+        <div class="score" aria-hidden="true"><span>8</span><small>/10</small></div>
+        <h2 id="daily-title" class="display feature-title">Ten flags, once a day.</h2>
+        <p>
+          The Daily Challenge is the same ten flags for everyone, with a result you can share as a
+          picture. Seven of ten keeps your streak, a freeze covers a day you skip, and a 48-hour
+          repair window forgives a broken run.
+        </p>
+        <p class="aside">
+          XP, a level for every region, weekly points on Game Center leaderboards and 33
+          achievements, all free.
+        </p>
+      </div>
+      <img
+        class="feature-phone"
+        src={shots.daily.src}
+        srcset={shots.daily.srcset}
+        sizes="(min-width: 768px) clamp(300px, 15vw, 520px), 70vw"
+        width={shots.daily.w}
+        height={shots.daily.h}
+        alt="Daily Challenge result on iPhone: 8 of 10, a 48-day streak kept, and the flags that were missed"
+        loading="lazy"
+        decoding="async"
+      />
+    </section>
+
+    <section class="feature feature-flip" aria-labelledby="learn-title">
+      <div class="feature-text">
+        <p class="kicker-ink">Learn</p>
+        <h2 id="learn-title" class="display feature-title">An atlas in your pocket.</h2>
+        <p>
+          About 250 flags and territories with their capitals, facts and the story behind each flag:
+          what the colours and symbols mean, the shape of the country, its neighbours, languages and
+          currency. Search by nickname or native name, so Holland and Deutschland both work, and
+          look-alike flags are one tap away.
+        </p>
+        <p class="aside">The whole encyclopedia is free and works offline.</p>
+      </div>
+      <div class="phone-pair">
+        <img
+          src={shots.learn.src}
+          srcset={shots.learn.srcset}
+          sizes="(min-width: 768px) clamp(240px, 12vw, 420px), 42vw"
+          width={shots.learn.w}
+          height={shots.learn.h}
+          alt="Nepal in Learn on iPhone: its flag, capital Kathmandu, population, area, currency and language"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src={shots.search.src}
+          srcset={shots.search.srcset}
+          sizes="(min-width: 768px) clamp(240px, 12vw, 420px), 42vw"
+          width={shots.search.w}
+          height={shots.search.h}
+          alt="Searching Learn for holland finds the Netherlands, also called Holland"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </section>
+
+    <section class="atlas drills bleed" aria-labelledby="drills-title">
+      <div class="atlas-inner">
+        <div class="drills-grid">
+          <div>
+            <p class="kicker">Master of Flags Pro</p>
+            <h2 id="drills-title" class="display atlas-title">Drill what you miss.</h2>
+            <p>
+              Smart Review brings back the flags and capitals you miss on a spaced schedule, after
+              1, 3, 7, 14 and then 30 days, until they stick. Similar Flags drills the look-alikes,
+              with packs built from your own mix-ups. Hard Mode puts eight flags on the board
+              instead of three, and six capitals instead of four.
+            </p>
+            <p class="aside">
+              Pro also adds full statistics, replay of every Daily you missed and five streak
+              freezes a month instead of one.
+            </p>
+          </div>
+          <img
+            class="drills-phone"
+            src={shots.train.src}
+            srcset={shots.train.srcset}
+            sizes="(min-width: 1024px) clamp(260px, 13vw, 460px), 60vw"
+            width={shots.train.w}
+            height={shots.train.h}
+            alt="Train on iPhone: twelve flags due for Smart Review, your confusions, and Similar Flags packs such as Tricolor Twins and Nordic Crosses"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <ul class="pairs" aria-label="Look-alike flags">
+          {
+            pairs.map((p) => (
+              <li>
+                <div class="pair-flags">
+                  <figure>
+                    <img
+                      src={flag(p.a.code)}
+                      alt={`Flag of ${p.a.name}`}
+                      width="480"
+                      height="320"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>{p.a.name}</figcaption>
+                  </figure>
+                  <figure>
+                    <img
+                      src={flag(p.b.code)}
+                      alt={`Flag of ${p.b.name}`}
+                      width="480"
+                      height="320"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>{p.b.name}</figcaption>
+                  </figure>
+                </div>
+                <p>{p.note}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="scene screens bleed" aria-labelledby="screens-title">
+      <div class="scene-inner">
+        <div class="screens-head">
+          <h2 id="screens-title" class="display scene-title">On every Apple screen.</h2>
+          <p class="scene-lede">
+            Couch Mode on Apple TV for two to four players with one remote and no timers. A real Mac
+            app with a sidebar, the menu bar and keyboard shortcuts. Flash questions and your Daily
+            streak on Apple Watch, and widgets for the Home Screen, Lock Screen and StandBy.
+          </p>
+        </div>
+        <figure class="screens-tv">
+          <img
+            src={shots.couch.src}
+            srcset={shots.couch.srcset}
+            sizes="(min-width: 1280px) 76vw, 100vw"
+            width={shots.couch.w}
+            height={shots.couch.h}
+            alt="Couch Mode on Apple TV: players take turns naming flags on the big screen"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Couch Mode on Apple TV.</figcaption>
+        </figure>
+        <div class="screens-pair">
+          <img
+            src={shots.pad.src}
+            srcset={shots.pad.srcset}
+            sizes="(min-width: 1024px) 22vw, 45vw"
+            width={shots.pad.w}
+            height={shots.pad.h}
+            alt="Play on iPad: Which flag is Poland, with the session, today’s answers and flags to review beside it"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src={shots.mac.src}
+            srcset={shots.mac.srcset}
+            sizes="(min-width: 1024px) 36vw, 100vw"
+            width={shots.mac.w}
+            height={shots.mac.h}
+            alt="Learn on a MacBook Pro, with the sidebar and a flag’s entry"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        {
+          duo && (
+            <figure class="duo">
+              <img
+                src={duo.src}
+                srcset={duo.srcset}
+                sizes="(min-width: 1024px) min(40vw, 960px), 100vw"
+                width={duo.w}
+                height={duo.h}
+                alt="Master of Flags on iPhone Duo: the outer display in front of the open inner display"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                Both displays of iPhone Duo: the outer display in front, the open inner display
+                behind.
+              </figcaption>
+            </figure>
+          )
+        }
+      </div>
+    </section>
+
+    {
+      c.pricing && (
+        <section class="band" aria-labelledby="pricing-title">
+          <h2 id="pricing-title" class="display band-title">
+            Free to play. Pro is one purchase.
+          </h2>
+          <div class="plans">
+            <div class="plan">
+              <h3>
+                {c.pricing.free.title}
+                <span>{c.pricing.free.price}</span>
+              </h3>
+              <ul>
+                {c.pricing.free.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div class="plan plan-pro">
+              <h3>
+                {c.pricing.premium.title}
+                <span>{c.pricing.premium.price}</span>
+              </h3>
+              <ul>
+                {c.pricing.premium.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p class="fine">{c.pricing.footnote}</p>
+          <p class="founders">
+            Bought Master of Flags when it was a paid app? You are a founder: everything Pro unlocks
+            is yours, free, forever, and unlocks by itself the first time you open the app. Thank
+            you for seven years.
+          </p>
+        </section>
+      )
+    }
+
+    <section class="band trust" aria-labelledby="trust-title">
+      <h2 id="trust-title" class="display band-title">Your progress stays yours.</h2>
+      <p>
+        No account, no analytics, no ads and no tracking. Your progress, streak and bookmarks stay
+        on your device and can follow you to your other devices through your own iCloud account. The
+        app holds an anonymous Midgar ID, and a Pro purchase or restore is recorded under it so it
+        can be restored. The flags and the whole encyclopedia ship with the app and work offline.
+        {
+          privacyUrl && (
+            <>
+              {' '}
+              <a href={privacyUrl}>Read the privacy policy</a>.
+            </>
+          )
+        }
+      </p>
+    </section>
+
+    <section class="band" aria-labelledby="faq-title">
+      <div class="faq-layout">
+        <h2 id="faq-title" class="display band-title">Questions.</h2>
+        <div class="faq">
+          <FaqAccordion faq={c.faq} accent={accent} />
+        </div>
+      </div>
+    </section>
+
+    <section class="closing bleed" aria-labelledby="closing-title">
+      <div class="hero-wall closing-wall" aria-hidden="true"></div>
+      <div class="scene-inner closing-inner">
+        {
+          app.iconLocal && (
+            <AppIcon
+              src={app.iconLocal}
+              width={72}
+              height={72}
+              displayWidths={[64, 72]}
+              class="hero-icon h-16 w-16 rounded-[1.1rem] object-cover sm:h-[4.5rem] sm:w-[4.5rem]"
+            />
+          )
+        }
+        <h2 id="closing-title" class="display scene-title">Which flag is next?</h2>
+        <p class="scene-lede">
+          Free on the App Store for iPhone, iPad, Mac, Apple TV and Apple Watch.
+        </p>
+        <div class="hero-actions">
+          <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+        </div>
+        <ul class="meta">
+          {versionLabel && <li>{versionLabel}</li>}
+          <li>Requires {requires}</li>
+          <li><a href={supportPath(app.slug)}>Support</a></li>
+          {
+            privacyUrl && (
+              <li>
+                <a href={privacyUrl}>Privacy</a>
+              </li>
+            )
+          }
+          <li>By {app.sellerName ?? 'Midgar Oy'}</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="border-t border-paper-border py-10 font-mono dark:border-term-border">
+      <p class="prompt-line mb-5">ls ~/apps</p>
+      <div class="flex flex-wrap gap-3">
+        {
+          siblings.map((s) => (
+            <a
+              href={`/${s.slug}/`}
+              class="group inline-flex items-center gap-2.5 rounded-sm border border-paper-border px-3 py-2 text-sm transition-colors hover:border-paper-border2 dark:border-term-border dark:hover:border-term-border2"
+            >
+              {s.iconLocal && (
+                <AppIcon
+                  src={s.iconLocal}
+                  width={24}
+                  height={24}
+                  displayWidths={[24]}
+                  class="h-6 w-6 rounded-md object-cover"
+                />
+              )}
+              <span class="font-medium text-paper-muted group-hover:text-paper-green dark:text-term-muted dark:group-hover:text-term-green">
+                {s.shortName}
+              </span>
+            </a>
+          ))
+        }
+        <a
+          href="/apps/"
+          class="inline-flex items-center gap-2 rounded-sm border border-paper-border px-3 py-2 text-sm font-medium text-paper-muted transition-colors hover:border-paper-border2 hover:text-paper-green dark:border-term-border dark:text-term-muted dark:hover:border-term-border2 dark:hover:text-term-green"
+        >
+          all apps
+        </a>
+      </div>
+    </section>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>
+
+<script>
+  interface Round {
+    answer: string;
+    name: string;
+    capital: string;
+    cue: string;
+    note: string;
+    options: string[];
+  }
+
+  const NAMES: Record<string, string> = {
+    MDA: 'Moldova',
+    ROU: 'Romania',
+    AND: 'Andorra',
+    TCD: 'Chad',
+    BEL: 'Belgium',
+    IDN: 'Indonesia',
+    MCO: 'Monaco',
+    POL: 'Poland',
+    IRL: 'Ireland',
+    CIV: 'Ivory Coast',
+    ITA: 'Italy',
+    NOR: 'Norway',
+    ISL: 'Iceland',
+    DNK: 'Denmark',
+  };
+
+  /// How long a right answer stays on screen before the next flag comes, as in the app, where a
+  /// right answer moves on by itself.
+  const AUTO_ADVANCE_MS = 1800;
+
+  /// Plays the page's quiz the way the app does: three tiles, one answer, the right flag and
+  /// what to look for after a pick, then the next flag, by itself after a right answer.
+  function startQuiz(root: HTMLElement) {
+    const data = root.querySelector<HTMLScriptElement>('[data-quiz-rounds]');
+    const rounds: Round[] = data ? JSON.parse(data.textContent || '[]') : [];
+    const tiles = Array.from(root.querySelectorAll<HTMLButtonElement>('.quiz-tile'));
+    const prefixEl = root.querySelector<HTMLElement>('[data-quiz-prefix]');
+    const nameEl = root.querySelector<HTMLElement>('[data-quiz-name]');
+    const suffixEl = root.querySelector<HTMLElement>('[data-quiz-suffix]');
+    const countEl = root.querySelector<HTMLElement>('[data-quiz-count]');
+    const resultEl = root.querySelector<HTMLElement>('[data-quiz-result]');
+    const next = root.querySelector<HTMLButtonElement>('[data-quiz-next]');
+    root.querySelector('[data-quiz-static]')?.remove();
+    if (!rounds.length || !prefixEl || !nameEl || !suffixEl || !countEl || !resultEl || !next) {
+      return;
+    }
+
+    let index = 0;
+    let score = 0;
+    let finished = false;
+    let timer: number | undefined;
+
+    const show = () => {
+      window.clearTimeout(timer);
+      const round = rounds[index];
+      finished = false;
+      prefixEl.textContent = 'Which flag is ';
+      nameEl.textContent = round.name;
+      suffixEl.textContent = '?';
+      countEl.textContent = `Flag ${index + 1} of ${rounds.length}`;
+      resultEl.replaceChildren();
+      const hadFocus =
+        root.contains(document.activeElement) && document.activeElement !== document.body;
+      next.hidden = true;
+      tiles.forEach((tile, i) => {
+        const code = round.options[i];
+        tile.dataset.code = code;
+        tile.disabled = false;
+        tile.classList.remove('is-right', 'is-wrong', 'is-dim');
+        const img = tile.querySelector('img');
+        if (img) img.src = `/screenshots/masterofflags/flags/${code.toLowerCase()}.webp`;
+        const label = tile.querySelector('.quiz-label');
+        if (label) label.textContent = '';
+      });
+      if (hadFocus) tiles[0]?.focus({ preventScroll: true });
+    };
+
+    const advance = () => {
+      window.clearTimeout(timer);
+      if (index === rounds.length - 1) {
+        finish();
+        return;
+      }
+      index += 1;
+      show();
+    };
+
+    const answer = (picked: HTMLButtonElement) => {
+      const round = rounds[index];
+      const right = picked.dataset.code === round.answer;
+      if (right) score += 1;
+      tiles.forEach((tile) => {
+        tile.disabled = true;
+        const code = tile.dataset.code || '';
+        const label = tile.querySelector('.quiz-label');
+        if (label) label.textContent = NAMES[code] ?? '';
+        if (code === round.answer) tile.classList.add('is-right');
+        else if (tile === picked) tile.classList.add('is-wrong');
+        else tile.classList.add('is-dim');
+      });
+      const verdict = document.createElement('p');
+      verdict.className = right ? 'verdict verdict-right' : 'verdict verdict-wrong';
+      verdict.textContent = right
+        ? 'Right.'
+        : `Not quite. That one is ${NAMES[picked.dataset.code || ''] ?? 'another flag'}.`;
+      const learn = document.createElement('p');
+      learn.className = 'learn';
+      const strong = document.createElement('strong');
+      strong.textContent = round.name;
+      learn.append(strong, ` · Capital ${round.capital}. ${round.cue} ${round.note}`);
+      resultEl.replaceChildren(verdict, learn);
+      next.textContent = index === rounds.length - 1 ? 'See your score' : 'Next flag';
+      next.hidden = false;
+      next.focus({ preventScroll: true });
+      if (right) timer = window.setTimeout(advance, AUTO_ADVANCE_MS);
+    };
+
+    const finish = () => {
+      finished = true;
+      countEl.textContent = 'Round over';
+      prefixEl.textContent = 'You named ';
+      nameEl.textContent = `${score} of ${rounds.length}`;
+      suffixEl.textContent = ' look-alikes.';
+      tiles.forEach((tile) => {
+        tile.disabled = true;
+        tile.classList.add('is-dim');
+      });
+      const done = document.createElement('p');
+      done.className = 'learn';
+      done.textContent =
+        'The app has about 250 flags, capitals in every region, a Daily Challenge and Similar Flags drills for exactly these.';
+      resultEl.replaceChildren(done);
+      next.textContent = 'Play again';
+      next.hidden = false;
+      next.focus({ preventScroll: true });
+    };
+
+    tiles.forEach((tile) => tile.addEventListener('click', () => answer(tile)));
+    next.addEventListener('click', () => {
+      if (finished) {
+        index = 0;
+        score = 0;
+        show();
+        return;
+      }
+      advance();
+    });
+    show();
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-quiz]').forEach(startQuiz);
+</script>
+
+<style>
+  @font-face {
+    font-family: 'Fraunces';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('/fonts/fraunces-var-latin.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Fraunces';
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('/fonts/fraunces-italic-var-latin.woff2') format('woff2');
+  }
+
+  :global(body) {
+    overflow-x: clip;
+  }
+
+  .mof {
+    --night: #0a0e14;
+    --night-2: #111824;
+    --brass: #e8b14a;
+    --brass-deep: #8a5d0c;
+    --chalk: #f6f1e4;
+    --chalk-muted: #b6b0a2;
+    --paper: #f4eedf;
+    --paper-2: #ebe2cc;
+    --paper-ink: #1b2430;
+    --paper-body: #3c4653;
+    --paper-soft: #545b66;
+    --paper-rule: #d9ceb3;
+    --right: #2f8f5b;
+    --wrong: #c8463d;
+    --ink: #073642;
+    --body: #34505a;
+    --soft: #52676d;
+    --rule: #dcd3b8;
+    --link: #8a5d0c;
+    --focus: #8a5d0c;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+  }
+
+  :global(.dark) .mof {
+    --ink: #f3efe6;
+    --body: #c3c8d0;
+    --soft: #979ea8;
+    --rule: #2d333b;
+    --link: #f0c56f;
+    --focus: #e8b14a;
+  }
+
+  .display {
+    font-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-wrap: balance;
+  }
+
+  .display em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--brass);
+  }
+
+  .kicker,
+  .kicker-ink {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .kicker {
+    color: var(--brass-deep);
+  }
+
+  .kicker-ink {
+    color: var(--link);
+  }
+
+  .bleed {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+
+  .hero,
+  .scene,
+  .closing {
+    --focus: var(--brass);
+  }
+
+  .hero {
+    position: relative;
+    isolation: isolate;
+    min-height: min(90svh, 52rem);
+    display: flex;
+    align-items: center;
+    margin-top: 1.25rem;
+    background: var(--night);
+    color: var(--chalk);
+    overflow: hidden;
+  }
+
+  .hero-wall {
+    position: absolute;
+    inset: -2rem 0;
+    z-index: -2;
+    background-image: url('/screenshots/masterofflags/flags/wall.webp');
+    background-size: auto 44rem;
+    background-repeat: repeat;
+    transform: rotate(-4deg) scale(1.15);
+    opacity: 0.9;
+  }
+
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(
+        90deg,
+        rgb(10 14 20 / 0.97) 0%,
+        rgb(10 14 20 / 0.9) 36%,
+        rgb(10 14 20 / 0.45) 70%,
+        rgb(10 14 20 / 0.6) 100%
+      ),
+      linear-gradient(0deg, rgb(10 14 20 / 0.85) 0%, rgb(10 14 20 / 0) 35%);
+  }
+
+  .hero-inner,
+  .scene-inner,
+  .atlas-inner {
+    width: 100%;
+    max-width: var(--shell-max);
+    margin-inline: auto;
+    padding-inline: var(--shell-gutter);
+  }
+
+  .hero-inner {
+    padding-block: clamp(4.5rem, 11vh, 8rem);
+  }
+
+  .hero-app {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  .hero-app h1 {
+    font: inherit;
+    color: var(--chalk);
+  }
+
+  .hero-app span {
+    color: var(--chalk-muted);
+    font-weight: 500;
+  }
+
+  .mof :global(.hero-icon) {
+    box-shadow: 0 16px 44px -14px rgb(232 177 74 / 0.55);
+  }
+
+  .hero-title {
+    font-size: clamp(3.2rem, 9vw, 8.5rem);
+    max-width: 10ch;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-sub {
+    max-width: 36rem;
+    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+    line-height: 1.55;
+    color: #e4dfd2;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem 1.1rem;
+  }
+
+  .ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0 1.15rem;
+    border-radius: 999px;
+    border: 1px solid rgb(246 241 228 / 0.35);
+    color: var(--chalk);
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: rgb(246 241 228 / 0.06);
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .ghost-btn:hover {
+    background: rgb(246 241 228 / 0.14);
+    border-color: rgb(246 241 228 / 0.6);
+  }
+
+  .hero-proof {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    margin-top: 2.25rem;
+    font-size: 0.92rem;
+    color: var(--chalk-muted);
+  }
+
+  .hero-proof {
+    --star-on: var(--brass);
+    --star-off: rgb(246 241 228 / 0.3);
+  }
+
+  .promise {
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgb(232 177 74 / 0.5);
+    color: #f3cf86;
+    font-weight: 600;
+  }
+
+  .atlas {
+    background: var(--paper);
+    color: var(--paper-body);
+    padding-block: clamp(4rem, 8vw, 7rem);
+    --focus: var(--brass-deep);
+  }
+
+  .atlas-title {
+    font-size: clamp(2.5rem, 5.4vw, 4.8rem);
+    color: var(--paper-ink);
+    margin-bottom: 1.25rem;
+    max-width: 14ch;
+  }
+
+  .play-text p,
+  .drills-grid p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .atlas .aside {
+    color: var(--paper-soft);
+    font-size: 0.95rem;
+  }
+
+  .play {
+    background:
+      radial-gradient(60% 70% at 85% 30%, rgb(232 177 74 / 0.18), transparent 70%), var(--paper);
+  }
+
+  .play-grid {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .play-text {
+    max-width: 34rem;
+  }
+
+  .quiz {
+    background: #fbf8f0;
+    border: 1px solid var(--paper-rule);
+    border-radius: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    box-shadow: 0 30px 60px -36px rgb(27 36 48 / 0.45);
+    color: var(--paper-ink);
+  }
+
+  .quiz-count {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--paper-soft);
+    margin-bottom: 0.4rem;
+  }
+
+  .quiz-ask {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
+    line-height: 1.1;
+    color: var(--paper-ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .quiz-ask strong {
+    font-weight: 800;
+  }
+
+  .quiz-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.6rem, 1.5vw, 1rem);
+  }
+
+  .quiz-tile {
+    position: relative;
+    display: grid;
+    gap: 0.5rem;
+    padding: clamp(0.5rem, 1.2vw, 0.85rem);
+    border-radius: 1rem;
+    background: #fff;
+    border: 2px solid var(--paper-rule);
+    transition:
+      transform 160ms ease,
+      border-color 160ms ease,
+      opacity 160ms ease;
+  }
+
+  .quiz-tile:not(:disabled) {
+    cursor: pointer;
+  }
+
+  .quiz-tile:not(:disabled):hover {
+    transform: translateY(-2px);
+    border-color: var(--brass);
+  }
+
+  .quiz-tile img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    border-radius: 0.35rem;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08);
+  }
+
+  .quiz-index {
+    position: absolute;
+    top: 0.35rem;
+    left: 0.45rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--paper-soft);
+  }
+
+  .quiz-label {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(0.85rem, 1.6vw, 1.2rem);
+    transform: translateX(-50%);
+    max-width: calc(100% - 1rem);
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+  }
+
+  .quiz-label:empty {
+    display: none;
+  }
+
+  .quiz-tile.is-right {
+    border-color: var(--right);
+    background: #eef8f1;
+  }
+
+  .quiz-tile.is-right .quiz-label {
+    color: var(--right);
+  }
+
+  .quiz-tile.is-wrong {
+    border-color: var(--wrong);
+    background: #fcefed;
+  }
+
+  .quiz-tile.is-wrong .quiz-label {
+    color: var(--wrong);
+  }
+
+  .quiz-tile.is-dim {
+    opacity: 0.55;
+  }
+
+  .quiz-result {
+    min-height: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .verdict {
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+  }
+
+  .verdict-right {
+    color: var(--right);
+  }
+
+  .verdict-wrong {
+    color: var(--wrong);
+  }
+
+  .learn {
+    font-size: 0.98rem;
+    color: var(--paper-body);
+  }
+
+  .learn strong {
+    color: var(--paper-ink);
+  }
+
+  .quiz-reveal {
+    margin-top: 1rem;
+  }
+
+  .quiz-reveal summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--brass-deep);
+  }
+
+  .quiz-reveal p {
+    margin-top: 0.6rem;
+    font-size: 0.98rem;
+  }
+
+  .quiz-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .brass-btn {
+    min-height: 2.9rem;
+    padding: 0 1.4rem;
+    border-radius: 999px;
+    background: var(--brass);
+    color: #1b1406;
+    font-weight: 800;
+    transition: filter 160ms ease;
+  }
+
+  .brass-btn:hover {
+    filter: brightness(1.06);
+  }
+
+  .feature {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    padding-block: clamp(4rem, 8vw, 6.5rem);
+    border-top: 1px solid var(--rule);
+    color: var(--body);
+  }
+
+  .feature-text {
+    max-width: 38rem;
+  }
+
+  .feature-text > p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: clamp(2.3rem, 4.8vw, 4rem);
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .feature .aside {
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+
+  .score {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 800;
+    font-size: clamp(4rem, 9vw, 7rem);
+    line-height: 0.9;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .score small {
+    font-size: 0.42em;
+    font-weight: 500;
+    color: var(--soft);
+  }
+
+  .feature-phone {
+    width: min(70vw, clamp(18.75rem, 15vw, 26rem));
+    height: auto;
+    justify-self: center;
+    filter: drop-shadow(0 24px 36px rgb(0 0 0 / 0.25));
+  }
+
+  .phone-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    justify-self: center;
+    width: min(100%, clamp(30rem, 26vw, 46rem));
+  }
+
+  .phone-pair img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 24px 36px rgb(0 0 0 / 0.25));
+  }
+
+  .phone-pair img:last-child {
+    margin-top: 3rem;
+  }
+
+  .drills {
+    background:
+      radial-gradient(50% 60% at 10% 20%, rgb(232 177 74 / 0.16), transparent 70%), var(--paper-2);
+  }
+
+  .drills-grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .drills-grid > div {
+    max-width: 38rem;
+  }
+
+  .drills-phone {
+    width: min(64vw, clamp(16rem, 13vw, 28rem));
+    height: auto;
+    justify-self: center;
+    filter: drop-shadow(0 24px 36px rgb(27 36 48 / 0.3));
+  }
+
+  .pairs {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .pairs li {
+    background: #fbf8f0;
+    border: 1px solid var(--paper-rule);
+    border-radius: 1.1rem;
+    padding: 1rem;
+  }
+
+  .pair-flags {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .pair-flags img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08);
+  }
+
+  .pair-flags figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--paper-ink);
+  }
+
+  .pairs p {
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--paper-soft);
+  }
+
+  .scene {
+    background: var(--night);
+    color: var(--chalk);
+    padding-block: clamp(4rem, 9vw, 7.5rem);
+  }
+
+  .scene-title {
+    font-size: clamp(2.5rem, 5.8vw, 5.2rem);
+    max-width: 14ch;
+    margin-bottom: 1rem;
+  }
+
+  .scene-lede {
+    max-width: 40rem;
+    font-size: clamp(1rem, 0.94rem + 0.3vw, 1.18rem);
+    line-height: 1.6;
+    color: var(--chalk-muted);
+  }
+
+  .screens {
+    background:
+      radial-gradient(60% 50% at 50% 100%, rgb(232 177 74 / 0.12), transparent 70%),
+      linear-gradient(180deg, var(--night) 0%, #0d131c 100%);
+  }
+
+  .screens .scene-inner {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .screens-tv img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: clamp(0.6rem, 1vw, 1rem);
+    box-shadow:
+      0 0 0 1px rgb(246 241 228 / 0.1),
+      0 40px 80px -30px rgb(0 0 0 / 0.9);
+  }
+
+  .screens figcaption {
+    margin-top: 0.85rem;
+    font-size: 0.85rem;
+    color: #8d887c;
+  }
+
+  .screens-pair {
+    display: grid;
+    grid-template-columns: 0.62fr 1fr;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    align-items: end;
+  }
+
+  .screens-pair img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.6));
+  }
+
+  .duo {
+    justify-self: center;
+    width: min(100%, clamp(34rem, 40vw, 60rem));
+  }
+
+  .duo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 30px 50px rgb(0 0 0 / 0.55));
+  }
+
+  .duo figcaption {
+    margin-top: 0.85rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #8d887c;
+  }
+
+  .band {
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    border-top: 1px solid var(--rule);
+    color: var(--body);
+  }
+
+  .band-title {
+    font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+    color: var(--ink);
+    margin-bottom: 2rem;
+    max-width: 20ch;
+  }
+
+  .plans {
+    display: grid;
+    gap: 2.5rem 3rem;
+  }
+
+  .plan h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 0.75rem;
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .plan h3 span {
+    font-family: system-ui, sans-serif;
+    font-size: 1.1rem;
+    color: var(--soft);
+    font-weight: 700;
+  }
+
+  .plan-pro h3 span {
+    color: var(--link);
+  }
+
+  .plan ul {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .plan li {
+    position: relative;
+    padding-left: 1.4rem;
+    line-height: 1.5;
+  }
+
+  .plan li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    border: 2px solid var(--soft);
+  }
+
+  .plan-pro li::before {
+    border-color: var(--brass);
+    background: var(--brass);
+  }
+
+  .fine {
+    margin-top: 2rem;
+    max-width: 72ch;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--soft);
+  }
+
+  .founders {
+    margin-top: 1rem;
+    max-width: 72ch;
+    padding-left: 1rem;
+    border-left: 3px solid var(--brass);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .trust p {
+    max-width: 44rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .trust a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .faq-layout {
+    display: grid;
+    gap: 0 4rem;
+  }
+
+  .faq-layout > h2 {
+    align-self: start;
+  }
+
+  .closing {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--night);
+    color: var(--chalk);
+    padding-block: clamp(4.5rem, 9vw, 7rem);
+    text-align: center;
+  }
+
+  .closing-wall {
+    opacity: 0.22;
+    transform: rotate(4deg) scale(1.2);
+  }
+
+  .closing::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(50% 60% at 50% 50%, rgb(10 14 20 / 0.92), rgb(10 14 20 / 0.6));
+  }
+
+  .closing-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .closing .scene-title {
+    margin-top: 1.75rem;
+  }
+
+  .closing .scene-lede {
+    margin-bottom: 2rem;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+    color: var(--chalk-muted);
+  }
+
+  .meta a {
+    display: inline-block;
+    padding-block: 0.3rem;
+    color: #f3cf86;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .mof :global(:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (min-width: 640px) {
+    .pairs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 768px) {
+    .feature {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .feature-flip .feature-text {
+      order: 2;
+    }
+
+    .plans {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .play-grid {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    }
+
+    .drills-grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    }
+
+    .pairs {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .screens-pair {
+      grid-template-columns: 0.5fr 1fr;
+      width: min(100%, 72rem);
+      justify-self: center;
+    }
+
+    .faq-layout {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+    }
+
+    .faq-layout > h2 {
+      position: sticky;
+      top: 6rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      min-height: auto;
+    }
+
+    .hero-scrim {
+      background: linear-gradient(0deg, rgb(10 14 20 / 0.95) 50%, rgb(10 14 20 / 0.7) 100%);
+    }
+
+    .quiz-label {
+      font-size: 0.72rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-wall {
+      animation: drift 220s linear infinite;
+    }
+
+    .closing-wall {
+      animation-direction: reverse;
+    }
+
+    .hero-inner > * {
+      animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      animation-delay: 0.2s;
+    }
+  }
+
+  @keyframes drift {
+    to {
+      background-position-x: -130.56rem;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

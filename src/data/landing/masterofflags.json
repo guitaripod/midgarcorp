@@ -85,7 +85,7 @@
         "note": "once, never renews"
       }
     ],
-    "footnote": "US price shown; your local price appears in the App Store. There is no subscription. If you bought Master of Flags when it was a paid app, Pro is already yours: tap Restore Purchases."
+    "footnote": "US price shown; your local price appears in the App Store. There is no subscription. If you bought Master of Flags when it was a paid app, Pro unlocks by itself the first time you open the app on each device; if it does not, tap Restore Purchases."
   },
   "faq": [
     {
@@ -94,7 +94,7 @@
     },
     {
       "q": "What does Pro unlock, and what does it cost?",
-      "a": "Pro is a one-time $6.99 purchase. It adds Hard Mode, Smart Review, Similar Flags, full statistics, replay of any past Daily Challenge and five streak freezes a month instead of one. There is no subscription."
+      "a": "Pro is a one-time $6.99 purchase. It adds Hard Mode, Smart Review, Similar Flags, full statistics, replay of any Daily Challenge you missed and five streak freezes a month instead of one. There is no subscription."
     },
     {
       "q": "Do I pay again on another device, or for my family?",
@@ -102,15 +102,15 @@
     },
     {
       "q": "I bought the app years ago when it was paid. Do I pay again?",
-      "a": "No. Everyone who bought it during the paid era gets Pro automatically, free, forever. Tap Restore Purchases on a new device to bring it back."
+      "a": "No. Everyone who bought it during the paid era gets Pro automatically, free, forever. It unlocks by itself the first time you open the app on each device; if it does not, tap Restore Purchases."
     },
     {
       "q": "What happens to my data?",
-      "a": "No accounts, analytics, ads or tracking. A Pro purchase is recorded under an anonymous ID so it can be restored, and nothing else leaves the device. Your progress, streak and bookmarks can follow you across your devices through your own iCloud account. The flags and the whole encyclopedia are bundled with the app and work offline, so only Game Center, iCloud sync and purchases need a connection."
+      "a": "No accounts, analytics, ads or tracking. The app holds an anonymous Midgar ID, and a Pro purchase or restore is recorded under it so it can be restored. Your progress, streak and bookmarks can follow you across your devices through your own iCloud account. The flags and the whole encyclopedia are bundled with the app and work offline."
     },
     {
       "q": "Which devices and languages are supported?",
-      "a": "iPhone and iPad with iOS 18 or later, Mac with macOS 26 or later, Apple TV with tvOS 18 or later and Apple Watch with watchOS 11 or later. The app is translated into English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, and Simplified and Traditional Chinese."
+      "a": "iPhone and iPad with iOS 18 or later, Mac with macOS 26 or later, Apple TV with tvOS 18 or later and Apple Watch with watchOS 11 or later. The app is translated into English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, Simplified and Traditional Chinese, Danish, Finnish, Icelandic, Norwegian and Swedish."
     }
   ],
   "screenshotCaptions": {

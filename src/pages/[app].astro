@@ -26,10 +26,13 @@ import {
 import screenshotVariants from '@data/screenshot-variants.json';
 
 export function getStaticPaths() {
-  // tailscode, embr, crucible and solarbeam have bespoke pages at src/pages/<slug>/index.astro;
-  // emitting them here too would render the same dist path twice with whichever wins.
+  // tailscode, embr, crucible, solarbeam and masterofflags have bespoke pages at
+  // src/pages/<slug>/index.astro; emitting them here too would render the same dist path twice
+  // with whichever wins.
   return landingApps
-    .filter((app) => !['tailscode', 'embr', 'crucible', 'solarbeam'].includes(app.slug))
+    .filter(
+      (app) => !['tailscode', 'embr', 'crucible', 'solarbeam', 'masterofflags'].includes(app.slug)
+    )
     .map((app) => ({ params: { app: app.slug }, props: { app } }));
 }
 

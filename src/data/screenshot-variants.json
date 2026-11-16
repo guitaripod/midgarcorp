@@ -1066,6 +1066,26 @@
   "/screenshots/pixiepocket/promo-poster.webp": [
     480
   ],
+  "/screenshots/masterofflags/web-ipad-play.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/web-mac-learn.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/web-phone-daily.webp": [
+    480
+  ],
+  "/screenshots/masterofflags/web-phone-learn.webp": [
+    480
+  ],
+  "/screenshots/masterofflags/web-phone-search.webp": [
+    480
+  ],
+  "/screenshots/masterofflags/web-phone-train.webp": [
+    480
+  ],
   "/screenshots/solarbeam/web-hero-planetarium.webp": [
     480,
     960
