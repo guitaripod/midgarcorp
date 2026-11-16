@@ -97,14 +97,14 @@ const rows = [
     --t-dim: #9591a8;
     --t-blue: #1d9bf0;
     margin: 0;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     overflow: hidden;
     border: 1px solid #2b2a3a;
-    box-shadow: 0 30px 70px -40px rgba(7, 54, 66, 0.5);
+    box-shadow: 0 1.875rem 4.375rem -40px rgba(7, 54, 66, 0.5);
     background: var(--t-bg);
     color: var(--t-ink);
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: clamp(10px, 0.3vw + 7.5px, 12.5px);
+    font-size: clamp(0.625rem, 0.3vw + 0.4688rem, 0.7812rem);
     line-height: 1.45;
   }
   .utm p {
@@ -113,37 +113,37 @@ const rows = [
   .utm-bar {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 9px 12px;
+    gap: 0.75rem;
+    padding: 0.5625rem 0.75rem;
     background: #13131c;
     border-bottom: 1px solid #2b2a3a;
   }
   .utm-lights {
     display: flex;
-    gap: 6px;
+    gap: 0.375rem;
   }
   .utm-lights i {
-    width: 11px;
-    height: 11px;
+    width: 0.6875rem;
+    height: 0.6875rem;
     border-radius: 50%;
     background: #3a3950;
   }
   .utm-title {
     flex: 1;
-    margin-right: 44px;
+    margin-right: 2.75rem;
     text-align: center;
     color: var(--t-dim);
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   .utm-screen {
-    padding: 10px 12px 8px;
+    padding: 0.625rem 0.75rem 0.5rem;
   }
   .utm-top {
     white-space: nowrap;
     overflow: hidden;
   }
   .utm-brand {
-    padding: 0 6px;
+    padding: 0 0.375rem;
     background: var(--t-blue);
     color: #0b1220;
     font-weight: 700;
@@ -161,21 +161,21 @@ const rows = [
   }
   .utm-pane {
     position: relative;
-    margin-top: 8px;
-    padding: 10px 10px 4px;
+    margin-top: 0.5rem;
+    padding: 0.625rem 0.625rem 0.25rem;
     border: 1px solid var(--t-blue);
     border-radius: 3px;
   }
   .utm-pane-title {
     position: absolute;
     top: -0.75em;
-    left: 8px;
-    padding: 0 4px;
+    left: 0.5rem;
+    padding: 0 0.25rem;
     background: var(--t-bg);
     color: var(--t-blue);
   }
   .utm-row {
-    padding: 3px 8px 7px;
+    padding: 3px 0.5rem 0.4375rem;
     border-left: 3px solid transparent;
   }
   .utm-row.is-selected {
@@ -234,12 +234,12 @@ const rows = [
     display: flex;
     gap: 1.5ch;
     align-items: baseline;
-    margin-top: 8px !important;
+    margin-top: 0.5rem !important;
     white-space: nowrap;
     overflow: hidden;
   }
   .utm-normal {
-    padding: 0 6px;
+    padding: 0 0.375rem;
     background: #f6c177;
     color: #1a1a26;
     font-weight: 700;

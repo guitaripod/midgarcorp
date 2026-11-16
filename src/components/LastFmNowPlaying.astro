@@ -43,14 +43,14 @@ const { username, showArtwork = true, size = 'normal' } = Astro.props;
   <div id="lfm-grid" class="hidden grid grid-cols-1 md:grid-cols-2 gap-x-6">
     <div id="lfm-artists">
       <p
-        class="text-[10px] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5"
+        class="text-[0.625rem] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5"
       >
         Top artists this week
       </p>
     </div>
     <div id="lfm-recent">
       <p
-        class="text-[10px] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5"
+        class="text-[0.625rem] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5"
       >
         Recently played
       </p>
@@ -67,7 +67,7 @@ const { username, showArtwork = true, size = 'normal' } = Astro.props;
 
   const statCell = (value, label, title) => `
     <div class="text-sm font-bold text-paper-text dark:text-term-text truncate" title="${esc(title ?? value)}">${esc(value)}</div>
-    <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">${label}</div>`;
+    <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">${label}</div>`;
 
   const progressBar = (pct) => `
     <div class="h-1 mt-1 bg-paper-raised dark:bg-term-raised rounded-sm overflow-hidden">
@@ -112,7 +112,7 @@ const { username, showArtwork = true, size = 'normal' } = Astro.props;
               <svg class="w-3.5 h-3.5 ${isNowPlaying ? 'text-paper-red dark:text-term-red animate-pulse' : 'text-paper-faint dark:text-term-faint'} flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
               </svg>
-              <span class="text-[11px] ${isNowPlaying ? 'text-paper-red dark:text-term-red font-medium' : 'text-paper-faint dark:text-term-faint'}">
+              <span class="text-[0.6875rem] ${isNowPlaying ? 'text-paper-red dark:text-term-red font-medium' : 'text-paper-faint dark:text-term-faint'}">
                 ${isNowPlaying ? 'Now playing' : `Last played · ${ago}`}
               </span>
             </div>
@@ -155,16 +155,16 @@ const { username, showArtwork = true, size = 'normal' } = Astro.props;
         const maxPlays = Math.max(...artists.map((a) => parseInt(a.playcount, 10) || 0), 1);
         if (artists.length > 0) {
           document.getElementById('lfm-artists').innerHTML = `
-            <p class="text-[10px] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5">Top artists this week</p>
+            <p class="text-[0.625rem] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5">Top artists this week</p>
             ${artists
               .map(
                 (a, i) => `
                 <div class="flex items-center gap-2 py-1">
-                  <span class="w-4 text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0 text-right">${i + 1}</span>
+                  <span class="w-4 text-[0.625rem] text-paper-faint dark:text-term-faint flex-shrink-0 text-right">${i + 1}</span>
                   <div class="flex-1 min-w-0">
                     <div class="flex items-baseline justify-between gap-2">
-                      <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(a.name)}</div>
-                      <div class="text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0">${esc(a.playcount)}</div>
+                      <div class="text-[0.6875rem] font-medium text-paper-text dark:text-term-text truncate">${esc(a.name)}</div>
+                      <div class="text-[0.625rem] text-paper-faint dark:text-term-faint flex-shrink-0">${esc(a.playcount)}</div>
                     </div>
                     ${progressBar((parseInt(a.playcount, 10) / maxPlays) * 100)}
                   </div>
@@ -176,7 +176,7 @@ const { username, showArtwork = true, size = 'normal' } = Astro.props;
         const recent = tracks.slice(isNowPlaying ? 1 : 0, isNowPlaying ? 5 : 4);
         if (recent.length > 0) {
           document.getElementById('lfm-recent').innerHTML = `
-            <p class="text-[10px] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5">Recently played</p>
+            <p class="text-[0.625rem] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5">Recently played</p>
             ${recent
               .map((t) => {
                 const date = t.date ? new Date(t.date.uts * 1000) : null;
@@ -184,8 +184,8 @@ const { username, showArtwork = true, size = 'normal' } = Astro.props;
                 return `
                 <div class="flex items-center gap-2 py-1">
                   <div class="flex-1 min-w-0">
-                    <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(t.name)}</div>
-                    <div class="text-[10px] text-paper-faint dark:text-term-faint truncate">${esc(t.artist?.['#text'] || '')} · ${ago}</div>
+                    <div class="text-[0.6875rem] font-medium text-paper-text dark:text-term-text truncate">${esc(t.name)}</div>
+                    <div class="text-[0.625rem] text-paper-faint dark:text-term-faint truncate">${esc(t.artist?.['#text'] || '')} · ${ago}</div>
                   </div>
                 </div>`;
               })

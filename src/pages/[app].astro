@@ -87,9 +87,15 @@ const bannerSrcset =
         `${screenshotUrl(bannerShot.src)} ${bannerShot.w}w`,
       ].join(', ')
     : undefined;
-const HERO_FRAME: Record<string, { class: string; heights: [number, number] }> = {
-  iphone: { class: 'h-[420px] sm:h-[500px]', heights: [420, 500] },
-  ipad: { class: 'h-[400px] sm:h-[470px]', heights: [400, 470] },
+const HERO_FRAME: Record<string, { class: string; heights: [number, number, number] }> = {
+  iphone: {
+    class: 'h-[26.25rem] sm:h-[31.25rem] lg:h-[clamp(31.25rem,24vw,46rem)]',
+    heights: [420, 500, 736],
+  },
+  ipad: {
+    class: 'h-[25rem] sm:h-[29.375rem] lg:h-[clamp(29.375rem,22vw,42rem)]',
+    heights: [400, 470, 672],
+  },
 };
 const heroImage = c.heroImage;
 const heroImageSrcset = heroImage
@@ -101,8 +107,8 @@ const heroImageSrcset = heroImage
     ].join(', ')
   : undefined;
 const heroFrame = HERO_FRAME[heroDevice] ?? {
-  class: 'h-[230px] sm:h-[300px]',
-  heights: [230, 300] as [number, number],
+  class: 'h-[14.375rem] sm:h-[18.75rem] lg:h-[clamp(18.75rem,15vw,30rem)]',
+  heights: [230, 300, 480] as [number, number, number],
 };
 const heroHeightClass = heroFrame.class;
 
@@ -186,7 +192,7 @@ const releasedOn = app.currentVersionReleaseDate
                 height={72}
                 displayWidths={[64, 72]}
                 priority
-                class="hero-icon h-16 w-16 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[72px] sm:w-[72px]"
+                class="hero-icon h-16 w-16 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[4.5rem] sm:w-[4.5rem]"
               />
             )
           }
@@ -271,14 +277,14 @@ const releasedOn = app.currentVersionReleaseDate
             <img
               src={screenshotUrl(heroImage.src)}
               srcset={heroImageSrcset}
-              sizes="(min-width: 1024px) 520px, 100vw"
+              sizes="(min-width: 1024px) 45vw, 100vw"
               width={heroImage.w}
               height={heroImage.h}
               alt={heroImage.alt}
               loading="eager"
               fetchpriority="high"
               decoding="async"
-              class="block h-auto w-full max-w-[560px] lg:max-w-none"
+              class="block h-auto w-full max-w-[35rem] lg:max-w-none"
             />
           </div>
         )
@@ -510,26 +516,30 @@ const releasedOn = app.currentVersionReleaseDate
           id="whats-new"
           class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
         >
-          <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --changelog`)}</p>
-          <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-            What's new in <span class="accent-text">{app.version}</span>
-          </h2>
-          {releasedOn && (
-            <p class="mb-6 text-sm text-paper-muted dark:text-term-muted">
-              On the App Store since{' '}
-              <time datetime={app.currentVersionReleaseDate}>{releasedOn}</time>
-            </p>
-          )}
-          <div class="max-w-2xl space-y-3 font-sans">
-            <ReleaseNotes blocks={noteBlocks.slice(0, NOTES_SHOWN)} />
-            {noteBlocks.length > NOTES_SHOWN && (
-              <details class="group space-y-3">
-                <summary class="cursor-pointer font-mono text-sm text-paper-green dark:text-term-green">
-                  everything in {app.version}
-                </summary>
-                <ReleaseNotes blocks={noteBlocks.slice(NOTES_SHOWN)} />
-              </details>
-            )}
+          <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] xl:gap-16">
+            <div class="xl:sticky xl:top-24 xl:self-start">
+              <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --changelog`)}</p>
+              <h2 class="mb-2 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+                What's new in <span class="accent-text">{app.version}</span>
+              </h2>
+              {releasedOn && (
+                <p class="mb-6 text-sm text-paper-muted dark:text-term-muted">
+                  On the App Store since{' '}
+                  <time datetime={app.currentVersionReleaseDate}>{releasedOn}</time>
+                </p>
+              )}
+            </div>
+            <div class="max-w-xl space-y-3 font-sans">
+              <ReleaseNotes blocks={noteBlocks.slice(0, NOTES_SHOWN)} />
+              {noteBlocks.length > NOTES_SHOWN && (
+                <details class="group space-y-3">
+                  <summary class="cursor-pointer font-mono text-sm text-paper-green dark:text-term-green">
+                    everything in {app.version}
+                  </summary>
+                  <ReleaseNotes blocks={noteBlocks.slice(NOTES_SHOWN)} />
+                </details>
+              )}
+            </div>
           </div>
         </section>
       ) : null
@@ -539,20 +549,26 @@ const releasedOn = app.currentVersionReleaseDate
     {
       !c.hideAbout ? (
         <section class="border-t border-paper-border py-12 dark:border-term-border sm:py-16">
-          <p class="prompt-line mb-3">{sectionPrompt(`less ${app.slug}/README`)}</p>
-          <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-            About {app.shortName}
-          </h2>
-          <div class="max-w-2xl space-y-3 font-sans">
-            {descBlocks.map(({ line, isHeading }) =>
-              isHeading ? (
-                <h3 class="accent-text pt-3 text-xs font-bold uppercase tracking-[0.16em]">
-                  {line}
-                </h3>
-              ) : (
-                <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">{line}</p>
-              )
-            )}
+          <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] xl:gap-16">
+            <div class="xl:sticky xl:top-24 xl:self-start">
+              <p class="prompt-line mb-3">{sectionPrompt(`less ${app.slug}/README`)}</p>
+              <h2 class="mb-6 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+                About {app.shortName}
+              </h2>
+            </div>
+            <div class="max-w-xl space-y-3 font-sans">
+              {descBlocks.map(({ line, isHeading }) =>
+                isHeading ? (
+                  <h3 class="accent-text pt-3 text-xs font-bold uppercase tracking-[0.16em]">
+                    {line}
+                  </h3>
+                ) : (
+                  <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
+                    {line}
+                  </p>
+                )
+              )}
+            </div>
           </div>
         </section>
       ) : null
@@ -563,16 +579,25 @@ const releasedOn = app.currentVersionReleaseDate
       id="faq"
       class="scroll-mt-20 border-t border-paper-border py-12 dark:border-term-border sm:py-16"
     >
-      <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --faq`)}</p>
-      <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
-        Frequently asked <span class="accent-text">questions</span>
-      </h2>
-      <div class="max-w-3xl">
+      <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] xl:gap-16">
+        <div class="xl:sticky xl:top-24 xl:self-start">
+          <p class="prompt-line mb-3">{sectionPrompt(`./${app.slug} --faq`)}</p>
+          <h2 class="mb-8 text-xl font-bold text-paper-text dark:text-term-text sm:text-2xl">
+            Frequently asked <span class="accent-text">questions</span>
+          </h2>
+          {
+            c.trustNote && (
+              <p class="hidden border-l-2 border-paper-border pl-4 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted xl:block">
+                {c.trustNote}
+              </p>
+            )
+          }
+        </div>
         <FaqAccordion faq={c.faq} accent={accent} />
       </div>
       {
         c.trustNote && (
-          <p class="mt-10 max-w-3xl border-l-2 border-paper-border pl-4 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted">
+          <p class="mt-10 max-w-3xl border-l-2 border-paper-border pl-4 text-xs leading-relaxed text-paper-muted dark:border-term-border dark:text-term-muted xl:hidden">
             {c.trustNote}
           </p>
         )

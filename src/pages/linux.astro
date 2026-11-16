@@ -109,7 +109,7 @@ const structuredData = {
           )}
 
           {section.featured.length > 0 && (
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 min-[2400px]:grid-cols-4 gap-4 sm:gap-6">
               {section.featured.map((app) => (
                 <LinuxAppCard app={app} now={now} />
               ))}

@@ -254,6 +254,11 @@ const structuredData = {
 };
 
 const jsonLd = { '@context': 'https://schema.org', '@graph': [structuredData] };
+
+/// Whether a dot's label, set at 12 units in a face about 0.56 em wide per character, fits to the
+/// right of the dot inside a chart `width` units wide; one that would run past the edge goes left.
+const labelFits = (d: { x: number; name: string }, width: number) =>
+  d.x + 10 + d.name.length * 12 * 0.56 <= width - 4;
 ---
 
 <BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>
@@ -378,9 +383,9 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': [structuredData] };
                   .filter((d) => d.wall)
                   .map((d) => (
                     <text
-                      x={d.x > wall.width * 0.72 ? d.x - 10 : d.x + 10}
+                      x={labelFits(d, wall.width) ? d.x + 10 : d.x - 10}
                       y={d.y - 10}
-                      text-anchor={d.x > wall.width * 0.72 ? 'end' : 'start'}
+                      text-anchor={labelFits(d, wall.width) ? 'start' : 'end'}
                       class="bw-label"
                     >
                       {d.name}
@@ -769,7 +774,7 @@ blackwall compare a b              # which differences between two models are re
     position: relative;
     display: block;
     flex: 1;
-    height: 6px;
+    height: 0.375rem;
     background: color-mix(in srgb, currentColor 14%, transparent);
   }
   .bw-bar {
@@ -799,8 +804,8 @@ blackwall compare a b              # which differences between two models are re
   .bw-live {
     background: repeating-linear-gradient(
       135deg,
-      color-mix(in srgb, #ffb000 10%, transparent) 0 8px,
-      transparent 8px 16px
+      color-mix(in srgb, #ffb000 10%, transparent) 0 0.5rem,
+      transparent 0.5rem 1rem
     );
   }
 </style>

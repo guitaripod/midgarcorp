@@ -176,7 +176,7 @@ const sections: Section[] = [
     </header>
 
     <section class="border-t border-paper-border pb-4 pt-10 dark:border-term-border">
-      <div class="max-w-3xl">
+      <div>
         <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
           What the App Store apps collect
         </h2>
@@ -185,14 +185,14 @@ const sections: Section[] = [
           Store privacy label. Each item goes to api.midgarcorp.cc, Midgar’s own service, or to
           Apple. Nothing goes to an advertiser or to a third-party analytics company.
         </p>
-        <div class="grid gap-5">
+        <div class="card-columns">
           {
             collected.map((row) => (
               <div class="term-frame p-5 sm:p-6">
                 <h3 class="mb-1 text-sm font-bold text-paper-text dark:text-term-text">
                   {row.type}
                 </h3>
-                <p class="accent-text mb-2 text-[11px] font-semibold uppercase tracking-[0.12em]">
+                <p class="accent-text mb-2 text-[0.6875rem] font-semibold uppercase tracking-[0.12em]">
                   {row.detail}
                 </p>
                 <p class="text-sm leading-relaxed text-paper-muted dark:text-term-muted">
@@ -206,7 +206,7 @@ const sections: Section[] = [
     </section>
 
     <section class="pb-12 pt-5">
-      <div class="grid max-w-3xl gap-5">
+      <div class="card-columns">
         {
           sections.map((s) => (
             <div class="term-frame p-5 sm:p-6">
@@ -232,7 +232,7 @@ const sections: Section[] = [
     </section>
 
     <section class="border-t border-paper-border py-10 dark:border-term-border">
-      <div class="term-frame max-w-3xl p-5 sm:p-6">
+      <div class="term-frame p-5 sm:p-6">
         <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
           Questions &amp; changes
         </h2>

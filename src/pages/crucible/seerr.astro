@@ -206,7 +206,7 @@ const trouble = [
     </header>
 
     <section class="border-t border-paper-border pb-12 pt-10 dark:border-term-border">
-      <div class="grid max-w-3xl gap-5">
+      <div class="card-columns">
         <div class="term-frame p-5 sm:p-6">
           <h2 class="accent-text mb-3 text-xs font-bold uppercase tracking-[0.16em]">
             1. Install Seerr
@@ -238,10 +238,12 @@ const trouble = [
                         )}
                         {line.command && (
                           <div
-                            class="command flex items-start gap-3 rounded-sm border border-term-border bg-term-bg px-3.5 py-3 text-[12.5px] text-term-text"
+                            class="command flex items-start gap-3 rounded-sm border border-term-border bg-term-bg px-3.5 py-3 text-[0.7812rem] text-term-text"
                             data-copy={line.command}
                           >
-                            <code class="min-w-0 flex-1 break-all">{line.command}</code>
+                            <code class="min-w-0 flex-1 overflow-x-auto whitespace-pre">
+                              {line.command}
+                            </code>
                             <button
                               type="button"
                               class="copy flex-shrink-0 text-xs text-term-faint transition-colors hover:text-term-green"
@@ -348,10 +350,12 @@ const trouble = [
                         )}
                         {line.command && (
                           <div
-                            class="command flex items-start gap-3 rounded-sm border border-term-border bg-term-bg px-3.5 py-3 text-[12.5px] text-term-text"
+                            class="command flex items-start gap-3 rounded-sm border border-term-border bg-term-bg px-3.5 py-3 text-[0.7812rem] text-term-text"
                             data-copy={line.command}
                           >
-                            <code class="min-w-0 flex-1 break-all">{line.command}</code>
+                            <code class="min-w-0 flex-1 overflow-x-auto whitespace-pre">
+                              {line.command}
+                            </code>
                             <button
                               type="button"
                               class="copy flex-shrink-0 text-xs text-term-faint transition-colors hover:text-term-green"

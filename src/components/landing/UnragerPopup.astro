@@ -63,18 +63,18 @@ const topics = [
     --upm-accent: #1b6b80;
     --upm-accent-ink: #ffffff;
     --upm-knob: #ffffff;
-    width: min(100%, 360px);
+    width: min(100%, 22.5rem);
     margin: 0;
-    padding: 16px 18px 12px;
-    border-radius: 14px;
+    padding: 1rem 1.125rem 0.75rem;
+    border-radius: 0.875rem;
     background: var(--upm-bg);
     border: 1px solid #dcd3b8;
     box-shadow:
-      0 30px 70px -40px rgba(7, 54, 66, 0.45),
-      0 2px 6px rgba(7, 54, 66, 0.06);
+      0 1.875rem 4.375rem -40px rgba(7, 54, 66, 0.45),
+      0 2px 0.375rem rgba(7, 54, 66, 0.06);
     color: var(--upm-ink);
     font:
-      14px/1.45 -apple-system,
+      0.875rem/1.45 -apple-system,
       'Segoe UI',
       Roboto,
       Helvetica,
@@ -91,7 +91,7 @@ const topics = [
     --upm-accent-ink: #06222b;
     --upm-knob: #d8e6ea;
     border-color: #2d333b;
-    box-shadow: 0 30px 70px -40px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 1.875rem 4.375rem -40px rgba(0, 0, 0, 0.85);
   }
   .upm p {
     margin: 0;
@@ -99,12 +99,12 @@ const topics = [
   .upm-top {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 15px;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
   }
   .upm-mark {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
   }
   .upm-mark rect {
     fill: var(--upm-accent);
@@ -117,44 +117,44 @@ const topics = [
     stroke-linejoin: round;
   }
   .upm-status {
-    margin-top: 12px;
-    padding: 12px 14px;
-    border-radius: 10px;
+    margin-top: 0.75rem;
+    padding: 0.75rem 0.875rem;
+    border-radius: 0.625rem;
     background: var(--upm-surface);
     border: 1px solid var(--upm-line);
   }
   .upm-headline {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 15px;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
     font-weight: 650;
   }
   .upm-headline::before {
     content: '';
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 50%;
     background: var(--upm-accent);
   }
   .upm-detail {
-    margin-top: 4px !important;
+    margin-top: 0.25rem !important;
     color: var(--upm-muted);
   }
   .upm-switch {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 7px 2px;
+    padding: 0.4375rem 2px;
   }
   .upm-switch:first-of-type {
-    margin-top: 10px !important;
+    margin-top: 0.625rem !important;
   }
   .upm-switch i {
     position: relative;
-    width: 34px;
-    height: 20px;
-    border-radius: 999px;
+    width: 2.125rem;
+    height: 1.25rem;
+    border-radius: 62.4375rem;
     background: var(--upm-line);
   }
   .upm-switch i::after {
@@ -162,55 +162,55 @@ const topics = [
     position: absolute;
     top: 2px;
     left: 2px;
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
     background: var(--upm-knob);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   }
   .upm-panel,
   .upm-last {
-    margin-top: 6px !important;
-    padding-top: 8px;
+    margin-top: 0.375rem !important;
+    padding-top: 0.5rem;
     border-top: 1px solid var(--upm-line);
   }
   .upm-summary {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 4px 2px;
+    gap: 0.5rem;
+    padding: 0.25rem 2px;
     font-weight: 600;
   }
   .upm-summary::before {
     content: '';
-    border: 5px solid transparent;
+    border: 0.3125rem solid transparent;
     border-left-color: currentColor;
     border-right-width: 0;
   }
   .upm-summary.is-open::before {
-    border: 5px solid transparent;
+    border: 0.3125rem solid transparent;
     border-top-color: currentColor;
     border-bottom-width: 0;
   }
   .upm-label {
-    margin: 8px 0 4px !important;
-    font-size: 13px;
+    margin: 0.5rem 0 0.25rem !important;
+    font-size: 0.8125rem;
     font-weight: 600;
   }
   .upm-strict {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 2px;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     border: 1px solid var(--upm-line);
     background: var(--upm-surface);
-    font-size: 13px;
+    font-size: 0.8125rem;
     text-align: center;
   }
   .upm-strict span,
   .upm-strict b {
-    padding: 4px 0;
-    border-radius: 6px;
+    padding: 0.25rem 0;
+    border-radius: 0.375rem;
     color: var(--upm-muted);
     font-weight: 400;
   }
@@ -221,63 +221,63 @@ const topics = [
   }
   .upm-topics {
     list-style: none;
-    margin: 8px 0 0;
+    margin: 0.5rem 0 0;
     padding: 0;
     display: grid;
-    gap: 6px;
+    gap: 0.375rem;
   }
   .upm-topics li,
   .upm-add {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 2px 6px;
+    gap: 2px 0.375rem;
     align-items: start;
   }
   .upm-topics span,
   .upm-add span {
-    padding: 6px 8px;
-    border-radius: 7px;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.4375rem;
     border: 1px solid var(--upm-line);
     background: var(--upm-surface);
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.4;
   }
   .upm-topics small {
     grid-column: 1;
     padding-left: 2px;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--upm-muted);
   }
   .upm-add {
-    margin-top: 8px !important;
+    margin-top: 0.5rem !important;
   }
   .upm-add span {
     color: var(--upm-muted);
   }
   .upm-topics b,
   .upm-add b {
-    padding: 4px 10px;
-    border-radius: 7px;
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.4375rem;
     border: 1px solid var(--upm-line);
     background: var(--upm-surface);
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 400;
     color: var(--upm-muted);
   }
   .upm-add b {
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: var(--upm-ink);
   }
   .upm-save {
-    margin-top: 10px !important;
+    margin-top: 0.625rem !important;
   }
   .upm-save b {
     display: inline-block;
-    padding: 6px 14px;
-    border-radius: 7px;
+    padding: 0.375rem 0.875rem;
+    border-radius: 0.4375rem;
     background: var(--upm-accent);
     color: var(--upm-accent-ink);
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 600;
   }
 </style>

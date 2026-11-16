@@ -75,7 +75,7 @@ const questions = [
     </header>
 
     <section class="border-t border-paper-border pb-12 pt-10 dark:border-term-border">
-      <div class="grid max-w-3xl gap-5">
+      <div class="grid grid-cols-[minmax(0,1fr)] gap-5 lg:grid-cols-2 lg:items-start">
         <div class="term-frame p-5 sm:p-6">
           <h2 class="accent-text mb-2 text-xs font-bold uppercase tracking-[0.16em]">
             Fastest: open an issue
@@ -88,7 +88,7 @@ const questions = [
             href="https://github.com/guitaripod/Tailscode/issues"
             target="_blank"
             rel="noopener noreferrer"
-            class="accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
+            class="accent-btn inline-flex max-w-full items-center gap-2 break-all rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors"
           >
             <img src="/icons/github.svg" alt="" width="18" height="18" class="dark:invert" />
             github.com/guitaripod/Tailscode/issues ↗

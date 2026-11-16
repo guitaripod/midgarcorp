@@ -184,14 +184,15 @@
 }
 
 :root {
-  --shell-max: 72rem;
-  --shell-gutter: clamp(1rem, 0.4rem + 2.2vw, 2.5rem);
+  font-size: clamp(100%, 0.8rem + 0.22vw, 125%);
+  --shell-max: clamp(72rem, 36rem + 44vw, 112rem);
+  --shell-gutter: clamp(1rem, 0.4rem + 2.2vw, 3rem);
   --flow-gap: clamp(3rem, 2rem + 3vw, 5rem);
   --card-gap: 1rem;
 }
 
 body[data-shell='wide'] {
-  --shell-max: 96rem;
+  --shell-max: clamp(80rem, 28rem + 60vw, 144rem);
 }
 
 .shell {
@@ -203,6 +204,20 @@ body[data-shell='wide'] {
 
 .flow > * + * {
   margin-top: var(--flow-gap);
+}
+
+:where(main) :where(p) {
+  max-inline-size: 75ch;
+}
+
+.card-columns {
+  columns: 2 30rem;
+  column-gap: 1.25rem;
+}
+
+.card-columns > * {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
 }
 
 .defer-paint {
@@ -258,23 +273,19 @@ body[data-shell='wide'] {
 }
 
 .act-sparksvg {
-  height: 12px;
+  height: 0.75rem;
   width: auto;
   flex-shrink: 0;
 }
 
 .act-sparksvg-lg {
-  height: 24px;
+  height: 1.5rem;
   flex-shrink: 1;
   min-width: 0;
 }
 
 .dark .act-sparksvg-lg {
   filter: drop-shadow(0 0 3px rgba(51, 255, 102, 0.35));
-}
-
-.act-heatmap {
-  max-height: 10rem;
 }
 
 .act-hm-label {

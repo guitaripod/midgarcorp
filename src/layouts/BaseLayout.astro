@@ -56,7 +56,7 @@ const kind = searchKind(Astro.url.pathname, landingSlugs);
     />
   </head>
   <body
-    class="min-h-screen text-paper-text dark:text-term-text font-mono antialiased"
+    class="flex min-h-screen flex-col text-paper-text dark:text-term-text font-mono antialiased"
     data-shell={width}
   >
     <!--email_off-->
@@ -69,7 +69,7 @@ const kind = searchKind(Astro.url.pathname, landingSlugs);
     <Header />
     <main
       id="main"
-      class="shell"
+      class="shell flex-1"
       data-pagefind-body={searchable ? '' : undefined}
       data-pagefind-meta={searchable
         ? 'title[data-search-title], description[data-search-description], kind[data-search-kind]'

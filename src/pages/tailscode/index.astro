@@ -212,7 +212,8 @@ const section = 'border-t border-paper-border py-8 dark:border-term-border sm:py
 const rail =
   'no-scrollbar -mx-4 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-4 pb-3 sm:mx-0 sm:grid sm:overflow-visible sm:px-0 sm:pb-0';
 const railItem = 'shrink-0 snap-center';
-const phoneItem = 'w-[210px] sm:w-full sm:max-w-[300px] sm:justify-self-center';
+const phoneItem =
+  'w-[13.125rem] sm:w-full sm:max-w-[clamp(18.75rem,15vw,26rem)] sm:justify-self-center';
 const btn =
   'accent-btn inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 text-sm font-semibold transition-colors';
 
@@ -274,7 +275,7 @@ const clients = [
                 height={72}
                 displayWidths={[64, 72]}
                 priority
-                class="hero-icon h-14 w-14 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[72px] sm:w-[72px]"
+                class="hero-icon h-14 w-14 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[4.5rem] sm:w-[4.5rem]"
               />
             )
           }
@@ -305,7 +306,7 @@ const clients = [
               <li>
                 <a
                   href="#trust"
-                  class="inline-flex items-center gap-1 rounded-sm border border-paper-green/40 px-2 py-1 text-[11px] font-semibold sm:gap-1.5 sm:px-2.5 sm:text-xs text-paper-green transition-colors hover:bg-paper-green/10 dark:border-term-green/40 dark:text-term-green dark:hover:bg-term-green/10"
+                  class="inline-flex items-center gap-1 rounded-sm border border-paper-green/40 px-2 py-1 text-[0.6875rem] font-semibold sm:gap-1.5 sm:px-2.5 sm:text-xs text-paper-green transition-colors hover:bg-paper-green/10 dark:border-term-green/40 dark:text-term-green dark:hover:bg-term-green/10"
                 >
                   <span aria-hidden="true">✓</span>
                   {fact}
@@ -357,13 +358,13 @@ const clients = [
         </div>
       </div>
 
-      <div class="relative mx-auto aspect-[100/71] w-full max-w-[600px] lg:max-w-none">
+      <div class="relative mx-auto aspect-[100/71] w-full max-w-[37.5rem] lg:max-w-none">
         <ShotFigure
           dark={hero.wall.dark}
           w={hero.wall.w}
           h={hero.wall.h}
           alt="Tailscode on iPad: the wall, every running agent and its helpers full screen, an approval waiting on its card"
-          sizes="(min-width: 1024px) 520px, 80vw"
+          sizes="(min-width: 1024px) 40vw, 80vw"
           variant="hero"
           priority
           class="absolute right-0 top-[6%] w-[84%]"
@@ -412,7 +413,7 @@ const clients = [
           alt="Tailscode on iPhone: set-up, the bridge's one-line installer and the QR code to scan, with the tailnet already checked"
           sizes="(min-width: 1024px) 300px, 60vw"
           variant="phone"
-          class="mx-auto w-[62%] max-w-[300px] lg:col-span-5 lg:justify-self-center"
+          class="mx-auto w-[62%] max-w-[clamp(18.75rem,15vw,26rem)] lg:col-span-5 lg:justify-self-center"
         >
           <span class="accent-text block font-semibold">{phoneShots.setup.head}</span>
           {phoneShots.setup.body}
@@ -425,7 +426,7 @@ const clients = [
         One screen answers who needs you, what is working and what finished, across every machine
         you connect. Approve and answer on the card; open the chat only when you want to.
       </SectionHead>
-      <ul class="mb-6 grid gap-2.5">
+      <ul class="mb-6 grid max-w-[80ch] gap-2.5">
         {
           agentsBullets.map((b) => (
             <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
@@ -490,7 +491,7 @@ const clients = [
         Your agents run on your own computers, so the model is yours to choose: a cloud model, or
         one served from the graphics card in the machine across the room.
       </SectionHead>
-      <ul class="mb-6 grid gap-2.5">
+      <ul class="mb-6 grid max-w-[80ch] gap-2.5">
         {
           modelsBullets.map((b) => (
             <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
@@ -532,7 +533,7 @@ const clients = [
         the model pill.
       </SectionHead>
       <p class="mb-4 text-xs text-paper-muted dark:text-term-muted">{agentsAvailability}</p>
-      <ul class="mb-6 grid gap-2.5">
+      <ul class="mb-6 grid max-w-[80ch] gap-2.5">
         {
           anyAgentBullets.map((b) => (
             <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
@@ -569,7 +570,7 @@ const clients = [
         Schedules live on the machine, not the phone, so a question asked every weekday at 7:30 is
         asked at 7:30 whether or not anything of yours is awake.
       </SectionHead>
-      <ul class="mb-6 grid gap-2.5">
+      <ul class="mb-6 grid max-w-[80ch] gap-2.5">
         {
           laterBullets.map((b) => (
             <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
@@ -629,7 +630,7 @@ const clients = [
             alt="Tailscode on iPhone: the chat the notification opens, a Megatron card saying Waiting for you and Allow once, Always and Deny under the edit"
             sizes="(min-width: 1024px) 280px, 46vw"
             variant="phone"
-            class="w-[46%] max-w-[300px] shrink-0"
+            class="w-[46%] max-w-[clamp(18.75rem,15vw,26rem)] shrink-0"
           >
             <span class="accent-text mr-1 font-semibold">Tap</span> — and the agent waits on you, right
             under the edit.
@@ -641,7 +642,7 @@ const clients = [
             alt={`Tailscode on iPhone: ${phoneShots.steer.head}. ${phoneShots.steer.body}`}
             sizes="(min-width: 1024px) 280px, 46vw"
             variant="phone"
-            class="mt-10 w-[46%] max-w-[300px] shrink-0 sm:mt-16"
+            class="mt-10 w-[46%] max-w-[clamp(18.75rem,15vw,26rem)] shrink-0 sm:mt-16"
           >
             <span class="accent-text block font-semibold">{phoneShots.steer.head}</span>
             {phoneShots.steer.body}
@@ -659,7 +660,7 @@ const clients = [
           alt="Tailscode on iPhone: the question what is eating my GPU memory, answered under a Megatron head with a table of the four processes that hold it"
           sizes="(min-width: 1024px) 300px, 62vw"
           variant="phone"
-          class="mx-auto w-[62%] max-w-[300px] lg:order-first lg:col-span-5 lg:justify-self-center"
+          class="mx-auto w-[62%] max-w-[clamp(18.75rem,15vw,26rem)] lg:order-first lg:col-span-5 lg:justify-self-center"
         >
           <span class="accent-text block font-semibold">{phoneShots.gpu.head}</span>
           {phoneShots.gpu.body}
@@ -669,7 +670,7 @@ const clients = [
             Streaming text written at the model’s own speed, with thinking and tool runs folded into
             readable groups.
           </SectionHead>
-          <ul class="mb-6 grid gap-2.5">
+          <ul class="mb-6 grid max-w-[80ch] gap-2.5">
             {
               transcriptBullets.map((b) => (
                 <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
@@ -695,8 +696,8 @@ const clients = [
         w={megatron.w}
         h={megatron.h}
         alt="Megatron on the Mac: a turn's head lit by what it is doing, with its numbered steps and the agent's account beside the chat"
-        sizes="(min-width: 1152px) 880px, 100vw"
-        class="mx-auto mt-10 max-w-[880px]"
+        sizes="(min-width: 1152px) 50vw, 100vw"
+        class="mx-auto mt-10 max-w-[clamp(55rem,50vw,90rem)]"
       >
         <span class="accent-text mr-1 font-semibold">Megatron on the Mac</span> — one turn, every step,
         live.
@@ -714,7 +715,7 @@ const clients = [
             machines that hold the transcripts, so nothing about your spend is sent anywhere to be
             added up.
           </SectionHead>
-          <ul class="mb-6 grid gap-2.5">
+          <ul class="mb-6 grid max-w-[80ch] gap-2.5">
             {
               moneyBullets.map((b) => (
                 <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
@@ -769,7 +770,7 @@ const clients = [
                 loading="lazy"
                 decoding="async"
                 alt="Three Home Screen widgets: a medium usage widget with a ring and three provider rows, a small usage widget, and a small DeepSeek balance widget"
-                class="mx-auto block h-auto w-full max-w-[760px]"
+                class="mx-auto block h-auto w-full max-w-[47.5rem]"
               />
             </div>
             <figcaption
@@ -905,7 +906,7 @@ const clients = [
             viewBox="0 0 320 440"
             role="img"
             aria-label="Two devices of yours joined by your tailnet; a struck-out Tailscode cloud box: there is no such server"
-            class="mx-auto block h-auto w-full max-w-[340px] text-paper-muted dark:text-term-muted sm:hidden"
+            class="mx-auto block h-auto w-full max-w-[21.25rem] text-paper-muted dark:text-term-muted sm:hidden"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g
@@ -1042,7 +1043,7 @@ const clients = [
           w={syncBoth.w}
           h={syncBoth.h}
           alt="Both machines side by side with the same settled answer, the turn priced in the phone's chrome"
-          sizes="(min-width: 1152px) 704px, 100vw"
+          sizes="(min-width: 1152px) 60vw, 100vw"
           class="lg:col-span-8"
         >
           <span class="accent-text mr-1 font-semibold">One answer, two screens</span> — the turn settles
@@ -1069,7 +1070,7 @@ const clients = [
               w={s.w}
               h={s.h}
               alt={`Tailscode on iPad: ${s.caption}`}
-              sizes="(min-width: 1152px) 536px, (min-width: 640px) 50vw, 86vw"
+              sizes="(min-width: 640px) 50vw, 86vw"
               variant="ipad"
               class={`${railItem} w-[86vw] sm:w-auto`}
             >
@@ -1100,7 +1101,7 @@ const clients = [
           ))
         }
       </div>
-      <div class={`${rail} sm:grid-cols-2 sm:items-stretch`}>
+      <div class={`${rail} sm:grid-cols-2 sm:items-start`}>
         {
           deskShots.map((s) => (
             <ShotFigure
@@ -1109,8 +1110,8 @@ const clients = [
               w={s.w}
               h={s.h}
               alt={`Tailscode for ${s.client}: ${s.caption}`}
-              sizes="(min-width: 1152px) 536px, (min-width: 640px) 50vw, 86vw"
-              class={`${railItem} w-[86vw] sm:w-auto ${s.wide ? 'sm:col-span-2 sm:w-full sm:max-w-[880px] sm:justify-self-center' : ''}`}
+              sizes="(min-width: 640px) 50vw, 86vw"
+              class={`${railItem} w-[86vw] sm:w-auto ${s.wide ? 'sm:col-span-2 sm:w-full sm:max-w-[clamp(55rem,50vw,90rem)] sm:justify-self-center' : ''}`}
             >
               {s.caption}
             </ShotFigure>
@@ -1132,7 +1133,7 @@ const clients = [
           </SectionHead>
         </div>
         <div class="lg:col-span-7 lg:pt-9">
-          <ul class="mb-3 grid gap-2">
+          <ul class="mb-3 grid max-w-[80ch] gap-2">
             {
               studioBullets.map((b) => (
                 <li class="flex items-start gap-2 text-sm text-paper-text dark:text-term-text">
@@ -1169,7 +1170,7 @@ const clients = [
           alt="The Studio on iPhone with a finished picture and its verbs"
           sizes="(min-width: 1024px) 260px, 170px"
           variant="phone"
-          class={`${railItem} w-[170px] lg:w-auto lg:col-span-3`}
+          class={`${railItem} w-[10.625rem] lg:w-auto lg:col-span-3`}
         >
           <span class="accent-text mr-1 font-semibold">iPhone</span> — done: the verbs sit under the
           picture.

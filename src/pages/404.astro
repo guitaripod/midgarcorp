@@ -8,17 +8,27 @@ import BaseLayout from '@layouts/BaseLayout.astro';
   title="404 — command not found | guitaripod"
   description="This page does not exist."
 >
-  <section class="pt-16 sm:pt-24 pb-16 max-w-2xl">
-    <p class="prompt-line mb-4">cat {'{requested_page}'}</p>
-    <h1
-      class="text-4xl sm:text-6xl font-bold mb-6 tracking-tight text-paper-text dark:text-term-text"
-    >
-      404<span class="text-paper-red dark:text-term-red">:</span> command not found
-    </h1>
-    <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted mb-8 leading-relaxed">
-      No such file or directory. The page moved, never existed, or got refactored away.
-    </p>
-    <div class="term-frame p-5 mb-8 text-sm space-y-2">
+  <section
+    class="grid gap-10 pt-16 pb-16 sm:pt-24 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-16"
+  >
+    <div>
+      <p class="prompt-line mb-4">cat {'{requested_page}'}</p>
+      <h1
+        class="text-4xl sm:text-6xl font-bold mb-6 tracking-tight text-paper-text dark:text-term-text"
+      >
+        404<span class="text-paper-red dark:text-term-red">:</span> command not found
+      </h1>
+      <p class="text-base sm:text-lg text-paper-muted dark:text-term-muted mb-8 leading-relaxed">
+        No such file or directory. The page moved, never existed, or got refactored away.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+      >
+        cd ~ && exit 0
+      </a>
+    </div>
+    <div class="term-frame p-5 text-sm space-y-2 sm:p-6 lg:text-base">
       <p class="text-paper-muted dark:text-term-muted">Did you mean:</p>
       <p>
         <a
@@ -53,11 +63,5 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         <span class="text-paper-faint dark:text-term-faint"># work with me</span>
       </p>
     </div>
-    <a
-      href="/"
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
-    >
-      cd ~ && exit 0
-    </a>
   </section>
 </BaseLayout>

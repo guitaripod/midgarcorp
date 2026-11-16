@@ -55,12 +55,12 @@ const plural = (count: number, noun: string): string => `${count} ${noun}${count
       <p class="prompt-line mb-5">oss --stats</p>
       <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-7">
         <StatCell label="repos_shipped" value={ossStats.repos}>
-          <p class="text-[11px] text-paper-muted dark:text-term-muted">
+          <p class="text-[0.6875rem] text-paper-muted dark:text-term-muted">
             <span class="text-paper-green dark:text-term-green">{shippers}</span> cut at least one release
           </p>
         </StatCell>
         <StatCell label="commits" value={ossStats.commits.toLocaleString('en-US')}>
-          <p class="text-[11px] text-paper-muted dark:text-term-muted">
+          <p class="text-[0.6875rem] text-paper-muted dark:text-term-muted">
             most work:
             <a
               href={`#${leaders[0].id}`}
@@ -74,7 +74,7 @@ const plural = (count: number, noun: string): string => `${count} ${noun}${count
           </p>
         </StatCell>
         <StatCell label="releases_cut" value={ossStats.releases}>
-          <p class="text-[11px] text-paper-muted dark:text-term-muted">
+          <p class="text-[0.6875rem] text-paper-muted dark:text-term-muted">
             most shipped:
             <a
               href={`#${mostShipped.id}`}
@@ -124,7 +124,7 @@ const plural = (count: number, noun: string): string => `${count} ${noun}${count
       >
         <div class="space-y-6">
           {section.featured.length > 0 && (
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 min-[2400px]:grid-cols-4 gap-4 sm:gap-6">
               {section.featured.map((project) => (
                 <OpenSourceCard
                   project={project}
@@ -164,20 +164,24 @@ const plural = (count: number, noun: string): string => `${count} ${noun}${count
   </section>
 
   <section class="mt-12 sm:mt-16">
-    <div class="term-frame p-6 sm:p-8">
-      <p class="prompt-line mb-4">cat CONTRIBUTING.md</p>
-      <h3 class="text-xl sm:text-2xl font-bold mb-3 text-paper-text dark:text-term-text">
-        Built to be used, not admired.
-      </h3>
-      <p class="text-sm sm:text-base text-paper-muted dark:text-term-muted mb-6 max-w-2xl">
-        Every repo here exists because I hit a real problem shipping production software. If one
-        saves you time, star it — and if it breaks, file an issue. I read them.
-      </p>
+    <div class="term-frame p-6 sm:p-8 md:flex md:items-end md:justify-between md:gap-10">
+      <div>
+        <p class="prompt-line mb-4">cat CONTRIBUTING.md</p>
+        <h3 class="text-xl sm:text-2xl font-bold mb-3 text-paper-text dark:text-term-text">
+          Built to be used, not admired.
+        </h3>
+        <p
+          class="text-sm sm:text-base text-paper-muted dark:text-term-muted mb-6 md:mb-0 max-w-2xl"
+        >
+          Every repo here exists because I hit a real problem shipping production software. If one
+          saves you time, star it — and if it breaks, file an issue. I read them.
+        </p>
+      </div>
       <a
         href="https://github.com/guitaripod?tab=repositories"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
+        class="inline-flex shrink-0 items-center gap-2 px-5 py-2.5 bg-paper-green dark:bg-term-green text-paper-bg dark:text-term-bg rounded-sm text-sm font-bold hover:opacity-90 transition-opacity"
       >
         gh browse guitaripod ↗
       </a>

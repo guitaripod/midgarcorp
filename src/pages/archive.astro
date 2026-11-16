@@ -37,55 +37,57 @@ const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
       scale to indie app development.
     </p>
 
-    {
-      years.map((year) => (
-        <section class="mb-8 sm:mb-12">
-          <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text mb-3 sm:mb-4 pb-2 border-b border-paper-border dark:border-term-border">
-            {year}
-          </h2>
+    <div class="2xl:grid 2xl:grid-cols-2 2xl:items-start 2xl:gap-x-16">
+      {
+        years.map((year) => (
+          <section class="mb-8 sm:mb-12">
+            <h2 class="text-xl sm:text-2xl font-bold text-paper-text dark:text-term-text mb-3 sm:mb-4 pb-2 border-b border-paper-border dark:border-term-border">
+              {year}
+            </h2>
 
-          <div class="space-y-3 sm:space-y-4">
-            {postsByYear[Number(year)].map((post) => {
-              const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
-              });
+            <div class="space-y-3 sm:space-y-4">
+              {postsByYear[Number(year)].map((post) => {
+                const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                });
 
-              return (
-                <article class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-                  <time
-                    datetime={post.data.pubDate.toISOString()}
-                    class="text-sm text-paper-amber dark:text-term-amber font-mono flex-shrink-0 w-20"
-                  >
-                    {formattedDate}
-                  </time>
-                  <div class="flex-grow">
-                    <a
-                      href={`/blog/${post.slug}/`}
-                      class="text-base sm:text-lg text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors font-medium sm:font-normal"
+                return (
+                  <article class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                    <time
+                      datetime={post.data.pubDate.toISOString()}
+                      class="text-sm text-paper-amber dark:text-term-amber font-mono flex-shrink-0 w-20"
                     >
-                      {post.data.title}
-                    </a>
-                    {post.data.tags.length > 0 && (
-                      <div class="flex flex-wrap gap-2 mt-1 sm:mt-0 sm:inline-flex sm:ml-2">
-                        {post.data.tags.map((tag) => (
-                          <a
-                            href={`/tags/${tag}/`}
-                            class="text-xs text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
-                          >
-                            #{tag}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-      ))
-    }
+                      {formattedDate}
+                    </time>
+                    <div class="flex-grow">
+                      <a
+                        href={`/blog/${post.slug}/`}
+                        class="text-base sm:text-lg text-paper-text dark:text-term-text hover:text-paper-green dark:hover:text-term-green transition-colors font-medium sm:font-normal"
+                      >
+                        {post.data.title}
+                      </a>
+                      {post.data.tags.length > 0 && (
+                        <div class="flex flex-wrap gap-2 mt-1 sm:mt-0 sm:inline-flex sm:ml-2">
+                          {post.data.tags.map((tag) => (
+                            <a
+                              href={`/tags/${tag}/`}
+                              class="text-xs text-paper-greendim dark:text-term-greendim hover:text-paper-green dark:hover:text-term-green transition-colors"
+                            >
+                              #{tag}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        ))
+      }
+    </div>
 
     {
       posts.length === 0 && (

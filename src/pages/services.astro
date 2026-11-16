@@ -147,7 +147,7 @@ const dedicatedFeatures = [
                   <img
                     src={entry.app.icon}
                     srcset={iconSrcset(entry.app.icon)}
-                    sizes="72px"
+                    sizes="(min-width: 1024px) 6vw, 72px"
                     alt=""
                     width="64"
                     height="64"
@@ -171,7 +171,7 @@ const dedicatedFeatures = [
               ))
             }
           </dl>
-          <p class="mt-5 text-[11px] text-paper-muted dark:text-term-faint">
+          <p class="mt-5 text-[0.6875rem] text-paper-muted dark:text-term-faint">
             Plus {summary.totalCommits}
             {summary.totalCommitsLabel} across {summary.industries} industries in client work.
           </p>
@@ -303,7 +303,7 @@ const dedicatedFeatures = [
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl">
+    <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
       <div class="term-frame term-frame-hover p-6">
         <h3 class="text-lg font-bold mb-2 text-paper-text dark:text-term-text">
           Consulting & Advisory
@@ -393,7 +393,7 @@ const dedicatedFeatures = [
       </p>
     </div>
 
-    <div class="term-frame overflow-hidden max-w-4xl">
+    <div class="term-frame overflow-hidden">
       <div id="cal-embed"></div>
     </div>
 

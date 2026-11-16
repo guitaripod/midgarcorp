@@ -25,7 +25,7 @@ const combo = duoCombo(slug);
         {`${name} `}
         <span class="accent-text">on iPhone Duo</span>
       </h2>
-      <figure class="relative mx-auto max-w-[880px]">
+      <figure class="relative mx-auto max-w-[clamp(55rem,46vw,84rem)]">
         <div
           class="pointer-events-none absolute inset-0 -z-10"
           style="background:radial-gradient(closest-side, color-mix(in srgb, var(--accent) 20%, transparent), transparent)"
@@ -34,7 +34,7 @@ const combo = duoCombo(slug);
         <img
           src={combo.src}
           srcset={combo.srcset}
-          sizes="(min-width: 960px) 880px, 100vw"
+          sizes="(min-width: 960px) min(46vw, 1680px), 100vw"
           width={combo.w}
           height={combo.h}
           alt={`${name} on iPhone Duo: the outer display in front of the open inner display`}

@@ -197,14 +197,14 @@ function renderLanguages(languages: ActivitySnapshot['languages'], windowLabel: 
     <div class="mt-4">
       <span class="term-label">languages · ${windowLabel}</span>
       <div class="flex h-1.5 gap-px rounded-sm overflow-hidden bg-paper-raised dark:bg-term-raised mt-1.5">${segments}</div>
-      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[11px] ${muted}">${legend}</div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[0.6875rem] ${muted}">${legend}</div>
     </div>`;
 }
 
 function statTile(value: string, label: string, accent = false): string {
   return `
     <div class="flex flex-col">
-      <dt class="order-2 text-[11px] ${muted} mt-0.5 whitespace-nowrap">${label}</dt>
+      <dt class="order-2 text-[0.6875rem] ${muted} mt-0.5 whitespace-nowrap">${label}</dt>
       <dd class="order-1 text-xl sm:text-2xl font-bold tracking-tight ${accent ? 'phosphor' : text}">${value}</dd>
     </div>`;
 }
@@ -242,10 +242,10 @@ function renderFocus(data: ActivitySnapshot, now: Date, pages: PagePaths): strin
   const link = repoLink(focus, pages);
   return `
     <p class="term-label mb-3">now building · ${windowLabel}</p>
-    <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 leading-[1.05] tracking-tight break-words">
+    <h1 class="text-4xl sm:text-6xl md:text-7xl 2xl:text-8xl font-bold mb-4 leading-[1.05] tracking-tight break-words">
       <a href="${esc(link.href)}"${linkTarget(link)} class="phosphor cursor-blink hover:opacity-90 transition-opacity">${esc(focus.name)}</a>
     </h1>
-    <p class="text-base sm:text-lg ${muted} leading-relaxed max-w-2xl">${esc(focus.description || 'No description yet.')}</p>
+    <p class="text-base sm:text-lg 2xl:text-xl ${muted} leading-relaxed max-w-2xl">${esc(focus.description || 'No description yet.')}</p>
     <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 mt-4 text-xs ${muted}">${chips.join('')}</div>
     <div class="mt-6 flex items-end gap-3 text-xs ${faint}">
       ${sparkBars(focus.spark, true)}
@@ -261,7 +261,7 @@ function renderCalendarPanel(data: ActivitySnapshot, now: Date): string {
     <div class="term-frame p-4 sm:p-5">
       <div class="flex items-baseline justify-between gap-3 mb-3">
         <p class="prompt-line break-words">git log --since=${weeks}.weeks</p>
-        <span class="text-[11px] ${faint} whitespace-nowrap">${num(t.contributionsWindow)} total</span>
+        <span class="text-[0.6875rem] ${faint} whitespace-nowrap">${num(t.contributionsWindow)} total</span>
       </div>
       ${renderHeatmap(data.calendar)}
       <dl class="flex flex-wrap justify-between gap-x-6 gap-y-3 mt-4">
@@ -270,7 +270,7 @@ function renderCalendarPanel(data: ActivitySnapshot, now: Date): string {
         ${statTile(num(t.activeRepos30d), 'repos · 30d')}
       </dl>
       ${renderLanguages(data.languages, windowLabel)}
-      <p class="mt-4 text-[11px] ${faint}">counts include private work · repos shown are public · synced ${ago(data.generatedAt, now)}</p>
+      <p class="mt-4 text-[0.6875rem] ${faint}">counts include private work · repos shown are public · synced ${ago(data.generatedAt, now)}</p>
     </div>`;
 }
 
@@ -287,10 +287,10 @@ function renderBench(data: ActivitySnapshot, now: Date, pages: PagePaths): strin
           <div class="flex items-center gap-2.5 min-w-0">
             <span class="w-2 h-2 rounded-full flex-shrink-0" style="background:${esc(repo.language?.color ?? fallbackLanguageColor)}" title="${esc(repo.language?.name ?? '')}"></span>
             <span class="text-sm font-semibold ${text} truncate group-hover/row:text-paper-green dark:group-hover/row:text-term-green transition-colors" title="${esc(repo.name)}">${esc(repo.name)}</span>
-            ${repo.release ? `<span class="text-[11px] ${amber} whitespace-nowrap" title="released ${ago(repo.release.publishedAt, now)}">${esc(repo.release.tag)}</span>` : ''}
+            ${repo.release ? `<span class="text-[0.6875rem] ${amber} whitespace-nowrap" title="released ${ago(repo.release.publishedAt, now)}">${esc(repo.release.tag)}</span>` : ''}
             <span class="text-xs ${muted} whitespace-nowrap ml-auto pl-2"><strong class="${text}">${num(repo[key])}</strong> · ${data.focusWindow}d</span>
           </div>
-          <div class="flex items-center gap-3 pl-[18px] mt-1.5 text-[11px] ${faint}">
+          <div class="flex items-center gap-3 pl-[1.125rem] mt-1.5 text-[0.6875rem] ${faint}">
             ${sparkBars(repo.spark)}
             <span class="whitespace-nowrap">pushed ${ago(repo.pushedAt, now)}</span>
           </div>
@@ -303,7 +303,7 @@ function renderBench(data: ActivitySnapshot, now: Date, pages: PagePaths): strin
     <div class="term-frame px-4 sm:px-5 pt-4 sm:pt-5 pb-1">
       <div class="flex items-baseline justify-between gap-3 mb-1">
         <p class="prompt-line break-words">ls ~/bench --sort=commits</p>
-        <span class="text-[11px] ${faint} whitespace-nowrap">${num(active)} active · ${data.focusWindow}d</span>
+        <span class="text-[0.6875rem] ${faint} whitespace-nowrap">${num(active)} active · ${data.focusWindow}d</span>
       </div>
       <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-8">${cells}</ul>
     </div>`;
@@ -330,8 +330,8 @@ export function renderActivityBoard(
           : ''
       }
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-      <div class="lg:col-span-7 min-w-0">${renderFocus(data, now, pages)}</div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start lg:items-stretch">
+      <div class="lg:col-span-7 min-w-0 lg:flex lg:flex-col lg:justify-center">${renderFocus(data, now, pages)}</div>
       <div class="lg:col-span-5 min-w-0">${renderCalendarPanel(data, now)}</div>
       <div class="lg:col-span-12 min-w-0">${renderBench(data, now, pages)}</div>
     </div>`;

@@ -222,7 +222,7 @@ const siblings = siblingApps(landingApps, 'crucible');
         class="feature-phone"
         src={essentials.src}
         srcset={essentials.srcset}
-        sizes="(min-width: 768px) 300px, 70vw"
+        sizes="(min-width: 768px) clamp(300px, 15vw, 520px), 70vw"
         width={essentials.w}
         height={essentials.h}
         alt="Paper Lanterns in Crucible on iPhone, offering to skip its 11 anime-only episodes"
@@ -249,7 +249,7 @@ const siblings = siblingApps(landingApps, 'crucible');
         class="feature-phone"
         src={watch.src}
         srcset={watch.srcset}
-        sizes="(min-width: 768px) 300px, 70vw"
+        sizes="(min-width: 768px) clamp(300px, 15vw, 520px), 70vw"
         width={watch.w}
         height={watch.h}
         alt="What to Watch on iPhone: five picks from the library for Something light for tonight, each with a reason"
@@ -291,7 +291,7 @@ const siblings = siblingApps(landingApps, 'crucible');
           class="couch-tv"
           src={couch.src}
           srcset={couch.srcset}
-          sizes="(min-width: 1280px) 1200px, 100vw"
+          sizes="(min-width: 1280px) 76vw, 100vw"
           width={couch.w}
           height={couch.h}
           alt="Halcyon on Apple TV: the backdrop of an oil platform at night behind Play, Mark Watched, Rate and the audio menu"
@@ -435,9 +435,11 @@ const siblings = siblingApps(landingApps, 'crucible');
     </section>
 
     <section class="band" aria-labelledby="faq-title">
-      <h2 id="faq-title" class="display band-title">Questions.</h2>
-      <div class="faq">
-        <FaqAccordion faq={c.faq} accent={accent} />
+      <div class="faq-layout">
+        <h2 id="faq-title" class="display band-title">Questions.</h2>
+        <div class="faq">
+          <FaqAccordion faq={c.faq} accent={accent} />
+        </div>
       </div>
     </section>
 
@@ -473,7 +475,7 @@ const siblings = siblingApps(landingApps, 'crucible');
               width={72}
               height={72}
               displayWidths={[64, 72]}
-              class="hero-icon h-16 w-16 rounded-[1.1rem] object-cover sm:h-[72px] sm:w-[72px]"
+              class="hero-icon h-16 w-16 rounded-[1.1rem] object-cover sm:h-[4.5rem] sm:w-[4.5rem]"
             />
           )
         }
@@ -610,7 +612,7 @@ const siblings = siblingApps(landingApps, 'crucible');
   .hero {
     position: relative;
     isolation: isolate;
-    min-height: min(92svh, 860px);
+    min-height: min(92svh, 54rem);
     display: flex;
     align-items: flex-end;
     margin-top: 1.25rem;
@@ -695,7 +697,7 @@ const siblings = siblingApps(landingApps, 'crucible');
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    min-height: 48px;
+    min-height: 3rem;
     padding: 0 1.15rem;
     border-radius: 999px;
     border: 1px solid rgb(255 247 238 / 0.35);
@@ -816,7 +818,7 @@ const siblings = siblingApps(landingApps, 'crucible');
   }
 
   .feature-phone {
-    width: min(300px, 70vw);
+    width: min(70vw, clamp(18.75rem, 15vw, 26rem));
     height: auto;
     justify-self: center;
     filter: drop-shadow(0 24px 36px rgb(0 0 0 / 0.28));
@@ -824,7 +826,7 @@ const siblings = siblingApps(landingApps, 'crucible');
 
   .feature-pad {
     width: 100%;
-    max-width: 640px;
+    max-width: clamp(40rem, 34vw, 60rem);
     height: auto;
     justify-self: center;
     filter: drop-shadow(0 24px 36px rgb(0 0 0 / 0.28));
@@ -835,7 +837,7 @@ const siblings = siblingApps(landingApps, 'crucible');
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
     justify-self: center;
-    width: min(500px, 100%);
+    width: min(100%, clamp(31.25rem, 28vw, 44rem));
   }
 
   .feature-pair img {
@@ -912,7 +914,7 @@ const siblings = siblingApps(landingApps, 'crucible');
     height: auto;
     display: block;
     margin-inline: auto;
-    max-width: 1200px;
+    max-width: 100%;
     filter: drop-shadow(0 40px 60px rgb(0 0 0 / 0.6));
   }
 
@@ -1041,8 +1043,13 @@ const siblings = siblingApps(landingApps, 'crucible');
     text-underline-offset: 3px;
   }
 
-  .faq {
-    max-width: 48rem;
+  .faq-layout {
+    display: grid;
+    gap: 0 4rem;
+  }
+
+  .faq-layout > h2 {
+    align-self: start;
   }
 
   .source summary {
@@ -1187,6 +1194,15 @@ const siblings = siblingApps(landingApps, 'crucible');
   @media (min-width: 1024px) {
     .lineup {
       grid-template-columns: 1.55fr 1fr;
+    }
+
+    .faq-layout {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+    }
+
+    .faq-layout > h2 {
+      position: sticky;
+      top: 6rem;
     }
 
     .more {

@@ -270,7 +270,7 @@ const srcset = iconSrcset(app.icon);
   }
 
   .app-card__media :global(.app-shots[data-orientation='portrait'] .shot) {
-    height: min(260px, calc((100cqi - 2.5rem) * 0.72));
+    height: min(16.25rem, calc((100cqi - 2.5rem) * 0.72));
   }
 
   .app-card__desc {
@@ -322,7 +322,7 @@ const srcset = iconSrcset(app.icon);
     }
   }
 
-  @container app (min-width: 56rem) {
+  @container app (min-width: 48rem) {
     .app-card__layout--media {
       grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
       grid-template-rows: none;

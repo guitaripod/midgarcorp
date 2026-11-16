@@ -143,7 +143,7 @@
   }
 
   const sectionLabel = (text) =>
-    `<p class="text-[10px] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5">${text}</p>`;
+    `<p class="text-[0.625rem] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-1.5">${text}</p>`;
 
   const progressBar = (pct, colorClass) => `
     <div class="h-1 mt-1 bg-paper-raised dark:bg-term-raised rounded-sm overflow-hidden">
@@ -186,11 +186,11 @@
             <span class="text-sm font-medium text-paper-text dark:text-term-text truncate">${esc(player.personaname || 'Steam')}</span>
             ${
               data.steamLevel != null
-                ? `<span class="text-[10px] font-semibold text-paper-faint dark:text-term-faint flex-shrink-0 px-1.5 py-0.5 bg-paper-raised dark:bg-term-raised rounded-sm">Lv ${fmtNum(data.steamLevel)}</span>`
+                ? `<span class="text-[0.625rem] font-semibold text-paper-faint dark:text-term-faint flex-shrink-0 px-1.5 py-0.5 bg-paper-raised dark:bg-term-raised rounded-sm">Lv ${fmtNum(data.steamLevel)}</span>`
                 : ''
             }
           </div>
-          <div class="text-[11px] text-paper-faint dark:text-term-faint truncate">
+          <div class="text-[0.6875rem] text-paper-faint dark:text-term-faint truncate">
             ${state.text}${lastOnline ? ` · last online ${lastOnline}` : ''}${memberSince ? ` · since ${memberSince}` : ''}${player.countrycode ? ` · ${esc(player.countrycode)}` : ''}
           </div>
         </div>
@@ -210,7 +210,7 @@
               <svg class="w-3.5 h-3.5 text-paper-green dark:text-term-green animate-pulse flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
-              <span class="text-[11px] font-medium text-white truncate">${esc(g.name)}</span>
+              <span class="text-[0.6875rem] font-medium text-white truncate">${esc(g.name)}</span>
             </div>
           </div>
           ${
@@ -218,8 +218,8 @@
               ? `
             <div class="px-2 py-1.5">
               <div class="flex items-baseline justify-between gap-2 mb-1">
-                <span class="text-[10px] text-paper-muted dark:text-term-muted">${fmtNum(ach.earned)}/${fmtNum(ach.total)} achievements</span>
-                <span class="text-[10px] font-semibold text-paper-text dark:text-term-text">${pct}%</span>
+                <span class="text-[0.625rem] text-paper-muted dark:text-term-muted">${fmtNum(ach.earned)}/${fmtNum(ach.total)} achievements</span>
+                <span class="text-[0.625rem] font-semibold text-paper-text dark:text-term-text">${pct}%</span>
               </div>
               ${progressBar(pct, 'bg-[#00adee]')}
             </div>`
@@ -233,24 +233,24 @@
       statCells.push(`
         <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
           <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.ownedGames.count)}</div>
-          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">owned</div>
+          <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">owned</div>
         </div>`);
       statCells.push(`
         <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
           <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.ownedGames.totalPlaytimeHours)}h</div>
-          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">played</div>
+          <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">played</div>
         </div>`);
     }
     if (data.badges) {
       statCells.push(`
         <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
           <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.badges.count)}</div>
-          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">badges</div>
+          <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">badges</div>
         </div>`);
       statCells.push(`
         <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center" title="Total Steam XP">
           <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.badges.xp)}</div>
-          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">xp</div>
+          <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">xp</div>
         </div>`);
     }
     if (statCells.length > 0) {
@@ -283,8 +283,8 @@
             <div class="flex items-center gap-2 py-1">
               <img src="${iconUrl}" alt="" class="w-7 h-7 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />
               <div class="flex-1 min-w-0">
-                <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(game.name)}</div>
-                <div class="text-[10px] text-paper-faint dark:text-term-faint truncate">${subBits.join(' · ')}</div>
+                <div class="text-[0.6875rem] font-medium text-paper-text dark:text-term-text truncate">${esc(game.name)}</div>
+                <div class="text-[0.625rem] text-paper-faint dark:text-term-faint truncate">${subBits.join(' · ')}</div>
                 ${game.playtime_2weeks ? progressBar(pct, 'bg-[#00adee]') : ''}
               </div>
             </div>`;
@@ -305,8 +305,8 @@
               <img src="${iconUrl}" alt="" class="w-7 h-7 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />
               <div class="flex-1 min-w-0">
                 <div class="flex items-baseline justify-between gap-2">
-                  <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(game.name)}</div>
-                  <div class="text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0">${total}</div>
+                  <div class="text-[0.6875rem] font-medium text-paper-text dark:text-term-text truncate">${esc(game.name)}</div>
+                  <div class="text-[0.625rem] text-paper-faint dark:text-term-faint flex-shrink-0">${total}</div>
                 </div>
                 ${progressBar(pct, 'bg-[#00adee]')}
               </div>
@@ -351,7 +351,7 @@
             <div class="w-2 h-2 bg-paper-amber dark:bg-term-amber rounded-full"></div>
             <span class="text-xs font-medium text-paper-text dark:text-term-text truncate">${esc(summary.User || 'guitaripod')}</span>
           </div>
-          <div class="text-[11px] text-paper-faint dark:text-term-faint truncate">
+          <div class="text-[0.6875rem] text-paper-faint dark:text-term-faint truncate">
             ${isRanked ? `#${fmtNum(summary.Rank)} of ${fmtNum(summary.TotalRanked)}` : 'Unranked'} · since ${new Date(summary.MemberSince).getFullYear()}
           </div>
         </div>
@@ -371,9 +371,9 @@
           <div class="flex gap-3 bg-paper-raised dark:bg-term-raised rounded-sm px-3 py-2">
           ${cover ? `<img src="${esc(cover)}" alt="" class="w-12 h-14 object-cover rounded-sm flex-shrink-0" onerror="this.style.display='none'" />` : ''}
           <div class="flex-1 min-w-0">
-            <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(g.title)}</div>
-            <div class="text-[10px] text-paper-faint dark:text-term-faint truncate">${metaBits.join(' · ')}</div>
-            <div class="flex items-center gap-1.5 mt-1 text-[10px] min-w-0">
+            <div class="text-[0.6875rem] font-medium text-paper-text dark:text-term-text truncate">${esc(g.title)}</div>
+            <div class="text-[0.625rem] text-paper-faint dark:text-term-faint truncate">${metaBits.join(' · ')}</div>
+            <div class="flex items-center gap-1.5 mt-1 text-[0.625rem] min-w-0">
               <svg class="w-3 h-3 ${fresh ? 'text-paper-green dark:text-term-green animate-pulse' : 'text-paper-amber dark:text-term-amber'} flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17 3H7v5a5 5 0 0 0 10 0V3z"/>
                 <path d="M17 5h3a1 1 0 0 1 1 1 4 4 0 0 1-4 4"/>
@@ -399,19 +399,19 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
         <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center" title="${fmtNum(softcore)} softcore + ${fmtNum(hardcore)} hardcore">
           <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(hardcore + softcore)}</div>
-          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">points</div>
+          <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">points</div>
         </div>
         <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
           <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.stats?.achievementsEarned ?? '—')}</div>
-          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">unlocks</div>
+          <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">unlocks</div>
         </div>
         <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
           <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(awards.TotalAwardsCount ?? 0)}</div>
-          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">awards</div>
+          <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">awards</div>
         </div>
         <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center">
           <div class="text-sm font-bold text-paper-text dark:text-term-text">${fmtNum(data.stats?.gamesPlayed ?? '—')}</div>
-          <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">games</div>
+          <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">games</div>
         </div>
       </div>`;
 
@@ -419,7 +419,7 @@
       html += `
         <div>
           ${sectionLabel('Collection completion')}
-          <div class="text-[11px] text-paper-muted dark:text-term-muted mb-1">
+          <div class="text-[0.6875rem] text-paper-muted dark:text-term-muted mb-1">
             ${fmtNum(data.stats.achievementsEarned)} of ${fmtNum(data.stats.achievementsPossible)} achievements · ${completionPct}%
           </div>
           ${progressBar(completionPct, 'bg-paper-green dark:bg-term-green')}
@@ -441,10 +441,10 @@
               ${icon ? `<img src="${esc(icon)}" alt="" class="w-7 h-7 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />` : ''}
               <div class="flex-1 min-w-0">
                 <div class="flex items-baseline justify-between gap-2">
-                  <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(g.Title)}</div>
-                  <div class="text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0">${pct}%</div>
+                  <div class="text-[0.6875rem] font-medium text-paper-text dark:text-term-text truncate">${esc(g.Title)}</div>
+                  <div class="text-[0.625rem] text-paper-faint dark:text-term-faint flex-shrink-0">${pct}%</div>
                 </div>
-                <div class="text-[10px] text-paper-faint dark:text-term-faint">${g.NumAwarded}/${g.MaxPossible} achievements · ${esc(g.ConsoleName || '')}</div>
+                <div class="text-[0.625rem] text-paper-faint dark:text-term-faint">${g.NumAwarded}/${g.MaxPossible} achievements · ${esc(g.ConsoleName || '')}</div>
                 ${progressBar(pct, 'bg-paper-amber dark:bg-term-amber')}
               </div>
             </div>
@@ -464,10 +464,10 @@
               ${icon ? `<img src="${esc(icon)}" alt="" class="w-6 h-6 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />` : ''}
               <div class="flex-1 min-w-0">
                 <div class="flex items-baseline justify-between gap-2">
-                  <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(g.Title)}</div>
-                  <div class="text-[10px] text-paper-faint dark:text-term-faint flex-shrink-0">${pct}%</div>
+                  <div class="text-[0.6875rem] font-medium text-paper-text dark:text-term-text truncate">${esc(g.Title)}</div>
+                  <div class="text-[0.625rem] text-paper-faint dark:text-term-faint flex-shrink-0">${pct}%</div>
                 </div>
-                <div class="text-[10px] text-paper-faint dark:text-term-faint">${g.NumAwarded}/${g.MaxPossible}</div>
+                <div class="text-[0.625rem] text-paper-faint dark:text-term-faint">${g.NumAwarded}/${g.MaxPossible}</div>
                 ${progressBar(pct, 'bg-paper-amber dark:bg-term-amber')}
               </div>
             </div>`;
@@ -485,8 +485,8 @@
             <div class="flex items-center gap-2 py-1">
               ${icon ? `<img src="${esc(icon)}" alt="" class="w-6 h-6 rounded-sm flex-shrink-0" onerror="this.style.display='none'" />` : ''}
               <div class="flex-1 min-w-0">
-                <div class="text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(a.Title)}</div>
-                <div class="text-[10px] text-paper-faint dark:text-term-faint">${esc(a.ConsoleName || '')} · ${timeAgo(a.AwardedAt) || ''}</div>
+                <div class="text-[0.6875rem] font-medium text-paper-text dark:text-term-text truncate">${esc(a.Title)}</div>
+                <div class="text-[0.625rem] text-paper-faint dark:text-term-faint">${esc(a.ConsoleName || '')} · ${timeAgo(a.AwardedAt) || ''}</div>
               </div>
             </div>`;
         })

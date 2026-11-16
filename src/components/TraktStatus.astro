@@ -21,7 +21,7 @@ const skeletonStills = Array.from({ length: 6 });
 
   <div id="trakt-recent-section">
     <p
-      class="text-[10px] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-2"
+      class="text-[0.625rem] font-medium text-paper-muted dark:text-term-muted uppercase tracking-wide mb-2"
     >
       Recently watched
     </p>
@@ -73,7 +73,7 @@ const skeletonStills = Array.from({ length: 6 });
     return `
       <div class="bg-paper-raised dark:bg-term-raised rounded-sm px-2 py-1.5 text-center min-w-0">
         <div class="text-sm font-bold text-paper-text dark:text-term-text truncate" title="${esc(title)}">${esc(value)}</div>
-        <div class="text-[9px] text-paper-faint dark:text-term-faint uppercase tracking-wide">${esc(label)}</div>
+        <div class="text-[0.5625rem] text-paper-faint dark:text-term-faint uppercase tracking-wide">${esc(label)}</div>
       </div>`;
   }
 
@@ -97,7 +97,7 @@ const skeletonStills = Array.from({ length: 6 });
       <div class="flex-1 min-w-0">
         <div class="flex items-center gap-2">
           ${screenIcon(`w-3.5 h-3.5 flex-shrink-0 ${tone} ${state.live ? 'animate-pulse' : ''}`)}
-          <span class="text-[11px] ${tone} ${state.live ? 'font-medium' : ''}">${esc(state.label)}</span>
+          <span class="text-[0.6875rem] ${tone} ${state.live ? 'font-medium' : ''}">${esc(state.label)}</span>
         </div>
         ${title ? `<div class="text-base font-semibold text-paper-text dark:text-term-text truncate mt-1">${esc(title.title)}</div>` : ''}
         ${title?.detail ? `<div class="text-xs text-paper-muted dark:text-term-muted truncate">${esc(title.detail)}</div>` : ''}
@@ -141,9 +141,9 @@ const skeletonStills = Array.from({ length: 6 });
         (item) => `
           <div class="min-w-0" title="${esc([item.title, item.detail].filter(Boolean).join(' · '))}">
             ${artwork(item.still ?? item.poster, 'w-full aspect-video')}
-            <div class="mt-1.5 text-[11px] font-medium text-paper-text dark:text-term-text truncate">${esc(item.title)}</div>
-            ${item.detail ? `<div class="text-[10px] text-paper-muted dark:text-term-muted truncate">${esc(item.detail)}</div>` : ''}
-            <div class="text-[10px] text-paper-faint dark:text-term-faint truncate">${esc(timeAgo(item.watchedAt, now))}</div>
+            <div class="mt-1.5 text-[0.6875rem] font-medium text-paper-text dark:text-term-text truncate">${esc(item.title)}</div>
+            ${item.detail ? `<div class="text-[0.625rem] text-paper-muted dark:text-term-muted truncate">${esc(item.detail)}</div>` : ''}
+            <div class="text-[0.625rem] text-paper-faint dark:text-term-faint truncate">${esc(timeAgo(item.watchedAt, now))}</div>
           </div>`
       )
       .join('');

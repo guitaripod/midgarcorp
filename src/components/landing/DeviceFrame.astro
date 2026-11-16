@@ -10,7 +10,7 @@ export interface Props {
   alt: string;
   eager?: boolean;
   priority?: boolean;
-  heights?: [number, number];
+  heights?: [number, number] | [number, number, number];
   framed?: boolean;
 }
 
@@ -42,9 +42,16 @@ const srcset = available.length
   : undefined;
 
 const displayWidth = (height: number) => Math.ceil((height * w) / h);
+const largeHeight = heights ? (heights as number[])[2] : undefined;
 const sizes = srcset
   ? heights
-    ? `(min-width: 640px) ${displayWidth(heights[1])}px, ${displayWidth(heights[0])}px`
+    ? [
+        largeHeight ? `(min-width: 1024px) ${displayWidth(largeHeight)}px` : null,
+        `(min-width: 640px) ${displayWidth(heights[1])}px`,
+        `${displayWidth(heights[0])}px`,
+      ]
+        .filter(Boolean)
+        .join(', ')
     : `${w}px`
   : undefined;
 ---

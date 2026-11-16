@@ -13,7 +13,7 @@ const plans = [
 ];
 const tierColumns =
   pricing.tiers.length === 1
-    ? 'sm:max-w-[280px]'
+    ? 'sm:max-w-[17.5rem]'
     : pricing.tiers.length === 2
       ? 'sm:grid-cols-2'
       : pricing.tiers.length === 4
@@ -21,7 +21,7 @@ const tierColumns =
         : 'sm:grid-cols-3';
 ---
 
-<div style={`--accent:${accent}`}>
+<div class="2xl:max-w-[80rem]" style={`--accent:${accent}`}>
   <div
     class="grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-paper-border bg-paper-border dark:border-term-border dark:bg-term-border md:grid-cols-2"
   >

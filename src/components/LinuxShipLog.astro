@@ -46,14 +46,14 @@ const legendLevels = [0, 1, 2, 3, 4];
 
 <div class="term-frame p-4 sm:p-5">
   <div class="overflow-x-auto" data-ship-scroll>
-    <div class="min-w-[600px]">
+    <div class="min-w-[37.5rem]">
       <div class="flex items-end gap-3 mb-1.5" aria-hidden="true">
         <div class="w-36 flex-shrink-0"></div>
         <div class="relative flex-1 h-4 min-w-0">
           {
             yearLabels.map((year) => (
               <span
-                class="absolute bottom-0 text-[10px] leading-none text-paper-muted dark:text-term-faint"
+                class="absolute bottom-0 text-[0.625rem] leading-none text-paper-muted dark:text-term-faint"
                 style={`left:${((year.index * STEP) / trackWidth) * 100}%`}
               >
                 {year.label}
@@ -95,7 +95,7 @@ const legendLevels = [0, 1, 2, 3, 4];
                   ))}
                 </svg>
                 <span
-                  class={`w-16 sm:w-20 flex-shrink-0 text-right text-[11px] whitespace-nowrap ${style.text}`}
+                  class={`w-16 sm:w-20 flex-shrink-0 text-right text-[0.6875rem] whitespace-nowrap ${style.text}`}
                 >
                   {ageLabel(app.latestReleaseDate, now)}
                 </span>
@@ -108,7 +108,7 @@ const legendLevels = [0, 1, 2, 3, 4];
   </div>
 
   <div
-    class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-4 pt-3 border-t border-paper-border dark:border-term-border text-[11px] text-paper-muted dark:text-term-muted"
+    class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-4 pt-3 border-t border-paper-border dark:border-term-border text-[0.6875rem] text-paper-muted dark:text-term-muted"
   >
     <p>One square per month. Darker means more releases that month.</p>
     <p class="inline-flex items-center gap-1.5" aria-hidden="true">

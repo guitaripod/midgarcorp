@@ -65,7 +65,7 @@ const bars = months.map((month, index) => ({
     <StatCell label="releases_shipped" value={releaseCount}>
       <svg
         viewBox={`0 0 ${sparkWidth} ${BAR_H}`}
-        class="block w-full max-w-[11rem] h-7 text-paper-green dark:text-term-green"
+        class="block w-full max-w-[16rem] h-7 text-paper-green dark:text-term-green"
         role="img"
         aria-label="Releases per month over the last 12 months"
       >
@@ -85,7 +85,7 @@ const bars = months.map((month, index) => ({
           ))
         }
       </svg>
-      <p class="mt-2 text-[11px] text-paper-muted dark:text-term-muted">
+      <p class="mt-2 text-[0.6875rem] text-paper-muted dark:text-term-muted">
         <span class="text-paper-amber dark:text-term-amber">{recentReleases}</span> in the last 90 days
       </p>
     </StatCell>
@@ -93,7 +93,7 @@ const bars = months.map((month, index) => ({
     <StatCell label="commits_on_linux" value={commitCount}>
       {
         commitLeader && commitLeader.commitCount > 0 && (
-          <p class="text-[11px] text-paper-muted dark:text-term-muted">
+          <p class="text-[0.6875rem] text-paper-muted dark:text-term-muted">
             most work:{' '}
             <a
               href={`#${commitLeader.id}`}

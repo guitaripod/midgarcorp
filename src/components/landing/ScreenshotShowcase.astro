@@ -12,21 +12,21 @@ const multi = devices.length > 1;
 const name = `gallery-${app.slug}`;
 
 const heightClass: Record<string, string> = {
-  iphone: 'h-[440px] sm:h-[540px]',
-  ipad: 'h-[400px] sm:h-[500px]',
-  mac: 'h-[260px] sm:h-[340px]',
-  linux: 'h-[260px] sm:h-[340px]',
-  vision: 'h-[300px] sm:h-[380px]',
-  tv: 'h-[240px] sm:h-[320px]',
+  iphone: 'h-[27.5rem] sm:h-[33.75rem] 2xl:h-[clamp(33.75rem,26vw,42rem)]',
+  ipad: 'h-[25rem] sm:h-[31.25rem] 2xl:h-[clamp(31.25rem,24vw,40rem)]',
+  mac: 'h-[16.25rem] sm:h-[21.25rem] 2xl:h-[clamp(21.25rem,16vw,28rem)]',
+  linux: 'h-[16.25rem] sm:h-[21.25rem] 2xl:h-[clamp(21.25rem,16vw,28rem)]',
+  vision: 'h-[18.75rem] sm:h-[23.75rem] 2xl:h-[clamp(23.75rem,18vw,30rem)]',
+  tv: 'h-[15rem] sm:h-[20rem] 2xl:h-[clamp(20rem,15vw,26rem)]',
 };
 
-const heights: Record<string, [number, number]> = {
-  iphone: [440, 540],
-  ipad: [400, 500],
-  mac: [260, 340],
-  linux: [260, 340],
-  vision: [300, 380],
-  tv: [240, 320],
+const heights: Record<string, [number, number, number]> = {
+  iphone: [440, 540, 840],
+  ipad: [400, 500, 800],
+  mac: [260, 340, 560],
+  linux: [260, 340, 560],
+  vision: [300, 380, 600],
+  tv: [240, 320, 520],
 };
 
 const captionFor = (device: string, i: number) =>
@@ -102,7 +102,7 @@ const panelCss = multi
               <li class="flex shrink-0 snap-start flex-col items-center gap-3">
                 <button
                   type="button"
-                  class={`shot-btn group relative cursor-zoom-in ${heightClass[device] ?? 'h-[440px]'}`}
+                  class={`shot-btn group relative cursor-zoom-in ${heightClass[device] ?? 'h-[27.5rem]'}`}
                   data-device={device}
                   data-index={i}
                   aria-label={`View ${captionFor(device, i)} full size`}
@@ -206,6 +206,14 @@ const panelCss = multi
 {panelCss && <style is:inline set:html={panelCss} />}
 
 <style>
+  .device-panel ul > li:first-child {
+    margin-inline-start: auto;
+  }
+
+  .device-panel ul > li:last-child {
+    margin-inline-end: auto;
+  }
+
   .shot-btn {
     border-radius: 1.5rem;
     transition:

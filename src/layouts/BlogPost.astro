@@ -44,7 +44,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
 >
   <ProgressBar />
 
-  <article class="py-8">
+  <article class="mx-auto max-w-[66rem] py-8">
     <header class="mb-8">
       <p class="prompt-line mb-4">cat ~/blog/{post.slug}.mdx</p>
       <h1
@@ -87,8 +87,8 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
       }
     </header>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <div class="lg:col-span-3 lg:order-2">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-12">
+      <div class="lg:order-2">
         {
           toc.length > 0 && (
             <aside class="sticky top-20">
@@ -98,8 +98,8 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
         }
       </div>
 
-      <div class="lg:col-span-9 lg:order-1">
-        <div class="prose dark:prose-invert max-w-none">
+      <div class="min-w-0 lg:order-1">
+        <div class="prose dark:prose-invert max-w-[46rem]">
           <slot />
         </div>
       </div>

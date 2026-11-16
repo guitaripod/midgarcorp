@@ -14,7 +14,10 @@ const title = `${page.name} ${page.label}`;
 ---
 
 <BaseLayout title={title} description={`${page.label} for ${page.name}.`}>
-  <nav aria-label="Breadcrumb" class="pt-8 text-xs text-paper-faint dark:text-term-faint">
+  <nav
+    aria-label="Breadcrumb"
+    class="mx-auto max-w-[42rem] pt-8 text-xs text-paper-faint dark:text-term-faint"
+  >
     <ol class="flex flex-wrap items-center gap-1.5">
       <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
       <li aria-hidden="true">/</li>
@@ -27,7 +30,7 @@ const title = `${page.name} ${page.label}`;
   </nav>
 
   <article
-    class="prose prose-neutral dark:prose-invert mx-auto max-w-none py-10 sm:py-14"
+    class="prose prose-neutral dark:prose-invert mx-auto max-w-[42rem] py-10 sm:py-14"
     set:html={page.html}
   />
 </BaseLayout>

@@ -204,7 +204,7 @@ const { username } = Astro.props;
                 <span class="text-paper-muted dark:text-term-muted truncate">
                   ${esc(repo.name)}
                 </span>
-                <span class="text-paper-faint dark:text-term-faint text-[10px]">${timeStr}</span>
+                <span class="text-paper-faint dark:text-term-faint text-[0.625rem]">${timeStr}</span>
               </div>
               <div class="flex items-center gap-2 flex-shrink-0">
                 ${
@@ -212,7 +212,7 @@ const { username } = Astro.props;
                     ? `
                 <div class="flex items-center gap-1">
                   <span class="w-2 h-2 rounded-full" style="background-color: ${langColor}"></span>
-                  <span class="text-paper-faint dark:text-term-faint text-[10px]">${esc(repo.language)}</span>
+                  <span class="text-paper-faint dark:text-term-faint text-[0.625rem]">${esc(repo.language)}</span>
                 </div>
                 `
                     : ''
@@ -224,7 +224,7 @@ const { username } = Astro.props;
                   <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>
-                  <span class="text-[10px]">${repo.stargazers_count}</span>
+                  <span class="text-[0.625rem]">${repo.stargazers_count}</span>
                 </div>
                 `
                     : ''

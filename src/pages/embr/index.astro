@@ -168,7 +168,7 @@ const siblings = siblingApps(landingApps, 'embr');
                 height={72}
                 displayWidths={[64, 72]}
                 priority
-                class="hero-icon h-14 w-14 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[72px] sm:w-[72px]"
+                class="hero-icon h-14 w-14 rounded-[1.1rem] border border-paper-border object-cover dark:border-term-border sm:h-[4.5rem] sm:w-[4.5rem]"
               />
             )
           }
@@ -199,7 +199,7 @@ const siblings = siblingApps(landingApps, 'embr');
               <li>
                 <a
                   href="#trust"
-                  class="inline-flex items-center gap-1 rounded-sm border border-paper-green/40 px-2 py-1 text-[11px] font-semibold text-paper-green transition-colors hover:bg-paper-green/10 dark:border-term-green/40 dark:text-term-green dark:hover:bg-term-green/10 sm:gap-1.5 sm:px-2.5 sm:text-xs"
+                  class="inline-flex items-center gap-1 rounded-sm border border-paper-green/40 px-2 py-1 text-[0.6875rem] font-semibold text-paper-green transition-colors hover:bg-paper-green/10 dark:border-term-green/40 dark:text-term-green dark:hover:bg-term-green/10 sm:gap-1.5 sm:px-2.5 sm:text-xs"
                 >
                   <span aria-hidden="true">✓</span>
                   {fact}
@@ -223,12 +223,12 @@ const siblings = siblingApps(landingApps, 'embr');
       </div>
 
       <div
-        class="stage relative mx-auto w-full max-w-[640px] overflow-hidden rounded-2xl lg:max-w-none"
+        class="stage relative mx-auto w-full max-w-[40rem] overflow-hidden rounded-2xl lg:max-w-none"
       >
         <img
           src={heroPad.src}
           srcset={heroPad.srcset}
-          sizes="(min-width: 1024px) 380px, 60vw"
+          sizes="(min-width: 1024px) 22vw, 60vw"
           width={heroPad.w}
           height={heroPad.h}
           alt="Embr on iPad: three chats side by side, with emotes from every provider"
@@ -262,11 +262,11 @@ const siblings = siblingApps(landingApps, 'embr');
       <div class={`${rail} sm:grid-cols-3`}>
         {
           chatShots.map((shot) => (
-            <figure class="w-[220px] shrink-0 snap-center sm:w-full sm:max-w-[300px] sm:justify-self-center">
+            <figure class="w-[13.75rem] shrink-0 snap-center sm:w-full sm:max-w-[clamp(18.75rem,15vw,26rem)] sm:justify-self-center">
               <img
                 src={shot.src}
                 srcset={shot.srcset}
-                sizes="(min-width: 640px) 300px, 220px"
+                sizes="(min-width: 640px) clamp(300px, 15vw, 520px), 220px"
                 width={shot.w}
                 height={shot.h}
                 alt={`Embr on iPhone: ${shot.head}`}
@@ -336,11 +336,11 @@ const siblings = siblingApps(landingApps, 'embr');
       <div class={`${rail} sm:grid-cols-2`}>
         {
           roomShots.map((shot) => (
-            <figure class="w-[220px] shrink-0 snap-center sm:w-full sm:max-w-[300px] sm:justify-self-center">
+            <figure class="w-[13.75rem] shrink-0 snap-center sm:w-full sm:max-w-[clamp(18.75rem,15vw,26rem)] sm:justify-self-center">
               <img
                 src={shot.src}
                 srcset={shot.srcset}
-                sizes="(min-width: 640px) 300px, 220px"
+                sizes="(min-width: 640px) clamp(300px, 15vw, 520px), 220px"
                 width={shot.w}
                 height={shot.h}
                 alt={`Embr on iPhone: ${shot.head}`}
@@ -363,14 +363,14 @@ const siblings = siblingApps(landingApps, 'embr');
         On iPad, the stream and its chat sit side by side in wide windows, and the Chats tab keeps
         up to three rooms open at once.
       </SectionHead>
-      <div class="mx-auto grid max-w-[880px] gap-6 sm:grid-cols-2">
+      <div class="mx-auto grid max-w-[clamp(55rem,46vw,84rem)] gap-6 sm:grid-cols-2">
         {
           padShots.map((shot) => (
             <figure>
               <img
                 src={shot.src}
                 srcset={shot.srcset}
-                sizes="(min-width: 640px) 430px, 92vw"
+                sizes="(min-width: 640px) 23vw, 92vw"
                 width={shot.w}
                 height={shot.h}
                 alt={shot.alt}
@@ -394,11 +394,11 @@ const siblings = siblingApps(landingApps, 'embr');
       <div class={`${rail} sm:grid-cols-2`}>
         {
           yoursShots.map((shot) => (
-            <figure class="w-[220px] shrink-0 snap-center sm:w-full sm:max-w-[300px] sm:justify-self-center">
+            <figure class="w-[13.75rem] shrink-0 snap-center sm:w-full sm:max-w-[clamp(18.75rem,15vw,26rem)] sm:justify-self-center">
               <img
                 src={shot.src}
                 srcset={shot.srcset}
-                sizes="(min-width: 640px) 300px, 220px"
+                sizes="(min-width: 640px) clamp(300px, 15vw, 520px), 220px"
                 width={shot.w}
                 height={shot.h}
                 alt={`Embr on iPhone: ${shot.head}`}
@@ -418,7 +418,7 @@ const siblings = siblingApps(landingApps, 'embr');
 
     <section id="trust" class={section}>
       <SectionHead prompt="embr --privacy" title="Yours, not ours" />
-      <dl class="grid gap-4 sm:grid-cols-2">
+      <dl class="grid gap-4 sm:grid-cols-2 min-[2400px]:grid-cols-4">
         {
           trustFacts.map((item) => (
             <div class="rounded-sm border border-paper-border p-4 dark:border-term-border">
