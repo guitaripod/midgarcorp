@@ -255,10 +255,28 @@ const structuredData = {
 
 const jsonLd = { '@context': 'https://schema.org', '@graph': [structuredData] };
 
-/// Whether a dot's label, set at 12 units in a face about 0.56 em wide per character, fits to the
-/// right of the dot inside a chart `width` units wide; one that would run past the edge goes left.
-const labelFits = (d: { x: number; name: string }, width: number) =>
-  d.x + 10 + d.name.length * 12 * 0.56 <= width - 4;
+/// Where each model on the wall gets its label: right of its dot when it fits inside the chart at
+/// the largest size the labels are set (18 units on phones, about 0.56 em per character), otherwise
+/// left of it, and lifted one line at a time until it clears the labels already placed.
+const wallLabels = (
+  dots: { x: number; y: number; name: string; wall?: boolean }[],
+  width: number
+) => {
+  const placed: { x0: number; x1: number; y: number }[] = [];
+  return dots
+    .filter((d) => d.wall)
+    .sort((a, b) => a.x - b.x)
+    .map((d) => {
+      const span = d.name.length * 18 * 0.56;
+      const right = d.x + 10 + span <= width - 4;
+      const x0 = right ? d.x + 10 : d.x - 10 - span;
+      const x1 = x0 + span;
+      let y = d.y - 10;
+      while (placed.some((b) => x0 < b.x1 && b.x0 < x1 && Math.abs(b.y - y) < 20)) y -= 20;
+      placed.push({ x0, x1, y });
+      return { name: d.name, x: right ? d.x + 10 : d.x - 10, y, anchor: right ? 'start' : 'end' };
+    });
+};
 ---
 
 <BaseLayout title={seoTitle} description={metaDescription} image={ogImage}>
@@ -379,18 +397,11 @@ const labelFits = (d: { x: number; name: string }, width: number) =>
                     />
                   </g>
                 ))}
-                {wall.dots
-                  .filter((d) => d.wall)
-                  .map((d) => (
-                    <text
-                      x={labelFits(d, wall.width) ? d.x + 10 : d.x - 10}
-                      y={d.y - 10}
-                      text-anchor={labelFits(d, wall.width) ? 'start' : 'end'}
-                      class="bw-label"
-                    >
-                      {d.name}
-                    </text>
-                  ))}
+                {wallLabels(wall.dots, wall.width).map((l) => (
+                  <text x={l.x} y={l.y} text-anchor={l.anchor} class="bw-label">
+                    {l.name}
+                  </text>
+                ))}
                 <text
                   x={wall.width - wall.pad.r}
                   y={wall.pad.t + 12}
@@ -807,5 +818,17 @@ blackwall compare a b              # which differences between two models are re
       color-mix(in srgb, #ffb000 10%, transparent) 0 0.5rem,
       transparent 0.5rem 1rem
     );
+  }
+
+  @media (max-width: 639px) {
+    .bw-tick,
+    .bw-axis,
+    .bw-better {
+      font-size: 16px;
+    }
+
+    .bw-label {
+      font-size: 18px;
+    }
   }
 </style>
