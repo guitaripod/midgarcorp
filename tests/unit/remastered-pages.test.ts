@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import manifest from '../../src/data/screenshot-variants.json';
 import solarbeam from '../../src/data/landing/solarbeam.json';
+import flaccy from '../../src/data/landing/flaccy.json';
 
 const ROOT = process.cwd();
 const read = (...parts: string[]) => fs.readFileSync(path.join(ROOT, ...parts), 'utf8');
@@ -45,6 +46,14 @@ const PAGES = [
       [...page.matchAll(/\b(phone|pad|mac)\('([^']+)'\)/g)].map(
         (m) =>
           `/screenshots/masterofflags/web-${{ phone: 'phone', pad: 'ipad', mac: 'mac' }[m[1]]}-${m[2]}.webp`
+      ),
+  },
+  {
+    slug: 'flaccy',
+    font: '/fonts/bricolage-grotesque-var-latin.woff2',
+    prefixed: (page: string) =>
+      [...page.matchAll(/\bphone\('([^']+)'\)/g)].map(
+        (m) => `/screenshots/flaccy/web-phone-${m[1]}.webp`
       ),
   },
 ];
@@ -139,5 +148,23 @@ describe('Master of Flags page', () => {
 
   it('draws its hero from the flag wall', () => {
     expect(onDisk('/screenshots/masterofflags/flags/wall.webp')).toBe(true);
+  });
+});
+
+describe('Flaccy page', () => {
+  const page = read('src', 'pages', 'flaccy', 'index.astro').replace(/\s+/g, ' ');
+
+  it('says what the 1.19 AI features send', () => {
+    expect(page).toContain(
+      'go to Flaccy’s AI to choose them; your music itself never leaves your device'
+    );
+    expect(page).toContain('AI cleanup runs by itself');
+    const all = JSON.stringify(flaccy);
+    expect(all).toContain('Describe the Sound');
+    expect(all).toContain('Make a Playlist');
+  });
+
+  it('states that the yearly plan renews', () => {
+    expect(page).toContain('The yearly plan renews automatically');
   });
 });

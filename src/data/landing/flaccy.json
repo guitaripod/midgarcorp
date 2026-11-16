@@ -50,6 +50,16 @@
       "glyph": "≋"
     },
     {
+      "title": "Describe the Sound",
+      "body": "In the equalizer, say how you want your music to sound, like \"Warmer, with softer cymbals\" or \"Clearer voices\", and Flaccy shapes the curve for what you are listening on. You hear it before anything is saved, every band says what it is for, and another sentence changes it. Your words, the kind of output and the curve in use go to Flaccy's AI, and nothing else leaves your device.",
+      "glyph": "∿"
+    },
+    {
+      "title": "Make a Playlist",
+      "body": "Say what you want to hear, like \"Rainy Sunday morning, calm, about 40 minutes\", and Flaccy makes a playlist from the music you own: it finds the artists that fit, keeps to the length you asked for and never plays one artist three times in a row. Play it, save it, or tap Change It. Your words and a summary of your library, your artists with their genres and years and up to 300 songs' titles, albums and lengths, go to Flaccy's AI to choose them; your music itself never leaves your device.",
+      "glyph": "≡"
+    },
+    {
       "title": "Your library, organized",
       "body": "Bring music in from the Files app, a USB drive, a NAS or any folder, and Flaccy keeps your folder structure. Messy filenames and scene releases are cleaned up automatically with AI cleanup (included in the trial and in Lifetime), duplicate songs are listed once, and you can swap any cover for your own.",
       "glyph": "▤"
@@ -71,7 +81,7 @@
     },
     {
       "title": "Scrobble everything",
-      "body": "Sign in with Last.fm and every play is scrobbled, even offline, with automatic retry. Your Last.fm listening history syncs into Stats, on every client, next to listening charts, artist bios, a wantlist for the records you're hunting and smart playlists made from your own listening.",
+      "body": "Sign in with Last.fm and every play is scrobbled, even offline, with automatic retry. Your Last.fm listening history syncs into Stats on iPhone, iPad, Mac and Linux, next to listening charts, artist bios, a wantlist for the records you're hunting and smart playlists made from your own listening.",
       "glyph": "↻"
     },
     {
@@ -96,7 +106,7 @@
     },
     {
       "title": "Made for iPhone Duo",
-      "body": "On the inner display the library sits beside Now Playing, lyrics and artwork take their own panes, and every screen ends at the fold. On the outer display it is a regular, fast iPhone player.",
+      "body": "On the inner display in landscape the library sits beside Now Playing, lyrics and artwork take their own panes, and every screen ends at the fold. On the outer display it is a regular, fast iPhone player.",
       "glyph": "▯"
     },
     {
@@ -139,8 +149,16 @@
       "a": "Yes, on iPhone, iPad, Mac and Linux. Drag the curve in Simple mode, or switch to Advanced for up to ten bands with bells, shelves, high-pass and low-pass filters and adjustable Q. It ships with sixteen presets, saves your own, and imports Equalizer APO and AutoEq profile text so you can tune for your headphones. Each output (AirPods, a wired DAC, the speaker) keeps its own setting and switches when you do. Automatic headroom prevents clipping, and Hold to compare is level-matched so louder never sounds better. With the equalizer off or flat the signal passes through untouched, and gapless playback is unaffected. The Apple Watch app plays through the system and has no equalizer."
     },
     {
+      "q": "Can Flaccy make a playlist for me?",
+      "a": "Yes. Under the add button in Library, or in the sidebar on iPad, say what you want to hear, like \"Upbeat, for a 30 minute run\", and Flaccy makes a playlist from the music you own, keeping to the length you asked for and never playing one artist three times in a row. Play it at once, save it as an ordinary playlist, or tap Change It and say what should be different. Your words and a summary of your library, your artists with their genres and years and up to 300 songs' titles, albums and lengths, go to Flaccy's AI to choose them; your music itself never leaves your device. Making playlists is included in the trial and in Lifetime."
+    },
+    {
+      "q": "Can I describe the sound I want instead of dragging the curve?",
+      "a": "Yes. In the equalizer, say something like \"Warmer, with softer cymbals\" or \"Clearer voices\" and Flaccy shapes the curve for the headphones, speaker or car you are listening on. You hear it on what is playing before anything is saved, and every band says what it is for. Your words, the kind of device and output and the curve in use go to Flaccy's AI, and nothing else leaves your device. Describing a sound is included in the trial and in Lifetime."
+    },
+    {
       "q": "Do I need an account or a streaming subscription?",
-      "a": "No. Flaccy plays files you already own. There is no account, no upload and no ads. A Last.fm account is optional, only for scrobbling. AI cleanup sends file names and tags, never audio, to identify messy albums."
+      "a": "No. Flaccy plays files you already own. There is no account, no upload and no ads. A Last.fm account is optional; signing in adds scrobbling, loved tracks, charts and history. AI cleanup sends file names and tags, never audio, to identify messy albums."
     },
     {
       "q": "How much does Flaccy cost?",
@@ -164,7 +182,7 @@
     },
     {
       "q": "Does it work on iPhone Duo?",
-      "a": "Yes. On the inner display the library sits beside Now Playing, lyrics and artwork get their own panes, and layouts end at the fold. On the outer display it behaves like a regular iPhone."
+      "a": "Yes. On the inner display in landscape the library sits beside Now Playing, lyrics and artwork get their own panes, and layouts end at the fold. On the outer display it behaves like a regular iPhone."
     },
     {
       "q": "Does Flaccy work on iPad?",
@@ -251,9 +269,9 @@
       "title": "Flaccy Lifetime",
       "price": "$34.99",
       "items": [
-        "Your library, gapless playback, synced lyrics and Last.fm scrobbling",
-        "AI cleanup, Year in Music, smart playlists and the wantlist",
-        "Apple Watch app included on iPhone; one purchase, no subscription"
+        "Keep playing your whole library after the 7 days",
+        "AI cleanup, Make a Playlist, Describe the Sound and lyric meanings",
+        "Flaccy Server sync and the Apple Watch app; one purchase covers iPhone, iPad and Mac"
       ]
     },
     "tiers": [

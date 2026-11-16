@@ -1,0 +1,1778 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import AppStoreBadge from '@components/landing/AppStoreBadge.astro';
+import FaqAccordion from '@components/landing/FaqAccordion.astro';
+import AppIcon from '@components/landing/AppIcon.astro';
+import HeroRating from '@components/landing/HeroRating.astro';
+import { landingApps, screenshotUrl, type LandingApp } from '@data/landing';
+import screenshotVariants from '@data/screenshot-variants.json';
+import { siblingApps } from '@utils/sibling-apps';
+import { appPageJsonLd } from '@utils/structured-data';
+import { markdownPath } from '@utils/llms';
+import { privacyUrlFor, supportPath } from '../../utils/app-links';
+import { duoCombo } from '@data/duo';
+import { eqPath, EQ_BANDS, EQ_START } from '../../lib/eq-curve';
+
+export const prerender = true;
+
+const app = landingApps.find((a) => a.slug === 'flaccy') as LandingApp;
+const c = app.content;
+const accent = c.accentColor || app.primaryColor;
+
+const OG_REV = '13';
+const ogImage = `/og/flaccy.png?v=${OG_REV}`;
+
+const variants = screenshotVariants as Record<string, number[]>;
+
+/// A figure of the page: a capture of Flaccy's seeded demo library (Meridian Wolde, Parallax
+/// Hours, never a real artist), device-framed by the frames CLI, or a Flaccy for Linux window.
+const figure = (src: string, w: number, h: number) => {
+  const srcset = [
+    ...(variants[src] ?? []).map(
+      (wide) => `${screenshotUrl(src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`
+    ),
+    `${screenshotUrl(src)} ${w}w`,
+  ].join(', ');
+  return { src: screenshotUrl(src), srcset, w, h };
+};
+const phone = (name: string) => figure(`/screenshots/flaccy/web-phone-${name}.webp`, 735, 1500);
+const linux = (index: number) => figure(`/screenshots/flaccy/linux-${index}.webp`, 1920, 1080);
+
+const shots = {
+  nowPlaying: phone('now-playing'),
+  album: phone('album'),
+  lyrics: phone('lyrics'),
+  share: phone('lyric-share'),
+  year: phone('year'),
+  recap: phone('recap'),
+  linuxLibrary: linux(1),
+};
+
+/// The formats a track can wear, the way Flaccy badges them on every album and song.
+const formats = [
+  { codec: 'AAC', depth: '16', rate: '44.1', note: 'lossy, from a store or a rip', level: 1 },
+  { codec: 'FLAC', depth: '16', rate: '44.1', note: 'CD quality, bit for bit', level: 2 },
+  { codec: 'FLAC', depth: '24', rate: '96', note: 'Hi-Res, as mastered', level: 3 },
+];
+
+/// The demo song's synced lyrics as Flaccy's seeded library sings them (Slow Machine by the
+/// fictional Meridian Wolde), with the line the page starts on.
+const lyrics = [
+  'We are the miles we never squandered',
+  'The long road learning how to hold me',
+  'Slow machine, keep the light on',
+  'Slow machine, don’t let go',
+  'Every ending is a corner',
+  'Every corner, somewhere warmer',
+];
+const LYRIC_START = 2;
+
+const asks = ['Rainy Sunday morning, calm, about 40 minutes', 'Upbeat, for a 30 minute run'];
+
+const versionLabel = app.version ? `Version ${app.version}` : null;
+const requires = 'iOS 18.6, macOS 26 or watchOS 11';
+const privacyUrl = privacyUrlFor(app.slug);
+const macUrl = c.macAppStoreUrl;
+const duo = duoCombo('flaccy');
+
+const showsRating = app.ratingCount >= 5;
+const jsonLd = appPageJsonLd(app, { ratingShown: showsRating });
+const siblings = siblingApps(landingApps, 'flaccy');
+---
+
+<BaseLayout
+  title={c.seoTitle}
+  description={c.metaDescription}
+  image={ogImage}
+  markdown={markdownPath(app.slug)}
+  appStoreId={app.trackId > 0 ? app.trackId : undefined}
+>
+  <div class="fl" style={`--accent:${accent}`}>
+    <nav
+      aria-label="Breadcrumb"
+      class="hidden pt-8 text-xs text-paper-faint dark:text-term-faint sm:block"
+    >
+      <ol class="flex flex-wrap items-center gap-1.5 font-mono">
+        <li><a href="/" class="hover:text-paper-green dark:hover:text-term-green">home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/apps/" class="hover:text-paper-green dark:hover:text-term-green">apps</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-paper-muted dark:text-term-muted" aria-current="page">flaccy</li>
+      </ol>
+    </nav>
+
+    <section class="hero bleed" aria-labelledby="app-name">
+      <div class="rings" aria-hidden="true">
+        {Array.from({ length: 9 }, (_, i) => <span style={`--i:${i}`} />)}
+      </div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="hero-app">
+            {
+              app.iconLocal && (
+                <AppIcon
+                  src={app.iconLocal}
+                  width={56}
+                  height={56}
+                  displayWidths={[48, 56]}
+                  priority
+                  class="hero-icon h-12 w-12 rounded-[0.9rem] object-cover sm:h-14 sm:w-14"
+                />
+              )
+            }
+            <h1 id="app-name">Flaccy</h1>
+            <span>Lossless FLAC Player</span>
+          </div>
+          <p class="display hero-title">Hear what you <span class="glow">own.</span></p>
+          <p class="hero-sub">
+            Flaccy plays the music you own at full quality, FLAC, ALAC, WAV, AIFF, MP3 and AAC, with
+            a real equalizer, gapless playback, synced lyrics you can share as a video and Last.fm
+            scrobbling. No account, no ads, and your files never leave your device.
+          </p>
+          <div class="hero-actions">
+            <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+            {macUrl && <AppStoreBadge href={macUrl} platform="mac" />}
+            <a href="#linux" class="ghost-btn">Free on Linux</a>
+          </div>
+          {
+            showsRating && (
+              <p class="hero-rating-row">
+                <HeroRating rating={app.rating} count={app.ratingCount} />
+              </p>
+            )
+          }
+          <p class="hero-note">
+            <span class="badge">FLAC · 24/96</span>
+            iPhone, iPad, Apple Watch and Mac with one purchase, and free for 7 days from the first time
+            you play your own music.
+          </p>
+        </div>
+        <img
+          class="hero-phone"
+          src={shots.nowPlaying.src}
+          srcset={shots.nowPlaying.srcset}
+          sizes="(min-width: 1024px) clamp(300px, 17vw, 560px), 64vw"
+          width={shots.nowPlaying.w}
+          height={shots.nowPlaying.h}
+          alt="Now Playing in Flaccy on iPhone: Slow Machine by Meridian Wolde, FLAC 24/96, over concentric rings of artwork"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </section>
+
+    <section class="scene formats bleed" aria-labelledby="formats-title">
+      <div class="scene-inner formats-grid">
+        <div>
+          <h2 id="formats-title" class="display scene-title">
+            See exactly what you’re <span class="glow">hearing.</span>
+          </h2>
+          <p class="scene-lede">
+            Every album and track wears its codec, bit depth and sample rate, and a Lossless filter
+            shows what is worth a good pair of headphones. Gapless playback honours your albums,
+            exact to the sample for lossless files, with a queue that survives relaunches.
+          </p>
+          <ul class="formats-list">
+            {
+              formats.map((f) => (
+                <li style={`--level:${f.level}`}>
+                  <span class="format-codec">{f.codec}</span>
+                  <span class="format-spec">
+                    {f.depth}
+                    <small>bit</small> / {f.rate}
+                    <small>kHz</small>
+                  </span>
+                  <span class="format-bar" aria-hidden="true">
+                    <span />
+                  </span>
+                  <span class="format-note">{f.note}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <img
+          class="scene-phone"
+          src={shots.album.src}
+          srcset={shots.album.srcset}
+          sizes="(min-width: 1024px) clamp(280px, 15vw, 500px), 64vw"
+          width={shots.album.w}
+          height={shots.album.h}
+          alt="Parallax Hours by Meridian Wolde in Flaccy: FLAC 24/96 on the album and on every track"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </section>
+
+    <section class="scene eq bleed" aria-labelledby="eq-title">
+      <div class="scene-inner eq-grid">
+        <div class="eq-text">
+          <p class="kicker kicker-teal">Equalizer</p>
+          <h2 id="eq-title" class="display scene-title">
+            Make it sound like <span class="glow glow-teal">yours.</span>
+          </h2>
+          <p class="scene-lede">
+            Drag the curve and hear it change, or switch to Advanced for up to ten bands with bells,
+            shelves, filters and adjustable Q. Sixteen presets and your own, AutoEq and Equalizer
+            APO profiles for your headphones, and a setting for every output: AirPods, a wired DAC,
+            the speaker.
+          </p>
+          <p class="eq-fine">
+            Automatic headroom keeps boosts from clipping, Hold to compare is level-matched so
+            louder never wins, and off or flat, the signal passes through untouched.
+          </p>
+        </div>
+        <figure class="eq-panel" data-eq>
+          <div class="eq-head">
+            <span class="eq-title">Equalizer</span>
+            <span class="eq-status">Processing · 32-bit float</span>
+            <button type="button" class="eq-reset" data-eq-reset hidden>Reset</button>
+          </div>
+          <svg
+            class="eq-svg"
+            viewBox="0 0 1000 420"
+            role="group"
+            aria-label="An equalizer curve with ten bands from 32 Hz to 16 kHz"
+          >
+            <defs>
+              <linearGradient id="eq-fill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.38"></stop>
+                <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            {
+              [-12, -6, 0, 6, 12].map((db) => (
+                <g class="eq-grid-line">
+                  <line x1="60" x2="980" y1={210 - db * 15} y2={210 - db * 15} />
+                  <text x="44" y={214 - db * 15}>
+                    {db > 0 ? `+${db}` : db}
+                  </text>
+                </g>
+              ))
+            }
+            <path class="eq-area" data-eq-area d={eqPath(EQ_START, true)}></path>
+            <path class="eq-line" data-eq-line d={eqPath(EQ_START, false)}></path>
+            {
+              EQ_BANDS.map((band, i) => (
+                <g class="eq-band">
+                  <text class="eq-freq" x={band.x} y="408">
+                    {band.label}
+                  </text>
+                  <circle
+                    class="eq-point"
+                    data-eq-point={i}
+                    cx={band.x}
+                    cy={210 - EQ_START[i] * 15}
+                    r="13"
+                    tabindex="-1"
+                    role="slider"
+                    aria-label={`${band.label} Hz`}
+                    aria-valuemin="-12"
+                    aria-valuemax="12"
+                    aria-valuenow={EQ_START[i]}
+                    aria-valuetext={`${EQ_START[i] > 0 ? '+' : ''}${EQ_START[i]} dB`}
+                  />
+                </g>
+              ))
+            }
+          </svg>
+          <figcaption data-eq-caption>
+            A bass lift like the one on Flaccy’s Equalizer screen. Drag a point to shape it.
+          </figcaption>
+        </figure>
+        <div class="describe">
+          <p class="kicker kicker-teal">New in 1.19 · Describe the Sound</p>
+          <p class="ask" aria-hidden="true">Warmer, with softer cymbals</p>
+          <p>
+            Or say how you want your music to sound, and Flaccy shapes the curve for what you are
+            listening on, whether headphones, a speaker or a car. You hear it before anything is
+            saved, every band says what it is for, and another sentence changes it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene lyrics bleed" aria-labelledby="lyrics-title">
+      <div class="scene-inner lyrics-grid">
+        <div class="lyrics-text">
+          <h2 id="lyrics-title" class="display scene-title">
+            Lyrics that follow <span class="glow glow-rose">every word.</span>
+          </h2>
+          <p class="scene-lede">
+            Synced lyrics fill in word by word when a song has word timing. Tap any line to jump
+            right there, and nudge the timing when a song runs off.
+          </p>
+          <ol class="karaoke" aria-label="Synced lyrics of the demo song Slow Machine" data-karaoke>
+            {
+              lyrics.map((line, i) => (
+                <li
+                  class:list={{ now: i === LYRIC_START }}
+                  aria-current={i === LYRIC_START ? 'true' : undefined}
+                >
+                  {line}
+                </li>
+              ))
+            }
+          </ol>
+          <p class="share-copy">
+            <strong>Share Lyrics.</strong> Pick the lines you love and Flaccy makes a short video of
+            them over the song itself, in four looks and four formats for Stories, posts and more.
+          </p>
+        </div>
+        <div class="lyrics-phones">
+          <img
+            src={shots.lyrics.src}
+            srcset={shots.lyrics.srcset}
+            sizes="(min-width: 1024px) clamp(220px, 12vw, 400px), 42vw"
+            width={shots.lyrics.w}
+            height={shots.lyrics.h}
+            alt="Synced lyrics of Slow Machine in Flaccy, the current line lit"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src={shots.share.src}
+            srcset={shots.share.srcset}
+            sizes="(min-width: 1024px) clamp(220px, 12vw, 400px), 42vw"
+            width={shots.share.w}
+            height={shots.share.h}
+            alt="Share Lyrics in Flaccy: a Story card of one line with templates, formats and colours to choose"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="band playlist" aria-labelledby="playlist-title">
+      <div class="playlist-head">
+        <p class="kicker-band">New in 1.19 · Make a Playlist</p>
+        <h2 id="playlist-title" class="display band-title">Say what you want to hear.</h2>
+        <div class="asks" aria-hidden="true">
+          {asks.map((a) => <p class="ask ask-band">{a}</p>)}
+        </div>
+      </div>
+      <div class="playlist-copy">
+        <p>
+          Flaccy makes a playlist from the music you own. It finds the artists that fit, chooses the
+          songs, keeps to the length you asked for and never plays one artist three times in a row.
+          Play it at once, save it as an ordinary playlist, or tap Change It and say what should be
+          different.
+        </p>
+        <p class="aside">
+          It is under the add button in Library, and in the sidebar on iPad. Your words and a
+          summary of your library, your artists with their genres and years and up to 300 songs’
+          titles, albums and lengths, go to Flaccy’s AI to choose them; your music itself never
+          leaves your device. Making playlists is included in the trial and in Lifetime.
+        </p>
+      </div>
+    </section>
+
+    <section class="feature" aria-labelledby="year-title">
+      <div class="feature-text">
+        <h2 id="year-title" class="display feature-title">Every play counted, even offline.</h2>
+        <p>
+          Sign in with Last.fm and every play is scrobbled, with automatic retry once you are back
+          online. Listening charts, artist bios and a wantlist for the records you are hunting sit
+          beside your library.
+        </p>
+        <p>
+          Year in Music turns your listening into story cards and a poster of your year, ready to
+          share.
+        </p>
+      </div>
+      <div class="feature-pair">
+        <img
+          src={shots.recap.src}
+          srcset={shots.recap.srcset}
+          sizes="(min-width: 768px) clamp(220px, 12vw, 400px), 42vw"
+          width={shots.recap.w}
+          height={shots.recap.h}
+          alt="Recap in Flaccy: plays and minutes, top artists and top albums"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src={shots.year.src}
+          srcset={shots.year.srcset}
+          sizes="(min-width: 768px) clamp(220px, 12vw, 400px), 42vw"
+          width={shots.year.w}
+          height={shots.year.h}
+          alt="Year in Music 2026 in Flaccy: top artist, top track, minutes listened and tracks played"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </section>
+
+    <section id="linux" class="scene everywhere bleed" aria-labelledby="everywhere-title">
+      <div class="scene-inner">
+        <div class="everywhere-head">
+          <h2 id="everywhere-title" class="display scene-title">
+            Every screen you <span class="glow">listen on.</span>
+          </h2>
+          <dl class="platforms">
+            <div>
+              <dt>iPad</dt>
+              <dd>
+                A sidebar for your library and every playlist, Now Playing and Up Next in a column
+                beside it, keyboard shortcuts and drag and drop.
+              </dd>
+            </div>
+            <div>
+              <dt>Mac</dt>
+              <dd>
+                A native app that watches your music folder, a menu bar player and your media keys.
+                The same purchase as iPhone.
+              </dd>
+            </div>
+            <div>
+              <dt>Apple Watch</dt>
+              <dd>
+                A standalone player: sync albums and play them offline with gapless playback and
+                AirPods controls, no iPhone needed.
+              </dd>
+            </div>
+            <div>
+              <dt>Linux</dt>
+              <dd>
+                A free, open source GTK4 app with gapless playback, MPRIS media keys, scrobbling,
+                synced lyrics and the full equalizer.
+              </dd>
+            </div>
+          </dl>
+        </div>
+        <figure class="linux-shot">
+          <img
+            src={shots.linuxLibrary.src}
+            srcset={shots.linuxLibrary.srcset}
+            sizes="(min-width: 1280px) 76vw, 100vw"
+            width={shots.linuxLibrary.w}
+            height={shots.linuxLibrary.h}
+            alt="Flaccy for Linux: the album grid of the library with Made for You mixes above it and the player bar below"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Flaccy for Linux, in the library.</figcaption>
+        </figure>
+        {
+          duo && (
+            <figure class="duo">
+              <img
+                src={duo.src}
+                srcset={duo.srcset}
+                sizes="(min-width: 1024px) min(40vw, 960px), 100vw"
+                width={duo.w}
+                height={duo.h}
+                alt="Flaccy on iPhone Duo: the outer display in front of the open inner display"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                Both displays of iPhone Duo: the outer display in front, the open inner display
+                behind.
+              </figcaption>
+            </figure>
+          )
+        }
+        <div class="install">
+          <p class="install-label">Install Flaccy for Linux</p>
+          <pre><code><span class="prompt">$</span> cargo install flaccy</code></pre>
+          <p class="install-alt">
+            Or <code>yay -S flaccy-bin</code> on Arch. Your own server too: Flaccy plays from Navidrome,
+            <a href="/flaccy/server/">Flaccy Server</a> or any OpenSubsonic server over your home network
+            or Tailscale.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {
+      c.pricing && (
+        <section class="band" aria-labelledby="pricing-title">
+          <h2 id="pricing-title" class="display band-title">
+            {c.pricing.heading}
+          </h2>
+          <div class="plans">
+            <div class="plan">
+              <h3>
+                {c.pricing.free.title}
+                <span>{c.pricing.free.price}</span>
+              </h3>
+              <ul>
+                {c.pricing.free.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div class="plan plan-pro">
+              <h3>{c.pricing.premium.title}</h3>
+              <p class="tiers">
+                {c.pricing.tiers.map((tier) => (
+                  <span>
+                    <strong>{tier.price}</strong> {tier.name.toLowerCase()}
+                    {tier.note && <small>{tier.note}</small>}
+                  </span>
+                ))}
+              </p>
+              <ul>
+                {c.pricing.premium.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p class="fine">
+            {c.pricing.footnote} The yearly plan renews automatically unless canceled at least 24
+            hours before the end of the period; manage or cancel it in your Apple Account settings.
+          </p>
+        </section>
+      )
+    }
+
+    <section class="band trust" aria-labelledby="trust-title">
+      <h2 id="trust-title" class="display band-title">Your files never leave your device.</h2>
+      <p>
+        There is no account, no upload and no ads. Flaccy reads your music where you keep it, and a
+        Last.fm account is optional. AI cleanup runs by itself when a library is scanned and sends
+        file names and tags, never audio, to identify messy albums. Lyric meanings, Make a Playlist
+        and Describe the Sound run only when you ask, and send only what they need: the song, your
+        words, a summary of your library or the curve in use.
+        {
+          privacyUrl && (
+            <>
+              {' '}
+              <a href={privacyUrl}>Read the privacy policy</a>.
+            </>
+          )
+        }
+      </p>
+    </section>
+
+    <section class="band" aria-labelledby="faq-title">
+      <div class="faq-layout">
+        <h2 id="faq-title" class="display band-title">Questions.</h2>
+        <div class="faq">
+          <FaqAccordion faq={c.faq} accent={accent} />
+        </div>
+      </div>
+    </section>
+
+    <section class="closing bleed" aria-labelledby="closing-title">
+      <div class="rings rings-closing" aria-hidden="true">
+        {Array.from({ length: 7 }, (_, i) => <span style={`--i:${i}`} />)}
+      </div>
+      <div class="scene-inner closing-inner">
+        {
+          app.iconLocal && (
+            <AppIcon
+              src={app.iconLocal}
+              width={72}
+              height={72}
+              displayWidths={[64, 72]}
+              class="hero-icon h-16 w-16 rounded-[1.1rem] object-cover sm:h-[4.5rem] sm:w-[4.5rem]"
+            />
+          )
+        }
+        <h2 id="closing-title" class="display scene-title">Your collection, in full quality.</h2>
+        <p class="scene-lede">
+          On the App Store for iPhone, iPad, Apple Watch and Mac, and free on Linux.
+        </p>
+        <div class="hero-actions">
+          <AppStoreBadge href={app.appStoreUrl} platform="ios" />
+          {macUrl && <AppStoreBadge href={macUrl} platform="mac" />}
+        </div>
+        <ul class="meta">
+          {versionLabel && <li>{versionLabel}</li>}
+          <li>Requires {requires}</li>
+          <li><a href={supportPath(app.slug)}>Support</a></li>
+          {
+            privacyUrl && (
+              <li>
+                <a href={privacyUrl}>Privacy</a>
+              </li>
+            )
+          }
+          <li><a href="/flaccy/server/">Flaccy Server</a></li>
+          <li>By {app.sellerName ?? 'Midgar Oy'}</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="border-t border-paper-border py-10 font-mono dark:border-term-border">
+      <p class="prompt-line mb-5">ls ~/apps</p>
+      <div class="flex flex-wrap gap-3">
+        {
+          siblings.map((s) => (
+            <a
+              href={`/${s.slug}/`}
+              class="group inline-flex items-center gap-2.5 rounded-sm border border-paper-border px-3 py-2 text-sm transition-colors hover:border-paper-border2 dark:border-term-border dark:hover:border-term-border2"
+            >
+              {s.iconLocal && (
+                <AppIcon
+                  src={s.iconLocal}
+                  width={24}
+                  height={24}
+                  displayWidths={[24]}
+                  class="h-6 w-6 rounded-md object-cover"
+                />
+              )}
+              <span class="font-medium text-paper-muted group-hover:text-paper-green dark:text-term-muted dark:group-hover:text-term-green">
+                {s.shortName}
+              </span>
+            </a>
+          ))
+        }
+        <a
+          href="/apps/"
+          class="inline-flex items-center gap-2 rounded-sm border border-paper-border px-3 py-2 text-sm font-medium text-paper-muted transition-colors hover:border-paper-border2 hover:text-paper-green dark:border-term-border dark:text-term-muted dark:hover:border-term-border2 dark:hover:text-term-green"
+        >
+          all apps
+        </a>
+      </div>
+    </section>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>
+
+<script>
+  import { eqPath, EQ_START, clampGain, gainAt } from '../../lib/eq-curve';
+
+  /// Lets a reader drag the curve the way Flaccy's Simple equalizer does: each point moves up and
+  /// down in whole decibels between −12 and +12, by pointer or by arrow keys.
+  function startEqualizer(root: HTMLElement) {
+    const svg = root.querySelector<SVGSVGElement>('svg');
+    const line = root.querySelector<SVGPathElement>('[data-eq-line]');
+    const area = root.querySelector<SVGPathElement>('[data-eq-area]');
+    const reset = root.querySelector<HTMLButtonElement>('[data-eq-reset]');
+    const caption = root.querySelector<HTMLElement>('[data-eq-caption]');
+    const points = Array.from(root.querySelectorAll<SVGCircleElement>('[data-eq-point]'));
+    if (!svg || !line || !area || !reset || !points.length) return;
+
+    const gains = [...EQ_START];
+    let dragging: number | null = null;
+
+    const render = () => {
+      line.setAttribute('d', eqPath(gains, false));
+      area.setAttribute('d', eqPath(gains, true));
+      points.forEach((point, i) => {
+        point.setAttribute('cy', String(210 - gains[i] * 15));
+        point.setAttribute('aria-valuenow', String(gains[i]));
+        point.setAttribute('aria-valuetext', `${gains[i] > 0 ? '+' : ''}${gains[i]} dB`);
+      });
+      reset.hidden = gains.every((g, i) => g === EQ_START[i]);
+    };
+
+    const toGain = (event: PointerEvent) => {
+      const box = svg.getBoundingClientRect();
+      const y = ((event.clientY - box.top) / box.height) * 420;
+      return gainAt(y);
+    };
+
+    points.forEach((point, i) => {
+      point.setAttribute('tabindex', '0');
+      point.addEventListener('pointerdown', (event) => {
+        dragging = i;
+        point.setPointerCapture(event.pointerId);
+        point.classList.add('is-active');
+      });
+      point.addEventListener('pointermove', (event) => {
+        if (dragging !== i) return;
+        gains[i] = toGain(event);
+        render();
+      });
+      const release = () => {
+        dragging = null;
+        point.classList.remove('is-active');
+      };
+      point.addEventListener('pointerup', release);
+      point.addEventListener('pointercancel', release);
+      point.addEventListener('keydown', (event) => {
+        const step = event.key === 'ArrowUp' ? 1 : event.key === 'ArrowDown' ? -1 : 0;
+        if (!step) return;
+        event.preventDefault();
+        gains[i] = clampGain(gains[i] + step);
+        render();
+      });
+    });
+
+    reset.addEventListener('click', () => {
+      gains.splice(0, gains.length, ...EQ_START);
+      render();
+    });
+    if (caption) {
+      caption.textContent =
+        'A bass lift like the one on Flaccy’s Equalizer screen. Drag a point, or focus it and use the arrow keys.';
+    }
+    root.classList.add('is-live');
+    render();
+  }
+
+  /// Walks the demo lyrics a line at a time, the current line filling as it is sung, unless the
+  /// reader prefers less motion.
+  function startKaraoke(list: HTMLElement) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const lines = Array.from(list.querySelectorAll<HTMLElement>('li'));
+    let index = lines.findIndex((l) => l.classList.contains('now'));
+    window.setInterval(() => {
+      lines[index]?.classList.remove('now');
+      lines[index]?.removeAttribute('aria-current');
+      index = (index + 1) % lines.length;
+      lines[index].classList.add('now');
+      lines[index].setAttribute('aria-current', 'true');
+    }, 3600);
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-eq]').forEach(startEqualizer);
+  document.querySelectorAll<HTMLElement>('[data-karaoke]').forEach(startKaraoke);
+</script>
+
+<style>
+  @font-face {
+    font-family: 'Bricolage Grotesque';
+    font-style: normal;
+    font-weight: 200 800;
+    font-stretch: 75% 100%;
+    font-display: swap;
+    src: url('/fonts/bricolage-grotesque-var-latin.woff2') format('woff2');
+  }
+
+  :global(body) {
+    overflow-x: clip;
+  }
+
+  .fl {
+    --night: #0c0710;
+    --night-2: #140b1c;
+    --plum: #24112f;
+    --star: #f7eef9;
+    --haze: #bcaec7;
+    --dim: #8f7f9b;
+    --rose: #ff5f86;
+    --coral: #ff8a65;
+    --violet: #a78bfa;
+    --teal: #2dd4bf;
+    --ink: #073642;
+    --body: #34505a;
+    --soft: #52676d;
+    --rule: #dcd3b8;
+    --link: #b0244b;
+    --focus: #b0244b;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+  }
+
+  :global(.dark) .fl {
+    --ink: #f6eef8;
+    --body: #cbc0d3;
+    --soft: #9d91a8;
+    --rule: #2d333b;
+    --link: #ff8fab;
+    --focus: #ff5f86;
+  }
+
+  .display {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 800;
+    font-stretch: 92%;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .glow {
+    background: linear-gradient(100deg, var(--rose), var(--violet));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glow-teal {
+    background-image: linear-gradient(100deg, #5eead4, #38bdf8);
+  }
+
+  .glow-rose {
+    background-image: linear-gradient(100deg, #fda4af, var(--rose));
+  }
+
+  .kicker {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .kicker-teal {
+    color: #5eead4;
+  }
+
+  .bleed {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+
+  .hero,
+  .scene,
+  .closing {
+    --focus: var(--rose);
+  }
+
+  .hero {
+    position: relative;
+    isolation: isolate;
+    margin-top: 1.25rem;
+    background:
+      radial-gradient(60% 80% at 78% 55%, rgb(167 139 250 / 0.22), transparent 70%),
+      radial-gradient(40% 60% at 95% 10%, rgb(255 95 134 / 0.18), transparent 70%),
+      linear-gradient(180deg, #120a19 0%, var(--night) 100%);
+    color: var(--star);
+    overflow: hidden;
+  }
+
+  .rings {
+    position: absolute;
+    z-index: -1;
+    right: -12vw;
+    top: 50%;
+    width: min(110vw, 72rem);
+    aspect-ratio: 1;
+    transform: translateY(-50%);
+  }
+
+  .rings span {
+    position: absolute;
+    inset: calc(var(--i) * 5.5%);
+    border-radius: 50%;
+    border: 2px solid rgb(255 95 134 / calc(0.5 - var(--i) * 0.045));
+  }
+
+  .hero-inner,
+  .scene-inner {
+    width: 100%;
+    max-width: var(--shell-max);
+    margin-inline: auto;
+    padding-inline: var(--shell-gutter);
+  }
+
+  .hero-inner {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+    padding-block: clamp(4rem, 10vh, 7rem);
+  }
+
+  .hero-copy {
+    max-width: 40rem;
+  }
+
+  .hero-app {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  .hero-app h1 {
+    font: inherit;
+    color: var(--star);
+  }
+
+  .hero-app span {
+    color: var(--haze);
+    font-weight: 500;
+  }
+
+  .fl :global(.hero-icon) {
+    box-shadow: 0 16px 44px -14px rgb(255 95 134 / 0.6);
+  }
+
+  .hero-title {
+    font-size: clamp(3.3rem, 9.5vw, 8.4rem);
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-sub {
+    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.28rem);
+    line-height: 1.55;
+    color: #e7dcec;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem 1.1rem;
+  }
+
+  .ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0 1.15rem;
+    border-radius: 999px;
+    border: 1px solid rgb(247 238 249 / 0.35);
+    color: var(--star);
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: rgb(247 238 249 / 0.06);
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .ghost-btn:hover {
+    background: rgb(247 238 249 / 0.14);
+    border-color: rgb(247 238 249 / 0.6);
+  }
+
+  .hero-rating-row {
+    margin-top: 1.5rem;
+    color: var(--haze);
+    --star-on: #ff9fb6;
+    --star-off: rgb(247 238 249 / 0.3);
+  }
+
+  .hero-note {
+    margin-top: 2.25rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--haze);
+  }
+
+  .badge {
+    display: inline-block;
+    margin-right: 0.6rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.4rem;
+    background: rgb(255 95 134 / 0.16);
+    color: #ff9fb6;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-phone {
+    width: min(64vw, clamp(18rem, 17vw, 35rem));
+    height: auto;
+    justify-self: center;
+    filter: drop-shadow(0 40px 60px rgb(0 0 0 / 0.6));
+  }
+
+  .scene {
+    background: var(--night);
+    color: var(--star);
+    padding-block: clamp(4rem, 9vw, 7.5rem);
+  }
+
+  .scene-title {
+    font-size: clamp(2.5rem, 5.6vw, 5rem);
+    max-width: 15ch;
+    margin-bottom: 1.1rem;
+  }
+
+  .scene-lede {
+    max-width: 38rem;
+    font-size: clamp(1rem, 0.94rem + 0.3vw, 1.18rem);
+    line-height: 1.6;
+    color: var(--haze);
+  }
+
+  .scene-phone {
+    width: min(64vw, clamp(17.5rem, 15vw, 31rem));
+    height: auto;
+    justify-self: center;
+    filter: drop-shadow(0 40px 60px rgb(0 0 0 / 0.6));
+  }
+
+  .formats {
+    background:
+      radial-gradient(50% 60% at 15% 80%, rgb(255 95 134 / 0.12), transparent 70%), var(--night);
+  }
+
+  .formats-grid,
+  .lyrics-grid {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .formats-list {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 2.5rem;
+    max-width: clamp(38rem, 32vw, 52rem);
+  }
+
+  .formats-list li {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    grid-template-areas:
+      'codec spec'
+      'codec bar'
+      'codec note';
+    column-gap: 1.25rem;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    background: rgb(247 238 249 / 0.04);
+    border: 1px solid rgb(247 238 249 / 0.1);
+  }
+
+  .format-codec {
+    grid-area: codec;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #ff9fb6;
+  }
+
+  .format-spec {
+    grid-area: spec;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.2rem);
+    letter-spacing: -0.02em;
+    color: var(--star);
+  }
+
+  .format-spec small {
+    font-size: 0.5em;
+    font-weight: 600;
+    color: var(--haze);
+    margin-left: 0.15em;
+  }
+
+  .format-bar {
+    grid-area: bar;
+    height: 6px;
+    border-radius: 999px;
+    background: rgb(247 238 249 / 0.1);
+    overflow: hidden;
+    margin-block: 0.45rem;
+  }
+
+  .format-bar span {
+    display: block;
+    height: 100%;
+    width: calc(var(--level) * 33.33%);
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--violet), var(--rose));
+  }
+
+  .format-note {
+    grid-area: note;
+    font-size: 0.88rem;
+    color: var(--dim);
+  }
+
+  .eq {
+    background:
+      radial-gradient(55% 60% at 75% 40%, rgb(45 212 191 / 0.12), transparent 70%),
+      linear-gradient(180deg, var(--night) 0%, #0b0f14 100%);
+  }
+
+  .eq-grid {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .eq-fine {
+    margin-top: 1rem;
+    max-width: 38rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--dim);
+  }
+
+  .eq-panel {
+    padding: clamp(1rem, 2.5vw, 1.75rem);
+    border-radius: 1.5rem;
+    background: rgb(247 238 249 / 0.04);
+    border: 1px solid rgb(247 238 249 / 0.1);
+  }
+
+  .eq-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .eq-title {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+  }
+
+  .eq-status {
+    font-size: 0.85rem;
+    color: #5eead4;
+  }
+
+  .eq-reset {
+    margin-left: auto;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgb(247 238 249 / 0.25);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--star);
+  }
+
+  .eq-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  .eq-grid-line line {
+    stroke: rgb(247 238 249 / 0.1);
+    stroke-width: 1;
+  }
+
+  .eq-grid-line text,
+  .eq-freq {
+    fill: var(--dim);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 15px;
+    text-anchor: middle;
+  }
+
+  .eq-grid-line text {
+    text-anchor: end;
+  }
+
+  .eq-area {
+    fill: url(#eq-fill);
+  }
+
+  .eq-line {
+    fill: none;
+    stroke: #5eead4;
+    stroke-width: 4;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 8px rgb(45 212 191 / 0.55));
+  }
+
+  .eq-point {
+    fill: #f7eef9;
+    stroke: #0c0710;
+    stroke-width: 4;
+    touch-action: none;
+  }
+
+  .eq-panel.is-live .eq-point {
+    cursor: ns-resize;
+  }
+
+  .eq-panel .eq-point:focus-visible,
+  .eq-panel .eq-point.is-active {
+    outline: none;
+    stroke: #5eead4;
+    stroke-width: 6;
+  }
+
+  .eq-panel figcaption {
+    margin-top: 0.85rem;
+    font-size: 0.85rem;
+    color: var(--dim);
+  }
+
+  .describe {
+    max-width: 40rem;
+  }
+
+  .describe p:last-child {
+    color: var(--haze);
+    line-height: 1.6;
+  }
+
+  .ask {
+    display: inline-block;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.15rem, 0.9rem + 1vw, 1.55rem);
+    padding: 0.7rem 1.15rem;
+    border-radius: 1rem;
+    border: 1px solid rgb(94 234 212 / 0.4);
+    color: var(--star);
+    margin-bottom: 1.25rem;
+  }
+
+  .ask::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1.05em;
+    margin-left: 3px;
+    vertical-align: -0.12em;
+    background: #5eead4;
+  }
+
+  .lyrics {
+    background:
+      radial-gradient(50% 60% at 85% 50%, rgb(255 95 134 / 0.14), transparent 70%),
+      radial-gradient(40% 50% at 10% 20%, rgb(167 139 250 / 0.12), transparent 70%), var(--night);
+  }
+
+  .karaoke {
+    margin-top: 2.25rem;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .karaoke li {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 0.9rem + 1.3vw, 2.1rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: rgb(247 238 249 / 0.45);
+    transition: color 400ms ease;
+  }
+
+  .karaoke li.now {
+    color: var(--star);
+  }
+
+  .share-copy {
+    margin-top: 2rem;
+    max-width: 36rem;
+    line-height: 1.6;
+    color: var(--haze);
+  }
+
+  .share-copy strong {
+    color: var(--star);
+  }
+
+  .lyrics-phones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    justify-self: center;
+    width: min(100%, clamp(28rem, 24vw, 42rem));
+  }
+
+  .lyrics-phones img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.6));
+  }
+
+  .lyrics-phones img:last-child {
+    margin-top: 3rem;
+  }
+
+  .band {
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    border-top: 1px solid var(--rule);
+    color: var(--body);
+  }
+
+  .band-title {
+    font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+    color: var(--ink);
+    margin-bottom: 2rem;
+    max-width: 20ch;
+  }
+
+  .kicker-band {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--link);
+    margin-bottom: 1rem;
+  }
+
+  .asks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ask-band {
+    color: var(--ink);
+    border-color: color-mix(in srgb, var(--link) 45%, transparent);
+    margin-bottom: 0;
+  }
+
+  .ask-band::after {
+    background: var(--link);
+  }
+
+  .ask-band + .ask-band::after {
+    display: none;
+  }
+
+  .playlist-copy {
+    max-width: 44rem;
+  }
+
+  .playlist-copy p {
+    font-size: 1.08rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .playlist-copy .aside {
+    color: var(--soft);
+    font-size: 0.95rem;
+  }
+
+  .feature {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    padding-block: clamp(4rem, 8vw, 6.5rem);
+    border-top: 1px solid var(--rule);
+    color: var(--body);
+  }
+
+  .feature-text {
+    max-width: 38rem;
+  }
+
+  .feature-text p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: clamp(2.2rem, 4.6vw, 3.8rem);
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .feature-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    justify-self: center;
+    width: min(100%, clamp(28rem, 24vw, 42rem));
+  }
+
+  .feature-pair img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 24px 36px rgb(0 0 0 / 0.3));
+  }
+
+  .feature-pair img:last-child {
+    margin-top: 3rem;
+  }
+
+  .everywhere {
+    background:
+      radial-gradient(60% 50% at 50% 100%, rgb(167 139 250 / 0.14), transparent 70%), var(--night);
+  }
+
+  .everywhere .scene-inner {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .platforms {
+    display: grid;
+    gap: 1.5rem 2.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .platforms dt {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .platforms dd {
+    color: var(--haze);
+    line-height: 1.55;
+  }
+
+  .linux-shot img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: clamp(0.6rem, 1vw, 1rem);
+    box-shadow:
+      0 0 0 1px rgb(247 238 249 / 0.1),
+      0 40px 80px -30px rgb(0 0 0 / 0.9);
+  }
+
+  .linux-shot figcaption {
+    margin-top: 0.85rem;
+    font-size: 0.85rem;
+    color: var(--dim);
+  }
+
+  .duo {
+    justify-self: center;
+    width: min(100%, clamp(34rem, 40vw, 60rem));
+  }
+
+  .duo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 30px 50px rgb(0 0 0 / 0.55));
+  }
+
+  .duo figcaption {
+    margin-top: 0.85rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--dim);
+  }
+
+  .install {
+    max-width: 44rem;
+  }
+
+  .install-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #ff9fb6;
+    margin-bottom: 0.75rem;
+  }
+
+  .install pre {
+    background: rgb(247 238 249 / 0.05);
+    border: 1px solid rgb(247 238 249 / 0.12);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    font-size: 1.05rem;
+    color: var(--star);
+  }
+
+  .install .prompt {
+    color: var(--rose);
+    margin-right: 0.6rem;
+    user-select: none;
+  }
+
+  .install-alt {
+    margin-top: 1rem;
+    color: var(--haze);
+    line-height: 1.6;
+  }
+
+  .install-alt code {
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.3rem;
+    background: rgb(247 238 249 / 0.08);
+    font-size: 0.9em;
+  }
+
+  .install-alt a,
+  .trust a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .install-alt a {
+    color: #ff9fb6;
+  }
+
+  .plans {
+    display: grid;
+    gap: 2.5rem 3rem;
+  }
+
+  .plan h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 0.75rem;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .plan h3 span {
+    font-size: 1.1rem;
+    color: var(--soft);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .plan ul {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .plan li {
+    position: relative;
+    padding-left: 1.4rem;
+    line-height: 1.5;
+  }
+
+  .plan li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    border: 2px solid var(--soft);
+  }
+
+  .plan-pro li::before {
+    border-color: var(--rose);
+    background: var(--rose);
+  }
+
+  .tiers {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--ink);
+  }
+
+  .tiers strong {
+    font-size: 1.35rem;
+    font-weight: 800;
+  }
+
+  .tiers small {
+    display: block;
+    color: var(--soft);
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  .fine {
+    margin-top: 2rem;
+    max-width: 72ch;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--soft);
+  }
+
+  .trust p {
+    max-width: 44rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .faq-layout {
+    display: grid;
+    gap: 0 4rem;
+  }
+
+  .faq-layout > h2 {
+    align-self: start;
+  }
+
+  .closing {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--night);
+    color: var(--star);
+    padding-block: clamp(4.5rem, 9vw, 7rem);
+    text-align: center;
+  }
+
+  .rings-closing {
+    right: auto;
+    left: 50%;
+    top: 50%;
+    width: min(140vw, 64rem);
+    transform: translate(-50%, -50%);
+    opacity: 0.55;
+  }
+
+  .closing-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .closing .scene-title {
+    margin-top: 1.75rem;
+    max-width: 16ch;
+  }
+
+  .closing .scene-lede {
+    margin-bottom: 2rem;
+  }
+
+  .closing .hero-actions {
+    justify-content: center;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+    color: var(--haze);
+  }
+
+  .meta a {
+    display: inline-block;
+    padding-block: 0.3rem;
+    color: #ff9fb6;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .fl :global(:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 639px) {
+    .eq-grid-line text {
+      display: none;
+    }
+
+    .eq-freq {
+      font-size: 30px;
+    }
+
+    .eq-point {
+      r: 22px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .feature {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .plans {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .platforms {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-inner {
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    }
+
+    .formats-grid {
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+    }
+
+    .eq-grid {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      align-items: center;
+    }
+
+    .describe {
+      grid-column: 1 / -1;
+    }
+
+    .lyrics-grid {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    }
+
+    .everywhere-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .faq-layout {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+    }
+
+    .faq-layout > h2 {
+      position: sticky;
+      top: 6rem;
+    }
+
+    .playlist {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0 4rem;
+      align-items: end;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .hero-inner {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    }
+
+    .formats-grid {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    }
+
+    .platforms {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .everywhere-head {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .rings span {
+      animation: pulse 6s ease-in-out infinite;
+      animation-delay: calc(var(--i) * -0.6s);
+    }
+
+    .hero-copy > * {
+      animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      animation-delay: 0.2s;
+    }
+  }
+
+  @keyframes pulse {
+    50% {
+      transform: scale(1.025);
+      border-color: rgb(167 139 250 / calc(0.45 - var(--i) * 0.04));
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
