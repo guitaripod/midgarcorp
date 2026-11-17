@@ -14,7 +14,7 @@
       "binding": "MAKO_DB"
     },
     "appstore": {
-      "local": "myyty"
+      "local": "apple-reports"
     }
   },
   "metrics": [
@@ -334,7 +334,7 @@
       "rollup": "sum",
       "suppress": false,
       "owner": "marcus",
-      "caveat": "Apple's reports arrive a day or two late. Read on the machine that has the myyty warehouse.",
+      "caveat": "Apple's reports arrive a day or two late. Read on the machine that has the Apple report warehouse.",
       "kind": "local",
       "local": "downloads"
     },
@@ -348,7 +348,7 @@
       "rollup": "sum",
       "suppress": false,
       "owner": "marcus",
-      "caveat": "Euro proceeds only; myyty keeps every currency apart and never converts, so other currencies are named beside the answer. Apple's reports arrive a day or two late. Read on the machine that has the myyty warehouse.",
+      "caveat": "Euro proceeds only; the warehouse keeps every currency apart and never converts, so other currencies are named beside the answer. Apple's reports arrive a day or two late. Read on the machine that has the Apple report warehouse.",
       "kind": "local",
       "local": "proceeds"
     }
