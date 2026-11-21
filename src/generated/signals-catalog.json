@@ -598,6 +598,52 @@
       ],
       "numeric": [],
       "rollup": []
+    },
+    {
+      "name": "lab.exposed",
+      "purpose": "Which version of a screen under test this install was shown, so two versions can be compared by counting.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "lifetime",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "experiment",
+          "optional": false,
+          "source": "experiments"
+        },
+        {
+          "name": "variant",
+          "optional": false,
+          "source": "variants"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["experiment", "variant"]
+    },
+    {
+      "name": "lab.converted",
+      "purpose": "That the outcome a test measures followed on an install that had been shown one of its versions.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "lifetime",
+      "cohort": false,
+      "reserved": false,
+      "props": [
+        {
+          "name": "experiment",
+          "optional": false,
+          "source": "experiments"
+        },
+        {
+          "name": "variant",
+          "optional": false,
+          "source": "variants"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["experiment", "variant"]
     }
   ]
 }
