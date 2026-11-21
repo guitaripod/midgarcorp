@@ -211,7 +211,7 @@
       "matters": 0.3,
       "evidence": "count",
       "owner": "marcus",
-      "caveat": "The app's view of the purchase, every product it sells, tips included. Checkout signals report how a purchase that did not complete ended; a completed one is paywall.purchase.",
+      "caveat": "A purchase made on this install, every product it sells, tips included. Builds released before 2026-11-21 also counted every first transaction that reached an install (bought on another device, or handed over by StoreKit after an update), so their values run several times too high; the purchases_agree check compares this with the ledger.",
       "kind": "sql",
       "sql": "SELECT day AS period, app, '' AS dim, SUM(count) AS value FROM daily WHERE event = 'paywall.purchase' AND day BETWEEN :since AND :until GROUP BY day, app"
     },
