@@ -87,6 +87,15 @@ describe('Tailscode landing page', () => {
     expect(bare).toEqual([]);
   });
 
+  it('gives a visitor a way to the app at the top, on the way down and at the end', () => {
+    expect(page.match(/<AppStoreBadge href=\{app\.appStoreUrl\} platform="ios" \/>/g)).toHaveLength(
+      3
+    );
+    expect(page).toContain('class="qr"');
+    expect(page).toContain('class="dock"');
+    expect(page).toContain('The built-in demo needs none');
+  });
+
   it('ships the promo video in both containers with a poster', () => {
     for (const file of ['video/tailscode-promo.mp4', 'video/tailscode-promo.webm']) {
       expect(onDisk(file), file).toBe(true);
@@ -116,7 +125,17 @@ describe('Tailscode landing page', () => {
 
   it("tells the store's story in the store's order", () => {
     const at = (id: string) => page.indexOf(`<section id="${id}"`);
-    const order = ['setup', 'agents', 'models', 'lockscreen', 'transcript', 'money', 'trust'];
+    const order = [
+      'lockscreen',
+      'finished',
+      'trust',
+      'setup',
+      'agents',
+      'models',
+      'transcript',
+      'schedules',
+      'money',
+    ];
     const found = order.map(at);
     expect(found.every((i) => i >= 0)).toBe(true);
     expect([...found].sort((a, b) => a - b)).toEqual(found);

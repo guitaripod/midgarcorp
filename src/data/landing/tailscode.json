@@ -42,7 +42,7 @@
     "nous research hermes app"
   ],
   "heroHeadline": "Claude Code, from your phone.",
-  "heroSubhead": "Codex, opencode, Hermes, Oh My Pi and any ACP agent too. They work on your own computers while you are somewhere else. When one needs a decision it reaches your Lock Screen: read the exact command, approve it with Face ID, and come back to finished work. No SSH session, no tmux, nothing in between but your own tailnet.",
+  "heroSubhead": "Your coding agent runs on your own computer and reaches you when it needs you. Read the exact command, approve it with Face ID, and come back to finished work. Codex, opencode, Hermes and any ACP agent too.",
   "accentColor": "#546BFF",
   "highlights": [
     "Long runs on your Lock Screen, approvals behind Face ID",
