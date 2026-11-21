@@ -37,6 +37,8 @@ const figure = (src: string, w: number, h: number) => {
 };
 const phone = (name: string) => figure(`/screenshots/flaccy/web-phone-${name}.webp`, 735, 1500);
 const linux = (index: number) => figure(`/screenshots/flaccy/linux-${index}.webp`, 1920, 1080);
+const themePhone = (name: string) =>
+  figure(`/screenshots/flaccy/web-phone-theme-${name}.webp`, 735, 1523);
 
 const shots = {
   nowPlaying: phone('now-playing'),
@@ -49,6 +51,41 @@ const shots = {
 };
 
 /// The formats a track can wear, the way Flaccy badges them on every album and song.
+/// The themes shown in the Themes scene: Albums on iPhone under each, in the layout the theme
+/// itself picks. Flaccy's own theme is every other picture on the page.
+const themes = [
+  {
+    id: 'phosphor',
+    name: 'Phosphor',
+    line: 'Green on black, monospaced, square covers, a list.',
+    alt: 'Albums in Flaccy under the Phosphor theme: a list in green monospaced type on black, with square covers',
+  },
+  {
+    id: 'liner-notes',
+    name: 'Liner Notes',
+    line: 'Paper and serif titles, like the sleeve it came in.',
+    alt: 'Albums in Flaccy under the Liner Notes theme: a list with serif titles on a paper-colored page',
+  },
+  {
+    id: 'hi-fi',
+    name: 'Hi-Fi',
+    line: 'Warm amber and covers cut round, like records.',
+    alt: 'Albums in Flaccy under the Hi-Fi theme: a grid of round covers on a warm dark background with an amber accent',
+  },
+  {
+    id: 'gallery',
+    name: 'Gallery',
+    line: 'A wall of covers and nothing else.',
+    alt: 'Albums in Flaccy under the Gallery theme: a wall of square covers edge to edge with no titles',
+  },
+  {
+    id: 'marquee',
+    name: 'Marquee',
+    line: 'One cover at a time, under stage light.',
+    alt: 'Albums in Flaccy under the Marquee theme: a carousel with one large cover in the middle and the next beside it',
+  },
+].map((theme) => ({ ...theme, shot: themePhone(theme.id) }));
+
 const formats = [
   { codec: 'AAC', depth: '16', rate: '44.1', note: 'lossy, from a store or a rip', level: 1 },
   { codec: 'FLAC', depth: '16', rate: '44.1', note: 'CD quality, bit for bit', level: 2 },
@@ -290,6 +327,47 @@ const siblings = siblingApps(landingApps, 'flaccy');
             saved, every band says what it is for, and another sentence changes it.
           </p>
         </div>
+      </div>
+    </section>
+
+    <section id="themes" class="scene themes bleed" aria-labelledby="themes-title">
+      <div class="scene-inner">
+        <div class="themes-head">
+          <p class="kicker kicker-violet">Themes</p>
+          <h2 id="themes-title" class="display scene-title">
+            Make it look like <span class="glow">yours.</span>
+          </h2>
+          <p class="scene-lede">
+            Six themes come with Flaccy, and each one changes the type, the shapes and the layout,
+            not only the colors. See your albums as a grid, a wall of covers, a list or a carousel,
+            on iPhone, iPad, Mac and Linux, with your Apple Watch following your iPhone.
+          </p>
+          <p class="themes-fine">
+            A theme is a folder holding one text file. Copy any of the six, change a line, and it is
+            yours; your own cover shape, corners and font sit over whichever theme is on.
+          </p>
+        </div>
+        <ul class="theme-strip">
+          {
+            themes.map((theme) => (
+              <li>
+                <img
+                  class="theme-phone"
+                  src={theme.shot.src}
+                  srcset={theme.shot.srcset}
+                  sizes="(min-width: 1024px) min(17vw, 300px), 60vw"
+                  width={theme.shot.w}
+                  height={theme.shot.h}
+                  alt={theme.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <h3>{theme.name}</h3>
+                <p>{theme.line}</p>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </section>
 
@@ -814,6 +892,10 @@ const siblings = siblingApps(landingApps, 'flaccy');
     color: #5eead4;
   }
 
+  .kicker-violet {
+    color: var(--violet);
+  }
+
   .bleed {
     width: 100vw;
     margin-inline: calc(50% - 50vw);
@@ -994,6 +1076,71 @@ const siblings = siblingApps(landingApps, 'flaccy');
     height: auto;
     justify-self: center;
     filter: drop-shadow(0 40px 60px rgb(0 0 0 / 0.6));
+  }
+
+  .themes {
+    background:
+      radial-gradient(55% 50% at 85% 10%, rgb(167 139 250 / 0.13), transparent 70%), var(--night);
+  }
+
+  .themes .scene-inner {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .themes-fine {
+    max-width: 38rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--haze);
+    opacity: 0.85;
+  }
+
+  .theme-strip {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(60vw, 15rem);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    margin: 0;
+    padding: 0 0 1.25rem;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+  }
+
+  .theme-strip li {
+    scroll-snap-align: center;
+  }
+
+  .theme-phone {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.55));
+  }
+
+  .theme-strip h3 {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-top: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .theme-strip p {
+    color: var(--haze);
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+
+  @media (min-width: 1024px) {
+    .theme-strip {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      overflow: visible;
+      padding-bottom: 0;
+    }
   }
 
   .formats {

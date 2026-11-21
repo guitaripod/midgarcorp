@@ -55,6 +55,11 @@
       "glyph": "∿"
     },
     {
+      "title": "Themes",
+      "body": "Six themes come with Flaccy, from a green-on-black terminal to a page of liner notes, and each one changes the type, the shapes and the layout as well as the colors. See your albums as a grid, a wall of covers, a list or a carousel. A theme is a folder holding one text file, so you can copy one and make it your own, and your own cover shape, corners and font sit over whichever theme is on.",
+      "glyph": "◐"
+    },
+    {
       "title": "Make a Playlist",
       "body": "Say what you want to hear, like \"Rainy Sunday morning, calm, about 40 minutes\", and Flaccy makes a playlist from the music you own: it finds the artists that fit, keeps to the length you asked for and never plays one artist three times in a row. Play it, save it, or tap Change It. Your words and a summary of your library, your artists with their genres and years and up to 300 songs' titles, albums and lengths, go to Flaccy's AI to choose them; your music itself never leaves your device.",
       "glyph": "≡"
@@ -147,6 +152,10 @@
     {
       "q": "Does Flaccy have an equalizer?",
       "a": "Yes, on iPhone, iPad, Mac and Linux. Drag the curve in Simple mode, or switch to Advanced for up to ten bands with bells, shelves, high-pass and low-pass filters and adjustable Q. It ships with sixteen presets, saves your own, and imports Equalizer APO and AutoEq profile text so you can tune for your headphones. Each output (AirPods, a wired DAC, the speaker) keeps its own setting and switches when you do. Automatic headroom prevents clipping, and Hold to compare is level-matched so louder never sounds better. With the equalizer off or flat the signal passes through untouched, and gapless playback is unaffected. The Apple Watch app plays through the system and has no equalizer."
+    },
+    {
+      "q": "Can I change how Flaccy looks?",
+      "a": "Yes. Settings, Appearance has six themes (Flaccy, Phosphor, Marquee, Gallery, Liner Notes and Hi-Fi), each with its own colors, type, cover shape and Albums layout: grid, wall, list or carousel. You can set the cover shape, corners and font yourself over any theme, and copy a theme to change it: a theme is a folder holding one text file. Themes work on iPhone, iPad, Mac and Linux, and Apple Watch follows your iPhone."
     },
     {
       "q": "Can Flaccy make a playlist for me?",
