@@ -403,7 +403,7 @@
       "unique": "each",
       "cohort": false,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "props": [],
       "numeric": [
@@ -442,7 +442,7 @@
       "unique": "daily",
       "cohort": false,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "props": [
         {
@@ -463,7 +463,7 @@
       "unique": "daily",
       "cohort": false,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "props": [
         {
@@ -490,7 +490,7 @@
       "unique": "weekly",
       "cohort": false,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "props": [
         {
@@ -512,7 +512,7 @@
       "unique": "weekly",
       "cohort": false,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "props": [
         {
@@ -539,7 +539,7 @@
       "unique": "lifetime",
       "cohort": true,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "props": [
         {
@@ -560,7 +560,7 @@
       "unique": "each",
       "cohort": false,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "story": true,
       "props": [
@@ -595,7 +595,7 @@
       "unique": "each",
       "cohort": false,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "story": true,
       "props": [
@@ -623,7 +623,7 @@
       "unique": "lifetime",
       "cohort": false,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "props": [
         {
@@ -648,7 +648,7 @@
       "unique": "lifetime",
       "cohort": false,
       "reserved": false,
-      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
       "adopted_only": true,
       "props": [
         {
