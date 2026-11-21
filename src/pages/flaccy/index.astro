@@ -238,7 +238,9 @@ const siblings = siblingApps(landingApps, 'flaccy');
       isTwo && (
         <section class="band two" aria-labelledby="two-title">
           <p class="kicker-band">New in 2.0</p>
-          <h2 id="two-title" class="display band-title">The whole player, grown up.</h2>
+          <h2 id="two-title" class="display band-title">
+            The whole player, grown up.
+          </h2>
           <ul class="two-points">
             {twoPoints.map((point) => (
               <li>
@@ -372,7 +374,9 @@ const siblings = siblingApps(landingApps, 'flaccy');
           </figcaption>
         </figure>
         <div class="describe">
-          <p class="kicker kicker-teal">{isTwo ? 'Describe the Sound' : 'New in 1.19 · Describe the Sound'}</p>
+          <p class="kicker kicker-teal">
+            {isTwo ? 'Describe the Sound' : 'New in 1.19 · Describe the Sound'}
+          </p>
           <p class="ask" aria-hidden="true">Warmer, with softer cymbals</p>
           <p>
             Or say how you want your music to sound, and Flaccy shapes the curve for what you are
@@ -393,35 +397,34 @@ const siblings = siblingApps(landingApps, 'flaccy');
                 Make it look like <span class="glow">yours.</span>
               </h2>
               <p class="scene-lede">
-                Six themes come with Flaccy, and each one changes the type, the shapes and the layout,
-                not only the colors. See your albums as a grid, a wall of covers, a list or a carousel,
-                on iPhone, iPad, Mac and Linux, with your Apple Watch following your iPhone.
+                Six themes come with Flaccy, and each one changes the type, the shapes and the
+                layout, not only the colors. See your albums as a grid, a wall of covers, a list or
+                a carousel, on iPhone, iPad, Mac and Linux, with your Apple Watch following your
+                iPhone.
               </p>
               <p class="themes-fine">
-                A theme is a folder holding one text file. Copy any of the six, change a line, and it is
-                yours; your own cover shape, corners and font sit over whichever theme is on.
+                A theme is a folder holding one text file. Copy any of the six, change a line, and
+                it is yours; your own cover shape, corners and font sit over whichever theme is on.
               </p>
             </div>
             <ul class="theme-strip">
-              {
-                themes.map((theme) => (
-                  <li>
-                    <img
-                      class="theme-phone"
-                      src={theme.shot.src}
-                      srcset={theme.shot.srcset}
-                      sizes="(min-width: 1024px) min(17vw, 300px), 60vw"
-                      width={theme.shot.w}
-                      height={theme.shot.h}
-                      alt={theme.alt}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <h3>{theme.name}</h3>
-                    <p>{theme.line}</p>
-                  </li>
-                ))
-              }
+              {themes.map((theme) => (
+                <li>
+                  <img
+                    class="theme-phone"
+                    src={theme.shot.src}
+                    srcset={theme.shot.srcset}
+                    sizes="(min-width: 1024px) min(17vw, 300px), 60vw"
+                    width={theme.shot.w}
+                    height={theme.shot.h}
+                    alt={theme.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <h3>{theme.name}</h3>
+                  <p>{theme.line}</p>
+                </li>
+              ))}
             </ul>
           </div>
         </section>
