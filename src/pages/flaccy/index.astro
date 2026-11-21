@@ -70,6 +70,30 @@ const LYRIC_START = 2;
 const asks = ['Rainy Sunday morning, calm, about 40 minutes', 'Upbeat, for a 30 minute run'];
 
 const versionLabel = app.version ? `Version ${app.version}` : null;
+
+/// Whether the App Store's live version is 2.0 or later. The page reads the version from the store facts the site
+/// refreshes, so what speaks of 2.0 appears by itself once 2.0 is out and never before.
+const isTwo = Number.parseInt((app.version ?? '').split('.')[0] ?? '', 10) >= 2;
+
+/// What 2.0 brought, in the words of its release notes.
+const twoPoints = [
+  {
+    title: 'Clean Library',
+    text: 'One switch lists every song once, wherever its copies live: on your device, on a server or under another artist credit on the same album.',
+  },
+  {
+    title: 'Playlists, remastered',
+    text: 'A playlist updates as it changes, sorts six ways, undoes a drag or a removal and suggests songs from your own library that fit.',
+  },
+  {
+    title: 'Your server, in step',
+    text: 'Songs you hold and your server holds become one, downloads can be AAC to save room, and an Offline chip keeps what plays with no server in reach.',
+  },
+  {
+    title: 'iPad, closer to hand',
+    text: 'Lyrics and the queue stay inside the Now Playing column so the library is still there to browse, and the controls sit where your thumbs are.',
+  },
+];
 const requires = 'iOS 18.6, macOS 26 or watchOS 11';
 const privacyUrl = privacyUrlFor(app.slug);
 const macUrl = c.macAppStoreUrl;
@@ -123,6 +147,7 @@ const siblings = siblingApps(landingApps, 'flaccy');
             <h1 id="app-name">Flaccy</h1>
             <span>Lossless FLAC Player</span>
           </div>
+          {isTwo && <p class="kicker edition">New · Flaccy 2.0</p>}
           <p class="display hero-title">Hear what you <span class="glow">own.</span></p>
           <p class="hero-sub">
             Flaccy plays the music you own at full quality, FLAC, ALAC, WAV, AIFF, MP3 and AAC, with
@@ -160,6 +185,23 @@ const siblings = siblingApps(landingApps, 'flaccy');
         />
       </div>
     </section>
+
+    {
+      isTwo && (
+        <section class="band two" aria-labelledby="two-title">
+          <p class="kicker-band">New in 2.0</p>
+          <h2 id="two-title" class="display band-title">The whole player, grown up.</h2>
+          <ul class="two-points">
+            {twoPoints.map((point) => (
+              <li>
+                <h3>{point.title}</h3>
+                <p>{point.text}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     <section class="scene formats bleed" aria-labelledby="formats-title">
       <div class="scene-inner formats-grid">
@@ -282,7 +324,7 @@ const siblings = siblingApps(landingApps, 'flaccy');
           </figcaption>
         </figure>
         <div class="describe">
-          <p class="kicker kicker-teal">New in 1.19 · Describe the Sound</p>
+          <p class="kicker kicker-teal">{isTwo ? 'Describe the Sound' : 'New in 1.19 · Describe the Sound'}</p>
           <p class="ask" aria-hidden="true">Warmer, with softer cymbals</p>
           <p>
             Or say how you want your music to sound, and Flaccy shapes the curve for what you are
@@ -347,7 +389,7 @@ const siblings = siblingApps(landingApps, 'flaccy');
 
     <section class="band playlist" aria-labelledby="playlist-title">
       <div class="playlist-head">
-        <p class="kicker-band">New in 1.19 · Make a Playlist</p>
+        <p class="kicker-band">{isTwo ? 'Make a Playlist' : 'New in 1.19 · Make a Playlist'}</p>
         <h2 id="playlist-title" class="display band-title">Say what you want to hear.</h2>
         <div class="asks" aria-hidden="true">
           {asks.map((a) => <p class="ask ask-band">{a}</p>)}
@@ -812,6 +854,38 @@ const siblings = siblingApps(landingApps, 'flaccy');
 
   .kicker-teal {
     color: #5eead4;
+  }
+
+  .edition {
+    color: #ff9fb6;
+    margin-bottom: 0.6rem;
+  }
+
+  .two-points {
+    display: grid;
+    gap: 1.75rem 3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .two-points h3 {
+    color: var(--ink);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+
+  .two-points p {
+    max-width: 34rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    .two-points {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
   }
 
   .bleed {
