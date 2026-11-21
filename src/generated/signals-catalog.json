@@ -12,7 +12,12 @@
     "placement": ["settings", "entry", "onboarding", "launch", "paywall", "feature", "limit", "moment"],
     "period": ["day", "week", "month"],
     "outcome": ["started", "purchased", "pending", "cancelled", "failed"],
-    "funnel_step": ["sample_played", "add_music_opened", "library_filled", "import_succeeded", "import_failed", "trial_started", "picker_cancelled", "wifi_transfer_opened", "import_nothing_found", "import_unsupported", "import_archive", "import_already_present"],
+    "funnel_step": ["sample_played", "add_music_opened", "library_filled", "import_succeeded", "import_failed", "trial_started", "picker_cancelled", "wifi_transfer_opened", "import_nothing_found", "import_unsupported", "import_archive", "import_already_present", "second_look_offered", "second_look_started"],
+    "crash_kind": ["crash", "hang", "memory", "watchdog"],
+    "fault_domain": ["purchase", "restore", "network", "ai", "import", "sync", "playback", "storage"],
+    "fault_code": ["offline", "timeout", "server", "refused", "quota", "payment", "not_found", "unsupported", "corrupt", "full", "denied", "unknown"],
+    "tier": ["free", "trial", "paid", "lapsed", "unknown"],
+    "age": ["day0", "week1", "month1", "quarter1", "older", "unknown"],
     "storefront": ["ad", "ae", "af", "ag", "ai", "al", "am", "ao", "aq", "ar", "as", "at", "au", "aw", "ax", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bl", "bm", "bn", "bo", "bq", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cd", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cw", "cx", "cy", "cz", "de", "dj", "dk", "dm", "do", "dz", "ec", "ee", "eg", "eh", "er", "es", "et", "fi", "fj", "fk", "fm", "fo", "fr", "ga", "gb", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gm", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gw", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "im", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "me", "mf", "mg", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mv", "mw", "mx", "my", "mz", "na", "nc", "ne", "nf", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "pg", "ph", "pk", "pl", "pm", "pn", "pr", "ps", "pt", "pw", "py", "qa", "re", "ro", "rs", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "ss", "st", "sv", "sx", "sy", "sz", "tc", "td", "tf", "tg", "th", "tj", "tk", "tl", "tm", "tn", "to", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "um", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "za", "zm", "zw"]
   },
   "events": [
@@ -389,6 +394,276 @@
         }
       ],
       "rollup": []
+    },
+    {
+      "name": "metrics.exits",
+      "purpose": "How often the system ended the app while you used it, for memory, for freezing or after a fault, and how often for memory in the background, so those get fixed.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "props": [],
+      "numeric": [
+        {
+          "name": "foregroundMemory",
+          "min": 0,
+          "max": 100000,
+          "integer": true
+        },
+        {
+          "name": "foregroundWatchdog",
+          "min": 0,
+          "max": 100000,
+          "integer": true
+        },
+        {
+          "name": "foregroundAbnormal",
+          "min": 0,
+          "max": 100000,
+          "integer": true
+        },
+        {
+          "name": "backgroundMemory",
+          "min": 0,
+          "max": 100000,
+          "integer": true
+        }
+      ],
+      "rollup": []
+    },
+    {
+      "name": "health.crashed",
+      "purpose": "Whether the app crashed, froze or was ended by the system on a day, so the share of installs with a clean day is known.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "daily",
+      "cohort": false,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "props": [
+        {
+          "name": "kind",
+          "optional": false,
+          "source": "set",
+          "set": "crash_kind"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["kind"]
+    },
+    {
+      "name": "error.hit",
+      "purpose": "Which failures you ran into, from a fixed list, so the common ones get fixed.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "daily",
+      "cohort": false,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "props": [
+        {
+          "name": "domain",
+          "optional": false,
+          "source": "set",
+          "set": "fault_domain"
+        },
+        {
+          "name": "code",
+          "optional": false,
+          "source": "set",
+          "set": "fault_code"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["domain", "code"]
+    },
+    {
+      "name": "app.tier",
+      "purpose": "How many of the week's active installs are free, on a trial, paying or lapsed.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "weekly",
+      "cohort": false,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "props": [
+        {
+          "name": "tier",
+          "optional": false,
+          "context": true,
+          "source": "set",
+          "set": "tier"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["tier"]
+    },
+    {
+      "name": "feature.use",
+      "purpose": "Which parts of the app get used in a week, and whether by free or paying installs, so the ones worth building on are known.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "weekly",
+      "cohort": false,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "props": [
+        {
+          "name": "feature",
+          "optional": false,
+          "source": "features"
+        },
+        {
+          "name": "tier",
+          "optional": false,
+          "context": true,
+          "source": "set",
+          "set": "tier"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["feature", "tier"]
+    },
+    {
+      "name": "value.first",
+      "purpose": "How soon after installing you first got what the app is for.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "lifetime",
+      "cohort": true,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "props": [
+        {
+          "name": "within",
+          "optional": false,
+          "source": "list",
+          "values": ["first_session", "day0", "week1", "later"]
+        }
+      ],
+      "numeric": [],
+      "rollup": ["within"]
+    },
+    {
+      "name": "purchase.story",
+      "purpose": "What led up to a purchase made in the app, namely where the purchase screen was opened from, how often it had been shown and how long the app had been installed.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "story": true,
+      "props": [
+        {
+          "name": "placement",
+          "optional": true,
+          "source": "set",
+          "set": "placement"
+        },
+        {
+          "name": "viewsBefore",
+          "optional": false,
+          "source": "list",
+          "values": ["none", "one", "two_three", "four_nine", "ten_plus"]
+        },
+        {
+          "name": "age",
+          "optional": false,
+          "context": true,
+          "source": "set",
+          "set": "age"
+        }
+      ],
+      "numeric": [],
+      "rollup": []
+    },
+    {
+      "name": "renewal.off",
+      "purpose": "When a subscription's renewal is turned off, how long it had run and on how many of the last fourteen days the app was opened.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "each",
+      "cohort": false,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "story": true,
+      "props": [
+        {
+          "name": "tenure",
+          "optional": false,
+          "source": "list",
+          "values": ["first_month", "quarter1", "half1", "year1", "longer"]
+        },
+        {
+          "name": "activeDays",
+          "optional": false,
+          "source": "list",
+          "values": ["none", "one_two", "three_six", "seven_plus"]
+        }
+      ],
+      "numeric": [],
+      "rollup": []
+    },
+    {
+      "name": "lab.exposed",
+      "purpose": "Which version of a screen under test this install was shown, so two versions can be compared by counting.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "lifetime",
+      "cohort": false,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "props": [
+        {
+          "name": "experiment",
+          "optional": false,
+          "source": "experiments"
+        },
+        {
+          "name": "variant",
+          "optional": false,
+          "source": "variants"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["experiment", "variant"]
+    },
+    {
+      "name": "lab.converted",
+      "purpose": "That the outcome a test measures followed on an install that had been shown one of its versions.",
+      "owner": "marcus",
+      "review": "2027-11-21",
+      "unique": "lifetime",
+      "cohort": false,
+      "reserved": false,
+      "apps": ["app-of-the-dead", "double-kick", "dream-eater", "embr", "flaccy", "helia", "living-dex", "master-of-inventory", "pay-day", "pixiepocket", "psybeam", "psywave", "sforesight", "solar-beam"],
+      "adopted_only": true,
+      "props": [
+        {
+          "name": "experiment",
+          "optional": false,
+          "source": "experiments"
+        },
+        {
+          "name": "variant",
+          "optional": false,
+          "source": "variants"
+        }
+      ],
+      "numeric": [],
+      "rollup": ["experiment", "variant"]
     }
   ]
 }
