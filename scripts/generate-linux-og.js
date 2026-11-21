@@ -36,7 +36,7 @@ const AMBER = '#ffb000';
 /// Windows of the collage, back to front. Each is a real screenshot from the page.
 const WINDOWS = [
   { file: 'public/screenshots/flaccy/linux-1.webp', x: 762, y: 116, w: 368, h: 207 },
-  { file: 'public/screenshots/tailscode/desk-dark-chat.webp', x: 690, y: 208, w: 440, h: 248 },
+  { file: 'public/screenshots/tailscode/or-n-desk-terminal.webp', x: 690, y: 208, w: 440, h: 248 },
   { file: 'public/screenshots/linux/unrager.webp', x: 662, y: 336, w: 204, h: 188 },
 ];
 const RADIUS = 8;

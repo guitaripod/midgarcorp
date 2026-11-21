@@ -1,0 +1,76 @@
+---
+import { screenshotUrl } from '@data/landing';
+import screenshotVariants from '@data/screenshot-variants.json';
+
+/// One picture of Tailscode in Outer Rim, in both of the theme's faces: night under the site's
+/// dark look, day under its light one. A figure photographed in one face only is one image.
+export interface Props {
+  night: string;
+  day?: string;
+  w: number;
+  h: number;
+  alt: string;
+  sizes: string;
+  priority?: boolean;
+  full?: string;
+  fullDay?: string;
+  class?: string;
+}
+
+const {
+  night,
+  day = night,
+  w,
+  h,
+  alt,
+  sizes,
+  priority = false,
+  full,
+  fullDay = full,
+  class: className = '',
+} = Astro.props;
+
+const variants = screenshotVariants as Record<string, number[]>;
+
+/// srcset from the generated variants manifest, so it only cites files that exist.
+const srcsetFor = (src: string) =>
+  [
+    ...(variants[src] ?? []).map(
+      (wide) => `${screenshotUrl(src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`
+    ),
+    `${screenshotUrl(src)} ${w}w`,
+  ].join(', ');
+
+const faces =
+  night === day
+    ? [{ src: night, face: '', label: '', full }]
+    : [
+        { src: night, face: 'rim-night', label: ' (Outer Rim by night)', full },
+        { src: day, face: 'rim-day', label: ' (Outer Rim by day)', full: fullDay },
+      ];
+---
+
+{
+  faces.map((face) => (
+    <img
+      class:list={[className, face.face]}
+      src={screenshotUrl(face.src)}
+      srcset={srcsetFor(face.src)}
+      sizes={sizes}
+      width={w}
+      height={h}
+      alt={`${alt}${face.label}`}
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : undefined}
+      decoding="async"
+      data-full={face.full ? screenshotUrl(face.full) : undefined}
+    />
+  ))
+}
+
+<style is:global>
+  html:not(.dark) .rim-night,
+  html.dark .rim-day {
+    display: none !important;
+  }
+</style>

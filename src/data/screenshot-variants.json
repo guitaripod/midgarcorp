@@ -859,167 +859,106 @@
     480,
     960
   ],
-  "/screenshots/tailscode/phone-agents.webp": [
+  "/screenshots/tailscode/or-n-phone-agents.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-wall.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-models.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-peek.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-setup.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-steer.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-gpu.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-carry.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-party.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-costs.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-approval.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-home.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-master.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-debrief.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-terminal.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-hermes.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-later.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-scheduled.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-approval.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-agents.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-home.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-pad-wall.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-wall.webp": [
+  "/screenshots/tailscode/or-n-pad-live.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-models.webp": [
+  "/screenshots/tailscode/or-n-pad-terminal.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-peek.webp": [
+  "/screenshots/tailscode/or-n-desk-split.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-setup.webp": [
+  "/screenshots/tailscode/or-n-desk-terminal.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-steer.webp": [
+  "/screenshots/tailscode/or-d-desk-split.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-gpu.webp": [
+  "/screenshots/tailscode/or-d-desk-terminal.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-carry.webp": [
+  "/screenshots/tailscode/or-n-mac-terminal.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-party.webp": [
+  "/screenshots/tailscode/or-n-mac-megatron.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/phone-costs.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-approval.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-limits.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-13.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-14.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-dark-15.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-hermes.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-pill.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-later.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-scheduled.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-machine-agents.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/phone-schedule.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-13.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-14.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/suomi-light-15.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-agents.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-wall.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-hour.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/ipad-ws-live.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-chat.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-split.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-dark-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-light-chat.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-light-split.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/desk-light-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/sync-03-both.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-dark-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-light-studio.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-dark-viewer.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-light-viewer.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-dark-agents.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/mac-dark-split.webp": [
+  "/screenshots/tailscode/or-n-mac-split.webp": [
     480,
     960
   ],
@@ -1239,19 +1178,80 @@
   "/screenshots/flaccy/web-phone-year.webp": [
     480
   ],
-  "/screenshots/tailscode/agents-megatron-mac.webp": [
+  "/screenshots/tailscode/or-d-display-terminal.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/desk-dark-studio-states.webp": [
+  "/screenshots/tailscode/or-d-mac-megatron.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/mac-dark-painting.webp": [
+  "/screenshots/tailscode/or-d-mac-split.webp": [
     480,
     960
   ],
-  "/screenshots/tailscode/mac-dark-video.webp": [
+  "/screenshots/tailscode/or-d-mac-terminal.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-d-pad-live.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-d-pad-terminal.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-d-pad-wall.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-d-phone-carry.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-costs.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-debrief.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-gpu.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-hermes.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-later.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-master.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-models.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-party.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-peek.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-scheduled.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-setup.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-steer.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-terminal.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-wall.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-display-terminal.webp": [
     480,
     960
   ],

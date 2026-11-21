@@ -4,6 +4,7 @@ import path from 'node:path';
 import factsData from '../../src/data/landing-facts.json';
 import copy from '../../src/data/landing/tailscode.json';
 import manifest from '../../src/data/screenshot-variants.json';
+import figureFacts from '../../src/data/tailscode-figures.json';
 
 const ROOT = process.cwd();
 const page = fs.readFileSync(path.join(ROOT, 'src', 'pages', 'tailscode', 'index.astro'), 'utf8');
@@ -22,19 +23,30 @@ const variants = manifest as Record<string, number[]>;
 
 const onDisk = (rel: string) => fs.existsSync(path.join(ROOT, 'public', rel.replace(/^\//, '')));
 
-/// Every screenshot name the page hands to `faces(...)`, `phone(...)` or `shot(...)`.
-const referencedShots = (): string[] => {
+const figures = figureFacts as Record<
+  string,
+  { w: number; h: number; day?: boolean; full?: boolean }
+>;
+
+/// Every figure the page asks `fig(...)` for by name, and the ten store roles it captions.
+const referencedFigures = (): string[] => {
   const names = new Set<string>();
-  for (const m of page.matchAll(/faces\(\s*'([^']+)'\s*,\s*'([^']+)'/g)) {
-    names.add(m[1]);
-    names.add(m[2]);
-  }
-  for (const m of page.matchAll(/\bphone\('([^']+)'\)/g)) names.add(`phone-${m[1]}`);
-  for (const m of page.matchAll(/\bshot\('([^']+)'\)/g)) names.add(m[1]);
+  for (const m of page.matchAll(/\bfig\('([^']+)'\)/g)) names.add(m[1]);
+  for (const m of page.matchAll(/facts\['([^']+)'\]/g)) names.add(m[1]);
   for (const m of page.matchAll(/phoneRoles = \[([^\]]+)\]/g)) {
     for (const role of m[1].matchAll(/'([^']+)'/g)) names.add(`phone-${role[1]}`);
   }
   return [...names];
+};
+
+/// The files one figure is made of: its night face, its day face and its full-size masters.
+const filesOf = (name: string): string[] => {
+  const fact = figures[name];
+  const files = [`screenshots/tailscode/or-n-${name}.webp`];
+  if (fact?.day) files.push(`screenshots/tailscode/or-d-${name}.webp`);
+  if (fact?.full) files.push(`screenshots/tailscode/full/or-n-${name}.webp`);
+  if (fact?.full && fact?.day) files.push(`screenshots/tailscode/full/or-d-${name}.webp`);
+  return files;
 };
 
 describe('Tailscode landing page', () => {
@@ -48,11 +60,19 @@ describe('Tailscode landing page', () => {
     expect(facts.keywords).toContain('tailnet');
   });
 
-  it('has a file behind every screenshot the page names', () => {
-    const missing = referencedShots().filter(
-      (name) => !onDisk(`screenshots/tailscode/${name}.webp`)
-    );
-    expect(missing).toEqual([]);
+  it('has a file behind every figure the page names, in every face it claims', () => {
+    const names = referencedFigures();
+    expect(names.length).toBeGreaterThan(20);
+    expect(names.filter((name) => !figures[name])).toEqual([]);
+    expect(names.flatMap(filesOf).filter((file) => !onDisk(file))).toEqual([]);
+  });
+
+  it('shows every figure in Outer Rim by night and by day', () => {
+    const nightOnly = Object.entries(figures)
+      .filter(([, fact]) => !fact.day)
+      .map(([name]) => name);
+    expect(nightOnly).toEqual([]);
+    expect(Object.keys(figures).filter((name) => !referencedFigures().includes(name))).toEqual([]);
   });
 
   it('has responsive variants for every shot that is listed in the facts', () => {

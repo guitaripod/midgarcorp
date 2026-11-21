@@ -1,0 +1,139 @@
+{
+  "desk-split": {
+    "w": 1920,
+    "h": 1080,
+    "full": true,
+    "day": true
+  },
+  "desk-terminal": {
+    "w": 1920,
+    "h": 1080,
+    "full": true,
+    "day": true
+  },
+  "display-terminal": {
+    "w": 2200,
+    "h": 1690,
+    "day": true
+  },
+  "mac-megatron": {
+    "w": 2000,
+    "h": 1207,
+    "day": true
+  },
+  "mac-split": {
+    "w": 2000,
+    "h": 1207,
+    "day": true
+  },
+  "mac-terminal": {
+    "w": 2000,
+    "h": 1207,
+    "day": true
+  },
+  "pad-live": {
+    "w": 1800,
+    "h": 1379,
+    "day": true
+  },
+  "pad-terminal": {
+    "w": 1800,
+    "h": 1379,
+    "day": true
+  },
+  "pad-wall": {
+    "w": 1800,
+    "h": 1379,
+    "day": true
+  },
+  "phone-agents": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-approval": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-carry": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-costs": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-debrief": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-gpu": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-hermes": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-home": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-later": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-master": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-models": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-party": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-peek": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-scheduled": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-setup": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-steer": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-terminal": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  },
+  "phone-wall": {
+    "w": 900,
+    "h": 1865,
+    "day": true
+  }
+}
