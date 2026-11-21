@@ -403,6 +403,8 @@
       "unique": "each",
       "cohort": false,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "props": [],
       "numeric": [
         {
@@ -440,6 +442,8 @@
       "unique": "daily",
       "cohort": false,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "props": [
         {
           "name": "kind",
@@ -459,6 +463,8 @@
       "unique": "daily",
       "cohort": false,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "props": [
         {
           "name": "domain",
@@ -484,6 +490,8 @@
       "unique": "weekly",
       "cohort": false,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "props": [
         {
           "name": "tier",
@@ -504,6 +512,8 @@
       "unique": "weekly",
       "cohort": false,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "props": [
         {
           "name": "feature",
@@ -529,6 +539,8 @@
       "unique": "lifetime",
       "cohort": true,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "props": [
         {
           "name": "within",
@@ -548,6 +560,8 @@
       "unique": "each",
       "cohort": false,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "story": true,
       "props": [
         {
@@ -581,6 +595,8 @@
       "unique": "each",
       "cohort": false,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "story": true,
       "props": [
         {
@@ -607,6 +623,8 @@
       "unique": "lifetime",
       "cohort": false,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "props": [
         {
           "name": "experiment",
@@ -630,6 +648,8 @@
       "unique": "lifetime",
       "cohort": false,
       "reserved": false,
+      "apps": ["app-of-the-dead", "dream-eater", "flaccy", "helia", "solar-beam"],
+      "adopted_only": true,
       "props": [
         {
           "name": "experiment",
