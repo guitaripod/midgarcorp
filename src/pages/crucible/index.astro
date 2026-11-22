@@ -45,6 +45,7 @@ const essentials = phone('essentials-offer');
 const watch = phone('what-to-watch');
 const community = { pad: pad('community') };
 const couch = tv('05');
+const liveTV = tv('livetv');
 const viewing = { stats: phone('stats'), poster: phone('share-preview') };
 const ipad = pad('library');
 
@@ -304,6 +305,34 @@ const siblings = siblingApps(landingApps, 'crucible');
             Built for the Siri Remote: a Home that follows focus, a tab for every library, the
             system player with Skip Intro and an Up Next card at the credits, and with Crucible Pro,
             Top Shelf. Liquid Glass on tvOS 26, the same layout on older systems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene couch bleed" aria-labelledby="livetv-title">
+      <div class="scene-inner">
+        <img
+          class="couch-tv"
+          src={liveTV.src}
+          srcset={liveTV.srcset}
+          sizes="(min-width: 1280px) 76vw, 100vw"
+          width={liveTV.w}
+          height={liveTV.h}
+          alt="Live TV on Apple TV: the guide with four antenna channels down the side, their airings across the evening and a line at now, with Glasswork on Vale Four focused and its synopsis above"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="couch-text">
+          <h2 id="livetv-title" class="display scene-title">Live TV, with a real guide.</h2>
+          <p class="scene-lede">
+            Plex’s free channels, the tuner on your Plex server with its recordings, and the channel
+            playlists of a TV provider you subscribe to, in one guide: channels down the side, the
+            evening across, a line at now. Search channels and shows, keep favourites, and change
+            channel from the remote or the lock screen. In beta on iPhone, iPad and Apple TV.
+          </p>
+          <p class="aside">
+            Crucible brings no channels of its own: it plays what you already have.
           </p>
         </div>
       </div>
@@ -812,7 +841,8 @@ const siblings = siblingApps(landingApps, 'crucible');
     margin-bottom: 1.25rem;
   }
 
-  .feature .aside {
+  .feature .aside,
+  .couch-text .aside {
     color: var(--soft);
     font-size: 0.95rem;
   }
@@ -920,6 +950,10 @@ const siblings = siblingApps(landingApps, 'crucible');
 
   .couch-text {
     margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .couch-text .aside {
+    margin-top: 1rem;
   }
 
   .band {

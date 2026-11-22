@@ -1,6 +1,6 @@
 {
   "seoTitle": "Crucible for Plex: native Plex for iPhone, iPad and Apple TV",
-  "metaDescription": "A free, open-source Plex client for iPhone, iPad and Apple TV that skips anime filler, recaps and intros, with a Resume-first Home and offline downloads.",
+  "metaDescription": "A free, open-source Plex client for iPhone, iPad and Apple TV: skips anime filler, recaps and intros, with offline downloads and Live TV with a guide.",
   "accentColor": "#F97316",
   "keywords": [
     "crucible for plex",
@@ -56,14 +56,23 @@
     "trakt reviews app",
     "plex trakt reviews",
     "plex what to watch",
-    "plex recap"
+    "plex recap",
+    "plex live tv",
+    "plex live tv apple tv",
+    "plex dvr app",
+    "plex free channels",
+    "iptv player apple tv",
+    "m3u player iphone",
+    "iptv epg guide",
+    "xmltv apple tv"
   ],
   "heroHeadline": "Plex, done right on iPhone, iPad and Apple TV",
-  "heroSubhead": "A fast, native Plex client for iPhone and iPad and a Liquid Glass living-room app for Apple TV, on one engine: a Resume-first Home, What to Watch picks from your own library, Trakt's reviews and comments on every title, Essentials to skip the anime-only episodes of long shows, Skip Intro, Skip Recap and Skip Preview, playback that keeps your place through sleep and breaks, a Year in Review of your viewing and menus that look like the system's own. Free on the App Store, open source, and there is a built-in demo if you have no server to hand.",
+  "heroSubhead": "A fast, native Plex client for iPhone and iPad and a Liquid Glass living-room app for Apple TV, on one engine: a Resume-first Home, What to Watch picks from your own library, Trakt's reviews and comments on every title, Essentials to skip the anime-only episodes of long shows, Skip Intro, Skip Recap and Skip Preview, playback that keeps your place through sleep and breaks, a Year in Review of your viewing, Live TV with a real guide, and menus that look like the system's own. Free on the App Store, open source, and there is a built-in demo if you have no server to hand.",
   "highlights": [
     "Free on the App Store for iPhone, iPad and Apple TV, with an optional Crucible Pro that covers all three",
     "Essentials skips the anime-only episodes of long shows (Dragon Ball Super: 110 of 131, or 83 with the films you've seen), and Skip Recap and Skip Preview read your files' own chapters",
     "A Resume-first Home on every device: Continue Watching and Up Next lead, the artwork does the rest",
+    "Live TV, in beta: Plex's free channels, your server's tuner with recordings and your own channel playlists in one guide you can search",
     "iPad: a library sidebar, several windows, a menu bar and keyboard shortcuts, with layouts that use a large window",
     "Apple TV: a cinematic Home, the system player, native menus and Top Shelf",
     "iPhone: offline downloads with a Live Activity, Skip Intro, Picture-in-Picture and background audio",
@@ -96,6 +105,11 @@
       "title": "Made for the couch",
       "body": "On Apple TV a full-screen backdrop follows focus, the hero shows the title, details and synopsis, and rails of Continue Watching, Up Next and Recently Added sit under it. Select opens, Play/Pause plays, a long press opens a native context menu. Liquid Glass controls on tvOS 26, the classic look with the same layout on older systems.",
       "glyph": "▣"
+    },
+    {
+      "title": "Live TV, with a real guide",
+      "body": "Plex's free channels, the antenna or cable tuner on your Plex server and the channel playlists (M3U with their XMLTV guide) of a TV provider you subscribe to come together in one guide: channels down the side, airings across the evening, a line at now. Search channels and what's on now or later, keep favourites, record an airing or a whole series on your server's DVR (with Plex Pass on the server), and change channel from the remote, the player or the lock screen. A channel that several sources carry shows up once and plays the best copy. Streams that IPTV services send as a bare transport stream play too: Crucible turns them into one the system player takes, on your device. Live TV is in beta, and Crucible brings no channels of its own.",
+      "glyph": "📺"
     },
     {
       "title": "Made for iPad",
@@ -194,6 +208,10 @@
       "a": "Yes. Crucible is a universal app, so the iPad uses the same App Store listing and the same Crucible Pro purchase as the iPhone. On a large window it uses the room: a sidebar lists your libraries, you can open several windows (Open in New Window on a title, or drag its card to the edge of the screen), a menu bar and keyboard shortcuts cover the common actions (Space plays, S skips the intro or credits, N plays the next episode, Command-F searches), and artwork lifts under the pointer. A narrow window, Split View or Slide Over looks like the phone. It runs on iPadOS 17 or later; the library sidebar needs iPadOS 18 and the menu bar iPadOS 26."
     },
     {
+      "q": "Does Crucible have Live TV?",
+      "a": "Yes, in beta on iPhone, iPad and Apple TV. It shows Plex's free, ad-supported channels on every Plex account, the channels of a tuner connected to your Plex server (recording needs Plex Pass on the server), and channel playlists you add yourself: an M3U address from a TV provider you subscribe to, with its XMLTV guide. Crucible brings no channels of its own and suggests none, and a playlist's addresses stay in your device's secure storage."
+    },
+    {
       "q": "Is there an Apple TV app?",
       "a": "Yes, in the same App Store listing as the iPhone app. It is built for the Siri Remote on the same engine: a cinematic Home, a tab for every library, search, movie, show and episode pages, the system player with Skip Intro and Skip Credits as native actions and an Up Next card, Watch History, Statistics, a Year in Review card and a Top Shelf extension with Crucible Pro. It runs on tvOS 17 or later; tvOS 26 on an Apple TV 4K (2nd generation or later) gets Liquid Glass controls, and older systems and boxes get the classic look with the same layout."
     },
@@ -287,13 +305,17 @@
       {
         "title": "Install xtool",
         "body": "xtool builds and installs iOS apps without Xcode's interface. On a Mac, install Xcode 26 or newer from the App Store, open it once, then install xtool.",
-        "code": ["brew install xtool-org/tap/xtool"],
+        "code": [
+          "brew install xtool-org/tap/xtool"
+        ],
         "note": "On Linux or Windows (WSL) you install Swift 6.4, usbmuxd, and Xcode's `.xip` from Apple instead; the step-by-step guide below lists each command."
       },
       {
         "title": "Sign in to Apple",
         "body": "Pick `1: Password` to use any Apple ID, a free one included, then enter the two-factor code. Your credentials go only to Apple. On Linux and Windows it also asks for the path to the `.xip`.",
-        "code": ["xtool setup"]
+        "code": [
+          "xtool setup"
+        ]
       },
       {
         "title": "Build it and put it on your phone",
@@ -310,7 +332,9 @@
       {
         "title": "Apple TV, optional",
         "body": "The Apple TV app is an Xcode project, because xtool doesn't support tvOS. It needs a Mac with Xcode 26 or newer and XcodeGen. Generate the project, open it, choose your signing team and run it on your paired Apple TV; the README and `tv/README.md` cover the details.",
-        "code": ["cd Crucible/tv && xcodegen generate && open CrucibleTV.xcodeproj"],
+        "code": [
+          "cd Crucible/tv && xcodegen generate && open CrucibleTV.xcodeproj"
+        ],
         "note": "The Top Shelf extension needs the App Group capability, so it only shows up when your signing setup provides it. tvOS 17 or later; Liquid Glass needs tvOS 26 on an Apple TV 4K (2nd generation) or later."
       }
     ],
@@ -371,7 +395,7 @@
     ],
     "footnote": "Prices are US dollars and vary by region. The annual subscription renews automatically until cancelled in your Apple Account settings, at least 24 hours before the end of the period; the lifetime unlock never renews. Both are family-shareable, and either one unlocks Crucible Pro on iPhone, iPad and Apple TV. A build from source is always fully unlocked."
   },
-  "trustNote": "Crucible has no sign-up, no ads and no analytics. It talks to plex.tv and the server you choose, to Trakt or your own Seerr only if you connect them, and to Crucible's AI only when you ask it for a pick or a recap; Crucible Pro purchases are recorded with an anonymous Midgar ID in Midgar's purchase ledger, and the app contains no third-party SDK.",
+  "trustNote": "Crucible has no sign-up, no ads and no analytics. It talks to plex.tv and the server you choose, to Trakt or your own Seerr only if you connect them, to the channel playlists and guides you add, and to Crucible's AI only when you ask it for a pick or a recap; Crucible Pro purchases are recorded with an anonymous Midgar ID in Midgar's purchase ledger, and the app contains no third-party SDK.",
   "installLast": true,
   "hideAbout": true
 }
