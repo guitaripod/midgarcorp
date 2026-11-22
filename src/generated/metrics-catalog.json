@@ -333,9 +333,9 @@
       "matters": 0.1,
       "evidence": "none",
       "owner": "marcus",
-      "caveat": "Production only, counted from the transactions the ledger has; a subscription bought before the ledger existed counts from its first renewal the ledger saw. Every app that ever sold a subscription has a value for every day, zero included.",
+      "caveat": "Production only, counted from the transactions the ledger has; a subscription bought before the ledger existed counts from its first renewal the ledger saw. Family Sharing copies of a subscription are not counted, only the purchase. Every app that ever sold a subscription has a value for every day, zero included.",
       "kind": "sql",
-      "sql": "WITH RECURSIVE days(d) AS (SELECT :since UNION ALL SELECT date(d, '+1 day') FROM days WHERE d < :until), sellers(slug) AS (SELECT DISTINCT slug FROM transactions WHERE environment = 'Production' AND type = 'Auto-Renewable Subscription') SELECT d AS period, s.slug AS app, '' AS dim, COUNT(DISTINCT t.original_transaction_id) AS value FROM days CROSS JOIN sellers s LEFT JOIN transactions t\n  ON t.slug = s.slug AND t.environment = 'Production' AND t.type = 'Auto-Renewable Subscription' AND t.revocation_date IS NULL\n  AND t.purchase_date < (unixepoch(d, '+1 day') * 1000) AND t.expires_date >= (unixepoch(d, '+1 day') * 1000)\nGROUP BY d, s.slug"
+      "sql": "WITH RECURSIVE days(d) AS (SELECT :since UNION ALL SELECT date(d, '+1 day') FROM days WHERE d < :until), sellers(slug) AS (SELECT DISTINCT slug FROM transactions WHERE environment = 'Production' AND type = 'Auto-Renewable Subscription') SELECT d AS period, s.slug AS app, '' AS dim, COUNT(DISTINCT t.original_transaction_id) AS value FROM days CROSS JOIN sellers s LEFT JOIN transactions t\n  ON t.slug = s.slug AND t.environment = 'Production' AND t.type = 'Auto-Renewable Subscription' AND t.revocation_date IS NULL\n  AND COALESCE(t.ownership_type, 'PURCHASED') = 'PURCHASED'\n  AND t.purchase_date < (unixepoch(d, '+1 day') * 1000) AND t.expires_date >= (unixepoch(d, '+1 day') * 1000)\nGROUP BY d, s.slug"
     },
     {
       "id": "intro_offers",
