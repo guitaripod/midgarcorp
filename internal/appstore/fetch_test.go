@@ -5,6 +5,24 @@ import (
 	"testing"
 )
 
+func TestVersionOlder(t *testing.T) {
+	cases := []struct {
+		a, b string
+		want bool
+	}{
+		{"4.3.0", "5.0.0", true},
+		{"5.0.0", "4.3.0", false},
+		{"4.9.2", "4.10.1", true},
+		{"5.0.0", "5.0.0", false},
+		{"5.0.1", "5.0", false},
+	}
+	for _, c := range cases {
+		if got := versionOlder(c.a, c.b); got != c.want {
+			t.Errorf("versionOlder(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
+		}
+	}
+}
+
 func TestSplitSentences(t *testing.T) {
 	cases := []struct {
 		name string

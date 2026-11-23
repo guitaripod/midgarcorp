@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 	"slices"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 	"unicode"
@@ -657,6 +658,10 @@ func refreshLiveFacts() (int, error) {
 			}
 			continue
 		}
+		if last, ok := previous[key]; ok && versionOlder(it.Version, last.Version) {
+			live[key] = last
+			continue
+		}
 		live[key] = liveFacts{
 			Version:                   it.Version,
 			Price:                     priceLabel(it.Price),
@@ -678,6 +683,25 @@ func refreshLiveFacts() (int, error) {
 		return 0, err
 	}
 	return updated, nil
+}
+
+// / versionOlder reports whether a is older than b, comparing each numeric
+// / component so a stale App Store edge cache never moves a page backwards.
+func versionOlder(a, b string) bool {
+	as, bs := strings.Split(a, "."), strings.Split(b, ".")
+	for i := 0; i < len(as) || i < len(bs); i++ {
+		var x, y int
+		if i < len(as) {
+			x, _ = strconv.Atoi(strings.TrimSpace(as[i]))
+		}
+		if i < len(bs) {
+			y, _ = strconv.Atoi(strings.TrimSpace(bs[i]))
+		}
+		if x != y {
+			return x < y
+		}
+	}
+	return false
 }
 
 // / lookupApp fetches a single app's current store metadata by track id.
