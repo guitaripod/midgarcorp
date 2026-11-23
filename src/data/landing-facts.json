@@ -1253,49 +1253,61 @@
             "src": "/screenshots/masterofflags/iphone-1.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Play Wrong"
+            "label": "Atlas"
           },
           {
             "src": "/screenshots/masterofflags/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Daily Result"
+            "label": "Question"
           },
           {
             "src": "/screenshots/masterofflags/iphone-3.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Learn Detail"
+            "label": "Correct"
           },
           {
             "src": "/screenshots/masterofflags/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "You Stats"
+            "label": "Locate"
           },
           {
             "src": "/screenshots/masterofflags/iphone-5.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Train"
+            "label": "Card"
           },
           {
             "src": "/screenshots/masterofflags/iphone-6.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Play Hard"
+            "label": "Expeditions"
           },
           {
             "src": "/screenshots/masterofflags/iphone-7.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Learn Search"
+            "label": "Daily"
           },
           {
             "src": "/screenshots/masterofflags/iphone-8.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Paywall"
+            "label": "Cards"
+          },
+          {
+            "src": "/screenshots/masterofflags/iphone-9.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "You"
+          },
+          {
+            "src": "/screenshots/masterofflags/iphone-10.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Looks"
           }
         ],
         "ipad": [
@@ -1303,49 +1315,61 @@
             "src": "/screenshots/masterofflags/ipad-1.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Play Wrong"
+            "label": "Atlas"
           },
           {
             "src": "/screenshots/masterofflags/ipad-2.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Daily Played"
+            "label": "Question"
           },
           {
             "src": "/screenshots/masterofflags/ipad-3.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Learn Detail"
+            "label": "Correct"
           },
           {
             "src": "/screenshots/masterofflags/ipad-4.webp",
             "w": 1600,
             "h": 2133,
-            "label": "You Stats"
+            "label": "Locate"
           },
           {
             "src": "/screenshots/masterofflags/ipad-5.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Train"
+            "label": "Card"
           },
           {
             "src": "/screenshots/masterofflags/ipad-6.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Play Hard"
+            "label": "Expeditions"
           },
           {
             "src": "/screenshots/masterofflags/ipad-7.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Learn Territory"
+            "label": "Daily"
           },
           {
             "src": "/screenshots/masterofflags/ipad-8.webp",
             "w": 1600,
             "h": 2133,
-            "label": "Paywall"
+            "label": "Cards"
+          },
+          {
+            "src": "/screenshots/masterofflags/ipad-9.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "You"
+          },
+          {
+            "src": "/screenshots/masterofflags/ipad-10.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Looks"
           }
         ],
         "mac": [
@@ -1353,31 +1377,61 @@
             "src": "/screenshots/masterofflags/mac-1.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Play Wrong"
+            "label": "Atlas"
           },
           {
             "src": "/screenshots/masterofflags/mac-2.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Daily Played"
+            "label": "Question"
           },
           {
             "src": "/screenshots/masterofflags/mac-3.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Learn Detail"
+            "label": "Correct"
           },
           {
             "src": "/screenshots/masterofflags/mac-4.webp",
             "w": 1920,
             "h": 1200,
-            "label": "You Stats"
+            "label": "Locate"
           },
           {
             "src": "/screenshots/masterofflags/mac-5.webp",
             "w": 1920,
             "h": 1200,
-            "label": "Train"
+            "label": "Card"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-6.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Expeditions"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-7.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Daily"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-8.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Cards"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-9.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "You"
+          },
+          {
+            "src": "/screenshots/masterofflags/mac-10.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Looks"
           }
         ],
         "tv": [
@@ -1385,34 +1439,40 @@
             "src": "/screenshots/masterofflags/tv-1.webp",
             "w": 1920,
             "h": 1080,
-            "label": "Home"
+            "label": "Atlas Question"
           },
           {
             "src": "/screenshots/masterofflags/tv-2.webp",
             "w": 1920,
             "h": 1080,
-            "label": "Daily"
+            "label": "Atlas Correct"
           },
           {
             "src": "/screenshots/masterofflags/tv-3.webp",
             "w": 1920,
             "h": 1080,
-            "label": "Learn"
+            "label": "Home"
           },
           {
             "src": "/screenshots/masterofflags/tv-4.webp",
             "w": 1920,
             "h": 1080,
-            "label": "Couch Setup"
+            "label": "Couch Play"
           },
           {
             "src": "/screenshots/masterofflags/tv-5.webp",
             "w": 1920,
             "h": 1080,
-            "label": "Couch Play"
+            "label": "Learn"
           },
           {
             "src": "/screenshots/masterofflags/tv-6.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Daily"
+          },
+          {
+            "src": "/screenshots/masterofflags/tv-7.webp",
             "w": 1920,
             "h": 1080,
             "label": "Couch Results"
@@ -1421,8 +1481,8 @@
       },
       "name": "Master of Flags: World Quiz",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-flags-world-quiz/id1484270248",
-      "description": "Master of Flags is FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth with a quiz that respects you: no banner ads, no\n\"weekly trial\", no account. Play free forever, and if you want more, Pro is\na single one-time purchase. Pay once, own it for life.\n\nNEW IN 4.0, ON EVERY APPLE SCREEN\n• Rebuilt for iPhone, iPad, Mac, Apple TV and Apple Watch, with widgets and Lock Screen\n• Wrong answers teach: the right flag, its capital and what to look for\n• Couch Mode on Apple TV: 2 to 4 players, one remote, no timers\n• Flash on Apple Watch, your streak on your watch face\n• Learn finds any country by nickname or native name, labels territories and shows look-alike flags\n• Game Center: weekly points, region leaderboards, 33 achievements, daily challenges\n• One Pro purchase for iPhone, iPad, Mac and Apple TV, shared with your family\n\nPLAY FREE\n• Flag and capitals quiz across Europe, Asia, Africa, the Americas, Oceania and the world\n• Daily Challenge, ten flags, once a day, a shareable result picture\n• Daily streaks with streak freezes, and a 48-hour streak repair when life happens\n• Browse your full Daily Challenge history in the archive\n• XP, levels and a level for every region\n• Game Center leaderboards and achievements\n• Learn, the flag encyclopedia: the story behind each flag, what the\n  colors and symbols mean, country shapes, neighbors, languages, currencies\n  and a short history. Completely free, completely offline\n\nGO PRO: ONE PURCHASE, YOURS FOREVER\n• Smart Review: real spaced repetition that resurfaces exactly the flags and\n  capitals you miss, on the day you're about to forget them\n• Similar Flags: drill the lookalikes, such as Chad vs Romania, Indonesia vs Monaco,\n  the Nordic crosses, plus packs built from your own mix-ups\n• Hard Mode: eight flags per round instead of three\n• Daily Archive: replay every daily you missed\n• Statistics: accuracy, mastery and your toughest countries\n• 5 streak freezes per month instead of 1\n• Family Sharing: one purchase for your whole family\n• No subscription. No recurring anything. Buy it once.\n\nBUILT FOR LEARNING\nSpaced repetition is how memory actually works. Master of Flags schedules\nyour reviews so flags stick for good. The Encyclopedia doubles as a study\nreference for geography, capitals and country facts. Perfect for students,\ntravelers, quiz-night heroes and the incurably curious.\n\nYour progress stays on your device. No analytics, no ads, no tracking. An anonymous ID and your purchase records are used only to restore and verify what you bought.\n\nA note to everyone who bought Master of Flags when it was a paid app:\nyou are a founder. Everything Pro unlocks is yours automatically, free,\nforever. Thank you for seven years.",
-      "releaseNotes": "Pro is yours for a week: finish a Daily Challenge or get ten flags right in Play, and Hard Mode, Smart Review, Similar Flags, full statistics, the Daily Archive and extra streak freezes are open for seven days, once per device. There's nothing to buy and nothing renews. When the week ends, Pro stays at a welcome-back price for one more week.",
+      "description": "Master of Flags is FREE. No ads. No subscription. Ever.\n\nLearn every flag on Earth on a globe that becomes yours. Every country you get right is painted with its flag on your own 3D world. No banner ads, no \"weekly trial\", no account. Play free forever, and if you want more, Pro is a single one-time purchase.\n\nNEW IN 5.0: THE ATLAS\n• Your globe is the game: answer on it, turn it, zoom it, and watch each flag fly to its country and paint it\n• 250 countries to discover and 1,000 stamps to earn: Flag, Name, Capital and Place for every one\n• Find it on the globe: a new question that asks you to tap the country\n• Every country is a card to collect, from Bronze to holographic, with its full page behind it\n• 33 expeditions with one to three stars each: Nordic Crosses, Tricolour Trouble, The Silk Road, Island Hopper and more\n• Explorer ranks from Cadet to Grand Master of Flags\n• Nothing is lost: everything you learned before is painted onto your globe the first time you open 5.0\n\nPLAY FREE\n• Flag and capitals quiz across Europe, Asia, Africa, the Americas, Oceania and the world\n• Wrong answers teach: the right flag, its capital and what to look for\n• Daily Challenge: the same ten flags for everyone, once a day, with a shareable result picture\n• Daily streaks with streak freezes, and a 48-hour streak repair when life happens\n• Cards, the flag encyclopedia: the story behind each flag, what the colors and symbols mean, country shapes, neighbors, languages, currencies and a short history. Completely free, completely offline\n• Game Center: weekly points, region leaderboards and achievements\n\nON EVERY APPLE SCREEN\n• iPhone, iPad, Mac, Apple TV and Apple Watch, with widgets and the Lock Screen\n• Couch Mode on Apple TV: 2 to 4 players, one remote, no timers\n• Flash on Apple Watch, your streak on your watch face\n\nGO PRO: ONE PURCHASE, YOURS FOREVER\n• Every expedition (the first chapter is free)\n• Looks for your globe: Paper, Blueprint, Aurora and Gold\n• Your world as a poster to keep and share\n• Smart Review: real spaced repetition that brings back exactly the flags and capitals you miss, on the day you are about to forget them\n• Similar Flags: drill the lookalikes, such as Chad vs Romania, Indonesia vs Monaco and the Nordic crosses, plus packs built from your own mix-ups\n• Hard Mode: eight flags per round instead of three\n• Daily Archive: replay every Daily you missed\n• Statistics: accuracy, mastery and your toughest countries\n• 5 streak freezes per month instead of 1\n• Family Sharing: one purchase for your whole family\n• No subscription. No recurring anything. Buy it once.\n\nYour progress stays on your device. No analytics, no ads, no tracking. An anonymous ID and your purchase records are used only to restore and verify what you bought.\n\nA note to everyone who bought Master of Flags when it was a paid app: you are a founder. Everything Pro unlocks is yours automatically, free, forever. Thank you for seven years.",
+      "releaseNotes": "5.0 is the biggest update I have ever made: the game now happens on a globe that becomes yours.\n\n• The Atlas: a living 3D globe. Every country you get right is painted with its flag, and each flag flies to its country as you answer\n• Nothing is lost: the first time you open 5.0, everything you already knew is painted onto your globe\n• Find it on the globe: a new kind of question\n• 250 country cards to collect, from Bronze to holographic, each with four stamps: Flag, Name, Capital and Place\n• 33 expeditions with stars to earn, and Explorer ranks from Cadet to Grand Master of Flags\n• The Daily, Smart Review and Similar Flags are played on the globe too\n• Settings is rebuilt as a simple list, the way the Settings app works\n• A new icon, and an opening you can watch again from Settings\n• Pro now also includes every expedition, four Looks for your globe (Paper, Blueprint, Aurora and Gold) and a poster of your world to keep and share. If you already own Pro, all of it is yours\n\nStill free, still no ads, still no subscription.",
       "category": "Education",
       "genres": [
         "Education",
@@ -1433,22 +1493,27 @@
       "price": "Free",
       "rating": 4.6,
       "ratingCount": 5,
-      "version": "4.2.0",
+      "version": "5.0.0",
       "releaseDate": "2019-10-21T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-02T21:24:55Z",
+      "currentVersionReleaseDate": "2026-11-23T15:44:26Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -1583,20 +1648,21 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.knowtheflag",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6f/3c/c1/6f3cc15c-7ed6-768e-5bfe-9b8cb03776cf/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": null,
-      "supportUrl": "https://twitter.com/prblemslver",
-      "keywords": "atlas,country,africa,europe,asia,trivia,guess,map,states,daily,kids,memorize,city,offline,nations",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/06/1b/cc/061bccd8-7c27-cde5-beba-c9eb98238352/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/masterofflags/",
+      "supportUrl": "https://midgarcorp.cc/masterofflags/support/",
+      "keywords": "flag,game,country,guess,trivia,kids,map,capital,globe,europe,africa,asia,america,offline,atlas,daily",
       "iconLocal": "/screenshots/masterofflags/icon.webp",
       "platforms": [
         "iPhone",
         "iPad",
         "Apple TV",
-        "Apple Watch",
         "Mac"
       ],
       "ogShot": {
@@ -3008,531 +3074,6 @@
       }
     },
     {
-      "slug": "crucible",
-      "trackId": 6822066419,
-      "shortName": "Crucible",
-      "status": "live",
-      "primaryColor": "#F97316",
-      "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/crucible/iphone-1.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "Home — a Resume hero, Continue Watching, Up Next and your week at a glance",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-2.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "Library — filter chips, a Continue banner and a Recently Watched rail with See All",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-3.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "Detail — immersive backdrop, one-tap Resume, audio and subtitle menus",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-4.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "Shows — season picker, episode rows, swipe actions and per-episode download rings",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-5.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "Search — grouped results with a Top Result, recents and genre browse",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-6.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "Downloads — storage at a glance, the queue, and everything ready to watch offline",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-7.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "Statistics — your year in watch time, streaks and an activity heatmap, filterable by library",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-8.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "Share Your Year — preview a Story or Square poster before it goes out",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-9.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "You — profile and server status, Year in Review, Watch History and settings, in Light",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-10.webp",
-            "w": 1470,
-            "h": 3000,
-            "label": "Libraries — choose what appears on Home and counts toward your stats",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/iphone-11.webp",
-            "w": 3000,
-            "h": 1470,
-            "label": "Player — Skip Intro with a live progress sweep, in landscape",
-            "framed": true
-          }
-        ],
-        "ipad": [
-          {
-            "src": "/screenshots/crucible/ipad-1.webp",
-            "w": 1600,
-            "h": 1226,
-            "label": "Home: a library sidebar and a Resume hero that grows with the window",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/ipad-2.webp",
-            "w": 1600,
-            "h": 1226,
-            "label": "Library: poster grids that add columns as the window grows",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/ipad-3.webp",
-            "w": 1600,
-            "h": 1226,
-            "label": "Detail: a 16:9 backdrop, one-tap Play, audio and subtitle menus",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/ipad-4.webp",
-            "w": 1600,
-            "h": 1226,
-            "label": "Shows: seasons and episodes with watched state and downloads on every row",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/ipad-5.webp",
-            "w": 1600,
-            "h": 1226,
-            "label": "Player: the system player, with Space, S and N for play, skip and the next episode",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/ipad-6.webp",
-            "w": 1600,
-            "h": 1226,
-            "label": "Search: results grouped by type with a Top Result, one Command-F away",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/ipad-7.webp",
-            "w": 1600,
-            "h": 1226,
-            "label": "Statistics: your year in watch time, streaks and an activity heatmap",
-            "framed": true
-          },
-          {
-            "src": "/screenshots/crucible/ipad-8.webp",
-            "w": 1600,
-            "h": 1226,
-            "label": "Watch History: every play, day by day, with posters",
-            "framed": true
-          }
-        ],
-        "tv": [
-          {
-            "src": "/screenshots/crucible/tv-1.webp",
-            "w": 2400,
-            "h": 1350,
-            "label": "Home"
-          },
-          {
-            "src": "/screenshots/crucible/tv-2.webp",
-            "w": 2400,
-            "h": 1350,
-            "label": "Detail"
-          },
-          {
-            "src": "/screenshots/crucible/tv-3.webp",
-            "w": 2400,
-            "h": 1350,
-            "label": "Context menu"
-          },
-          {
-            "src": "/screenshots/crucible/tv-4.webp",
-            "w": 2400,
-            "h": 1350,
-            "label": "Library"
-          },
-          {
-            "src": "/screenshots/crucible/tv-5.webp",
-            "w": 2400,
-            "h": 1350,
-            "label": "Player scrub"
-          },
-          {
-            "src": "/screenshots/crucible/tv-6.webp",
-            "w": 2400,
-            "h": 1350,
-            "label": "Player menus"
-          },
-          {
-            "src": "/screenshots/crucible/tv-7.webp",
-            "w": 2400,
-            "h": 1350,
-            "label": "Up Next"
-          },
-          {
-            "src": "/screenshots/crucible/tv-8.webp",
-            "w": 2400,
-            "h": 1350,
-            "label": "Statistics"
-          }
-        ]
-      },
-      "name": "Crucible: Plex Client",
-      "appStoreUrl": "https://apps.apple.com/us/app/crucible-for-plex/id6822066419",
-      "description": "Crucible is a native client for your Plex Media Server on iPhone and Apple TV. It is built to feel like part of the system: the system player, native menus and context menus, Liquid Glass on the newest software, and a library that opens exactly where you left off.\n\nPICK UP WHERE YOU LEFT OFF\nHome opens on a Resume hero, then Continue Watching, Up Next and Recently Added. Library grids have filters for Unwatched and In Progress, genre and sort, an A–Z scrubber and folder browsing for unindexed content. Search groups results by type with a Top Result.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits from Plex markers, audio and subtitle menus, adjustable speed, lock screen controls and Up Next that rolls the next episode as the credits start. On iPhone: Picture-in-Picture and background audio. Direct play when your device can handle the file, automatic transcoding when it can't.\n\nMADE FOR THE COUCH\nThe Apple TV app is built for the Siri Remote: a cinematic Home that follows focus, one tab per library, native context menus, search, and Top Shelf with Continue Watching and Up Next. Liquid Glass on tvOS 26.\n\nTAKE IT OFFLINE\nOn iPhone, download movies, seasons or single episodes in the quality you pick. Transfers continue in the background, stay on Wi-Fi by default and show a Live Activity on the Lock Screen and in the Dynamic Island. Offline playback uses the same player.\n\nKNOW YOUR VIEWING\nWatch History grouped by day, Statistics with streaks, heatmaps, binges and taste built from your own Plex history, and a Year in Review poster you can share.\n\nFREE TO USE, CRUCIBLE PRO TO GO FURTHER\nBrowsing, search and playback are free on iPhone and Apple TV, and so is the Statistics view for the last week. Crucible Pro unlocks unlimited offline downloads, the full Statistics screen with every range and library filter, the Year in Review poster and Top Shelf. Pay once for lifetime access, or subscribe yearly. One purchase covers iPhone and Apple TV, and Family Sharing is on.\n\nTRY IT WITHOUT A SERVER\nNo Plex server yet? Choose Try the demo on the welcome screen to explore a fictional library with everything unlocked, guided by a short tour.\n\nPRIVATE BY DESIGN\nNo sign-up, no ads, no analytics. Crucible talks to plex.tv and the server you choose, and records Crucible Pro purchases with an anonymous Midgar ID, with no sign-up.\n\nOPEN SOURCE\nCrucible is free software under GPL-3.0: https://github.com/guitaripod/Crucible\n\nCrucible needs a Plex Media Server. Plex requires a Plex Pass or Remote Watch Pass to stream from your server away from home. Crucible is an independent app and is not made by, endorsed by or affiliated with Plex, Inc. Plex is a trademark of Plex, Inc.",
-      "category": "Entertainment",
-      "price": "Free",
-      "rating": 0,
-      "ratingCount": 0,
-      "version": "2.1.0",
-      "releaseDate": "2026-10-15T07:00:00Z",
-      "currentVersionReleaseDate": "2026-10-12T19:25:12Z",
-      "minimumOsVersion": "17.0",
-      "sellerName": "Midgar Oy",
-      "icon": "/screenshots/crucible/icon.webp",
-      "iconLocal": "/screenshots/crucible/icon.webp",
-      "supportUrl": "https://github.com/guitaripod/Crucible/issues",
-      "openSource": true,
-      "githubUrl": "https://github.com/guitaripod/Crucible",
-      "latestReleaseUrl": "https://github.com/guitaripod/Crucible/releases/latest",
-      "license": "GPL-3.0",
-      "platforms": [
-        "iPhone",
-        "iPad",
-        "Apple TV"
-      ],
-      "releaseNotes": "Fixes for Crucible Pro and search.\n\n- The Crucible Pro screen now lets you choose either plan: tapping the yearly plan selects it, with its free trial and renewal terms\n- Search keeps its results in step with the text: going back to a shorter search no longer swaps in the results of the longer one\n- An episode's top search result now names the episode as well as its show\n- In the demo, the Crucible Pro offer at the end of the tour waits until you are done typing instead of covering the search keyboard, and demo search lists the best match first",
-      "promotionalText": "Your library, native on iPhone and Apple TV: a Resume-first Home, the system player, offline downloads and a Year in Review. No server? Try the built-in demo.",
-      "genres": [
-        "Entertainment",
-        "Photo & Video"
-      ],
-      "contentRating": "4+",
-      "languages": [
-        "EN"
-      ],
-      "bundleId": "com.guitaripod.crucible",
-      "marketingUrl": "https://midgarcorp.cc/crucible",
-      "keywords": "media server,player,streaming,tv,library,downloads,statistics,skip intro,watch history,offline"
-    },
-    {
-      "slug": "flaccy",
-      "trackId": 6787493695,
-      "shortName": "Flaccy",
-      "status": "live",
-      "primaryColor": "#FF4D6D",
-      "screenshots": {
-        "iphone": [
-          {
-            "src": "/screenshots/flaccy/iphone-1.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Library"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-2.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Equalizer"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-3.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Now Playing"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-4.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Lyrics"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-5.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Playlists"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-6.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Recap"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-7.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Year in Music"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-8.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Apple Watch"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-9.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Precision EQ"
-          },
-          {
-            "src": "/screenshots/flaccy/iphone-10.webp",
-            "w": 1290,
-            "h": 2803,
-            "label": "Light and dark"
-          }
-        ],
-        "ipad": [
-          {
-            "src": "/screenshots/flaccy/ipad-1.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Home"
-          },
-          {
-            "src": "/screenshots/flaccy/ipad-2.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Library"
-          },
-          {
-            "src": "/screenshots/flaccy/ipad-3.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Album"
-          },
-          {
-            "src": "/screenshots/flaccy/ipad-4.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Lyrics"
-          },
-          {
-            "src": "/screenshots/flaccy/ipad-5.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Up Next"
-          },
-          {
-            "src": "/screenshots/flaccy/ipad-6.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Charts"
-          },
-          {
-            "src": "/screenshots/flaccy/ipad-7.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Equalizer"
-          },
-          {
-            "src": "/screenshots/flaccy/ipad-8.webp",
-            "w": 1600,
-            "h": 1200,
-            "label": "Year in Music"
-          }
-        ],
-        "mac": [
-          {
-            "src": "/screenshots/flaccy/mac-1.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Library"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-2.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Equalizer"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-3.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Now Playing"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-4.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Up Next"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-5.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Songs"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-6.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Recap"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-7.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Precision EQ"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-8.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Year in Music"
-          },
-          {
-            "src": "/screenshots/flaccy/mac-9.webp",
-            "w": 1920,
-            "h": 1200,
-            "label": "Light mode"
-          }
-        ],
-        "linux": [
-          {
-            "src": "/screenshots/flaccy/linux-1.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Library"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-2.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Now Playing"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-12.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Equalizer"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-13.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Precision EQ"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-3.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Album"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-4.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Songs"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-5.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Artist"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-14.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Your history"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-6.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Playlists"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-7.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Queue"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-8.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Lyrics"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-9.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Stats"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-10.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Wantlist"
-          },
-          {
-            "src": "/screenshots/flaccy/linux-11.webp",
-            "w": 1920,
-            "h": 1080,
-            "label": "Light mode"
-          }
-        ]
-      },
-      "name": "Flaccy",
-      "appStoreUrl": "https://apps.apple.com/us/app/id6787493695",
-      "description": "Flaccy plays the music you own at full quality: FLAC, ALAC, WAV, AIFF, MP3 and AAC. A real equalizer, gapless playback, synced lyrics you can share as a video, Last.fm scrobbling, a full iPad layout and a standalone Apple Watch app. No account, no ads, and your files never leave your device.\n\nSEE EXACTLY WHAT YOU'RE HEARING\n• Codec, bit depth and sample rate on every track, from CD quality to Hi-Res\n• Gapless playback that honors your albums (exact for lossless files), with a queue that survives relaunches\n• A built-in Listening Guide that explains what Bluetooth, AirPods and wired DACs really deliver. No snake oil\n\nA REAL EQUALIZER\n• Drag the curve and hear it change, or switch to Advanced for up to ten bands with bells, shelves, filters and adjustable Q\n• 16 presets and your own. Import Equalizer APO and AutoEq profiles to tune for your headphones\n• A separate setting for every output: AirPods, a wired DAC, the speaker. Flaccy switches when you do\n• Automatic headroom keeps boosts from clipping, and Hold to compare is level-matched, so louder never sounds better\n• Works with every format and keeps playback gapless. Off or flat, the signal passes through untouched\n\nYOUR LIBRARY, ORGANIZED\n• Bring music in from the Files app, USB, a NAS or any folder; Flaccy keeps your folder structure\n• Messy filenames and scene releases are identified and cleaned up automatically (AI cleanup is included in the trial and in Lifetime)\n• Albums, artists, songs and playlists with fast search, flexible sorting and large artwork you can replace with your own\n• Duplicate songs are listed once, and Flaccy builds smart playlists from your own listening\n\nMADE FOR LISTENING\n• Home picks up where you left off, with mixes made from your own listening and what you played on this day in years past\n• Synced lyrics that fill in word by word when a song has word timing, with tap-to-seek and a timing control for songs that run off\n• Share Lyrics: pick the lines you love and get a short video of them over the song itself, in four looks and four formats for Stories, posts and more\n• Full controls on the Lock Screen and in the Dynamic Island, AirPlay and a sleep timer\n• Light and dark appearance, and a Now Playing screen worth looking at\n\nBUILT FOR IPAD\n• A sidebar for your library and every playlist, with Now Playing and Up Next in a column beside it\n• Lyrics and the queue spread across the screen next to the artwork\n• Keyboard shortcuts, the menu bar, pointer support and drag and drop: songs into Up Next or onto a playlist, audio files straight from Files\n\nYOUR SERVER, TOO\n• Play from Navidrome, Flaccy Server or any OpenSubsonic server, over your home network or Tailscale\n• Songs stream without filling your iPhone or iPad and download for offline when you want them\n• One purchase covers iPhone, iPad, Mac and Apple Watch\n\nSCROBBLE EVERYTHING\n• Sign in with Last.fm and every play is scrobbled, even offline, with automatic retry\n• Listening charts, artist bios and a wantlist for the records you're hunting\n• Year in Music: shareable story cards and a poster of your listening year\n\nAPPLE WATCH, NO PHONE NEEDED\n• Sync tracks to your watch and play them offline\n• A true standalone player with gapless playback, shuffle, repeat and AirPods controls\n• Storage-smart sync that knows what fits\n\nTRY IT FREE\nFlaccy is free for 7 days from the first time you play your own music. After that, keep everything with a one-time Lifetime purchase, or choose the yearly plan. The yearly plan renews automatically unless canceled at least 24 hours before the end of the period; manage or cancel it in your Apple Account settings.\n\nFlaccy plays FLAC, ALAC, AAC, M4A, MP3, WAV, AIFF and CAF.\n\nTerms of Use: https://mako.midgarcorp.cc/terms/flaccy\nPrivacy Policy: https://mako.midgarcorp.cc/privacy/flaccy\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
-      "category": "Music",
-      "price": "Free",
-      "rating": 0,
-      "ratingCount": 0,
-      "version": "1.0",
-      "minimumOsVersion": "18.0",
-      "bundleId": "com.midgarcorp.flaccy",
-      "sellerName": "Midgar Oy",
-      "icon": null,
-      "marketingUrl": "https://midgarcorp.cc/flaccy",
-      "supportUrl": "https://midgarcorp.cc/flaccy",
-      "iconLocal": "/screenshots/flaccy/icon.webp",
-      "platforms": [
-        "iPhone",
-        "iPad",
-        "Apple Watch",
-        "Mac",
-        "Linux"
-      ],
-      "ogShot": {
-        "src": "/screenshots/flaccy/og-hero.webp",
-        "w": 724,
-        "h": 1500,
-        "label": "Equalizer",
-        "framed": true
-      }
-    },
-    {
       "slug": "tailscode",
       "trackId": 6791660932,
       "shortName": "Tailscode",
@@ -4171,6 +3712,531 @@
       "platforms": [
         "iPhone"
       ]
+    },
+    {
+      "slug": "crucible",
+      "trackId": 6822066419,
+      "shortName": "Crucible",
+      "status": "live",
+      "primaryColor": "#F97316",
+      "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/crucible/iphone-1.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Home — a Resume hero, Continue Watching, Up Next and your week at a glance",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-2.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Library — filter chips, a Continue banner and a Recently Watched rail with See All",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-3.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Detail — immersive backdrop, one-tap Resume, audio and subtitle menus",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-4.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Shows — season picker, episode rows, swipe actions and per-episode download rings",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-5.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Search — grouped results with a Top Result, recents and genre browse",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-6.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Downloads — storage at a glance, the queue, and everything ready to watch offline",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-7.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Statistics — your year in watch time, streaks and an activity heatmap, filterable by library",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-8.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Share Your Year — preview a Story or Square poster before it goes out",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-9.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "You — profile and server status, Year in Review, Watch History and settings, in Light",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-10.webp",
+            "w": 1470,
+            "h": 3000,
+            "label": "Libraries — choose what appears on Home and counts toward your stats",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/iphone-11.webp",
+            "w": 3000,
+            "h": 1470,
+            "label": "Player — Skip Intro with a live progress sweep, in landscape",
+            "framed": true
+          }
+        ],
+        "ipad": [
+          {
+            "src": "/screenshots/crucible/ipad-1.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Home: a library sidebar and a Resume hero that grows with the window",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-2.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Library: poster grids that add columns as the window grows",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-3.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Detail: a 16:9 backdrop, one-tap Play, audio and subtitle menus",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-4.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Shows: seasons and episodes with watched state and downloads on every row",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-5.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Player: the system player, with Space, S and N for play, skip and the next episode",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-6.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Search: results grouped by type with a Top Result, one Command-F away",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-7.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Statistics: your year in watch time, streaks and an activity heatmap",
+            "framed": true
+          },
+          {
+            "src": "/screenshots/crucible/ipad-8.webp",
+            "w": 1600,
+            "h": 1226,
+            "label": "Watch History: every play, day by day, with posters",
+            "framed": true
+          }
+        ],
+        "tv": [
+          {
+            "src": "/screenshots/crucible/tv-1.webp",
+            "w": 2400,
+            "h": 1350,
+            "label": "Home"
+          },
+          {
+            "src": "/screenshots/crucible/tv-2.webp",
+            "w": 2400,
+            "h": 1350,
+            "label": "Detail"
+          },
+          {
+            "src": "/screenshots/crucible/tv-3.webp",
+            "w": 2400,
+            "h": 1350,
+            "label": "Context menu"
+          },
+          {
+            "src": "/screenshots/crucible/tv-4.webp",
+            "w": 2400,
+            "h": 1350,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/crucible/tv-5.webp",
+            "w": 2400,
+            "h": 1350,
+            "label": "Player scrub"
+          },
+          {
+            "src": "/screenshots/crucible/tv-6.webp",
+            "w": 2400,
+            "h": 1350,
+            "label": "Player menus"
+          },
+          {
+            "src": "/screenshots/crucible/tv-7.webp",
+            "w": 2400,
+            "h": 1350,
+            "label": "Up Next"
+          },
+          {
+            "src": "/screenshots/crucible/tv-8.webp",
+            "w": 2400,
+            "h": 1350,
+            "label": "Statistics"
+          }
+        ]
+      },
+      "name": "Crucible: Plex Client",
+      "appStoreUrl": "https://apps.apple.com/us/app/crucible-for-plex/id6822066419",
+      "description": "Crucible is a native client for your Plex Media Server on iPhone and Apple TV. It is built to feel like part of the system: the system player, native menus and context menus, Liquid Glass on the newest software, and a library that opens exactly where you left off.\n\nPICK UP WHERE YOU LEFT OFF\nHome opens on a Resume hero, then Continue Watching, Up Next and Recently Added. Library grids have filters for Unwatched and In Progress, genre and sort, an A–Z scrubber and folder browsing for unindexed content. Search groups results by type with a Top Result.\n\nA PLAYER THAT RESPECTS YOUR TIME\nSkip Intro and Skip Credits from Plex markers, audio and subtitle menus, adjustable speed, lock screen controls and Up Next that rolls the next episode as the credits start. On iPhone: Picture-in-Picture and background audio. Direct play when your device can handle the file, automatic transcoding when it can't.\n\nMADE FOR THE COUCH\nThe Apple TV app is built for the Siri Remote: a cinematic Home that follows focus, one tab per library, native context menus, search, and Top Shelf with Continue Watching and Up Next. Liquid Glass on tvOS 26.\n\nTAKE IT OFFLINE\nOn iPhone, download movies, seasons or single episodes in the quality you pick. Transfers continue in the background, stay on Wi-Fi by default and show a Live Activity on the Lock Screen and in the Dynamic Island. Offline playback uses the same player.\n\nKNOW YOUR VIEWING\nWatch History grouped by day, Statistics with streaks, heatmaps, binges and taste built from your own Plex history, and a Year in Review poster you can share.\n\nFREE TO USE, CRUCIBLE PRO TO GO FURTHER\nBrowsing, search and playback are free on iPhone and Apple TV, and so is the Statistics view for the last week. Crucible Pro unlocks unlimited offline downloads, the full Statistics screen with every range and library filter, the Year in Review poster and Top Shelf. Pay once for lifetime access, or subscribe yearly. One purchase covers iPhone and Apple TV, and Family Sharing is on.\n\nTRY IT WITHOUT A SERVER\nNo Plex server yet? Choose Try the demo on the welcome screen to explore a fictional library with everything unlocked, guided by a short tour.\n\nPRIVATE BY DESIGN\nNo sign-up, no ads, no analytics. Crucible talks to plex.tv and the server you choose, and records Crucible Pro purchases with an anonymous Midgar ID, with no sign-up.\n\nOPEN SOURCE\nCrucible is free software under GPL-3.0: https://github.com/guitaripod/Crucible\n\nCrucible needs a Plex Media Server. Plex requires a Plex Pass or Remote Watch Pass to stream from your server away from home. Crucible is an independent app and is not made by, endorsed by or affiliated with Plex, Inc. Plex is a trademark of Plex, Inc.",
+      "category": "Entertainment",
+      "price": "Free",
+      "rating": 0,
+      "ratingCount": 0,
+      "version": "2.1.0",
+      "releaseDate": "2026-10-15T07:00:00Z",
+      "currentVersionReleaseDate": "2026-10-12T19:25:12Z",
+      "minimumOsVersion": "17.0",
+      "sellerName": "Midgar Oy",
+      "icon": "/screenshots/crucible/icon.webp",
+      "iconLocal": "/screenshots/crucible/icon.webp",
+      "supportUrl": "https://github.com/guitaripod/Crucible/issues",
+      "openSource": true,
+      "githubUrl": "https://github.com/guitaripod/Crucible",
+      "latestReleaseUrl": "https://github.com/guitaripod/Crucible/releases/latest",
+      "license": "GPL-3.0",
+      "platforms": [
+        "iPhone",
+        "iPad",
+        "Apple TV"
+      ],
+      "releaseNotes": "Fixes for Crucible Pro and search.\n\n- The Crucible Pro screen now lets you choose either plan: tapping the yearly plan selects it, with its free trial and renewal terms\n- Search keeps its results in step with the text: going back to a shorter search no longer swaps in the results of the longer one\n- An episode's top search result now names the episode as well as its show\n- In the demo, the Crucible Pro offer at the end of the tour waits until you are done typing instead of covering the search keyboard, and demo search lists the best match first",
+      "promotionalText": "Your library, native on iPhone and Apple TV: a Resume-first Home, the system player, offline downloads and a Year in Review. No server? Try the built-in demo.",
+      "genres": [
+        "Entertainment",
+        "Photo & Video"
+      ],
+      "contentRating": "4+",
+      "languages": [
+        "EN"
+      ],
+      "bundleId": "com.guitaripod.crucible",
+      "marketingUrl": "https://midgarcorp.cc/crucible",
+      "keywords": "media server,player,streaming,tv,library,downloads,statistics,skip intro,watch history,offline"
+    },
+    {
+      "slug": "flaccy",
+      "trackId": 6787493695,
+      "shortName": "Flaccy",
+      "status": "live",
+      "primaryColor": "#FF4D6D",
+      "screenshots": {
+        "iphone": [
+          {
+            "src": "/screenshots/flaccy/iphone-1.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-2.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Equalizer"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-3.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Now Playing"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-4.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Lyrics"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-5.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Playlists"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-6.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Recap"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-7.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Year in Music"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-8.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Apple Watch"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-9.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Precision EQ"
+          },
+          {
+            "src": "/screenshots/flaccy/iphone-10.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Light and dark"
+          }
+        ],
+        "ipad": [
+          {
+            "src": "/screenshots/flaccy/ipad-1.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Home"
+          },
+          {
+            "src": "/screenshots/flaccy/ipad-2.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/flaccy/ipad-3.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Album"
+          },
+          {
+            "src": "/screenshots/flaccy/ipad-4.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Lyrics"
+          },
+          {
+            "src": "/screenshots/flaccy/ipad-5.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Up Next"
+          },
+          {
+            "src": "/screenshots/flaccy/ipad-6.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Charts"
+          },
+          {
+            "src": "/screenshots/flaccy/ipad-7.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Equalizer"
+          },
+          {
+            "src": "/screenshots/flaccy/ipad-8.webp",
+            "w": 1600,
+            "h": 1200,
+            "label": "Year in Music"
+          }
+        ],
+        "mac": [
+          {
+            "src": "/screenshots/flaccy/mac-1.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-2.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Equalizer"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-3.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Now Playing"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-4.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Up Next"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-5.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Songs"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-6.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Recap"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-7.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Precision EQ"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-8.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Year in Music"
+          },
+          {
+            "src": "/screenshots/flaccy/mac-9.webp",
+            "w": 1920,
+            "h": 1200,
+            "label": "Light mode"
+          }
+        ],
+        "linux": [
+          {
+            "src": "/screenshots/flaccy/linux-1.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Library"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-2.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Now Playing"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-12.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Equalizer"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-13.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Precision EQ"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-3.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Album"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-4.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Songs"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-5.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Artist"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-14.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Your history"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-6.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Playlists"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-7.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Queue"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-8.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Lyrics"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-9.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Stats"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-10.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Wantlist"
+          },
+          {
+            "src": "/screenshots/flaccy/linux-11.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Light mode"
+          }
+        ]
+      },
+      "name": "Flaccy",
+      "appStoreUrl": "https://apps.apple.com/us/app/id6787493695",
+      "description": "Flaccy plays the music you own at full quality: FLAC, ALAC, WAV, AIFF, MP3 and AAC. A real equalizer, gapless playback, synced lyrics you can share as a video, Last.fm scrobbling, a full iPad layout and a standalone Apple Watch app. No account, no ads, and your files never leave your device.\n\nSEE EXACTLY WHAT YOU'RE HEARING\n• Codec, bit depth and sample rate on every track, from CD quality to Hi-Res\n• Gapless playback that honors your albums (exact for lossless files), with a queue that survives relaunches\n• A built-in Listening Guide that explains what Bluetooth, AirPods and wired DACs really deliver. No snake oil\n\nA REAL EQUALIZER\n• Drag the curve and hear it change, or switch to Advanced for up to ten bands with bells, shelves, filters and adjustable Q\n• 16 presets and your own. Import Equalizer APO and AutoEq profiles to tune for your headphones\n• A separate setting for every output: AirPods, a wired DAC, the speaker. Flaccy switches when you do\n• Automatic headroom keeps boosts from clipping, and Hold to compare is level-matched, so louder never sounds better\n• Works with every format and keeps playback gapless. Off or flat, the signal passes through untouched\n\nYOUR LIBRARY, ORGANIZED\n• Bring music in from the Files app, USB, a NAS or any folder; Flaccy keeps your folder structure\n• Messy filenames and scene releases are identified and cleaned up automatically (AI cleanup is included in the trial and in Lifetime)\n• Albums, artists, songs and playlists with fast search, flexible sorting and large artwork you can replace with your own\n• Duplicate songs are listed once, and Flaccy builds smart playlists from your own listening\n\nMADE FOR LISTENING\n• Home picks up where you left off, with mixes made from your own listening and what you played on this day in years past\n• Synced lyrics that fill in word by word when a song has word timing, with tap-to-seek and a timing control for songs that run off\n• Share Lyrics: pick the lines you love and get a short video of them over the song itself, in four looks and four formats for Stories, posts and more\n• Full controls on the Lock Screen and in the Dynamic Island, AirPlay and a sleep timer\n• Light and dark appearance, and a Now Playing screen worth looking at\n\nBUILT FOR IPAD\n• A sidebar for your library and every playlist, with Now Playing and Up Next in a column beside it\n• Lyrics and the queue spread across the screen next to the artwork\n• Keyboard shortcuts, the menu bar, pointer support and drag and drop: songs into Up Next or onto a playlist, audio files straight from Files\n\nYOUR SERVER, TOO\n• Play from Navidrome, Flaccy Server or any OpenSubsonic server, over your home network or Tailscale\n• Songs stream without filling your iPhone or iPad and download for offline when you want them\n• One purchase covers iPhone, iPad, Mac and Apple Watch\n\nSCROBBLE EVERYTHING\n• Sign in with Last.fm and every play is scrobbled, even offline, with automatic retry\n• Listening charts, artist bios and a wantlist for the records you're hunting\n• Year in Music: shareable story cards and a poster of your listening year\n\nAPPLE WATCH, NO PHONE NEEDED\n• Sync tracks to your watch and play them offline\n• A true standalone player with gapless playback, shuffle, repeat and AirPods controls\n• Storage-smart sync that knows what fits\n\nTRY IT FREE\nFlaccy is free for 7 days from the first time you play your own music. After that, keep everything with a one-time Lifetime purchase, or choose the yearly plan. The yearly plan renews automatically unless canceled at least 24 hours before the end of the period; manage or cancel it in your Apple Account settings.\n\nFlaccy plays FLAC, ALAC, AAC, M4A, MP3, WAV, AIFF and CAF.\n\nTerms of Use: https://mako.midgarcorp.cc/terms/flaccy\nPrivacy Policy: https://mako.midgarcorp.cc/privacy/flaccy\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "category": "Music",
+      "price": "Free",
+      "rating": 0,
+      "ratingCount": 0,
+      "version": "1.0",
+      "minimumOsVersion": "18.0",
+      "bundleId": "com.midgarcorp.flaccy",
+      "sellerName": "Midgar Oy",
+      "icon": null,
+      "marketingUrl": "https://midgarcorp.cc/flaccy",
+      "supportUrl": "https://midgarcorp.cc/flaccy",
+      "iconLocal": "/screenshots/flaccy/icon.webp",
+      "platforms": [
+        "iPhone",
+        "iPad",
+        "Apple Watch",
+        "Mac",
+        "Linux"
+      ],
+      "ogShot": {
+        "src": "/screenshots/flaccy/og-hero.webp",
+        "w": 724,
+        "h": 1500,
+        "label": "Equalizer",
+        "framed": true
+      }
     }
   ]
 }

@@ -239,6 +239,14 @@
     480,
     960
   ],
+  "/screenshots/masterofflags/iphone-9.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/iphone-10.webp": [
+    480,
+    960
+  ],
   "/screenshots/masterofflags/ipad-1.webp": [
     480,
     960
@@ -271,6 +279,14 @@
     480,
     960
   ],
+  "/screenshots/masterofflags/ipad-9.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/ipad-10.webp": [
+    480,
+    960
+  ],
   "/screenshots/masterofflags/mac-1.webp": [
     480,
     960
@@ -288,6 +304,26 @@
     960
   ],
   "/screenshots/masterofflags/mac-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/mac-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/mac-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/mac-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/mac-9.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/mac-10.webp": [
     480,
     960
   ],
@@ -312,6 +348,10 @@
     960
   ],
   "/screenshots/masterofflags/tv-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/masterofflags/tv-7.webp": [
     480,
     960
   ],
@@ -587,6 +627,145 @@
     480,
     960
   ],
+  "/screenshots/tailscode/or-n-phone-agents.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-wall.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-models.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-peek.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-setup.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-steer.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-gpu.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-carry.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-party.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-costs.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-approval.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-home.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-master.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-debrief.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-terminal.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-hermes.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-later.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-phone-scheduled.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-approval.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-agents.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-d-phone-home.webp": [
+    480
+  ],
+  "/screenshots/tailscode/or-n-pad-wall.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-n-pad-live.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-n-pad-terminal.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-n-desk-split.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-n-desk-terminal.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-d-desk-split.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-d-desk-terminal.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-n-mac-terminal.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-n-mac-megatron.webp": [
+    480,
+    960
+  ],
+  "/screenshots/tailscode/or-n-mac-split.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-1.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-2.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-3.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-4.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-5.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-6.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-7.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-8.webp": [
+    480,
+    960
+  ],
+  "/screenshots/livingdex/iphone-9.webp": [
+    480,
+    960
+  ],
   "/screenshots/crucible/iphone-1.webp": [
     480,
     960
@@ -859,145 +1038,6 @@
     480,
     960
   ],
-  "/screenshots/tailscode/or-n-phone-agents.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-wall.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-models.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-peek.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-setup.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-steer.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-gpu.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-carry.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-party.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-costs.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-approval.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-home.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-master.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-debrief.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-terminal.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-hermes.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-later.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-phone-scheduled.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-d-phone-approval.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-d-phone-agents.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-d-phone-home.webp": [
-    480
-  ],
-  "/screenshots/tailscode/or-n-pad-wall.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/or-n-pad-live.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/or-n-pad-terminal.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/or-n-desk-split.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/or-n-desk-terminal.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/or-d-desk-split.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/or-d-desk-terminal.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/or-n-mac-terminal.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/or-n-mac-megatron.webp": [
-    480,
-    960
-  ],
-  "/screenshots/tailscode/or-n-mac-split.webp": [
-    480,
-    960
-  ],
-  "/screenshots/livingdex/iphone-1.webp": [
-    480,
-    960
-  ],
-  "/screenshots/livingdex/iphone-2.webp": [
-    480,
-    960
-  ],
-  "/screenshots/livingdex/iphone-3.webp": [
-    480,
-    960
-  ],
-  "/screenshots/livingdex/iphone-4.webp": [
-    480,
-    960
-  ],
-  "/screenshots/livingdex/iphone-5.webp": [
-    480,
-    960
-  ],
-  "/screenshots/livingdex/iphone-6.webp": [
-    480,
-    960
-  ],
-  "/screenshots/livingdex/iphone-7.webp": [
-    480,
-    960
-  ],
-  "/screenshots/livingdex/iphone-8.webp": [
-    480,
-    960
-  ],
-  "/screenshots/livingdex/iphone-9.webp": [
-    480,
-    960
-  ],
   "/screenshots/crucible/hero.webp": [
     480,
     960
@@ -1126,85 +1166,6 @@
   "/screenshots/embr/web-watch.webp": [
     480
   ],
-  "/screenshots/crucible/web-hero-salt-road.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/web-ipad-community.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/web-ipad-home.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/web-ipad-library.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/web-phone-essentials-offer.webp": [
-    480
-  ],
-  "/screenshots/crucible/web-phone-home.webp": [
-    480
-  ],
-  "/screenshots/crucible/web-phone-share-preview.webp": [
-    480
-  ],
-  "/screenshots/crucible/web-phone-stats.webp": [
-    480
-  ],
-  "/screenshots/crucible/web-phone-what-to-watch.webp": [
-    480
-  ],
-  "/screenshots/crucible/web-tv-01.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/web-tv-05.webp": [
-    480,
-    960
-  ],
-  "/screenshots/crucible/web-tv-livetv.webp": [
-    480,
-    960
-  ],
-  "/screenshots/flaccy/og-hero.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-album.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-lyric-share.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-lyrics.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-now-playing.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-recap.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-theme-gallery.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-theme-hi-fi.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-theme-liner-notes.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-theme-marquee.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-theme-phosphor.webp": [
-    480
-  ],
-  "/screenshots/flaccy/web-phone-year.webp": [
-    480
-  ],
   "/screenshots/tailscode/or-d-display-terminal.webp": [
     480,
     960
@@ -1289,6 +1250,85 @@
     480,
     960
   ],
+  "/screenshots/crucible/web-hero-salt-road.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/web-ipad-community.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/web-ipad-home.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/web-ipad-library.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/web-phone-essentials-offer.webp": [
+    480
+  ],
+  "/screenshots/crucible/web-phone-home.webp": [
+    480
+  ],
+  "/screenshots/crucible/web-phone-share-preview.webp": [
+    480
+  ],
+  "/screenshots/crucible/web-phone-stats.webp": [
+    480
+  ],
+  "/screenshots/crucible/web-phone-what-to-watch.webp": [
+    480
+  ],
+  "/screenshots/crucible/web-tv-01.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/web-tv-05.webp": [
+    480,
+    960
+  ],
+  "/screenshots/crucible/web-tv-livetv.webp": [
+    480,
+    960
+  ],
+  "/screenshots/flaccy/og-hero.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-album.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-lyric-share.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-lyrics.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-now-playing.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-recap.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-theme-gallery.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-theme-hi-fi.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-theme-liner-notes.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-theme-marquee.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-theme-phosphor.webp": [
+    480
+  ],
+  "/screenshots/flaccy/web-phone-year.webp": [
+    480
+  ],
   "/screenshots/dreameater/icon.webp": [
     72,
     144,
@@ -1349,22 +1389,22 @@
     144,
     216
   ],
-  "/screenshots/crucible/icon.webp": [
-    72,
-    144,
-    216
-  ],
-  "/screenshots/flaccy/icon.webp": [
-    72,
-    144,
-    216
-  ],
   "/screenshots/tailscode/icon.webp": [
     72,
     144,
     216
   ],
   "/screenshots/livingdex/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/crucible/icon.webp": [
+    72,
+    144,
+    216
+  ],
+  "/screenshots/flaccy/icon.webp": [
     72,
     144,
     216
