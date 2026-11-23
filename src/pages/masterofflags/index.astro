@@ -10,7 +10,6 @@ import { siblingApps } from '@utils/sibling-apps';
 import { appPageJsonLd } from '@utils/structured-data';
 import { markdownPath } from '@utils/llms';
 import { privacyUrlFor, supportPath } from '../../utils/app-links';
-import { duoCombo } from '@data/duo';
 
 export const prerender = true;
 
@@ -18,14 +17,15 @@ const app = landingApps.find((a) => a.slug === 'masterofflags') as LandingApp;
 const c = app.content;
 const accent = c.accentColor || app.primaryColor;
 
-const OG_REV = '13';
+const OG_REV = '14';
 const ogImage = `/og/masterofflags.png?v=${OG_REV}`;
 
 const variants = screenshotVariants as Record<string, number[]>;
 
-/// A figure of the page from Master of Flags' App Store set: the framed device cut out of its
+/// A figure of the page from Master of Flags 5.0's App Store set: the framed device lifted off its
 /// store slide along the bezel the frames CLI drew, or an Apple TV capture as it was shot.
-const figure = (src: string, w: number, h: number) => {
+const figure = (name: string, w: number, h: number) => {
+  const src = `/screenshots/masterofflags/web-${name}.webp`;
   const srcset = [
     ...(variants[src] ?? []).map(
       (wide) => `${screenshotUrl(src.replace(/\.webp$/, `@${wide}.webp`))} ${wide}w`
@@ -34,27 +34,32 @@ const figure = (src: string, w: number, h: number) => {
   ].join(', ');
   return { src: screenshotUrl(src), srcset, w, h };
 };
-const phone = (name: string) =>
-  figure(`/screenshots/masterofflags/web-phone-${name}.webp`, 735, 1521);
-const pad = (name: string) =>
-  figure(`/screenshots/masterofflags/web-ipad-${name}.webp`, 1150, 1499);
-const mac = (name: string) => figure(`/screenshots/masterofflags/web-mac-${name}.webp`, 1656, 983);
-const tv = (index: number) => figure(`/screenshots/masterofflags/tv-${index}.webp`, 1920, 1080);
+const phone = (name: string) => figure(`phone-${name}`, 735, 1520);
+const pad = (name: string) => figure(`ipad-${name}`, 1150, 1500);
+const tv = (name: string) => figure(`tv-${name}`, 1920, 1080);
 
+const heroArt = figure('hero-globe', 2880, 1620);
+const preview = {
+  src: screenshotUrl('/screenshots/masterofflags/web-preview.mp4'),
+  poster: figure('preview-poster', 735, 1500),
+};
 const shots = {
+  locate: phone('locate'),
+  card: phone('card'),
+  cards: phone('cards'),
+  expeditions: phone('expeditions'),
+  you: phone('you'),
   daily: phone('daily'),
-  learn: phone('learn'),
-  search: phone('search'),
-  train: phone('train'),
-  couch: tv(5),
-  pad: pad('play'),
-  mac: mac('learn'),
+  looks: phone('looks'),
+  tvQuestion: tv('atlas-question'),
+  tvCouch: tv('couch-play'),
+  pad: pad('atlas'),
 };
 
 const flag = (code: string) => `/screenshots/masterofflags/flags/${code.toLowerCase()}.webp`;
 
-/// The rounds of the quiz on this page, lookalike flags from the app's own data: the capital,
-/// the flag cue and the lookalike note are the words Master of Flags shows after an answer.
+/// The rounds of the quiz on this page, look-alike flags from the app's own data: the capital,
+/// the flag cue and the look-alike note are the words Master of Flags shows after an answer.
 const rounds = [
   {
     answer: 'MDA',
@@ -62,7 +67,7 @@ const rounds = [
     capital: 'Chișinău',
     cue: 'Three equal vertical bands of Prussian blue, chrome yellow and vermilion red.',
     note: 'Romania has the same blue, yellow and red bands, and no coat of arms.',
-    options: ['ROU', 'MDA', 'AND'],
+    options: ['ROU', 'MDA', 'AND', 'TCD'],
   },
   {
     answer: 'TCD',
@@ -70,7 +75,7 @@ const rounds = [
     capital: 'N’Djamena',
     cue: 'Three equal vertical bands of blue, gold and red.',
     note: 'Romania has the same bands; its blue is slightly lighter.',
-    options: ['TCD', 'BEL', 'ROU'],
+    options: ['AND', 'TCD', 'BEL', 'ROU'],
   },
   {
     answer: 'IDN',
@@ -78,7 +83,7 @@ const rounds = [
     capital: 'Jakarta',
     cue: 'Two equal horizontal bands of red over white.',
     note: 'Monaco is the same red over white in a squarer shape; Poland is white over red.',
-    options: ['POL', 'MCO', 'IDN'],
+    options: ['POL', 'MCO', 'SGP', 'IDN'],
   },
   {
     answer: 'IRL',
@@ -86,7 +91,7 @@ const rounds = [
     capital: 'Dublin',
     cue: 'Three equal vertical bands of green, white and orange.',
     note: 'Ivory Coast reverses the colours: orange, white, green. Italy ends in red, not orange.',
-    options: ['CIV', 'ITA', 'IRL'],
+    options: ['CIV', 'IRL', 'ITA', 'MEX'],
   },
   {
     answer: 'NOR',
@@ -94,12 +99,33 @@ const rounds = [
     capital: 'Oslo',
     cue: 'Red with a blue cross outlined in white that reaches the edges.',
     note: 'Iceland reverses the colours: a blue field with a red cross edged in white.',
-    options: ['ISL', 'NOR', 'DNK'],
+    options: ['ISL', 'FIN', 'NOR', 'DNK'],
   },
 ];
 const first = rounds[0];
 
-/// Lookalike pairs Similar Flags drills, with the note the app shows for each.
+/// The four stamps every country's card can earn, and the tier a card reaches with each count.
+const stamps = [
+  { name: 'Flag', body: 'name the flag' },
+  { name: 'Name', body: 'pick the flag for a name' },
+  { name: 'Capital', body: 'match the capital' },
+  { name: 'Place', body: 'find it on the globe' },
+];
+const tiers = ['Bronze', 'Silver', 'Gold', 'Holographic'];
+
+/// Explorer ranks, set by lifetime points, from the first to the last.
+const ranks = [
+  'Cadet',
+  'Scout',
+  'Navigator',
+  'Pathfinder',
+  'Cartographer',
+  'Voyager',
+  'Ambassador',
+  'Grand Master of Flags',
+];
+
+/// Look-alike pairs Similar Flags drills, with the note the app shows for each.
 const pairs = [
   {
     a: { code: 'TCD', name: 'Chad' },
@@ -126,7 +152,6 @@ const pairs = [
 const versionLabel = app.version ? `Version ${app.version}` : null;
 const requires = 'iOS 18, macOS 26, tvOS 18 or watchOS 11';
 const privacyUrl = privacyUrlFor(app.slug);
-const duo = duoCombo('masterofflags');
 
 const showsRating = app.ratingCount >= 5;
 const jsonLd = appPageJsonLd(app, { ratingShown: showsRating });
@@ -155,7 +180,17 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     </nav>
 
     <section class="hero bleed" aria-labelledby="app-name">
-      <div class="hero-wall" aria-hidden="true"></div>
+      <img
+        class="hero-art"
+        src={heroArt.src}
+        srcset={heroArt.srcset}
+        sizes="100vw"
+        width={heroArt.w}
+        height={heroArt.h}
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+      />
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-app">
@@ -174,11 +209,12 @@ const siblings = siblingApps(landingApps, 'masterofflags');
           <h1 id="app-name">Master of Flags</h1>
           <span>World Quiz</span>
         </div>
-        <p class="display hero-title">Learn every flag on <em>Earth.</em></p>
+        <p class="kicker">New in 5.0 · The Atlas</p>
+        <p class="display hero-title">Paint the world with every flag you <em>learn.</em></p>
         <p class="hero-sub">
-          A flag and capitals quiz that respects you: no ads, no subscription, no account. A wrong
-          answer shows the right flag, its capital and what to look for. Free on iPhone, iPad, Mac,
-          Apple TV and Apple Watch.
+          A flag and capitals quiz played on a 3D globe that becomes yours: every country you get
+          right is painted with its flag. No ads, no subscription, no account. Free on iPhone, iPad,
+          Mac, Apple TV and Apple Watch.
         </p>
         <div class="hero-actions">
           <AppStoreBadge href={app.appStoreUrl} platform="ios" />
@@ -191,27 +227,83 @@ const siblings = siblingApps(landingApps, 'masterofflags');
       </div>
     </section>
 
+    <section class="scene flies bleed" aria-labelledby="flies-title">
+      <div class="scene-inner flies-grid">
+        <div class="flies-text">
+          <h2 id="flies-title" class="display scene-title">
+            Get it right and the flag flies home.
+          </h2>
+          <p class="scene-lede">
+            Every question is played on your own globe. Name the flag, pick the flag for a name or
+            match the capital, and when you get it right the flag flies to its country and paints
+            it. Turn the globe, zoom in, and watch your world fill with colour.
+          </p>
+          <p class="scene-lede">
+            Nothing is lost: the first time you open 5.0, everything you already knew is painted
+            onto your globe, and your points become your Explorer rank.
+          </p>
+          <div class="locate">
+            <img
+              src={shots.locate.src}
+              srcset={shots.locate.srcset}
+              sizes="(min-width: 1024px) clamp(180px, 10vw, 320px), 40vw"
+              width={shots.locate.w}
+              height={shots.locate.h}
+              alt="Find Haiti on iPhone: Haiti's flag waves over the globe, waiting for a tap on the country"
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <h3>Find it on the globe</h3>
+              <p>
+                A new kind of question: spin the globe and tap a country you have already
+                discovered, so you learn where each flag lives.
+              </p>
+            </div>
+          </div>
+        </div>
+        <figure class="preview">
+          <video
+            class="preview-video"
+            data-preview
+            src={preview.src}
+            poster={preview.poster.src}
+            width="588"
+            height="1200"
+            muted
+            loop
+            playsinline
+            preload="none"
+            aria-label="Master of Flags 5.0 on iPhone: the globe turns to each country, its flag flies there and paints it"
+          >
+          </video>
+          <figcaption>Master of Flags 5.0 on iPhone, from its App Store preview.</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section id="play" class="atlas play bleed" aria-labelledby="play-title">
       <div class="atlas-inner play-grid">
         <div class="play-text">
-          <p class="kicker">Play</p>
+          <p class="kicker">Play a round</p>
           <h2 id="play-title" class="display atlas-title">Wrong answers teach.</h2>
           <p>
-            Name the flag or match the capital across Europe, Asia, Africa, the Americas, Oceania
-            and the whole world. Miss one and the tiles show the right flag, its capital and what to
-            look for; get it right and the next flag comes by itself.
+            Flags and capitals across Europe, Asia, Africa, the Americas, Oceania and the whole
+            world. Miss one and you see the right flag, its capital and what to look for. Here are
+            five look-alikes to try, with the app’s own notes.
           </p>
-          <p class="aside">Every region and both modes are free.</p>
+          <p class="aside">All 250 countries, every question and every region are free.</p>
         </div>
 
         <div class="quiz" data-quiz>
           <script type="application/json" data-quiz-rounds set:html={JSON.stringify(rounds)} />
           <p class="quiz-count" data-quiz-count>Flag 1 of {rounds.length}</p>
           <p class="quiz-ask">
-            <span data-quiz-prefix>Which flag is </span><strong data-quiz-name>{first.name}</strong
-            ><span data-quiz-suffix>?</span>
+            <span data-quiz-prefix>Pick the flag of </span><strong data-quiz-name
+              >{first.name}</strong
+            ><span data-quiz-suffix></span>
           </p>
-          <div class="quiz-options" role="group" aria-label="Three flags to choose from">
+          <div class="quiz-options" role="group" aria-label="Four flags to choose from">
             {
               first.options.map((code, index) => (
                 <button type="button" class="quiz-tile" data-code={code} disabled>
@@ -247,18 +339,110 @@ const siblings = siblingApps(landingApps, 'masterofflags');
       </div>
     </section>
 
+    <section class="feature" aria-labelledby="cards-title">
+      <div class="feature-text">
+        <p class="kicker kicker-ink">Cards</p>
+        <h2 id="cards-title" class="display feature-title">250 cards, up to holographic.</h2>
+        <p>
+          Every country is a card with four stamps to earn, 1,000 in all. One stamp makes it Bronze,
+          two Silver, three Gold, and all four turn it holographic, on the card and on the country’s
+          rim on your globe.
+        </p>
+        <ul class="stamps">
+          {
+            stamps.map((s, i) => (
+              <li>
+                <strong>{s.name}</strong>
+                <span>{s.body}</span>
+                <em>{tiers[i]}</em>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="aside">
+          The back of every card is the encyclopedia: the story behind the flag, what its colours
+          and symbols mean, the country’s shape, neighbours, languages, currency and a short
+          history. Free, and offline.
+        </p>
+      </div>
+      <div class="phone-pair">
+        <img
+          src={shots.card.src}
+          srcset={shots.card.srcset}
+          sizes="(min-width: 768px) clamp(240px, 12vw, 420px), 42vw"
+          width={shots.card.w}
+          height={shots.card.h}
+          alt="Japan's card on iPhone: holographic, with its Flag, Name, Capital and Place stamps, above the country's page"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src={shots.cards.src}
+          srcset={shots.cards.srcset}
+          sizes="(min-width: 768px) clamp(240px, 12vw, 420px), 42vw"
+          width={shots.cards.w}
+          height={shots.cards.h}
+          alt="Cards on iPhone: 123 of 250 countries collected, 332 of 1,000 stamps, and the list of countries"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </section>
+
+    <section class="feature feature-flip" aria-labelledby="expeditions-title">
+      <div class="feature-text">
+        <p class="kicker kicker-ink">Expeditions</p>
+        <h2 id="expeditions-title" class="display feature-title">
+          33 expeditions, three stars each.
+        </h2>
+        <p>
+          Curated routes of eight to twelve countries with a theme, from Nordic Crosses and
+          Tricolour Trouble to The Silk Road and Island Hopper. The camera flies the route; one star
+          at 60 percent, two at 85, three for a clean run.
+        </p>
+        <ol class="ranks" aria-label="Explorer ranks, first to last">
+          {ranks.map((r) => <li>{r}</li>)}
+        </ol>
+        <p class="aside">
+          Your lifetime points set your Explorer rank. The first chapter of expeditions is free; the
+          rest come with Pro.
+        </p>
+      </div>
+      <div class="phone-pair">
+        <img
+          src={shots.expeditions.src}
+          srcset={shots.expeditions.srcset}
+          sizes="(min-width: 768px) clamp(240px, 12vw, 420px), 42vw"
+          width={shots.expeditions.w}
+          height={shots.expeditions.h}
+          alt="Expeditions on iPhone: The Big Ten, Nordic Crosses, Tricolour Trouble and more, each with its stars"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src={shots.you.src}
+          srcset={shots.you.srcset}
+          sizes="(min-width: 768px) clamp(240px, 12vw, 420px), 42vw"
+          width={shots.you.w}
+          height={shots.you.h}
+          alt="You on iPhone: the Explorer rank Cartographer, countries, stamps and stars, and the region levels"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </section>
+
     <section class="feature" aria-labelledby="daily-title">
       <div class="feature-text">
-        <div class="score" aria-hidden="true"><span>8</span><small>/10</small></div>
-        <h2 id="daily-title" class="display feature-title">Ten flags, once a day.</h2>
+        <p class="kicker kicker-ink">Daily</p>
+        <h2 id="daily-title" class="display feature-title">The same Daily for everyone.</h2>
         <p>
-          The Daily Challenge is the same ten flags for everyone, with a result you can share as a
-          picture. Seven of ten keeps your streak, a freeze covers a day you skip, and a 48-hour
-          repair window forgives a broken run.
+          Ten flags, once a day, the same set for every player, played on the globe and finished
+          with a result you can share as a picture. Streak freezes cover a day you skip, and a
+          48-hour repair window forgives a broken run.
         </p>
         <p class="aside">
-          XP, a level for every region, weekly points on Game Center leaderboards and 33
-          achievements, all free.
+          Game Center has weekly points, region leaderboards and achievements, all free.
         </p>
       </div>
       <img
@@ -268,46 +452,10 @@ const siblings = siblingApps(landingApps, 'masterofflags');
         sizes="(min-width: 768px) clamp(300px, 15vw, 520px), 70vw"
         width={shots.daily.w}
         height={shots.daily.h}
-        alt="Daily Challenge result on iPhone: 8 of 10, a 48-day streak kept, and the flags that were missed"
+        alt="Daily #103 on iPhone: pick the flag of Senegal from four flags, over the globe"
         loading="lazy"
         decoding="async"
       />
-    </section>
-
-    <section class="feature feature-flip" aria-labelledby="learn-title">
-      <div class="feature-text">
-        <p class="kicker-ink">Learn</p>
-        <h2 id="learn-title" class="display feature-title">An atlas in your pocket.</h2>
-        <p>
-          About 250 flags and territories with their capitals, facts and the story behind each flag:
-          what the colours and symbols mean, the shape of the country, its neighbours, languages and
-          currency. Search by nickname or native name, so Holland and Deutschland both work, and
-          look-alike flags are one tap away.
-        </p>
-        <p class="aside">The whole encyclopedia is free and works offline.</p>
-      </div>
-      <div class="phone-pair">
-        <img
-          src={shots.learn.src}
-          srcset={shots.learn.srcset}
-          sizes="(min-width: 768px) clamp(240px, 12vw, 420px), 42vw"
-          width={shots.learn.w}
-          height={shots.learn.h}
-          alt="Nepal in Learn on iPhone: its flag, capital Kathmandu, population, area, currency and language"
-          loading="lazy"
-          decoding="async"
-        />
-        <img
-          src={shots.search.src}
-          srcset={shots.search.srcset}
-          sizes="(min-width: 768px) clamp(240px, 12vw, 420px), 42vw"
-          width={shots.search.w}
-          height={shots.search.h}
-          alt="Searching Learn for holland finds the Netherlands, also called Holland"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
     </section>
 
     <section class="atlas drills bleed" aria-labelledby="drills-title">
@@ -315,31 +463,31 @@ const siblings = siblingApps(landingApps, 'masterofflags');
         <div class="drills-grid">
           <div>
             <p class="kicker">Master of Flags Pro</p>
-            <h2 id="drills-title" class="display atlas-title">Drill what you miss.</h2>
+            <h2 id="drills-title" class="display atlas-title">Make the world your own.</h2>
             <p>
-              Smart Review brings back the flags and capitals you miss on a spaced schedule, after
-              1, 3, 7, 14 and then 30 days, until they stick. Similar Flags drills the look-alikes,
-              with packs built from your own mix-ups. Hard Mode puts eight flags on the board
-              instead of three, and six capitals instead of four.
+              Pro opens every expedition, four Looks for your globe, Paper, Blueprint, Aurora and
+              Gold, and a poster of your world to keep and share. It keeps everything it already
+              had: Smart Review brings back the flags and capitals you miss on a spaced schedule,
+              Similar Flags drills the look-alikes, and Hard Mode puts eight flags on the board.
             </p>
             <p class="aside">
-              Pro also adds full statistics, replay of every Daily you missed and five streak
-              freezes a month instead of one.
+              Plus full statistics, the Daily Archive and five streak freezes a month. One purchase,
+              no subscription, and if you already own Pro, all of it is yours.
             </p>
           </div>
           <img
             class="drills-phone"
-            src={shots.train.src}
-            srcset={shots.train.srcset}
+            src={shots.looks.src}
+            srcset={shots.looks.srcset}
             sizes="(min-width: 1024px) clamp(260px, 13vw, 460px), 60vw"
-            width={shots.train.w}
-            height={shots.train.h}
-            alt="Train on iPhone: twelve flags due for Smart Review, your confusions, and Similar Flags packs such as Tricolor Twins and Nordic Crosses"
+            width={shots.looks.w}
+            height={shots.looks.h}
+            alt="Looks on iPhone: the globe in Aurora, with Night, Paper, Blueprint, Aurora and Gold to choose from"
             loading="lazy"
             decoding="async"
           />
         </div>
-        <ul class="pairs" aria-label="Look-alike flags">
+        <ul class="pairs" aria-label="Look-alike flags Similar Flags drills">
           {
             pairs.map((p) => (
               <li>
@@ -378,25 +526,25 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     <section class="scene screens bleed" aria-labelledby="screens-title">
       <div class="scene-inner">
         <div class="screens-head">
-          <h2 id="screens-title" class="display scene-title">On every Apple screen.</h2>
+          <h2 id="screens-title" class="display scene-title">A globe for the whole room.</h2>
           <p class="scene-lede">
-            Couch Mode on Apple TV for two to four players with one remote and no timers. A real Mac
-            app with a sidebar, the menu bar and keyboard shortcuts. Flash questions and your Daily
-            streak on Apple Watch, and widgets for the Home Screen, Lock Screen and StandBy.
+            On Apple TV the Atlas fills the screen, and Couch Mode plays two to four players with
+            one remote and no timers. iPad gives the globe room to breathe. Flash questions and your
+            Daily streak live on Apple Watch, with widgets for the Home Screen and Lock Screen.
           </p>
         </div>
         <figure class="screens-tv">
           <img
-            src={shots.couch.src}
-            srcset={shots.couch.srcset}
+            src={shots.tvQuestion.src}
+            srcset={shots.tvQuestion.srcset}
             sizes="(min-width: 1280px) 76vw, 100vw"
-            width={shots.couch.w}
-            height={shots.couch.h}
-            alt="Couch Mode on Apple TV: players take turns naming flags on the big screen"
+            width={shots.tvQuestion.w}
+            height={shots.tvQuestion.h}
+            alt="Master of Flags on Apple TV: Nepal's flag beside the globe, with Kyrgyzstan, United Arab Emirates, Turkey and Nepal to choose from"
             loading="lazy"
             decoding="async"
           />
-          <figcaption>Couch Mode on Apple TV.</figcaption>
+          <figcaption>The Atlas on Apple TV.</figcaption>
         </figure>
         <div class="screens-pair">
           <img
@@ -405,41 +553,24 @@ const siblings = siblingApps(landingApps, 'masterofflags');
             sizes="(min-width: 1024px) 22vw, 45vw"
             width={shots.pad.w}
             height={shots.pad.h}
-            alt="Play on iPad: Which flag is Poland, with the session, today’s answers and flags to review beside it"
+            alt="The Atlas on iPad: the painted globe with the Explorer rank, regions and Play"
             loading="lazy"
             decoding="async"
           />
-          <img
-            src={shots.mac.src}
-            srcset={shots.mac.srcset}
-            sizes="(min-width: 1024px) 36vw, 100vw"
-            width={shots.mac.w}
-            height={shots.mac.h}
-            alt="Learn on a MacBook Pro, with the sidebar and a flag’s entry"
-            loading="lazy"
-            decoding="async"
-          />
+          <figure class="screens-couch">
+            <img
+              src={shots.tvCouch.src}
+              srcset={shots.tvCouch.srcset}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              width={shots.tvCouch.w}
+              height={shots.tvCouch.h}
+              alt="Couch Mode on Apple TV: Eero's turn to name Ireland, with the scoreboard for Maya, Eero and Sam"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Couch Mode on Apple TV.</figcaption>
+          </figure>
         </div>
-        {
-          duo && (
-            <figure class="duo">
-              <img
-                src={duo.src}
-                srcset={duo.srcset}
-                sizes="(min-width: 1024px) min(40vw, 960px), 100vw"
-                width={duo.w}
-                height={duo.h}
-                alt="Master of Flags on iPhone Duo: the outer display in front of the open inner display"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>
-                Both displays of iPhone Duo: the outer display in front, the open inner display
-                behind.
-              </figcaption>
-            </figure>
-          )
-        }
       </div>
     </section>
 
@@ -475,19 +606,19 @@ const siblings = siblingApps(landingApps, 'masterofflags');
           </div>
           <p class="fine">{c.pricing.footnote}</p>
           <p class="founders">
-            Bought Master of Flags when it was a paid app? You are a founder: everything Pro unlocks
-            is yours, free, forever, and unlocks by itself the first time you open the app. Thank
-            you for seven years.
+            Bought Master of Flags when it was a paid app? You are a founder: everything Pro
+            unlocks, 5.0 included, is yours, free, forever, and unlocks by itself the first time you
+            open the app. Thank you for seven years.
           </p>
         </section>
       )
     }
 
     <section class="band trust" aria-labelledby="trust-title">
-      <h2 id="trust-title" class="display band-title">Your progress stays yours.</h2>
+      <h2 id="trust-title" class="display band-title">Your world stays yours.</h2>
       <p>
-        No account, no analytics, no ads and no tracking. Your progress, streak and bookmarks stay
-        on your device and can follow you to your other devices through your own iCloud account. The
+        No account, no analytics, no ads and no tracking. Your globe, streak and bookmarks stay on
+        your device and can follow you to your other devices through your own iCloud account. The
         app holds an anonymous Midgar ID, and a Pro purchase or restore is recorded under it so it
         can be restored. The flags and the whole encyclopedia ship with the app and work offline.
         {
@@ -511,7 +642,17 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     </section>
 
     <section class="closing bleed" aria-labelledby="closing-title">
-      <div class="hero-wall closing-wall" aria-hidden="true"></div>
+      <img
+        class="closing-art"
+        src={heroArt.src}
+        srcset={heroArt.srcset}
+        sizes="100vw"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        width={heroArt.w}
+        height={heroArt.h}
+      />
       <div class="scene-inner closing-inner">
         {
           app.iconLocal && (
@@ -524,7 +665,7 @@ const siblings = siblingApps(landingApps, 'masterofflags');
             />
           )
         }
-        <h2 id="closing-title" class="display scene-title">Which flag is next?</h2>
+        <h2 id="closing-title" class="display scene-title">Your world is waiting.</h2>
         <p class="scene-lede">
           Free on the App Store for iPhone, iPad, Mac, Apple TV and Apple Watch.
         </p>
@@ -608,14 +749,16 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     NOR: 'Norway',
     ISL: 'Iceland',
     DNK: 'Denmark',
+    SGP: 'Singapore',
+    MEX: 'Mexico',
+    FIN: 'Finland',
   };
 
-  /// How long a right answer stays on screen before the next flag comes, as in the app, where a
-  /// right answer moves on by itself.
+  /// How long a right answer stays on screen before the next flag comes.
   const AUTO_ADVANCE_MS = 1800;
 
-  /// Plays the page's quiz the way the app does: three tiles, one answer, the right flag and
-  /// what to look for after a pick, then the next flag, by itself after a right answer.
+  /// Plays the page's quiz the way the app's pick-the-flag questions go: four tiles, one answer,
+  /// the right flag and what to look for after a pick, then the next flag.
   function startQuiz(root: HTMLElement) {
     const data = root.querySelector<HTMLScriptElement>('[data-quiz-rounds]');
     const rounds: Round[] = data ? JSON.parse(data.textContent || '[]') : [];
@@ -640,9 +783,9 @@ const siblings = siblingApps(landingApps, 'masterofflags');
       window.clearTimeout(timer);
       const round = rounds[index];
       finished = false;
-      prefixEl.textContent = 'Which flag is ';
+      prefixEl.textContent = 'Pick the flag of ';
       nameEl.textContent = round.name;
-      suffixEl.textContent = '?';
+      suffixEl.textContent = '';
       countEl.textContent = `Flag ${index + 1} of ${rounds.length}`;
       resultEl.replaceChildren();
       const hadFocus =
@@ -714,7 +857,7 @@ const siblings = siblingApps(landingApps, 'masterofflags');
       const done = document.createElement('p');
       done.className = 'learn';
       done.textContent =
-        'The app has about 250 flags, capitals in every region, a Daily Challenge and Similar Flags drills for exactly these.';
+        'The app has all 250 countries on a globe you paint as you learn, capitals in every region, a Daily Challenge and Similar Flags drills for exactly these.';
       resultEl.replaceChildren(done);
       next.textContent = 'Play again';
       next.hidden = false;
@@ -735,6 +878,25 @@ const siblings = siblingApps(landingApps, 'masterofflags');
   }
 
   document.querySelectorAll<HTMLElement>('[data-quiz]').forEach(startQuiz);
+
+  /// Plays the App Store preview while it is on screen and pauses it when it is not; a reader who
+  /// prefers less motion gets the poster and the player's own controls instead.
+  function startPreview(video: HTMLVideoElement) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.controls = true;
+      return;
+    }
+    const watcher = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) video.play().catch(() => (video.controls = true));
+        else video.pause();
+      },
+      { threshold: 0.35 }
+    );
+    watcher.observe(video);
+  }
+
+  document.querySelectorAll<HTMLVideoElement>('[data-preview]').forEach(startPreview);
 </script>
 
 <style>
@@ -759,7 +921,7 @@ const siblings = siblingApps(landingApps, 'masterofflags');
   }
 
   .mof {
-    --night: #0a0e14;
+    --night: #060a14;
     --night-2: #111824;
     --brass: #e8b14a;
     --brass-deep: #8a5d0c;
@@ -827,6 +989,10 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     color: var(--brass-deep);
   }
 
+  .hero .kicker {
+    color: var(--brass);
+  }
+
   .kicker-ink {
     color: var(--link);
   }
@@ -854,15 +1020,17 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     overflow: hidden;
   }
 
-  .hero-wall {
+  .hero-art {
     position: absolute;
-    inset: -2rem 0;
+    top: 0;
+    right: 0;
+    width: 72%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
     z-index: -2;
-    background-image: url('/screenshots/masterofflags/flags/wall.webp');
-    background-size: auto 44rem;
-    background-repeat: repeat;
-    transform: rotate(-4deg) scale(1.15);
-    opacity: 0.9;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
   }
 
   .hero-scrim {
@@ -872,12 +1040,12 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     background:
       linear-gradient(
         90deg,
-        rgb(10 14 20 / 0.97) 0%,
-        rgb(10 14 20 / 0.9) 36%,
-        rgb(10 14 20 / 0.45) 70%,
-        rgb(10 14 20 / 0.6) 100%
+        rgb(6 10 20 / 0.94) 0%,
+        rgb(6 10 20 / 0.82) 36%,
+        rgb(6 10 20 / 0.2) 62%,
+        rgb(6 10 20 / 0) 100%
       ),
-      linear-gradient(0deg, rgb(10 14 20 / 0.85) 0%, rgb(10 14 20 / 0) 35%);
+      linear-gradient(0deg, rgb(6 10 20 / 0.8) 0%, rgb(6 10 20 / 0) 30%);
   }
 
   .hero-inner,
@@ -1054,7 +1222,7 @@ const siblings = siblingApps(landingApps, 'masterofflags');
 
   .quiz-options {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(0.6rem, 1.5vw, 1rem);
   }
 
@@ -1233,21 +1401,6 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     font-size: 0.95rem;
   }
 
-  .score {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 800;
-    font-size: clamp(4rem, 9vw, 7rem);
-    line-height: 0.9;
-    color: var(--ink);
-    margin-bottom: 1.25rem;
-  }
-
-  .score small {
-    font-size: 0.42em;
-    font-weight: 500;
-    color: var(--soft);
-  }
-
   .feature-phone {
     width: min(70vw, clamp(18.75rem, 15vw, 26rem));
     height: auto;
@@ -1379,6 +1532,152 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     margin-top: 0.85rem;
     font-size: 0.85rem;
     color: #8d887c;
+  }
+
+  .screens-couch img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: clamp(0.5rem, 0.8vw, 0.9rem);
+    box-shadow:
+      0 0 0 1px rgb(246 241 228 / 0.1),
+      0 30px 60px -30px rgb(0 0 0 / 0.9);
+  }
+
+  .screens-couch figcaption {
+    margin-top: 0.85rem;
+    font-size: 0.85rem;
+    color: #8d887c;
+  }
+
+  .flies {
+    background:
+      radial-gradient(45% 55% at 75% 50%, rgb(56 130 255 / 0.16), transparent 70%),
+      radial-gradient(40% 50% at 15% 85%, rgb(232 177 74 / 0.1), transparent 70%), var(--night);
+  }
+
+  .flies-grid {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .flies-text .scene-lede + .scene-lede {
+    margin-top: 1rem;
+  }
+
+  .preview {
+    justify-self: center;
+    width: min(72vw, clamp(18rem, 19vw, 30rem));
+  }
+
+  .preview-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--night);
+    border-radius: 15% / 7.3%;
+    clip-path: inset(0.4% round 15% / 7.3%);
+  }
+
+  .preview figcaption {
+    margin-top: 0.85rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #8d887c;
+  }
+
+  .locate {
+    display: grid;
+    grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 2.5rem;
+    max-width: 36rem;
+  }
+
+  .locate img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 30px rgb(0 0 0 / 0.6));
+  }
+
+  .locate h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--chalk);
+    margin-bottom: 0.5rem;
+  }
+
+  .locate p {
+    color: var(--chalk-muted);
+    line-height: 1.6;
+  }
+
+  .stamps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .stamps li {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--rule);
+    border-radius: 0.8rem;
+  }
+
+  .stamps strong {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .stamps span {
+    font-size: 0.9rem;
+    color: var(--soft);
+  }
+
+  .stamps em {
+    font-style: normal;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--link);
+  }
+
+  .ranks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1.5rem 0;
+    counter-reset: rank;
+  }
+
+  .ranks li {
+    counter-increment: rank;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    font-size: 0.88rem;
+    color: var(--ink);
+  }
+
+  .ranks li::before {
+    content: counter(rank) ' ';
+    color: var(--link);
+    font-weight: 800;
+    margin-right: 0.15rem;
+  }
+
+  .ranks li:last-child {
+    border-color: var(--brass);
+    background: color-mix(in srgb, var(--brass) 18%, transparent);
+    font-weight: 700;
   }
 
   .screens-pair {
@@ -1531,17 +1830,15 @@ const siblings = siblingApps(landingApps, 'masterofflags');
     text-align: center;
   }
 
-  .closing-wall {
-    opacity: 0.22;
-    transform: rotate(4deg) scale(1.2);
-  }
-
-  .closing::after {
-    content: '';
+  .closing-art {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    opacity: 0.32;
     z-index: -1;
-    background: radial-gradient(50% 60% at 50% 50%, rgb(10 14 20 / 0.92), rgb(10 14 20 / 0.6));
   }
 
   .closing-inner {
@@ -1608,6 +1905,10 @@ const siblings = siblingApps(landingApps, 'masterofflags');
       grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     }
 
+    .flies-grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    }
+
     .drills-grid {
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     }
@@ -1637,8 +1938,25 @@ const siblings = siblingApps(landingApps, 'masterofflags');
       min-height: auto;
     }
 
+    .hero-art {
+      width: 100%;
+      height: 24rem;
+      object-position: 50% 45%;
+      -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+    }
+
     .hero-scrim {
-      background: linear-gradient(0deg, rgb(10 14 20 / 0.95) 50%, rgb(10 14 20 / 0.7) 100%);
+      background: linear-gradient(
+        0deg,
+        var(--night) 42%,
+        rgb(6 10 20 / 0.5) 62%,
+        rgb(6 10 20 / 0.1) 100%
+      );
+    }
+
+    .hero-inner {
+      padding-top: 19rem;
     }
 
     .quiz-label {
@@ -1647,23 +1965,9 @@ const siblings = siblingApps(landingApps, 'masterofflags');
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .hero-wall {
-      animation: drift 220s linear infinite;
-    }
-
-    .closing-wall {
-      animation-direction: reverse;
-    }
-
     .hero-inner > * {
       animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
       animation-delay: 0.2s;
-    }
-  }
-
-  @keyframes drift {
-    to {
-      background-position-x: -130.56rem;
     }
   }
 
