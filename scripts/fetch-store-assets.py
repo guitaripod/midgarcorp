@@ -208,7 +208,7 @@ def collect_versions(track_id, newest=False):
     is what the page shows.
     """
     data = asc_get(
-        f"/v1/apps/{track_id}/appStoreVersions?limit=30"
+        f"/v1/apps/{track_id}/appStoreVersions?limit=200"
         "&fields[appStoreVersions]=versionString,appStoreState,platform,createdDate"
     )["data"]
     by_plat = {}
