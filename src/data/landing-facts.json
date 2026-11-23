@@ -110,8 +110,8 @@
       },
       "name": "Dream Eater: Dream Journal",
       "appStoreUrl": "https://apps.apple.com/us/app/dream-eater-dream-journal/id6661019277",
-      "description": "You wake at 3 a.m. with a dream still vivid. Say it out loud or type it, and Dream Eater keeps it safe, with the real moon and sky of that night beside it.\n\nTHE JOURNAL IS FREE, FOREVER\nVoice capture that works offline and turns your words into text on your iPhone. Drafts that survive a crash. A calendar, search, tags, favorites, export. No account, no sign-up, nothing standing between you and the half-remembered.\n\nA READING IN YOUR OWN WORDS\nAsk for a reading and get a reflection, not a verdict. It quotes your dream back to you, asks open questions, and names the tradition when one reads an image a certain way (Jungian, Gestalt, folk). It never claims a symbol has one fixed meaning, and it never claims to know what will happen.\n\nTHE MOON AND THE SKY\nEvery dream is stamped with the moon phase and the Moon's sign from that night, computed on your iPhone. Add your birth details if you like, and see your chart and what is passing through it. Astrology here is a reflective lens, not evidence about your life, and it is optional.\n\nPATTERNS THAT ARE TRUE\nSee your streak, your tones and feelings, the themes that keep coming back, and when you dream. If you ask whether the moon matters, the app tells you honestly how many nights it takes to say anything, and shows what chance alone would give you.\n\nART MADE FROM YOUR DREAM\nTurn a dream into a picture in one of six styles, from soft dreamscape to ink wash to collage. Save it, or share a card with the dream's title and the moon.\n\nBUILT FOR THE MIDDLE OF THE NIGHT\nA Record button on the Lock Screen and in Control Center, a moon widget, a Bedside theme that keeps the light low. Large text, VoiceOver and Reduce Motion are supported throughout.\n\nPRIVATE BY DESIGN\nYour dreams, recordings, transcripts, tags and birth details stay on your device. When you ask for a reading, the dream text goes to our server and on to Google's Gemini model to write it, and our server keeps no dream text afterward. You choose whether readings are on, and you can delete everything from Settings.\n\nFREE, PLUS, OR PAY AS YOU GO\nThree readings a week are free. Plus unlocks unlimited readings, dream art in six styles, follow-up questions and your sky. Subscribe monthly or yearly, or skip subscriptions and buy credits that never expire.\n\nDream Eater is for reflection and entertainment. It is not medical, psychological or therapeutic advice. If you are struggling, support is one tap away in Settings, Help, Crisis resources.\n\nAvailable in English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, and Simplified and Traditional Chinese.\n\nPlus is an auto-renewing subscription, monthly or annual. The price is shown in the app before you subscribe. Payment is charged to your Apple Account at confirmation, and the subscription renews automatically unless canceled at least 24 hours before the end of the period. Manage or cancel in Settings, Apple Account, Subscriptions. A lifetime purchase is also available.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://midgarcorp.cc/legal/dream-eater/privacy/",
-      "releaseNotes": "Buying Plus, the lifetime option and credit packs is rebuilt.\nWhen a credit pack is paid and still waiting on our server, a notice now says it is processing and that you do not need to buy again.\nA purchase that needs approval, such as Ask to Buy, unlocks on its own once it is approved.\nYour subscription, lifetime purchase and credits carry over.\n\nAnonymous usage counts: with no identifier, the app counts the first time you use it each day, week and month. Midgar publishes the totals at midgarcorp.cc/open.\n\nSubscribing is simpler: the yearly plan no longer starts with a free trial, so Plus unlocks the moment you subscribe.\n\nAfter you read a reading, Plus may show what it adds, a few times at most, and the Plus screen says what you can count on: it opens the moment you pay, you can cancel any time, and your journal stays free.",
+      "description": "You wake at 3 a.m. with a dream still vivid. Say it out loud or type it, and Dream Eater keeps it safe, with the real moon and sky of that night beside it.\n\nTHE JOURNAL IS FREE, FOREVER\nVoice capture that works offline and turns your words into text on your iPhone. Drafts that survive a crash. A calendar, search, tags, favorites, export. No account, no sign-up, nothing standing between you and the half-remembered.\n\nA READING IN YOUR OWN WORDS\nAsk for a reading and get a reflection, not a verdict. It quotes your dream back to you, asks open questions, and names the tradition when one reads an image a certain way (Jungian, Gestalt, folk). It never claims a symbol has one fixed meaning, and it never claims to know what will happen.\n\nTHE MOON AND THE SKY\nEvery dream is stamped with the moon phase and the Moon's sign from that night, computed on your iPhone. Add your birth details if you like, and see your chart and what is passing through it. Astrology here is a reflective lens, not evidence about your life, and it is optional.\n\nPATTERNS THAT ARE TRUE\nSee your streak, your tones and feelings, the themes that keep coming back, and when you dream. If you ask whether the moon matters, the app tells you honestly how many nights it takes to say anything, and shows what chance alone would give you. Once a month has eight logged nights, ask for a letter about it: a short reflection on the month, written from your own counts, tags and feelings. It is included with Plus, or costs 3 credits.\n\nART MADE FROM YOUR DREAM\nTurn a dream into a picture in one of six styles, from soft dreamscape to ink wash to collage. Save it, or share a card with the dream's title and the moon.\n\nBUILT FOR THE MIDDLE OF THE NIGHT\nA Record button on the Lock Screen and in Control Center, a moon widget, a Bedside theme that keeps the light low. Large text, VoiceOver and Reduce Motion are supported throughout.\n\nPRIVATE BY DESIGN\nYour dreams, recordings, transcripts, tags and birth details stay on your device. When you ask for a reading, the dream text goes to my server and on to Google's Gemini model to write it, and my server keeps no dream text afterward. You choose whether readings are on, and you can delete everything from Settings. A month's letter is written by Anthropic's Claude model from the month's counts, your tags and feelings and one line from each reading. The dreams themselves are never sent, and nothing is sent before you agree.\n\nFREE, PLUS, OR PAY AS YOU GO\nThree readings a week are free. Plus unlocks unlimited readings, dream art in six styles, follow-up questions and your sky. Subscribe monthly or yearly, or skip subscriptions and buy credits that never expire.\n\nDream Eater is for reflection and entertainment. It is not medical, psychological or therapeutic advice. If you are struggling, support is one tap away in Settings, Help, Crisis resources.\n\nAvailable in English, Danish, Finnish, French, German, Icelandic, Italian, Japanese, Korean, Norwegian, Polish, Brazilian Portuguese, Spanish, Swedish, and Simplified and Traditional Chinese.\n\nPlus is an auto-renewing subscription, monthly or annual. The price is shown in the app before you subscribe. Payment is charged to your Apple Account at confirmation, and the subscription renews automatically unless canceled at least 24 hours before the end of the period. Manage or cancel in Settings, Apple Account, Subscriptions. A lifetime purchase is also available.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://midgarcorp.cc/legal/dream-eater/privacy/",
+      "releaseNotes": "New: the month's letter.\n\nOnce a month has eight logged nights, Patterns can write you a short letter about it: what the month looked like, the threads that kept returning, and what seemed to move. It names your own tags and feelings and your real counts.\n\nThe letter is included with Plus, or costs 3 credits. It is written from the month's counts, your tags and feelings and one line from each reading, never from the dreams themselves. Another AI provider writes it than your readings (Anthropic's Claude), so the app asks you once before anything is sent.\n\nLetters stay in your journal. You can share one, and write it again once the month has grown.",
       "category": "Lifestyle",
       "genres": [
         "Lifestyle",
@@ -120,22 +120,27 @@
       "price": "Free",
       "rating": 5,
       "ratingCount": 2,
-      "version": "2.0.2",
+      "version": "2.1.0",
       "releaseDate": "2024-09-18T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-03T01:10:58Z",
+      "currentVersionReleaseDate": "2026-11-14T23:44:38Z",
       "minimumOsVersion": "26.0",
       "contentRating": "12+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -268,13 +273,15 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.DreamEater",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b4/cd/42/b4cd427a-fde6-051f-9aa7-15f195f2ad8a/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": "https://midgarcorp.cc/dreameater",
-      "supportUrl": "https://x.com/prblemslver",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2b/a2/f4/2ba2f482-9c5e-2c98-f130-2990c07a7725/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/dreameater/",
+      "supportUrl": "https://midgarcorp.cc/dreameater/support/",
       "keywords": "interpretation,interpreter,decoder,dictionary,symbols,lucid,nightmare,sleep,lunar,astrology,sky,ai",
       "iconLocal": "/screenshots/dreameater/icon.webp",
       "platforms": [
@@ -368,8 +375,8 @@
       },
       "name": "Psywave: AI Playlist Maker",
       "appStoreUrl": "https://apps.apple.com/us/app/psywave-ai-playlist-maker/id6727000827",
-      "description": "Turn any photo or mood into a real playlist in seconds — then play it in Apple Music with one tap.\n\nPsywave is an AI playlist maker for people who hear a moment before they can name it. Pick a photo — a sunset drive, a rainy window, a party — or type a vibe like \"neon city at 2 a.m.\" or \"Sunday coffee, slow and warm\", and Psywave builds a playlist of real songs that fit.\n\nPHOTOS BECOME PLAYLISTS\nPsywave reads the light, colors and mood of your picture and scores it with real tracks. Share a photo to Psywave straight from the Photos app, or ask Siri: \"Make a playlist in Psywave.\"\n\nFAMILIAR HITS OR DEEP CUTS\nChoose how adventurous each playlist is: crowd-pleasers, a mix, or the underrated album tracks you haven't heard yet. Playlists include artists from your own country when they fit, and come back titled in your language.\n\nONE TAP INTO APPLE MUSIC\nEvery song is matched to the Apple Music catalog, so what you see is what plays. Preview any track, remove what you don't like, add ten more, then import the whole playlist.\n\nSHARE THE VIBE\nShare a link anyone can open: every song links to Apple Music, with search links for whatever app your friends use. Each playlist also gets a story-ready card with a scannable code. Using another service? Export a track list you can import there.\n\nPSYWAVE PRO\n• Unlimited playlists\n• Longer playlists, up to 50 songs\n• Only songs new to you: skip what's already in your library\n• Grow any of your own Apple Music playlists with songs that fit\n\nStart with 3 free playlists. Psywave Pro is a monthly or annual subscription, or buy credit packs and pay only for what you make. Credits never expire, and if Apple Music has almost none of a playlist's songs in your country, the credit comes back automatically.\n\nImporting playlists requires an Apple Music subscription.\n\nPrivacy policy: https://midgarcorp.cc/legal/psywave/privacy\nTerms of use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
-      "releaseNotes": "A maintenance update. The App Store page is now also available in Arabic, Indonesian, Russian, Thai, Turkish and Vietnamese.",
+      "description": "Turn any photo or mood into a real playlist in seconds, then play it in Apple Music with one tap.\n\nPsywave is an AI playlist maker for people who hear a moment before they can name it. Pick a photo, like a sunset drive, a rainy window or a party, or type a vibe like \"neon city at 2 a.m.\" or \"Sunday coffee, slow and warm\", and Psywave builds a playlist of real songs that fit.\n\nPHOTOS BECOME PLAYLISTS\nPsywave reads the light, colors and mood of your picture and scores it with real tracks. Share a photo to Psywave straight from the Photos app, or ask Siri: \"Make a playlist in Psywave.\"\n\nFAMILIAR HITS OR DEEP CUTS\nChoose how adventurous each playlist is: crowd-pleasers, a mix, or the underrated album tracks you haven't heard yet. Playlists include artists from your own country when they fit, and come back titled in your language.\n\nONE TAP INTO APPLE MUSIC\nEvery song is matched to the Apple Music catalog, so what you see is what plays. Preview any track, remove what you don't like, add ten more, then import the whole playlist.\n\nSHARE THE VIBE\nShare a link anyone can open: every song links to Apple Music, with search links for whatever app your friends use. Each playlist also gets a story-ready card with a scannable code. Using another service? Export a track list you can import there.\n\nPSYWAVE PRO\n• Unlimited playlists\n• Longer playlists, up to 50 songs\n• Only songs new to you: skip what's already in your library\n• Grow any of your own Apple Music playlists with songs that fit\n• A listening letter about the playlists you've saved, with the next one to make\n\nStart with 3 free playlists. Psywave Pro is a monthly or annual subscription, or buy credit packs and pay only for what you make. Credits never expire, and if Apple Music has almost none of a playlist's songs in your country, the credit comes back automatically.\n\nImporting playlists requires an Apple Music subscription.\n\nPrivacy policy: https://midgarcorp.cc/legal/psywave/privacy\nTerms of use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "releaseNotes": "New for Psywave Pro: your listening letter.\n\nOnce you have saved three playlists, History offers a short letter about them: what runs through them, where two of them pull apart, and what you seem to reach for. It ends with one playlist to make next, a tap away.\n\nShare the letter as a card, and have a new one written after you have saved a couple more playlists. Only your playlists' names, captions, moods, genres and up to eight songs of each are sent to write it.",
       "category": "Music",
       "genres": [
         "Music",
@@ -378,22 +385,27 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.4.7",
+      "version": "1.5.0",
       "releaseDate": "2024-10-02T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-02T18:34:23Z",
+      "currentVersionReleaseDate": "2026-11-15T00:50:45Z",
       "minimumOsVersion": "17.0",
       "contentRating": "4+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -526,13 +538,15 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.psywave",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/73/3d/1f733d4e-fa7d-4ef8-7344-c0fd361ef046/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": null,
-      "supportUrl": "https://mako.midgarcorp.cc/support/psywave",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/41/c0/a8/41c0a8f1-a7a5-b8ad-7301-c4f85a885d93/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/psywave/",
+      "supportUrl": "https://midgarcorp.cc/psywave/support/",
       "keywords": "generator,creator,vibe,music,song,dj,mix,picture,soundtrack,discovery,workout,study,focus,party,gym",
       "iconLocal": "/screenshots/psywave/icon.webp",
       "platforms": [
@@ -576,8 +590,8 @@
       },
       "name": "Double Kick: Menu Translator",
       "appStoreUrl": "https://apps.apple.com/us/app/double-kick-menu-translator/id6736581403",
-      "description": "Standing in front of a menu you can't read? Point your camera and know exactly what to order.\n\nDouble Kick turns any foreign-language menu into a guide you actually understand. Not a word-for-word translation that leaves you guessing, but the real story behind every dish and drink: what's in it, how it's made, what it tastes like, and what it costs in your own currency. Snap one photo and decide with confidence.\n\nKNOW WHAT YOU'RE ORDERING\n- Read and translate menus in any language from a single photo\n- Understand ingredients, preparation, and flavor before you commit\n- See prices converted to your home currency, instantly\n\nA REAL FOOD & DRINK EXPERT\n- Explore regional specialties and global cuisines in plain language\n- Decode spirits, cocktails, and wine lists that simple translators skip\n- Learn the dishes behind the names, not just the words\n\nBUILT FOR TRAVELERS\n- Works on menus from street stalls to fine-dining tasting menus\n- Keeps your menu history on your device for every trip\n- Tracks your taste preferences across cuisines and trips\n\nPRIVATE BY DESIGN\n- No account required, no ads, no tracking\n- We don't sell your data. The menu photo you scan is sent securely to an AI service to be translated, and your menu history stays on your device\n\nNO SUBSCRIPTION\nFree to download, with no ads and no account. Menu scans run on credit packs — 20, 60 or 150 scans — that you buy once and top up only when you need more. Nothing renews, and there is nothing to cancel.\n\nThe next time the menu is in a language you don't speak, you won't order blind. You'll order exactly what you want.\n\nPhotograph a menu and see for yourself.",
-      "releaseNotes": "A maintenance update. The App Store page is now also available in Arabic, Indonesian, Russian, Thai, Turkish and Vietnamese.",
+      "description": "Standing in front of a menu you can't read? Point your camera and know exactly what to order.\n\nDouble Kick turns any foreign-language menu into a guide you actually understand. Not a word-for-word translation that leaves you guessing, but the real story behind every dish and drink: what's in it, how it's made, what it tastes like, and what it costs in your own currency. Snap one photo and decide with confidence.\n\nKNOW WHAT YOU'RE ORDERING\n- Read and translate menus in any language from a single photo\n- Understand ingredients, preparation, and flavor before you commit\n- See prices converted to your home currency, instantly\n- Order in the local language: each dish and drink comes with a ready sentence in the menu's own script, to show or hear read aloud\n\nA REAL FOOD & DRINK EXPERT\n- Explore regional specialties and global cuisines in plain language\n- Decode spirits, cocktails, and wine lists that simple translators skip\n- Learn the dishes behind the names, not just the words\n\nBUILT FOR TRAVELERS\n- Works on menus from street stalls to fine-dining tasting menus\n- Keeps your menu history on your device for every trip\n- Tracks your taste preferences across cuisines and trips\n\nPRIVATE BY DESIGN\n- No account required, no ads, no tracking\n- We don't sell your data. The menu photo you scan is sent securely to an AI service to be translated, and your menu history stays on your device\n\nNO SUBSCRIPTION\nFree to download, with no ads and no account. Menu scans run on credit packs — 20, 60 or 150 scans — that you buy once and top up only when you need more. Nothing renews, and there is nothing to cancel.\n\nThe next time the menu is in a language you don't speak, you won't order blind. You'll order exactly what you want.\n\nPhotograph a menu and see for yourself.",
+      "releaseNotes": "New: a Usage Counts switch in Settings turns off the anonymous usage counts, and its page shows what the app sends and how often.\n\nFeatures that need Midgar's servers now step aside where they are not offered, with a short note instead of an error.",
       "category": "Food & Drink",
       "genres": [
         "Food & Drink",
@@ -586,22 +600,27 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.1.10",
+      "version": "1.2.1",
       "releaseDate": "2024-12-12T08:00:00Z",
-      "currentVersionReleaseDate": "2026-11-02T18:32:08Z",
+      "currentVersionReleaseDate": "2026-11-23T15:24:39Z",
       "minimumOsVersion": "17.0",
       "contentRating": "4+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -734,13 +753,15 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.doublekick",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a7/83/0d/a7830d72-d60e-384c-bfc0-7d2f55279403/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": null,
-      "supportUrl": "https://x.com/guitaripod",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/88/78/96/887896ee-5d9c-d4e1-22cc-883107bf6eaf/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/doublekick/",
+      "supportUrl": "https://midgarcorp.cc/doublekick/support/",
       "keywords": "menu,scanner,food,translator,abroad,cuisine,restaurant,currency,cocktail,wine,dining,camera",
       "iconLocal": "/screenshots/doublekick/icon.webp",
       "platforms": [
@@ -809,8 +830,8 @@
       },
       "name": "PixiePocket: AI Image Maker",
       "appStoreUrl": "https://apps.apple.com/us/app/pixiepocket-ai-image-maker/id6751730339",
-      "description": "Turn any photo into something amazing with one tap: a pro headshot, a restored old photo, a 3D figurine, an anime portrait, a royal portrait of your pet. Standard runs on Google's Nano Banana 2.1 and Max on OpenAI's GPT Image 2.6.\n\nYour first edit starts your Pixie Week: 5 free edits a day for 7 days. No sign-up, no card, nothing to cancel.\n\nONE-TAP EDITS\n• Pro headshot: a studio portrait for LinkedIn and CVs that still looks like you\n• Headshot pack: four studio headshots in one go\n• Restore old photo: scratches out, color in\n• 3D figurine: you as a collectible figure, box and all\n• Natural retouch: better skin and light, no filter look\n• White background: clean cutouts for listings and profiles\n• Anime style, magazine cover, new outfit, new hairstyle and travel photo\n• Royal pet portrait: your pet as Renaissance nobility\n• Holiday card: a cozy festive portrait for your cards\n• Halloween costume: a spooky costume and makeup\n\nTHEN REFINE IT BY CHAT\nAsk for changes in plain words and each message edits your latest image: \"make the blazer navy\", \"put her in a bright office\". Or describe a brand-new picture from scratch.\n\nSHARE THE BEFORE AND AFTER\nSave results to Photos, or share a side-by-side before-and-after in one tap.\n\nTWO LEVELS OF QUALITY\n• Standard: fast and great for most edits, one edit per image\n• Max: our most detailed model for the shots that matter, five edits per image\nIf one model is busy or declines a request, another takes over. A request that fails never costs you an edit.\n\nEDITS, YOUR WAY\n• PixiePocket Plus: 60 edits every week, Standard or Max. A weekly subscription that renews until you cancel it in Settings; nothing is charged before you choose it.\n• Packs of 10, 40 or 120 edits: buy once, use whenever you like, never expire.\n\nPRIVATE BY DEFAULT\nYour images are yours alone: there is no public feed. Your prompts and photos are sent to Google Gemini and OpenAI to create your images; you approve this before your first creation and can withdraw consent anytime in Settings.\n\nStart anonymously, then sign in with Apple, Google or GitHub to keep your images in sync across iPhone and iPad.\n\nFOR EVERYONE\nWorks with VoiceOver, larger text sizes and Reduce Motion. Delete your account and everything in it anytime in Settings.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://midgarcorp.cc/legal/pixiepocket/privacy\n\nGoogle, Gemini and Nano Banana are trademarks of Google LLC. GPT Image is a trademark of OpenAI. This app is not endorsed by or affiliated with Google or OpenAI.",
-      "releaseNotes": "Fixes a crash when you share an image or tap Compare.\n• The share sheet now shows a preview of what you're sharing.\n• Press and hold a result to find Before & after in its menu.\n• The options shown under each request are easier to read.\n• Fixes the store after you start or end Plus: the button always matches the option you pick, and every tap goes through.",
+      "description": "Turn any photo into something amazing with one tap: a pro headshot, a restored old photo, a 3D figurine, an anime portrait, a royal portrait of your pet. Standard runs on Google's Nano Banana 2.1 and Max on OpenAI's GPT Image 2.5.\n\nYour first edit starts your Pixie Week: 5 free edits a day for 7 days. No sign-up, no card, nothing to cancel.\n\nONE-TAP EDITS\n• Pro headshot: a studio portrait for LinkedIn and CVs that still looks like you\n• Headshot pack: four studio headshots in one go\n• Restore old photo: scratches out, color in\n• 3D figurine: you as a collectible figure, box and all\n• Natural retouch: better skin and light, no filter look\n• White background: clean cutouts for listings and profiles\n• Anime style, magazine cover, new outfit, new hairstyle and travel photo\n• Royal pet portrait: your pet as Renaissance nobility\n• Holiday card: a cozy festive portrait for your cards\n• Halloween costume: a spooky costume and makeup\n\nIDEAS FOR YOUR PHOTO\nPick a photo and Pixie suggests three edits that fit it: a new setting, a new style and a playful touch. Tap one to use it, or change the words first. Included in your Pixie Week and in Plus.\n\nTHEN REFINE IT BY CHAT\nAsk for changes in plain words and each message edits your latest image: \"make the blazer navy\", \"put her in a bright office\". Or describe a brand-new picture from scratch.\n\nSHARE THE BEFORE AND AFTER\nSave results to Photos, or share a side-by-side before-and-after in one tap.\n\nTWO LEVELS OF QUALITY\n• Standard: fast and great for most edits, one edit per image\n• Max: our most detailed model for the shots that matter, five edits per image\nIf one model is busy or declines a request, another takes over. A request that fails never costs you an edit.\n\nEDITS, YOUR WAY\n• PixiePocket Plus: 60 edits every week, Standard or Max, and ideas for the photos you pick. A weekly subscription that renews until you cancel it in Settings; nothing is charged before you choose it.\n• Packs of 10, 40 or 120 edits: buy once, use whenever you like, never expire.\n\nPRIVATE BY DEFAULT\nYour images are yours alone: there is no public feed. Your prompts and photos are sent to Google Gemini and OpenAI to create your images; you approve this before your first creation and can withdraw consent anytime in Settings. Photo ideas are a separate choice: only after you turn them on does a small copy of the photo you pick go to Anthropic's Claude, and Pixie's servers keep no copy of it.\n\nStart anonymously, then sign in with Apple, Google or GitHub to keep your images in sync across iPhone and iPad.\n\nFOR EVERYONE\nWorks with VoiceOver, larger text sizes and Reduce Motion. Delete your account and everything in it anytime in Settings.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://midgarcorp.cc/legal/pixiepocket/privacy\n\nGoogle, Gemini and Nano Banana are trademarks of Google LLC. GPT Image is a trademark of OpenAI. Claude is a trademark of Anthropic, PBC. This app is not endorsed by or affiliated with Google, OpenAI or Anthropic.",
+      "releaseNotes": "Ideas for your photo: pick a photo and Pixie suggests three edits that fit it. Tap one to use it.\n\n• Included in your Pixie Week and in Plus\n• You choose first: Pixie asks before it looks, and only then does a small copy of the photo go to Anthropic's Claude. Pixie's servers keep no copy\n• Turn ideas off anytime in Settings\n\nFixed: saving an image to Photos no longer closes the app.\n\nFixed: tapping “Agree & Start Creating” at the end of the welcome screens no longer closes the app on iPad. The options panel under the prompt bar now opens at its full height.",
       "category": "Photo & Video",
       "genres": [
         "Photo & Video",
@@ -819,22 +840,27 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.8.1",
+      "version": "1.9.1",
       "releaseDate": "2025-09-19T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-03T19:50:41Z",
+      "currentVersionReleaseDate": "2026-11-22T01:14:25Z",
       "minimumOsVersion": "16.6",
-      "contentRating": "4+",
+      "contentRating": "17+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -967,18 +993,19 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.guitaripod.Pixie",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/67/5f/49/675f49f8-9296-af2f-0c6e-c3b4a268410e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": null,
-      "supportUrl": "https://x.com/guitaripod",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/04/da/e3/04dae3b1-2976-8fff-d64e-f855cbfdd9c6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/pixiepocket/",
+      "supportUrl": "https://midgarcorp.cc/pixiepocket/support/",
       "keywords": "headshot,restore,colorize,old,figurine,figure,3d,retouch,selfie,portrait,hairstyle,anime,filter,pro",
       "iconLocal": "/screenshots/pixiepocket/icon.webp",
       "platforms": [
-        "iPhone",
-        "iPad"
+        "iPhone"
       ]
     },
     {
@@ -1068,7 +1095,7 @@
       "name": "App of the Dead: Religions",
       "appStoreUrl": "https://apps.apple.com/us/app/app-of-the-dead-religions/id6746733380",
       "description": "Where will your soul go when you die? Six of the world's oldest traditions are about to tell you.\n\nNEW IN APP OF THE DEAD 2.0: THE JUDGMENT\nNine questions, about two minutes. Thoth reads the record of your life, Charon asks for his coin, Odin asks how your story ends, and Anubis lays your heart on the scale against the feather of Ma'at. Then the verdict: where you would go by the rules of Egyptian, Greek, Norse, Aztec, Zoroastrian and Buddhist belief, from the Field of Reeds to Valhalla, Mictlan to the House of Song. Share your Soul Card and dare your friends to face it.\n\n22 AFTERLIVES, ONE APP\nApp of the Dead turns comparative religion into a game. Judaism, Christianity, Islam, Hinduism, Buddhism, Sikhism, the Egyptian Duat, the Greek underworld, Norse Hel and Valhalla, Aztec Mictlan, Zoroastrianism, Shinto, Taoism and more. Each tradition is a path of short story-card lessons on a map of its own, ending in a mastery test.\n\nLEARN THROUGH PLAY\nMultiple-choice, matching and true-or-false questions with instant feedback. XP, streaks, achievements, Game Center leaderboards, and a Daily Omen: one question a day from any tradition.\n\nTALK TO THE GODS\nAsk Anubis about the weighing of the heart, Odin about Valhalla, Hecate about the crossroads, Azrael about the grave. On iPhones with Apple Intelligence the Oracle answers instantly; on other iPhones it downloads once. Either way it runs entirely on your iPhone, so your questions never leave it.\n\nA FREE WEEK AFTER YOUR VERDICT\nFinish the Judgment and every path and every god opens for seven days, if you have not bought anything yet. Nothing to sign up for, nothing to cancel. The Judaism path stays free forever.\n\nGO PREMIUM\nPremium unlocks all 22 paths and unlimited Oracle conversations, yearly or monthly. Prefer to own it? Unlock a single path, or take Ultimate lifetime access.\n\nBuilt with care for every tradition: no ads, no account, VoiceOver and Dynamic Type support.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://midgarcorp.cc/legal/app-of-the-dead/privacy",
-      "releaseNotes": "App of the Dead 2.0 is a new app around the oldest question.\n\n• The Judgment: nine questions from the guardians of the dead weigh your soul by six traditions and show where you would go. Share your Soul Card.\n• Finish the Judgment and every path and every god opens for a week, free, with nothing to sign up for.\n• A new look: night skies, gold leaf, each tradition in its own colour, and text that grows with Dynamic Type.\n• Every tradition opens on a path map of its lessons, ending at the mastery crown.\n• Lessons read as story cards, a few sentences at a time, with the key terms the Oracle explains.\n• A Daily Omen on Home: one question a day from any tradition keeps your streak alive.\n• The Oracle answers instantly on iPhones with Apple Intelligence, knows its tradition's lessons, remembers your last questions, and its replies share as cards.\n• If a message speaks of suicide or of hurting yourself, the Oracle steps aside and points you to free, confidential help.\n• Fixes: lesson text no longer shows stray citation marks, and Mandaeism has its own symbol.",
+      "releaseNotes": "Features that use on-device generative AI are no longer offered on China mainland App Store accounts, so the app stays available there.",
       "category": "Education",
       "genres": [
         "Education",
@@ -1079,22 +1106,27 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "2.0",
+      "version": "2.0.3",
       "releaseDate": "2025-09-23T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-05T19:41:17Z",
+      "currentVersionReleaseDate": "2026-11-23T15:22:49Z",
       "minimumOsVersion": "18.2",
       "contentRating": "12+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -1227,13 +1259,15 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.aotd",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/21/c1/6721c1dd-4ff4-7a3e-5c6e-366d33932a01/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": null,
-      "supportUrl": "https://x.com/prblemslver",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/32/32/4a/32324a31-be82-a6ea-8e51-21b10cb2997a/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/appofthedead/",
+      "supportUrl": "https://midgarcorp.cc/appofthedead/support/",
       "keywords": "heaven,hell,judgment,gods,greek,norse,egyptian,soul,death,underworld,oracle,world,trivia,chat,ai",
       "iconLocal": "/screenshots/appofthedead/icon.webp",
       "platforms": [
@@ -1664,14 +1698,7 @@
         "iPad",
         "Apple TV",
         "Mac"
-      ],
-      "ogShot": {
-        "src": "/screenshots/masterofflags/web-phone-atlas.webp",
-        "w": 735,
-        "h": 1520,
-        "label": "Atlas",
-        "framed": true
-      }
+      ]
     },
     {
       "slug": "masterofinventory",
@@ -1729,8 +1756,8 @@
       },
       "name": "Master of Inventory: Warranty",
       "appStoreUrl": "https://apps.apple.com/us/app/master-of-inventory-warranty/id1523538855",
-      "description": "Disaster doesn't wait for you to find the receipt. Photograph, value, and receipt-back everything you own now — so an insurance claim, a warranty, or a return is one tap away, not a frantic search.\n\nMaster of Inventory turns your belongings into a documented record that actually holds up: every item with a photo, purchase price, date, and scanned receipt, plus warranty and return deadlines tracked for you — now with reminders before they expire.\n\nFree to start. Document up to 15 items with every core feature. Go Pro for unlimited items and insurance-ready exports — or grab the one-time Lifetime unlock. Bought this app back when it was paid up front? Pro is yours forever, free. Thank you for believing early.\n\nNEVER MISS A WARRANTY OR REFUND\n- Reminders before each warranty expires and before each return window closes\n- Warranty countdowns on every item at a glance\n- Keep receipts and coverage details together with each item\n\nBUILT FOR INSURANCE CLAIMS\n- Photograph each item with its purchase price and date\n- Attach scanned receipts as proof of ownership and value\n- Export a clear, defensible PDF report of what you own and what it's worth (Pro)\n- CSV spreadsheet export for your own records (Pro)\n\nCAPTURE IN SECONDS\n- Built-in document scanner for clean receipt copies\n- Snap item photos for complete records\n- Search and filter your whole catalog instantly\n\nPRIVATE BY DESIGN\n- No account. No sign-up. No company server.\n- Your inventory lives on your device and in your own iCloud\n- We can't see your data, sell your data, or lose your data\n\nWHO IT'S FOR\n- Homeowners and renters documenting belongings for insurance\n- Anyone tracking warranties, return windows, and purchase dates\n- Collectors cataloging valuables\n- People mid-move who need an inventory fast\n\nStart with the things that matter most — your most valuable items, your newest purchases, anything still under warranty — and build from there. Five minutes today can save a claim, a refund, and a lot of stress later.\n\nDocument what you own. Be ready before you need to be.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://mako.midgarcorp.cc/privacy/inventory",
-      "releaseNotes": "Master of Inventory 3.0: rebuilt around the two things that cost you money, warranties and return windows.\n• New Home: your protected value, what needs attention and your free-item progress at a glance.\n• Soon: a timeline of every warranty ending and return window closing.\n• Reminders before a warranty ends or a return window closes, at the time of day you choose.\n• Item details with coverage rings, multi-page receipts, serial numbers, locations and a record-strength meter.\n• Receipt scanning on your device: the price and date are read for you, and Live Text reads serial numbers.\n• Burst capture: photograph several items in a row now and fill in the details later.\n• Colour and icon categories, grid and list views, sorting, and select-many with bulk actions.\n• Search by name, brand, serial number, store or notes, plus Spotlight, Siri and Shortcuts actions.\n• One-tap claim pack with the receipt, photos and serial number, plus PDF report, CSV and full backups (Pro).\n• Optional Face ID lock for your inventory.\n• A redesigned Pro screen and welcome tour, a sidebar on iPad, and Finnish, Swedish, Norwegian, Danish and Dutch translations.",
+      "description": "Disaster doesn't wait for you to find the receipt. Photograph, value, and receipt-back everything you own now — so an insurance claim, a warranty, or a return is one tap away, not a frantic search.\n\nMaster of Inventory turns your belongings into a documented record that actually holds up: every item with a photo, purchase price, date, and scanned receipt, plus warranty and return deadlines tracked for you — now with reminders before they expire.\n\nFree to start. Document up to 15 items with every core feature. Go Pro for unlimited items and insurance-ready exports — or grab the one-time Lifetime unlock. Bought this app back when it was paid up front? Pro is yours forever, free. Thank you for believing early.\n\nNEVER MISS A WARRANTY OR REFUND\n- Reminders before each warranty expires and before each return window closes\n- Warranty countdowns on every item at a glance\n- Keep receipts and coverage details together with each item\n\nBUILT FOR INSURANCE CLAIMS\n- Photograph each item with its purchase price and date\n- Attach scanned receipts as proof of ownership and value\n- Export a clear, defensible PDF report of what you own and what it's worth (Pro)\n- CSV spreadsheet export for your own records (Pro)\n\nCAPTURE IN SECONDS\n- Built-in document scanner for clean receipt copies\n- Snap item photos for complete records\n- Search and filter your whole catalog instantly\n\nPRIVATE BY DESIGN\n- No account. No sign-up. Your items and photos never touch our servers.\n- Your inventory lives on your device and in your own iCloud\n- We can't see your data, sell your data, or lose your data\n\nWHO IT'S FOR\n- Homeowners and renters documenting belongings for insurance\n- Anyone tracking warranties, return windows, and purchase dates\n- Collectors cataloging valuables\n- People mid-move who need an inventory fast\n\nStart with the things that matter most — your most valuable items, your newest purchases, anything still under warranty — and build from there. Five minutes today can save a claim, a refund, and a lot of stress later.\n\nDocument what you own. Be ready before you need to be.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://midgarcorp.cc/legal/master-of-inventory/privacy",
+      "releaseNotes": "Pro purchases and restores are now more reliable.\n• The privacy note now says plainly that your items and photos never reach a server of ours.\n\nAnonymous usage counts: with no identifier, the app counts the first time you use it each day, week and month. Midgar publishes the totals at midgarcorp.cc/open.\n\nSubscribing is simpler: the yearly plan no longer starts with a free trial, so Pro unlocks the moment you subscribe. Pro is suggested after your third item instead of near the free limit, a few times at most.",
       "category": "Utilities",
       "genres": [
         "Utilities",
@@ -1739,9 +1766,9 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "3.0.0",
+      "version": "3.1.0",
       "releaseDate": "2021-02-14T08:00:00Z",
-      "currentVersionReleaseDate": "2026-10-19T03:04:54Z",
+      "currentVersionReleaseDate": "2026-11-13T00:32:03Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
@@ -1892,13 +1919,15 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.inventory",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/0e/ab/da/0eabda95-f92b-4d2a-5f12-7f833d765c60/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4a/8b/75/4a8b75cd-ffbd-c941-9088-4643315f7772/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": null,
-      "supportUrl": "https://twitter.com/ziademarcus",
+      "supportUrl": "https://midgarcorp.cc/masterofinventory/support/",
       "keywords": "tracker,insurance,claim,return,belongings,organizer,serial,catalog,moving,appliance,valuables,scan",
       "iconLocal": "/screenshots/masterofinventory/icon.webp",
       "platforms": [
@@ -2101,7 +2130,7 @@
       "name": "Solar Beam: James Webb Images",
       "appStoreUrl": "https://apps.apple.com/us/app/solar-beam-james-webb-images/id6705124497",
       "description": "Solar Beam is the most beautiful way to explore the James Webb Space Telescope on every Apple device — plus NASA's daily space picture and near-Earth asteroids. Free to download.\n\nTHE JAMES WEBB GALLERY\nA curated gallery of Webb's most breathtaking images, each with its real caption, credit, distance, and sky position. Browse by collection or search for any target.\n\nWHERE IS WEBB\nA status dashboard for the telescope: days in space, its orbit 1.5 million km away at Lagrange Point 2, and the temperature gap between its sun-facing side and its supercooled instruments.\n\n4K WALLPAPERS\nSave any Webb image as a 4K wallpaper for iPhone, iPad, Mac, or Apple TV.\n\nPICTURE OF THE DAY\nNASA's daily image, with AI-generated facts on demand that make the science click.\n\nASTEROIDS\nTrack near-Earth objects and close approaches — always free, never gated.\n\nFREE, WITH OPTIONAL PREMIUM\nThe daily picture, the asteroid tracker and the telescope dashboard are free. Solar Beam Premium unlocks the complete Webb gallery, 4K wallpapers, Ambient Mode, the full archive and unlimited AI facts. One Premium unlock — subscription or lifetime — covers iPhone, iPad, Mac, Apple TV, and Vision Pro, with Family Sharing.\n\nImage credits: NASA, ESA, CSA, STScI. ESA/Webb imagery under CC BY 4.0.",
-      "releaseNotes": "A week of Premium, on us: come back to Solar Beam on another day and the archive back to 1995, the whole Webb library in 4K, Ambient Mode and unlimited AI facts are yours for seven days. Nothing to sign up for, nothing to cancel, nothing charged.",
+      "releaseNotes": "Now in Swedish, Danish, Norwegian, Finnish and Icelandic.\n\nFixed: saving a picture to Photos no longer closes the app.",
       "category": "Photo & Video",
       "genres": [
         "Photo & Video",
@@ -2110,22 +2139,27 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "5.2.0",
+      "version": "6.0.1",
       "releaseDate": "2024-09-29T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-03T00:42:17Z",
+      "currentVersionReleaseDate": "2026-11-16T19:57:37Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -2259,21 +2293,19 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.marcusziade.solarbeam",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/d7/3e/95d73ecf-b69f-951a-2bf7-b7c76e4bee26/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/70/2b/a6/702ba651-dbe0-1f8e-e5e7-cb0832681c3f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": "https://midgarcorp.cc/solarbeam/",
-      "supportUrl": "https://x.com/guitaripod",
+      "supportUrl": "https://midgarcorp.cc/solarbeam/support/",
       "keywords": "jwst,apod,telescope,nasa,space,photos,wallpaper,4k,galaxy,nebula,asteroid,hubble,screensaver,widget",
       "iconLocal": "/screenshots/solarbeam/icon.webp",
       "platforms": [
-        "iPhone",
-        "iPad",
-        "Mac",
-        "Apple TV",
-        "Vision Pro"
+        "iPhone"
       ]
     },
     {
@@ -2313,7 +2345,7 @@
       "name": "Psybeam: AI Voice Translator",
       "appStoreUrl": "https://apps.apple.com/us/app/psybeam-ai-voice-translator/id6777952645",
       "description": "Psybeam is a real-time AI voice translator for travel. Hold a button, speak, and the person in front of you hears it spoken aloud in their language. Hold the other button while they answer, and you hear them in yours. No typing, no reading, no app on their phone.\n\nIt is a live speech-to-speech interpreter in your pocket: it detects what was said, translates it as you speak and speaks it back in a natural voice that follows the speaker. Order food, ask directions, check into a hostel, talk to a pharmacist or a taxi driver, face to face, in seconds.\n\nWHY PSYBEAM\n• Voice to voice, live. Not a text translator with a speaker button: the translation is spoken as it happens.\n• One phone, one operator. You hold the phone and run both directions from two thumb buttons. The other person just listens, then speaks when it's their turn.\n• The translation faces them. Your words, in their language, rotate to face the person across from you. Their reply stays upright for you.\n• No account, no sign-up. It opens straight to talking.\n• No subscription, no trial trap. Start with free minutes, then buy a minute pack only when you need more. Never a recurring charge.\n• Your conversation stays on your device.\n\n22 LANGUAGES, SPOKEN BOTH WAYS\nEnglish, Spanish, French, German, Italian, Portuguese, Dutch, Russian, Polish, Turkish, Greek, Arabic, Hebrew, Hindi, Japanese, Korean, Chinese, Thai, Vietnamese, Indonesian, Finnish and Swedish. Any pair, either direction.\n\nHOW IT WORKS\n1. Pick your language and theirs, or let Psybeam suggest the local language from where you are as you cross a border.\n2. Hold your button and speak. Release, and it says it aloud in their language.\n3. Hold their button while they reply. You hear the answer in your language.\nThat's the whole app.\n\nBUILT FOR TRAVEL\nMarkets, restaurants, hotel and hostel desks, taxis, pharmacies, train stations, asking a local for help. Any moment when you and someone else don't share a language. Works with Voice Isolation for noisy streets and cafés.\n\nPRIVACY\nAudio is streamed directly to our cloud translation provider only to translate it and is never routed through our servers. Your transcript never leaves your phone. You can withdraw cloud AI consent at any time in Settings.\n\niPhone, iOS 18 and later. Open it, hold a button, and have your first conversation across a language barrier in seconds.",
-      "releaseNotes": "Buying minutes is rebuilt.\nMinute packs now open in a new Get Credits screen, from Settings or from the notice when you run out of minutes.\nYour existing minutes carry over, and your balance refreshes after every conversation.\n\nAnonymous usage counts: with no identifier, the app counts the first time you use it each day, week and month. Midgar publishes the totals at midgarcorp.cc/open.",
+      "releaseNotes": "New: a Usage Counts switch in Settings turns off the anonymous usage counts, and its page shows what the app sends and how often.\n\nFeatures that need Midgar's servers now step aside where they are not offered, with a short note instead of an error.",
       "category": "Travel",
       "genres": [
         "Travel",
@@ -2322,13 +2354,14 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.2.0",
+      "version": "1.2.3",
       "releaseDate": "2026-06-22T07:00:00Z",
-      "currentVersionReleaseDate": "2026-10-31T06:48:51Z",
+      "currentVersionReleaseDate": "2026-11-23T15:23:24Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
         "AR",
+        "DA",
         "NL",
         "EN",
         "FI",
@@ -2337,10 +2370,12 @@
         "EL",
         "HE",
         "HI",
+        "IS",
         "ID",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "RU",
@@ -2482,13 +2517,15 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.guitaripod.psybeam",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/99/ae/dc/99aedc26-3c3b-f607-07b8-31e9598fea19/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": "https://midgarcorp.cc/psybeam",
-      "supportUrl": "https://midgarcorp.cc/psybeam",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ed/71/08/ed7108bc-bddd-c5d9-a3eb-d1e7fd02a093/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/psybeam/",
+      "supportUrl": "https://midgarcorp.cc/psybeam/support/",
       "keywords": "travel,conversation,speak,talk,language,tourist,abroad,japanese,spanish,french,italian,korean,thai",
       "iconLocal": "/screenshots/psybeam/icon.webp",
       "platforms": [
@@ -2605,7 +2642,7 @@
       "name": "Helia: UV Index & Sun Safety",
       "appStoreUrl": "https://apps.apple.com/us/app/helia-uv-index-sun-safety/id6785542220",
       "description": "Helia is the honest solar coach. Most sun apps either push you to maximize a tan or just show a raw UV number. Helia does neither. It treats sunlight like what it is — something to enjoy on a budget. The sunburn is the enemy, not the sun.\n\nHelia reads today's UV conditions for your exact location and your skin, then gives you one clear answer: roughly how long you can be in the sun before you should cover up, reapply, or head for shade. That answer — your sunburn budget — is free, forever. We never put safety behind a paywall.\n\nTHE FREE SAFETY CORE — for everyone\n• Hands-free tracking. Helia can notice when you head out into daylight, meter the session itself, and log it — no timers to start or stop.\n• Your sunburn budget. A personalized estimate of how long today's sun may take before your skin has had enough, based on the live UV index and your skin type.\n• The Answer. One glance tells you whether it's a cover-up day, a quick-session day, or a stay-out day — no decoding color charts.\n• Live UV index + forecast. See the UV climb and fall through the day so you can plan around the harshest hours.\n• Cloud- and rain-aware. Helia corrects the UV for the real sky, so an overcast day reads honestly — not as full sun.\n• Reapply & cover-up nudges. Gentle reminders to top up sunscreen or step into shade before you've used up your budget.\n• Honest by design. Helia rounds toward caution. When in doubt, it tells you to protect.\n\nPRO — the coaching layer (optional)\nPro turns Helia from an instrument into a coach, with guidance grounded in how sunlight affects the body across the day:\n• Morning-light timing. Helia suggests when a little outdoor light may help support your daily rhythm and energy — the circadian side of sunlight.\n• Your vitamin-D plan. A 12-month, season-aware calendar of what sunlight can realistically contribute at your latitude — including the honest winter months when it can't. The live estimate on Home stays free.\n• The Sun Atlas. Every session and every walked Sun Trail on one map — your sun, over time.\n• On-device science coach. Ask anything about sun, UV, vitamin D, and your body clock — answered privately on your phone, grounded in cited sources, never the cloud.\n• History & trends. Your sun, your budget used, and your patterns over weeks and seasons.\n\nWHY PEOPLE KEEP HELIA INSTALLED\nHelia isn't trying to get you a deeper tan or sell you fear. It's a quiet, trustworthy instrument that earns its home-screen spot.\n\nPRIVATE BY DESIGN\nHelia works for you, not on you. Your sun sessions, skin type, and location stay on your device wherever possible and are used to personalize your estimates — not to profile you. Precise location is used only to read your local sun and UV conditions. The coach runs entirely on your device.\n\nA NOTE ON HEALTH\nHelia provides general wellness estimates and guidance, not medical advice. Sunburn-budget and vitamin-D figures are estimates based on public UV data and the details you provide — they may differ from reality. Helia does not diagnose, treat, or prevent any condition. For anything concerning your skin or health, please consult a qualified clinician.\n\nGet the free sunburn budget today. Upgrade to Pro when you want the coaching.\n\nHelia Pro is available as an annual or monthly subscription, or a one-time lifetime purchase.\n• Annual — $9.99 / year\n• Monthly — $1.99 / month\n• Lifetime — $29.99 one-time (never renews)\nPrices may vary by region. Payment is charged to your Apple ID at confirmation of purchase. Subscriptions renew automatically unless turned off at least 24 hours before the period ends. Manage or cancel anytime in your App Store account settings.\nPrivacy Policy: https://mako.midgarcorp.cc/privacy/helia · Terms: https://mako.midgarcorp.cc/terms/helia",
-      "releaseNotes": "A maintenance update. The App Store page is now also available in Arabic, Indonesian, Russian, Thai, Turkish and Vietnamese.",
+      "releaseNotes": "Now in Swedish, Danish, Norwegian, Finnish and Icelandic.",
       "category": "Health & Fitness",
       "genres": [
         "Health & Fitness",
@@ -2614,22 +2651,27 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.3.10",
+      "version": "1.3.12",
       "releaseDate": "2026-07-21T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-02T18:39:02Z",
+      "currentVersionReleaseDate": "2026-11-14T07:22:31Z",
       "minimumOsVersion": "18.0",
       "contentRating": "17+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -2762,13 +2804,15 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.guitaripod.helia",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/82/1f/91/821f9175-c659-9c20-2b57-fdfcdbdb629d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": "https://midgarcorp.cc/helia",
-      "supportUrl": "https://midgarcorp.cc/helia",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/05/c9/77/05c97714-52a8-e6d2-0991-4600ed73a114/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/helia/",
+      "supportUrl": "https://midgarcorp.cc/helia/support/",
       "keywords": "tanning,timer,daylight,spf,sunburn,circadian,forecast,exposure,skin,sunset,tracker,burn,beach,shade",
       "iconLocal": "/screenshots/helia/icon.webp",
       "platforms": [
@@ -2787,112 +2831,168 @@
             "src": "/screenshots/embr/iphone-1.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Hero"
+            "label": "Watch"
           },
           {
             "src": "/screenshots/embr/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Favorites"
+            "label": "Emotes"
           },
           {
             "src": "/screenshots/embr/iphone-3.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Top"
+            "label": "Chats"
           },
           {
             "src": "/screenshots/embr/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Chat"
+            "label": "Fullscreen"
           },
           {
             "src": "/screenshots/embr/iphone-5.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Audio"
+            "label": "Mentions"
           },
           {
             "src": "/screenshots/embr/iphone-6.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Categories"
+            "label": "Usercard"
           },
           {
             "src": "/screenshots/embr/iphone-7.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Search"
+            "label": "Favorites"
           },
           {
             "src": "/screenshots/embr/iphone-8.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Settings"
+            "label": "Audio"
           },
           {
             "src": "/screenshots/embr/iphone-9.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Onboarding"
+            "label": "Moderate"
+          },
+          {
+            "src": "/screenshots/embr/iphone-10.webp",
+            "w": 1290,
+            "h": 2803,
+            "label": "Supporter"
           }
         ],
         "ipad": [
           {
             "src": "/screenshots/embr/ipad-1.webp",
             "w": 1600,
-            "h": 1200,
-            "label": "Hero"
+            "h": 2133,
+            "label": "Watch"
           },
           {
             "src": "/screenshots/embr/ipad-2.webp",
             "w": 1600,
-            "h": 1200,
-            "label": "Favorites"
+            "h": 2133,
+            "label": "Sidebyside"
           },
           {
             "src": "/screenshots/embr/ipad-3.webp",
             "w": 1600,
-            "h": 1200,
-            "label": "Top"
+            "h": 2133,
+            "label": "Emotes"
           },
           {
             "src": "/screenshots/embr/ipad-4.webp",
             "w": 1600,
-            "h": 1200,
-            "label": "Chat"
+            "h": 2133,
+            "label": "Mentions"
           },
           {
             "src": "/screenshots/embr/ipad-5.webp",
             "w": 1600,
-            "h": 1200,
-            "label": "Audio"
+            "h": 2133,
+            "label": "Usercard"
           },
           {
             "src": "/screenshots/embr/ipad-6.webp",
             "w": 1600,
-            "h": 1200,
-            "label": "Categories"
+            "h": 2133,
+            "label": "Favorites"
           },
           {
             "src": "/screenshots/embr/ipad-7.webp",
             "w": 1600,
-            "h": 1200,
-            "label": "Search"
+            "h": 2133,
+            "label": "Audio"
           },
           {
             "src": "/screenshots/embr/ipad-8.webp",
             "w": 1600,
-            "h": 1200,
-            "label": "Settings"
+            "h": 2133,
+            "label": "Moderate"
+          },
+          {
+            "src": "/screenshots/embr/ipad-9.webp",
+            "w": 1600,
+            "h": 2133,
+            "label": "Supporter"
+          }
+        ],
+        "tv": [
+          {
+            "src": "/screenshots/embr/tv-1.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Raid"
+          },
+          {
+            "src": "/screenshots/embr/tv-2.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Ad Clock"
+          },
+          {
+            "src": "/screenshots/embr/tv-3.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Hype Train"
+          },
+          {
+            "src": "/screenshots/embr/tv-4.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Poll"
+          },
+          {
+            "src": "/screenshots/embr/tv-5.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Moderation"
+          },
+          {
+            "src": "/screenshots/embr/tv-6.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Offline Recap"
+          },
+          {
+            "src": "/screenshots/embr/tv-7.webp",
+            "w": 1920,
+            "h": 1080,
+            "label": "Ads Running"
           }
         ]
       },
       "name": "Embr — Live Streams",
       "appStoreUrl": "https://apps.apple.com/us/app/embr-live-streams/id6784940198",
-      "description": "Embr is a fast, native Twitch client built for iPhone — not a wrapped web view. Streams open in a real AVPlayer with picture-in-picture, background audio, and instant quality switching. Chat is rendered natively so it stays smooth even in the busiest channels. No bloat, no clutter, just watch and chat.\n\nBrowse without an account. Star the channels you love to keep them one tap away, and sign in with Twitch only when you want your follows and to join the conversation.\n\nWATCH\n• Native AVPlayer video — live streams, VODs, and clips\n• Picture-in-picture and background audio — keep watching while you use other apps\n• Audio-only mode for listening with the screen off\n• Quality selection, latency display, and landscape fullscreen\n• Double-tap to seek, and adjustable playback speed on VODs\n\nBROWSE & DISCOVER\n• Favorites — star any channel and see who's live at a glance, no account needed\n• Live channels and top categories at a glance\n• Search channels and categories instantly\n• A Following tab that surfaces who's live (when signed in)\n• Rich channel pages with everything you need to dive in\n\nREAL-TIME CHAT\n• Live chat over Twitch EventSub — fast and reliable\n• Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ, all merged together\n• Badges, cheermotes, mentions, and threaded replies\n• Emote autocomplete and recent-message backfill so you're never lost\n• Search the chat, report or block messages, and hide users you'd rather not see\n• Moderator tools — delete, timeout, and ban — when you're a mod in the channel\n• VoiceOver reads every message aloud, emote names included\n\nMADE FOR iPhone\n• Light and dark themes, with chat readability and text-scale controls\n• Haptics, third-party emote toggles, and a blocked-users list\n• Built natively in UIKit for speed and a small footprint\n• Full guest browsing — an account is optional\n\nFREE, WITH AN OPTIONAL TIP JAR\nEvery feature is free for everyone. If Embr becomes how you watch, you can leave a tip in Settings. Tips unlock nothing; they just keep the app going.\n\nEmbr is open source.\n\n———\n\nEmbr is an independent, third-party app and is not affiliated with, endorsed by, sponsored by, or connected to Twitch Interactive, Inc. \"Twitch\" and all related names, marks, and logos are trademarks of their respective owners and are used here only to describe what the app connects to. You sign in with your own Twitch account through Twitch's official OAuth; Embr never sees your password. Use of Twitch is subject to Twitch's own Terms of Service.",
-      "releaseNotes": "A maintenance update. The App Store page is now also available in Arabic, Indonesian, Russian, Thai, Turkish and Vietnamese.",
+      "description": "Embr is a fast, native Twitch client built for iPhone and iPad — not a wrapped web view. Streams open in a real AVPlayer with picture-in-picture, background audio, and instant quality switching. Chat is rendered natively so it stays smooth even in the busiest channels. No bloat, no clutter, just watch and chat.\n\nBrowse without an account. Star the channels you love to keep them one tap away, and sign in with Twitch only when you want your follows and to join the conversation.\n\nWATCH\n• Native AVPlayer video — live streams, VODs, and clips\n• Picture-in-picture and background audio — keep watching while you use other apps\n• Audio-only mode for listening with the screen off\n• Quality selection, latency display, and landscape fullscreen with chat beside the stream\n• Double-tap to seek, and adjustable playback speed on VODs\n• Past broadcasts replay their chat in sync\n• A channel's clips play as a vertical feed: swipe to the next one, already loading\n\nREAL-TIME CHAT\n• Live chat over Twitch EventSub — fast and reliable\n• Animated emotes from Twitch, 7TV, BetterTTV, and FrankerFaceZ, all merged together, with an emote keyboard\n• A Chats tab that keeps several chats open without the video, with unread and mention counts — up to three side by side on iPad\n• Mentions: everything that mentions you or matches your highlights, from every open chat\n• User cards: tap a name for their account age and messages, then mention, highlight, block, or report\n• Badges, cheermotes, replies with swipe to reply, emote autocomplete, and recent-message backfill\n• Search the chat, mute words, and hide users you'd rather not see\n• VoiceOver reads every message aloud, emote names included\n\nFOR MODERATORS\n• Moderator Tools: allow or deny AutoMod's held messages, answer unban requests, and read the moderation log\n• Delete, time out, and ban from a user card in the channels you moderate\n\nBROWSE & DISCOVER\n• Favorites — star any channel and see who's live at a glance, no account needed\n• Favorites sync between your iPhone and iPad through iCloud\n• Live channels and top categories at a glance\n• Search channels and categories instantly\n• A Following tab that surfaces who's live (when signed in)\n\nMADE FOR iPhone AND iPad\n• Settings laid out like the Settings app, with search\n• Light and dark appearance, chat readability and text-scale controls\n• Full guest browsing — an account is optional\n\nEMBR STUDIO, FOR STREAMERS\n• Your own chat, the next ad break and every follow, sub, raid and hype train on one screen, on iPhone, iPad and Apple TV\n• Snooze or run ad breaks, post quick messages, change chat modes and turn on Shield Mode\n• Hype trains, polls, predictions and goals live over chat, and a recap after every stream\n• A sample stream shows it all before you sign in\n\nFREE TO WATCH\nWatching, chat and browsing never cost anything. Streamers can add Studio Pro (ad controls, alert sounds, stream recaps, moderator mode and quick messages) by the month, by the year or once, and every streamer gets a week of it from their first live stream in Studio. Make Embr yours as a Founding Member: a one-time purchase for themes, accent colors, chat fonts and app icons, which you can try on first. Everyone in Embr sees your flame badge, your name in your color and your founding number.\n\nEmbr is open source.\n\n———\n\nEmbr is an independent, third-party app and is not affiliated with, endorsed by, sponsored by, or connected to Twitch Interactive, Inc. \"Twitch\" and all related names, marks, and logos are trademarks of their respective owners and are used here only to describe what the app connects to. You sign in with your own Twitch account through Twitch's official OAuth; Embr never sees your password. Use of Twitch is subject to Twitch's own Terms of Service.\n\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPrivacy Policy: https://midgarcorp.cc/legal/embr/privacy",
+      "releaseNotes": "New: a Usage Counts switch in Settings turns off the anonymous usage counts, and its page shows what the app sends and how often.\n\nThe player names Hyper Low Latency when a stream plays with it, and the Founding Member offer opens without a stutter.\n\nFixed: Embr Studio's viewer count no longer gets cut short beside a long channel name on smaller iPhones, and Settings switches flip in place.",
       "category": "Entertainment",
       "genres": [
         "Entertainment",
@@ -2901,22 +3001,27 @@
       "price": "Free",
       "rating": 2,
       "ratingCount": 1,
-      "version": "1.2.0",
+      "version": "1.5.5",
       "releaseDate": "2026-07-06T07:00:00Z",
-      "currentVersionReleaseDate": "2026-10-09T13:57:07Z",
+      "currentVersionReleaseDate": "2026-11-23T15:23:54Z",
       "minimumOsVersion": "18.0",
       "contentRating": "17+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -3049,29 +3154,22 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.guitaripod.embr",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/70/2f/c7/702fc712-3d54-c495-34a7-bf639c1ce2ad/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": "https://midgarcorp.cc/embr",
-      "supportUrl": "https://x.com/guitaripod",
-      "keywords": "twitch,ttv,ffz,emotes,viewer,pip,audio,background,vod,clips,streamer,esports,gaming,watch,client",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/28/3e/16/283e16e6-cfb2-e483-c157-ea2969e085d7/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/embr/",
+      "supportUrl": "https://midgarcorp.cc/embr/support/",
+      "keywords": "twitch,ttv,ffz,emotes,studio,pip,audio,background,vod,clips,streamer,esports,gaming,ads,client",
       "iconLocal": "/screenshots/embr/icon.webp",
       "platforms": [
         "iPhone",
-        "iPad"
-      ],
-      "openSource": true,
-      "license": "GPL-3.0",
-      "githubUrl": "https://github.com/guitaripod/embr",
-      "ogShot": {
-        "src": "/screenshots/embr/web-watch.webp",
-        "w": 735,
-        "h": 1500,
-        "label": "Watch",
-        "framed": true
-      }
+        "iPad",
+        "Apple TV"
+      ]
     },
     {
       "slug": "tailscode",
@@ -3306,34 +3404,39 @@
           }
         ]
       },
-      "name": "Tailscode: Coding Agent Remote",
-      "appStoreUrl": "https://apps.apple.com/us/app/tailscode-coding-agent-remote/id6791660932",
-      "description": "Your coding agents don't stop when you leave the desk, so neither should you. Tailscode puts every agent running on your own computers in your pocket: Claude Code, opencode and Oh My Pi, on any model they can run, including one on your own graphics card. Start a task from the couch, check on six at once from anywhere, and get a ping when the long one finishes. Your chats go straight to your machines over your own Tailscale network, never through a relay, with no sign-in. Free and open source.\n\nONE COMMAND TO SET UP\nFor Claude Code, one line on the computer you code on installs the bridge and ends with a QR code. Scan it, confirm, and the app has your machine; opencode has a one-line installer too. Want to look first? A built-in demo shows the main screens with no server at all.\n\nEVERY AGENT AT A GLANCE\n• Home is one ranked board: a sentence that says who needs you and what is working, then the chats waiting on you, working, pinned and recent.\n• The Agents board shows what needs you, what is working, what runs in the background and what finished in the last hour, with approve and answer on each card. Watch turns it into a full-screen wall of every agent.\n• Peek at any agent without opening its chat: its step, its last moves, its context.\n\nANY MODEL, EVEN YOUR OWN GPU\n• Whatever your agent can run, from cloud models to a local model served by Ollama or llama.cpp on your own machine, picked per chat with its reasoning effort.\n• Carry a conversation to another model: the next one gets a short brief of the chat and picks up the thread.\n• A party of six favourite models and their effort levels, one tap or one swipe of the model pill away.\n\nLONG RUNS, NO BABYSITTING\n• A Live Activity on your Lock Screen for a running conversation, one for each with Pro: what it is doing, for how long, and how many tools it has run.\n• Notifications say what happened: how long it took, what it changed and the first of what it said. Reply from the Lock Screen to start the next turn. An approval shows the exact command and asks for Face ID or your passcode; a question shows its options as buttons.\n• Queue the next message while a turn runs, edit it before it goes, or stop the turn on the server.\n\nA NATIVE TRANSCRIPT, NOT A TERMINAL\n• Megatron folds a turn's thinking and tool runs into one head you open to read, search and replay every step.\n• Diffs, commands and their real output inline; syntax-highlighted code with byte-exact copy.\n• Send screenshots and photos; every picture the agent hands back lands in a gallery.\n\nNOT ONLY CODE\nYour machines know things. Ask what is eating the GPU, research a question, tidy a folder, check a price: any agent, any model, from anywhere.\n\nKNOW WHAT IT COSTS\n• Every conversation priced, every month totalled across machines, by model, project and tool. Always an estimate, never a bill.\n• Plan limits and quotas per provider and account, with the pace and turns left, on Home and in widgets.\n\nYOURS, END TO END\n• Your chats travel point to point over your tailnet, never through a relay. No sign-in, no ads, no tracking, and your code and conversations never reach us.\n• iPhone, iPad and Mac, plus a Linux desktop app, all open source under GPL-3.0: the app, the engine and the bridges.\n\nFREE, WITH AN HONEST PRO\nThe free app is the complete core on one server: full chat, the Agents and Home boards, approvals, attachments, every model, a Live Activity at a time. Tailscode Pro is a one-time purchase, no subscription: unlimited servers in one list, concurrent Live Activities, iPhone and Mac on the same Apple Account, the delegate board, and a supporter heart.\n\nTailscode is independent open-source software, not affiliated with or endorsed by Anthropic, Tailscale Inc., the opencode project or Oh My Pi.\n\nPrivacy policy: https://midgarcorp.cc/tailscode/privacy\nSource code: https://github.com/guitaripod/Tailscode",
-      "releaseNotes": "New:\n• Try Tailscode Pro free for a week. When you reach for a second server or Delegate, start a week of every Pro feature. Nothing is charged and nothing renews. Afterwards, servers you added rest until you get Pro, and you choose which one stays connected; nothing is deleted.\n\nChanges:\n• A voice call (beta) ends when you leave the app or lock the screen.\n\nFixes:\n• Opening the app in the first minute after the iPhone restarts no longer freezes or closes it while Live Activities start.\n• Home, the chat list, Saved and Archived ask each server for its chats once, so a launch or a server coming back loads faster.\n• Very long conversations save with less stutter.\n• Primary buttons such as Save have clear white labels.\n• A chat whose topic moved picks up its new title even when the server renames it late.",
+      "name": "Tailscode: Claude Code Remote",
+      "appStoreUrl": "https://apps.apple.com/us/app/tailscode-claude-code-remote/id6791660932",
+      "description": "Your coding agents don't stop when you leave the desk, so neither should you. Tailscode puts every agent running on your own computers in your pocket: Claude Code, Codex, Hermes, opencode and Oh My Pi, plus any agent that speaks the Agent Client Protocol, on any model they can run, including one on your own graphics card. Start a task from the couch, check on six at once from anywhere, and get a ping when the long one finishes. Your chats go straight to your machines over your own Tailscale network, never through a relay, with no sign-in. Free and open source.\n\nONE COMMAND TO SET UP\nFor Claude Code, one line on the computer you code on installs the bridge and ends with a QR code. Scan it, confirm, and the app has your machine; opencode has a one-line installer too. Want to look first? A built-in demo shows the main screens with no server at all.\n\nHERMES AND ANY ACP AGENT\n• Hermes, Gemini CLI, Codex, goose and the rest of the ACP registry run through the bridge already on your machine, each proved with a real chat before it counts as ready.\n• Hermes with no model gets one in a tap from the model server your machine already runs. It sits in the model pill beside Claude.\n• Hold Send to ask later, or type when: weekdays 7:30. Your machine asks with your phone off, remembers the last run and stays quiet when nothing changed.\n\nEVERY AGENT AT A GLANCE\n• Home is one ranked board: a sentence that says who needs you and what is working, then the chats waiting on you, working, pinned and recent.\n• The Agents board shows what needs you, what is working, what runs in the background and what finished in the last hour, with approve and answer on each card. Watch turns it into a full-screen wall of every agent.\n\nANY MODEL, EVEN YOUR OWN GPU\n• Whatever your agent can run, from cloud models to a local model served by Ollama or llama.cpp on your own machine, picked per chat with its reasoning effort.\n• Carry a conversation to another model: the next one gets a short brief of the chat and picks up the thread.\n• A party of six favourite models and their effort levels, one tap or one swipe of the model pill away.\n\nLONG RUNS, NO BABYSITTING\n• A Live Activity on your Lock Screen for a running conversation, one for each with Pro: what it is doing, for how long, and how many tools it has run.\n• Notifications say how long a turn took and what it changed. Reply from the Lock Screen; an approval shows the exact command and asks for Face ID.\n• Queue the next message while a turn runs, edit it before it goes, or stop the turn on the server.\n\nA NATIVE TRANSCRIPT, NOT A TERMINAL\n• Megatron folds a turn's thinking and tool runs into one head you open to read, search and replay every step.\n• Diffs, commands and their real output inline; syntax-highlighted code with byte-exact copy.\n\nKNOW WHAT IT COSTS\n• Every conversation priced, every month totalled across machines, by model, project and tool. Always an estimate, never a bill.\n• Plan limits and quotas per provider and account, with the pace and turns left, on Home and in widgets.\n\nYOURS, END TO END\n• Your chats travel point to point over your tailnet, never through a relay. No sign-in, no ads, no tracking, and your code and conversations never reach us.\n• iPhone, iPad and Mac, plus a Linux desktop app, all open source under GPL-3.0: the app, the engine and the bridges.\n\nFREE, WITH AN HONEST PRO\nThe free app is the complete core on one server: full chat, the Agents and Home boards, approvals, attachments, every model, a Live Activity at a time. Tailscode Pro is a one-time purchase, no subscription: unlimited servers in one list, concurrent Live Activities, iPhone and Mac on the same Apple Account, and the delegate board.\n\nTailscode is independent open-source software, not affiliated with or endorsed by Anthropic, Nous Research, Tailscale Inc., the opencode project or Oh My Pi.\n\nPrivacy policy: https://midgarcorp.cc/tailscode/privacy\nSource code: https://github.com/guitaripod/Tailscode",
+      "releaseNotes": "Masters, a terminal on your own machine, and Outer Rim.\n\nNew:\n• Masters (beta): give a Claude Code machine a standing role with a charter, skills, a notebook and checks the machine proves. Each task is a fresh chat briefed with all of it and ends in a debrief whose notebook changes you accept or skip. With claude-bridge 1.38.\n• A terminal: your login shell on the computer, with a bar of the keys the on-screen keyboard lacks. The shell stays on the machine, so it is still there after you close the app or switch devices. With claude-bridge 1.38 or omp-bridge 0.19.\n• Outer Rim, a theme that is a place: a starfield behind the chat and every signal a coloured blade. New installs start in it.\n• A new prompt box: it grows a line at a time, fades a long draft into its edge and lifts to the whole page from its handle. @ lists the project's files with changed ones first, Send shows whether it sends, queues, stops or saves, and the + adds Take Photo and Scan Text.\n• Quiet at your desk: while a Mac or Linux Tailscode sees you at the computer, the phone holds its notices and Live Activities until you leave, and a notice goes away once its chat is read anywhere. With claude-bridge 1.34 or omp-bridge 0.18.\n• Live Activities look like Agents wall tiles, with the plan, latest steps and model, and follow turns started on a desktop, from a queue or on a schedule.\n• The Agents board is one press away: Home's bar, the iPad sidebar, Control Center, the Lock Screen, the Action Button and Siri. Each wall tile wears an emblem for its model.\n• Pictures open from where they sit, gather in one strip under their turn, and only the ones the agent names are shown. A long prompt folds.\n• Home holds every chat, twenty more at a time, with Mark all as read across every server. Masters and quotas sit behind one row of buttons.\n• A message written offline waits and goes on its own when the machine answers, even after a relaunch.\n• Unread chats are easy to spot and each row says what happened.\n• First run asks which agent runs on your computer and opens on its install command.\n• iPad: the conversation gets the width it needs, and the list's search, New chat, Allow once and the jump to the end sit under your thumbs.\n\nFixes:\n• After the phone restarted, Tailscode could open as a fresh install with no servers and no Pro. It now waits for the first unlock.\n• A usage window whose reset time has passed no longer reads as used up.\n• Opening a chat, typing and sending are faster, most of all on older iPhones.\n• The icon's number counts only chats with news, and old chats no longer light up as unread.\n• The Lock Screen keeps at most five Tailscode cards and always has room for the chat you are using.\n• A background command finishing is a quiet note, not a message in your voice.",
       "category": "Developer Tools",
       "genres": [
         "Developer Tools",
         "Productivity"
       ],
       "price": "Free",
-      "rating": 5,
-      "ratingCount": 2,
+      "rating": 4.33,
+      "ratingCount": 3,
       "version": "1.84",
       "releaseDate": "2026-07-28T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-21T20:23:05Z",
+      "currentVersionReleaseDate": "2026-11-22T17:07:58Z",
       "minimumOsVersion": "18.0",
       "contentRating": "4+",
       "languages": [
+        "DA",
         "EN",
+        "FI",
         "FR",
         "DE",
+        "IS",
         "IT",
         "JA",
         "KO",
+        "NB",
         "PL",
         "PT",
         "ZH",
         "ES",
+        "SV",
         "ZH"
       ],
       "supportedDevices": [
@@ -3467,24 +3570,20 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.guitaripod.tailscode",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/24/1a/cf/241acf0c-98ad-a6a2-fe7a-8721c1b1898e/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c9/6a/e2/c96ae21a-1164-fbec-8e1b-a6a046db2052/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1024x1024bb.jpg",
       "marketingUrl": "https://midgarcorp.cc/tailscode",
       "supportUrl": "https://midgarcorp.cc/tailscode/support",
-      "keywords": "ai,llm,local,ollama,gpu,tailscale,tailnet,vibe,ssh,terminal,cli,homelab,linux,mac,omp,parallel,dev",
+      "keywords": "coding,mobile,phone,ai,ssh,tmux,terminal,tailscale,gemini,vibe,cli,acp,approve,ollama,local,llm,gpu",
       "iconLocal": "/screenshots/tailscode/icon.webp",
       "platforms": [
-        "iPhone",
-        "iPad",
-        "Mac",
-        "Linux"
-      ],
-      "openSource": true,
-      "githubUrl": "https://github.com/guitaripod/Tailscode",
-      "license": "GPL-3.0"
+        "iPhone"
+      ]
     },
     {
       "slug": "livingdex",
@@ -3498,62 +3597,62 @@
             "src": "/screenshots/livingdex/iphone-1.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Point at anything alive: birds, plants, bugs and fungi, named in seconds"
+            "label": "Field"
           },
           {
             "src": "/screenshots/livingdex/iphone-2.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Pick a starter: every Dex begins with one real species"
+            "label": "Starter"
           },
           {
             "src": "/screenshots/livingdex/iphone-3.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Every catch is a card with a real rarity, from Common to Legendary"
+            "label": "Reveal"
           },
           {
             "src": "/screenshots/livingdex/iphone-4.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Build your Dex and sort your finds across the realms of life"
+            "label": "Caught"
           },
           {
             "src": "/screenshots/livingdex/iphone-5.webp",
             "w": 1290,
             "h": 2803,
-            "label": "The Nearby Dex: locked slots show what lives near you"
+            "label": "Nearby"
           },
           {
             "src": "/screenshots/livingdex/iphone-6.webp",
             "w": 1290,
             "h": 2803,
-            "label": "An illustrated Field Guide to the realms of life, free to read"
+            "label": "Guide"
           },
           {
             "src": "/screenshots/livingdex/iphone-7.webp",
             "w": 1290,
             "h": 2803,
-            "label": "A field entry with its call and conservation status"
+            "label": "Card"
           },
           {
             "src": "/screenshots/livingdex/iphone-8.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Share a catch as a collectible trading card"
+            "label": "Cards"
           },
           {
             "src": "/screenshots/livingdex/iphone-9.webp",
             "w": 1290,
             "h": 2803,
-            "label": "Level up outdoors with streaks, XP and a growing collection"
+            "label": "Profile"
           }
         ]
       },
       "name": "Living Dex: Animal Identifier",
       "appStoreUrl": "https://apps.apple.com/us/app/living-dex-animal-identifier/id6787688416",
       "description": "Turn the real world into your personal collection. Point your camera at a bird, bug, plant or mushroom, or pick a photo, and Living Dex names it, rates how rare it is where you are, and adds it to your Dex.\n\nNothing alive in sight? Every Dex begins with a starter: choose one real species to open your collection, then go and find the rest.\n\nHOW IT WORKS\n• Spot something alive: a garden bird, a wildflower, a beetle, a toadstool\n• Tap to catch. Cloud AI names the species, then the name is checked against GBIF, the world's biodiversity database, so invented species never reach your Dex\n• Every catch becomes a card with a real rarity, from Common to Legendary\n\nWHAT YOU GET\n• Illustrated realms of life: animals, plants, fungi, protists and more, to sort and filter your Dex by\n• Real rarity: how often a species is recorded near you, plus conservation status for threatened species\n• A Nearby Dex: every species that lives around you, shown as locked slots painted with the realm's art, waiting to be found\n• An illustrated Field Guide that explains each realm and how identification works, free to read\n• Field entries that teach you something, and the sound of the call where a recording exists\n• Daily streaks, XP and levels that reward getting outside\n• Share any catch as a collectible trading card\n• Game Center leaderboard and achievements\n• No account needed\n\nFREE TO START\nEvery device starts with 30 free identifications. After that, go Pro for unlimited identifications or buy a credit pack. Browsing your Dex, the Nearby list, the Field Guide and field entries is always free.\n\nLiving Dex Pro is an auto-renewing subscription, monthly or annual. Payment is charged to your Apple Account at confirmation of purchase. It renews automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel it in your Apple Account settings.\n\nIdentifications are AI-generated best guesses and can be wrong. Never eat, touch or handle a wild plant, fungus or animal based on this app.\n\nTerms of Use (EULA): https://midgarcorp.cc/legal/living-dex/terms/\nPrivacy Policy: https://midgarcorp.cc/legal/living-dex/privacy/",
-      "releaseNotes": "Settings has a new card to browse our other apps.\nLiving Dex Pro and credit packs have a rebuilt purchase flow. If a purchase needs approval, such as Ask to Buy, Living Dex tells you and unlocks Pro as soon as it is approved.\nWhen you run out of identifications, the credit store tells you how many more credits you need.\n\nAnonymous usage counts: with no identifier, the app counts the first time you use it each day, week and month. Midgar publishes the totals at midgarcorp.cc/open.\n\nSubscribing is simpler: the yearly plan no longer starts with a free trial, so Pro unlocks the moment you subscribe.\n\nOnce your Dex grows, Living Dex may show what Pro adds, a few times at most.",
+      "releaseNotes": "New: a Usage Counts switch in Settings turns off the anonymous usage counts, and its page shows what the app sends and how often.\n\nFeatures that need Midgar's servers now step aside where they are not offered, with a short note instead of an error.",
       "category": "Education",
       "genres": [
         "Education",
@@ -3562,13 +3661,28 @@
       "price": "Free",
       "rating": 0,
       "ratingCount": 0,
-      "version": "1.1",
+      "version": "1.2.2",
       "releaseDate": "2026-10-15T07:00:00Z",
-      "currentVersionReleaseDate": "2026-11-03T00:52:18Z",
+      "currentVersionReleaseDate": "2026-11-23T15:22:59Z",
       "minimumOsVersion": "26.0",
       "contentRating": "4+",
       "languages": [
-        "EN"
+        "DA",
+        "EN",
+        "FI",
+        "FR",
+        "DE",
+        "IS",
+        "IT",
+        "JA",
+        "KO",
+        "NB",
+        "PL",
+        "PT",
+        "ZH",
+        "ES",
+        "SV",
+        "ZH"
       ],
       "supportedDevices": [
         "iPhone5s-iPhone5s",
@@ -3700,13 +3814,15 @@
         "iPadAir13M4Cellular-iPadAir13M4Cellular",
         "iPhone18Pro-iPhone18Pro",
         "iPhone18ProMax-iPhone18ProMax",
-        "iPhoneDuo-iPhoneDuo"
+        "iPhoneDuo-iPhoneDuo",
+        "iPadMiniA20Pro-iPadMiniA20Pro",
+        "iPadMiniA20ProCellular-iPadMiniA20ProCellular"
       ],
       "sellerName": "Midgar Oy",
       "bundleId": "com.guitaripod.livingdex",
-      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f3/e7/42/f3e74243-d486-c74d-08f9-ea675176b9da/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
-      "marketingUrl": "https://mako.midgarcorp.cc/support/livingdex",
-      "supportUrl": "https://mako.midgarcorp.cc/support/livingdex",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a0/be/38/a0be38e8-7661-22ea-eab2-15503711c08d/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/1024x1024bb.jpg",
+      "marketingUrl": "https://midgarcorp.cc/livingdex/",
+      "supportUrl": "https://midgarcorp.cc/livingdex/support/",
       "keywords": "bird,insect,tree,flower,mushroom,species,nature,wildlife,collect,rarity,streak,critter,wildflower",
       "iconLocal": "/screenshots/livingdex/icon.webp",
       "platforms": [
