@@ -31,7 +31,17 @@ const collected = [
   {
     type: 'Product Interaction',
     detail: 'Not linked to you · Analytics',
-    body: 'Anonymous counts from MidgarKit: the Your Midgar and More Apps screens opened, which app tiles were shown and tapped, which other app’s page was opened or loaded from the portal, whether the App Store page of another app was shown as an overlay, that the app was active on each day, week and month (once each per install), the ISO week the app was installed in, that the Pro screen was shown and where it was opened from, and a purchase event with the product id. They are sent to api.midgarcorp.cc with no Midgar ID, no device id and nothing else that identifies you, and our server stores only a running total per day, event, app, platform, app version range, install week and the event’s own dimension.',
+    body: 'Anonymous counts from MidgarKit: the Your Midgar and More Apps screens opened, which app tiles were shown and tapped, which other app’s page was opened or loaded from the portal, whether the App Store page of another app was shown as an overlay, that the app was active on each day, week and month (once each per install), the ISO week the app was installed in, that the Pro screen was shown and where it was opened from, and a purchase event with the product id. From the first version released after 27 November 2026 they also say which parts of the app are used in a week (such as chat, the Agents board or the Studio, each a word from a fixed list), whether the install is free, on a trial, paying or lapsed, how soon after installing an agent first finished an answer, and, some hours after a purchase and one fact at a time, where the Pro screen was opened from and how often it had been shown. They are sent to api.midgarcorp.cc with no Midgar ID, no device id and nothing else that identifies you, and our server stores only a running total per day, event, app, platform, app version range, install week and the event’s own dimension.',
+  },
+  {
+    type: 'Crash Data',
+    detail: 'Not linked to you · App Functionality',
+    body: 'From the first version released after 27 November 2026: when the app crashes or freezes, a short crash report goes to api.midgarcorp.cc: the kind of fault, the places in the app’s code where it happened, the last few screens that were open (named from a fixed list, such as Chat or Settings), the app version, the system version and the device model, at most five a day. It contains no conversation, prompt, code or file, no file name, no server or machine name and no identifier, so it cannot be linked to you or to a device.',
+  },
+  {
+    type: 'Performance Data',
+    detail: 'Not linked to you · App Functionality',
+    body: 'From the same version, once a day: how long the app took to start, how long it stopped responding, the memory it used and how often the system closed it, as anonymous counts in the same way.',
   },
 ];
 
@@ -51,7 +61,7 @@ const sections: Section[] = [
       'No chats, prompts, code, files, pictures or clips.',
       'No server addresses, passwords or API keys: they stay in the Keychain on your device and are sent only to the servers you configure.',
       'No location, contacts, browsing or search history, health data or financial information.',
-      'No diagnostics from the app: the log and Apple’s MetricKit reports stay on your device. Apple may give us anonymous crash and usage reports, but only if you opt in to sharing with developers (see Diagnostics below). The app contains no third-party analytics or crash-reporting software.',
+      'No diagnostics beyond the crash reports and performance numbers above: the log and Apple’s full MetricKit reports stay on your device (see Diagnostics below). The app contains no third-party analytics or crash-reporting software.',
     ],
   },
   {
@@ -108,7 +118,7 @@ const sections: Section[] = [
   {
     title: 'Diagnostics',
     paragraphs: [
-      'A diagnostic log file, tailscode.log, stays on your device. On iPhone and iPad, Apple’s MetricKit gives the app daily performance reports and crash, hang and disk-write reports. The app writes a summary of them into that log and keeps the full diagnostic files in the app’s Logs folder, on your device. Nothing from MetricKit is sent to us or to anyone else by the app. The log leaves only if you export it, share it or mail the diagnostic summary yourself. Read it first: nothing is sent unless you send it. If you have chosen in iOS to share analytics with app developers, Apple may give us anonymous crash and usage reports, which contain nothing we can link to you.',
+      'A diagnostic log file, tailscode.log, stays on your device. On iPhone and iPad, Apple’s MetricKit gives the app daily performance reports and crash, hang and disk-write reports. The app writes a summary of them into that log and keeps the full diagnostic files in the app’s Logs folder, on your device. From the first version released after 27 November 2026 the App Store apps send only the short crash reports and daily performance numbers described under What the App Store apps collect; the full reports stay on your device. All of it, and the usage counts, stops when you turn off Usage Counts in Settings (About on iPhone and iPad, General on the Mac), and versions installed through TestFlight send none of it. The log leaves only if you export it, share it or mail the diagnostic summary yourself. Read it first: nothing is sent unless you send it. If you have chosen in iOS to share analytics with app developers, Apple may give us anonymous crash and usage reports, which contain nothing we can link to you.',
     ],
   },
   {
@@ -118,7 +128,7 @@ const sections: Section[] = [
       'The Midgar ID record and its App Attest key details at Midgar: until you ask us to delete them. A Midgar ID that never had an App Attest key is deleted automatically after 30 days, unless it has an active session or is linked to an Apple account. Any credit wallet it holds is not erased by that and stays unreachable on Midgar’s servers.',
       'Purchase records at Midgar: kept on record for Midgar’s accounting, with the Midgar ID they were made with, as described under Deleting your data.',
       'Purchase records at Apple: kept under Apple’s policies.',
-      'The anonymous More Apps and purchase counts: kept as running totals, as long as they are useful for measuring our own promotion. They are not linked to you, so they cannot be deleted per person.',
+      'The anonymous counts: kept as running totals, as long as they are useful for measuring and improving the app and our own promotion. Crash reports: each distinct fault is kept once, with a count per day, for as long as it helps fix it. Neither is linked to you, so they cannot be deleted per person.',
     ],
   },
   {
@@ -130,7 +140,7 @@ const sections: Section[] = [
   {
     title: 'Your rights',
     paragraphs: [
-      'Where privacy law, such as the GDPR, gives you rights to access, correct, erase, restrict or move information about you, or to object to its use, contact us and we will help. We process the Midgar ID, the App Attest key details and the purchase records to provide, account for and support the purchases you make and to recognise Pro on your devices, and the anonymous counts in our legitimate interest in measuring our own promotion. Processing takes place in the European Union and the United States, by Cloudflare as our hosting provider. You may complain to your local data protection authority; in Finland that is the Office of the Data Protection Ombudsman (tietosuoja.fi).',
+      'Where privacy law, such as the GDPR, gives you rights to access, correct, erase, restrict or move information about you, or to object to its use, contact us and we will help. We process the Midgar ID, the App Attest key details and the purchase records to provide, account for and support the purchases you make and to recognise Pro on your devices, and the anonymous counts and crash reports in our legitimate interest in measuring our own promotion and keeping the app working. Processing takes place in the European Union and the United States, by Cloudflare as our hosting provider. You may complain to your local data protection authority; in Finland that is the Office of the Data Protection Ombudsman (tietosuoja.fi).',
     ],
   },
   {
@@ -165,12 +175,12 @@ const sections: Section[] = [
       >
         Tailscode Privacy Policy
       </h1>
-      <p class="text-xs text-paper-faint dark:text-term-faint">Last updated: 13 November 2026</p>
+      <p class="text-xs text-paper-faint dark:text-term-faint">Last updated: 27 November 2026</p>
       <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
         The short version: <span class="font-semibold text-paper-text dark:text-term-text"
           >your chats, prompts, code and files never reach us.</span
         > They travel between your device and machines you own. The App Store apps keep one random Midgar
-        ID, report your purchases and send anonymous More Apps counts. Nothing is used for tracking,
+        ID, report your purchases and send anonymous usage counts and crash reports, which you can turn off. Nothing is used for tracking,
         and the Linux app and the direct Mac build create no Midgar ID and send no usage counts.
       </p>
     </header>

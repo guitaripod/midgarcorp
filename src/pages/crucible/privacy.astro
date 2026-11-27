@@ -4,7 +4,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 const accent = '#F97316';
 const seoTitle = 'Crucible Privacy Policy';
 const metaDescription =
-  'No analytics, ads, tracking or sign-up: Crucible talks to plex.tv, your Plex server and, if you opt in, Tailscale, Trakt or your Seerr.';
+  'No third-party analytics, ads, tracking or sign-up: Crucible talks to plex.tv, your Plex server and, if you opt in, Tailscale, Trakt or your Seerr.';
 
 const sections = [
   {
@@ -13,7 +13,7 @@ const sections = [
   },
   {
     title: 'What we collect',
-    body: 'Only what Crucible Pro needs: an anonymous Midgar ID and the records of your Crucible Pro purchases, described under The anonymous Midgar ID and Purchases below. Nothing about your library, your viewing or your Plex account reaches us, except what you send when you ask Crucible’s AI for something, described under Crucible’s AI below. There are no ads, no analytics and no tracking SDKs. Midgar may publish aggregate statistics built from anonymous counts, such as weekly active installs, which never identify a person; Crucible sends no usage counts, so it adds nothing to them.',
+    body: 'What Crucible Pro needs: an anonymous Midgar ID and the records of your Crucible Pro purchases, described under The anonymous Midgar ID and Purchases below. From the first version released after 27 November 2026, also anonymous usage counts and crash reports, described under Crash reports and usage counts below, which you can turn off. Nothing about your library, your viewing or your Plex account reaches us, except what you send when you ask Crucible’s AI for something, described under Crucible’s AI below. There are no ads, no third-party analytics and no tracking SDKs. Midgar may publish aggregate statistics built from anonymous counts, such as weekly active installs, which never identify a person.',
   },
   {
     title: 'Your Plex account',
@@ -60,6 +60,10 @@ const sections = [
     body: 'Crucible Pro (lifetime or yearly) is sold through the App Store. Apple processes the payment; we never see your payment details or your Apple Account. Apple’s own notifications about Crucible Pro purchases (which product, the price, the dates, whether it renewed, lapsed or was refunded, the order identifiers and your App Store country) reach Midgar’s purchase ledger. From version 2.4, the app also sends the ledger the signed transaction record Apple has already issued, with your Midgar ID, so Crucible Pro is recognised on all your devices; the ledger keeps these records for as long as Apple’s financial records require. Version 2.4 contains no RevenueCat software. Earlier versions check and restore your purchase through RevenueCat (RevenueCat, Inc., United States), which receives a random app user ID and your purchase history for this app under its own privacy policy at https://www.revenuecat.com/privacy.',
   },
   {
+    title: 'Crash reports and usage counts',
+    body: 'Versions of the app released after 27 November 2026 send a short crash report to api.midgarcorp.cc when the iPhone app crashes or freezes: the kind of fault, the places in the app’s code where it happened, the last few screens of the app that were open (named from a fixed list, such as Home or Search), the app version, the system version and the device model, at most five a day. It contains no title, no library or server name, nothing from your Plex account, no file name and no identifier, so it cannot be linked to you or to a device. Once a day the iPhone app also sends how long it took to start, how long it stopped responding, the memory it used and how often the system closed it. Apple TV sends no crash report. This report is separate from the diagnostic log, which stays on your device. The same versions, on iPhone and Apple TV, also send anonymous counts in the same way and with no identifier: that the app was used on a day, a week and a month, that the Crucible Pro screen was shown and where it was opened from, which parts of the app are used in a week (such as the player, Search, Downloads or Statistics), whether this install is free, on a trial, paying or lapsed, and how soon after installing the first film or episode played. After a purchase, or after a subscription’s renewal is turned off, the app sends some hours later, and one fact at a time, where the purchase screen was opened from, how often it had been shown, how long the app had been installed, how long the subscription had run and on how many of the last fourteen days the app was opened. Each is a word from a fixed list, and they are stored apart, so they cannot be matched to your purchase or to what you watch. All of this stops when you turn off Usage Counts in Settings, Privacy & Data. Versions installed through TestFlight and development builds send none of it, and the Linux app sends nothing.',
+  },
+  {
     title: 'Diagnostics',
     body: 'A diagnostic log is kept on your device. It leaves your device only if you export and share it yourself.',
   },
@@ -69,7 +73,7 @@ const sections = [
   },
   {
     title: 'Changes and contact',
-    body: 'If this policy changes, the new version appears here with its date. Questions go to marcus@midgarcorp.cc. Last updated 15 November 2026.',
+    body: 'If this policy changes, the new version appears here with its date. Questions go to marcus@midgarcorp.cc. Last updated 27 November 2026.',
   },
 ];
 ---
@@ -97,12 +101,12 @@ const sections = [
       >
         Crucible Privacy Policy
       </h1>
-      <p class="text-xs text-paper-faint dark:text-term-faint">Effective November 15, 2026</p>
+      <p class="text-xs text-paper-faint dark:text-term-faint">Effective November 27, 2026</p>
       <p class="mt-6 max-w-2xl text-base leading-relaxed text-paper-muted dark:text-term-muted">
         The short version: <span class="font-semibold text-paper-text dark:text-term-text"
           >Crucible has no sign-up and no tracking.</span
-        > It talks to plex.tv and your Plex server, and Midgar keeps your Crucible Pro purchase with
-        an anonymous ID.
+        > It talks to plex.tv and your Plex server, Midgar keeps your Crucible Pro purchase with
+        an anonymous ID, and the app sends anonymous usage counts and crash reports you can turn off.
       </p>
     </header>
 
