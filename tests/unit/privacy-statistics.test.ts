@@ -32,9 +32,13 @@ describe('statistics sentence in the privacy policies', () => {
     }
   });
 
-  it('states in the Master of Flags policy that the Kids Category app sends no usage counts', () => {
+  it('states in the Master of Flags policy from which versions the Kids Category app adds its counts', () => {
     const html = readFileSync(`${legalRoot}/master-of-flags/privacy.html`, 'utf8');
-    expect(html.includes(`${SENTENCE}; Master of Flags sends no usage counts`)).toBe(true);
+    expect(
+      html.includes(
+        `${SENTENCE}; from its versions released after 27 November 2026, Master of Flags adds its anonymous counts to them`
+      )
+    ).toBe(true);
   });
 
   it('is in the policies that are not in src/content/legal too', () => {

@@ -297,7 +297,7 @@ const downloadsTop = Math.max(
 
 const quietNote = (slug: string) =>
   slug === kidsApp.slug
-    ? "Sends no usage counts: it is in Apple's Kids Category."
+    ? 'Sends anonymous counts from its next version on, with nothing that identifies a child.'
     : NO_USAGE_COUNTS.includes(slug)
       ? 'Sends no usage counts.'
       : undefined;
@@ -998,8 +998,9 @@ const link =
     blurb={`The apps can send ${events.length} kinds of count and nothing else. Each carries only the app, the platform, the app version and, for some, the week the app was installed. The server keeps daily totals, never a log of what an install did, and the country read at Cloudflare's edge stays in identifier-free data points for 90 days.`}
   >
     <p class="mb-4 max-w-2xl text-sm text-paper-muted dark:text-term-muted">
-      {kidsApp.name} sends no usage counts: it is in Apple's Kids Category. Crucible sends none either.
-      Read Master of Flags'
+      {kidsApp.name}, in Apple's Kids Category, sends no usage counts yet: they begin with its next
+      version, with no identifier and no third-party software. Crucible sends none. Read Master of
+      Flags'
       <a href="/legal/master-of-flags/privacy/" class={link}>privacy policy</a>.
     </p>
     <div class="open-grid open-grid--catalog">

@@ -254,11 +254,14 @@ describe('built /open page', () => {
     ).toBe(true);
   });
 
-  it.skipIf(!built)('notes that Master of Flags sends no usage counts', () => {
-    const text = mainText('open/index.html');
-    expect(has(text, 'Master of Flags sends no usage counts')).toBe(true);
-    expect(has(text, "Apple's Kids Category")).toBe(true);
-  });
+  it.skipIf(!built)(
+    'notes that Master of Flags sends no usage counts until its next version',
+    () => {
+      const text = mainText('open/index.html');
+      expect(has(text, 'sends no usage counts yet: they begin with its next version')).toBe(true);
+      expect(has(text, "Apple's Kids Category")).toBe(true);
+    }
+  );
 
   it.skipIf(!built)('uses no em dash', () => {
     expect(has(mainText('open/index.html'), String.fromCharCode(0x2014))).toBe(false);

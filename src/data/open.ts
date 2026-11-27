@@ -115,10 +115,11 @@ export function openAppFor(slug: string, apps: LandingApp[] = landingApps): Open
   };
 }
 
-/// The Kids Category app that sends no usage counts, for the note on the page.
+/// The Kids Category app, whose anonymous counts begin with its first version released after 27 November 2026, for the note on the page.
 export const kidsApp = openAppFor(KIDS_APP_SLUG);
 
 /// Apps that send no usage counts at all; any row they have in the stats comes from purchases, never from activity.
+// TODO: take KIDS_APP_SLUG out once Master of Flags 5.0.1 (its first release with usage counts, D46) is live and its first whole week is published.
 export const NO_USAGE_COUNTS = [KIDS_APP_SLUG, 'crucible'];
 
 /// The apps whose weekly activity the page shows, the busiest first.
