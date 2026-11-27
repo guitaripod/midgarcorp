@@ -1,7 +1,10 @@
 {
   "seoTitle": "PixiePocket — AI Photo Editor with Nano Banana and GPT Image",
-  "metaDescription": "Turn a selfie into a pro headshot, restore an old photo or become a 3D figurine in one tap, then refine it by chat. 5 free edits a day for your first 7 days.",
+  "metaDescription": "Star in a hand-painted crime-caper poster with your partner, turn a selfie into a pro headshot or restore an old photo in one tap. 5 free edits a day for your first 7 days.",
   "keywords": [
+    "couple poster ai",
+    "cartoon yourself poster app",
+    "ai crime poster of me",
     "ai headshot generator app",
     "nano banana photo editor",
     "restore old photos ai",
@@ -19,12 +22,18 @@
   "heroSubhead": "Pick a photo, tap an edit: a pro headshot, a restored old photo, a 3D figurine. Then refine it by chat. Standard runs on Google's Nano Banana 2.1, Max on OpenAI's GPT Image 2.6.",
   "accentColor": "#EC4899",
   "highlights": [
+    "New: Heist Poster, a hand-painted crime-caper poster of you, or you and your partner",
     "5 free edits a day for your first 7 days, no sign-up",
     "14 one-tap edits, from headshots to old-photo restores",
     "Standard on Nano Banana 2.1, Max on GPT Image 2.6",
     "Edit packs that never expire, or Plus for 60 edits a week"
   ],
   "features": [
+    {
+      "title": "Heist Poster",
+      "body": "Add your photo, or yours and your partner's, pick a layout and scenes like a sunset getaway, a neon club or the vault, and Pixie paints a multi-panel poster where every panel keeps your faces. Your title is set in real lettering, spelled exactly as you type it. Reshoot any panel, switch layouts for free, and turn the poster into a vertical video to post anywhere.",
+      "glyph": "◆"
+    },
     {
       "title": "One-tap edits",
       "body": "Pro headshot, a four-shot headshot pack, old-photo restore, 3D figurine, natural retouch, white background, anime style, magazine cover, new outfit or hairstyle, travel photo, royal pet portrait, a holiday card and a Halloween costume.",
