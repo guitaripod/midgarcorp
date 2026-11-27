@@ -118,9 +118,29 @@ export function openAppFor(slug: string, apps: LandingApp[] = landingApps): Open
 /// The Kids Category app, whose anonymous counts begin with its first version released after 27 November 2026, for the note on the page.
 export const kidsApp = openAppFor(KIDS_APP_SLUG);
 
-/// Apps that send no usage counts at all; any row they have in the stats comes from purchases, never from activity.
-// TODO: take KIDS_APP_SLUG out once Master of Flags 5.0.1 (its first release with usage counts, D46) is live and its first whole week is published.
-export const NO_USAGE_COUNTS = [KIDS_APP_SLUG, 'crucible'];
+/// The apps whose usage counts begin with a release, and the first version that sends them (D46 for the Kids Category app).
+export const COUNTS_FROM_VERSION: Record<string, string> = {
+  [KIDS_APP_SLUG]: '5.0.1',
+  crucible: '2.15.2',
+};
+
+/// Whether a dotted version is at or past another, comparing each number in turn; a missing version is never past anything.
+export function versionAtLeast(version: string | undefined, first: string): boolean {
+  if (!version) return false;
+  const parts = (text: string) => text.split('.').map((part) => Number.parseInt(part, 10) || 0);
+  const have = parts(version);
+  const need = parts(first);
+  for (let index = 0; index < Math.max(have.length, need.length); index += 1) {
+    const difference = (have[index] ?? 0) - (need[index] ?? 0);
+    if (difference !== 0) return difference > 0;
+  }
+  return true;
+}
+
+/// Apps that send no usage counts yet; any row they have in the stats comes from purchases, never from activity. Each leaves by itself once the App Store serves the version its counts begin with.
+export const NO_USAGE_COUNTS = Object.entries(COUNTS_FROM_VERSION)
+  .filter(([slug, first]) => !versionAtLeast(landingFor(slug)?.version, first))
+  .map(([slug]) => slug);
 
 /// The apps whose weekly activity the page shows, the busiest first.
 export const activityApps = statsApps.filter((slug) => !NO_USAGE_COUNTS.includes(slug));

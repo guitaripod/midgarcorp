@@ -8,12 +8,16 @@ import { landingApps } from '../../src/data/landing';
 import {
   activityApps,
   apple,
+  COUNTS_FROM_VERSION,
+  KIDS_APP_SLUG,
+  landingFor,
   NO_USAGE_COUNTS,
   nameFromSlug,
   openAppFor,
   preview,
   sample,
   statsApps,
+  versionAtLeast,
 } from '../../src/data/open';
 import {
   LISTED_VALUES_MAX,
@@ -37,7 +41,7 @@ const metrics = metricsCatalog as unknown as MetricsCatalog;
 function mainText(file: string): string {
   const html = readFileSync(`${dist}${file}`, 'utf8');
   const doc = new DOMParser().parseFromString(html, 'text/html');
-  return doc.querySelector('main')?.textContent ?? '';
+  return (doc.querySelector('main')?.textContent ?? '').replace(/\s+/g, ' ');
 }
 
 describe('catalog copies', () => {
@@ -255,13 +259,29 @@ describe('built /open page', () => {
   });
 
   it.skipIf(!built)(
-    'notes that Master of Flags sends no usage counts until its next version',
+    'notes that Master of Flags sends no usage counts until its next version, and only then',
     () => {
       const text = mainText('open/index.html');
-      expect(has(text, 'sends no usage counts yet: they begin with its next version')).toBe(true);
-      expect(has(text, "Apple's Kids Category")).toBe(true);
+      const waiting = NO_USAGE_COUNTS.includes(KIDS_APP_SLUG);
+      expect(has(text, 'sends no usage counts yet: they begin with its next version')).toBe(waiting);
     }
   );
+
+  it('compares dotted versions number by number', () => {
+    expect(versionAtLeast('5.0.1', '5.0.1')).toBe(true);
+    expect(versionAtLeast('5.1', '5.0.1')).toBe(true);
+    expect(versionAtLeast('5.0.10', '5.0.9')).toBe(true);
+    expect(versionAtLeast('5.0.0', '5.0.1')).toBe(false);
+    expect(versionAtLeast('2.15.1', '2.15.2')).toBe(false);
+    expect(versionAtLeast(undefined, '1.0')).toBe(false);
+  });
+
+  it('keeps an app out of the activity table only until the App Store serves its first counting version', () => {
+    for (const [slug, first] of Object.entries(COUNTS_FROM_VERSION)) {
+      const live = landingFor(slug)?.version;
+      expect(NO_USAGE_COUNTS.includes(slug), `${slug} at ${live}`).toBe(!versionAtLeast(live, first));
+    }
+  });
 
   it.skipIf(!built)('uses no em dash', () => {
     expect(has(mainText('open/index.html'), String.fromCharCode(0x2014))).toBe(false);
