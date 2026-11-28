@@ -60,6 +60,11 @@
       "glyph": "≡"
     },
     {
+      "title": "Siri, Shortcuts and the Action button",
+      "body": "Ask Siri to play a mix, shuffle your library, resume, play an album, artist or playlist, start a station, set the sleep timer, love the song that is playing or tell you what is playing, without opening Flaccy. The same actions are in Shortcuts and Spotlight on iPhone, iPad and Mac, and on the Action button, in every language Flaccy speaks.",
+      "glyph": "◎"
+    },
+    {
       "title": "Your library, organized",
       "body": "Bring music in from the Files app, a USB drive, a NAS or any folder, and Flaccy keeps your folder structure. Messy filenames and scene releases are cleaned up automatically with AI cleanup (included in the trial and in Lifetime), duplicate songs are listed once, and you can swap any cover for your own.",
       "glyph": "▤"
