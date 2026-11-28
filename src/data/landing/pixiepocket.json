@@ -1,6 +1,6 @@
 {
   "seoTitle": "PixiePocket — AI Photo Editor with Nano Banana and GPT Image",
-  "metaDescription": "Star in a hand-painted crime-caper poster with your partner, or turn a selfie into a pro headshot in one tap. 5 free edits a day for your first 7 days.",
+  "metaDescription": "Star in a hand-painted crime-caper poster with your partner, or turn a selfie into a pro headshot in one tap. A free edit every day for your first 7 days.",
   "keywords": [
     "couple poster ai",
     "cartoon yourself poster app",
@@ -23,7 +23,7 @@
   "accentColor": "#EC4899",
   "highlights": [
     "New: Heist Poster, a hand-painted crime-caper poster of you, or you and your partner",
-    "5 free edits a day for your first 7 days, no sign-up",
+    "A free edit every day for your first 7 days, no sign-up",
     "14 one-tap edits, from headshots to old-photo restores",
     "Standard on Nano Banana 2.1, Max on GPT Image 2.6",
     "Edit packs that never expire, or Plus for 60 edits a week"
@@ -56,7 +56,7 @@
     },
     {
       "title": "Edits, your way",
-      "body": "Your first edit starts 5 free Standard edits a day for 7 days. After that, buy a pack of 10, 40 or 120 edits that never expire, or PixiePocket Plus for 60 edits every week. A request that fails never costs an edit.",
+      "body": "Your first edit starts a week with 1 free Standard edit a day. After that, buy a pack of 10, 40 or 120 edits that never expire, or PixiePocket Plus for 60 edits every week. A request that fails never costs an edit.",
       "glyph": "❖"
     },
     {
@@ -86,7 +86,7 @@
     },
     {
       "q": "How much does PixiePocket cost?",
-      "a": "The app is free to download, and your first edit starts 5 free Standard edits a day for 7 days. After that, packs of 10, 40 or 120 edits cost $2.99, $9.99 and $24.99, or PixiePocket Plus gives 60 edits a week for $6.99. A Standard image costs one edit and a Max image five."
+      "a": "The app is free to download, and your first edit starts a week with 1 free Standard edit a day. After that, packs of 10, 40 or 120 edits cost $2.99, $9.99 and $24.99, or PixiePocket Plus gives 60 edits a week for $6.99. A Standard image costs one edit and a Max image five."
     },
     {
       "q": "What can I do in one tap?",
@@ -131,15 +131,15 @@
       "Refine the latest image by chat"
     ]
   },
-  "ctaLine": "Start with 5 free edits a day and edit your first photo in seconds.",
-  "pricingNote": "Free to download, with 5 free Standard edits a day for your first 7 days. Then buy packs of 10, 40 or 120 edits ($2.99, $9.99, $24.99) that never expire, or PixiePocket Plus, 60 edits a week for $6.99, auto-renewing until you cancel.",
+  "ctaLine": "Start with a free edit every day and edit your first photo in seconds.",
+  "pricingNote": "Free to download, with 1 free Standard edit a day for your first 7 days. Then buy packs of 10, 40 or 120 edits ($2.99, $9.99, $24.99) that never expire, or PixiePocket Plus, 60 edits a week for $6.99, auto-renewing until you cancel.",
   "pricing": {
     "heading": "Start with free edits. Then packs, or Plus.",
     "free": {
       "title": "Pixie Week",
       "price": "$0",
       "items": [
-        "5 free Standard edits a day for your first 7 days",
+        "1 free Standard edit a day for your first 7 days",
         "No sign-up and no card"
       ]
     },
