@@ -48,6 +48,7 @@ const CRATES_UA = 'midgarcorp-linux-page (marcus@midgarcorp.cc)';
 const FORCE_INCLUDE = [
   'tailscode',
   'flaccy',
+  'crucible',
   'unrager',
   'claude-bridge',
   'omp-bridge',
@@ -67,6 +68,20 @@ const EXCLUDE = new Set([]);
 
 /** Per-repo corrections when an auto-derived field is wrong. */
 const OVERRIDES = {
+  crucible: {
+    lang: 'swift',
+    form: 'gui',
+    note: 'Wayland / Vulkan',
+    // The AUR name `crucible` belongs to an unrelated launcher.
+    aur: 'crucible-plex',
+    homepageUrl: null,
+    description:
+      'A Plex client in the Apple TV design, with Liquid Glass, HDR video through libmpv and a couch layout for the Steam Deck.',
+    source: {
+      label: 'from source',
+      command: 'git clone https://github.com/guitaripod/Crucible && cd Crucible && linux/scripts/install.sh',
+    },
+  },
   flaccy: {
     lang: 'rust',
     form: 'gui',
@@ -193,6 +208,7 @@ const OVERRIDES = {
 const SCOPES = {
   tailscode: { paths: ['TailscodeLinux', 'packaging'] },
   flaccy: { paths: ['linux'], tag: /^linux-v/ },
+  crucible: { paths: ['linux'], tag: /^linux-\d/ },
   unrager: { paths: ['src', 'crates'] },
   tokenmaxxing: { paths: ['tokenmaxxing-kde'] },
 };
@@ -642,6 +658,7 @@ async function buildRecord(id, brewByFormula, aur) {
 
   const brewCmd = brewByFormula.get(id) ?? null;
   const aurPkg =
+    ov.aur ??
     [...aur.keys()].find(
       (p) => p.toLowerCase() === id.toLowerCase() || p.toLowerCase() === `${id.toLowerCase()}-bin`
     ) ?? null;

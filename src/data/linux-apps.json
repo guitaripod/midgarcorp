@@ -339,6 +339,55 @@
       }
     },
     {
+      "id": "crucible",
+      "name": "Crucible",
+      "form": "gui",
+      "theme": "desktop",
+      "group": "desktop",
+      "lang": "swift",
+      "language": "Swift",
+      "description": "A Plex client in the Apple TV design, with Liquid Glass, HDR video through libmpv and a couch layout for the Steam Deck.",
+      "stars": 3,
+      "commitCount": 512,
+      "releaseCount": 1,
+      "releaseDates": [
+        "2026-11-28T08:56:59Z"
+      ],
+      "githubUrl": "https://github.com/guitaripod/Crucible",
+      "homepageUrl": null,
+      "topics": [
+        "linux",
+        "swift",
+        "uikit",
+        "xtool"
+      ],
+      "latestVersion": "2.16.0",
+      "latestReleaseDate": "2026-11-28T08:56:59Z",
+      "latestReleaseUrl": "https://github.com/guitaripod/Crucible/releases/tag/linux-2.16.0",
+      "hasLinuxBinary": true,
+      "linuxBinaryUrl": "https://github.com/guitaripod/Crucible/releases/download/linux-2.16.0/crucible-linux-2.16.0-x86_64.tar.zst",
+      "note": "Wayland / Vulkan",
+      "install": {
+        "primary": {
+          "channel": "aur",
+          "label": "AUR",
+          "command": "yay -S crucible-plex"
+        },
+        "all": [
+          {
+            "channel": "aur",
+            "label": "AUR",
+            "command": "yay -S crucible-plex"
+          },
+          {
+            "channel": "source",
+            "label": "from source",
+            "command": "git clone https://github.com/guitaripod/Crucible && cd Crucible && linux/scripts/install.sh"
+          }
+        ]
+      }
+    },
+    {
       "id": "delegate",
       "name": "delegate",
       "form": "cli",
